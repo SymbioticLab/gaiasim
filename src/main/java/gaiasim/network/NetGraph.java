@@ -5,21 +5,24 @@ import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceFactory;
 
+import java.util.ArrayList;
+
 public class NetGraph {
-    public Graph graph;
+    public Graph graph_;
+    public ArrayList<String> nodes_ = new ArrayList<String>();
 
     public NetGraph(String gml_file) throws java.io.IOException {
-        graph = new SingleGraph("GaiaSimGraph");
+        graph_ = new SingleGraph("GaiaSimGraph");
         
         FileSource fs = FileSourceFactory.sourceFor(gml_file);
-        fs.addSink(graph);
+        fs.addSink(graph_);
 
         fs.readAll(gml_file);
-        fs.removeSink(graph);
+        fs.removeSink(graph_);
 
         System.out.println("Nodes: ");
-        for (Node n:graph) {
-            System.out.println(n.getAttribute("ui.label"));
+        for (Node n:graph_) {
+            nodes_.add(n.getLabel("ui.label").toString());
         }
     }
 }
