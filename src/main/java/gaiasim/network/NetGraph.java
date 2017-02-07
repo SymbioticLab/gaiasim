@@ -20,7 +20,6 @@ public class NetGraph {
         fs.readAll(gml_file);
         fs.removeSink(graph_);
 
-        System.out.println("Nodes: ");
         for (Node n:graph_) {
             nodes_.add(n.getLabel("ui.label").toString());
         }

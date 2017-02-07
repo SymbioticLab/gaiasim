@@ -38,7 +38,6 @@ public class DAGReader {
             String job_id = splits[1];
             int arrival_time = Integer.parseInt(splits[2]);
 
-            System.out.println("Job with " + num_stages + " stages, ID " + job_id + " arrival time " + arrival_time);
             HashMap<String, Stage> stage_map = new HashMap<String, Stage>();
             // Get stage metadata
             for (int i = 0; i < num_stages; i++) {
@@ -61,11 +60,9 @@ public class DAGReader {
                     ArrayList<String> tmp_nodes = net_graph.nodes_;
                     Collections.shuffle(tmp_nodes, rnd);
                     for (int j = 0; j < num_tasks; j++) {
-                        System.out.println("Adding " + tmp_nodes.get(j % tmp_nodes.size()));
                         task_locs[j] = tmp_nodes.get(j % tmp_nodes.size());
                     }
                 }
-                System.out.println("Stage " + stage_id + " with " + num_tasks + " tasks");
                 stage_map.put(stage_id, new Stage(job_id + ':' + stage_id, task_locs));
             }
 
@@ -82,7 +79,6 @@ public class DAGReader {
                 // TODO(jack): Consider making this a long
                 int data_size = Integer.parseInt(splits[2]); 
                 data_size = Math.max(1, data_size) * 8; // * 8 to conver to megabits
-                System.out.println("Dependency from " + src_stage + " to " + dst_stage + " transferring " + data_size);
 
                 Stage child = stage_map.get(src_stage);
                 Stage parent = stage_map.get(dst_stage);
