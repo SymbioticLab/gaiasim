@@ -2,6 +2,7 @@ package gaiasim;
 
 import java.util.HashMap;
 
+import gaiasim.manager.Manager;
 import gaiasim.network.NetGraph;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
@@ -63,8 +64,8 @@ public class GaiaSim {
         }
 
         try {
-            NetGraph ng = new NetGraph(args_map.get("gml"));
-            HashMap <String, Job> jobs = DAGReader.read_trace(args_map.get("trace"), ng);
+            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"));
+            m.simulate();
         }
         catch (java.io.IOException e) {
             e.printStackTrace();
