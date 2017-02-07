@@ -9,12 +9,12 @@ import gaiasim.spark.Stage;
 public class Job {
 
     public String id_; 
-    public int start_time_;
+    public long start_time_;
     public HashMap<String, Stage> stages_ = new HashMap<String, Stage>();
     public ArrayList<Stage> start_stages_ = new ArrayList<Stage>();
     public ArrayList<Stage> end_stages_ = new ArrayList<Stage>();
 
-    public Job(String id, int start_time, HashMap<String, Stage> stages) {
+    public Job(String id, long start_time, HashMap<String, Stage> stages) {
         id_ = id;
         stages_ = stages;
         start_time_ = start_time;

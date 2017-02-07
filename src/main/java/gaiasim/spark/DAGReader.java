@@ -3,6 +3,7 @@ package gaiasim.spark;
 import gaiasim.network.NetGraph;
 import gaiasim.spark.Stage;
 import gaiasim.spark.Job;
+import gaiasim.util.Constants;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -36,7 +37,7 @@ public class DAGReader {
             String[] splits = line.split(" ");
             int num_stages = Integer.parseInt(splits[0]);
             String job_id = splits[1];
-            int arrival_time = Integer.parseInt(splits[2]);
+            long arrival_time = Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND;
 
             HashMap<String, Stage> stage_map = new HashMap<String, Stage>();
             // Get stage metadata
