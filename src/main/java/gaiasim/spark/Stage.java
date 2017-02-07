@@ -28,6 +28,7 @@ public class Stage {
     public ArrayList<Stage> parent_stages_ = new ArrayList<Stage>();
 
     public double volume;
+    public boolean done = false;
 
     // The coflow representing all communication in this Stage. There
     // are assumed to be flows between all of our tasks and all of the
@@ -76,6 +77,18 @@ public class Stage {
         } // for child_stages_
 
         coflow_ = new Coflow(id_, total_volume, flows);
+    }
+
+    // Returns whether the Stage can begin or not. A Stage can begin
+    // only if all of the Stages on which it depends have completed.
+    public boolean ready() {
+        for (Stage s : child_stages_) {
+            if (!s.done) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
 

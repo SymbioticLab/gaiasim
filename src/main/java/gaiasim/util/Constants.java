@@ -15,4 +15,11 @@ public class Constants {
     // to be able to schedule jobs at the granularity of
     // one second.
     public static final int EPOCH_MILLI = MILLI_IN_SECOND;
+
+    // Return the id of the job owning the Stage, Coflow, or Flow
+    // identified by id.
+    public static String get_job_id(String id) {
+        // Stage, Coflow, and Flow ids begin in the form <job_id>:
+        return id.split(":")[0];
+    }
 }
