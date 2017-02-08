@@ -13,4 +13,15 @@ public class Coflow {
         flows_ = flows;
         volume_ = volume;
     }
+
+    // Return whether owned Flows are done
+    public boolean done() {
+        for (String k : flows_.keySet()) {
+            if (!flows_.get(k).done) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

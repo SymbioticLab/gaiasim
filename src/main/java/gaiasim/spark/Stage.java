@@ -66,7 +66,7 @@ public class Stage {
                     // transmission is needed, so we don't create a flow.
                     if (src_loc != dst_loc) {
                         String flow_id = flow_id_prefix + flow_id_suffix;
-                        flows.put(flow_id, new Flow(flow_id, src_loc, dst_loc, volume_per_flow));
+                        flows.put(flow_id, new Flow(flow_id, id_, src_loc, dst_loc, volume_per_flow));
                         total_volume += volume_per_flow;
                     }
 

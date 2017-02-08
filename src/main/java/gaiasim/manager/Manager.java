@@ -101,9 +101,44 @@ public class Manager {
                     Coflow c = active_coflows_.get(k);
                     active_flows_.putAll(c.flows_);
                 }
+
+                ready_jobs.clear();
+            }
+            
+            // TODO(jack): Actually add scheduling part to get rates for flows
+            for (String k : active_flows_.keySet()) {
+                active_flows_.get(k).rate_ = 10.0;
             }
 
+            // List to keep track of flow keys that have finished
+            ArrayList<Flow> finished = new ArrayList<Flow>();
+
             // Make progress on all running flows
+            for (long ts = 0; ts < Constants.EPOCH_MILLI; 
+                    ts += Constants.SIMULATION_TIMESTEP_MILLI) {
+                
+                for (String k : active_flows_.keySet()) {
+                    Flow f = active_flows_.get(k);
+
+                    f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_MILLI;
+                    if (f.transmitted_ >= f.volume_) {
+                        finished.add(f);
+                    }
+                }
+
+                for (Flow f : finished) {
+                    active_flows_.remove(f.id_);
+                    f.done = true;
+                    System.out.println("Flow " + f.id_ + " done");
+
+                    Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
+                    if (owning_coflow.done()) {
+                        System.out.println("Coflow " + f.coflow_id_ + " done");
+                    }
+                }
+
+                finished.clear();
+            }
 
             System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
                               CURRENT_TIME_, active_jobs_.size(), num_dispatched_jobs);
