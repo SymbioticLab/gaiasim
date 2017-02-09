@@ -64,7 +64,7 @@ public class GaiaSim {
         }
 
         try {
-            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"));
+            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), args_map.get("scheduler"));
             m.simulate();
         }
         catch (java.io.IOException e) {

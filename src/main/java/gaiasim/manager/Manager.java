@@ -9,12 +9,16 @@ import java.util.Vector;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
+import gaiasim.scheduler.BaselineScheduler;
+import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
 import gaiasim.util.Constants;
 
 public class Manager {
     public NetGraph net_graph_;
+
+    public Scheduler scheduler_;
 
     // Jobs indexed by id
     public HashMap<String, Job> jobs_;
@@ -29,9 +33,22 @@ public class Manager {
     public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
     public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
 
-    public Manager(String gml_file, String trace_file) throws java.io.IOException {
+    public Manager(String gml_file, String trace_file, String scheduler_type) throws java.io.IOException {
         net_graph_ = new NetGraph(gml_file);
         jobs_ = DAGReader.read_trace(trace_file, net_graph_);
+
+        if (scheduler_type.equals("baseline")) {
+            scheduler_ = new BaselineScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("recursive-remain-flow")) {
+            System.out.println("recursive-remain-flow not currenlty implemented");
+            System.exit(1);
+        }
+        else {
+            System.out.println("Unrecognized scheduler type: " + scheduler_type);
+            System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
+            System.exit(1);
+        }
 
         // Create sorted vector of jobs
         jobs_by_time_ = new Vector<Job>();
@@ -106,23 +123,7 @@ public class Manager {
 
                 // Update our set of flows
                 active_flows_.clear();
-                for (String k : active_coflows_.keySet()) {
-                    Coflow c = active_coflows_.get(k);
-
-                    for (String k_ : c.flows_.keySet()) {
-                        Flow f = c.flows_.get(k_);
-
-                        // TODO(jack): Actually ad scheduling part to get rates for flows
-                        f.rate_ = 10.0;
-
-                        if (f.start_timestamp_ == -1) {
-                            f.start_timestamp_ = CURRENT_TIME_;
-                        }
-
-                        active_flows_.put(f.id_, f);
-                    }
-                }
-
+                active_flows_.putAll(scheduler_.schedule_flows(active_coflows_, CURRENT_TIME_));
                 ready_jobs.clear();
             }
             
