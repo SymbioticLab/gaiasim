@@ -28,8 +28,7 @@ public class NetGraph {
         fs.removeSink(graph_);
 
         for (Node n:graph_) {
-            String id = n.getLabel("ui.label").toString();
-            nodes_.add(id);
+            nodes_.add(n.toString());
         }
         
         APSP apsp = new APSP();
