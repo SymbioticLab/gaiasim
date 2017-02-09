@@ -9,6 +9,8 @@ public class Flow {
     public double transmitted_;
     public double rate_; // in Mbps
     public boolean done = false;
+    public long start_timestamp_ = -1;
+    public long end_timestamp_ = -1;
 
     public Flow(String id, String coflow_id, String src_loc, String dst_loc, double volume) {
         id_ = id;

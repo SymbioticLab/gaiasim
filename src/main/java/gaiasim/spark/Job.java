@@ -14,6 +14,9 @@ public class Job {
     public HashMap<String, Stage> stages_ = new HashMap<String, Stage>();
     public ArrayList<Stage> start_stages_ = new ArrayList<Stage>();
     public ArrayList<Stage> end_stages_ = new ArrayList<Stage>();
+    public boolean started_ = false;
+    public long start_timestamp_ = -1;
+    public long end_timestamp_ = -1;
 
     // Stages that are currently running
     public ArrayList<Stage> running_stages_ = new ArrayList<Stage>();
@@ -49,7 +52,7 @@ public class Job {
     // A Job is considered done once all of its end stages have completed.
     public boolean done() {
         for (Stage s : end_stages_) {
-            if (!s.done) {
+            if (!s.done_) {
                 return false;
             }
         }
@@ -60,11 +63,14 @@ public class Job {
     // Remove s all of the parent Stages depending on it. If any parent
     // Stages are now ready to run, add them to ready_stages_.
     public void finish_coflow(String coflow_id) {
-        Stage s = stages_.get(coflow_id);
-        s.done = true;
+        // A coflow's id is of the form <job_id>:<stage_id> wheras
+        // our stage map is indxed by <stage_id>. Retrieve the stage_id here.
+        String stage_id = coflow_id.split(":")[1];
+        Stage s = stages_.get(stage_id);
+        s.done_ = true;
         for (Stage parent : s.parent_stages_) {
             if (parent.ready()) {
-                ready_stages_.add(parent);             
+                ready_stages_.add(parent);
             }
         }
 
@@ -89,9 +95,16 @@ public class Job {
     // Start all of the first stages of the job
     public void start() {
         for (Stage s : start_stages_) {
+            s.done_ = true;
             // Coflows are defined from parent stage to start stage,
             // so we add the start stage first.
-            ready_stages_.addAll(s.parent_stages_);
+            for (Stage parent : s.parent_stages_) {
+                if (parent.ready() && !ready_stages_.contains(parent)) {
+                    ready_stages_.add(parent);
+                }
+            }
+            //ready_stages_.addAll(s.parent_stages_);
         }
+        started_ = true;
     }
 }

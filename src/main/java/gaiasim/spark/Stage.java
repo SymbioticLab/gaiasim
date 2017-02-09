@@ -28,7 +28,7 @@ public class Stage {
     public ArrayList<Stage> parent_stages_ = new ArrayList<Stage>();
 
     public double volume;
-    public boolean done = false;
+    public boolean done_ = false;
 
     // The coflow representing all communication in this Stage. There
     // are assumed to be flows between all of our tasks and all of the
@@ -68,6 +68,10 @@ public class Stage {
                         String flow_id = flow_id_prefix + flow_id_suffix;
                         flows.put(flow_id, new Flow(flow_id, id_, src_loc, dst_loc, volume_per_flow));
                         total_volume += volume_per_flow;
+                        flow_id_suffix++;
+                    }
+                    else {
+                        System.out.println("Skipping because src and dst are same");
                     }
 
                 } // task_locs_
@@ -83,7 +87,7 @@ public class Stage {
     // only if all of the Stages on which it depends have completed.
     public boolean ready() {
         for (Stage s : child_stages_) {
-            if (!s.done) {
+            if (!s.done_) {
                 return false;
             }
         }

@@ -76,9 +76,13 @@ public class Manager {
             if (!ready_jobs.isEmpty()) {
                 // TODO(jack): Trigger an interrupt
                 
-                // Start arriving jobs
                 for (Job j : ready_jobs) {
-                    j.start();
+                    // Start arriving jobs
+                    if (!j.started_) {
+                        j.start_timestamp_ = CURRENT_TIME_;
+                        j.start();
+                    }
+
                     active_jobs_.put(j.id_, j);
                 }
                
@@ -89,7 +93,12 @@ public class Manager {
 
                     ArrayList<Coflow> coflows = j.get_running_coflows();
                     for (Coflow c : coflows) {
+                        System.out.println("Adding coflow " + c.id_);
                         active_coflows_.put(c.id_, c);
+
+                        if (c.start_timestamp_ == -1) {
+                            c.start_timestamp_ = CURRENT_TIME_;
+                        }
                     }
                 }
 
@@ -99,22 +108,30 @@ public class Manager {
                 active_flows_.clear();
                 for (String k : active_coflows_.keySet()) {
                     Coflow c = active_coflows_.get(k);
-                    active_flows_.putAll(c.flows_);
+
+                    for (String k_ : c.flows_.keySet()) {
+                        Flow f = c.flows_.get(k_);
+
+                        // TODO(jack): Actually ad scheduling part to get rates for flows
+                        f.rate_ = 10.0;
+
+                        if (f.start_timestamp_ == -1) {
+                            f.start_timestamp_ = CURRENT_TIME_;
+                        }
+
+                        active_flows_.put(f.id_, f);
+                    }
                 }
 
                 ready_jobs.clear();
             }
             
-            // TODO(jack): Actually add scheduling part to get rates for flows
-            for (String k : active_flows_.keySet()) {
-                active_flows_.get(k).rate_ = 10.0;
-            }
-
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
             // Make progress on all running flows
-            for (long ts = 0; ts < Constants.EPOCH_MILLI; 
+            for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
+                    ts <= Constants.EPOCH_MILLI; 
                     ts += Constants.SIMULATION_TIMESTEP_MILLI) {
                 
                 for (String k : active_flows_.keySet()) {
@@ -126,24 +143,45 @@ public class Manager {
                     }
                 }
 
+                // Handle flows which have completed
                 for (Flow f : finished) {
                     active_flows_.remove(f.id_);
                     f.done = true;
-                    System.out.println("Flow " + f.id_ + " done");
+                    f.end_timestamp_ = CURRENT_TIME_ + ts;
+                    System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
 
+                    // After completing a flow, an owning coflow may have been completed
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
-                    if (owning_coflow.done()) {
-                        System.out.println("Coflow " + f.coflow_id_ + " done");
-                    }
-                }
+                    if (owning_coflow.all_flows_done()) {
+                        owning_coflow.end_timestamp_ = CURRENT_TIME_ + ts;
+                        System.out.println("Coflow " + f.coflow_id_ + " done. Took " 
+                                                + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));
+                        owning_coflow.done_ = true;
+                        
+                        // After completing a coflow, an owning job may have been completed
+                        Job owning_job = active_jobs_.get(Constants.get_job_id(owning_coflow.id_));
+                        owning_job.finish_coflow(owning_coflow.id_);
+
+                        if (owning_job.done()) {
+                            owning_job.end_timestamp_ = CURRENT_TIME_ + ts;
+                            System.out.println("Job " + owning_job.id_ + " done. Took "
+                                                + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
+                            active_jobs_.remove(owning_job.id_);
+                        }
+                        else {
+                            ready_jobs.add(owning_job);     
+                        }
+
+                    } // if coflow.done
+                } // for finished
 
                 finished.clear();
-            }
+
+            } // for EPOCH_MILLI
 
             System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
                               CURRENT_TIME_, active_jobs_.size(), num_dispatched_jobs);
 
-            ready_jobs.clear();
         }
     }
 }
