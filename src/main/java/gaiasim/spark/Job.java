@@ -4,55 +4,54 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
-import gaiasim.spark.Stage;
 
 // A job within a trace
 public class Job {
 
     public String id_; 
     public long start_time_;
-    public HashMap<String, Stage> stages_ = new HashMap<String, Stage>();
-    public ArrayList<Stage> start_stages_ = new ArrayList<Stage>();
-    public ArrayList<Stage> end_stages_ = new ArrayList<Stage>();
+    public HashMap<String, Coflow> coflows_ = new HashMap<String, Coflow>();
+    public ArrayList<Coflow> start_coflows_ = new ArrayList<Coflow>();
+    public ArrayList<Coflow> end_coflows_ = new ArrayList<Coflow>();
     public boolean started_ = false;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
 
-    // Stages that are currently running
-    public ArrayList<Stage> running_stages_ = new ArrayList<Stage>();
+    // Coflows that are currently running
+    public ArrayList<Coflow> running_coflows_ = new ArrayList<Coflow>();
 
-    // Stages taht are ready to begin but have not begun yet
-    public ArrayList<Stage> ready_stages_ = new ArrayList<Stage>();
+    // Coflows taht are ready to begin but have not begun yet
+    public ArrayList<Coflow> ready_coflows_ = new ArrayList<Coflow>();
 
-    public Job(String id, long start_time, HashMap<String, Stage> stages) {
+    public Job(String id, long start_time, HashMap<String, Coflow> coflows) {
         id_ = id;
-        stages_ = stages;
+        coflows_ = coflows;
         start_time_ = start_time;
 
-        // Determine the end stages of the DAG (those without any parents).
-        // Determine the start stages of the DAG (those without children).
-        for (String key : stages_.keySet()) {
-            Stage s = stages_.get(key);
-            if (s.parent_stages_.size() == 0) {
-                end_stages_.add(s);
+        // Determine the end coflows of the DAG (those without any parents).
+        // Determine the start coflows of the DAG (those without children).
+        for (String key : coflows_.keySet()) {
+            Coflow c = coflows_.get(key);
+            if (c.parent_coflows_.size() == 0) {
+                end_coflows_.add(c);
             }
 
-            if (s.child_stages_.size() == 0) {
-                start_stages_.add(s);
+            if (c.child_coflows_.size() == 0) {
+                start_coflows_.add(c);
             }
             else {
-                // Coflows are created by depedent stages. Since
-                // starting stages do not depend on anyone, they 
+                // Flows are created by depedent coflows. Since
+                // starting coflows do not depend on anyone, they 
                 // should not create coflows.
-                s.create_coflow();
+                c.create_flows();
             }
         }
     }
 
-    // A Job is considered done once all of its end stages have completed.
+    // A Job is considered done once all of its end coflows have completed.
     public boolean done() {
-        for (Stage s : end_stages_) {
-            if (!s.done_) {
+        for (Coflow c : end_coflows_) {
+            if (!c.done()) {
                 return false;
             }
         }
@@ -60,51 +59,55 @@ public class Job {
         return true;
     }
 
-    // Remove s all of the parent Stages depending on it. If any parent
-    // Stages are now ready to run, add them to ready_stages_.
-    public void finish_coflow(String coflow_id) {
-        // A coflow's id is of the form <job_id>:<stage_id> wheras
-        // our stage map is indxed by <stage_id>. Retrieve the stage_id here.
-        String stage_id = coflow_id.split(":")[1];
-        Stage s = stages_.get(stage_id);
-        s.done_ = true;
-        for (Stage parent : s.parent_stages_) {
+    // Remove s all of the parent Coflows depending on it. If any parent
+    // Coflows are now ready to run, add them to ready_coflows_.
+    public void finish_coflow(String full_coflow_id) {
+        // A coflow's id is of the form <job_id>:<coflow_id> wheras
+        // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
+        String coflow_id = full_coflow_id.split(":")[1];
+        Coflow c = coflows_.get(coflow_id);
+        
+        for (Coflow parent : c.parent_coflows_) {
             if (parent.ready()) {
-                ready_stages_.add(parent);
+                ready_coflows_.add(parent);
             }
         }
 
-        running_stages_.remove(s);
+        running_coflows_.remove(c);
     }
 
-    // Transition all ready stages to running and return a list of all
+    // Transition all ready coflows to running and return a list of all
     // coflows that are currently running for this job.
     public ArrayList<Coflow> get_running_coflows() {
-        ArrayList<Coflow> running_coflows = new ArrayList<Coflow>();
-
-        running_stages_.addAll(ready_stages_);
-        ready_stages_.clear();
+        running_coflows_.addAll(ready_coflows_);
+        ready_coflows_.clear();
         
-        for (Stage s : running_stages_) {
-            running_coflows.add(s.coflow_); 
-        }
-        
-        return running_coflows;
+        return running_coflows_;
     }
 
-    // Start all of the first stages of the job
+    // Start all of the first coflows of the job
     public void start() {
-        for (Stage s : start_stages_) {
-            s.done_ = true;
-            // Coflows are defined from parent stage to start stage,
-            // so we add the start stage first.
-            for (Stage parent : s.parent_stages_) {
-                if (parent.ready() && !ready_stages_.contains(parent)) {
-                    ready_stages_.add(parent);
+        for (Coflow c : start_coflows_) {
+            c.done_ = true; 
+            // Coflows are defined from parent stage to child stage,
+            // so we add the start stage's parents first.
+            for (Coflow parent : c.parent_coflows_) {
+                // Add coflows which can be scheduled as a whole
+                if (parent.ready()) {
+                    if (!ready_coflows_.contains(parent)) {
+                        ready_coflows_.add(parent);
+                    }
                 }
-            }
-            //ready_stages_.addAll(s.parent_stages_);
-        }
+
+                // Add coflows which can be scheduled as individual flows
+                /*else if (parent.partially_ready()) {
+                    if (!partially_ready_coflows_.contains(parent)) {
+                        partially_ready_coflows_.add(parent);
+                    }
+                }*/
+            } // for parent_coflows_
+
+        } // for start_coflows_
         started_ = true;
     }
 }

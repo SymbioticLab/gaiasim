@@ -152,7 +152,7 @@ public class Manager {
 
                     // After completing a flow, an owning coflow may have been completed
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
-                    if (owning_coflow.all_flows_done()) {
+                    if (owning_coflow.done()) {
                         owning_coflow.end_timestamp_ = CURRENT_TIME_ + ts;
                         System.out.println("Coflow " + f.coflow_id_ + " done. Took " 
                                                 + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));
