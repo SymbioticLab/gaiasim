@@ -1,5 +1,6 @@
 package gaiasim.scheduler;
 
+import java.util.List;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
@@ -27,6 +28,16 @@ public class BaselineScheduler extends Scheduler {
             int src = Integer.parseInt(e.getNode0().toString());
             int dst = Integer.parseInt(e.getNode1().toString());
             links_[src][dst] = new Link(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+            links_[dst][src] = new Link(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+        }
+    }
+    
+    public void finish_flow(Flow f) {
+        List<Node> path_nodes = f.path_.getNodePath();
+        for (int i = 0; i < f.path_.getNodeCount() - 1; i++) {
+            int src = Integer.parseInt(path_nodes.get(i).toString());
+            int dst = Integer.parseInt(path_nodes.get(i+1).toString());
+            links_[src][dst].subscribers_.remove(f);
         }
     }
 
@@ -40,15 +51,13 @@ public class BaselineScheduler extends Scheduler {
                 Flow f = c.flows_.get(k_);
 
                 f.path_ = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
-
-                for (Edge e : f.path_.getEachEdge()) {
-                    int src = Integer.parseInt(e.getNode0().toString()); 
-                    int dst = Integer.parseInt(e.getNode1().toString());
+               
+                List<Node> path_nodes = f.path_.getNodePath();
+                for (int i = 0; i < f.path_.getNodeCount() - 1; i++) {
+                    int src = Integer.parseInt(path_nodes.get(i).toString());
+                    int dst = Integer.parseInt(path_nodes.get(i+1).toString());
                     links_[src][dst].subscribers_.add(f);
                 }
-
-                // TODO(jack): Actually ad scheduling part to get rates for flows
-                //f.rate_ = 10.0;
 
                 if (f.start_timestamp_ == -1) {
                     f.start_timestamp_ = timestamp;
@@ -57,14 +66,16 @@ public class BaselineScheduler extends Scheduler {
                 flows_.put(f.id_, f);
             }
         }
-
+        
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
 
             double min_bw = Double.MAX_VALUE;
-            for (Edge e : f.path_.getEachEdge()) {
-                int src = Integer.parseInt(e.getNode0().toString()); 
-                int dst = Integer.parseInt(e.getNode1().toString());
+
+            List<Node> path_nodes = f.path_.getNodePath();
+            for (int i = 0; i < f.path_.getNodeCount() - 1; i++) {
+                int src = Integer.parseInt(path_nodes.get(i).toString());
+                int dst = Integer.parseInt(path_nodes.get(i+1).toString());
                 double link_bw = links_[src][dst].bw_per_flow();
 
                 if (link_bw < min_bw) {
@@ -73,8 +84,32 @@ public class BaselineScheduler extends Scheduler {
             }
 
             f.rate_ = min_bw;
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and volume " + f.volume_ + " on path " + f.path_);
         }
 
         return flows_;
+    }
+
+    // Updates the rates of flows
+    public void update_flows(HashMap<String, Flow> flows) {
+        for (String k : flows.keySet()) {
+            Flow f = flows.get(k);
+
+            double min_bw = Double.MAX_VALUE;
+
+            List<Node> path_nodes = f.path_.getNodePath();
+            for (int i = 0; i < f.path_.getNodeCount() - 1; i++) {
+                int src = Integer.parseInt(path_nodes.get(i).toString());
+                int dst = Integer.parseInt(path_nodes.get(i+1).toString());
+                double link_bw = links_[src][dst].bw_per_flow();
+
+                if (link_bw < min_bw) {
+                    min_bw = link_bw;
+                }
+            }
+
+            f.rate_ = min_bw;
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.path_);
+        }
     }
 }

@@ -13,6 +13,10 @@ public abstract class Scheduler {
         net_graph_ = net_graph;
     }
 
+    public abstract void finish_flow(Flow f);
+
     public abstract HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                          long timestamp);
+
+    public abstract void update_flows(HashMap<String, Flow> flows);
 }

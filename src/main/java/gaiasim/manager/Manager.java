@@ -138,7 +138,7 @@ public class Manager {
                 for (String k : active_flows_.keySet()) {
                     Flow f = active_flows_.get(k);
 
-                    f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_MILLI;
+                    f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
                     if (f.transmitted_ >= f.volume_) {
                         finished.add(f);
                     }
@@ -149,6 +149,7 @@ public class Manager {
                     active_flows_.remove(f.id_);
                     f.done = true;
                     f.end_timestamp_ = CURRENT_TIME_ + ts;
+                    scheduler_.finish_flow(f);
                     System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
 
                     // After completing a flow, an owning coflow may have been completed
@@ -175,6 +176,12 @@ public class Manager {
 
                     } // if coflow.done
                 } // for finished
+
+                // If any flows finished during this round, update the bandwidth allocated
+                // to each active flow.
+                if (!finished.isEmpty()) {
+                    scheduler_.update_flows(active_flows_);
+                }
 
                 finished.clear();
 
