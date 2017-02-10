@@ -54,7 +54,7 @@ public class DAGReader {
                 // nodes.
                 if (splits.length > 2) {
                     for (int j = 0; j < num_tasks; j++) {
-                        task_locs[j] = splits[2 + j];
+                        task_locs[j] = net_graph.trace_id_to_node_id_.get(splits[2 + j]);
                     }
                 }
                 else {

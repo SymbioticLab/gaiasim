@@ -1,5 +1,7 @@
 package gaiasim.network;
 
+import org.graphstream.graph.*;
+
 public class Flow {
     public String id_;
     public String coflow_id_; // id of owning coflow
@@ -8,6 +10,7 @@ public class Flow {
     public double volume_;
     public double transmitted_;
     public double rate_; // in Mbps
+    public Path path_;
     public boolean done = false;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;

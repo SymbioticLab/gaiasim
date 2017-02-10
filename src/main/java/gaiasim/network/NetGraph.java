@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class NetGraph {
     public Graph graph_;
     public ArrayList<String> nodes_ = new ArrayList<String>();
+    public HashMap<String, String> trace_id_to_node_id_ = new HashMap<String, String>();
 
     // All pairs shortest path. First index is src node, second index
     // is dst node.
@@ -29,6 +30,7 @@ public class NetGraph {
 
         for (Node n:graph_) {
             nodes_.add(n.toString());
+            trace_id_to_node_id_.put(n.getLabel("ui.label").toString(), n.toString());
         }
         
         APSP apsp = new APSP();
