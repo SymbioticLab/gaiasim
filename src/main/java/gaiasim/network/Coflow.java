@@ -66,7 +66,7 @@ public class Coflow {
                         flow_id_suffix++;
                     }
                     else {
-                        System.out.println("Skipping because src and dst are same");
+                        System.out.println("Skipping because src and dst are same " + src_loc + " " + dst_loc + " " + child.id_ + "->" + id_);
                     }
 
                 } // task_locs_
@@ -87,17 +87,6 @@ public class Coflow {
             done_ = true;
         }
         return true;
-    }
-
-    // Returns whether any flows in the Coflow can begin or not.
-    public boolean partially_ready() {
-        for (Coflow c : child_coflows_) {
-            if (c.done_) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     // Returns whether the Coflow can begin or not. A Coflow can begin

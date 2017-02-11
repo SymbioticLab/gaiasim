@@ -188,7 +188,7 @@ public class Manager {
             } // for EPOCH_MILLI
 
             System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
-                              CURRENT_TIME_, active_jobs_.size(), num_dispatched_jobs);
+                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
 
         }
     }

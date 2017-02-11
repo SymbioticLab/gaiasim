@@ -62,18 +62,34 @@ public class Job {
     // Remove s all of the parent Coflows depending on it. If any parent
     // Coflows are now ready to run, add them to ready_coflows_.
     public void finish_coflow(String full_coflow_id) {
-        // A coflow's id is of the form <job_id>:<coflow_id> wheras
+        // A coflow's id is of the form <job_id>:<coflow_id> whereas
         // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
         String coflow_id = full_coflow_id.split(":")[1];
         Coflow c = coflows_.get(coflow_id);
-        
+        running_coflows_.remove(c);
+
         for (Coflow parent : c.parent_coflows_) {
             if (parent.ready()) {
-                ready_coflows_.add(parent);
-            }
-        }
+                // If all of the parent's tasks are located in the same node
+                // as our tasks, then there aren't any flows needed for the
+                // parent to complete. Register the parent as done and
+                // recursively add any coflows dependent on it.
+                if (parent.done()) {
+                    running_coflows_.add(parent);
+                    parent.start_timestamp_ = end_timestamp_;
+                    parent.end_timestamp_ = end_timestamp_;
+                    System.out.println("Coflow " + parent.id_ + " done. Took 0");
 
-        running_coflows_.remove(c);
+                    finish_coflow(parent.id_);
+                }
+                else {
+                    ready_coflows_.add(parent);
+                }
+
+            } // parent.ready()
+
+        } // for parent_coflows_
+
     }
 
     // Transition all ready coflows to running and return a list of all
@@ -98,13 +114,6 @@ public class Job {
                         ready_coflows_.add(parent);
                     }
                 }
-
-                // Add coflows which can be scheduled as individual flows
-                /*else if (parent.partially_ready()) {
-                    if (!partially_ready_coflows_.contains(parent)) {
-                        partially_ready_coflows_.add(parent);
-                    }
-                }*/
             } // for parent_coflows_
 
         } // for start_coflows_
