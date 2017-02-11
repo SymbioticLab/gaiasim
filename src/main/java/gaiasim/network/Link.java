@@ -20,4 +20,14 @@ public class Link {
     public double bw_per_flow() {
         return subscribers_.isEmpty() ? max_bw_ : max_bw_ / (double)subscribers_.size();
     }
+
+    // Return the amount of bandwidth not yet allocated.
+    public double remaining_bw() {
+        double remaining_bw = max_bw_;
+        for (Flow f : subscribers_) {
+            remaining_bw -= f.rate_;
+        }
+
+        return remaining_bw;
+    }
 }
