@@ -10,6 +10,7 @@ import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
+import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
@@ -41,8 +42,7 @@ public class Manager {
             scheduler_ = new BaselineScheduler(net_graph_);
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
-            System.out.println("recursive-remain-flow not currenlty implemented");
-            System.exit(1);
+            scheduler_ = new PoorManScheduler(net_graph_);
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);

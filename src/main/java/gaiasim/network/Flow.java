@@ -4,7 +4,7 @@ import org.graphstream.graph.*;
 
 public class Flow {
     public String id_;
-    public int_id_;
+    public int int_id_;
     public String coflow_id_; // id of owning coflow
     public String src_loc_;
     public String dst_loc_;
@@ -25,5 +25,9 @@ public class Flow {
         volume_ = volume;
         rate_ = (double)0.0;
         transmitted_ = (double)0.0;
+    }
+
+    public double remaining_volume() {
+        return volume_ - transmitted_;
     }
 };

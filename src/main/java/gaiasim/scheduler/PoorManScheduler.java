@@ -3,6 +3,7 @@ package gaiasim.scheduler;
 import java.util.List;
 import java.util.HashMap;
 
+import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.Link;
@@ -26,6 +27,11 @@ public class PoorManScheduler extends Scheduler {
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
                                                 long timestamp) {
         flows_.clear();
+        for (String k : coflows.keySet()) {
+            Coflow c = coflows.get(k);
+            
+            MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+        }
         return flows_;
     }
 
