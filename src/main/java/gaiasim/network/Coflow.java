@@ -61,7 +61,7 @@ public class Coflow {
                     // transmission is needed, so we don't create a flow.
                     if (src_loc != dst_loc) {
                         String flow_id = flow_id_prefix + flow_id_suffix;
-                        flows_.put(flow_id, new Flow(flow_id, id_, src_loc, dst_loc, volume_per_flow));
+                        flows_.put(flow_id, new Flow(flow_id, flow_id_suffix, id_, src_loc, dst_loc, volume_per_flow));
                         volume_ += volume_per_flow;
                         flow_id_suffix++;
                     }
