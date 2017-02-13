@@ -31,7 +31,7 @@ public class BaselineScheduler extends Scheduler {
     }
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
-                                                long timestamp) {
+                                                long timestamp) throws Exception {
         flows_.clear();
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);

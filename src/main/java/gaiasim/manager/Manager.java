@@ -63,7 +63,7 @@ public class Manager {
         });
     }
 
-    public void simulate() {
+    public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
         

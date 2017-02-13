@@ -1,5 +1,7 @@
 package gaiasim.mmcf;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.lang.StringBuilder;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import gaiasim.network.Link;
 import gaiasim.network.NetGraph;
 
 public class MMCFOptimizer {
-    public static void glpk_optimize(Coflow coflow, NetGraph net_graph, Link[][] links) {
+    public static void glpk_optimize(Coflow coflow, NetGraph net_graph, Link[][] links) throws Exception {
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
         StringBuilder dat_string = new StringBuilder();
@@ -114,6 +116,64 @@ public class MMCFOptimizer {
             e.printStackTrace();
             System.exit(1);
         }
+
+        // Read the output
+        double completion_time = 0.0;
+        boolean missing_pieces = false;
+        FileReader fr = new FileReader(out_file_name);
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        String fs = "";
+        String fe = "";
+        while ((line = br.readLine()) != null) {
+            if (line.contains("Objective")) {
+                double alpha = Double.parseDouble(line.split("\\s+")[3]);
+                if (alpha < 0.00001) {
+                    System.out.println("Given coflow cannot be allocated on current network");
+                    System.exit(1);
+                }
+                else {
+                    completion_time = 1.0 / alpha;
+                }
+            }
+            else if (line.contains("f[f") && !line.contains("NL")) {
+                String[] splits = line.split("\\s+");
+                String fsplits[] = splits[2].substring(3).split(",");
+                int fi = Integer.parseInt(fsplits[0]);
+                fs = int_to_nid.get(Integer.parseInt(fsplits[1]));
+                fe = int_to_nid.get(Integer.parseInt(fsplits[2].split("]")[0]));
+
+                try {
+                    // Quick hack to round to nearest 2 decimal places
+                    double bw = Math.round(Double.parseDouble(splits[3]) * 100.0) / 100.0;
+                    if (bw >= 0.01 && !fs.equals(fe)) {
+                        // TODO: Insert to flow_kv
+                    }
+                    missing_pieces = false;
+                }
+                catch (Exception e) {
+                    missing_pieces = true;
+                }
+            }
+            else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
+                String[] splits = line.split("\\s+");
+                try {
+                    double bw = Math.round(Math.abs(Double.parseDouble(splits[1]) * 100.0) / 100.0);
+                    if (bw >= 0.01 && !fs.equals(fe)) {
+                        // TODO: Insert to flow_kv
+                    }
+                    missing_pieces = false;
+                }
+                catch (Exception e) {
+                    missing_pieces = true;
+                }
+            }
+            else if (line.contains("alpha")) {
+                missing_pieces = false;
+            }
+        }
+        br.close();
+        System.out.println("Completion time = " + completion_time);
         System.exit(1);
     }
 }

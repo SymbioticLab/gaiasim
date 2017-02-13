@@ -30,7 +30,7 @@ public abstract class Scheduler {
     public abstract void finish_flow(Flow f);
  
     public abstract HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
-                                                         long timestamp);
+                                                         long timestamp) throws Exception;
 
     public abstract void update_flows(HashMap<String, Flow> flows);
 }

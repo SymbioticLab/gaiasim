@@ -25,7 +25,7 @@ public class PoorManScheduler extends Scheduler {
     public void finish_flow(Flow f) {}
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
-                                                long timestamp) {
+                                                long timestamp) throws Exception {
         flows_.clear();
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
