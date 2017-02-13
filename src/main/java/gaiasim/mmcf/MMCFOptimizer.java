@@ -24,6 +24,7 @@ public class MMCFOptimizer {
         for (String n : net_graph.nodes_) {
             int_to_nid.put(nid, n);
             nid_to_int.put(n, nid);
+            nid++;
         }
         
         dat_string.append("set N:=");
@@ -100,5 +101,19 @@ public class MMCFOptimizer {
             System.out.println("ERROR: Failed to write to file " + dat_file_name);
             System.exit(1);
         }
+
+        // Solve the LP
+        String out_file_name = path_root + "/" + coflow.id_ + ".out";
+        String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
+
+        try {
+            Process p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        System.exit(1);
     }
 }

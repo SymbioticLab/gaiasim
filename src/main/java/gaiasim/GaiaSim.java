@@ -64,10 +64,13 @@ public class GaiaSim {
         }
 
         try {
+            Process p = Runtime.getRuntime().exec("cp models/MinCCT.mod /tmp/MinCCT.mod");
+            p.waitFor();
+
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), args_map.get("scheduler"));
             m.simulate();
         }
-        catch (java.io.IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
         
