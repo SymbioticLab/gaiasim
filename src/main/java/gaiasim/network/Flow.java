@@ -1,6 +1,8 @@
 package gaiasim.network;
 
-import org.graphstream.graph.*;
+import gaiasim.network.Pathway;
+
+import java.util.ArrayList;
 
 public class Flow {
     public String id_;
@@ -11,7 +13,7 @@ public class Flow {
     public double volume_;
     public double transmitted_;
     public double rate_; // in Mbps
-    public Path path_;
+    public ArrayList<Pathway> paths_ = new ArrayList<Pathway>();
     public boolean done = false;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;

@@ -12,15 +12,16 @@ import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.Link;
 import gaiasim.network.NetGraph;
+import gaiasim.network.SubscribedLink;
 
 public class MMCFOptimizer {
     public static class MMCFOutput {
         public double completion_time_ = 0.0;
-        public HashMap<Integer, double[][]> flow_link_bw_map_ 
-            = new HashMap<Integer, double[][]>();
+        public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_ 
+            = new HashMap<Integer, ArrayList<Link>>();
     }
 
-    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, Link[][] links) throws Exception {
+    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
         StringBuilder dat_string = new StringBuilder();
@@ -126,8 +127,6 @@ public class MMCFOptimizer {
         String fs = "";
         String fe = "";
         int fi_int = -1;
-        int fs_int = -1;
-        int fe_int = -1;
         while ((line = br.readLine()) != null) {
             if (line.contains("Objective")) {
                 double alpha = Double.parseDouble(line.split("\\s+")[3]);
@@ -145,20 +144,15 @@ public class MMCFOptimizer {
                 fi_int = Integer.parseInt(fsplits[0]);
                 fs = fsplits[1];
                 fe = fsplits[2].split("]")[0];
-                fs_int = Integer.parseInt(fs);
-                fe_int = Integer.parseInt(fe);
                 try {
                     // Quick hack to round to nearest 2 decimal places
                     double bw = Math.round(Double.parseDouble(splits[4]) * 100.0) / 100.0;
                     if (bw >= 0.01 && !fs.equals(fe)) {
                         if (mmcf_out.flow_link_bw_map_.get(fi_int) == null) {
                             int num_nodes = net_graph.nodes_.size() + 1;
-                            mmcf_out.flow_link_bw_map_.put(fi_int, new double[num_nodes][num_nodes]);
+                            mmcf_out.flow_link_bw_map_.put(fi_int, new ArrayList<Link>());
                         }
-                        mmcf_out.flow_link_bw_map_.get(fi_int)[fs_int][fe_int] = bw;
-                    }
-                    else {
-                        System.out.println("fs: " + fs + " fe: " + fe + " bw: " + bw);
+                        mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
                     }
                     missing_pieces = false;
                 }
@@ -172,10 +166,7 @@ public class MMCFOptimizer {
                     double bw = Math.round(Math.abs(Double.parseDouble(splits[2]) * 100.0) / 100.0);
                     if (bw >= 0.01 && !fs.equals(fe)) {
                         // At this point the flow id should be registered in the map
-                        mmcf_out.flow_link_bw_map_.get(fi_int)[fs_int][fe_int] = bw;
-                    }
-                    else {
-                        System.out.println("fs: " + fs + " fe: " + fe + " bw: " + bw);
+                        mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
                     }
                     missing_pieces = false;
                 }
@@ -188,7 +179,7 @@ public class MMCFOptimizer {
             }
         }
         br.close();
-        System.out.println("Completion time = " + mmcf_out.completion_time_);
+        /*System.out.println("Completion time = " + mmcf_out.completion_time_);
         System.out.println("Flow kv = " + mmcf_out.flow_link_bw_map_);
         for (Integer f : mmcf_out.flow_link_bw_map_.keySet()) {
             System.out.println("  Flow " + f);
@@ -198,7 +189,7 @@ public class MMCFOptimizer {
                     System.out.println("    (" + i + ", " + j + ") = " + link_vals[i][j]);
                 }
             }
-        }
+        }*/
         return mmcf_out;
     }
 }
