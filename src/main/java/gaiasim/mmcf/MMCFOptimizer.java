@@ -9,35 +9,35 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
+import gaiasim.network.Flow;
 import gaiasim.network.Link;
 import gaiasim.network.NetGraph;
 
 public class MMCFOptimizer {
-    public static void glpk_optimize(Coflow coflow, NetGraph net_graph, Link[][] links) throws Exception {
+    public static class MMCFOutput {
+        public double completion_time_ = 0.0;
+        public HashMap<Integer, double[][]> flow_link_bw_map_ 
+            = new HashMap<Integer, double[][]>();
+    }
+
+    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, Link[][] links) throws Exception {
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
         StringBuilder dat_string = new StringBuilder();
         dat_string.append("data;\n\n");
 
-        HashMap<String, Integer> nid_to_int = new HashMap<String, Integer>();
-        HashMap<Integer, String> int_to_nid = new HashMap<Integer, String>();
-
-        int nid = 0;
-        for (String n : net_graph.nodes_) {
-            int_to_nid.put(nid, n);
-            nid_to_int.put(n, nid);
-            nid++;
-        }
-        
         dat_string.append("set N:=");
-        for (int i = 0; i < net_graph.nodes_.size(); i++) {
+        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
             dat_string.append(" " + i);
         }
         dat_string.append(";\n");
 
         ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
+        System.out.println("Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
+            Flow f = coflow.flows_.get(k);
+            System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_);
             int int_id = coflow.flows_.get(k).int_id_;
             flow_int_id_list.add(int_id);
             flow_int_id_to_id.put(int_id, k);
@@ -51,18 +51,18 @@ public class MMCFOptimizer {
         dat_string.append(";\n\n");
         
         dat_string.append("param b:\n");
-        for (int i = 0; i < net_graph.nodes_.size(); i++) {
+        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
             dat_string.append(i + " " );
         }
         dat_string.append(":=\n");
-        for (int i = 0; i < net_graph.nodes_.size(); i++) {
+        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
             dat_string.append(i + " ");
-            for (int j = 0; j < net_graph.nodes_.size(); j++) {
-                if (i == j || links[i+1][j+1] == null) {
+            for (int j = 1; j <= net_graph.nodes_.size(); j++) {
+                if (i == j || links[i][j] == null) {
                     dat_string.append(" 0.000");
                 }
                 else {
-                    dat_string.append(String.format(" %.3f", links[i+1][j+1].remaining_bw()));
+                    dat_string.append(String.format(" %.3f", links[i][j].remaining_bw()));
                 }
             }
             dat_string.append("\n");
@@ -72,14 +72,14 @@ public class MMCFOptimizer {
         dat_string.append("param fs:=\n");
         for (int fid : flow_int_id_list) {
             String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(" f" + fid + " " + nid_to_int.get(coflow.flows_.get(flow_id).src_loc_) + "\n");
+            dat_string.append(" f" + fid + " " + coflow.flows_.get(flow_id).src_loc_ + "\n");
         }
         dat_string.append(";\n\n");
 
         dat_string.append("param fe:=\n");
         for (int fid : flow_int_id_list) {
             String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(" f" + fid + " " + nid_to_int.get(coflow.flows_.get(flow_id).dst_loc_) + "\n");
+            dat_string.append(" f" + fid + " " + coflow.flows_.get(flow_id).dst_loc_ + "\n");
         }
         dat_string.append(";\n\n");
 
@@ -118,13 +118,16 @@ public class MMCFOptimizer {
         }
 
         // Read the output
-        double completion_time = 0.0;
+        MMCFOutput mmcf_out = new MMCFOutput();
         boolean missing_pieces = false;
         FileReader fr = new FileReader(out_file_name);
         BufferedReader br = new BufferedReader(fr);
         String line;
         String fs = "";
         String fe = "";
+        int fi_int = -1;
+        int fs_int = -1;
+        int fe_int = -1;
         while ((line = br.readLine()) != null) {
             if (line.contains("Objective")) {
                 double alpha = Double.parseDouble(line.split("\\s+")[3]);
@@ -133,21 +136,29 @@ public class MMCFOptimizer {
                     System.exit(1);
                 }
                 else {
-                    completion_time = 1.0 / alpha;
+                    mmcf_out.completion_time_ = 1.0 / alpha;
                 }
             }
             else if (line.contains("f[f") && !line.contains("NL")) {
                 String[] splits = line.split("\\s+");
                 String fsplits[] = splits[2].substring(3).split(",");
-                int fi = Integer.parseInt(fsplits[0]);
-                fs = int_to_nid.get(Integer.parseInt(fsplits[1]));
-                fe = int_to_nid.get(Integer.parseInt(fsplits[2].split("]")[0]));
-
+                fi_int = Integer.parseInt(fsplits[0]);
+                fs = fsplits[1];
+                fe = fsplits[2].split("]")[0];
+                fs_int = Integer.parseInt(fs);
+                fe_int = Integer.parseInt(fe);
                 try {
                     // Quick hack to round to nearest 2 decimal places
-                    double bw = Math.round(Double.parseDouble(splits[3]) * 100.0) / 100.0;
+                    double bw = Math.round(Double.parseDouble(splits[4]) * 100.0) / 100.0;
                     if (bw >= 0.01 && !fs.equals(fe)) {
-                        // TODO: Insert to flow_kv
+                        if (mmcf_out.flow_link_bw_map_.get(fi_int) == null) {
+                            int num_nodes = net_graph.nodes_.size() + 1;
+                            mmcf_out.flow_link_bw_map_.put(fi_int, new double[num_nodes][num_nodes]);
+                        }
+                        mmcf_out.flow_link_bw_map_.get(fi_int)[fs_int][fe_int] = bw;
+                    }
+                    else {
+                        System.out.println("fs: " + fs + " fe: " + fe + " bw: " + bw);
                     }
                     missing_pieces = false;
                 }
@@ -158,9 +169,13 @@ public class MMCFOptimizer {
             else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
                 String[] splits = line.split("\\s+");
                 try {
-                    double bw = Math.round(Math.abs(Double.parseDouble(splits[1]) * 100.0) / 100.0);
+                    double bw = Math.round(Math.abs(Double.parseDouble(splits[2]) * 100.0) / 100.0);
                     if (bw >= 0.01 && !fs.equals(fe)) {
-                        // TODO: Insert to flow_kv
+                        // At this point the flow id should be registered in the map
+                        mmcf_out.flow_link_bw_map_.get(fi_int)[fs_int][fe_int] = bw;
+                    }
+                    else {
+                        System.out.println("fs: " + fs + " fe: " + fe + " bw: " + bw);
                     }
                     missing_pieces = false;
                 }
@@ -173,7 +188,17 @@ public class MMCFOptimizer {
             }
         }
         br.close();
-        System.out.println("Completion time = " + completion_time);
-        System.exit(1);
+        System.out.println("Completion time = " + mmcf_out.completion_time_);
+        System.out.println("Flow kv = " + mmcf_out.flow_link_bw_map_);
+        for (Integer f : mmcf_out.flow_link_bw_map_.keySet()) {
+            System.out.println("  Flow " + f);
+            double[][] link_vals = mmcf_out.flow_link_bw_map_.get(f);
+            for (int i = 0; i <= net_graph.nodes_.size(); i++) {
+                for (int j = 0; j <= net_graph.nodes_.size(); j++) {
+                    System.out.println("    (" + i + ", " + j + ") = " + link_vals[i][j]);
+                }
+            }
+        }
+        return mmcf_out;
     }
 }

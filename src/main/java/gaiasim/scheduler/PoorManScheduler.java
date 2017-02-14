@@ -1,6 +1,7 @@
 package gaiasim.scheduler;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 
 import gaiasim.mmcf.MMCFOptimizer;
@@ -30,7 +31,8 @@ public class PoorManScheduler extends Scheduler {
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
             
-            MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            System.exit(1);
         }
         return flows_;
     }
@@ -46,6 +48,16 @@ public class PoorManScheduler extends Scheduler {
         }
 
         return remaining_bw;
+    }
+    
+    public ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
+        HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
+
+        for (String k : coflows.keySet()) {
+           System.out.println("TODO"); 
+        }
+
+        return new ArrayList<Map.Entry<Coflow, Double>>();
     }
 
     // Updates the rates of flows
