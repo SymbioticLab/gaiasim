@@ -33,12 +33,15 @@ public class PoorManScheduler extends Scheduler {
                                                 long timestamp) throws Exception {
         flows_.clear();
         ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
+        ArrayList<Coflow> unscheduled_coflows = new ArrayList<Coflow>();
         for (Map.Entry<Coflow, Double> e : cct_list) {
+            Coflow c = e.getKey();
+
             if (remaining_bw() <= 0) {
-                break;
+                unscheduled_coflows.add(c);
+                continue;
             }
 
-            Coflow c = e.getKey();
             System.out.println("Coflow " + c.id_ + " expected to complete at " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
@@ -162,41 +165,66 @@ public class PoorManScheduler extends Scheduler {
                     }
 
                 } // while link_vals
-
+                f.paths_.clear();
                 f.paths_ = completed_paths;
 
+                // Subscribe the flow's paths to the links it uses
+                for (Pathway p : f.paths_) {
+                    for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list_.get(i));
+                        int dst = Integer.parseInt(p.node_list_.get(i+1));
+                        links_[src][dst].subscribers_.add(p);
+                    }
+                }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                flows_.put(f.id_, f);
             }
         }
-        /*for (String k : coflows.keySet()) {
-            Coflow c = coflows.get(k);
-            
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
-            System.exit(1);
-        }*/
+
+        // Schedule any available flows
+        if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
+            ArrayList<Flow> unscheduled_flows = new ArrayList<Flow>();
+            for (Coflow c : unscheduled_coflows) {
+                for (String k : c.flows_.keySet()) {
+                    unscheduled_flows.add(c.flows_.get(k));
+                }
+            }
+            Collections.sort(unscheduled_flows, new Comparator<Flow>() {
+                public int compare(Flow o1, Flow o2) {
+                    if (o1.volume_ == o2.volume_) return 0;
+                    return o1.volume_ < o2.volume_ ? -1 : 1;
+                }
+            });
+
+            for (Flow f : unscheduled_flows) {
+                int src = Integer.parseInt(f.src_loc_);
+                int dst = Integer.parseInt(f.dst_loc_);
+                Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
+
+                double min_bw = Double.MAX_VALUE;
+                SubscribedLink[] path_links = new SubscribedLink[p.node_list_.size() - 1];
+                for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                    int lsrc = Integer.parseInt(p.node_list_.get(i));
+                    int ldst = Integer.parseInt(p.node_list_.get(i+1));
+                    SubscribedLink l = links_[lsrc][ldst];
+
+                    double bw = l.remaining_bw();
+                    path_links[i] = l;
+                    if (bw < min_bw) {
+                        min_bw = bw;
+                    }
+                }
+
+                if (min_bw > 0) {
+                    for (SubscribedLink l : path_links) {
+                        l.subscribers_.add(p);
+                    }
+                    f.paths_.clear();
+                    f.paths_.add(p);
+                    flows_.put(f.id_, f);
+                }
+            }
+        }
         return flows_;
     }
 
