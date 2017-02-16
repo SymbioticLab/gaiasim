@@ -95,6 +95,7 @@ public class Manager {
                 
                 for (Job j : ready_jobs) {
                     // Start arriving jobs
+                    // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
                     if (!j.started_) {
                         j.start_timestamp_ = CURRENT_TIME_;
                         j.start();
@@ -112,10 +113,6 @@ public class Manager {
                     for (Coflow c : coflows) {
                         System.out.println("Adding coflow " + c.id_);
                         active_coflows_.put(c.id_, c);
-
-                        if (c.start_timestamp_ == -1) {
-                            c.start_timestamp_ = CURRENT_TIME_;
-                        }
                     }
                 }
 
@@ -156,6 +153,7 @@ public class Manager {
                     // After completing a flow, an owning coflow may have been completed
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
                     if (owning_coflow.done()) {
+                        owning_coflow.determine_start_time();
                         owning_coflow.end_timestamp_ = CURRENT_TIME_ + ts;
                         System.out.println("Coflow " + f.coflow_id_ + " done. Took " 
                                                 + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));

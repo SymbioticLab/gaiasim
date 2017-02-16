@@ -60,6 +60,10 @@ public class PoorManScheduler extends Scheduler {
             System.out.println("Coflow " + c.id_ + " expected to complete at " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            if (mmcf_out.completion_time_ == -1.0) {
+                unscheduled_coflows.add(c);
+                continue;
+            }
             
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows_.keySet()) {
@@ -67,7 +71,12 @@ public class PoorManScheduler extends Scheduler {
 
                 ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
                 assert(link_vals != null);
-                
+
+                System.out.println("Flow " + f.id_ + " has link_vals:");
+                for (Link l : link_vals) {
+                    System.out.println("  [" + l.src_loc_ + ", " + l.dst_loc_ + "] " + l.cur_bw_);
+                }
+
                 // This portion is similar to Flow::make() in Sim
 
                 // This portion is similar to Flow::find_pathway_with_link_allocation in Sim
@@ -115,7 +124,7 @@ public class PoorManScheduler extends Scheduler {
 
                         for (Pathway p : potential_paths) {
                             // Does this link fit after the current last node in the path?
-                            if (p.last_node() != l.src_loc_) {
+                            if (!p.last_node().equals(l.src_loc_)) {
                                 continue;
                             }
 
@@ -202,6 +211,12 @@ public class PoorManScheduler extends Scheduler {
                 for (Pathway p : f.paths_) {
                     System.out.println("    " + p.toString());
                 }
+
+                if (f.start_timestamp_ == -1) {
+                    System.out.println("Setting start_timestamp to " + timestamp);
+                    f.start_timestamp_ = timestamp;
+                }
+
                 flows_.put(f.id_, f);
             }
         }
@@ -248,6 +263,9 @@ public class PoorManScheduler extends Scheduler {
                     f.paths_.add(p);
 
                     System.out.println("Adding separate flow " + f.id_);
+                    if (f.start_timestamp_ == -1) {
+                        f.start_timestamp_ = timestamp;
+                    }
                     flows_.put(f.id_, f);
                 }
             }
@@ -274,7 +292,9 @@ public class PoorManScheduler extends Scheduler {
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
-            cct_map.put(c, mmcf_out.completion_time_);
+            if (mmcf_out.completion_time_ != -1.0) {
+                cct_map.put(c, mmcf_out.completion_time_);
+            }
         }
 
         ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<Map.Entry<Coflow, Double>>(cct_map.entrySet());

@@ -76,6 +76,19 @@ public class Coflow {
         } // for child_coflows_
     }
 
+    // Sets the coflow's start time to be that of the earliest starting flow.
+    // Assumes all flows are done.
+    public void determine_start_time() {
+        start_timestamp_  = Long.MAX_VALUE;
+        for (String k : flows_.keySet()) {
+            Flow f = flows_.get(k);
+            System.out.println("Flow " + f.id_ + " has start_ts = " + f.start_timestamp_);
+            if (f.start_timestamp_ < start_timestamp_) {
+                start_timestamp_ = f.start_timestamp_;
+            }
+        }
+    }
+
     // Return whether owned Flows are done
     public boolean done() {
         if (!done_) {
