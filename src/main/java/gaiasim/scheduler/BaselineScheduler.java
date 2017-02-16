@@ -10,6 +10,7 @@ import gaiasim.network.SubscribedLink;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.scheduler.Scheduler;
+import gaiasim.util.Constants;
 
 import org.graphstream.graph.*;
 
@@ -28,8 +29,12 @@ public class BaselineScheduler extends Scheduler {
         for (int i = 0; i < nodes.size()- 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
             int dst = Integer.parseInt(nodes.get(i+1));
-            links_[src][dst].subscribers_.removeAll(f.paths_);
+            links_[src][dst].subscribers_.remove(f.paths_.get(0));
         }
+    }
+
+    public void progress_flow(Flow f) {
+        f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
     }
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 

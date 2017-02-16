@@ -138,7 +138,7 @@ public class Manager {
                 for (String k : active_flows_.keySet()) {
                     Flow f = active_flows_.get(k);
 
-                    f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
+                    scheduler_.progress_flow(f);
                     if (f.transmitted_ >= f.volume_) {
                         finished.add(f);
                     }

@@ -14,6 +14,7 @@ import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.network.SubscribedLink;
 import gaiasim.scheduler.Scheduler;
+import gaiasim.util.Constants;
 
 import org.graphstream.graph.*;
 
@@ -27,7 +28,21 @@ public class PoorManScheduler extends Scheduler {
         super(net_graph);
     }
     
-    public void finish_flow(Flow f) {}
+    public void finish_flow(Flow f) {
+        for (Pathway p : f.paths_) {
+            for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                int src = Integer.parseInt(p.node_list_.get(i));
+                int dst = Integer.parseInt(p.node_list_.get(i+1));
+                links_[src][dst].subscribers_.remove(p);
+            }
+        }
+    }
+
+    public void progress_flow(Flow f) {
+        for (Pathway p : f.paths_) {
+            f.transmitted_ += p.bandwidth_ * Constants.SIMULATION_TIMESTEP_SEC;
+        }
+    }
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
                                                 long timestamp) throws Exception {
