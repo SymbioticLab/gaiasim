@@ -179,17 +179,6 @@ public class MMCFOptimizer {
             }
         }
         br.close();
-        /*System.out.println("Completion time = " + mmcf_out.completion_time_);
-        System.out.println("Flow kv = " + mmcf_out.flow_link_bw_map_);
-        for (Integer f : mmcf_out.flow_link_bw_map_.keySet()) {
-            System.out.println("  Flow " + f);
-            double[][] link_vals = mmcf_out.flow_link_bw_map_.get(f);
-            for (int i = 0; i <= net_graph.nodes_.size(); i++) {
-                for (int j = 0; j <= net_graph.nodes_.size(); j++) {
-                    System.out.println("    (" + i + ", " + j + ") = " + link_vals[i][j]);
-                }
-            }
-        }*/
         return mmcf_out;
     }
 }

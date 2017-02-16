@@ -20,5 +20,6 @@ public class Link {
         src_loc_ = src_loc;
         dst_loc_ = dst_loc;
         max_bw_ = max_bw;
+        cur_bw_ = max_bw;
     }
 }

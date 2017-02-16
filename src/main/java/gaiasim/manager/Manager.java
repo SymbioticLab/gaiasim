@@ -139,6 +139,7 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     scheduler_.progress_flow(f);
+                    System.out.println("Flow " + f.id_ + " transmitted " + f.transmitted_ + " of " + f.volume_);
                     if (f.transmitted_ >= f.volume_) {
                         finished.add(f);
                     }

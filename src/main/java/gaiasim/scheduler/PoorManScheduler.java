@@ -78,12 +78,13 @@ public class PoorManScheduler extends Scheduler {
                 // availible and start paths from them.
                 ArrayList<Link> links_to_remove = new ArrayList<Link>();
                 for (Link l : link_vals) {
-                    if (l.src_loc_ == f.src_loc_) {
+                    if (l.src_loc_.equals(f.src_loc_)) {
                         Pathway p = new Pathway();
                         p.node_list_.add(l.src_loc_);
                         p.node_list_.add(l.dst_loc_);
+                        p.bandwidth_ = l.cur_bw_;
 
-                        if (l.dst_loc_ == f.dst_loc_) {
+                        if (l.dst_loc_.equals(f.dst_loc_)) {
                             completed_paths.add(p);
                         }
                         else {
@@ -127,7 +128,7 @@ public class PoorManScheduler extends Scheduler {
                                 links_to_remove.add(l);
 
                                 // Check if path is now complete
-                                if (l.dst_loc_ == f.dst_loc_) {
+                                if (l.dst_loc_.equals(f.dst_loc_)) {
                                     paths_to_remove.add(p);
                                     completed_paths.add(p);
                                 }
@@ -146,7 +147,7 @@ public class PoorManScheduler extends Scheduler {
                                 links_to_remove.add(l);
                                 
                                 // Check if path is now complete
-                                if (l.dst_loc_ == f.dst_loc_) {
+                                if (l.dst_loc_.equals(f.dst_loc_)) {
                                     paths_to_remove.add(p);
                                     completed_paths.add(p);
                                 }
@@ -159,7 +160,7 @@ public class PoorManScheduler extends Scheduler {
                                 p.node_list_.add(l.dst_loc_);
                                 link_added = true;
                                 // Check if path is now complete
-                                if (l.dst_loc_ == f.dst_loc_) {
+                                if (l.dst_loc_.equals(f.dst_loc_)) {
                                     paths_to_remove.add(p);
                                     completed_paths.add(p);
                                 }
@@ -179,6 +180,10 @@ public class PoorManScheduler extends Scheduler {
                         link_vals.remove(l);
                     }
 
+                    // If we were unable to add any links this round, just quit
+                    if (!link_added) {
+                        break;
+                    }
                 } // while link_vals
                 f.paths_.clear();
                 f.paths_ = completed_paths;
@@ -191,7 +196,12 @@ public class PoorManScheduler extends Scheduler {
                         links_[src][dst].subscribers_.add(p);
                     }
                 }
-
+                
+                System.out.println("Adding flow " + f.id_);
+                System.out.println("  has pathways: ");
+                for (Pathway p : f.paths_) {
+                    System.out.println("    " + p.toString());
+                }
                 flows_.put(f.id_, f);
             }
         }
@@ -236,6 +246,8 @@ public class PoorManScheduler extends Scheduler {
                     }
                     f.paths_.clear();
                     f.paths_.add(p);
+
+                    System.out.println("Adding separate flow " + f.id_);
                     flows_.put(f.id_, f);
                 }
             }
