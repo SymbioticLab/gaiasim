@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.graphstream.graph.*;
 
+import gaiasim.util.Constants;
+
 public class Pathway {
     public ArrayList<String> node_list_ = new ArrayList<String>();
     public double bandwidth_ = 0.0;
@@ -28,7 +30,7 @@ public class Pathway {
         StringBuilder str = new StringBuilder();
         str.append("[ ");
         for (String s : node_list_) {
-            str.append(s + ", ");
+            str.append(Constants.node_id_to_trace_id.get(s) + ", ");
         }
         str.append("] " + bandwidth_);
         return str.toString();

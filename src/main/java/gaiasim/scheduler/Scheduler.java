@@ -26,10 +26,20 @@ public abstract class Scheduler {
             links_[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
         }
     }
-
+    
     public abstract void finish_flow(Flow f);
 
     public abstract void progress_flow(Flow f);
+
+    public void reset_links() {
+        for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {
+            for (int j = 0; j < net_graph_.nodes_.size() + 1; j++) {
+                if (links_[i][j] != null) {
+                    links_[i][j].subscribers_.clear();
+                }
+            }
+        }
+    }
 
     public abstract HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                          long timestamp) throws Exception;

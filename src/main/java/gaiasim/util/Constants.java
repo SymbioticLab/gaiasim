@@ -1,5 +1,7 @@
 package gaiasim.util;
 
+import java.util.HashMap;
+
 public class Constants {
 
     // Number of milliseconds in a second
@@ -17,6 +19,8 @@ public class Constants {
     // to be able to schedule jobs at the granularity of
     // one second.
     public static final int EPOCH_MILLI = MILLI_IN_SECOND;
+
+    public static HashMap<String, String> node_id_to_trace_id;
 
     // Return the id of the job owning the Stage, Coflow, or Flow
     // identified by id.

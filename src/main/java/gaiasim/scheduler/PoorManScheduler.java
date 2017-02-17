@@ -47,6 +47,7 @@ public class PoorManScheduler extends Scheduler {
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
                                                 long timestamp) throws Exception {
         flows_.clear();
+        reset_links();
         ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
         ArrayList<Coflow> unscheduled_coflows = new ArrayList<Coflow>();
         for (Map.Entry<Coflow, Double> e : cct_list) {
@@ -71,11 +72,6 @@ public class PoorManScheduler extends Scheduler {
 
                 ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
                 assert(link_vals != null);
-
-                System.out.println("Flow " + f.id_ + " has link_vals:");
-                for (Link l : link_vals) {
-                    System.out.println("  [" + l.src_loc_ + ", " + l.dst_loc_ + "] " + l.cur_bw_);
-                }
 
                 // This portion is similar to Flow::make() in Sim
 
@@ -206,7 +202,7 @@ public class PoorManScheduler extends Scheduler {
                     }
                 }
                 
-                System.out.println("Adding flow " + f.id_);
+                System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway p : f.paths_) {
                     System.out.println("    " + p.toString());

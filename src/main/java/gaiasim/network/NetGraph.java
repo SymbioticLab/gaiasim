@@ -10,6 +10,8 @@ import org.graphstream.stream.file.FileSourceFactory;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import gaiasim.util.Constants;
+
 public class NetGraph {
     public Graph graph_;
     public ArrayList<String> nodes_ = new ArrayList<String>();
@@ -28,9 +30,11 @@ public class NetGraph {
         fs.readAll(gml_file);
         fs.removeSink(graph_);
 
+        Constants.node_id_to_trace_id = new HashMap<String, String>();
         for (Node n:graph_) {
             nodes_.add(n.toString());
             trace_id_to_node_id_.put(n.getLabel("ui.label").toString(), n.toString());
+            Constants.node_id_to_trace_id.put(n.toString(), n.getLabel("ui.label").toString());
         }
         
         APSP apsp = new APSP();
