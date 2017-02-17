@@ -31,6 +31,9 @@ public class Coflow {
     // before parent Coflows start).
     public ArrayList<Coflow> parent_coflows_ = new ArrayList<Coflow>();
 
+    // The volume to be shuffled to parent coflow, keyed by parent coflow id
+    public HashMap<String, Double> volume_for_parent_ = new HashMap<String, Double>();
+
     public Coflow(String id, String[] task_locs) {
         id_ = id;
         task_locs_ = task_locs;
@@ -52,7 +55,7 @@ public class Coflow {
             // are all of the same size. Note that flows go from
             // child_task -> our_task.
             int num_flows = task_locs_.length * child.task_locs_.length;
-            double volume_per_flow = child.volume_ / (double)num_flows;
+            double volume_per_flow = child.volume_for_parent_.get(id_) / (double)num_flows;
             for (String src_loc : child.task_locs_) {
 
                 for (String dst_loc : task_locs_) {
@@ -82,7 +85,6 @@ public class Coflow {
         start_timestamp_  = Long.MAX_VALUE;
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
-            System.out.println("Flow " + f.id_ + " has start_ts = " + f.start_timestamp_);
             if (f.start_timestamp_ < start_timestamp_) {
                 start_timestamp_ = f.start_timestamp_;
             }
