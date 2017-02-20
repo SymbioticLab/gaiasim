@@ -121,6 +121,9 @@ public class Manager {
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
         ArrayList<Coflow> completed_coflows = new ArrayList<Coflow>();
 
+        // Whether a coflow finished in the last epoch
+        boolean coflow_finished = false;
+
         for (CURRENT_TIME_ = 0; 
                 (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
@@ -142,8 +145,7 @@ public class Manager {
                 
             } // dispatch jobs loop
 
-            if (!ready_jobs.isEmpty()) {
-                // TODO(jack): Trigger an interrupt
+            if (coflow_finished || !ready_jobs.isEmpty()) {
                 
                 for (Job j : ready_jobs) {
                     // Start arriving jobs
@@ -168,13 +170,13 @@ public class Manager {
                     }
                 }
 
-                // TODO(jack): Trigger a reschedule event
-
                 // Update our set of flows
                 active_flows_.clear();
                 active_flows_.putAll(scheduler_.schedule_flows(active_coflows_, CURRENT_TIME_));
                 ready_jobs.clear();
             }
+
+            coflow_finished = false;
             
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
@@ -210,6 +212,7 @@ public class Manager {
                                                 + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));
                         owning_coflow.done_ = true;
                         completed_coflows.add(owning_coflow);
+                        coflow_finished = true;
                         
                         // After completing a coflow, an owning job may have been completed
                         Job owning_job = active_jobs_.get(Constants.get_job_id(owning_coflow.id_));
@@ -222,10 +225,7 @@ public class Manager {
                             active_jobs_.remove(owning_job.id_);
                         }
                         else {
-                            // If the owning job is not complete, then there is another coflow to process.
-                            // We should, therefore, add this job to ready_jobs so that a call to schedule_flows
-                            // is made in the next epoch.
-                            ready_jobs.add(owning_job);     
+                            ready_jobs.add(owning_job);
                         }
 
                     } // if coflow.done

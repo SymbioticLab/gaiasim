@@ -19,7 +19,7 @@ public class Constants {
     // default we place this at 1 second because we want
     // to be able to schedule jobs at the granularity of
     // one second.
-    public static final int EPOCH_MILLI = MILLI_IN_SECOND;
+    public static final int EPOCH_MILLI = MILLI_IN_SECOND / 100;
 
     public static HashMap<String, String> node_id_to_trace_id;
 
