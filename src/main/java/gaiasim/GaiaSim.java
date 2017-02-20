@@ -22,6 +22,7 @@ public class GaiaSim {
         options.addOption("g", true, "path to gml file");
         options.addOption("j", true, "path to trace file");
         options.addOption("s", true, "scheduler to use. One of {baseline, recursive-remain-flow}");
+        options.addOption("o", true, "path to directory to save output files");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -50,6 +51,13 @@ public class GaiaSim {
             System.exit(1);
         }
 
+        if (cmd.hasOption("o")) {
+            args_map.put("outdir", cmd.getOptionValue("o"));
+        }
+        else {
+            args_map.put("outdir", "/tmp");
+        }
+
         return args_map;
     }
 
@@ -67,7 +75,8 @@ public class GaiaSim {
             Process p = Runtime.getRuntime().exec("cp models/MinCCT.mod /tmp/MinCCT.mod");
             p.waitFor();
 
-            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), args_map.get("scheduler"));
+            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
+                                    args_map.get("scheduler"), args_map.get("outdir"));
             m.simulate();
         }
         catch (Exception e) {

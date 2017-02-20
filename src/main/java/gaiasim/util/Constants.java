@@ -6,6 +6,7 @@ public class Constants {
 
     // Number of milliseconds in a second
     public static final int MILLI_IN_SECOND = 1000;
+    public static final double MILLI_IN_SECOND_D = 1000.0;
 
     // Timestep between advancements of flow transmission
     // in milliseconds.

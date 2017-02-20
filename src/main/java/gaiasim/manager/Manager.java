@@ -1,5 +1,8 @@
 package gaiasim.manager;
 
+import com.opencsv.CSVWriter;
+
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,6 +24,9 @@ public class Manager {
 
     public Scheduler scheduler_;
 
+    // Path to directory to save output files
+    public String outdir_;
+
     // Jobs indexed by id
     public HashMap<String, Job> jobs_;
 
@@ -34,7 +40,9 @@ public class Manager {
     public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
     public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
 
-    public Manager(String gml_file, String trace_file, String scheduler_type) throws java.io.IOException {
+    public Manager(String gml_file, String trace_file, 
+                   String scheduler_type, String outdir) throws java.io.IOException {
+        outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
         jobs_ = DAGReader.read_trace(trace_file, net_graph_);
 
@@ -63,11 +71,55 @@ public class Manager {
         });
     }
 
+    public void print_statistics(ArrayList<Coflow> completed_coflows) throws java.io.IOException {
+        String job_output = outdir_ + "/jobs.csv";
+        CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
+        String[] record = new String[4];
+        record[0] = "JobID";
+        record[1] = "StartTime";
+        record[2] = "EndTime";
+        record[3] = "JobCompletionTime";
+        writer.writeNext(record);
+        for (Job j : jobs_by_time_) {
+            record[0] = j.id_;
+            record[1] = Double.toString(j.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(j.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((j.end_timestamp_ - j.start_timestamp_) / Constants.MILLI_IN_SECOND_D);
+            writer.writeNext(record);
+        }
+        writer.close();
+
+        String coflow_output = outdir_ + "/cct.csv";
+        CSVWriter c_writer = new CSVWriter(new FileWriter(coflow_output), ',');
+        record[0] = "CoflowID";
+        record[1] = "StartTime";
+        record[2] = "EndTime";
+        record[3] = "CoflowCompletionTime";
+        c_writer.writeNext(record);
+
+        Collections.sort(completed_coflows, new Comparator<Coflow>() {
+            public int compare(Coflow o1, Coflow o2) {
+                if (o1.start_timestamp_ == o2.start_timestamp_) return 0;
+                return o1.start_timestamp_ < o2.start_timestamp_ ? -1 : 1;
+            }
+        });
+
+        for (Coflow c : completed_coflows) {
+            record[0] = c.id_;
+            record[1] = Double.toString(c.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(c.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((c.end_timestamp_ - c.start_timestamp_) / Constants.MILLI_IN_SECOND_D);
+            c_writer.writeNext(record);
+        }
+        c_writer.close();
+    }
+
     public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
         
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
+        ArrayList<Coflow> completed_coflows = new ArrayList<Coflow>();
 
         for (CURRENT_TIME_ = 0; 
                 (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
@@ -157,6 +209,7 @@ public class Manager {
                         System.out.println("Coflow " + f.coflow_id_ + " done. Took " 
                                                 + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));
                         owning_coflow.done_ = true;
+                        completed_coflows.add(owning_coflow);
                         
                         // After completing a coflow, an owning job may have been completed
                         Job owning_job = active_jobs_.get(Constants.get_job_id(owning_coflow.id_));
@@ -169,6 +222,9 @@ public class Manager {
                             active_jobs_.remove(owning_job.id_);
                         }
                         else {
+                            // If the owning job is not complete, then there is another coflow to process.
+                            // We should, therefore, add this job to ready_jobs so that a call to schedule_flows
+                            // is made in the next epoch.
                             ready_jobs.add(owning_job);     
                         }
 
@@ -188,6 +244,9 @@ public class Manager {
             System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
                               CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
 
-        }
+        } // while stuff to do
+
+        // Save output statistics
+        print_statistics(completed_coflows);
     }
 }
