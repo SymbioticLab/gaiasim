@@ -128,10 +128,6 @@ public class Manager {
                 (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
-            if (CURRENT_TIME_ == 40) {
-                System.out.println("debug");
-            }
-            
             // Add any jobs which should be added during this epoch
             for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
                 Job j = jobs_by_time_.get(num_dispatched_jobs);
@@ -159,7 +155,16 @@ public class Manager {
                         j.start();
                     }
 
-                    active_jobs_.put(j.id_, j);
+                    // The next coflow in the job may be the last coflow in the job. If the stages involved
+                    // in that coflow are colocated, then there's nothing for us to do. This could cause
+                    // the job to be marked as done.
+                    if (j.done()) {
+                        j.end_timestamp_ = CURRENT_TIME_;
+                        System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+                    }
+                    else {
+                        active_jobs_.put(j.id_, j);
+                    }
                 }
                
                 // Update our set of active coflows

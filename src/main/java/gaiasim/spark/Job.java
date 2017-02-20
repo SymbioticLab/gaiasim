@@ -48,9 +48,10 @@ public class Job {
         }
     }
 
-    // A Job is considered done once all of its end coflows have completed.
+    // A job is considered done if all of its coflows are done
     public boolean done() {
-        for (Coflow c : end_coflows_) {
+        for (String k : coflows_.keySet()) {
+            Coflow c = coflows_.get(k);
             if (!c.done()) {
                 return false;
             }
@@ -108,9 +109,14 @@ public class Job {
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
             for (Coflow parent : c.parent_coflows_) {
-                // Add coflows which can be scheduled as a whole
-                if (parent.ready()) {
-                    if (!ready_coflows_.contains(parent)) {
+                if (!ready_coflows_.contains(parent)) {
+                    if (parent.done()) {
+                        // Hack to avoid error in finish_coflow
+                        running_coflows_.add(parent);
+                        finish_coflow(parent.id_);
+                    }
+                    // Add coflows which can be scheduled as a whole
+                    else if (parent.ready()) {
                         ready_coflows_.add(parent);
                     }
                 }
