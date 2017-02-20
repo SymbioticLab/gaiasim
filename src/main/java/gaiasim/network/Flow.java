@@ -14,7 +14,7 @@ public class Flow {
     public double transmitted_;
     public double rate_; // in Mbps
     public ArrayList<Pathway> paths_ = new ArrayList<Pathway>();
-    public boolean done = false;
+    public boolean done_ = false;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
 

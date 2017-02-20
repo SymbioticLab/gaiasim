@@ -127,6 +127,10 @@ public class Manager {
         for (CURRENT_TIME_ = 0; 
                 (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
+
+            if (CURRENT_TIME_ == 40) {
+                System.out.println("debug");
+            }
             
             // Add any jobs which should be added during this epoch
             for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
@@ -198,7 +202,7 @@ public class Manager {
                 // Handle flows which have completed
                 for (Flow f : finished) {
                     active_flows_.remove(f.id_);
-                    f.done = true;
+                    f.done_ = true;
                     f.end_timestamp_ = CURRENT_TIME_ + ts;
                     scheduler_.finish_flow(f);
                     System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
@@ -223,9 +227,6 @@ public class Manager {
                             System.out.println("Job " + owning_job.id_ + " done. Took "
                                                 + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
                             active_jobs_.remove(owning_job.id_);
-                        }
-                        else {
-                            ready_jobs.add(owning_job);
                         }
 
                     } // if coflow.done

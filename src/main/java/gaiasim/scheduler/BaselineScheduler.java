@@ -40,11 +40,16 @@ public class BaselineScheduler extends Scheduler {
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
                                                 long timestamp) throws Exception {
         flows_.clear();
+        reset_links();
+
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
 
             for (String k_ : c.flows_.keySet()) {
                 Flow f = c.flows_.get(k_);
+                if (f.done_) {
+                    continue;
+                }
                 
                 Path gp = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
                 Pathway p = new Pathway(gp);
@@ -82,7 +87,7 @@ public class BaselineScheduler extends Scheduler {
             }
 
             f.rate_ = min_bw;
-            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and volume " + f.volume_ + " on path " + f.paths_.get(0));
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
         }
 
         return flows_;

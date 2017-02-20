@@ -95,7 +95,7 @@ public class Coflow {
     public boolean done() {
         if (!done_) {
             for (String k : flows_.keySet()) {
-                if (!flows_.get(k).done) {
+                if (!flows_.get(k).done_) {
                     return false;
                 }
             }

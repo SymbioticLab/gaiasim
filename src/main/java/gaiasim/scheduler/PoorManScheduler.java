@@ -240,7 +240,7 @@ public class PoorManScheduler extends Scheduler {
                 continue;
             }
 
-            System.out.println("Coflow " + c.id_ + " expected to complete at " + e.getValue());
+            System.out.println("Coflow " + c.id_ + " expected to complete in " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
             if (mmcf_out.completion_time_ == -1.0) {
@@ -251,6 +251,9 @@ public class PoorManScheduler extends Scheduler {
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows_.keySet()) {
                 Flow f = c.flows_.get(k);
+                if (f.done_) {
+                    continue;
+                }
 
                 ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
                 assert(link_vals != null);
