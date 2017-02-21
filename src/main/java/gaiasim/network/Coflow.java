@@ -78,10 +78,6 @@ public class Coflow {
 
         } // for child_coflows_
 
-        // If we couldn't add any flows, mark this coflow as done
-        if (flows_.isEmpty()) {
-            done_ = true;
-        }
     }
 
     // Sets the coflow's start time to be that of the earliest starting flow.

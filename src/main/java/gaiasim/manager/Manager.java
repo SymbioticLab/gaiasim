@@ -71,6 +71,25 @@ public class Manager {
         });
     }
 
+    public void handle_finished_coflow(Coflow c, long cur_time) {
+        c.determine_start_time();
+        c.end_timestamp_ = cur_time;
+        System.out.println("Coflow " + c.id_ + " done. Took " 
+                + (c.end_timestamp_ - c.start_timestamp_));
+        c.done_ = true;
+        
+        // After completing a coflow, an owning job may have been completed
+        Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
+        owning_job.finish_coflow(c.id_);
+
+        if (owning_job.done()) {
+            owning_job.end_timestamp_ = cur_time;
+            System.out.println("Job " + owning_job.id_ + " done. Took "
+                    + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
+            active_jobs_.remove(owning_job.id_);
+        }
+    }
+
     public void print_statistics(ArrayList<Coflow> completed_coflows) throws java.io.IOException {
         String job_output = outdir_ + "/jobs.csv";
         CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
@@ -174,8 +193,14 @@ public class Manager {
 
                     ArrayList<Coflow> coflows = j.get_running_coflows();
                     for (Coflow c : coflows) {
-                        System.out.println("Adding coflow " + c.id_);
-                        active_coflows_.put(c.id_, c);
+                        if (c.done()) {
+                            c.start_timestamp_ = CURRENT_TIME_;
+                            handle_finished_coflow(c, CURRENT_TIME_);
+                        }
+                        else {
+                            System.out.println("Adding coflow " + c.id_);
+                            active_coflows_.put(c.id_, c);
+                        }
                     }
                 }
 
@@ -215,26 +240,11 @@ public class Manager {
                     // After completing a flow, an owning coflow may have been completed
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
                     if (owning_coflow.done()) {
-                        owning_coflow.determine_start_time();
-                        owning_coflow.end_timestamp_ = CURRENT_TIME_ + ts;
-                        System.out.println("Coflow " + f.coflow_id_ + " done. Took " 
-                                                + (owning_coflow.end_timestamp_ - owning_coflow.start_timestamp_));
-                        owning_coflow.done_ = true;
+                        handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts); 
                         completed_coflows.add(owning_coflow);
                         coflow_finished = true;
-                        
-                        // After completing a coflow, an owning job may have been completed
-                        Job owning_job = active_jobs_.get(Constants.get_job_id(owning_coflow.id_));
-                        owning_job.finish_coflow(owning_coflow.id_);
-
-                        if (owning_job.done()) {
-                            owning_job.end_timestamp_ = CURRENT_TIME_ + ts;
-                            System.out.println("Job " + owning_job.id_ + " done. Took "
-                                                + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
-                            active_jobs_.remove(owning_job.id_);
-                        }
-
                     } // if coflow.done
+
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated

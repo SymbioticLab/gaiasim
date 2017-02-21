@@ -52,7 +52,7 @@ public class Job {
     public boolean done() {
         for (String k : coflows_.keySet()) {
             Coflow c = coflows_.get(k);
-            if (!c.done()) {
+            if (!(c.done() || c.flows_.isEmpty())) {
                 return false;
             }
         }
@@ -71,23 +71,8 @@ public class Job {
 
         for (Coflow parent : c.parent_coflows_) {
             if (parent.ready()) {
-                // If all of the parent's tasks are located in the same node
-                // as our tasks, then there aren't any flows needed for the
-                // parent to complete. Register the parent as done and
-                // recursively add any coflows dependent on it.
-                if (parent.done()) {
-                    running_coflows_.add(parent);
-                    parent.start_timestamp_ = end_timestamp_;
-                    parent.end_timestamp_ = end_timestamp_;
-                    System.out.println("Coflow " + parent.id_ + " done. Took 0");
-
-                    finish_coflow(parent.id_);
-                }
-                else {
-                    ready_coflows_.add(parent);
-                }
-
-            } // parent.ready()
+                ready_coflows_.add(parent);
+            }
 
         } // for parent_coflows_
 
@@ -98,8 +83,10 @@ public class Job {
     public ArrayList<Coflow> get_running_coflows() {
         running_coflows_.addAll(ready_coflows_);
         ready_coflows_.clear();
-        
-        return running_coflows_;
+       
+        // Return a clone of the list so that the calling function
+        // can call finish_coflow while iterating over this list.
+        return (ArrayList<Coflow>)running_coflows_.clone();
     }
 
     // Start all of the first coflows of the job

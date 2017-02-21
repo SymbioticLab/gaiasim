@@ -92,15 +92,16 @@ public class PoorManScheduler extends Scheduler {
                     // of this pathway?
                     if (Math.round(Math.abs(p.bandwidth_ - l.cur_bw_) * 100.0) / 100.0 < 0.01) {
                         p.node_list_.add(l.dst_loc_);
-                        links_to_remove.add(l);
                         link_added = true;
-                        links_to_remove.add(l);
 
                         // Check if path is now complete
                         if (l.dst_loc_.equals(f.dst_loc_)) {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
+
+                        links_to_remove.add(l);
+                        break;
                     }
 
                     // Does this link have less bandwidth than the bandwidth available on the path?
@@ -113,13 +114,15 @@ public class PoorManScheduler extends Scheduler {
                         p.bandwidth_ = l.cur_bw_;
                         p.node_list_.add(l.dst_loc_);
                         link_added = true;
-                        links_to_remove.add(l);
 
                         // Check if path is now complete
                         if (l.dst_loc_.equals(f.dst_loc_)) {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
+
+                        links_to_remove.add(l);
+                        break;
                     }
 
                     // Does the link have more bandwidth than the bandwidth available on the path?
@@ -133,6 +136,7 @@ public class PoorManScheduler extends Scheduler {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
+                        // TODO(jack): Consider breaking here -- old simulator does so...
                     }
 
                 } // for pathway
@@ -211,13 +215,20 @@ public class PoorManScheduler extends Scheduler {
             }
 
             if (min_bw > 0) {
+                p.bandwidth_ = min_bw;
+
                 for (SubscribedLink l : path_links) {
                     l.subscribers_.add(p);
                 }
                 f.paths_.clear();
                 f.paths_.add(p);
 
-                System.out.println("Adding separate flow " + f.id_);
+                System.out.println("Adding separate flow " + f.id_ + " remaining = " + f.remaining_volume());
+                System.out.println("  has pathways: ");
+                for (Pathway path : f.paths_) {
+                    System.out.println("    " + path.toString());
+                }
+
                 if (f.start_timestamp_ == -1) {
                     f.start_timestamp_ = timestamp;
                 }
