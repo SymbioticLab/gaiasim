@@ -2,7 +2,7 @@ package gaiasim.network;
 
 import java.util.ArrayList;
 
-import gaiasim.network.Flow;
+import gaiasim.util.Constants;
 
 public class Link {
     // The maximum bandwidth this link can serve
@@ -21,5 +21,9 @@ public class Link {
         dst_loc_ = dst_loc;
         max_bw_ = max_bw;
         cur_bw_ = max_bw;
+    }
+
+    public String toString() {
+        return "[ " + Constants.node_id_to_trace_id.get(src_loc_) + ", " + Constants.node_id_to_trace_id.get(dst_loc_) + "] " + cur_bw_;
     }
 }

@@ -91,7 +91,7 @@ public class Manager {
     }
 
     public void print_statistics(ArrayList<Coflow> completed_coflows) throws java.io.IOException {
-        String job_output = outdir_ + "/jobs.csv";
+        String job_output = outdir_ + "/job.csv";
         CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
         String[] record = new String[4];
         record[0] = "JobID";

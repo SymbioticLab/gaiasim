@@ -41,5 +41,11 @@ def main():
     mean_sim2 = numpy.mean(sim2_results_no_id)
     print "baseline_mean / coflow_mean = %.2f" % (mean_sim1 / mean_sim2)
 
+    sorted_sim1 = sorted(sim1_results_no_id)
+    sorted_sim2 = sorted(sim2_results_no_id)
+    sim1_95 = numpy.percentile(sorted_sim1, 95)
+    sim2_95 = numpy.percentile(sorted_sim2, 95)
+    print "baseline_95 / coflow_95 = %.2f" % (sim1_95 / sim2_95)
+
 if __name__ == "__main__":
     main()

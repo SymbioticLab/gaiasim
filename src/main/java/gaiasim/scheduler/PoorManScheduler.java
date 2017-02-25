@@ -107,10 +107,11 @@ public class PoorManScheduler extends Scheduler {
                     // Does this link have less bandwidth than the bandwidth available on the path?
                     // Split the path in two -- one path taking this link (and reducing its bandwidth)
                     // and the other not taking the path and using the remaining bandwidth.
-                    else if (Math.round((p.bandwidth_ - l.cur_bw_ * 100.0)) / 100.0 >= 0.01) {
+                    else if (Math.round((p.bandwidth_ - l.cur_bw_) * 100.0) / 100.0 >= 0.01) {
                         Pathway new_p = new Pathway();
                         new_p.bandwidth_ = p.bandwidth_ - l.cur_bw_;
                         new_p.node_list_ = (ArrayList<String>)p.node_list_.clone();
+                        potential_paths.add(new_p);
                         p.bandwidth_ = l.cur_bw_;
                         p.node_list_.add(l.dst_loc_);
                         link_added = true;
@@ -127,7 +128,7 @@ public class PoorManScheduler extends Scheduler {
 
                     // Does the link have more bandwidth than the bandwidth available on the path?
                     // Only reduce the link's bandwidth by the amount that could be used by the path.
-                    else if (Math.round((p.bandwidth_ - l.cur_bw_ * 100.0)) / 100.0 <= -0.01) {
+                    else if (Math.round((p.bandwidth_ - l.cur_bw_) * 100.0) / 100.0 <= -0.01) {
                         l.cur_bw_ = l.cur_bw_ - p.bandwidth_;
                         p.node_list_.add(l.dst_loc_);
                         link_added = true;
@@ -185,7 +186,10 @@ public class PoorManScheduler extends Scheduler {
         ArrayList<Flow> unscheduled_flows = new ArrayList<Flow>();
         for (Coflow c : unscheduled_coflows) {
             for (String k : c.flows_.keySet()) {
-                unscheduled_flows.add(c.flows_.get(k));
+                Flow f = c.flows_.get(k);
+                if (f.remaining_volume() > 0) {
+                    unscheduled_flows.add(c.flows_.get(k));
+                }
             }
         }
         Collections.sort(unscheduled_flows, new Comparator<Flow>() {
@@ -254,7 +258,14 @@ public class PoorManScheduler extends Scheduler {
             System.out.println("Coflow " + c.id_ + " expected to complete in " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
-            if (mmcf_out.completion_time_ == -1.0) {
+
+            boolean all_flows_scheduled = true;
+            for (String k : c.flows_.keySet()) {
+                int id = c.flows_.get(k).int_id_;
+                all_flows_scheduled = all_flows_scheduled && (mmcf_out.flow_link_bw_map_.get(id) != null);
+            }
+
+            if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
                 unscheduled_coflows.add(c);
                 continue;
             }
