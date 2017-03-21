@@ -21,6 +21,11 @@ public class Pathway {
         }
     }
 
+    public Pathway(Pathway p) {
+        bandwidth_ = p.bandwidth_;
+        node_list_ = new ArrayList<String>(p.node_list_);
+    }
+
     // Returns the last node in the node_list_
     public String last_node() {
         return node_list_.get(node_list_.size() - 1);

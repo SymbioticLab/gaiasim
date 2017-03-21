@@ -51,8 +51,9 @@ public class BaselineScheduler extends Scheduler {
                     continue;
                 }
                 
-                Path gp = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
-                Pathway p = new Pathway(gp);
+                //Path gp = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
+                //Pathway p = new Pathway(gp);
+                Pathway p = net_graph_.apmb_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
                 f.paths_.clear();
                 f.paths_.add(p);
               
@@ -87,6 +88,7 @@ public class BaselineScheduler extends Scheduler {
             }
 
             f.rate_ = min_bw;
+            f.paths_.get(0).bandwidth_ = min_bw;
             System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
         }
 
