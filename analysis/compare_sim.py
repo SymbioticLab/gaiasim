@@ -47,11 +47,13 @@ def main():
     for tup in sim1_results:
         id = tup[0]
         v2 = tup[1]
-        v1 = sim2_results[id]
-        change = percent_change(v1, v2)
-        print (id, change)
-        x_labels.append(id)
-        y_vals.append(change)
+
+        if id in sim2_results:
+            v1 = sim2_results[id]
+            change = percent_change(v1, v2)
+            print (id, change)
+            x_labels.append(id)
+            y_vals.append(change)
 
     sorted_diffs = sorted(y_vals)
     print "N\t%d" % len(sorted_diffs)

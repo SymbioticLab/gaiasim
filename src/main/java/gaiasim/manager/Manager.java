@@ -31,7 +31,9 @@ public class Manager {
     public HashMap<String, Job> jobs_;
 
     // Jobs sorted in increasing order of arrival time
-    public Vector<Job> jobs_by_time_;
+    public Vector<Job> jobs_by_time_ = new Vector<Job>();
+    public Vector<Job> completed_jobs_ = new Vector<Job>();
+    public ArrayList<Coflow> completed_coflows_ = new ArrayList<Coflow>();
 
     public long CURRENT_TIME_;
 
@@ -59,7 +61,6 @@ public class Manager {
         }
 
         // Create sorted vector of jobs
-        jobs_by_time_ = new Vector<Job>();
         for (String id : jobs_.keySet()) {
             jobs_by_time_.addElement(jobs_.get(id));
         }
@@ -71,12 +72,14 @@ public class Manager {
         });
     }
 
-    public void handle_finished_coflow(Coflow c, long cur_time) {
+    public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
         c.determine_start_time();
         c.end_timestamp_ = cur_time;
         System.out.println("Coflow " + c.id_ + " done. Took " 
                 + (c.end_timestamp_ - c.start_timestamp_));
         c.done_ = true;
+
+        completed_coflows_.add(c);
         
         // After completing a coflow, an owning job may have been completed
         Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
@@ -87,11 +90,13 @@ public class Manager {
             System.out.println("Job " + owning_job.id_ + " done. Took "
                     + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
             active_jobs_.remove(owning_job.id_);
+            completed_jobs_.addElement(owning_job);
+            print_statistics("/tmp_job.csv", "/tmp_cct.csv");
         }
     }
 
-    public void print_statistics(ArrayList<Coflow> completed_coflows) throws java.io.IOException {
-        String job_output = outdir_ + "/job.csv";
+    public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
+        String job_output = outdir_ + job_filename;
         CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
         String[] record = new String[4];
         record[0] = "JobID";
@@ -99,7 +104,7 @@ public class Manager {
         record[2] = "EndTime";
         record[3] = "JobCompletionTime";
         writer.writeNext(record);
-        for (Job j : jobs_by_time_) {
+        for (Job j : completed_jobs_) {
             record[0] = j.id_;
             record[1] = Double.toString(j.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
             record[2] = Double.toString(j.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
@@ -108,7 +113,7 @@ public class Manager {
         }
         writer.close();
 
-        String coflow_output = outdir_ + "/cct.csv";
+        String coflow_output = outdir_ + coflow_filename;
         CSVWriter c_writer = new CSVWriter(new FileWriter(coflow_output), ',');
         record[0] = "CoflowID";
         record[1] = "StartTime";
@@ -116,14 +121,14 @@ public class Manager {
         record[3] = "CoflowCompletionTime";
         c_writer.writeNext(record);
 
-        Collections.sort(completed_coflows, new Comparator<Coflow>() {
+        Collections.sort(completed_coflows_, new Comparator<Coflow>() {
             public int compare(Coflow o1, Coflow o2) {
                 if (o1.start_timestamp_ == o2.start_timestamp_) return 0;
                 return o1.start_timestamp_ < o2.start_timestamp_ ? -1 : 1;
             }
         });
 
-        for (Coflow c : completed_coflows) {
+        for (Coflow c : completed_coflows_) {
             record[0] = c.id_;
             record[1] = Double.toString(c.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
             record[2] = Double.toString(c.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
@@ -138,7 +143,6 @@ public class Manager {
         int total_num_jobs = jobs_.size();
         
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
-        ArrayList<Coflow> completed_coflows = new ArrayList<Coflow>();
 
         // Whether a coflow finished in the last epoch
         boolean coflow_finished = false;
@@ -215,6 +219,13 @@ public class Manager {
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
+            if (active_jobs_.size() == 4 && num_dispatched_jobs == 399) {
+                for (String k : active_flows_.keySet()) {
+                    Flow f = active_flows_.get(k);
+                    System.out.println("    Flow " + f.id_ + " transmitted " + f.transmitted_ + " / " + f.volume_);
+                }
+            }
+
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
                     ts <= Constants.EPOCH_MILLI; 
@@ -241,7 +252,6 @@ public class Manager {
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
                     if (owning_coflow.done()) {
                         handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts); 
-                        completed_coflows.add(owning_coflow);
                         coflow_finished = true;
                     } // if coflow.done
 
@@ -263,6 +273,6 @@ public class Manager {
         } // while stuff to do
 
         // Save output statistics
-        print_statistics(completed_coflows);
+        print_statistics("/job.csv", "/cct.csv");
     }
 }
