@@ -14,4 +14,5 @@ Command line arguments are as follows:
 -j : Path to the trace file used for simulation
 -s : Type of scheduler to use (currently one of { baseline, recursive-remain-flow })
 -o : (optional) Path to directory to save statistics output. If not specified, default is /tmp
+-e : (optional) Run under emulation
 ```

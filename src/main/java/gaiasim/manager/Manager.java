@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import gaiasim.comm.SendingAgentContact;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
@@ -47,6 +48,10 @@ public class Manager {
 
     public LinkedBlockingQueue<ScheduleMessage> message_queue_ =
         new LinkedBlockingQueue<ScheduleMessage>();
+
+    // SendingAgentContacts indexed by sending agent id
+    public HashMap<String, SendingAgentContact> sa_contacts_ = 
+        new HashMap<String, SendingAgentContact>();
 
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
@@ -145,17 +150,35 @@ public class Manager {
     }
 
     public void emulate() throws Exception {
+        // Set up our SendingAgentContacts
+        for (String sa_id : net_graph_.nodes_) {
+            sa_contacts_.put(sa_id, 
+                             new SendingAgentContact("10.0.0." + sa_id, "1234", message_queue_));
+        }
+
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
 
+        // Start inserting jobs
         new Thread(new JobInserter(jobs_by_time_, message_queue_)).start();
+
         try {
-            while (num_dispatched_jobs < total_num_jobs) {
+            while ((num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty()) {
+                // Block until we have a message to receive
                 ScheduleMessage m = message_queue_.take(); 
-                System.out.println("Took " + m.job_id_);
-                num_dispatched_jobs++;
+
+                if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
+                    System.out.println("Took " + m.job_id_);
+                    active_jobs_.put(m.job_id_, jobs_.get(m.job_id_));
+                    num_dispatched_jobs++;
+                }
+                else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
+                    System.out.println("Registering flow completion for " + m.flow_id_);
+                }
+                else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
+                    System.out.println("Flow status response for flow " + m.flow_id_ + " transmitted " + m.transmitted_);
+                }
             }
-            System.exit(0);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
