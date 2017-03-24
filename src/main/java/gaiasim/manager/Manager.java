@@ -138,6 +138,33 @@ public class Manager {
         c_writer.close();
     }
 
+    public void insert_jobs() {
+        int num_dispatched_jobs = 0;
+        int total_num_jobs = jobs_.size();
+
+        long time_sleep, start, end;
+        long cur_time = 0;
+        for (Job j : jobs_by_time_) {
+            time_sleep = j.start_time_ - cur_time;
+            start = System.currentTimeMillis();
+            while (time_sleep > 0) {
+                try {
+                    Thread.sleep(time_sleep);
+                    break;
+                }
+                catch (InterruptedException e) {
+                    end = System.currentTimeMillis();
+                    time_sleep -= (end - start);
+                }
+            } // while time_sleep > 0
+            
+            cur_time = j.start_time_;
+
+            // TODO: Actually insert jobs
+        
+        } // for jobs
+    }
+
     public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
