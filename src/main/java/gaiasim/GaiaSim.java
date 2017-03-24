@@ -13,6 +13,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 
 public class GaiaSim {
+    public static boolean is_emulation_ = false;
 
     public static HashMap<String, String> parse_cli(String[] args) 
                                                     throws org.apache.commons.cli.ParseException {
@@ -23,6 +24,7 @@ public class GaiaSim {
         options.addOption("j", true, "path to trace file");
         options.addOption("s", true, "scheduler to use. One of {baseline, recursive-remain-flow}");
         options.addOption("o", true, "path to directory to save output files");
+        options.addOption("e", false, "run under emulation");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -58,6 +60,10 @@ public class GaiaSim {
             args_map.put("outdir", "/tmp");
         }
 
+        if (cmd.hasOption("e")) {
+            is_emulation_ = true;
+        }
+
         return args_map;
     }
 
@@ -77,7 +83,13 @@ public class GaiaSim {
 
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
                                     args_map.get("scheduler"), args_map.get("outdir"));
-            m.simulate();
+
+            if (is_emulation_) {
+                m.emulate();
+            }
+            else {
+                m.simulate();
+            }
         }
         catch (Exception e) {
             e.printStackTrace();

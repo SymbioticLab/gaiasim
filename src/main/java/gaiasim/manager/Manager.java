@@ -8,7 +8,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.concurrent.LinkedBlockingQueue;
 
+import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
@@ -17,6 +19,7 @@ import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
+import gaiasim.spark.JobInserter;
 import gaiasim.util.Constants;
 
 public class Manager {
@@ -41,6 +44,9 @@ public class Manager {
     public HashMap<String, Job> active_jobs_ = new HashMap<String, Job>();
     public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
     public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
+
+    public LinkedBlockingQueue<ScheduleMessage> message_queue_ =
+        new LinkedBlockingQueue<ScheduleMessage>();
 
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
@@ -138,37 +144,29 @@ public class Manager {
         c_writer.close();
     }
 
-    public void insert_jobs() {
+    public void emulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
 
-        long time_sleep, start, end;
-        long cur_time = 0;
-        for (Job j : jobs_by_time_) {
-            time_sleep = j.start_time_ - cur_time;
-            start = System.currentTimeMillis();
-            while (time_sleep > 0) {
-                try {
-                    Thread.sleep(time_sleep);
-                    break;
-                }
-                catch (InterruptedException e) {
-                    end = System.currentTimeMillis();
-                    time_sleep -= (end - start);
-                }
-            } // while time_sleep > 0
-            
-            cur_time = j.start_time_;
-
-            // TODO: Actually insert jobs
-        
-        } // for jobs
+        new Thread(new JobInserter(jobs_by_time_, message_queue_)).start();
+        try {
+            while (num_dispatched_jobs < total_num_jobs) {
+                ScheduleMessage m = message_queue_.take(); 
+                System.out.println("Took " + m.job_id_);
+                num_dispatched_jobs++;
+            }
+            System.exit(0);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
-        
+
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
 
         // Whether a coflow finished in the last epoch
