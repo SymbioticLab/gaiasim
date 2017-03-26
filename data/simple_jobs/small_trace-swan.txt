@@ -1,0 +1,6 @@
+# 7: BIG_BENCH query19
+2 0 0
+Map1 1 BA
+Reducer1 1 LA
+1
+Map1 Reducer1 1000

@@ -1,0 +1,50 @@
+# 13: BIG_BENCH query26
+4 1 0
+Map1 1
+Map4 1
+Reducer3 4
+Reducer2 4
+3
+Map1 Reducer2 9892
+Map4 Reducer2 4263
+Reducer2 Reducer3 10525
+# 12: BIG_BENCH query24
+19 2 0
+Reducer17 7
+Map18 1
+Reducer16 7
+Reducer15 1
+Map19 1
+Reducer10 9
+Reducer4 8
+Map1 1
+Reducer7 1
+Reducer9 9
+Reducer14 1
+Map13 1
+Reducer8 1
+Map11 1
+Map12 1
+Map5 1
+Reducer3 1
+Map6 1
+Reducer2 1
+18
+Reducer17 Reducer4 1203
+Map18 Reducer14 6
+Reducer16 Reducer17 30059
+Reducer15 Reducer16 14592
+Map19 Reducer16 15096
+Reducer10 Reducer4 4698
+Map1 Reducer2 3
+Reducer7 Reducer8 3
+Reducer9 Reducer10 13063
+Reducer14 Reducer15 19
+Map13 Reducer14 3
+Reducer8 Reducer9 3111
+Map11 Reducer7 4
+Map12 Reducer9 3539
+Map5 Reducer2 4
+Reducer3 Reducer4 119
+Map6 Reducer7 9
+Reducer2 Reducer3 3

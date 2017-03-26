@@ -1,0 +1,8139 @@
+# 7: BIG_BENCH query19
+13 0 0
+Reducer5 1 HK
+Map1 1 FL
+Map10 1 FL
+Reducer7 1 HK
+Map3 1 LA
+Reducer6 1 NY
+Reducer9 1 BA
+Map13 1 BA
+Reducer12 1 NY
+Map11 1 BA
+Map8 1 FL
+Map4 1 BA
+Reducer2 1 LA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 13: BIG_BENCH query26
+4 1 11
+Map1 1 HK
+Map4 1 BA
+Reducer3 2 HK NY
+Reducer2 1 NY
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 12: BIG_BENCH query24
+19 2 13
+Reducer17 3 LA FL HK
+Map18 1 LA
+Reducer16 2 HK BA
+Reducer15 1 FL
+Map19 1 BA
+Reducer10 3 BA FL LA
+Reducer4 3 NY LA HK
+Map1 1 LA
+Reducer7 1 FL
+Reducer9 3 FL LA NY
+Reducer14 1 BA
+Map13 1 NY
+Reducer8 1 FL
+Map11 1 NY
+Map12 1 BA
+Map5 1 FL
+Reducer3 1 NY
+Map6 1 FL
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 20: BIG_BENCH query9
+9 3 16
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 FL
+Map8 1 NY
+Map9 1 LA
+Map6 1 BA
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 FL
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 10: BIG_BENCH query21
+16 4 22
+Map15 1 LA
+Map16 1 LA
+Reducer5 1 LA
+Map1 1 FL
+Map10 1 LA
+Reducer4 1 BA
+Reducer7 1 FL
+Reducer6 1 BA
+Map13 1 NY
+Reducer9 1 NY
+Map14 1 LA
+Reducer8 1 HK
+Map11 1 BA
+Map12 1 NY
+Reducer3 1 NY
+Reducer2 1 LA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 0: BIG_BENCH query10
+2 5 35
+Map1 1 NY
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 14: BIG_BENCH query27
+2 6 67
+Map1 1 LA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 18: BIG_BENCH query6
+11 7 70
+Reducer5 1 HK
+Reducer4 1 HK
+Map10 1 BA
+Map1 1 BA
+Reducer9 1 BA
+Reducer8 2 NY HK
+Map11 1 HK
+Reducer3 1 NY
+Map6 1 BA
+Map7 1 LA
+Reducer2 1 BA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 1: BIG_BENCH query11
+7 8 71
+Map1 1 LA
+Reducer4 1 HK
+Reducer7 2 HK BA
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 BA
+Reducer2 1 NY
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 14: BIG_BENCH query27
+2 9 72
+Map1 1 LA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 12: BIG_BENCH query24
+19 10 74
+Reducer17 3 HK NY LA
+Map18 1 FL
+Reducer16 2 BA NY
+Reducer15 1 BA
+Map19 1 FL
+Reducer10 3 FL NY LA
+Reducer4 3 HK LA FL
+Map1 1 LA
+Reducer7 1 FL
+Reducer9 3 LA FL NY
+Reducer14 1 LA
+Map13 1 LA
+Reducer8 1 NY
+Map11 1 NY
+Map12 1 HK
+Map5 1 LA
+Reducer3 1 BA
+Map6 1 LA
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 15: BIG_BENCH query2
+5 11 82
+Reducer5 1 NY
+Reducer4 1 LA
+Map1 1 FL
+Reducer3 1 NY
+Reducer2 1 LA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 18: BIG_BENCH query6
+11 12 82
+Reducer5 1 NY
+Reducer4 1 FL
+Map10 1 HK
+Map1 1 LA
+Reducer9 1 HK
+Reducer8 2 NY FL
+Map11 1 HK
+Reducer3 1 HK
+Map6 1 HK
+Map7 1 NY
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 14: BIG_BENCH query27
+2 13 84
+Map1 1 BA
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 1: BIG_BENCH query11
+7 14 88
+Map1 1 HK
+Reducer4 1 LA
+Reducer7 2 BA FL
+Map5 1 BA
+Map6 1 BA
+Reducer3 1 FL
+Reducer2 1 FL
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 20: BIG_BENCH query9
+9 15 92
+Reducer5 1 LA
+Reducer4 1 FL
+Map1 1 BA
+Map8 1 HK
+Map9 1 FL
+Map6 1 NY
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 FL
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 19: BIG_BENCH query7
+11 16 96
+Reducer5 1 BA
+Map1 1 NY
+Reducer4 1 FL
+Map10 1 LA
+Reducer6 1 FL
+Map8 1 BA
+Map9 1 NY
+Map4 1 HK
+Reducer3 1 HK
+Reducer2 1 FL
+Map7 1 FL
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 3: BIG_BENCH query14
+10 17 97
+Map1 1 HK
+Map10 1 HK
+Reducer7 1 LA
+Map3 1 NY
+Map8 1 BA
+Map9 1 NY
+Map4 1 LA
+Map5 1 NY
+Map6 1 HK
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 9: BIG_BENCH query20
+6 18 102
+Map1 1 LA
+Reducer4 3 HK LA BA
+Reducer6 1 FL
+Map5 1 BA
+Reducer3 2 HK BA
+Reducer2 3 BA LA HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 10: BIG_BENCH query21
+16 19 112
+Map15 1 HK
+Map16 1 LA
+Reducer5 1 NY
+Map1 1 LA
+Map10 1 BA
+Reducer4 1 NY
+Reducer7 1 BA
+Reducer6 1 HK
+Map13 1 NY
+Reducer9 1 BA
+Map14 1 NY
+Reducer8 1 FL
+Map11 1 HK
+Map12 1 BA
+Reducer3 1 BA
+Reducer2 1 HK
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 9: BIG_BENCH query20
+6 20 113
+Map1 1 HK
+Reducer4 3 NY FL LA
+Reducer6 1 NY
+Map5 1 FL
+Reducer3 2 FL BA
+Reducer2 3 BA FL LA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 6: BIG_BENCH query17
+25 21 115
+Map20 1 BA
+Map1 1 LA
+Map21 1 FL
+Map24 1 NY
+Map25 1 NY
+Map22 1 BA
+Map23 1 HK
+Map8 1 BA
+Map9 1 HK
+Reducer18 1 HK
+Reducer17 1 BA
+Reducer16 1 BA
+Reducer15 1 HK
+Reducer19 1 LA
+Reducer5 1 BA
+Reducer4 1 HK
+Map10 1 FL
+Reducer7 1 BA
+Reducer6 1 NY
+Map13 1 HK
+Map14 1 NY
+Map11 1 BA
+Map12 1 BA
+Reducer3 1 FL
+Reducer2 1 FL
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 12: BIG_BENCH query24
+19 22 120
+Reducer17 3 LA BA FL
+Map18 1 LA
+Reducer16 2 FL NY
+Reducer15 1 LA
+Map19 1 NY
+Reducer10 3 NY HK FL
+Reducer4 3 FL LA BA
+Map1 1 FL
+Reducer7 1 HK
+Reducer9 3 LA FL HK
+Reducer14 1 FL
+Map13 1 HK
+Reducer8 1 FL
+Map11 1 NY
+Map12 1 FL
+Map5 1 LA
+Reducer3 1 HK
+Map6 1 FL
+Reducer2 1 HK
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 23 132
+Reducer17 3 BA LA FL
+Map18 1 HK
+Reducer16 2 BA FL
+Reducer15 1 LA
+Map19 1 FL
+Reducer10 3 BA NY LA
+Reducer4 3 BA FL LA
+Map1 1 FL
+Reducer7 1 NY
+Reducer9 3 BA NY HK
+Reducer14 1 NY
+Map13 1 FL
+Reducer8 1 NY
+Map11 1 HK
+Map12 1 BA
+Map5 1 FL
+Reducer3 1 HK
+Map6 1 LA
+Reducer2 1 BA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 4: BIG_BENCH query15
+6 24 143
+Reducer5 1 FL
+Reducer4 1 BA
+Map1 1 FL
+Map2 1 LA
+Map6 1 FL
+Reducer3 1 NY
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 3: BIG_BENCH query14
+10 25 151
+Map1 1 HK
+Map10 1 NY
+Reducer7 1 LA
+Map3 1 LA
+Map8 1 LA
+Map9 1 NY
+Map4 1 NY
+Map5 1 LA
+Map6 1 HK
+Reducer2 1 HK
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 13: BIG_BENCH query26
+4 26 152
+Map1 1 BA
+Map4 1 BA
+Reducer3 2 NY LA
+Reducer2 1 FL
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 17: BIG_BENCH query4
+5 27 157
+Map1 1 HK
+Reducer4 1 BA
+Map5 1 NY
+Reducer3 1 LA
+Reducer2 1 NY
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 17: BIG_BENCH query4
+5 28 159
+Map1 1 HK
+Reducer4 1 LA
+Map5 1 FL
+Reducer3 1 HK
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 13: BIG_BENCH query26
+4 29 159
+Map1 1 NY
+Map4 1 NY
+Reducer3 2 NY HK
+Reducer2 1 FL
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 2: BIG_BENCH query12
+9 30 159
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 HK
+Reducer8 1 BA
+Map9 1 LA
+Reducer3 1 LA
+Map6 1 NY
+Reducer2 1 FL
+Map7 1 NY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 0: BIG_BENCH query10
+2 31 159
+Map1 1 BA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 1: BIG_BENCH query11
+7 32 160
+Map1 1 NY
+Reducer4 1 FL
+Reducer7 2 BA FL
+Map5 1 LA
+Map6 1 NY
+Reducer3 1 LA
+Reducer2 1 HK
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 14: BIG_BENCH query27
+2 33 160
+Map1 1 LA
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 8: BIG_BENCH query1
+6 34 162
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 BA
+Map6 1 HK
+Reducer3 1 LA
+Reducer2 1 NY
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 6: BIG_BENCH query17
+25 35 163
+Map20 1 HK
+Map1 1 NY
+Map21 1 BA
+Map24 1 LA
+Map25 1 FL
+Map22 1 FL
+Map23 1 HK
+Map8 1 BA
+Map9 1 FL
+Reducer18 1 HK
+Reducer17 1 BA
+Reducer16 1 LA
+Reducer15 1 BA
+Reducer19 1 FL
+Reducer5 1 BA
+Reducer4 1 NY
+Map10 1 FL
+Reducer7 1 FL
+Reducer6 1 BA
+Map13 1 LA
+Map14 1 FL
+Map11 1 NY
+Map12 1 BA
+Reducer3 1 LA
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 19: BIG_BENCH query7
+11 36 164
+Reducer5 1 NY
+Map1 1 BA
+Reducer4 1 FL
+Map10 1 LA
+Reducer6 1 LA
+Map8 1 HK
+Map9 1 BA
+Map4 1 LA
+Reducer3 1 FL
+Reducer2 1 HK
+Map7 1 HK
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 12: BIG_BENCH query24
+19 37 169
+Reducer17 3 NY FL HK
+Map18 1 BA
+Reducer16 2 NY BA
+Reducer15 1 HK
+Map19 1 HK
+Reducer10 3 LA NY FL
+Reducer4 3 BA NY HK
+Map1 1 HK
+Reducer7 1 LA
+Reducer9 3 NY BA FL
+Reducer14 1 NY
+Map13 1 LA
+Reducer8 1 NY
+Map11 1 BA
+Map12 1 FL
+Map5 1 HK
+Reducer3 1 LA
+Map6 1 LA
+Reducer2 1 BA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 14: BIG_BENCH query27
+2 38 200
+Map1 1 HK
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 12: BIG_BENCH query24
+19 39 200
+Reducer17 3 NY FL BA
+Map18 1 HK
+Reducer16 2 HK FL
+Reducer15 1 HK
+Map19 1 HK
+Reducer10 3 LA HK FL
+Reducer4 3 FL NY BA
+Map1 1 FL
+Reducer7 1 LA
+Reducer9 3 LA NY FL
+Reducer14 1 NY
+Map13 1 LA
+Reducer8 1 BA
+Map11 1 NY
+Map12 1 FL
+Map5 1 LA
+Reducer3 1 HK
+Map6 1 NY
+Reducer2 1 LA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 40 200
+Reducer17 3 BA NY FL
+Map18 1 FL
+Reducer16 2 HK LA
+Reducer15 1 BA
+Map19 1 NY
+Reducer10 3 HK NY FL
+Reducer4 3 HK FL LA
+Map1 1 HK
+Reducer7 1 LA
+Reducer9 3 HK BA FL
+Reducer14 1 LA
+Map13 1 HK
+Reducer8 1 HK
+Map11 1 FL
+Map12 1 FL
+Map5 1 LA
+Reducer3 1 FL
+Map6 1 BA
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 13: BIG_BENCH query26
+4 41 200
+Map1 1 LA
+Map4 1 BA
+Reducer3 2 BA FL
+Reducer2 1 LA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 9: BIG_BENCH query20
+6 42 201
+Map1 1 NY
+Reducer4 3 HK BA NY
+Reducer6 1 LA
+Map5 1 HK
+Reducer3 2 LA NY
+Reducer2 3 LA NY HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 1: BIG_BENCH query11
+7 43 201
+Map1 1 LA
+Reducer4 1 HK
+Reducer7 2 FL LA
+Map5 1 NY
+Map6 1 BA
+Reducer3 1 FL
+Reducer2 1 FL
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 0: BIG_BENCH query10
+2 44 201
+Map1 1 NY
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 14: BIG_BENCH query27
+2 45 202
+Map1 1 NY
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 17: BIG_BENCH query4
+5 46 202
+Map1 1 BA
+Reducer4 1 FL
+Map5 1 BA
+Reducer3 1 NY
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 18: BIG_BENCH query6
+11 47 203
+Reducer5 1 FL
+Reducer4 1 LA
+Map10 1 BA
+Map1 1 BA
+Reducer9 1 BA
+Reducer8 2 FL BA
+Map11 1 HK
+Reducer3 1 BA
+Map6 1 BA
+Map7 1 NY
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 14: BIG_BENCH query27
+2 48 203
+Map1 1 FL
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 17: BIG_BENCH query4
+5 49 205
+Map1 1 NY
+Reducer4 1 FL
+Map5 1 LA
+Reducer3 1 BA
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 13: BIG_BENCH query26
+4 50 207
+Map1 1 LA
+Map4 1 HK
+Reducer3 2 HK LA
+Reducer2 1 BA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 1: BIG_BENCH query11
+7 51 226
+Map1 1 HK
+Reducer4 1 LA
+Reducer7 2 NY BA
+Map5 1 HK
+Map6 1 FL
+Reducer3 1 BA
+Reducer2 1 FL
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 14: BIG_BENCH query27
+2 52 237
+Map1 1 NY
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 11: BIG_BENCH query22
+7 53 239
+Map1 1 NY
+Reducer4 1 HK
+Map5 1 LA
+Map6 1 HK
+Reducer3 1 BA
+Map7 1 FL
+Reducer2 1 NY
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 6: BIG_BENCH query17
+25 54 247
+Map20 1 HK
+Map1 1 HK
+Map21 1 HK
+Map24 1 HK
+Map25 1 FL
+Map22 1 BA
+Map23 1 HK
+Map8 1 FL
+Map9 1 FL
+Reducer18 1 HK
+Reducer17 1 LA
+Reducer16 1 NY
+Reducer15 1 HK
+Reducer19 1 BA
+Reducer5 1 NY
+Reducer4 1 HK
+Map10 1 HK
+Reducer7 1 HK
+Reducer6 1 HK
+Map13 1 HK
+Map14 1 NY
+Map11 1 LA
+Map12 1 FL
+Reducer3 1 NY
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 3: BIG_BENCH query14
+10 55 251
+Map1 1 LA
+Map10 1 LA
+Reducer7 1 HK
+Map3 1 BA
+Map8 1 FL
+Map9 1 NY
+Map4 1 HK
+Map5 1 FL
+Map6 1 FL
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 16: BIG_BENCH query3
+7 56 256
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 FL
+Reducer6 1 HK
+Reducer3 1 LA
+Reducer2 1 LA
+Map7 1 FL
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 11: BIG_BENCH query22
+7 57 276
+Map1 1 FL
+Reducer4 1 FL
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 LA
+Map7 1 LA
+Reducer2 1 FL
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 16: BIG_BENCH query3
+7 58 287
+Reducer5 1 BA
+Reducer4 1 BA
+Map1 1 BA
+Reducer6 1 NY
+Reducer3 1 NY
+Reducer2 1 LA
+Map7 1 FL
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 14: BIG_BENCH query27
+2 59 299
+Map1 1 FL
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 3: BIG_BENCH query14
+10 60 343
+Map1 1 BA
+Map10 1 NY
+Reducer7 1 BA
+Map3 1 LA
+Map8 1 BA
+Map9 1 FL
+Map4 1 BA
+Map5 1 NY
+Map6 1 LA
+Reducer2 1 HK
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 7: BIG_BENCH query19
+13 61 344
+Reducer5 1 FL
+Map1 1 FL
+Map10 1 HK
+Reducer7 1 BA
+Map3 1 FL
+Reducer6 1 LA
+Reducer9 1 BA
+Map13 1 LA
+Reducer12 1 BA
+Map11 1 LA
+Map8 1 LA
+Map4 1 NY
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 14: BIG_BENCH query27
+2 62 344
+Map1 1 NY
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 6: BIG_BENCH query17
+25 63 345
+Map20 1 LA
+Map1 1 BA
+Map21 1 LA
+Map24 1 BA
+Map25 1 BA
+Map22 1 HK
+Map23 1 FL
+Map8 1 LA
+Map9 1 LA
+Reducer18 1 FL
+Reducer17 1 HK
+Reducer16 1 NY
+Reducer15 1 BA
+Reducer19 1 BA
+Reducer5 1 FL
+Reducer4 1 BA
+Map10 1 BA
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 BA
+Map14 1 HK
+Map11 1 BA
+Map12 1 LA
+Reducer3 1 HK
+Reducer2 1 NY
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 12: BIG_BENCH query24
+19 64 345
+Reducer17 3 NY HK BA
+Map18 1 HK
+Reducer16 2 NY FL
+Reducer15 1 HK
+Map19 1 HK
+Reducer10 3 LA NY FL
+Reducer4 3 HK BA FL
+Map1 1 LA
+Reducer7 1 LA
+Reducer9 3 FL LA BA
+Reducer14 1 HK
+Map13 1 LA
+Reducer8 1 NY
+Map11 1 NY
+Map12 1 HK
+Map5 1 LA
+Reducer3 1 NY
+Map6 1 BA
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 8: BIG_BENCH query1
+6 65 345
+Reducer5 1 BA
+Reducer4 1 FL
+Map1 1 NY
+Map6 1 LA
+Reducer3 1 HK
+Reducer2 1 LA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 14: BIG_BENCH query27
+2 66 347
+Map1 1 LA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 6: BIG_BENCH query17
+25 67 348
+Map20 1 HK
+Map1 1 FL
+Map21 1 NY
+Map24 1 NY
+Map25 1 FL
+Map22 1 LA
+Map23 1 LA
+Map8 1 HK
+Map9 1 NY
+Reducer18 1 HK
+Reducer17 1 NY
+Reducer16 1 LA
+Reducer15 1 LA
+Reducer19 1 BA
+Reducer5 1 NY
+Reducer4 1 NY
+Map10 1 LA
+Reducer7 1 NY
+Reducer6 1 LA
+Map13 1 BA
+Map14 1 FL
+Map11 1 HK
+Map12 1 NY
+Reducer3 1 BA
+Reducer2 1 BA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 17: BIG_BENCH query4
+5 68 351
+Map1 1 BA
+Reducer4 1 NY
+Map5 1 FL
+Reducer3 1 BA
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 2: BIG_BENCH query12
+9 69 352
+Reducer5 1 NY
+Reducer4 1 HK
+Map1 1 FL
+Reducer8 1 FL
+Map9 1 LA
+Reducer3 1 NY
+Map6 1 FL
+Reducer2 1 NY
+Map7 1 LA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 19: BIG_BENCH query7
+11 70 353
+Reducer5 1 FL
+Map1 1 NY
+Reducer4 1 BA
+Map10 1 BA
+Reducer6 1 BA
+Map8 1 FL
+Map9 1 HK
+Map4 1 LA
+Reducer3 1 NY
+Reducer2 1 LA
+Map7 1 LA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 10: BIG_BENCH query21
+16 71 356
+Map15 1 BA
+Map16 1 NY
+Reducer5 1 BA
+Map1 1 HK
+Map10 1 FL
+Reducer4 1 LA
+Reducer7 1 LA
+Reducer6 1 HK
+Map13 1 NY
+Reducer9 1 LA
+Map14 1 FL
+Reducer8 1 NY
+Map11 1 LA
+Map12 1 HK
+Reducer3 1 BA
+Reducer2 1 LA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 17: BIG_BENCH query4
+5 72 359
+Map1 1 NY
+Reducer4 1 HK
+Map5 1 LA
+Reducer3 1 LA
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 12: BIG_BENCH query24
+19 73 362
+Reducer17 3 HK NY FL
+Map18 1 BA
+Reducer16 2 HK FL
+Reducer15 1 BA
+Map19 1 HK
+Reducer10 3 NY LA HK
+Reducer4 3 FL NY HK
+Map1 1 HK
+Reducer7 1 BA
+Reducer9 3 FL NY LA
+Reducer14 1 HK
+Map13 1 FL
+Reducer8 1 LA
+Map11 1 HK
+Map12 1 NY
+Map5 1 LA
+Reducer3 1 FL
+Map6 1 FL
+Reducer2 1 BA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 9: BIG_BENCH query20
+6 74 367
+Map1 1 FL
+Reducer4 3 FL HK LA
+Reducer6 1 LA
+Map5 1 HK
+Reducer3 2 FL LA
+Reducer2 3 BA NY HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 12: BIG_BENCH query24
+19 75 379
+Reducer17 3 LA BA HK
+Map18 1 BA
+Reducer16 2 NY LA
+Reducer15 1 FL
+Map19 1 BA
+Reducer10 3 HK BA NY
+Reducer4 3 LA FL NY
+Map1 1 BA
+Reducer7 1 FL
+Reducer9 3 FL LA BA
+Reducer14 1 NY
+Map13 1 HK
+Reducer8 1 BA
+Map11 1 LA
+Map12 1 LA
+Map5 1 NY
+Reducer3 1 HK
+Map6 1 LA
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 3: BIG_BENCH query14
+10 76 379
+Map1 1 BA
+Map10 1 LA
+Reducer7 1 LA
+Map3 1 HK
+Map8 1 HK
+Map9 1 LA
+Map4 1 FL
+Map5 1 LA
+Map6 1 FL
+Reducer2 1 FL
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 12: BIG_BENCH query24
+19 77 383
+Reducer17 3 NY LA HK
+Map18 1 FL
+Reducer16 2 NY HK
+Reducer15 1 FL
+Map19 1 FL
+Reducer10 3 NY BA LA
+Reducer4 3 FL NY BA
+Map1 1 BA
+Reducer7 1 LA
+Reducer9 3 BA HK NY
+Reducer14 1 BA
+Map13 1 BA
+Reducer8 1 HK
+Map11 1 HK
+Map12 1 FL
+Map5 1 BA
+Reducer3 1 HK
+Map6 1 NY
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 0: BIG_BENCH query10
+2 78 384
+Map1 1 NY
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 11: BIG_BENCH query22
+7 79 385
+Map1 1 HK
+Reducer4 1 BA
+Map5 1 HK
+Map6 1 FL
+Reducer3 1 NY
+Map7 1 NY
+Reducer2 1 LA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 18: BIG_BENCH query6
+11 80 395
+Reducer5 1 FL
+Reducer4 1 BA
+Map10 1 NY
+Map1 1 FL
+Reducer9 1 FL
+Reducer8 2 FL LA
+Map11 1 HK
+Reducer3 1 LA
+Map6 1 HK
+Map7 1 NY
+Reducer2 1 BA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 13: BIG_BENCH query26
+4 81 398
+Map1 1 FL
+Map4 1 BA
+Reducer3 2 FL BA
+Reducer2 1 BA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 6: BIG_BENCH query17
+25 82 399
+Map20 1 NY
+Map1 1 BA
+Map21 1 HK
+Map24 1 LA
+Map25 1 LA
+Map22 1 HK
+Map23 1 LA
+Map8 1 BA
+Map9 1 BA
+Reducer18 1 NY
+Reducer17 1 LA
+Reducer16 1 BA
+Reducer15 1 LA
+Reducer19 1 NY
+Reducer5 1 HK
+Reducer4 1 BA
+Map10 1 FL
+Reducer7 1 BA
+Reducer6 1 FL
+Map13 1 BA
+Map14 1 BA
+Map11 1 FL
+Map12 1 BA
+Reducer3 1 NY
+Reducer2 1 LA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 2: BIG_BENCH query12
+9 83 401
+Reducer5 1 NY
+Reducer4 1 HK
+Map1 1 HK
+Reducer8 1 FL
+Map9 1 LA
+Reducer3 1 NY
+Map6 1 HK
+Reducer2 1 FL
+Map7 1 FL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 12: BIG_BENCH query24
+19 84 401
+Reducer17 3 BA NY LA
+Map18 1 LA
+Reducer16 2 BA FL
+Reducer15 1 FL
+Map19 1 HK
+Reducer10 3 NY HK FL
+Reducer4 3 NY LA FL
+Map1 1 HK
+Reducer7 1 LA
+Reducer9 3 NY HK LA
+Reducer14 1 FL
+Map13 1 LA
+Reducer8 1 LA
+Map11 1 BA
+Map12 1 NY
+Map5 1 HK
+Reducer3 1 NY
+Map6 1 FL
+Reducer2 1 BA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 13: BIG_BENCH query26
+4 85 401
+Map1 1 BA
+Map4 1 HK
+Reducer3 2 FL HK
+Reducer2 1 BA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 5: BIG_BENCH query16
+9 86 401
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 NY
+Map8 1 LA
+Map9 1 HK
+Map6 1 LA
+Reducer3 1 LA
+Map7 1 BA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 17: BIG_BENCH query4
+5 87 404
+Map1 1 FL
+Reducer4 1 LA
+Map5 1 BA
+Reducer3 1 LA
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 14: BIG_BENCH query27
+2 88 404
+Map1 1 LA
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 20: BIG_BENCH query9
+9 89 409
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 LA
+Map8 1 NY
+Map9 1 BA
+Map6 1 NY
+Reducer3 1 NY
+Map7 1 NY
+Reducer2 1 LA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 20: BIG_BENCH query9
+9 90 410
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 LA
+Map8 1 FL
+Map9 1 HK
+Map6 1 HK
+Reducer3 1 HK
+Map7 1 FL
+Reducer2 1 NY
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 19: BIG_BENCH query7
+11 91 414
+Reducer5 1 NY
+Map1 1 LA
+Reducer4 1 FL
+Map10 1 LA
+Reducer6 1 HK
+Map8 1 HK
+Map9 1 NY
+Map4 1 FL
+Reducer3 1 BA
+Reducer2 1 NY
+Map7 1 BA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 15: BIG_BENCH query2
+5 92 416
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 BA
+Reducer3 1 LA
+Reducer2 1 BA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 5: BIG_BENCH query16
+9 93 437
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 BA
+Map8 1 BA
+Map9 1 FL
+Map6 1 HK
+Reducer3 1 FL
+Map7 1 NY
+Reducer2 1 LA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 3: BIG_BENCH query14
+10 94 446
+Map1 1 LA
+Map10 1 NY
+Reducer7 1 LA
+Map3 1 HK
+Map8 1 FL
+Map9 1 FL
+Map4 1 HK
+Map5 1 HK
+Map6 1 FL
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 7: BIG_BENCH query19
+13 95 463
+Reducer5 1 NY
+Map1 1 NY
+Map10 1 LA
+Reducer7 1 NY
+Map3 1 HK
+Reducer6 1 HK
+Reducer9 1 FL
+Map13 1 LA
+Reducer12 1 FL
+Map11 1 LA
+Map8 1 NY
+Map4 1 FL
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 17: BIG_BENCH query4
+5 96 465
+Map1 1 LA
+Reducer4 1 LA
+Map5 1 LA
+Reducer3 1 HK
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 15: BIG_BENCH query2
+5 97 466
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 NY
+Reducer3 1 HK
+Reducer2 1 BA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 11: BIG_BENCH query22
+7 98 468
+Map1 1 FL
+Reducer4 1 HK
+Map5 1 HK
+Map6 1 HK
+Reducer3 1 NY
+Map7 1 FL
+Reducer2 1 FL
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 12: BIG_BENCH query24
+19 99 471
+Reducer17 3 NY LA BA
+Map18 1 HK
+Reducer16 2 HK FL
+Reducer15 1 BA
+Map19 1 NY
+Reducer10 3 BA LA FL
+Reducer4 3 BA NY LA
+Map1 1 FL
+Reducer7 1 BA
+Reducer9 3 BA FL LA
+Reducer14 1 HK
+Map13 1 BA
+Reducer8 1 LA
+Map11 1 LA
+Map12 1 NY
+Map5 1 FL
+Reducer3 1 NY
+Map6 1 BA
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 100 479
+Reducer5 1 HK
+Reducer4 1 NY
+Map1 1 HK
+Map8 1 LA
+Map9 1 LA
+Map6 1 HK
+Reducer3 1 NY
+Map7 1 BA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 11: BIG_BENCH query22
+7 101 493
+Map1 1 LA
+Reducer4 1 NY
+Map5 1 FL
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 6: BIG_BENCH query17
+25 102 505
+Map20 1 LA
+Map1 1 LA
+Map21 1 NY
+Map24 1 FL
+Map25 1 HK
+Map22 1 LA
+Map23 1 NY
+Map8 1 HK
+Map9 1 NY
+Reducer18 1 NY
+Reducer17 1 FL
+Reducer16 1 LA
+Reducer15 1 HK
+Reducer19 1 LA
+Reducer5 1 NY
+Reducer4 1 HK
+Map10 1 HK
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 FL
+Map14 1 FL
+Map11 1 BA
+Map12 1 BA
+Reducer3 1 BA
+Reducer2 1 NY
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 1: BIG_BENCH query11
+7 103 506
+Map1 1 HK
+Reducer4 1 NY
+Reducer7 2 BA NY
+Map5 1 BA
+Map6 1 LA
+Reducer3 1 BA
+Reducer2 1 NY
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 8: BIG_BENCH query1
+6 104 507
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 BA
+Map6 1 NY
+Reducer3 1 LA
+Reducer2 1 NY
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 3: BIG_BENCH query14
+10 105 515
+Map1 1 NY
+Map10 1 BA
+Reducer7 1 NY
+Map3 1 LA
+Map8 1 LA
+Map9 1 NY
+Map4 1 BA
+Map5 1 BA
+Map6 1 LA
+Reducer2 1 HK
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 10: BIG_BENCH query21
+16 106 517
+Map15 1 LA
+Map16 1 HK
+Reducer5 1 BA
+Map1 1 BA
+Map10 1 FL
+Reducer4 1 BA
+Reducer7 1 FL
+Reducer6 1 LA
+Map13 1 LA
+Reducer9 1 HK
+Map14 1 LA
+Reducer8 1 HK
+Map11 1 LA
+Map12 1 BA
+Reducer3 1 BA
+Reducer2 1 NY
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 15: BIG_BENCH query2
+5 107 520
+Reducer5 1 FL
+Reducer4 1 FL
+Map1 1 BA
+Reducer3 1 NY
+Reducer2 1 FL
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 3: BIG_BENCH query14
+10 108 525
+Map1 1 FL
+Map10 1 BA
+Reducer7 1 NY
+Map3 1 BA
+Map8 1 LA
+Map9 1 LA
+Map4 1 HK
+Map5 1 FL
+Map6 1 FL
+Reducer2 1 HK
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 1: BIG_BENCH query11
+7 109 533
+Map1 1 HK
+Reducer4 1 LA
+Reducer7 2 NY LA
+Map5 1 NY
+Map6 1 NY
+Reducer3 1 FL
+Reducer2 1 BA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 12: BIG_BENCH query24
+19 110 540
+Reducer17 3 NY FL HK
+Map18 1 NY
+Reducer16 2 FL HK
+Reducer15 1 NY
+Map19 1 NY
+Reducer10 3 LA BA FL
+Reducer4 3 FL LA BA
+Map1 1 FL
+Reducer7 1 HK
+Reducer9 3 BA NY HK
+Reducer14 1 FL
+Map13 1 BA
+Reducer8 1 LA
+Map11 1 HK
+Map12 1 HK
+Map5 1 NY
+Reducer3 1 FL
+Map6 1 FL
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 7: BIG_BENCH query19
+13 111 558
+Reducer5 1 NY
+Map1 1 HK
+Map10 1 FL
+Reducer7 1 HK
+Map3 1 LA
+Reducer6 1 HK
+Reducer9 1 FL
+Map13 1 NY
+Reducer12 1 NY
+Map11 1 BA
+Map8 1 BA
+Map4 1 FL
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 20: BIG_BENCH query9
+9 112 572
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 NY
+Map8 1 FL
+Map9 1 BA
+Map6 1 HK
+Reducer3 1 NY
+Map7 1 NY
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 15: BIG_BENCH query2
+5 113 621
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 LA
+Reducer3 1 HK
+Reducer2 1 FL
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 1: BIG_BENCH query11
+7 114 624
+Map1 1 FL
+Reducer4 1 NY
+Reducer7 2 BA LA
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 FL
+Reducer2 1 BA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 2: BIG_BENCH query12
+9 115 624
+Reducer5 1 HK
+Reducer4 1 NY
+Map1 1 BA
+Reducer8 1 NY
+Map9 1 LA
+Reducer3 1 HK
+Map6 1 NY
+Reducer2 1 HK
+Map7 1 LA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 13: BIG_BENCH query26
+4 116 624
+Map1 1 HK
+Map4 1 NY
+Reducer3 2 HK LA
+Reducer2 1 HK
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 7: BIG_BENCH query19
+13 117 624
+Reducer5 1 LA
+Map1 1 HK
+Map10 1 FL
+Reducer7 1 LA
+Map3 1 NY
+Reducer6 1 FL
+Reducer9 1 BA
+Map13 1 HK
+Reducer12 1 LA
+Map11 1 BA
+Map8 1 LA
+Map4 1 FL
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 7: BIG_BENCH query19
+13 118 625
+Reducer5 1 BA
+Map1 1 NY
+Map10 1 NY
+Reducer7 1 LA
+Map3 1 FL
+Reducer6 1 NY
+Reducer9 1 NY
+Map13 1 HK
+Reducer12 1 LA
+Map11 1 NY
+Map8 1 HK
+Map4 1 NY
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 3: BIG_BENCH query14
+10 119 625
+Map1 1 FL
+Map10 1 BA
+Reducer7 1 LA
+Map3 1 NY
+Map8 1 NY
+Map9 1 NY
+Map4 1 BA
+Map5 1 NY
+Map6 1 BA
+Reducer2 1 HK
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 14: BIG_BENCH query27
+2 120 625
+Map1 1 LA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 9: BIG_BENCH query20
+6 121 627
+Map1 1 LA
+Reducer4 3 HK FL NY
+Reducer6 1 HK
+Map5 1 BA
+Reducer3 2 FL NY
+Reducer2 3 NY LA FL
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 5: BIG_BENCH query16
+9 122 633
+Reducer5 1 HK
+Reducer4 1 NY
+Map1 1 NY
+Map8 1 HK
+Map9 1 NY
+Map6 1 NY
+Reducer3 1 FL
+Map7 1 BA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 12: BIG_BENCH query24
+19 123 644
+Reducer17 3 NY HK FL
+Map18 1 LA
+Reducer16 2 LA HK
+Reducer15 1 HK
+Map19 1 HK
+Reducer10 3 HK FL BA
+Reducer4 3 LA NY HK
+Map1 1 LA
+Reducer7 1 NY
+Reducer9 3 BA FL NY
+Reducer14 1 LA
+Map13 1 LA
+Reducer8 1 NY
+Map11 1 NY
+Map12 1 BA
+Map5 1 FL
+Reducer3 1 BA
+Map6 1 FL
+Reducer2 1 HK
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 124 644
+Reducer17 3 HK FL LA
+Map18 1 NY
+Reducer16 2 NY LA
+Reducer15 1 NY
+Map19 1 BA
+Reducer10 3 LA FL BA
+Reducer4 3 LA HK NY
+Map1 1 HK
+Reducer7 1 NY
+Reducer9 3 HK NY BA
+Reducer14 1 LA
+Map13 1 FL
+Reducer8 1 HK
+Map11 1 BA
+Map12 1 BA
+Map5 1 NY
+Reducer3 1 BA
+Map6 1 NY
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 20: BIG_BENCH query9
+9 125 644
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 HK
+Map8 1 HK
+Map9 1 HK
+Map6 1 BA
+Reducer3 1 NY
+Map7 1 HK
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 15: BIG_BENCH query2
+5 126 645
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 BA
+Reducer3 1 LA
+Reducer2 1 LA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 2: BIG_BENCH query12
+9 127 645
+Reducer5 1 FL
+Reducer4 1 HK
+Map1 1 LA
+Reducer8 1 NY
+Map9 1 NY
+Reducer3 1 NY
+Map6 1 FL
+Reducer2 1 LA
+Map7 1 FL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 20: BIG_BENCH query9
+9 128 645
+Reducer5 1 LA
+Reducer4 1 LA
+Map1 1 LA
+Map8 1 BA
+Map9 1 FL
+Map6 1 FL
+Reducer3 1 HK
+Map7 1 HK
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 20: BIG_BENCH query9
+9 129 646
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 BA
+Map8 1 BA
+Map9 1 HK
+Map6 1 HK
+Reducer3 1 LA
+Map7 1 BA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 7: BIG_BENCH query19
+13 130 647
+Reducer5 1 HK
+Map1 1 LA
+Map10 1 NY
+Reducer7 1 FL
+Map3 1 NY
+Reducer6 1 BA
+Reducer9 1 HK
+Map13 1 FL
+Reducer12 1 NY
+Map11 1 LA
+Map8 1 LA
+Map4 1 LA
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 2: BIG_BENCH query12
+9 131 648
+Reducer5 1 NY
+Reducer4 1 FL
+Map1 1 HK
+Reducer8 1 NY
+Map9 1 FL
+Reducer3 1 LA
+Map6 1 HK
+Reducer2 1 HK
+Map7 1 BA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 4: BIG_BENCH query15
+6 132 650
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 HK
+Map2 1 FL
+Map6 1 HK
+Reducer3 1 BA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 133 653
+Map15 1 HK
+Map16 1 FL
+Reducer5 1 LA
+Map1 1 HK
+Map10 1 BA
+Reducer4 1 LA
+Reducer7 1 NY
+Reducer6 1 NY
+Map13 1 HK
+Reducer9 1 BA
+Map14 1 BA
+Reducer8 1 HK
+Map11 1 BA
+Map12 1 NY
+Reducer3 1 HK
+Reducer2 1 BA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 13: BIG_BENCH query26
+4 134 654
+Map1 1 BA
+Map4 1 LA
+Reducer3 2 NY BA
+Reducer2 1 FL
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 18: BIG_BENCH query6
+11 135 655
+Reducer5 1 FL
+Reducer4 1 LA
+Map10 1 NY
+Map1 1 HK
+Reducer9 1 FL
+Reducer8 2 BA HK
+Map11 1 LA
+Reducer3 1 LA
+Map6 1 NY
+Map7 1 NY
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 9: BIG_BENCH query20
+6 136 664
+Map1 1 NY
+Reducer4 3 FL NY LA
+Reducer6 1 FL
+Map5 1 FL
+Reducer3 2 LA FL
+Reducer2 3 NY FL HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 2: BIG_BENCH query12
+9 137 664
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 HK
+Reducer8 1 NY
+Map9 1 LA
+Reducer3 1 FL
+Map6 1 LA
+Reducer2 1 LA
+Map7 1 FL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 7: BIG_BENCH query19
+13 138 667
+Reducer5 1 LA
+Map1 1 HK
+Map10 1 LA
+Reducer7 1 FL
+Map3 1 FL
+Reducer6 1 NY
+Reducer9 1 NY
+Map13 1 HK
+Reducer12 1 LA
+Map11 1 HK
+Map8 1 BA
+Map4 1 LA
+Reducer2 1 BA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 4: BIG_BENCH query15
+6 139 669
+Reducer5 1 LA
+Reducer4 1 BA
+Map1 1 BA
+Map2 1 LA
+Map6 1 HK
+Reducer3 1 BA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 3: BIG_BENCH query14
+10 140 673
+Map1 1 LA
+Map10 1 FL
+Reducer7 1 BA
+Map3 1 LA
+Map8 1 BA
+Map9 1 FL
+Map4 1 LA
+Map5 1 LA
+Map6 1 NY
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 12: BIG_BENCH query24
+19 141 673
+Reducer17 3 HK NY FL
+Map18 1 LA
+Reducer16 2 BA FL
+Reducer15 1 NY
+Map19 1 BA
+Reducer10 3 NY LA BA
+Reducer4 3 HK FL NY
+Map1 1 FL
+Reducer7 1 NY
+Reducer9 3 FL HK LA
+Reducer14 1 LA
+Map13 1 NY
+Reducer8 1 HK
+Map11 1 NY
+Map12 1 HK
+Map5 1 BA
+Reducer3 1 BA
+Map6 1 NY
+Reducer2 1 HK
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 19: BIG_BENCH query7
+11 142 673
+Reducer5 1 NY
+Map1 1 FL
+Reducer4 1 BA
+Map10 1 HK
+Reducer6 1 FL
+Map8 1 BA
+Map9 1 HK
+Map4 1 NY
+Reducer3 1 FL
+Reducer2 1 FL
+Map7 1 BA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 12: BIG_BENCH query24
+19 143 679
+Reducer17 3 FL HK NY
+Map18 1 HK
+Reducer16 2 FL BA
+Reducer15 1 FL
+Map19 1 HK
+Reducer10 3 BA FL NY
+Reducer4 3 NY FL HK
+Map1 1 HK
+Reducer7 1 HK
+Reducer9 3 LA BA FL
+Reducer14 1 FL
+Map13 1 LA
+Reducer8 1 LA
+Map11 1 LA
+Map12 1 NY
+Map5 1 FL
+Reducer3 1 HK
+Map6 1 BA
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 10: BIG_BENCH query21
+16 144 679
+Map15 1 LA
+Map16 1 LA
+Reducer5 1 BA
+Map1 1 LA
+Map10 1 BA
+Reducer4 1 BA
+Reducer7 1 LA
+Reducer6 1 NY
+Map13 1 BA
+Reducer9 1 NY
+Map14 1 NY
+Reducer8 1 HK
+Map11 1 BA
+Map12 1 BA
+Reducer3 1 NY
+Reducer2 1 NY
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 20: BIG_BENCH query9
+9 145 687
+Reducer5 1 LA
+Reducer4 1 NY
+Map1 1 NY
+Map8 1 FL
+Map9 1 LA
+Map6 1 BA
+Reducer3 1 BA
+Map7 1 HK
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 17: BIG_BENCH query4
+5 146 688
+Map1 1 BA
+Reducer4 1 HK
+Map5 1 BA
+Reducer3 1 FL
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 16: BIG_BENCH query3
+7 147 688
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 FL
+Reducer6 1 BA
+Reducer3 1 HK
+Reducer2 1 HK
+Map7 1 FL
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 17: BIG_BENCH query4
+5 148 690
+Map1 1 FL
+Reducer4 1 LA
+Map5 1 FL
+Reducer3 1 HK
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 13: BIG_BENCH query26
+4 149 691
+Map1 1 NY
+Map4 1 NY
+Reducer3 2 BA FL
+Reducer2 1 HK
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 17: BIG_BENCH query4
+5 150 693
+Map1 1 BA
+Reducer4 1 LA
+Map5 1 LA
+Reducer3 1 BA
+Reducer2 1 HK
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 13: BIG_BENCH query26
+4 151 694
+Map1 1 HK
+Map4 1 HK
+Reducer3 2 BA HK
+Reducer2 1 FL
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 17: BIG_BENCH query4
+5 152 696
+Map1 1 NY
+Reducer4 1 HK
+Map5 1 HK
+Reducer3 1 HK
+Reducer2 1 HK
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 2: BIG_BENCH query12
+9 153 697
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 NY
+Reducer8 1 BA
+Map9 1 BA
+Reducer3 1 HK
+Map6 1 NY
+Reducer2 1 HK
+Map7 1 NY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 7: BIG_BENCH query19
+13 154 699
+Reducer5 1 FL
+Map1 1 NY
+Map10 1 HK
+Reducer7 1 HK
+Map3 1 BA
+Reducer6 1 BA
+Reducer9 1 NY
+Map13 1 LA
+Reducer12 1 FL
+Map11 1 HK
+Map8 1 HK
+Map4 1 FL
+Reducer2 1 LA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 17: BIG_BENCH query4
+5 155 699
+Map1 1 NY
+Reducer4 1 HK
+Map5 1 HK
+Reducer3 1 BA
+Reducer2 1 NY
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 18: BIG_BENCH query6
+11 156 700
+Reducer5 1 FL
+Reducer4 1 FL
+Map10 1 NY
+Map1 1 FL
+Reducer9 1 FL
+Reducer8 2 FL HK
+Map11 1 BA
+Reducer3 1 FL
+Map6 1 NY
+Map7 1 BA
+Reducer2 1 BA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 20: BIG_BENCH query9
+9 157 701
+Reducer5 1 LA
+Reducer4 1 BA
+Map1 1 FL
+Map8 1 BA
+Map9 1 FL
+Map6 1 BA
+Reducer3 1 HK
+Map7 1 BA
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 7: BIG_BENCH query19
+13 158 701
+Reducer5 1 BA
+Map1 1 NY
+Map10 1 FL
+Reducer7 1 FL
+Map3 1 HK
+Reducer6 1 FL
+Reducer9 1 LA
+Map13 1 FL
+Reducer12 1 BA
+Map11 1 BA
+Map8 1 HK
+Map4 1 NY
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 16: BIG_BENCH query3
+7 159 704
+Reducer5 1 FL
+Reducer4 1 FL
+Map1 1 FL
+Reducer6 1 HK
+Reducer3 1 NY
+Reducer2 1 HK
+Map7 1 HK
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 12: BIG_BENCH query24
+19 160 709
+Reducer17 3 BA LA NY
+Map18 1 FL
+Reducer16 2 HK NY
+Reducer15 1 BA
+Map19 1 LA
+Reducer10 3 LA FL HK
+Reducer4 3 FL LA HK
+Map1 1 BA
+Reducer7 1 FL
+Reducer9 3 HK BA NY
+Reducer14 1 LA
+Map13 1 HK
+Reducer8 1 LA
+Map11 1 FL
+Map12 1 BA
+Map5 1 LA
+Reducer3 1 NY
+Map6 1 BA
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 9: BIG_BENCH query20
+6 161 709
+Map1 1 FL
+Reducer4 3 HK NY BA
+Reducer6 1 HK
+Map5 1 FL
+Reducer3 2 LA HK
+Reducer2 3 HK FL BA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 8: BIG_BENCH query1
+6 162 713
+Reducer5 1 BA
+Reducer4 1 LA
+Map1 1 FL
+Map6 1 BA
+Reducer3 1 LA
+Reducer2 1 LA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 7: BIG_BENCH query19
+13 163 715
+Reducer5 1 NY
+Map1 1 HK
+Map10 1 NY
+Reducer7 1 NY
+Map3 1 NY
+Reducer6 1 FL
+Reducer9 1 NY
+Map13 1 NY
+Reducer12 1 HK
+Map11 1 BA
+Map8 1 LA
+Map4 1 HK
+Reducer2 1 LA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 9: BIG_BENCH query20
+6 164 716
+Map1 1 NY
+Reducer4 3 FL LA BA
+Reducer6 1 LA
+Map5 1 NY
+Reducer3 2 BA LA
+Reducer2 3 BA LA NY
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 5: BIG_BENCH query16
+9 165 725
+Reducer5 1 LA
+Reducer4 1 NY
+Map1 1 FL
+Map8 1 LA
+Map9 1 FL
+Map6 1 FL
+Reducer3 1 FL
+Map7 1 HK
+Reducer2 1 LA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 15: BIG_BENCH query2
+5 166 728
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 NY
+Reducer3 1 NY
+Reducer2 1 HK
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 0: BIG_BENCH query10
+2 167 729
+Map1 1 NY
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 16: BIG_BENCH query3
+7 168 729
+Reducer5 1 HK
+Reducer4 1 LA
+Map1 1 NY
+Reducer6 1 FL
+Reducer3 1 FL
+Reducer2 1 HK
+Map7 1 NY
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 18: BIG_BENCH query6
+11 169 739
+Reducer5 1 FL
+Reducer4 1 HK
+Map10 1 FL
+Map1 1 NY
+Reducer9 1 FL
+Reducer8 2 NY FL
+Map11 1 FL
+Reducer3 1 NY
+Map6 1 FL
+Map7 1 BA
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 19: BIG_BENCH query7
+11 170 739
+Reducer5 1 FL
+Map1 1 BA
+Reducer4 1 FL
+Map10 1 BA
+Reducer6 1 NY
+Map8 1 BA
+Map9 1 LA
+Map4 1 LA
+Reducer3 1 HK
+Reducer2 1 NY
+Map7 1 BA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 20: BIG_BENCH query9
+9 171 739
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 FL
+Map8 1 BA
+Map9 1 HK
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 NY
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 9: BIG_BENCH query20
+6 172 739
+Map1 1 NY
+Reducer4 3 NY LA BA
+Reducer6 1 NY
+Map5 1 LA
+Reducer3 2 HK LA
+Reducer2 3 HK BA LA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 0: BIG_BENCH query10
+2 173 739
+Map1 1 NY
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 8: BIG_BENCH query1
+6 174 743
+Reducer5 1 NY
+Reducer4 1 LA
+Map1 1 HK
+Map6 1 BA
+Reducer3 1 LA
+Reducer2 1 NY
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 7: BIG_BENCH query19
+13 175 763
+Reducer5 1 LA
+Map1 1 BA
+Map10 1 BA
+Reducer7 1 FL
+Map3 1 BA
+Reducer6 1 FL
+Reducer9 1 LA
+Map13 1 FL
+Reducer12 1 LA
+Map11 1 FL
+Map8 1 FL
+Map4 1 BA
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 13: BIG_BENCH query26
+4 176 764
+Map1 1 HK
+Map4 1 NY
+Reducer3 2 BA FL
+Reducer2 1 NY
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 5: BIG_BENCH query16
+9 177 789
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 HK
+Map8 1 HK
+Map9 1 LA
+Map6 1 NY
+Reducer3 1 BA
+Map7 1 HK
+Reducer2 1 FL
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 15: BIG_BENCH query2
+5 178 793
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 HK
+Reducer3 1 FL
+Reducer2 1 NY
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 8: BIG_BENCH query1
+6 179 798
+Reducer5 1 FL
+Reducer4 1 FL
+Map1 1 FL
+Map6 1 LA
+Reducer3 1 BA
+Reducer2 1 FL
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 3: BIG_BENCH query14
+10 180 806
+Map1 1 NY
+Map10 1 FL
+Reducer7 1 FL
+Map3 1 NY
+Map8 1 HK
+Map9 1 LA
+Map4 1 NY
+Map5 1 BA
+Map6 1 FL
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 2: BIG_BENCH query12
+9 181 829
+Reducer5 1 LA
+Reducer4 1 BA
+Map1 1 HK
+Reducer8 1 NY
+Map9 1 NY
+Reducer3 1 LA
+Map6 1 HK
+Reducer2 1 BA
+Map7 1 HK
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 3: BIG_BENCH query14
+10 182 833
+Map1 1 LA
+Map10 1 LA
+Reducer7 1 NY
+Map3 1 BA
+Map8 1 NY
+Map9 1 NY
+Map4 1 LA
+Map5 1 FL
+Map6 1 LA
+Reducer2 1 LA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 12: BIG_BENCH query24
+19 183 836
+Reducer17 3 FL NY BA
+Map18 1 BA
+Reducer16 2 BA NY
+Reducer15 1 LA
+Map19 1 LA
+Reducer10 3 NY LA FL
+Reducer4 3 LA FL BA
+Map1 1 BA
+Reducer7 1 LA
+Reducer9 3 NY FL HK
+Reducer14 1 HK
+Map13 1 BA
+Reducer8 1 NY
+Map11 1 NY
+Map12 1 FL
+Map5 1 LA
+Reducer3 1 NY
+Map6 1 BA
+Reducer2 1 BA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 10: BIG_BENCH query21
+16 184 838
+Map15 1 HK
+Map16 1 LA
+Reducer5 1 LA
+Map1 1 BA
+Map10 1 FL
+Reducer4 1 FL
+Reducer7 1 LA
+Reducer6 1 NY
+Map13 1 LA
+Reducer9 1 BA
+Map14 1 LA
+Reducer8 1 NY
+Map11 1 BA
+Map12 1 LA
+Reducer3 1 LA
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 5: BIG_BENCH query16
+9 185 855
+Reducer5 1 FL
+Reducer4 1 HK
+Map1 1 NY
+Map8 1 HK
+Map9 1 LA
+Map6 1 FL
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 NY
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 1: BIG_BENCH query11
+7 186 860
+Map1 1 NY
+Reducer4 1 HK
+Reducer7 2 FL LA
+Map5 1 NY
+Map6 1 BA
+Reducer3 1 NY
+Reducer2 1 NY
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 18: BIG_BENCH query6
+11 187 865
+Reducer5 1 BA
+Reducer4 1 HK
+Map10 1 FL
+Map1 1 NY
+Reducer9 1 LA
+Reducer8 2 FL NY
+Map11 1 NY
+Reducer3 1 LA
+Map6 1 BA
+Map7 1 BA
+Reducer2 1 HK
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 6: BIG_BENCH query17
+25 188 871
+Map20 1 BA
+Map1 1 BA
+Map21 1 HK
+Map24 1 BA
+Map25 1 BA
+Map22 1 FL
+Map23 1 FL
+Map8 1 NY
+Map9 1 FL
+Reducer18 1 NY
+Reducer17 1 LA
+Reducer16 1 LA
+Reducer15 1 NY
+Reducer19 1 BA
+Reducer5 1 LA
+Reducer4 1 LA
+Map10 1 LA
+Reducer7 1 NY
+Reducer6 1 LA
+Map13 1 LA
+Map14 1 NY
+Map11 1 FL
+Map12 1 FL
+Reducer3 1 NY
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 10: BIG_BENCH query21
+16 189 882
+Map15 1 FL
+Map16 1 HK
+Reducer5 1 LA
+Map1 1 LA
+Map10 1 LA
+Reducer4 1 BA
+Reducer7 1 FL
+Reducer6 1 LA
+Map13 1 NY
+Reducer9 1 LA
+Map14 1 NY
+Reducer8 1 HK
+Map11 1 FL
+Map12 1 NY
+Reducer3 1 LA
+Reducer2 1 NY
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 11: BIG_BENCH query22
+7 190 883
+Map1 1 NY
+Reducer4 1 FL
+Map5 1 NY
+Map6 1 BA
+Reducer3 1 FL
+Map7 1 HK
+Reducer2 1 HK
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 4: BIG_BENCH query15
+6 191 884
+Reducer5 1 BA
+Reducer4 1 FL
+Map1 1 BA
+Map2 1 LA
+Map6 1 LA
+Reducer3 1 LA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 192 884
+Map15 1 FL
+Map16 1 NY
+Reducer5 1 NY
+Map1 1 LA
+Map10 1 HK
+Reducer4 1 BA
+Reducer7 1 BA
+Reducer6 1 BA
+Map13 1 NY
+Reducer9 1 HK
+Map14 1 NY
+Reducer8 1 HK
+Map11 1 FL
+Map12 1 HK
+Reducer3 1 NY
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 7: BIG_BENCH query19
+13 193 884
+Reducer5 1 NY
+Map1 1 NY
+Map10 1 FL
+Reducer7 1 BA
+Map3 1 FL
+Reducer6 1 FL
+Reducer9 1 FL
+Map13 1 HK
+Reducer12 1 LA
+Map11 1 HK
+Map8 1 FL
+Map4 1 NY
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 10: BIG_BENCH query21
+16 194 886
+Map15 1 HK
+Map16 1 HK
+Reducer5 1 LA
+Map1 1 NY
+Map10 1 LA
+Reducer4 1 BA
+Reducer7 1 FL
+Reducer6 1 HK
+Map13 1 HK
+Reducer9 1 NY
+Map14 1 HK
+Reducer8 1 BA
+Map11 1 LA
+Map12 1 BA
+Reducer3 1 FL
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 12: BIG_BENCH query24
+19 195 886
+Reducer17 3 LA HK FL
+Map18 1 BA
+Reducer16 2 NY FL
+Reducer15 1 LA
+Map19 1 NY
+Reducer10 3 FL BA HK
+Reducer4 3 LA BA NY
+Map1 1 BA
+Reducer7 1 HK
+Reducer9 3 NY LA HK
+Reducer14 1 HK
+Map13 1 BA
+Reducer8 1 FL
+Map11 1 NY
+Map12 1 BA
+Map5 1 HK
+Reducer3 1 HK
+Map6 1 BA
+Reducer2 1 HK
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 19: BIG_BENCH query7
+11 196 909
+Reducer5 1 BA
+Map1 1 BA
+Reducer4 1 HK
+Map10 1 LA
+Reducer6 1 LA
+Map8 1 LA
+Map9 1 FL
+Map4 1 BA
+Reducer3 1 HK
+Reducer2 1 HK
+Map7 1 HK
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 4: BIG_BENCH query15
+6 197 915
+Reducer5 1 HK
+Reducer4 1 FL
+Map1 1 FL
+Map2 1 LA
+Map6 1 NY
+Reducer3 1 FL
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 4: BIG_BENCH query15
+6 198 925
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 BA
+Map2 1 NY
+Map6 1 HK
+Reducer3 1 HK
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 18: BIG_BENCH query6
+11 199 927
+Reducer5 1 BA
+Reducer4 1 FL
+Map10 1 LA
+Map1 1 NY
+Reducer9 1 LA
+Reducer8 2 HK BA
+Map11 1 LA
+Reducer3 1 NY
+Map6 1 HK
+Map7 1 NY
+Reducer2 1 HK
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 4: BIG_BENCH query15
+6 200 928
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 LA
+Map2 1 BA
+Map6 1 NY
+Reducer3 1 BA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 201 930
+Map15 1 NY
+Map16 1 HK
+Reducer5 1 LA
+Map1 1 FL
+Map10 1 NY
+Reducer4 1 BA
+Reducer7 1 BA
+Reducer6 1 HK
+Map13 1 FL
+Reducer9 1 FL
+Map14 1 LA
+Reducer8 1 HK
+Map11 1 FL
+Map12 1 BA
+Reducer3 1 FL
+Reducer2 1 NY
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 19: BIG_BENCH query7
+11 202 932
+Reducer5 1 BA
+Map1 1 FL
+Reducer4 1 HK
+Map10 1 LA
+Reducer6 1 NY
+Map8 1 BA
+Map9 1 HK
+Map4 1 BA
+Reducer3 1 HK
+Reducer2 1 HK
+Map7 1 HK
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 3: BIG_BENCH query14
+10 203 932
+Map1 1 FL
+Map10 1 HK
+Reducer7 1 FL
+Map3 1 BA
+Map8 1 FL
+Map9 1 LA
+Map4 1 LA
+Map5 1 HK
+Map6 1 FL
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 9: BIG_BENCH query20
+6 204 937
+Map1 1 HK
+Reducer4 3 HK BA FL
+Reducer6 1 LA
+Map5 1 LA
+Reducer3 2 FL LA
+Reducer2 3 BA NY HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 6: BIG_BENCH query17
+25 205 939
+Map20 1 NY
+Map1 1 FL
+Map21 1 NY
+Map24 1 BA
+Map25 1 BA
+Map22 1 HK
+Map23 1 LA
+Map8 1 NY
+Map9 1 LA
+Reducer18 1 HK
+Reducer17 1 BA
+Reducer16 1 LA
+Reducer15 1 BA
+Reducer19 1 FL
+Reducer5 1 BA
+Reducer4 1 LA
+Map10 1 HK
+Reducer7 1 LA
+Reducer6 1 BA
+Map13 1 LA
+Map14 1 HK
+Map11 1 LA
+Map12 1 HK
+Reducer3 1 NY
+Reducer2 1 NY
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 1: BIG_BENCH query11
+7 206 943
+Map1 1 FL
+Reducer4 1 BA
+Reducer7 2 NY HK
+Map5 1 BA
+Map6 1 LA
+Reducer3 1 HK
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 11: BIG_BENCH query22
+7 207 944
+Map1 1 LA
+Reducer4 1 HK
+Map5 1 BA
+Map6 1 LA
+Reducer3 1 FL
+Map7 1 LA
+Reducer2 1 NY
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 0: BIG_BENCH query10
+2 208 950
+Map1 1 LA
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 6: BIG_BENCH query17
+25 209 950
+Map20 1 LA
+Map1 1 BA
+Map21 1 NY
+Map24 1 LA
+Map25 1 HK
+Map22 1 NY
+Map23 1 HK
+Map8 1 LA
+Map9 1 LA
+Reducer18 1 FL
+Reducer17 1 NY
+Reducer16 1 HK
+Reducer15 1 LA
+Reducer19 1 HK
+Reducer5 1 HK
+Reducer4 1 NY
+Map10 1 NY
+Reducer7 1 NY
+Reducer6 1 FL
+Map13 1 LA
+Map14 1 HK
+Map11 1 LA
+Map12 1 FL
+Reducer3 1 BA
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 19: BIG_BENCH query7
+11 210 961
+Reducer5 1 BA
+Map1 1 BA
+Reducer4 1 BA
+Map10 1 LA
+Reducer6 1 LA
+Map8 1 FL
+Map9 1 NY
+Map4 1 BA
+Reducer3 1 BA
+Reducer2 1 BA
+Map7 1 HK
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 4: BIG_BENCH query15
+6 211 974
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 NY
+Map2 1 HK
+Map6 1 LA
+Reducer3 1 HK
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 12: BIG_BENCH query24
+19 212 975
+Reducer17 3 LA BA FL
+Map18 1 LA
+Reducer16 2 HK FL
+Reducer15 1 NY
+Map19 1 NY
+Reducer10 3 BA LA NY
+Reducer4 3 HK BA LA
+Map1 1 HK
+Reducer7 1 HK
+Reducer9 3 BA NY HK
+Reducer14 1 HK
+Map13 1 FL
+Reducer8 1 BA
+Map11 1 NY
+Map12 1 BA
+Map5 1 FL
+Reducer3 1 FL
+Map6 1 LA
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 213 979
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 LA
+Map8 1 LA
+Map9 1 BA
+Map6 1 BA
+Reducer3 1 BA
+Map7 1 BA
+Reducer2 1 NY
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 0: BIG_BENCH query10
+2 214 981
+Map1 1 FL
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 19: BIG_BENCH query7
+11 215 982
+Reducer5 1 BA
+Map1 1 HK
+Reducer4 1 NY
+Map10 1 BA
+Reducer6 1 FL
+Map8 1 BA
+Map9 1 FL
+Map4 1 FL
+Reducer3 1 BA
+Reducer2 1 NY
+Map7 1 NY
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 2: BIG_BENCH query12
+9 216 982
+Reducer5 1 LA
+Reducer4 1 BA
+Map1 1 HK
+Reducer8 1 FL
+Map9 1 NY
+Reducer3 1 FL
+Map6 1 LA
+Reducer2 1 LA
+Map7 1 BA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 16: BIG_BENCH query3
+7 217 986
+Reducer5 1 FL
+Reducer4 1 HK
+Map1 1 BA
+Reducer6 1 BA
+Reducer3 1 HK
+Reducer2 1 FL
+Map7 1 BA
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 1: BIG_BENCH query11
+7 218 991
+Map1 1 FL
+Reducer4 1 HK
+Reducer7 2 FL NY
+Map5 1 BA
+Map6 1 LA
+Reducer3 1 NY
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 5: BIG_BENCH query16
+9 219 995
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 BA
+Map8 1 NY
+Map9 1 LA
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 NY
+Reducer2 1 FL
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 14: BIG_BENCH query27
+2 220 998
+Map1 1 LA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 1: BIG_BENCH query11
+7 221 1007
+Map1 1 LA
+Reducer4 1 LA
+Reducer7 2 LA HK
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 BA
+Reducer2 1 FL
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 20: BIG_BENCH query9
+9 222 1020
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 LA
+Map8 1 BA
+Map9 1 LA
+Map6 1 HK
+Reducer3 1 HK
+Map7 1 NY
+Reducer2 1 LA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 15: BIG_BENCH query2
+5 223 1027
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 LA
+Reducer3 1 NY
+Reducer2 1 BA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 4: BIG_BENCH query15
+6 224 1031
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 HK
+Map2 1 BA
+Map6 1 LA
+Reducer3 1 FL
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 7: BIG_BENCH query19
+13 225 1035
+Reducer5 1 HK
+Map1 1 NY
+Map10 1 FL
+Reducer7 1 FL
+Map3 1 NY
+Reducer6 1 FL
+Reducer9 1 NY
+Map13 1 HK
+Reducer12 1 NY
+Map11 1 NY
+Map8 1 LA
+Map4 1 LA
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 8: BIG_BENCH query1
+6 226 1048
+Reducer5 1 HK
+Reducer4 1 NY
+Map1 1 LA
+Map6 1 LA
+Reducer3 1 BA
+Reducer2 1 HK
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 13: BIG_BENCH query26
+4 227 1051
+Map1 1 LA
+Map4 1 HK
+Reducer3 2 BA FL
+Reducer2 1 HK
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 17: BIG_BENCH query4
+5 228 1057
+Map1 1 HK
+Reducer4 1 NY
+Map5 1 LA
+Reducer3 1 NY
+Reducer2 1 HK
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 11: BIG_BENCH query22
+7 229 1064
+Map1 1 FL
+Reducer4 1 BA
+Map5 1 FL
+Map6 1 FL
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 16: BIG_BENCH query3
+7 230 1064
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 HK
+Reducer6 1 LA
+Reducer3 1 HK
+Reducer2 1 BA
+Map7 1 NY
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 2: BIG_BENCH query12
+9 231 1065
+Reducer5 1 HK
+Reducer4 1 NY
+Map1 1 LA
+Reducer8 1 NY
+Map9 1 FL
+Reducer3 1 FL
+Map6 1 NY
+Reducer2 1 NY
+Map7 1 BA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 6: BIG_BENCH query17
+25 232 1066
+Map20 1 FL
+Map1 1 LA
+Map21 1 LA
+Map24 1 NY
+Map25 1 NY
+Map22 1 FL
+Map23 1 HK
+Map8 1 HK
+Map9 1 LA
+Reducer18 1 LA
+Reducer17 1 NY
+Reducer16 1 NY
+Reducer15 1 HK
+Reducer19 1 HK
+Reducer5 1 FL
+Reducer4 1 FL
+Map10 1 HK
+Reducer7 1 HK
+Reducer6 1 FL
+Map13 1 BA
+Map14 1 LA
+Map11 1 LA
+Map12 1 FL
+Reducer3 1 LA
+Reducer2 1 LA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 11: BIG_BENCH query22
+7 233 1075
+Map1 1 LA
+Reducer4 1 NY
+Map5 1 HK
+Map6 1 LA
+Reducer3 1 LA
+Map7 1 BA
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 18: BIG_BENCH query6
+11 234 1089
+Reducer5 1 LA
+Reducer4 1 HK
+Map10 1 NY
+Map1 1 NY
+Reducer9 1 LA
+Reducer8 2 LA NY
+Map11 1 FL
+Reducer3 1 FL
+Map6 1 FL
+Map7 1 NY
+Reducer2 1 BA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 18: BIG_BENCH query6
+11 235 1090
+Reducer5 1 HK
+Reducer4 1 NY
+Map10 1 NY
+Map1 1 HK
+Reducer9 1 LA
+Reducer8 2 FL LA
+Map11 1 LA
+Reducer3 1 HK
+Map6 1 BA
+Map7 1 HK
+Reducer2 1 BA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 2: BIG_BENCH query12
+9 236 1097
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 LA
+Reducer8 1 FL
+Map9 1 BA
+Reducer3 1 BA
+Map6 1 HK
+Reducer2 1 BA
+Map7 1 HK
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 14: BIG_BENCH query27
+2 237 1104
+Map1 1 NY
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 18: BIG_BENCH query6
+11 238 1105
+Reducer5 1 FL
+Reducer4 1 NY
+Map10 1 LA
+Map1 1 HK
+Reducer9 1 BA
+Reducer8 2 HK LA
+Map11 1 FL
+Reducer3 1 HK
+Map6 1 BA
+Map7 1 NY
+Reducer2 1 HK
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 8: BIG_BENCH query1
+6 239 1106
+Reducer5 1 HK
+Reducer4 1 LA
+Map1 1 LA
+Map6 1 FL
+Reducer3 1 FL
+Reducer2 1 FL
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 9: BIG_BENCH query20
+6 240 1106
+Map1 1 HK
+Reducer4 3 HK NY LA
+Reducer6 1 NY
+Map5 1 BA
+Reducer3 2 FL BA
+Reducer2 3 NY FL BA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 11: BIG_BENCH query22
+7 241 1110
+Map1 1 NY
+Reducer4 1 NY
+Map5 1 HK
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 BA
+Reducer2 1 LA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 14: BIG_BENCH query27
+2 242 1111
+Map1 1 HK
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 7: BIG_BENCH query19
+13 243 1114
+Reducer5 1 NY
+Map1 1 LA
+Map10 1 FL
+Reducer7 1 FL
+Map3 1 FL
+Reducer6 1 FL
+Reducer9 1 HK
+Map13 1 BA
+Reducer12 1 FL
+Map11 1 FL
+Map8 1 NY
+Map4 1 FL
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 0: BIG_BENCH query10
+2 244 1123
+Map1 1 HK
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 13: BIG_BENCH query26
+4 245 1123
+Map1 1 NY
+Map4 1 HK
+Reducer3 2 HK LA
+Reducer2 1 NY
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 16: BIG_BENCH query3
+7 246 1141
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 NY
+Reducer6 1 LA
+Reducer3 1 HK
+Reducer2 1 LA
+Map7 1 LA
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 9: BIG_BENCH query20
+6 247 1146
+Map1 1 FL
+Reducer4 3 NY BA HK
+Reducer6 1 NY
+Map5 1 NY
+Reducer3 2 HK NY
+Reducer2 3 FL NY BA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 16: BIG_BENCH query3
+7 248 1154
+Reducer5 1 LA
+Reducer4 1 NY
+Map1 1 FL
+Reducer6 1 FL
+Reducer3 1 NY
+Reducer2 1 FL
+Map7 1 NY
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 3: BIG_BENCH query14
+10 249 1156
+Map1 1 FL
+Map10 1 HK
+Reducer7 1 LA
+Map3 1 LA
+Map8 1 NY
+Map9 1 BA
+Map4 1 NY
+Map5 1 BA
+Map6 1 FL
+Reducer2 1 LA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 16: BIG_BENCH query3
+7 250 1158
+Reducer5 1 HK
+Reducer4 1 FL
+Map1 1 HK
+Reducer6 1 NY
+Reducer3 1 BA
+Reducer2 1 HK
+Map7 1 HK
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 13: BIG_BENCH query26
+4 251 1181
+Map1 1 LA
+Map4 1 HK
+Reducer3 2 FL NY
+Reducer2 1 HK
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 20: BIG_BENCH query9
+9 252 1192
+Reducer5 1 LA
+Reducer4 1 FL
+Map1 1 NY
+Map8 1 HK
+Map9 1 FL
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 FL
+Reducer2 1 LA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 19: BIG_BENCH query7
+11 253 1202
+Reducer5 1 FL
+Map1 1 BA
+Reducer4 1 LA
+Map10 1 BA
+Reducer6 1 HK
+Map8 1 FL
+Map9 1 NY
+Map4 1 LA
+Reducer3 1 BA
+Reducer2 1 FL
+Map7 1 LA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 3: BIG_BENCH query14
+10 254 1251
+Map1 1 FL
+Map10 1 HK
+Reducer7 1 NY
+Map3 1 FL
+Map8 1 HK
+Map9 1 HK
+Map4 1 HK
+Map5 1 NY
+Map6 1 LA
+Reducer2 1 FL
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 16: BIG_BENCH query3
+7 255 1253
+Reducer5 1 HK
+Reducer4 1 FL
+Map1 1 FL
+Reducer6 1 LA
+Reducer3 1 HK
+Reducer2 1 HK
+Map7 1 HK
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 10: BIG_BENCH query21
+16 256 1253
+Map15 1 LA
+Map16 1 LA
+Reducer5 1 BA
+Map1 1 LA
+Map10 1 LA
+Reducer4 1 HK
+Reducer7 1 NY
+Reducer6 1 LA
+Map13 1 BA
+Reducer9 1 LA
+Map14 1 HK
+Reducer8 1 LA
+Map11 1 LA
+Map12 1 FL
+Reducer3 1 NY
+Reducer2 1 BA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 17: BIG_BENCH query4
+5 257 1254
+Map1 1 NY
+Reducer4 1 FL
+Map5 1 NY
+Reducer3 1 NY
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 14: BIG_BENCH query27
+2 258 1255
+Map1 1 FL
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 14: BIG_BENCH query27
+2 259 1257
+Map1 1 BA
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 2: BIG_BENCH query12
+9 260 1259
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 NY
+Reducer8 1 NY
+Map9 1 BA
+Reducer3 1 BA
+Map6 1 HK
+Reducer2 1 LA
+Map7 1 NY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 8: BIG_BENCH query1
+6 261 1260
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 NY
+Map6 1 NY
+Reducer3 1 FL
+Reducer2 1 LA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 8: BIG_BENCH query1
+6 262 1263
+Reducer5 1 FL
+Reducer4 1 HK
+Map1 1 FL
+Map6 1 HK
+Reducer3 1 FL
+Reducer2 1 LA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 0: BIG_BENCH query10
+2 263 1275
+Map1 1 FL
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 3: BIG_BENCH query14
+10 264 1287
+Map1 1 NY
+Map10 1 HK
+Reducer7 1 HK
+Map3 1 NY
+Map8 1 NY
+Map9 1 BA
+Map4 1 BA
+Map5 1 NY
+Map6 1 HK
+Reducer2 1 NY
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 14: BIG_BENCH query27
+2 265 1303
+Map1 1 BA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 18: BIG_BENCH query6
+11 266 1334
+Reducer5 1 BA
+Reducer4 1 FL
+Map10 1 NY
+Map1 1 BA
+Reducer9 1 FL
+Reducer8 2 BA HK
+Map11 1 BA
+Reducer3 1 FL
+Map6 1 HK
+Map7 1 HK
+Reducer2 1 FL
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 10: BIG_BENCH query21
+16 267 1334
+Map15 1 HK
+Map16 1 LA
+Reducer5 1 HK
+Map1 1 BA
+Map10 1 LA
+Reducer4 1 LA
+Reducer7 1 HK
+Reducer6 1 BA
+Map13 1 BA
+Reducer9 1 FL
+Map14 1 HK
+Reducer8 1 FL
+Map11 1 LA
+Map12 1 NY
+Reducer3 1 BA
+Reducer2 1 HK
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 10: BIG_BENCH query21
+16 268 1335
+Map15 1 BA
+Map16 1 LA
+Reducer5 1 LA
+Map1 1 FL
+Map10 1 HK
+Reducer4 1 BA
+Reducer7 1 FL
+Reducer6 1 BA
+Map13 1 FL
+Reducer9 1 BA
+Map14 1 FL
+Reducer8 1 FL
+Map11 1 LA
+Map12 1 HK
+Reducer3 1 BA
+Reducer2 1 LA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 11: BIG_BENCH query22
+7 269 1337
+Map1 1 HK
+Reducer4 1 NY
+Map5 1 LA
+Map6 1 FL
+Reducer3 1 HK
+Map7 1 FL
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 17: BIG_BENCH query4
+5 270 1346
+Map1 1 HK
+Reducer4 1 LA
+Map5 1 NY
+Reducer3 1 LA
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 16: BIG_BENCH query3
+7 271 1354
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 HK
+Reducer6 1 FL
+Reducer3 1 HK
+Reducer2 1 HK
+Map7 1 BA
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 8: BIG_BENCH query1
+6 272 1356
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 FL
+Map6 1 HK
+Reducer3 1 LA
+Reducer2 1 FL
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 2: BIG_BENCH query12
+9 273 1356
+Reducer5 1 LA
+Reducer4 1 NY
+Map1 1 FL
+Reducer8 1 BA
+Map9 1 NY
+Reducer3 1 NY
+Map6 1 FL
+Reducer2 1 BA
+Map7 1 LA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 0: BIG_BENCH query10
+2 274 1368
+Map1 1 FL
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 9: BIG_BENCH query20
+6 275 1381
+Map1 1 LA
+Reducer4 3 FL BA LA
+Reducer6 1 BA
+Map5 1 LA
+Reducer3 2 BA LA
+Reducer2 3 HK FL LA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 17: BIG_BENCH query4
+5 276 1387
+Map1 1 HK
+Reducer4 1 NY
+Map5 1 BA
+Reducer3 1 LA
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 14: BIG_BENCH query27
+2 277 1390
+Map1 1 FL
+Reducer2 1 FL
+1
+Map1 Reducer2 56
+# 17: BIG_BENCH query4
+5 278 1395
+Map1 1 NY
+Reducer4 1 BA
+Map5 1 HK
+Reducer3 1 HK
+Reducer2 1 HK
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 0: BIG_BENCH query10
+2 279 1417
+Map1 1 LA
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 12: BIG_BENCH query24
+19 280 1417
+Reducer17 3 NY FL HK
+Map18 1 NY
+Reducer16 2 HK BA
+Reducer15 1 LA
+Map19 1 FL
+Reducer10 3 HK NY BA
+Reducer4 3 BA HK LA
+Map1 1 FL
+Reducer7 1 FL
+Reducer9 3 HK LA NY
+Reducer14 1 FL
+Map13 1 NY
+Reducer8 1 HK
+Map11 1 LA
+Map12 1 LA
+Map5 1 LA
+Reducer3 1 LA
+Map6 1 HK
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 1: BIG_BENCH query11
+7 281 1419
+Map1 1 HK
+Reducer4 1 LA
+Reducer7 2 BA LA
+Map5 1 NY
+Map6 1 BA
+Reducer3 1 BA
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 17: BIG_BENCH query4
+5 282 1421
+Map1 1 NY
+Reducer4 1 NY
+Map5 1 FL
+Reducer3 1 BA
+Reducer2 1 LA
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 4: BIG_BENCH query15
+6 283 1433
+Reducer5 1 FL
+Reducer4 1 FL
+Map1 1 BA
+Map2 1 NY
+Map6 1 HK
+Reducer3 1 NY
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 284 1447
+Map15 1 FL
+Map16 1 NY
+Reducer5 1 NY
+Map1 1 BA
+Map10 1 BA
+Reducer4 1 BA
+Reducer7 1 HK
+Reducer6 1 LA
+Map13 1 BA
+Reducer9 1 NY
+Map14 1 NY
+Reducer8 1 HK
+Map11 1 NY
+Map12 1 FL
+Reducer3 1 LA
+Reducer2 1 BA
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 5: BIG_BENCH query16
+9 285 1468
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 BA
+Map8 1 NY
+Map9 1 HK
+Map6 1 HK
+Reducer3 1 LA
+Map7 1 FL
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 1: BIG_BENCH query11
+7 286 1474
+Map1 1 HK
+Reducer4 1 FL
+Reducer7 2 FL LA
+Map5 1 FL
+Map6 1 BA
+Reducer3 1 NY
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 12: BIG_BENCH query24
+19 287 1495
+Reducer17 3 BA FL LA
+Map18 1 HK
+Reducer16 2 FL BA
+Reducer15 1 LA
+Map19 1 HK
+Reducer10 3 LA HK NY
+Reducer4 3 HK LA BA
+Map1 1 FL
+Reducer7 1 HK
+Reducer9 3 LA HK FL
+Reducer14 1 BA
+Map13 1 LA
+Reducer8 1 LA
+Map11 1 HK
+Map12 1 LA
+Map5 1 BA
+Reducer3 1 NY
+Map6 1 HK
+Reducer2 1 LA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 288 1501
+Reducer5 1 HK
+Reducer4 1 BA
+Map1 1 FL
+Map8 1 NY
+Map9 1 FL
+Map6 1 HK
+Reducer3 1 LA
+Map7 1 BA
+Reducer2 1 LA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 19: BIG_BENCH query7
+11 289 1525
+Reducer5 1 HK
+Map1 1 FL
+Reducer4 1 HK
+Map10 1 BA
+Reducer6 1 HK
+Map8 1 NY
+Map9 1 FL
+Map4 1 BA
+Reducer3 1 NY
+Reducer2 1 HK
+Map7 1 NY
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 12: BIG_BENCH query24
+19 290 1528
+Reducer17 3 BA FL NY
+Map18 1 NY
+Reducer16 2 NY FL
+Reducer15 1 LA
+Map19 1 LA
+Reducer10 3 LA NY BA
+Reducer4 3 LA BA HK
+Map1 1 NY
+Reducer7 1 BA
+Reducer9 3 BA HK FL
+Reducer14 1 BA
+Map13 1 FL
+Reducer8 1 HK
+Map11 1 LA
+Map12 1 BA
+Map5 1 NY
+Reducer3 1 LA
+Map6 1 NY
+Reducer2 1 NY
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 6: BIG_BENCH query17
+25 291 1534
+Map20 1 HK
+Map1 1 FL
+Map21 1 BA
+Map24 1 FL
+Map25 1 NY
+Map22 1 LA
+Map23 1 FL
+Map8 1 NY
+Map9 1 FL
+Reducer18 1 NY
+Reducer17 1 FL
+Reducer16 1 FL
+Reducer15 1 LA
+Reducer19 1 NY
+Reducer5 1 FL
+Reducer4 1 BA
+Map10 1 FL
+Reducer7 1 LA
+Reducer6 1 BA
+Map13 1 BA
+Map14 1 BA
+Map11 1 NY
+Map12 1 NY
+Reducer3 1 FL
+Reducer2 1 BA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 11: BIG_BENCH query22
+7 292 1550
+Map1 1 FL
+Reducer4 1 FL
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 NY
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 11: BIG_BENCH query22
+7 293 1550
+Map1 1 BA
+Reducer4 1 BA
+Map5 1 HK
+Map6 1 BA
+Reducer3 1 LA
+Map7 1 HK
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 11: BIG_BENCH query22
+7 294 1551
+Map1 1 BA
+Reducer4 1 LA
+Map5 1 FL
+Map6 1 BA
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 LA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 0: BIG_BENCH query10
+2 295 1553
+Map1 1 BA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 15: BIG_BENCH query2
+5 296 1554
+Reducer5 1 FL
+Reducer4 1 BA
+Map1 1 HK
+Reducer3 1 LA
+Reducer2 1 LA
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 2: BIG_BENCH query12
+9 297 1555
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 FL
+Reducer8 1 NY
+Map9 1 FL
+Reducer3 1 NY
+Map6 1 HK
+Reducer2 1 BA
+Map7 1 BA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 6: BIG_BENCH query17
+25 298 1559
+Map20 1 FL
+Map1 1 NY
+Map21 1 BA
+Map24 1 BA
+Map25 1 FL
+Map22 1 HK
+Map23 1 LA
+Map8 1 FL
+Map9 1 FL
+Reducer18 1 LA
+Reducer17 1 BA
+Reducer16 1 FL
+Reducer15 1 BA
+Reducer19 1 NY
+Reducer5 1 NY
+Reducer4 1 HK
+Map10 1 FL
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 HK
+Map14 1 BA
+Map11 1 HK
+Map12 1 HK
+Reducer3 1 HK
+Reducer2 1 LA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 17: BIG_BENCH query4
+5 299 1580
+Map1 1 BA
+Reducer4 1 LA
+Map5 1 HK
+Reducer3 1 BA
+Reducer2 1 HK
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 10: BIG_BENCH query21
+16 300 1580
+Map15 1 NY
+Map16 1 BA
+Reducer5 1 NY
+Map1 1 HK
+Map10 1 HK
+Reducer4 1 LA
+Reducer7 1 LA
+Reducer6 1 LA
+Map13 1 HK
+Reducer9 1 HK
+Map14 1 LA
+Reducer8 1 NY
+Map11 1 LA
+Map12 1 LA
+Reducer3 1 FL
+Reducer2 1 HK
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 9: BIG_BENCH query20
+6 301 1586
+Map1 1 HK
+Reducer4 3 HK FL BA
+Reducer6 1 NY
+Map5 1 FL
+Reducer3 2 FL BA
+Reducer2 3 BA FL LA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 6: BIG_BENCH query17
+25 302 1606
+Map20 1 FL
+Map1 1 LA
+Map21 1 BA
+Map24 1 FL
+Map25 1 HK
+Map22 1 HK
+Map23 1 NY
+Map8 1 LA
+Map9 1 NY
+Reducer18 1 FL
+Reducer17 1 HK
+Reducer16 1 FL
+Reducer15 1 LA
+Reducer19 1 FL
+Reducer5 1 HK
+Reducer4 1 FL
+Map10 1 NY
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 LA
+Map14 1 LA
+Map11 1 FL
+Map12 1 HK
+Reducer3 1 FL
+Reducer2 1 BA
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 6: BIG_BENCH query17
+25 303 1607
+Map20 1 HK
+Map1 1 BA
+Map21 1 HK
+Map24 1 BA
+Map25 1 BA
+Map22 1 NY
+Map23 1 FL
+Map8 1 HK
+Map9 1 NY
+Reducer18 1 NY
+Reducer17 1 NY
+Reducer16 1 LA
+Reducer15 1 LA
+Reducer19 1 BA
+Reducer5 1 BA
+Reducer4 1 BA
+Map10 1 FL
+Reducer7 1 BA
+Reducer6 1 FL
+Map13 1 FL
+Map14 1 FL
+Map11 1 NY
+Map12 1 HK
+Reducer3 1 NY
+Reducer2 1 NY
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 4: BIG_BENCH query15
+6 304 1615
+Reducer5 1 BA
+Reducer4 1 LA
+Map1 1 BA
+Map2 1 HK
+Map6 1 BA
+Reducer3 1 LA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 305 1619
+Map15 1 LA
+Map16 1 HK
+Reducer5 1 HK
+Map1 1 NY
+Map10 1 NY
+Reducer4 1 HK
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 BA
+Reducer9 1 FL
+Map14 1 HK
+Reducer8 1 LA
+Map11 1 FL
+Map12 1 BA
+Reducer3 1 NY
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 4: BIG_BENCH query15
+6 306 1620
+Reducer5 1 LA
+Reducer4 1 FL
+Map1 1 NY
+Map2 1 FL
+Map6 1 BA
+Reducer3 1 BA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 10: BIG_BENCH query21
+16 307 1632
+Map15 1 HK
+Map16 1 BA
+Reducer5 1 NY
+Map1 1 BA
+Map10 1 HK
+Reducer4 1 FL
+Reducer7 1 FL
+Reducer6 1 NY
+Map13 1 HK
+Reducer9 1 LA
+Map14 1 NY
+Reducer8 1 HK
+Map11 1 FL
+Map12 1 FL
+Reducer3 1 LA
+Reducer2 1 HK
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 5: BIG_BENCH query16
+9 308 1634
+Reducer5 1 NY
+Reducer4 1 HK
+Map1 1 FL
+Map8 1 HK
+Map9 1 NY
+Map6 1 LA
+Reducer3 1 FL
+Map7 1 LA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 1: BIG_BENCH query11
+7 309 1677
+Map1 1 BA
+Reducer4 1 NY
+Reducer7 2 FL BA
+Map5 1 BA
+Map6 1 BA
+Reducer3 1 HK
+Reducer2 1 HK
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 14: BIG_BENCH query27
+2 310 1678
+Map1 1 BA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 11: BIG_BENCH query22
+7 311 1678
+Map1 1 NY
+Reducer4 1 LA
+Map5 1 HK
+Map6 1 HK
+Reducer3 1 HK
+Map7 1 FL
+Reducer2 1 FL
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 6: BIG_BENCH query17
+25 312 1680
+Map20 1 FL
+Map1 1 HK
+Map21 1 LA
+Map24 1 LA
+Map25 1 BA
+Map22 1 NY
+Map23 1 HK
+Map8 1 FL
+Map9 1 BA
+Reducer18 1 LA
+Reducer17 1 HK
+Reducer16 1 HK
+Reducer15 1 HK
+Reducer19 1 NY
+Reducer5 1 LA
+Reducer4 1 HK
+Map10 1 NY
+Reducer7 1 LA
+Reducer6 1 FL
+Map13 1 HK
+Map14 1 LA
+Map11 1 HK
+Map12 1 FL
+Reducer3 1 NY
+Reducer2 1 FL
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 20: BIG_BENCH query9
+9 313 1680
+Reducer5 1 NY
+Reducer4 1 LA
+Map1 1 FL
+Map8 1 HK
+Map9 1 HK
+Map6 1 LA
+Reducer3 1 NY
+Map7 1 NY
+Reducer2 1 NY
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 2: BIG_BENCH query12
+9 314 1682
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 LA
+Reducer8 1 LA
+Map9 1 LA
+Reducer3 1 FL
+Map6 1 HK
+Reducer2 1 BA
+Map7 1 BA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 4: BIG_BENCH query15
+6 315 1683
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 BA
+Map2 1 HK
+Map6 1 NY
+Reducer3 1 HK
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 3: BIG_BENCH query14
+10 316 1687
+Map1 1 HK
+Map10 1 BA
+Reducer7 1 FL
+Map3 1 BA
+Map8 1 BA
+Map9 1 BA
+Map4 1 LA
+Map5 1 HK
+Map6 1 FL
+Reducer2 1 BA
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 19: BIG_BENCH query7
+11 317 1688
+Reducer5 1 FL
+Map1 1 LA
+Reducer4 1 NY
+Map10 1 BA
+Reducer6 1 FL
+Map8 1 BA
+Map9 1 NY
+Map4 1 BA
+Reducer3 1 FL
+Reducer2 1 NY
+Map7 1 FL
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 12: BIG_BENCH query24
+19 318 1688
+Reducer17 3 BA HK NY
+Map18 1 NY
+Reducer16 2 BA NY
+Reducer15 1 BA
+Map19 1 BA
+Reducer10 3 LA FL HK
+Reducer4 3 FL BA LA
+Map1 1 HK
+Reducer7 1 NY
+Reducer9 3 NY HK FL
+Reducer14 1 NY
+Map13 1 BA
+Reducer8 1 BA
+Map11 1 HK
+Map12 1 LA
+Map5 1 NY
+Reducer3 1 HK
+Map6 1 HK
+Reducer2 1 LA
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 319 1689
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 1 NY
+Map8 1 NY
+Map9 1 LA
+Map6 1 FL
+Reducer3 1 NY
+Map7 1 HK
+Reducer2 1 BA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 13: BIG_BENCH query26
+4 320 1690
+Map1 1 FL
+Map4 1 LA
+Reducer3 2 HK LA
+Reducer2 1 NY
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 7: BIG_BENCH query19
+13 321 1694
+Reducer5 1 HK
+Map1 1 HK
+Map10 1 NY
+Reducer7 1 BA
+Map3 1 BA
+Reducer6 1 FL
+Reducer9 1 LA
+Map13 1 BA
+Reducer12 1 BA
+Map11 1 HK
+Map8 1 LA
+Map4 1 BA
+Reducer2 1 BA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 11: BIG_BENCH query22
+7 322 1699
+Map1 1 HK
+Reducer4 1 FL
+Map5 1 LA
+Map6 1 HK
+Reducer3 1 NY
+Map7 1 LA
+Reducer2 1 BA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 19: BIG_BENCH query7
+11 323 1700
+Reducer5 1 LA
+Map1 1 NY
+Reducer4 1 LA
+Map10 1 BA
+Reducer6 1 BA
+Map8 1 HK
+Map9 1 HK
+Map4 1 HK
+Reducer3 1 HK
+Reducer2 1 BA
+Map7 1 BA
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 16: BIG_BENCH query3
+7 324 1704
+Reducer5 1 FL
+Reducer4 1 NY
+Map1 1 NY
+Reducer6 1 LA
+Reducer3 1 FL
+Reducer2 1 NY
+Map7 1 NY
+6
+Reducer5 Reducer6 11
+Reducer4 Reducer5 13
+Map1 Reducer2 12244
+Reducer3 Reducer4 15
+Reducer2 Reducer3 3487
+Map7 Reducer3 6
+# 11: BIG_BENCH query22
+7 325 1709
+Map1 1 BA
+Reducer4 1 BA
+Map5 1 BA
+Map6 1 HK
+Reducer3 1 NY
+Map7 1 FL
+Reducer2 1 LA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 9: BIG_BENCH query20
+6 326 1726
+Map1 1 NY
+Reducer4 3 NY BA LA
+Reducer6 1 HK
+Map5 1 HK
+Reducer3 2 LA FL
+Reducer2 3 BA NY LA
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 6: BIG_BENCH query17
+25 327 1729
+Map20 1 NY
+Map1 1 FL
+Map21 1 HK
+Map24 1 BA
+Map25 1 HK
+Map22 1 NY
+Map23 1 HK
+Map8 1 FL
+Map9 1 LA
+Reducer18 1 FL
+Reducer17 1 FL
+Reducer16 1 FL
+Reducer15 1 HK
+Reducer19 1 NY
+Reducer5 1 FL
+Reducer4 1 NY
+Map10 1 HK
+Reducer7 1 HK
+Reducer6 1 HK
+Map13 1 HK
+Map14 1 LA
+Map11 1 FL
+Map12 1 LA
+Reducer3 1 BA
+Reducer2 1 NY
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 1: BIG_BENCH query11
+7 328 1731
+Map1 1 LA
+Reducer4 1 BA
+Reducer7 2 HK NY
+Map5 1 HK
+Map6 1 FL
+Reducer3 1 LA
+Reducer2 1 BA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 10: BIG_BENCH query21
+16 329 1731
+Map15 1 LA
+Map16 1 LA
+Reducer5 1 FL
+Map1 1 LA
+Map10 1 FL
+Reducer4 1 FL
+Reducer7 1 FL
+Reducer6 1 FL
+Map13 1 NY
+Reducer9 1 LA
+Map14 1 LA
+Reducer8 1 HK
+Map11 1 NY
+Map12 1 FL
+Reducer3 1 BA
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 4: BIG_BENCH query15
+6 330 1741
+Reducer5 1 LA
+Reducer4 1 BA
+Map1 1 NY
+Map2 1 HK
+Map6 1 NY
+Reducer3 1 NY
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 5: BIG_BENCH query16
+9 331 1750
+Reducer5 1 LA
+Reducer4 1 LA
+Map1 1 NY
+Map8 1 LA
+Map9 1 LA
+Map6 1 FL
+Reducer3 1 BA
+Map7 1 FL
+Reducer2 1 NY
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 18: BIG_BENCH query6
+11 332 1762
+Reducer5 1 HK
+Reducer4 1 LA
+Map10 1 LA
+Map1 1 FL
+Reducer9 1 BA
+Reducer8 2 HK LA
+Map11 1 LA
+Reducer3 1 LA
+Map6 1 BA
+Map7 1 NY
+Reducer2 1 FL
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 7: BIG_BENCH query19
+13 333 1767
+Reducer5 1 BA
+Map1 1 HK
+Map10 1 LA
+Reducer7 1 FL
+Map3 1 BA
+Reducer6 1 HK
+Reducer9 1 BA
+Map13 1 NY
+Reducer12 1 FL
+Map11 1 FL
+Map8 1 NY
+Map4 1 BA
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 2: BIG_BENCH query12
+9 334 1781
+Reducer5 1 HK
+Reducer4 1 LA
+Map1 1 FL
+Reducer8 1 LA
+Map9 1 BA
+Reducer3 1 FL
+Map6 1 HK
+Reducer2 1 NY
+Map7 1 LA
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 2: BIG_BENCH query12
+9 335 1783
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 BA
+Reducer8 1 HK
+Map9 1 NY
+Reducer3 1 LA
+Map6 1 HK
+Reducer2 1 BA
+Map7 1 FL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 20: BIG_BENCH query9
+9 336 1783
+Reducer5 1 HK
+Reducer4 1 FL
+Map1 1 BA
+Map8 1 BA
+Map9 1 HK
+Map6 1 NY
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 2: BIG_BENCH query12
+9 337 1786
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 FL
+Reducer8 1 LA
+Map9 1 HK
+Reducer3 1 BA
+Map6 1 BA
+Reducer2 1 BA
+Map7 1 NY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 13: BIG_BENCH query26
+4 338 1786
+Map1 1 NY
+Map4 1 FL
+Reducer3 2 FL HK
+Reducer2 1 BA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 10: BIG_BENCH query21
+16 339 1799
+Map15 1 NY
+Map16 1 LA
+Reducer5 1 BA
+Map1 1 NY
+Map10 1 LA
+Reducer4 1 FL
+Reducer7 1 LA
+Reducer6 1 NY
+Map13 1 BA
+Reducer9 1 NY
+Map14 1 BA
+Reducer8 1 LA
+Map11 1 FL
+Map12 1 HK
+Reducer3 1 NY
+Reducer2 1 FL
+15
+Map15 Reducer6 26
+Map16 Reducer7 148
+Reducer5 Reducer6 26
+Map1 Reducer2 904
+Map10 Reducer2 853
+Reducer4 Reducer5 915
+Reducer7 Reducer8 293
+Reducer6 Reducer7 186
+Map13 Reducer5 1
+Map14 Reducer6 27
+Reducer8 Reducer9 1
+Map11 Reducer3 1878
+Map12 Reducer4 916
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 2640
+# 14: BIG_BENCH query27
+2 340 1803
+Map1 1 LA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 9: BIG_BENCH query20
+6 341 1809
+Map1 1 FL
+Reducer4 3 BA FL HK
+Reducer6 1 NY
+Map5 1 FL
+Reducer3 2 BA NY
+Reducer2 3 FL HK NY
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 18: BIG_BENCH query6
+11 342 1811
+Reducer5 1 HK
+Reducer4 1 HK
+Map10 1 LA
+Map1 1 NY
+Reducer9 1 NY
+Reducer8 2 HK NY
+Map11 1 BA
+Reducer3 1 BA
+Map6 1 NY
+Map7 1 NY
+Reducer2 1 HK
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 7: BIG_BENCH query19
+13 343 1816
+Reducer5 1 LA
+Map1 1 LA
+Map10 1 HK
+Reducer7 1 HK
+Map3 1 HK
+Reducer6 1 FL
+Reducer9 1 BA
+Map13 1 FL
+Reducer12 1 HK
+Map11 1 BA
+Map8 1 HK
+Map4 1 LA
+Reducer2 1 FL
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 14: BIG_BENCH query27
+2 344 1826
+Map1 1 HK
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 5: BIG_BENCH query16
+9 345 1833
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 BA
+Map8 1 NY
+Map9 1 HK
+Map6 1 NY
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 BA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 0: BIG_BENCH query10
+2 346 1834
+Map1 1 BA
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 14: BIG_BENCH query27
+2 347 1836
+Map1 1 HK
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 11: BIG_BENCH query22
+7 348 1840
+Map1 1 LA
+Reducer4 1 HK
+Map5 1 HK
+Map6 1 LA
+Reducer3 1 FL
+Map7 1 NY
+Reducer2 1 NY
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 4: BIG_BENCH query15
+6 349 1880
+Reducer5 1 BA
+Reducer4 1 FL
+Map1 1 NY
+Map2 1 LA
+Map6 1 FL
+Reducer3 1 LA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 15: BIG_BENCH query2
+5 350 1882
+Reducer5 1 BA
+Reducer4 1 NY
+Map1 1 FL
+Reducer3 1 FL
+Reducer2 1 FL
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 14: BIG_BENCH query27
+2 351 1884
+Map1 1 BA
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 2: BIG_BENCH query12
+9 352 1885
+Reducer5 1 BA
+Reducer4 1 BA
+Map1 1 LA
+Reducer8 1 HK
+Map9 1 HK
+Reducer3 1 LA
+Map6 1 HK
+Reducer2 1 LA
+Map7 1 HK
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 18: BIG_BENCH query6
+11 353 1886
+Reducer5 1 NY
+Reducer4 1 FL
+Map10 1 LA
+Map1 1 NY
+Reducer9 1 LA
+Reducer8 2 LA HK
+Map11 1 HK
+Reducer3 1 HK
+Map6 1 FL
+Map7 1 NY
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 14: BIG_BENCH query27
+2 354 1904
+Map1 1 NY
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 9: BIG_BENCH query20
+6 355 1911
+Map1 1 FL
+Reducer4 3 FL BA LA
+Reducer6 1 FL
+Map5 1 HK
+Reducer3 2 NY LA
+Reducer2 3 BA FL HK
+5
+Map1 Reducer2 601
+Reducer6 Reducer3 9
+Map5 Reducer6 47
+Reducer3 Reducer4 1870
+Reducer2 Reducer3 339
+# 7: BIG_BENCH query19
+13 356 1913
+Reducer5 1 HK
+Map1 1 FL
+Map10 1 BA
+Reducer7 1 FL
+Map3 1 HK
+Reducer6 1 NY
+Reducer9 1 HK
+Map13 1 FL
+Reducer12 1 HK
+Map11 1 LA
+Map8 1 BA
+Map4 1 LA
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 15: BIG_BENCH query2
+5 357 1926
+Reducer5 1 BA
+Reducer4 1 LA
+Map1 1 FL
+Reducer3 1 FL
+Reducer2 1 NY
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 0: BIG_BENCH query10
+2 358 1929
+Map1 1 NY
+Reducer2 1 BA
+1
+Map1 Reducer2 56
+# 0: BIG_BENCH query10
+2 359 1939
+Map1 1 LA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 1: BIG_BENCH query11
+7 360 1943
+Map1 1 HK
+Reducer4 1 FL
+Reducer7 2 LA HK
+Map5 1 BA
+Map6 1 LA
+Reducer3 1 HK
+Reducer2 1 HK
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 1: BIG_BENCH query11
+7 361 1952
+Map1 1 HK
+Reducer4 1 HK
+Reducer7 2 HK LA
+Map5 1 BA
+Map6 1 FL
+Reducer3 1 BA
+Reducer2 1 NY
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 6: BIG_BENCH query17
+25 362 1972
+Map20 1 FL
+Map1 1 NY
+Map21 1 BA
+Map24 1 BA
+Map25 1 HK
+Map22 1 FL
+Map23 1 LA
+Map8 1 BA
+Map9 1 NY
+Reducer18 1 NY
+Reducer17 1 BA
+Reducer16 1 HK
+Reducer15 1 BA
+Reducer19 1 LA
+Reducer5 1 LA
+Reducer4 1 NY
+Map10 1 BA
+Reducer7 1 LA
+Reducer6 1 LA
+Map13 1 BA
+Map14 1 FL
+Map11 1 LA
+Map12 1 LA
+Reducer3 1 HK
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 2: BIG_BENCH query12
+9 363 1982
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 FL
+Reducer8 1 NY
+Map9 1 FL
+Reducer3 1 HK
+Map6 1 LA
+Reducer2 1 BA
+Map7 1 FL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 15: BIG_BENCH query2
+5 364 2013
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 FL
+Reducer3 1 HK
+Reducer2 1 FL
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 20: BIG_BENCH query9
+9 365 2021
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 FL
+Map8 1 LA
+Map9 1 NY
+Map6 1 LA
+Reducer3 1 FL
+Map7 1 NY
+Reducer2 1 HK
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 8: BIG_BENCH query1
+6 366 2028
+Reducer5 1 HK
+Reducer4 1 LA
+Map1 1 LA
+Map6 1 BA
+Reducer3 1 FL
+Reducer2 1 BA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 14: BIG_BENCH query27
+2 367 2030
+Map1 1 FL
+Reducer2 1 HK
+1
+Map1 Reducer2 56
+# 11: BIG_BENCH query22
+7 368 2041
+Map1 1 FL
+Reducer4 1 HK
+Map5 1 FL
+Map6 1 BA
+Reducer3 1 FL
+Map7 1 FL
+Reducer2 1 LA
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 2: BIG_BENCH query12
+9 369 2043
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 FL
+Reducer8 1 FL
+Map9 1 FL
+Reducer3 1 BA
+Map6 1 HK
+Reducer2 1 HK
+Map7 1 HK
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 3: BIG_BENCH query14
+10 370 2047
+Map1 1 LA
+Map10 1 BA
+Reducer7 1 BA
+Map3 1 BA
+Map8 1 LA
+Map9 1 HK
+Map4 1 BA
+Map5 1 FL
+Map6 1 NY
+Reducer2 1 FL
+9
+Map1 Reducer2 30
+Map10 Map6 20
+Reducer7 Reducer2 1
+Map3 Map1 20
+Map8 Map6 20
+Map9 Map6 20
+Map4 Map1 20
+Map5 Map1 20
+Map6 Reducer7 60
+# 2: BIG_BENCH query12
+9 371 2063
+Reducer5 1 BA
+Reducer4 1 FL
+Map1 1 NY
+Reducer8 1 HK
+Map9 1 FL
+Reducer3 1 HK
+Map6 1 BA
+Reducer2 1 HK
+Map7 1 NY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 634
+Reducer8 Reducer3 53
+Map9 Reducer8 35
+Reducer3 Reducer4 35
+Map6 Reducer2 34
+Reducer2 Reducer3 51
+Map7 Reducer8 54
+# 4: BIG_BENCH query15
+6 372 2065
+Reducer5 1 FL
+Reducer4 1 LA
+Map1 1 HK
+Map2 1 FL
+Map6 1 LA
+Reducer3 1 BA
+5
+Reducer4 Reducer5 172
+Map1 Map2 179
+Map2 Reducer3 89
+Map6 Reducer3 1
+Reducer3 Reducer4 172
+# 20: BIG_BENCH query9
+9 373 2065
+Reducer5 1 NY
+Reducer4 1 BA
+Map1 1 NY
+Map8 1 NY
+Map9 1 BA
+Map6 1 LA
+Reducer3 1 HK
+Map7 1 LA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 7: BIG_BENCH query19
+13 374 2089
+Reducer5 1 NY
+Map1 1 HK
+Map10 1 LA
+Reducer7 1 LA
+Map3 1 BA
+Reducer6 1 HK
+Reducer9 1 BA
+Map13 1 NY
+Reducer12 1 BA
+Map11 1 NY
+Map8 1 NY
+Map4 1 FL
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 20: BIG_BENCH query9
+9 375 2096
+Reducer5 1 LA
+Reducer4 1 FL
+Map1 1 HK
+Map8 1 HK
+Map9 1 LA
+Map6 1 HK
+Reducer3 1 FL
+Map7 1 FL
+Reducer2 1 BA
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 11: BIG_BENCH query22
+7 376 2118
+Map1 1 HK
+Reducer4 1 HK
+Map5 1 NY
+Map6 1 NY
+Reducer3 1 BA
+Map7 1 HK
+Reducer2 1 FL
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 5: BIG_BENCH query16
+9 377 2150
+Reducer5 1 FL
+Reducer4 1 BA
+Map1 1 BA
+Map8 1 BA
+Map9 1 NY
+Map6 1 LA
+Reducer3 1 BA
+Map7 1 LA
+Reducer2 1 LA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 1: BIG_BENCH query11
+7 378 2152
+Map1 1 BA
+Reducer4 1 NY
+Reducer7 2 HK LA
+Map5 1 HK
+Map6 1 NY
+Reducer3 1 HK
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 14: BIG_BENCH query27
+2 379 2154
+Map1 1 BA
+Reducer2 1 NY
+1
+Map1 Reducer2 56
+# 7: BIG_BENCH query19
+13 380 2158
+Reducer5 1 FL
+Map1 1 NY
+Map10 1 LA
+Reducer7 1 FL
+Map3 1 HK
+Reducer6 1 LA
+Reducer9 1 LA
+Map13 1 FL
+Reducer12 1 FL
+Map11 1 BA
+Map8 1 NY
+Map4 1 LA
+Reducer2 1 NY
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 1: BIG_BENCH query11
+7 381 2173
+Map1 1 FL
+Reducer4 1 BA
+Reducer7 2 BA NY
+Map5 1 HK
+Map6 1 NY
+Reducer3 1 BA
+Reducer2 1 LA
+6
+Map1 Reducer2 9
+Reducer7 Reducer3 111
+Map5 Map6 90
+Map6 Reducer7 223
+Reducer3 Reducer4 33
+Reducer2 Reducer3 13
+# 5: BIG_BENCH query16
+9 382 2176
+Reducer5 1 NY
+Reducer4 1 HK
+Map1 1 FL
+Map8 1 BA
+Map9 1 NY
+Map6 1 FL
+Reducer3 1 FL
+Map7 1 LA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 5: BIG_BENCH query16
+9 383 2178
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 LA
+Map8 1 NY
+Map9 1 LA
+Map6 1 LA
+Reducer3 1 FL
+Map7 1 LA
+Reducer2 1 LA
+8
+Reducer4 Reducer5 188
+Map1 Reducer2 2816
+Map8 Reducer3 376
+Map9 Reducer3 376
+Map6 Reducer2 2668
+Reducer3 Reducer4 1638
+Map7 Reducer3 376
+Reducer2 Reducer3 1704
+# 11: BIG_BENCH query22
+7 384 2180
+Map1 1 BA
+Reducer4 1 BA
+Map5 1 NY
+Map6 1 LA
+Reducer3 1 LA
+Map7 1 BA
+Reducer2 1 HK
+6
+Map1 Reducer2 1276
+Map5 Reducer2 1113
+Map6 Reducer2 1113
+Reducer3 Reducer4 2
+Map7 Reducer2 1113
+Reducer2 Reducer3 4456
+# 15: BIG_BENCH query2
+5 385 2184
+Reducer5 1 LA
+Reducer4 1 HK
+Map1 1 BA
+Reducer3 1 BA
+Reducer2 1 HK
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 8: BIG_BENCH query1
+6 386 2215
+Reducer5 1 NY
+Reducer4 1 LA
+Map1 1 HK
+Map6 1 HK
+Reducer3 1 FL
+Reducer2 1 LA
+5
+Reducer4 Reducer5 72
+Map1 Reducer2 242
+Map6 Reducer2 213
+Reducer3 Reducer4 170
+Reducer2 Reducer3 524
+# 20: BIG_BENCH query9
+9 387 2216
+Reducer5 1 HK
+Reducer4 1 HK
+Map1 1 BA
+Map8 1 HK
+Map9 1 FL
+Map6 1 HK
+Reducer3 1 LA
+Map7 1 LA
+Reducer2 1 HK
+8
+Reducer4 Reducer5 224
+Map1 Reducer2 1105
+Map8 Reducer3 97
+Map9 Reducer4 111
+Map6 Reducer2 806
+Reducer3 Reducer4 258
+Map7 Reducer3 97
+Reducer2 Reducer3 635
+# 15: BIG_BENCH query2
+5 388 2218
+Reducer5 1 NY
+Reducer4 1 NY
+Map1 1 FL
+Reducer3 1 FL
+Reducer2 1 HK
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 15: BIG_BENCH query2
+5 389 2222
+Reducer5 1 NY
+Reducer4 1 HK
+Map1 1 BA
+Reducer3 1 LA
+Reducer2 1 HK
+4
+Reducer4 Reducer5 88
+Map1 Reducer2 25669
+Reducer3 Reducer4 3430
+Reducer2 Reducer3 23890
+# 13: BIG_BENCH query26
+4 390 2224
+Map1 1 BA
+Map4 1 HK
+Reducer3 2 HK LA
+Reducer2 1 BA
+3
+Map1 Reducer2 1154
+Map4 Reducer2 497
+Reducer2 Reducer3 1227
+# 12: BIG_BENCH query24
+19 391 2225
+Reducer17 3 FL BA LA
+Map18 1 HK
+Reducer16 2 FL LA
+Reducer15 1 HK
+Map19 1 NY
+Reducer10 3 FL NY BA
+Reducer4 3 LA BA NY
+Map1 1 BA
+Reducer7 1 BA
+Reducer9 3 HK LA FL
+Reducer14 1 NY
+Map13 1 LA
+Reducer8 1 FL
+Map11 1 HK
+Map12 1 FL
+Map5 1 LA
+Reducer3 1 HK
+Map6 1 FL
+Reducer2 1 FL
+18
+Reducer17 Reducer4 146
+Map18 Reducer14 1
+Reducer16 Reducer17 3506
+Reducer15 Reducer16 1702
+Map19 Reducer16 1761
+Reducer10 Reducer4 443
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 1524
+Reducer14 Reducer15 2
+Map13 Reducer14 1
+Reducer8 Reducer9 362
+Map11 Reducer7 1
+Map12 Reducer9 412
+Map5 Reducer2 1
+Reducer3 Reducer4 33
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 7: BIG_BENCH query19
+13 392 2226
+Reducer5 1 FL
+Map1 1 FL
+Map10 1 FL
+Reducer7 1 HK
+Map3 1 HK
+Reducer6 1 HK
+Reducer9 1 BA
+Map13 1 HK
+Reducer12 1 BA
+Map11 1 LA
+Map8 1 FL
+Map4 1 NY
+Reducer2 1 LA
+12
+Reducer5 Reducer6 530
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 1598
+Reducer9 Map11 10
+Map13 Reducer6 535
+Reducer12 Reducer6 535
+Map11 Reducer12 25
+Map8 Reducer9 1
+Map4 Reducer5 100
+Reducer2 Map4 100
+# 17: BIG_BENCH query4
+5 393 2231
+Map1 1 FL
+Reducer4 1 NY
+Map5 1 HK
+Reducer3 1 FL
+Reducer2 1 FL
+4
+Map1 Reducer2 6627
+Map5 Map1 2177
+Reducer3 Reducer4 9397
+Reducer2 Reducer3 13848
+# 18: BIG_BENCH query6
+11 394 2245
+Reducer5 1 FL
+Reducer4 1 NY
+Map10 1 FL
+Map1 1 LA
+Reducer9 1 NY
+Reducer8 2 FL NY
+Map11 1 HK
+Reducer3 1 NY
+Map6 1 BA
+Map7 1 LA
+Reducer2 1 NY
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029
+# 6: BIG_BENCH query17
+25 395 2257
+Map20 1 FL
+Map1 1 NY
+Map21 1 NY
+Map24 1 FL
+Map25 1 HK
+Map22 1 BA
+Map23 1 NY
+Map8 1 HK
+Map9 1 HK
+Reducer18 1 FL
+Reducer17 1 LA
+Reducer16 1 LA
+Reducer15 1 BA
+Reducer19 1 NY
+Reducer5 1 LA
+Reducer4 1 FL
+Map10 1 FL
+Reducer7 1 LA
+Reducer6 1 HK
+Map13 1 FL
+Map14 1 NY
+Map11 1 HK
+Map12 1 LA
+Reducer3 1 LA
+Reducer2 1 HK
+24
+Map20 Reducer15 2044
+Map1 Reducer2 2478
+Map21 Reducer16 33
+Map24 Reducer17 20
+Map25 Reducer18 43
+Map22 Reducer16 32
+Map23 Reducer16 32
+Map8 Reducer2 2301
+Map9 Reducer3 10
+Reducer18 Reducer19 87
+Reducer17 Reducer18 63
+Reducer16 Reducer17 84
+Reducer15 Reducer16 1053
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 53
+Map10 Reducer3 9
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 2222
+Map11 Reducer3 9
+Map12 Reducer4 54
+Reducer3 Reducer4 73
+Reducer2 Reducer3 1159
+# 19: BIG_BENCH query7
+11 396 2258
+Reducer5 1 NY
+Map1 1 NY
+Reducer4 1 FL
+Map10 1 HK
+Reducer6 1 HK
+Map8 1 BA
+Map9 1 NY
+Map4 1 HK
+Reducer3 1 NY
+Reducer2 1 NY
+Map7 1 FL
+9
+Reducer5 Reducer6 11
+Map1 Reducer2 1
+Reducer4 Reducer5 2877
+Map10 Reducer4 1434
+Map8 Reducer3 83
+Map9 Reducer3 3
+Reducer3 Reducer4 1438
+Reducer2 Reducer3 3
+Map7 Reducer2 1
+# 0: BIG_BENCH query10
+2 397 2263
+Map1 1 FL
+Reducer2 1 LA
+1
+Map1 Reducer2 56
+# 18: BIG_BENCH query6
+11 398 2285
+Reducer5 1 NY
+Reducer4 1 NY
+Map10 1 FL
+Map1 1 NY
+Reducer9 1 HK
+Reducer8 2 LA FL
+Map11 1 LA
+Reducer3 1 NY
+Map6 1 BA
+Map7 1 NY
+Reducer2 1 LA
+10
+Reducer4 Reducer5 207
+Map10 Reducer8 393
+Map1 Reducer2 1514
+Reducer9 Reducer4 101
+Reducer8 Reducer9 886
+Map11 Reducer4 70
+Reducer3 Reducer4 68
+Map6 Reducer2 1516
+Map7 Reducer8 643
+Reducer2 Reducer3 3029

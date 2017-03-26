@@ -1,0 +1,7118 @@
+# 5: TPC-H query15
+8 0 0
+Map1 6 sydney singapore osaka kualalumpur london dc
+Reducer4 1 sanjose
+Reducer7 1 hongkong
+Reducer6 2 sanjose paris
+Map8 1 kualalumpur
+Map5 2 paris dc
+Reducer3 1 taipei
+Reducer2 1 kualalumpur
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 10: TPC-H query21
+14 1 11
+Reducer5 5 bangkok kualalumpur singapore hongkong paris
+Map10 6 kualalumpur osaka sydney bangkok sanjose tokyo
+Map1 1 madrid
+Reducer4 2 singapore berlin
+Reducer7 3 taipei frankfurt tokyo
+Map2 1 bangkok
+Reducer6 6 osaka kualalumpur sanjose sydney london singapore
+Reducer14 1 tokyo
+Map13 2 madrid sanjose
+Reducer8 1 singapore
+Reducer12 4 paris tokyo dc london
+Map11 5 hongkong taipei osaka madrid frankfurt
+Map9 5 osaka berlin dc tokyo madrid
+Reducer3 1 paris
+13
+Reducer5 Reducer6 162020
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 89910
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 67845
+# 10: TPC-H query21
+14 2 13
+Reducer5 2 sydney frankfurt
+Map10 3 london jakarta paris
+Map1 1 jakarta
+Reducer4 3 dc london sanjose
+Reducer7 4 frankfurt sydney sanjose berlin
+Map2 1 madrid
+Reducer6 5 frankfurt dc paris madrid jakarta
+Reducer14 3 paris taipei sydney
+Map13 4 kualalumpur sanjose berlin jakarta
+Reducer8 1 kualalumpur
+Reducer12 2 jakarta london
+Map11 5 osaka taipei paris jakarta dc
+Map9 5 osaka madrid frankfurt paris taipei
+Reducer3 2 london kualalumpur
+13
+Reducer5 Reducer6 77769
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 53733
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 323679
+Map13 Reducer14 1158988
+Reducer12 Reducer5 367158
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 189966
+# 16: TPC-H query7
+11 3 16
+Reducer5 1 taipei
+Reducer4 1 madrid
+Map1 1 sanjose
+Map10 1 singapore
+Reducer6 1 berlin
+Map11 1 kualalumpur
+Map8 2 frankfurt kualalumpur
+Map9 2 kualalumpur singapore
+Reducer3 3 hongkong sydney madrid
+Reducer2 2 sydney paris
+Map7 5 hongkong singapore jakarta dc berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 466314
+Map9 Reducer4 472342
+Reducer3 Reducer4 1104037
+Reducer2 Reducer3 1167032
+Map7 Reducer2 1266603
+# 8: TPC-H query1
+3 4 22
+Map1 5 singapore sanjose madrid hongkong sydney
+Reducer3 1 london
+Reducer2 4 hongkong jakarta tokyo madrid
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 0: TPC-H query10
+8 5 35
+Reducer5 1 berlin
+Reducer4 1 london
+Map1 1 paris
+Map8 1 jakarta
+Reducer3 5 osaka jakarta kualalumpur sydney dc
+Map6 2 jakarta bangkok
+Reducer2 1 london
+Map7 4 frankfurt jakarta hongkong singapore
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 14067
+Map8 Reducer3 108557
+Reducer3 Reducer4 671771
+Map6 Reducer2 53581
+Reducer2 Reducer3 114371
+Map7 Reducer3 929241
+# 12: TPC-H query3
+7 6 67
+Reducer5 1 kualalumpur
+Map1 3 frankfurt sanjose bangkok
+Reducer4 1 singapore
+Map6 4 bangkok sydney singapore berlin
+Reducer3 2 dc tokyo
+Map7 4 dc berlin frankfurt sanjose
+Reducer2 1 hongkong
+6
+Map1 Reducer2 25556
+Reducer4 Reducer5 4458
+Map6 Reducer2 59066
+Reducer3 Reducer4 290950
+Map7 Reducer3 772704
+Reducer2 Reducer3 68450
+# 15: TPC-H query6
+2 7 70
+Map1 7 tokyo taipei sydney sanjose paris berlin osaka
+Reducer2 1 london
+1
+Map1 Reducer2 283398
+# 1: TPC-H query11
+12 8 71
+Reducer10 1 madrid
+Reducer4 1 jakarta
+Map1 7 sanjose singapore frankfurt paris taipei osaka dc
+Reducer9 1 london
+Reducer8 1 sydney
+Map11 1 london
+Map12 1 paris
+Map5 1 tokyo
+Reducer3 1 dc
+Map6 1 dc
+Reducer2 1 sanjose
+Map7 3 dc singapore madrid
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 185443
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 23788
+Reducer3 Reducer4 5556
+Map6 Reducer2 23749
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 12: TPC-H query3
+7 9 72
+Reducer5 1 madrid
+Map1 1 osaka
+Reducer4 1 frankfurt
+Map6 3 paris frankfurt berlin
+Reducer3 4 jakarta madrid singapore paris
+Map7 3 bangkok frankfurt tokyo
+Reducer2 1 kualalumpur
+6
+Map1 Reducer2 14907
+Reducer4 Reducer5 4458
+Map6 Reducer2 77525
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 10: TPC-H query21
+14 10 74
+Reducer5 4 sanjose sydney madrid taipei
+Map10 5 sydney singapore frankfurt dc london
+Map1 1 singapore
+Reducer4 3 dc paris tokyo
+Reducer7 2 osaka kualalumpur
+Map2 1 dc
+Reducer6 4 hongkong bangkok tokyo london
+Reducer14 3 sanjose kualalumpur osaka
+Map13 5 sanjose sydney dc taipei tokyo
+Reducer8 1 tokyo
+Reducer12 5 osaka taipei sanjose berlin hongkong
+Map11 5 sydney bangkok kualalumpur madrid dc
+Map9 5 taipei berlin hongkong madrid tokyo
+Reducer3 2 osaka frankfurt
+13
+Reducer5 Reducer6 111099
+Map10 Reducer4 92958
+Map1 Map2 533
+Reducer4 Reducer5 33583
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 231199
+Map13 Reducer14 1158988
+Reducer12 Reducer5 573685
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 135690
+# 12: TPC-H query3
+7 11 82
+Reducer5 1 paris
+Map1 2 tokyo paris
+Reducer4 1 paris
+Map6 2 berlin sanjose
+Reducer3 3 sanjose bangkok berlin
+Map7 5 madrid berlin jakarta london sanjose
+Reducer2 1 osaka
+6
+Map1 Reducer2 29815
+Reducer4 Reducer5 4458
+Map6 Reducer2 51683
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 15: TPC-H query6
+2 12 82
+Map1 6 kualalumpur sydney bangkok singapore tokyo dc
+Reducer2 1 dc
+1
+Map1 Reducer2 283398
+# 11: TPC-H query22
+8 13 84
+Reducer5 1 madrid
+Map1 2 singapore kualalumpur
+Reducer4 1 paris
+Reducer8 1 sydney
+Map6 2 frankfurt sydney
+Reducer3 3 frankfurt london tokyo
+Map7 4 kualalumpur hongkong tokyo jakarta
+Reducer2 3 berlin london hongkong
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 3901
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 1: TPC-H query11
+12 14 88
+Reducer10 1 hongkong
+Reducer4 1 jakarta
+Map1 3 taipei london madrid
+Reducer9 1 berlin
+Reducer8 1 tokyo
+Map11 1 sanjose
+Map12 1 london
+Map5 1 paris
+Reducer3 1 tokyo
+Map6 1 london
+Reducer2 1 london
+Map7 3 berlin sydney madrid
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 143056
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 42819
+Reducer3 Reducer4 5556
+Map6 Reducer2 42748
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 16: TPC-H query7
+11 15 92
+Reducer5 1 dc
+Reducer4 1 taipei
+Map1 1 london
+Map10 1 dc
+Reducer6 1 singapore
+Map11 1 madrid
+Map8 3 hongkong singapore frankfurt
+Map9 4 madrid tokyo kualalumpur bangkok
+Reducer3 2 berlin london
+Reducer2 2 paris madrid
+Map7 4 paris jakarta kualalumpur berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 282235
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 559576
+Map9 Reducer4 826599
+Reducer3 Reducer4 644021
+Reducer2 Reducer3 933626
+Map7 Reducer2 1215939
+# 15: TPC-H query6
+2 16 96
+Map1 5 singapore tokyo bangkok london hongkong
+Reducer2 1 sydney
+1
+Map1 Reducer2 283398
+# 2: TPC-H query12
+5 17 97
+Reducer4 1 tokyo
+Map1 5 berlin dc sydney taipei jakarta
+Map5 4 bangkok sydney tokyo london
+Reducer3 1 tokyo
+Reducer2 1 dc
+4
+Map1 Reducer2 203306
+Map5 Reducer2 453998
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 7: TPC-H query17
+7 18 102
+Map1 1 osaka
+Reducer4 1 tokyo
+Reducer7 5 singapore frankfurt tokyo hongkong dc
+Map5 4 singapore osaka taipei hongkong
+Map6 2 sydney london
+Reducer3 5 sanjose tokyo dc osaka sydney
+Reducer2 3 madrid sanjose taipei
+6
+Map1 Reducer2 96417
+Reducer7 Reducer3 377479
+Map5 Reducer2 1497787
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 182927
+# 8: TPC-H query1
+3 19 112
+Map1 6 frankfurt singapore jakarta sydney madrid paris
+Reducer3 1 jakarta
+Reducer2 3 madrid kualalumpur sanjose
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 7: TPC-H query17
+7 20 113
+Map1 2 kualalumpur paris
+Reducer4 1 sanjose
+Reducer7 3 singapore taipei dc
+Map5 6 hongkong bangkok sydney paris london sanjose
+Map6 7 madrid sanjose hongkong singapore frankfurt sydney london
+Reducer3 9 frankfurt singapore london berlin madrid paris jakarta taipei bangkok
+Reducer2 5 london kualalumpur madrid jakarta frankfurt
+6
+Map1 Reducer2 120522
+Reducer7 Reducer3 226487
+Map5 Reducer2 1404175
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 304879
+# 4: TPC-H query14
+4 21 115
+Map1 3 sanjose hongkong frankfurt
+Map4 1 paris
+Reducer3 1 london
+Reducer2 1 frankfurt
+3
+Map1 Reducer2 514714
+Map4 Reducer2 9397
+Reducer2 Reducer3 33825
+# 10: TPC-H query21
+14 22 120
+Reducer5 6 taipei madrid paris kualalumpur jakarta dc
+Map10 5 dc madrid bangkok taipei hongkong
+Map1 1 paris
+Reducer4 2 osaka hongkong
+Reducer7 4 madrid osaka london bangkok
+Map2 1 jakarta
+Reducer6 2 tokyo frankfurt
+Reducer14 3 kualalumpur sanjose taipei
+Map13 5 singapore jakarta taipei dc berlin
+Reducer8 1 taipei
+Reducer12 2 bangkok paris
+Map11 5 taipei berlin hongkong sydney osaka
+Map9 3 osaka jakarta sanjose
+Reducer3 1 jakarta
+13
+Reducer5 Reducer6 129616
+Map10 Reducer4 108451
+Map1 Map2 533
+Reducer4 Reducer5 44777
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 179821
+Map13 Reducer14 1158988
+Reducer12 Reducer5 458948
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 79152
+# 9: TPC-H query20
+12 23 132
+Reducer5 1 dc
+Map10 5 bangkok tokyo sydney dc paris
+Map1 2 sydney jakarta
+Reducer4 1 sydney
+Reducer7 1 frankfurt
+Reducer6 1 sanjose
+Reducer9 1 hongkong
+Map11 1 frankfurt
+Map12 1 bangkok
+Map8 4 singapore sydney osaka jakarta
+Reducer3 1 singapore
+Reducer2 1 sydney
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 54787
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 7411
+# 3: TPC-H query13
+6 24 143
+Reducer5 1 hongkong
+Reducer4 1 osaka
+Map1 3 tokyo sanjose taipei
+Reducer3 1 sanjose
+Map6 7 berlin london osaka sanjose madrid singapore dc
+Reducer2 2 taipei bangkok
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 119984
+Reducer3 Reducer4 9272
+Map6 Reducer2 353614
+Reducer2 Reducer3 404550
+# 2: TPC-H query12
+5 25 151
+Reducer4 1 dc
+Map1 3 sanjose berlin jakarta
+Map5 2 paris tokyo
+Reducer3 1 berlin
+Reducer2 2 berlin osaka
+4
+Map1 Reducer2 219571
+Map5 Reducer2 408598
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 10: TPC-H query21
+14 26 152
+Reducer5 3 osaka sydney sanjose
+Map10 5 london paris sanjose bangkok berlin
+Map1 1 kualalumpur
+Reducer4 3 dc kualalumpur hongkong
+Reducer7 2 jakarta madrid
+Map2 1 jakarta
+Reducer6 4 jakarta bangkok frankfurt sanjose
+Reducer14 3 kualalumpur hongkong frankfurt
+Map13 3 dc frankfurt singapore
+Reducer8 1 hongkong
+Reducer12 7 tokyo london frankfurt osaka sanjose kualalumpur singapore
+Map11 5 taipei singapore tokyo bangkok jakarta
+Map9 4 paris kualalumpur tokyo berlin
+Reducer3 1 dc
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 108451
+Map1 Map2 533
+Reducer4 Reducer5 26866
+Reducer7 Reducer8 1817
+Map2 Reducer3 77168
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 642527
+Map11 Reducer12 1815325
+Map9 Reducer3 850919
+Reducer3 Reducer4 79152
+# 14: TPC-H query5
+11 27 157
+Reducer5 1 hongkong
+Map1 3 singapore bangkok osaka
+Reducer4 5 hongkong jakarta singapore berlin sanjose
+Map10 1 singapore
+Reducer6 1 madrid
+Map11 1 london
+Map8 2 singapore berlin
+Map9 1 kualalumpur
+Reducer3 4 tokyo singapore kualalumpur paris
+Reducer2 1 kualalumpur
+Map7 4 singapore london bangkok tokyo
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 8764
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 657860
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 72766
+Map7 Reducer2 30336
+# 13: TPC-H query4
+5 28 159
+Reducer4 1 taipei
+Map1 3 kualalumpur sanjose tokyo
+Map5 4 frankfurt paris tokyo london
+Reducer3 3 berlin sanjose taipei
+Reducer2 4 hongkong madrid berlin paris
+4
+Map1 Reducer2 62902
+Map5 Reducer2 395753
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 10: TPC-H query21
+14 29 159
+Reducer5 2 jakarta madrid
+Map10 6 osaka hongkong singapore madrid dc bangkok
+Map1 1 singapore
+Reducer4 2 paris frankfurt
+Reducer7 3 taipei singapore sydney
+Map2 1 paris
+Reducer6 4 singapore berlin dc london
+Reducer14 2 frankfurt sydney
+Map13 4 hongkong singapore madrid tokyo
+Reducer8 1 tokyo
+Reducer12 4 berlin hongkong bangkok sanjose
+Map11 5 kualalumpur singapore tokyo frankfurt sydney
+Map9 5 hongkong berlin dc paris taipei
+Reducer3 1 frankfurt
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 67845
+# 1: TPC-H query11
+12 30 159
+Reducer10 1 paris
+Reducer4 1 madrid
+Map1 6 taipei sanjose berlin kualalumpur hongkong frankfurt
+Reducer9 1 hongkong
+Reducer8 1 jakarta
+Map11 1 tokyo
+Map12 1 tokyo
+Map5 1 frankfurt
+Reducer3 1 tokyo
+Map6 1 sanjose
+Reducer2 1 tokyo
+Map7 7 osaka dc hongkong berlin london tokyo bangkok
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 178820
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 5966
+Map12 Reducer8 5926
+Map5 Reducer2 26762
+Reducer3 Reducer4 5556
+Map6 Reducer2 26718
+Reducer2 Reducer3 109618
+Map7 Reducer8 60683
+# 0: TPC-H query10
+8 31 159
+Reducer5 1 osaka
+Reducer4 1 paris
+Map1 1 singapore
+Map8 1 sanjose
+Reducer3 1 osaka
+Map6 2 sanjose singapore
+Reducer2 1 sydney
+Map7 2 madrid taipei
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 14067
+Map8 Reducer3 162836
+Reducer3 Reducer4 671771
+Map6 Reducer2 53581
+Reducer2 Reducer3 171557
+Map7 Reducer3 696930
+# 1: TPC-H query11
+12 32 160
+Reducer10 1 london
+Reducer4 1 frankfurt
+Map1 4 tokyo osaka madrid berlin
+Reducer9 1 bangkok
+Reducer8 1 taipei
+Map11 1 paris
+Map12 1 bangkok
+Map5 1 frankfurt
+Reducer3 1 hongkong
+Map6 1 jakarta
+Reducer2 1 bangkok
+Map7 5 hongkong sanjose jakarta osaka frankfurt
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 158951
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 35683
+Reducer3 Reducer4 5556
+Map6 Reducer2 35624
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 12: TPC-H query3
+7 33 160
+Reducer5 1 tokyo
+Map1 1 kualalumpur
+Reducer4 1 london
+Map6 4 hongkong paris tokyo london
+Reducer3 1 kualalumpur
+Map7 3 hongkong frankfurt tokyo
+Reducer2 1 singapore
+6
+Map1 Reducer2 11926
+Reducer4 Reducer5 4458
+Map6 Reducer2 82693
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 6: TPC-H query16
+9 34 162
+Reducer5 1 madrid
+Map1 3 tokyo berlin bangkok
+Reducer4 1 tokyo
+Reducer9 1 jakarta
+Map8 1 singapore
+Reducer3 1 kualalumpur
+Map6 2 london jakarta
+Reducer2 1 kualalumpur
+Map7 1 berlin
+8
+Map1 Reducer2 93868
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 26897
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 55471
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 5: TPC-H query15
+8 35 163
+Map1 5 dc jakarta berlin paris sydney
+Reducer4 1 tokyo
+Reducer7 1 tokyo
+Reducer6 1 dc
+Map8 1 london
+Map5 3 bangkok singapore frankfurt
+Reducer3 1 tokyo
+Reducer2 1 hongkong
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 16: TPC-H query7
+11 36 164
+Reducer5 1 london
+Reducer4 1 frankfurt
+Map1 1 kualalumpur
+Map10 1 madrid
+Reducer6 1 osaka
+Map11 1 dc
+Map8 7 dc jakarta paris hongkong london sydney singapore
+Map9 4 sydney jakarta taipei london
+Reducer3 3 paris hongkong berlin
+Reducer2 2 dc sydney
+Map7 5 taipei osaka hongkong tokyo paris
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 183688
+Map11 Reducer4 183688
+Map8 Reducer3 725377
+Map9 Reducer4 734755
+Reducer3 Reducer4 858695
+Reducer2 Reducer3 518681
+Map7 Reducer2 1266603
+# 10: TPC-H query21
+14 37 169
+Reducer5 6 taipei singapore bangkok madrid kualalumpur dc
+Map10 6 sydney london jakarta hongkong tokyo madrid
+Map1 1 jakarta
+Reducer4 2 bangkok madrid
+Reducer7 3 jakarta tokyo osaka
+Map2 1 sanjose
+Reducer6 5 paris sydney bangkok berlin singapore
+Reducer14 2 osaka frankfurt
+Map13 6 kualalumpur sydney taipei madrid bangkok osaka
+Reducer8 1 bangkok
+Reducer12 4 osaka bangkok kualalumpur hongkong
+Map11 3 frankfurt madrid osaka
+Map9 5 london jakarta paris tokyo hongkong
+Reducer3 1 taipei
+13
+Reducer5 Reducer6 145818
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 134866
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 67845
+# 11: TPC-H query22
+8 38 200
+Reducer5 1 sydney
+Map1 2 madrid dc
+Reducer4 1 sydney
+Reducer8 1 hongkong
+Map6 2 hongkong tokyo
+Reducer3 2 jakarta madrid
+Map7 1 tokyo
+Reducer2 4 singapore tokyo jakarta sanjose
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 3343
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 27313
+# 10: TPC-H query21
+14 39 200
+Reducer5 2 sanjose frankfurt
+Map10 3 taipei hongkong london
+Map1 1 london
+Reducer4 2 tokyo madrid
+Reducer7 3 hongkong dc kualalumpur
+Map2 1 singapore
+Reducer6 4 paris hongkong sydney madrid
+Reducer14 2 taipei osaka
+Map13 5 madrid jakarta singapore sydney paris
+Reducer8 1 sydney
+Reducer12 6 jakarta hongkong paris taipei london sydney
+Map11 5 tokyo sydney paris frankfurt bangkok
+Map9 6 taipei dc tokyo paris kualalumpur madrid
+Reducer3 1 frankfurt
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 97606
+Map1 Map2 533
+Reducer4 Reducer5 22388
+Reducer7 Reducer8 1817
+Map2 Reducer3 55120
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 688422
+Map11 Reducer12 1815325
+Map9 Reducer3 911699
+Reducer3 Reducer4 118728
+# 10: TPC-H query21
+14 40 200
+Reducer5 5 paris london singapore madrid hongkong
+Map10 2 tokyo dc
+Map1 1 kualalumpur
+Reducer4 2 hongkong sanjose
+Reducer7 2 taipei frankfurt
+Map2 1 frankfurt
+Reducer6 5 sydney kualalumpur paris singapore tokyo
+Reducer14 3 frankfurt sanjose dc
+Map13 5 sanjose sydney bangkok madrid dc
+Reducer8 1 kualalumpur
+Reducer12 7 sanjose jakarta frankfurt singapore tokyo berlin hongkong
+Map11 5 jakarta kualalumpur bangkok sydney sanjose
+Map9 3 berlin bangkok dc
+Reducer3 2 hongkong singapore
+13
+Reducer5 Reducer6 121515
+Map10 Reducer4 65070
+Map1 Map2 533
+Reducer4 Reducer5 19901
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 202299
+Map13 Reducer14 1158988
+Reducer12 Reducer5 713919
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 237457
+# 11: TPC-H query22
+8 41 200
+Reducer5 1 kualalumpur
+Map1 7 jakarta madrid berlin sydney taipei dc sanjose
+Reducer4 1 sanjose
+Reducer8 1 frankfurt
+Map6 3 tokyo dc kualalumpur
+Reducer3 2 jakarta frankfurt
+Map7 4 singapore kualalumpur berlin hongkong
+Reducer2 1 hongkong
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 954
+Map6 Reducer3 7021
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 9559
+# 7: TPC-H query17
+7 42 201
+Map1 1 sanjose
+Reducer4 1 frankfurt
+Reducer7 3 osaka paris madrid
+Map5 3 paris kualalumpur bangkok
+Map6 5 london osaka singapore tokyo kualalumpur
+Reducer3 6 osaka kualalumpur london taipei hongkong sydney
+Reducer2 9 hongkong berlin london osaka singapore frankfurt bangkok paris dc
+6
+Map1 Reducer2 120522
+Reducer7 Reducer3 150991
+Map5 Reducer2 1404175
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 365854
+# 1: TPC-H query11
+12 43 201
+Reducer10 1 kualalumpur
+Reducer4 1 berlin
+Map1 3 berlin singapore sanjose
+Reducer9 1 kualalumpur
+Reducer8 1 paris
+Map11 1 kualalumpur
+Map12 1 sanjose
+Map5 1 london
+Reducer3 1 dc
+Map6 1 taipei
+Reducer2 1 kualalumpur
+Map7 3 frankfurt sydney madrid
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 143056
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 42819
+Reducer3 Reducer4 5556
+Map6 Reducer2 42748
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 0: TPC-H query10
+8 44 201
+Reducer5 1 taipei
+Reducer4 1 singapore
+Map1 3 taipei hongkong madrid
+Map8 1 osaka
+Reducer3 4 london dc bangkok jakarta
+Map6 4 sydney osaka tokyo madrid
+Reducer2 1 singapore
+Map7 2 singapore sydney
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 18086
+Map8 Reducer3 162836
+Reducer3 Reducer4 671771
+Map6 Reducer2 45926
+Reducer2 Reducer3 171557
+Map7 Reducer3 696930
+# 11: TPC-H query22
+8 45 202
+Reducer5 1 berlin
+Map1 3 sydney frankfurt paris
+Reducer4 1 frankfurt
+Reducer8 1 singapore
+Map6 2 sydney berlin
+Reducer3 1 madrid
+Map7 2 sanjose madrid
+Reducer2 1 london
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 1193
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 11949
+# 13: TPC-H query4
+5 46 202
+Reducer4 1 bangkok
+Map1 2 sydney bangkok
+Map5 4 kualalumpur hongkong osaka berlin
+Reducer3 2 frankfurt dc
+Reducer2 3 hongkong bangkok jakarta
+4
+Map1 Reducer2 48923
+Map5 Reducer2 461712
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 15: TPC-H query6
+2 47 203
+Map1 2 bangkok osaka
+Reducer2 1 taipei
+1
+Map1 Reducer2 283398
+# 11: TPC-H query22
+8 48 203
+Reducer5 1 hongkong
+Map1 4 berlin madrid hongkong osaka
+Reducer4 1 bangkok
+Reducer8 1 osaka
+Map6 3 london sanjose berlin
+Reducer3 3 taipei jakarta sanjose
+Map7 2 kualalumpur osaka
+Reducer2 3 london jakarta dc
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 5015
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 20485
+# 13: TPC-H query4
+5 49 205
+Reducer4 1 tokyo
+Map1 2 berlin singapore
+Map5 2 sydney tokyo
+Reducer3 3 hongkong madrid london
+Reducer2 3 dc tokyo paris
+4
+Map1 Reducer2 73385
+Map5 Reducer2 346284
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 10: TPC-H query21
+14 50 207
+Reducer5 5 tokyo singapore paris osaka hongkong
+Map10 3 berlin madrid london
+Map1 1 dc
+Reducer4 1 hongkong
+Reducer7 2 bangkok paris
+Map2 1 osaka
+Reducer6 4 dc tokyo madrid singapore
+Reducer14 2 jakarta london
+Map13 7 tokyo hongkong sydney taipei berlin bangkok jakarta
+Reducer8 1 dc
+Reducer12 7 osaka sanjose taipei kualalumpur hongkong frankfurt tokyo
+Map11 5 tokyo london sanjose osaka frankfurt
+Map9 2 frankfurt sanjose
+Reducer3 2 hongkong london
+13
+Reducer5 Reducer6 138874
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 11194
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 154133
+Map13 Reducer14 1158988
+Reducer12 Reducer5 803159
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 189966
+# 1: TPC-H query11
+12 51 226
+Reducer10 1 frankfurt
+Reducer4 1 paris
+Map1 7 london kualalumpur berlin taipei singapore bangkok dc
+Reducer9 1 bangkok
+Reducer8 1 hongkong
+Map11 1 sanjose
+Map12 1 taipei
+Map5 1 london
+Reducer3 1 hongkong
+Map6 1 sydney
+Reducer2 1 hongkong
+Map7 5 taipei sanjose osaka dc tokyo
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 185443
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 23788
+Reducer3 Reducer4 5556
+Map6 Reducer2 23749
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 12: TPC-H query3
+7 52 237
+Reducer5 1 jakarta
+Map1 2 taipei frankfurt
+Reducer4 1 kualalumpur
+Map6 5 sydney kualalumpur madrid jakarta berlin
+Reducer3 2 tokyo kualalumpur
+Map7 5 hongkong frankfurt paris tokyo berlin
+Reducer2 1 london
+6
+Map1 Reducer2 17037
+Reducer4 Reducer5 4458
+Map6 Reducer2 73833
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 9: TPC-H query20
+12 53 239
+Reducer5 1 sanjose
+Map10 5 tokyo osaka dc jakarta frankfurt
+Map1 2 jakarta kualalumpur
+Reducer4 1 kualalumpur
+Reducer7 1 hongkong
+Reducer6 1 bangkok
+Reducer9 1 madrid
+Map11 1 madrid
+Map12 1 madrid
+Map8 4 kualalumpur frankfurt bangkok london
+Reducer3 1 osaka
+Reducer2 1 london
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 54787
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 7411
+# 4: TPC-H query14
+4 54 247
+Map1 6 singapore osaka paris hongkong london sanjose
+Map4 2 osaka taipei
+Reducer3 1 taipei
+Reducer2 2 frankfurt berlin
+3
+Map1 Reducer2 514714
+Map4 Reducer2 9397
+Reducer2 Reducer3 33825
+# 2: TPC-H query12
+5 55 251
+Reducer4 1 london
+Map1 3 singapore kualalumpur tokyo
+Map5 5 dc hongkong london sydney berlin
+Reducer3 1 sydney
+Reducer2 2 taipei sanjose
+4
+Map1 Reducer2 137231
+Map5 Reducer2 638435
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 13: TPC-H query4
+5 56 256
+Reducer4 1 berlin
+Map1 6 sydney jakarta paris berlin madrid tokyo
+Map5 2 osaka sydney
+Reducer3 4 bangkok singapore london berlin
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 110078
+Map5 Reducer2 173142
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 9: TPC-H query20
+12 57 276
+Reducer5 1 bangkok
+Map10 2 dc hongkong
+Map1 2 london kualalumpur
+Reducer4 1 hongkong
+Reducer7 1 bangkok
+Reducer6 1 kualalumpur
+Reducer9 1 berlin
+Map11 1 tokyo
+Map12 1 bangkok
+Map8 6 madrid berlin tokyo frankfurt sanjose singapore
+Reducer3 1 sydney
+Reducer2 1 london
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 43830
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 14823
+# 13: TPC-H query4
+5 58 287
+Reducer4 1 bangkok
+Map1 5 hongkong singapore tokyo sanjose paris
+Map5 5 sanjose dc sydney osaka frankfurt
+Reducer3 2 jakarta taipei
+Reducer2 3 madrid paris sydney
+4
+Map1 Reducer2 73385
+Map5 Reducer2 346284
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 12: TPC-H query3
+7 59 299
+Reducer5 1 frankfurt
+Map1 4 kualalumpur hongkong jakarta dc
+Reducer4 1 paris
+Map6 5 london taipei madrid bangkok berlin
+Reducer3 3 hongkong bangkok sydney
+Map7 2 taipei paris
+Reducer2 1 dc
+6
+Map1 Reducer2 26502
+Reducer4 Reducer5 4458
+Map6 Reducer2 57426
+Reducer3 Reducer4 290950
+Map7 Reducer3 643920
+Reducer2 Reducer3 114084
+# 2: TPC-H query12
+5 60 343
+Reducer4 1 bangkok
+Map1 6 tokyo osaka sanjose bangkok berlin dc
+Map5 3 jakarta bangkok frankfurt
+Reducer3 1 dc
+Reducer2 1 singapore
+4
+Map1 Reducer2 243967
+Map5 Reducer2 340499
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 6: TPC-H query16
+9 61 344
+Reducer5 1 bangkok
+Map1 5 paris singapore tokyo bangkok kualalumpur
+Reducer4 1 madrid
+Reducer9 1 paris
+Map8 1 bangkok
+Reducer3 1 taipei
+Map6 2 bangkok osaka
+Reducer2 1 hongkong
+Map7 1 sanjose
+8
+Map1 Reducer2 117335
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 20172
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 41603
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 11: TPC-H query22
+8 62 344
+Reducer5 1 taipei
+Map1 4 london kualalumpur berlin bangkok
+Reducer4 1 dc
+Reducer8 1 jakarta
+Map6 1 madrid
+Reducer3 2 london singapore
+Map7 3 paris kualalumpur sanjose
+Reducer2 3 taipei jakarta sanjose
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 954
+Map6 Reducer3 2340
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 28679
+# 4: TPC-H query14
+4 63 345
+Map1 5 madrid jakarta kualalumpur berlin paris
+Map4 2 dc hongkong
+Reducer3 1 jakarta
+Reducer2 2 kualalumpur osaka
+3
+Map1 Reducer2 490204
+Map4 Reducer2 10739
+Reducer2 Reducer3 33825
+# 10: TPC-H query21
+14 64 345
+Reducer5 2 bangkok paris
+Map10 5 jakarta berlin frankfurt tokyo madrid
+Map1 1 bangkok
+Reducer4 2 sydney singapore
+Reducer7 2 singapore tokyo
+Map2 1 sanjose
+Reducer6 5 bangkok osaka berlin sanjose london
+Reducer14 3 paris hongkong taipei
+Map13 5 tokyo dc hongkong singapore frankfurt
+Reducer8 1 paris
+Reducer12 9 tokyo frankfurt bangkok sanjose taipei jakarta sydney singapore london
+Map11 5 tokyo hongkong london frankfurt madrid
+Map9 3 kualalumpur dc singapore
+Reducer3 1 tokyo
+13
+Reducer5 Reducer6 77769
+Map10 Reducer4 108451
+Map1 Map2 533
+Reducer4 Reducer5 16282
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 323679
+Map13 Reducer14 1158988
+Reducer12 Reducer5 751005
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 79152
+# 6: TPC-H query16
+9 65 345
+Reducer5 1 madrid
+Map1 7 tokyo osaka taipei hongkong dc madrid jakarta
+Reducer4 1 dc
+Reducer9 1 london
+Map8 1 london
+Reducer3 1 sanjose
+Map6 3 dc sanjose bangkok
+Reducer2 1 osaka
+Map7 1 singapore
+8
+Map1 Reducer2 119469
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 14671
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 45385
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 11: TPC-H query22
+8 66 347
+Reducer5 1 singapore
+Map1 5 sanjose jakarta paris singapore tokyo
+Reducer4 1 frankfurt
+Reducer8 1 sanjose
+Map6 3 sanjose taipei hongkong
+Reducer3 1 singapore
+Map7 4 bangkok hongkong kualalumpur singapore
+Reducer2 4 frankfurt madrid paris jakarta
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 596
+Map6 Reducer3 4388
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 5: TPC-H query15
+8 67 348
+Map1 7 dc frankfurt tokyo taipei london bangkok jakarta
+Reducer4 1 sydney
+Reducer7 1 bangkok
+Reducer6 2 madrid paris
+Map8 1 sanjose
+Map5 7 london bangkok sydney paris kualalumpur tokyo berlin
+Reducer3 1 london
+Reducer2 1 sydney
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 14: TPC-H query5
+11 68 351
+Reducer5 1 frankfurt
+Map1 4 bangkok sydney taipei singapore
+Reducer4 4 london paris madrid osaka
+Map10 1 hongkong
+Reducer6 1 taipei
+Map11 1 hongkong
+Map8 3 frankfurt osaka sanjose
+Map9 1 singapore
+Reducer3 4 frankfurt tokyo bangkok london
+Reducer2 1 dc
+Map7 2 frankfurt london
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 13633
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 740093
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 54574
+Map7 Reducer2 17696
+# 2: TPC-H query12
+5 69 352
+Reducer4 1 sanjose
+Map1 5 sydney taipei berlin osaka dc
+Map5 6 madrid sanjose dc london sydney paris
+Reducer3 1 sanjose
+Reducer2 1 frankfurt
+4
+Map1 Reducer2 166341
+Map5 Reducer2 557180
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 16: TPC-H query7
+11 70 353
+Reducer5 1 bangkok
+Reducer4 1 singapore
+Map1 1 sydney
+Map10 1 bangkok
+Reducer6 1 paris
+Map11 1 bangkok
+Map8 3 dc madrid sanjose
+Map9 3 hongkong singapore berlin
+Reducer3 3 frankfurt sydney osaka
+Reducer2 3 berlin hongkong sydney
+Map7 3 singapore berlin kualalumpur
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 466314
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 1167032
+Map7 Reducer2 1139943
+# 8: TPC-H query1
+3 71 356
+Map1 4 london taipei osaka dc
+Reducer3 1 taipei
+Reducer2 4 osaka paris sydney london
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 14: TPC-H query5
+11 72 359
+Reducer5 1 london
+Map1 3 tokyo sydney singapore
+Reducer4 4 sanjose dc sydney tokyo
+Map10 1 singapore
+Reducer6 1 madrid
+Map11 1 singapore
+Map8 5 kualalumpur tokyo osaka singapore hongkong
+Map9 1 paris
+Reducer3 2 jakarta hongkong
+Reducer2 1 frankfurt
+Map7 5 kualalumpur madrid taipei jakarta paris
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 7668
+Reducer4 Reducer5 220520
+Map10 Reducer4 44109
+Map11 Reducer4 44105
+Map8 Reducer3 822325
+Map9 Reducer4 44138
+Reducer3 Reducer4 170517
+Reducer2 Reducer3 36383
+Map7 Reducer2 33180
+# 10: TPC-H query21
+14 73 362
+Reducer5 5 bangkok jakarta dc singapore frankfurt
+Map10 3 singapore osaka taipei
+Map1 1 sanjose
+Reducer4 2 paris taipei
+Reducer7 3 madrid sanjose sydney
+Map2 1 jakarta
+Reducer6 5 dc osaka taipei berlin sanjose
+Reducer14 3 sanjose tokyo frankfurt
+Map13 4 hongkong osaka jakarta sydney
+Reducer8 1 hongkong
+Reducer12 7 paris berlin singapore sydney tokyo madrid kualalumpur
+Map11 5 frankfurt kualalumpur bangkok hongkong tokyo
+Map9 3 sanjose hongkong frankfurt
+Reducer3 1 frankfurt
+13
+Reducer5 Reducer6 121515
+Map10 Reducer4 97606
+Map1 Map2 533
+Reducer4 Reducer5 19901
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 202299
+Map13 Reducer14 1158988
+Reducer12 Reducer5 713919
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 118728
+# 7: TPC-H query17
+7 74 367
+Map1 1 sydney
+Reducer4 1 frankfurt
+Reducer7 6 singapore tokyo frankfurt dc jakarta london
+Map5 2 taipei frankfurt
+Map6 7 london madrid singapore bangkok sanjose hongkong taipei
+Reducer3 6 london hongkong paris frankfurt singapore bangkok
+Reducer2 6 london hongkong sanjose madrid tokyo berlin
+6
+Map1 Reducer2 160696
+Reducer7 Reducer3 301983
+Map5 Reducer2 1248156
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 243903
+# 9: TPC-H query20
+12 75 379
+Reducer5 1 osaka
+Map10 4 taipei berlin sanjose kualalumpur
+Map1 3 singapore taipei hongkong
+Reducer4 1 frankfurt
+Reducer7 1 kualalumpur
+Reducer6 1 berlin
+Reducer9 1 taipei
+Map11 1 jakarta
+Map12 1 singapore
+Map8 3 hongkong kualalumpur madrid
+Reducer3 1 hongkong
+Reducer2 1 taipei
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 52596
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 8894
+# 3: TPC-H query13
+6 76 379
+Reducer5 1 singapore
+Reducer4 1 hongkong
+Map1 2 tokyo dc
+Reducer3 1 paris
+Map6 3 tokyo madrid paris
+Reducer2 2 jakarta taipei
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 159978
+Reducer3 Reducer4 9272
+Map6 Reducer2 303098
+Reducer2 Reducer3 404550
+# 10: TPC-H query21
+14 77 383
+Reducer5 5 bangkok london sanjose osaka berlin
+Map10 7 jakarta singapore kualalumpur osaka madrid sydney berlin
+Map1 1 kualalumpur
+Reducer4 1 madrid
+Reducer7 3 dc london madrid
+Map2 1 berlin
+Reducer6 2 singapore taipei
+Reducer14 1 osaka
+Map13 7 bangkok berlin tokyo taipei hongkong dc kualalumpur
+Reducer8 1 london
+Reducer12 2 singapore sydney
+Map11 4 osaka paris frankfurt berlin
+Map9 5 singapore paris frankfurt dc jakarta
+Reducer3 1 tokyo
+13
+Reducer5 Reducer6 162020
+Map10 Reducer4 113873
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 89910
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 59364
+# 0: TPC-H query10
+8 78 384
+Reducer5 1 london
+Reducer4 1 tokyo
+Map1 1 madrid
+Map8 1 london
+Reducer3 5 madrid taipei hongkong paris jakarta
+Map6 3 singapore bangkok hongkong
+Reducer2 1 madrid
+Map7 5 sanjose dc sydney berlin kualalumpur
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 10550
+Map8 Reducer3 93049
+Reducer3 Reducer4 671771
+Map6 Reducer2 60279
+Reducer2 Reducer3 98032
+Map7 Reducer3 995615
+# 8: TPC-H query1
+3 79 385
+Map1 4 paris tokyo berlin jakarta
+Reducer3 1 berlin
+Reducer2 6 dc sydney kualalumpur osaka hongkong paris
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 15: TPC-H query6
+2 80 395
+Map1 2 hongkong jakarta
+Reducer2 1 berlin
+1
+Map1 Reducer2 283398
+# 10: TPC-H query21
+14 81 398
+Reducer5 3 osaka tokyo hongkong
+Map10 5 singapore sanjose jakarta taipei paris
+Map1 1 osaka
+Reducer4 2 berlin sydney
+Reducer7 4 tokyo hongkong frankfurt dc
+Map2 1 frankfurt
+Reducer6 4 hongkong tokyo sydney madrid
+Reducer14 2 taipei osaka
+Map13 7 frankfurt sydney hongkong paris kualalumpur madrid bangkok
+Reducer8 1 sydney
+Reducer12 6 hongkong singapore kualalumpur dc sanjose osaka
+Map11 4 osaka paris singapore jakarta
+Map9 4 berlin tokyo osaka sanjose
+Reducer3 2 hongkong sydney
+13
+Reducer5 Reducer6 116654
+Map10 Reducer4 92958
+Map1 Map2 533
+Reducer4 Reducer5 22388
+Reducer7 Reducer8 1817
+Map2 Reducer3 77168
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 215786
+Map13 Reducer14 1158988
+Reducer12 Reducer5 688422
+Map11 Reducer12 1815325
+Map9 Reducer3 850919
+Reducer3 Reducer4 135690
+# 5: TPC-H query15
+8 82 399
+Map1 2 jakarta bangkok
+Reducer4 1 singapore
+Reducer7 1 hongkong
+Reducer6 1 dc
+Map8 1 taipei
+Map5 7 bangkok singapore madrid berlin sanjose sydney hongkong
+Reducer3 1 kualalumpur
+Reducer2 1 sydney
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 2: TPC-H query12
+5 83 401
+Reducer4 1 hongkong
+Map1 3 dc bangkok singapore
+Map5 6 taipei london dc berlin frankfurt osaka
+Reducer3 1 sydney
+Reducer2 1 osaka
+4
+Map1 Reducer2 121983
+Map5 Reducer2 680998
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 10: TPC-H query21
+14 84 401
+Reducer5 2 london sydney
+Map10 3 sydney kualalumpur dc
+Map1 1 singapore
+Reducer4 1 dc
+Reducer7 1 berlin
+Map2 1 frankfurt
+Reducer6 5 sanjose kualalumpur bangkok berlin dc
+Reducer14 3 berlin jakarta madrid
+Map13 6 tokyo singapore paris jakarta sydney madrid
+Reducer8 1 jakarta
+Reducer12 3 osaka jakarta sanjose
+Map11 4 madrid sydney berlin london
+Map9 2 berlin sanjose
+Reducer3 2 berlin singapore
+13
+Reducer5 Reducer6 77769
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 22388
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 323679
+Map13 Reducer14 1158988
+Reducer12 Reducer5 688422
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 189966
+# 11: TPC-H query22
+8 85 401
+Reducer5 1 kualalumpur
+Map1 3 berlin tokyo frankfurt
+Reducer4 1 paris
+Reducer8 1 london
+Map6 3 kualalumpur singapore dc
+Reducer3 1 tokyo
+Map7 3 jakarta sanjose hongkong
+Reducer2 3 singapore osaka paris
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 5015
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 20485
+# 4: TPC-H query14
+4 86 401
+Map1 5 sanjose madrid singapore london berlin
+Map4 3 taipei bangkok jakarta
+Reducer3 1 kualalumpur
+Reducer2 1 tokyo
+3
+Map1 Reducer2 428928
+Map4 Reducer2 14096
+Reducer2 Reducer3 33825
+# 14: TPC-H query5
+11 87 404
+Reducer5 1 singapore
+Map1 3 tokyo dc bangkok
+Reducer4 4 hongkong berlin jakarta singapore
+Map10 1 berlin
+Reducer6 1 kualalumpur
+Map11 1 sydney
+Map8 3 singapore london taipei
+Map9 1 london
+Reducer3 1 london
+Reducer2 1 kualalumpur
+Map7 6 hongkong taipei tokyo madrid osaka kualalumpur
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 6816
+Reducer4 Reducer5 220520
+Map10 Reducer4 55136
+Map11 Reducer4 55132
+Map8 Reducer3 740093
+Map9 Reducer4 55172
+Reducer3 Reducer4 106573
+Reducer2 Reducer3 54574
+Map7 Reducer2 35392
+# 12: TPC-H query3
+7 88 404
+Reducer5 1 jakarta
+Map1 1 kualalumpur
+Reducer4 1 madrid
+Map6 2 dc london
+Reducer3 2 osaka dc
+Map7 5 london sanjose hongkong taipei kualalumpur
+Reducer2 1 paris
+6
+Map1 Reducer2 19877
+Reducer4 Reducer5 4458
+Map6 Reducer2 68911
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 16: TPC-H query7
+11 89 409
+Reducer5 1 taipei
+Reducer4 1 taipei
+Map1 1 bangkok
+Map10 1 berlin
+Reducer6 1 paris
+Map11 1 taipei
+Map8 5 jakarta tokyo hongkong paris sanjose
+Map9 4 berlin sydney jakarta kualalumpur
+Reducer3 3 kualalumpur hongkong sanjose
+Reducer2 2 frankfurt bangkok
+Map7 5 frankfurt kualalumpur paris london berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 183688
+Map11 Reducer4 183688
+Map8 Reducer3 666162
+Map9 Reducer4 734755
+Reducer3 Reducer4 858695
+Reducer2 Reducer3 666875
+Map7 Reducer2 1266603
+# 16: TPC-H query7
+11 90 410
+Reducer5 1 frankfurt
+Reducer4 1 kualalumpur
+Map1 1 bangkok
+Map10 1 paris
+Reducer6 1 bangkok
+Map11 1 osaka
+Map8 2 sanjose sydney
+Map9 3 dc jakarta kualalumpur
+Reducer3 3 osaka madrid paris
+Reducer2 3 dc sanjose frankfurt
+Map7 2 madrid dc
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 470392
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 373051
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 1400439
+Map7 Reducer2 1013283
+# 15: TPC-H query6
+2 91 414
+Map1 4 osaka sydney jakarta bangkok
+Reducer2 1 madrid
+1
+Map1 Reducer2 283398
+# 12: TPC-H query3
+7 92 416
+Reducer5 1 sydney
+Map1 3 frankfurt singapore kualalumpur
+Reducer4 1 taipei
+Map6 2 jakarta taipei
+Reducer3 1 kualalumpur
+Map7 5 sanjose taipei london paris bangkok
+Reducer2 1 singapore
+6
+Map1 Reducer2 35778
+Reducer4 Reducer5 4458
+Map6 Reducer2 41346
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 4: TPC-H query14
+4 93 437
+Map1 3 sanjose jakarta taipei
+Map4 1 bangkok
+Reducer3 1 dc
+Reducer2 1 osaka
+3
+Map1 Reducer2 514714
+Map4 Reducer2 9397
+Reducer2 Reducer3 33825
+# 2: TPC-H query12
+5 94 446
+Reducer4 1 hongkong
+Map1 3 taipei sydney kualalumpur
+Map5 4 hongkong sanjose bangkok berlin
+Reducer3 1 sydney
+Reducer2 2 hongkong bangkok
+4
+Map1 Reducer2 156836
+Map5 Reducer2 583712
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 6: TPC-H query16
+9 95 463
+Reducer5 1 kualalumpur
+Map1 4 bangkok hongkong berlin london
+Reducer4 1 osaka
+Reducer9 1 osaka
+Map8 1 singapore
+Reducer3 1 paris
+Map6 2 berlin taipei
+Reducer2 1 madrid
+Map7 1 berlin
+8
+Map1 Reducer2 107278
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 23054
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 47546
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 13: TPC-H query4
+5 96 465
+Reducer4 1 taipei
+Map1 3 paris bangkok sanjose
+Map5 6 madrid hongkong frankfurt taipei tokyo singapore
+Reducer3 3 paris sanjose frankfurt
+Reducer2 3 madrid tokyo paris
+4
+Map1 Reducer2 48923
+Map5 Reducer2 461712
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 12: TPC-H query3
+7 97 466
+Reducer5 1 sydney
+Map1 3 berlin kualalumpur paris
+Reducer4 1 sydney
+Map6 4 tokyo london sanjose osaka
+Reducer3 2 kualalumpur frankfurt
+Map7 5 frankfurt tokyo berlin sydney london
+Reducer2 1 osaka
+6
+Map1 Reducer2 25556
+Reducer4 Reducer5 4458
+Map6 Reducer2 59066
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 9: TPC-H query20
+12 98 468
+Reducer5 1 tokyo
+Map10 2 dc sanjose
+Map1 3 singapore sydney taipei
+Reducer4 1 tokyo
+Reducer7 1 singapore
+Reducer6 1 singapore
+Reducer9 1 frankfurt
+Map11 1 kualalumpur
+Map12 1 osaka
+Map8 4 singapore jakarta berlin madrid
+Reducer3 1 kualalumpur
+Reducer2 1 kualalumpur
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 43830
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 14823
+# 10: TPC-H query21
+14 99 471
+Reducer5 3 sydney frankfurt dc
+Map10 4 kualalumpur singapore hongkong london
+Map1 1 kualalumpur
+Reducer4 2 paris kualalumpur
+Reducer7 2 bangkok berlin
+Map2 1 sanjose
+Reducer6 2 dc hongkong
+Reducer14 3 dc paris osaka
+Map13 6 dc london osaka singapore hongkong kualalumpur
+Reducer8 1 paris
+Reducer12 5 singapore dc berlin tokyo sydney
+Map11 5 singapore sydney kualalumpur jakarta dc
+Map9 2 london berlin
+Reducer3 2 berlin frankfurt
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 86760
+Map1 Map2 533
+Reducer4 Reducer5 25587
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 655640
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 158305
+# 4: TPC-H query14
+4 100 479
+Map1 5 frankfurt jakarta dc madrid taipei
+Map4 2 hongkong taipei
+Reducer3 1 jakarta
+Reducer2 1 london
+3
+Map1 Reducer2 490204
+Map4 Reducer2 10739
+Reducer2 Reducer3 33825
+# 8: TPC-H query1
+3 101 493
+Map1 3 paris berlin london
+Reducer3 1 singapore
+Reducer2 2 paris hongkong
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 5: TPC-H query15
+8 102 505
+Map1 2 frankfurt taipei
+Reducer4 1 osaka
+Reducer7 1 frankfurt
+Reducer6 2 hongkong tokyo
+Map8 1 paris
+Map5 3 jakarta singapore dc
+Reducer3 1 osaka
+Reducer2 1 bangkok
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 0: TPC-H query10
+8 103 506
+Reducer5 1 paris
+Reducer4 1 tokyo
+Map1 2 dc tokyo
+Map8 1 kualalumpur
+Reducer3 4 madrid sanjose frankfurt paris
+Map6 7 tokyo madrid paris sydney frankfurt hongkong dc
+Reducer2 1 bangkok
+Map7 7 jakarta frankfurt london hongkong sanjose kualalumpur madrid
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 9378
+Map8 Reducer3 72371
+Reducer3 Reducer4 671771
+Map6 Reducer2 62511
+Reducer2 Reducer3 76247
+Map7 Reducer3 1084114
+# 7: TPC-H query17
+7 104 507
+Map1 2 sydney jakarta
+Reducer4 1 dc
+Reducer7 7 jakarta taipei berlin bangkok singapore london frankfurt
+Map5 3 kualalumpur frankfurt dc
+Map6 4 london jakarta osaka bangkok
+Reducer3 5 jakarta sydney taipei hongkong dc
+Reducer2 3 tokyo sydney sanjose
+6
+Map1 Reducer2 192835
+Reducer7 Reducer3 422776
+Map5 Reducer2 1123340
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 146341
+# 2: TPC-H query12
+5 105 515
+Reducer4 1 berlin
+Map1 3 london bangkok frankfurt
+Map5 5 singapore london berlin taipei kualalumpur
+Reducer3 1 jakarta
+Reducer2 1 jakarta
+4
+Map1 Reducer2 137231
+Map5 Reducer2 638435
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 8: TPC-H query1
+3 106 517
+Map1 5 bangkok osaka paris hongkong sanjose
+Reducer3 1 sydney
+Reducer2 4 dc bangkok singapore jakarta
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 12: TPC-H query3
+7 107 520
+Reducer5 1 tokyo
+Map1 4 berlin sanjose singapore frankfurt
+Reducer4 1 tokyo
+Map6 4 taipei bangkok london osaka
+Reducer3 1 kualalumpur
+Map7 3 dc tokyo hongkong
+Reducer2 1 hongkong
+6
+Map1 Reducer2 29815
+Reducer4 Reducer5 4458
+Map6 Reducer2 51683
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 3: TPC-H query13
+6 108 525
+Reducer5 1 paris
+Reducer4 1 berlin
+Map1 2 london dc
+Reducer3 1 sanjose
+Map6 4 taipei singapore kualalumpur sydney
+Reducer2 1 london
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 133315
+Reducer3 Reducer4 9272
+Map6 Reducer2 336775
+Reducer2 Reducer3 404550
+# 1: TPC-H query11
+12 109 533
+Reducer10 1 dc
+Reducer4 1 bangkok
+Map1 5 tokyo paris taipei hongkong singapore
+Reducer9 1 london
+Reducer8 1 berlin
+Map11 1 hongkong
+Map12 1 dc
+Map5 1 madrid
+Reducer3 1 frankfurt
+Map6 1 kualalumpur
+Reducer2 1 sydney
+Map7 5 kualalumpur osaka london madrid dc
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 10: TPC-H query21
+14 110 540
+Reducer5 3 sydney london dc
+Map10 2 bangkok sydney
+Map1 1 singapore
+Reducer4 2 jakarta frankfurt
+Reducer7 2 jakarta london
+Map2 1 tokyo
+Reducer6 2 madrid singapore
+Reducer14 3 paris sanjose london
+Map13 5 paris london jakarta frankfurt sydney
+Reducer8 1 kualalumpur
+Reducer12 5 paris tokyo hongkong osaka bangkok
+Map11 5 sanjose paris kualalumpur hongkong sydney
+Map9 2 sydney bangkok
+Reducer3 2 kualalumpur paris
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 65070
+Map1 Map2 533
+Reducer4 Reducer5 25587
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 655640
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 237457
+# 6: TPC-H query16
+9 111 558
+Reducer5 1 bangkok
+Map1 7 london sanjose osaka taipei madrid singapore tokyo
+Reducer4 1 taipei
+Reducer9 1 berlin
+Map8 1 singapore
+Reducer3 1 paris
+Map6 3 paris singapore hongkong
+Reducer2 2 bangkok kualalumpur
+Map7 1 frankfurt
+8
+Map1 Reducer2 119469
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 14671
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 45385
+Reducer2 Reducer3 136228
+Map7 Reducer3 14376
+# 16: TPC-H query7
+11 112 572
+Reducer5 1 bangkok
+Reducer4 1 madrid
+Map1 1 tokyo
+Map10 1 kualalumpur
+Reducer6 1 kualalumpur
+Map11 1 hongkong
+Map8 3 berlin sydney london
+Map9 2 sanjose tokyo
+Reducer3 3 hongkong madrid tokyo
+Reducer2 1 taipei
+Map7 2 singapore berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 470392
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 699471
+Map9 Reducer4 472342
+Reducer3 Reducer4 1104037
+Reducer2 Reducer3 583516
+Map7 Reducer2 1013283
+# 12: TPC-H query3
+7 113 621
+Reducer5 1 taipei
+Map1 4 jakarta paris osaka sanjose
+Reducer4 1 frankfurt
+Map6 6 frankfurt london dc jakarta singapore bangkok
+Reducer3 3 jakarta sydney dc
+Map7 7 kualalumpur taipei singapore tokyo madrid paris sydney
+Reducer2 1 sydney
+6
+Map1 Reducer2 23852
+Reducer4 Reducer5 4458
+Map6 Reducer2 62020
+Reducer3 Reducer4 290950
+Map7 Reducer3 845145
+Reducer2 Reducer3 42781
+# 0: TPC-H query10
+8 114 624
+Reducer5 1 singapore
+Reducer4 1 jakarta
+Map1 4 berlin hongkong kualalumpur bangkok
+Map8 1 madrid
+Reducer3 4 jakarta kualalumpur madrid dc
+Map6 2 taipei bangkok
+Reducer2 1 taipei
+Map7 5 madrid frankfurt bangkok hongkong taipei
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 28134
+Map8 Reducer3 93049
+Reducer3 Reducer4 671771
+Map6 Reducer2 26790
+Reducer2 Reducer3 98032
+Map7 Reducer3 995615
+# 2: TPC-H query12
+5 115 624
+Reducer4 1 taipei
+Map1 4 bangkok madrid dc berlin
+Map5 5 sydney taipei singapore dc berlin
+Reducer3 1 taipei
+Reducer2 2 taipei frankfurt
+4
+Map1 Reducer2 162645
+Map5 Reducer2 567498
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 10: TPC-H query21
+14 116 624
+Reducer5 3 frankfurt sanjose taipei
+Map10 4 tokyo madrid bangkok kualalumpur
+Map1 1 singapore
+Reducer4 1 london
+Reducer7 1 taipei
+Map2 1 berlin
+Reducer6 4 berlin dc kualalumpur frankfurt
+Reducer14 3 taipei jakarta berlin
+Map13 2 madrid paris
+Reducer8 1 dc
+Reducer12 2 sanjose madrid
+Map11 3 kualalumpur london hongkong
+Map9 5 paris jakarta sanjose sydney osaka
+Reducer3 1 berlin
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 104113
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 94983
+# 5: TPC-H query15
+8 117 624
+Map1 4 taipei sanjose berlin madrid
+Reducer4 1 kualalumpur
+Reducer7 1 dc
+Reducer6 1 berlin
+Map8 1 tokyo
+Map5 3 tokyo osaka bangkok
+Reducer3 1 paris
+Reducer2 1 dc
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 5: TPC-H query15
+8 118 625
+Map1 3 dc bangkok singapore
+Reducer4 1 dc
+Reducer7 1 sanjose
+Reducer6 2 tokyo sanjose
+Map8 1 berlin
+Map5 5 paris tokyo berlin london kualalumpur
+Reducer3 1 paris
+Reducer2 1 singapore
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 3: TPC-H query13
+6 119 625
+Reducer5 1 singapore
+Reducer4 1 hongkong
+Map1 3 hongkong jakarta tokyo
+Reducer3 1 taipei
+Map6 7 kualalumpur tokyo singapore osaka dc taipei jakarta
+Reducer2 2 madrid singapore
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 119984
+Reducer3 Reducer4 9272
+Map6 Reducer2 353614
+Reducer2 Reducer3 404550
+# 11: TPC-H query22
+8 120 625
+Reducer5 1 hongkong
+Map1 5 berlin sydney bangkok hongkong frankfurt
+Reducer4 1 jakarta
+Reducer8 1 sydney
+Map6 3 hongkong taipei osaka
+Reducer3 2 bangkok sanjose
+Map7 3 sanjose dc sydney
+Reducer2 3 jakarta hongkong dc
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 5015
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 20485
+# 7: TPC-H query17
+7 121 627
+Map1 2 tokyo berlin
+Reducer4 1 sydney
+Reducer7 7 tokyo sanjose bangkok dc berlin taipei jakarta
+Map5 7 kualalumpur tokyo madrid taipei osaka singapore paris
+Map6 5 bangkok dc madrid jakarta berlin
+Reducer3 6 hongkong taipei sydney osaka kualalumpur bangkok
+Reducer2 2 taipei berlin
+6
+Map1 Reducer2 107130
+Reducer7 Reducer3 469752
+Map5 Reducer2 1456182
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 108401
+# 4: TPC-H query14
+4 122 633
+Map1 5 kualalumpur dc singapore london frankfurt
+Map4 3 osaka bangkok jakarta
+Reducer3 1 hongkong
+Reducer2 2 dc bangkok
+3
+Map1 Reducer2 428928
+Map4 Reducer2 14096
+Reducer2 Reducer3 33825
+# 10: TPC-H query21
+14 123 644
+Reducer5 6 frankfurt paris hongkong tokyo singapore taipei
+Map10 5 dc berlin kualalumpur bangkok osaka
+Map1 1 singapore
+Reducer4 2 singapore paris
+Reducer7 2 frankfurt tokyo
+Map2 1 osaka
+Reducer6 5 paris madrid kualalumpur osaka taipei
+Reducer14 1 dc
+Map13 4 taipei sydney bangkok paris
+Reducer8 1 hongkong
+Reducer12 4 hongkong paris bangkok london
+Map11 2 tokyo kualalumpur
+Map9 6 jakarta bangkok london osaka hongkong dc
+Reducer3 2 dc berlin
+13
+Reducer5 Reducer6 166649
+Map10 Reducer4 92958
+Map1 Map2 533
+Reducer4 Reducer5 29851
+Reducer7 Reducer8 1817
+Map2 Reducer3 55120
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 77066
+Map13 Reducer14 1158988
+Reducer12 Reducer5 611930
+Map11 Reducer12 1815325
+Map9 Reducer3 911699
+Reducer3 Reducer4 135690
+# 10: TPC-H query21
+14 124 644
+Reducer5 6 hongkong frankfurt berlin paris singapore sydney
+Map10 3 jakarta london madrid
+Map1 1 sydney
+Reducer4 2 kualalumpur frankfurt
+Reducer7 4 taipei madrid paris osaka
+Map2 1 madrid
+Reducer6 4 london dc paris jakarta
+Reducer14 3 taipei madrid paris
+Map13 5 dc singapore paris kualalumpur tokyo
+Reducer8 1 frankfurt
+Reducer12 6 taipei hongkong singapore jakarta madrid tokyo
+Map11 5 jakarta paris berlin dc madrid
+Map9 2 sydney madrid
+Reducer3 2 hongkong tokyo
+13
+Reducer5 Reducer6 129616
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 22388
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 179821
+Map13 Reducer14 1158988
+Reducer12 Reducer5 688422
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 189966
+# 16: TPC-H query7
+11 125 644
+Reducer5 1 singapore
+Reducer4 1 sanjose
+Map1 1 bangkok
+Map10 1 madrid
+Reducer6 1 sanjose
+Map11 1 singapore
+Map8 6 dc singapore london frankfurt kualalumpur sanjose
+Map9 2 hongkong taipei
+Reducer3 1 kualalumpur
+Reducer2 1 paris
+Map7 2 paris berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 470392
+Map10 Reducer4 330639
+Map11 Reducer4 330639
+Map8 Reducer3 799395
+Map9 Reducer4 661279
+Reducer3 Reducer4 515217
+Reducer2 Reducer3 333437
+Map7 Reducer2 1013283
+# 12: TPC-H query3
+7 126 645
+Reducer5 1 hongkong
+Map1 3 dc berlin tokyo
+Reducer4 1 tokyo
+Map6 2 tokyo london
+Reducer3 2 tokyo jakarta
+Map7 5 dc hongkong frankfurt berlin tokyo
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 35778
+Reducer4 Reducer5 4458
+Map6 Reducer2 41346
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 1: TPC-H query11
+12 127 645
+Reducer10 1 osaka
+Reducer4 1 taipei
+Map1 2 singapore tokyo
+Reducer9 1 sydney
+Reducer8 1 dc
+Map11 1 paris
+Map12 1 bangkok
+Map5 1 kualalumpur
+Reducer3 1 dc
+Map6 1 kualalumpur
+Reducer2 1 sanjose
+Map7 6 tokyo frankfurt madrid kualalumpur hongkong osaka
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 119213
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 6711
+Map12 Reducer8 6667
+Map5 Reducer2 53524
+Reducer3 Reducer4 5556
+Map6 Reducer2 53436
+Reducer2 Reducer3 109618
+Map7 Reducer8 58516
+# 16: TPC-H query7
+11 128 645
+Reducer5 1 paris
+Reducer4 2 bangkok sydney
+Map1 1 jakarta
+Map10 1 london
+Reducer6 1 london
+Map11 1 dc
+Map8 5 madrid dc tokyo berlin jakarta
+Map9 2 taipei berlin
+Reducer3 3 bangkok hongkong sydney
+Reducer2 1 sanjose
+Map7 5 jakarta frankfurt london sanjose hongkong
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 777190
+Map9 Reducer4 472342
+Reducer3 Reducer4 1104037
+Reducer2 Reducer3 389010
+Map7 Reducer2 1266603
+# 16: TPC-H query7
+11 129 646
+Reducer5 1 bangkok
+Reducer4 1 jakarta
+Map1 1 hongkong
+Map10 1 paris
+Reducer6 1 paris
+Map11 1 singapore
+Map8 5 tokyo singapore london madrid jakarta
+Map9 1 singapore
+Reducer3 2 singapore hongkong
+Reducer2 2 osaka sydney
+Map7 2 jakarta berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 470392
+Map10 Reducer4 330639
+Map11 Reducer4 330639
+Map8 Reducer3 666162
+Map9 Reducer4 330639
+Reducer3 Reducer4 1030434
+Reducer2 Reducer3 666875
+Map7 Reducer2 1013283
+# 5: TPC-H query15
+8 130 647
+Map1 4 paris sydney hongkong sanjose
+Reducer4 1 hongkong
+Reducer7 1 osaka
+Reducer6 2 madrid berlin
+Map8 1 madrid
+Map5 4 bangkok madrid paris taipei
+Reducer3 1 osaka
+Reducer2 1 singapore
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 2: TPC-H query12
+5 131 648
+Reducer4 1 sydney
+Map1 5 taipei jakarta tokyo paris osaka
+Map5 3 sanjose bangkok singapore
+Reducer3 1 frankfurt
+Reducer2 2 madrid frankfurt
+4
+Map1 Reducer2 228719
+Map5 Reducer2 383061
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 3: TPC-H query13
+6 132 650
+Reducer5 1 paris
+Reducer4 1 sydney
+Map1 4 singapore frankfurt paris bangkok
+Reducer3 1 jakarta
+Map6 3 kualalumpur london bangkok
+Reducer2 2 madrid sydney
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 228541
+Reducer3 Reducer4 9272
+Map6 Reducer2 216498
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 133 653
+Map1 4 sydney taipei berlin bangkok
+Reducer3 1 bangkok
+Reducer2 5 bangkok singapore osaka hongkong tokyo
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 10: TPC-H query21
+14 134 654
+Reducer5 5 jakarta taipei sydney bangkok osaka
+Map10 6 dc berlin sydney osaka jakarta hongkong
+Map1 1 sydney
+Reducer4 2 jakarta london
+Reducer7 2 paris sydney
+Map2 1 london
+Reducer6 6 sydney osaka jakarta kualalumpur london bangkok
+Reducer14 2 jakarta singapore
+Map13 3 paris taipei kualalumpur
+Reducer8 1 london
+Reducer12 5 jakarta bangkok hongkong dc frankfurt
+Map11 4 frankfurt taipei london tokyo
+Map9 7 dc kualalumpur paris hongkong taipei singapore sydney
+Reducer3 1 madrid
+13
+Reducer5 Reducer6 138874
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 25587
+Reducer7 Reducer8 1817
+Map2 Reducer3 48230
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 154133
+Map13 Reducer14 1158988
+Reducer12 Reducer5 655640
+Map11 Reducer12 1815325
+Map9 Reducer3 930693
+Reducer3 Reducer4 67845
+# 14: TPC-H query5
+11 135 655
+Reducer5 1 dc
+Map1 4 berlin madrid tokyo taipei
+Reducer4 3 sydney sanjose osaka
+Map10 1 london
+Reducer6 1 sanjose
+Map11 1 sydney
+Map8 5 frankfurt berlin sanjose paris osaka
+Map9 1 paris
+Reducer3 5 paris frankfurt kualalumpur bangkok dc
+Reducer2 1 frankfurt
+Map7 2 tokyo jakarta
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 13633
+Reducer4 Reducer5 220520
+Map10 Reducer4 27568
+Map11 Reducer4 27566
+Map8 Reducer3 822325
+Map9 Reducer4 27586
+Reducer3 Reducer4 266433
+Reducer2 Reducer3 36383
+Map7 Reducer2 17696
+# 8: TPC-H query1
+3 136 664
+Map1 7 dc frankfurt hongkong taipei sanjose kualalumpur sydney
+Reducer3 1 jakarta
+Reducer2 4 hongkong kualalumpur bangkok jakarta
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 1: TPC-H query11
+12 137 664
+Reducer10 1 sydney
+Reducer4 1 jakarta
+Map1 5 frankfurt taipei sydney dc jakarta
+Reducer9 1 kualalumpur
+Reducer8 1 sanjose
+Map11 1 sydney
+Map12 1 dc
+Map5 1 hongkong
+Reducer3 1 kualalumpur
+Map6 1 dc
+Reducer2 1 frankfurt
+Map7 3 bangkok sydney tokyo
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 5: TPC-H query15
+8 138 667
+Map1 5 jakarta frankfurt sanjose sydney hongkong
+Reducer4 1 madrid
+Reducer7 1 berlin
+Reducer6 1 dc
+Map8 1 jakarta
+Map5 3 berlin jakarta sanjose
+Reducer3 1 bangkok
+Reducer2 2 frankfurt london
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 2546
+Reducer6 Reducer7 5096
+Map8 Reducer3 2657
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 13084
+# 3: TPC-H query13
+6 139 669
+Reducer5 1 singapore
+Reducer4 1 osaka
+Map1 3 sydney london berlin
+Reducer3 1 osaka
+Map6 5 tokyo london dc paris osaka
+Reducer2 1 tokyo
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 149980
+Reducer3 Reducer4 9272
+Map6 Reducer2 315727
+Reducer2 Reducer3 404550
+# 3: TPC-H query13
+6 140 673
+Reducer5 1 singapore
+Reducer4 1 taipei
+Map1 2 jakarta bangkok
+Reducer3 1 osaka
+Map6 4 sanjose kualalumpur paris hongkong
+Reducer2 2 osaka taipei
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 133315
+Reducer3 Reducer4 9272
+Map6 Reducer2 336775
+Reducer2 Reducer3 404550
+# 10: TPC-H query21
+14 141 673
+Reducer5 2 frankfurt osaka
+Map10 2 dc london
+Map1 1 osaka
+Reducer4 2 bangkok tokyo
+Reducer7 2 bangkok kualalumpur
+Map2 1 berlin
+Reducer6 2 sydney kualalumpur
+Reducer14 2 taipei jakarta
+Map13 5 sydney london hongkong frankfurt jakarta
+Reducer8 1 paris
+Reducer12 2 taipei dc
+Map11 2 sanjose tokyo
+Map9 5 kualalumpur osaka dc taipei bangkok
+Reducer3 1 berlin
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 86760
+Map1 Map2 533
+Reducer4 Reducer5 44777
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 458948
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 158305
+# 16: TPC-H query7
+11 142 673
+Reducer5 1 berlin
+Reducer4 1 sanjose
+Map1 1 dc
+Map10 1 bangkok
+Reducer6 1 madrid
+Map11 1 paris
+Map8 3 paris bangkok taipei
+Map9 3 hongkong jakarta london
+Reducer3 3 osaka taipei bangkok
+Reducer2 3 dc hongkong berlin
+Map7 6 bangkok london singapore osaka dc sanjose
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 201596
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 466314
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 1167032
+Map7 Reducer2 1302792
+# 10: TPC-H query21
+14 143 679
+Reducer5 5 hongkong paris bangkok tokyo sydney
+Map10 6 frankfurt bangkok jakarta tokyo sanjose dc
+Map1 1 bangkok
+Reducer4 2 madrid sanjose
+Reducer7 3 singapore kualalumpur frankfurt
+Map2 1 london
+Reducer6 4 dc hongkong frankfurt osaka
+Reducer14 3 madrid hongkong jakarta
+Map13 4 sydney london paris frankfurt
+Reducer8 1 singapore
+Reducer12 3 taipei dc osaka
+Map11 4 jakarta taipei bangkok madrid
+Map9 5 kualalumpur madrid sanjose london sydney
+Reducer3 1 osaka
+13
+Reducer5 Reducer6 121515
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 35822
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 202299
+Map13 Reducer14 1158988
+Reducer12 Reducer5 550737
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 67845
+# 8: TPC-H query1
+3 144 679
+Map1 2 osaka tokyo
+Reducer3 1 sydney
+Reducer2 4 sanjose dc berlin sydney
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 16: TPC-H query7
+11 145 687
+Reducer5 1 bangkok
+Reducer4 1 tokyo
+Map1 1 bangkok
+Map10 1 tokyo
+Reducer6 1 osaka
+Map11 1 bangkok
+Map8 5 paris frankfurt kualalumpur jakarta bangkok
+Map9 3 bangkok taipei frankfurt
+Reducer3 3 tokyo jakarta frankfurt
+Reducer2 1 madrid
+Map7 7 london berlin osaka tokyo taipei kualalumpur singapore
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 176397
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 777190
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 389010
+Map7 Reducer2 1329933
+# 14: TPC-H query5
+11 146 688
+Reducer5 1 dc
+Map1 4 sanjose tokyo osaka jakarta
+Reducer4 5 tokyo dc berlin osaka london
+Map10 1 sanjose
+Reducer6 1 berlin
+Map11 1 jakarta
+Map8 7 berlin sanjose paris frankfurt sydney singapore tokyo
+Map9 1 tokyo
+Reducer3 4 berlin frankfurt sanjose madrid
+Reducer2 1 jakarta
+Map7 4 taipei london dc sydney
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 10225
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 863442
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 27287
+Map7 Reducer2 26544
+# 13: TPC-H query4
+5 147 688
+Reducer4 1 jakarta
+Map1 3 taipei jakarta dc
+Map5 5 berlin london bangkok paris jakarta
+Reducer3 2 paris osaka
+Reducer2 2 jakarta singapore
+4
+Map1 Reducer2 55039
+Map5 Reducer2 432855
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 14: TPC-H query5
+11 148 690
+Reducer5 1 sydney
+Map1 3 paris tokyo kualalumpur
+Reducer4 2 london sanjose
+Map10 1 bangkok
+Reducer6 1 madrid
+Map11 1 paris
+Map8 3 bangkok dc kualalumpur
+Map9 1 berlin
+Reducer3 2 dc bangkok
+Reducer2 1 tokyo
+Map7 3 hongkong osaka paris
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 10225
+Reducer4 Reducer5 220520
+Map10 Reducer4 44109
+Map11 Reducer4 44105
+Map8 Reducer3 740093
+Map9 Reducer4 44138
+Reducer3 Reducer4 170517
+Reducer2 Reducer3 54574
+Map7 Reducer2 26544
+# 11: TPC-H query22
+8 149 691
+Reducer5 1 kualalumpur
+Map1 6 hongkong jakarta kualalumpur london berlin osaka
+Reducer4 1 frankfurt
+Reducer8 1 tokyo
+Map6 1 jakarta
+Reducer3 2 hongkong bangkok
+Map7 3 tokyo singapore frankfurt
+Reducer2 4 berlin jakarta dc tokyo
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 1950
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 31865
+# 14: TPC-H query5
+11 150 693
+Reducer5 1 bangkok
+Map1 4 kualalumpur osaka london singapore
+Reducer4 3 paris hongkong berlin
+Map10 1 london
+Reducer6 1 bangkok
+Map11 1 bangkok
+Map8 4 london frankfurt madrid dc
+Map9 1 hongkong
+Reducer3 3 tokyo paris sydney
+Reducer2 1 dc
+Map7 3 sydney bangkok paris
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 11685
+Reducer4 Reducer5 220520
+Map10 Reducer4 36757
+Map11 Reducer4 36754
+Map8 Reducer3 789432
+Map9 Reducer4 36781
+Reducer3 Reducer4 213146
+Reducer2 Reducer3 43659
+Map7 Reducer2 22752
+# 10: TPC-H query21
+14 151 694
+Reducer5 5 berlin tokyo madrid kualalumpur hongkong
+Map10 3 taipei paris osaka
+Map1 1 jakarta
+Reducer4 3 bangkok osaka madrid
+Reducer7 4 berlin jakarta kualalumpur hongkong
+Map2 1 singapore
+Reducer6 6 tokyo bangkok london sanjose kualalumpur dc
+Reducer14 2 kualalumpur jakarta
+Map13 7 jakarta london sydney taipei dc frankfurt singapore
+Reducer8 1 bangkok
+Reducer12 9 osaka frankfurt dc jakarta london paris madrid berlin sanjose
+Map11 5 kualalumpur paris bangkok madrid berlin
+Map9 3 sydney sanjose london
+Reducer3 2 dc paris
+13
+Reducer5 Reducer6 138874
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 22388
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 154133
+Map13 Reducer14 1158988
+Reducer12 Reducer5 688422
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 189966
+# 14: TPC-H query5
+11 152 696
+Reducer5 1 tokyo
+Map1 2 taipei tokyo
+Reducer4 4 dc tokyo jakarta bangkok
+Map10 1 dc
+Reducer6 1 sanjose
+Map11 1 kualalumpur
+Map8 4 paris bangkok sydney sanjose
+Map9 1 london
+Reducer3 1 sydney
+Reducer2 1 sydney
+Map7 5 london taipei tokyo frankfurt paris
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 5842
+Reducer4 Reducer5 220520
+Map10 Reducer4 55136
+Map11 Reducer4 55132
+Map8 Reducer3 789432
+Map9 Reducer4 55172
+Reducer3 Reducer4 106573
+Reducer2 Reducer3 43659
+Map7 Reducer2 37920
+# 2: TPC-H query12
+5 153 697
+Reducer4 1 kualalumpur
+Map1 5 paris berlin dc taipei kualalumpur
+Map5 4 singapore sanjose bangkok berlin
+Reducer3 1 frankfurt
+Reducer2 1 berlin
+4
+Map1 Reducer2 203306
+Map5 Reducer2 453998
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 6: TPC-H query16
+9 154 699
+Reducer5 1 singapore
+Map1 4 singapore hongkong frankfurt taipei
+Reducer4 1 dc
+Reducer9 1 osaka
+Map8 1 hongkong
+Reducer3 1 sydney
+Map6 3 madrid tokyo london
+Reducer2 1 dc
+Map7 1 bangkok
+8
+Map1 Reducer2 93868
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 20172
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 62405
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 14: TPC-H query5
+11 155 699
+Reducer5 1 osaka
+Map1 2 bangkok sanjose
+Reducer4 3 dc sanjose frankfurt
+Map10 1 sanjose
+Reducer6 1 kualalumpur
+Map11 1 berlin
+Map8 6 paris sanjose jakarta bangkok taipei dc
+Map9 1 berlin
+Reducer3 1 paris
+Reducer2 1 singapore
+Map7 3 sydney hongkong paris
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 8180
+Reducer4 Reducer5 220520
+Map10 Reducer4 55136
+Map11 Reducer4 55132
+Map8 Reducer3 845820
+Map9 Reducer4 55172
+Reducer3 Reducer4 106573
+Reducer2 Reducer3 31185
+Map7 Reducer2 31853
+# 15: TPC-H query6
+2 156 700
+Map1 3 sanjose paris madrid
+Reducer2 1 frankfurt
+1
+Map1 Reducer2 283398
+# 16: TPC-H query7
+11 157 701
+Reducer5 1 osaka
+Reducer4 1 dc
+Map1 1 kualalumpur
+Map10 1 tokyo
+Reducer6 1 hongkong
+Map11 1 singapore
+Map8 5 kualalumpur hongkong paris madrid osaka
+Map9 4 hongkong singapore madrid dc
+Reducer3 3 madrid hongkong sydney
+Reducer2 1 madrid
+Map7 3 dc frankfurt london
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 183688
+Map11 Reducer4 183688
+Map8 Reducer3 777190
+Map9 Reducer4 734755
+Reducer3 Reducer4 858695
+Reducer2 Reducer3 389010
+Map7 Reducer2 1139943
+# 5: TPC-H query15
+8 158 701
+Map1 3 taipei osaka bangkok
+Reducer4 1 taipei
+Reducer7 1 dc
+Reducer6 2 london tokyo
+Map8 1 paris
+Map5 5 tokyo bangkok london berlin osaka
+Reducer3 1 sydney
+Reducer2 1 hongkong
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 13: TPC-H query4
+5 159 704
+Reducer4 1 bangkok
+Map1 5 taipei dc paris berlin madrid
+Map5 5 tokyo singapore hongkong taipei kualalumpur
+Reducer3 3 paris berlin kualalumpur
+Reducer2 1 jakarta
+4
+Map1 Reducer2 73385
+Map5 Reducer2 346284
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 9: TPC-H query20
+12 160 709
+Reducer5 1 bangkok
+Map10 6 madrid tokyo frankfurt kualalumpur sydney dc
+Map1 2 dc berlin
+Reducer4 1 hongkong
+Reducer7 1 berlin
+Reducer6 1 bangkok
+Reducer9 1 tokyo
+Map11 1 bangkok
+Map12 1 london
+Map8 7 osaka frankfurt bangkok madrid hongkong paris london
+Reducer3 1 sydney
+Reducer2 1 berlin
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 56352
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 6352
+# 7: TPC-H query17
+7 161 709
+Map1 3 frankfurt madrid paris
+Reducer4 1 berlin
+Reducer7 4 frankfurt madrid hongkong paris
+Map5 3 taipei london paris
+Map6 6 bangkok osaka sydney tokyo jakarta singapore
+Reducer3 8 london madrid sanjose dc tokyo kualalumpur jakarta berlin
+Reducer2 5 berlin jakarta hongkong singapore dc
+6
+Map1 Reducer2 241044
+Reducer7 Reducer3 268429
+Map5 Reducer2 936117
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 271003
+# 6: TPC-H query16
+9 162 713
+Reducer5 1 taipei
+Map1 2 tokyo kualalumpur
+Reducer4 1 osaka
+Reducer9 1 dc
+Map8 1 osaka
+Reducer3 1 berlin
+Map6 1 taipei
+Reducer2 1 sydney
+Map7 1 dc
+8
+Map1 Reducer2 93868
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 40345
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 41603
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 5: TPC-H query15
+8 163 715
+Map1 2 london osaka
+Reducer4 1 kualalumpur
+Reducer7 1 hongkong
+Reducer6 2 osaka sydney
+Map8 1 london
+Map5 3 london madrid bangkok
+Reducer3 1 singapore
+Reducer2 1 bangkok
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 7: TPC-H query17
+7 164 716
+Map1 2 tokyo hongkong
+Reducer4 1 berlin
+Reducer7 3 taipei frankfurt singapore
+Map5 5 berlin kualalumpur madrid tokyo sanjose
+Map6 2 taipei osaka
+Reducer3 4 bangkok singapore sydney jakarta
+Reducer2 5 berlin singapore dc jakarta tokyo
+6
+Map1 Reducer2 137739
+Reducer7 Reducer3 226487
+Map5 Reducer2 1337310
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 304879
+# 4: TPC-H query14
+4 165 725
+Map1 4 sydney taipei tokyo singapore
+Map4 2 frankfurt bangkok
+Reducer3 1 jakarta
+Reducer2 2 hongkong madrid
+3
+Map1 Reducer2 457523
+Map4 Reducer2 12529
+Reducer2 Reducer3 33825
+# 12: TPC-H query3
+7 166 728
+Reducer5 1 jakarta
+Map1 1 bangkok
+Reducer4 1 berlin
+Map6 6 tokyo dc berlin frankfurt hongkong osaka
+Reducer3 3 jakarta paris berlin
+Map7 6 osaka tokyo bangkok singapore dc london
+Reducer2 1 hongkong
+6
+Map1 Reducer2 8518
+Reducer4 Reducer5 4458
+Map6 Reducer2 88600
+Reducer3 Reducer4 290950
+Map7 Reducer3 827897
+Reducer2 Reducer3 48893
+# 0: TPC-H query10
+8 167 729
+Reducer5 1 bangkok
+Reducer4 1 berlin
+Map1 4 singapore jakarta taipei osaka
+Map8 1 berlin
+Reducer3 3 kualalumpur frankfurt taipei
+Map6 5 berlin madrid singapore osaka dc
+Reducer2 1 sydney
+Map7 7 frankfurt sydney hongkong tokyo sanjose taipei bangkok
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 18756
+Map8 Reducer3 72371
+Reducer3 Reducer4 671771
+Map6 Reducer2 44651
+Reducer2 Reducer3 76247
+Map7 Reducer3 1084114
+# 13: TPC-H query4
+5 168 729
+Reducer4 1 dc
+Map1 3 paris taipei singapore
+Map5 3 berlin hongkong london
+Reducer3 3 jakarta frankfurt london
+Reducer2 3 frankfurt madrid london
+4
+Map1 Reducer2 73385
+Map5 Reducer2 346284
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 15: TPC-H query6
+2 169 739
+Map1 5 sydney taipei london frankfurt madrid
+Reducer2 1 singapore
+1
+Map1 Reducer2 283398
+# 15: TPC-H query6
+2 170 739
+Map1 3 taipei dc sydney
+Reducer2 1 singapore
+1
+Map1 Reducer2 283398
+# 16: TPC-H query7
+11 171 739
+Reducer5 1 frankfurt
+Reducer4 1 sydney
+Map1 1 paris
+Map10 1 madrid
+Reducer6 1 frankfurt
+Map11 1 berlin
+Map8 5 dc tokyo kualalumpur singapore madrid
+Map9 4 london kualalumpur jakarta hongkong
+Reducer3 2 jakarta paris
+Reducer2 2 sanjose singapore
+Map7 6 tokyo bangkok frankfurt sanjose madrid osaka
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 201596
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 666162
+Map9 Reducer4 826599
+Reducer3 Reducer4 644021
+Reducer2 Reducer3 666875
+Map7 Reducer2 1302792
+# 7: TPC-H query17
+7 172 739
+Map1 2 frankfurt berlin
+Reducer4 1 london
+Reducer7 2 osaka hongkong
+Map5 4 tokyo berlin sanjose taipei
+Map6 2 london dc
+Reducer3 8 singapore osaka tokyo madrid frankfurt paris london sanjose
+Reducer2 7 dc madrid tokyo jakarta paris osaka taipei
+6
+Map1 Reducer2 160696
+Reducer7 Reducer3 134214
+Map5 Reducer2 1248156
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 379404
+# 0: TPC-H query10
+8 173 739
+Reducer5 1 taipei
+Reducer4 1 osaka
+Map1 3 osaka tokyo frankfurt
+Map8 1 berlin
+Reducer3 2 frankfurt paris
+Map6 3 madrid tokyo hongkong
+Reducer2 1 osaka
+Map7 4 berlin kualalumpur dc tokyo
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 21100
+Map8 Reducer3 108557
+Reducer3 Reducer4 671771
+Map6 Reducer2 40186
+Reducer2 Reducer3 114371
+Map7 Reducer3 929241
+# 6: TPC-H query16
+9 174 743
+Reducer5 1 sydney
+Map1 7 berlin kualalumpur madrid osaka dc bangkok sydney
+Reducer4 1 london
+Reducer9 1 sanjose
+Map8 1 hongkong
+Reducer3 1 tokyo
+Map6 3 tokyo hongkong jakarta
+Reducer2 1 sydney
+Map7 1 tokyo
+8
+Map1 Reducer2 119469
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 14671
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 45385
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 6: TPC-H query16
+9 175 763
+Reducer5 1 jakarta
+Map1 2 berlin london
+Reducer4 1 osaka
+Reducer9 1 kualalumpur
+Map8 1 tokyo
+Reducer3 1 bangkok
+Map6 2 berlin madrid
+Reducer2 2 taipei singapore
+Map7 1 bangkok
+8
+Map1 Reducer2 75094
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 32276
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 66565
+Reducer2 Reducer3 136228
+Map7 Reducer3 14376
+# 10: TPC-H query21
+14 176 764
+Reducer5 4 osaka madrid london singapore
+Map10 5 paris london singapore dc hongkong
+Map1 1 jakarta
+Reducer4 3 berlin hongkong taipei
+Reducer7 4 dc bangkok hongkong taipei
+Map2 1 dc
+Reducer6 4 hongkong tokyo bangkok sydney
+Reducer14 2 sanjose taipei
+Map13 5 kualalumpur madrid singapore jakarta bangkok
+Reducer8 1 jakarta
+Reducer12 5 hongkong berlin kualalumpur paris taipei
+Map11 4 tokyo osaka madrid kualalumpur
+Map9 4 taipei berlin sydney singapore
+Reducer3 2 frankfurt osaka
+13
+Reducer5 Reducer6 129616
+Map10 Reducer4 92958
+Map1 Map2 533
+Reducer4 Reducer5 33583
+Reducer7 Reducer8 1817
+Map2 Reducer3 77168
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 179821
+Map13 Reducer14 1158988
+Reducer12 Reducer5 573685
+Map11 Reducer12 1815325
+Map9 Reducer3 850919
+Reducer3 Reducer4 135690
+# 4: TPC-H query14
+4 177 789
+Map1 2 dc sanjose
+Map4 1 bangkok
+Reducer3 1 dc
+Reducer2 2 bangkok hongkong
+3
+Map1 Reducer2 457523
+Map4 Reducer2 12529
+Reducer2 Reducer3 33825
+# 12: TPC-H query3
+7 178 793
+Reducer5 1 paris
+Map1 2 dc tokyo
+Reducer4 1 bangkok
+Map6 6 berlin osaka bangkok hongkong kualalumpur sanjose
+Reducer3 3 paris kualalumpur madrid
+Map7 3 sanjose jakarta berlin
+Reducer2 1 sydney
+6
+Map1 Reducer2 14907
+Reducer4 Reducer5 4458
+Map6 Reducer2 77525
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 6: TPC-H query16
+9 179 798
+Reducer5 1 paris
+Map1 6 bangkok paris kualalumpur sanjose sydney jakarta
+Reducer4 1 bangkok
+Reducer9 1 kualalumpur
+Map8 1 berlin
+Reducer3 1 dc
+Map6 2 kualalumpur paris
+Reducer2 1 sanjose
+Map7 1 osaka
+8
+Map1 Reducer2 125158
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 17931
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 36980
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 2: TPC-H query12
+5 180 806
+Reducer4 1 jakarta
+Map1 2 london bangkok
+Map5 7 kualalumpur paris osaka jakarta tokyo frankfurt taipei
+Reducer3 1 dc
+Reducer2 2 paris kualalumpur
+4
+Map1 Reducer2 81322
+Map5 Reducer2 794497
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 1: TPC-H query11
+12 181 829
+Reducer10 1 dc
+Reducer4 1 kualalumpur
+Map1 5 frankfurt sydney osaka paris kualalumpur
+Reducer9 1 taipei
+Reducer8 2 osaka singapore
+Map11 1 kualalumpur
+Map12 1 london
+Map5 1 singapore
+Reducer3 1 hongkong
+Map6 1 sydney
+Reducer2 1 bangkok
+Map7 6 dc bangkok sydney sanjose kualalumpur hongkong
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 6711
+Map12 Reducer8 6667
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 58516
+# 2: TPC-H query12
+5 182 833
+Reducer4 1 frankfurt
+Map1 4 jakarta sydney hongkong berlin
+Map5 5 kualalumpur sanjose paris sydney bangkok
+Reducer3 1 dc
+Reducer2 2 osaka bangkok
+4
+Map1 Reducer2 162645
+Map5 Reducer2 567498
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 10: TPC-H query21
+14 183 836
+Reducer5 3 bangkok hongkong taipei
+Map10 6 sydney hongkong jakarta frankfurt tokyo london
+Map1 1 hongkong
+Reducer4 1 dc
+Reducer7 2 kualalumpur frankfurt
+Map2 1 paris
+Reducer6 4 singapore taipei dc sydney
+Reducer14 2 madrid hongkong
+Map13 5 sydney madrid bangkok jakarta hongkong
+Reducer8 1 madrid
+Reducer12 7 frankfurt dc berlin osaka madrid jakarta kualalumpur
+Map11 5 paris frankfurt singapore osaka berlin
+Map9 3 dc singapore taipei
+Reducer3 1 berlin
+13
+Reducer5 Reducer6 116654
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 11194
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 215786
+Map13 Reducer14 1158988
+Reducer12 Reducer5 803159
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 67845
+# 8: TPC-H query1
+3 184 838
+Map1 3 london frankfurt tokyo
+Reducer3 1 tokyo
+Reducer2 6 paris berlin sydney bangkok singapore kualalumpur
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 4: TPC-H query14
+4 185 855
+Map1 4 dc paris london madrid
+Map4 3 singapore kualalumpur bangkok
+Reducer3 1 berlin
+Reducer2 1 frankfurt
+3
+Map1 Reducer2 392163
+Map4 Reducer2 16109
+Reducer2 Reducer3 33825
+# 0: TPC-H query10
+8 186 860
+Reducer5 1 bangkok
+Reducer4 1 tokyo
+Map1 3 tokyo osaka london
+Map8 1 kualalumpur
+Reducer3 2 london taipei
+Map6 6 sydney bangkok frankfurt paris london madrid
+Reducer2 1 berlin
+Map7 5 berlin sydney hongkong bangkok london
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 14067
+Map8 Reducer3 93049
+Reducer3 Reducer4 671771
+Map6 Reducer2 53581
+Reducer2 Reducer3 98032
+Map7 Reducer3 995615
+# 15: TPC-H query6
+2 187 865
+Map1 7 london frankfurt paris madrid bangkok tokyo hongkong
+Reducer2 1 berlin
+1
+Map1 Reducer2 283398
+# 5: TPC-H query15
+8 188 871
+Map1 3 frankfurt osaka bangkok
+Reducer4 1 osaka
+Reducer7 1 sanjose
+Reducer6 2 berlin jakarta
+Map8 1 hongkong
+Map5 2 dc bangkok
+Reducer3 1 sanjose
+Reducer2 1 hongkong
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 8: TPC-H query1
+3 189 882
+Map1 5 singapore hongkong kualalumpur tokyo osaka
+Reducer3 1 paris
+Reducer2 2 sanjose jakarta
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 9: TPC-H query20
+12 190 883
+Reducer5 1 london
+Map10 3 paris tokyo hongkong
+Map1 2 tokyo singapore
+Reducer4 1 taipei
+Reducer7 1 taipei
+Reducer6 1 berlin
+Reducer9 1 singapore
+Map11 1 hongkong
+Map12 1 tokyo
+Map8 5 frankfurt london sydney paris hongkong
+Reducer3 1 taipei
+Reducer2 1 tokyo
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 49308
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 11117
+# 3: TPC-H query13
+6 191 884
+Reducer5 1 paris
+Reducer4 1 tokyo
+Map1 4 frankfurt london taipei bangkok
+Reducer3 1 osaka
+Map6 6 frankfurt paris london osaka dc berlin
+Reducer2 3 sydney singapore taipei
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 159978
+Reducer3 Reducer4 9272
+Map6 Reducer2 303098
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 192 884
+Map1 5 sydney berlin paris tokyo kualalumpur
+Reducer3 1 sydney
+Reducer2 4 dc hongkong london taipei
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 6: TPC-H query16
+9 193 884
+Reducer5 1 paris
+Map1 5 berlin kualalumpur singapore sydney dc
+Reducer4 1 taipei
+Reducer9 1 paris
+Map8 1 sydney
+Reducer3 1 kualalumpur
+Map6 2 berlin frankfurt
+Reducer2 1 kualalumpur
+Map7 1 tokyo
+8
+Map1 Reducer2 117335
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 20172
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 41603
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 8: TPC-H query1
+3 194 886
+Map1 4 singapore tokyo osaka madrid
+Reducer3 1 frankfurt
+Reducer2 4 singapore bangkok taipei dc
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 9: TPC-H query20
+12 195 886
+Reducer5 1 hongkong
+Map10 3 taipei hongkong sanjose
+Map1 3 jakarta bangkok taipei
+Reducer4 1 frankfurt
+Reducer7 1 osaka
+Reducer6 1 hongkong
+Reducer9 1 taipei
+Map11 1 osaka
+Map12 1 sydney
+Map8 3 osaka hongkong tokyo
+Reducer3 1 singapore
+Reducer2 1 taipei
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 49308
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 11117
+# 15: TPC-H query6
+2 196 909
+Map1 7 madrid berlin jakarta hongkong dc osaka bangkok
+Reducer2 1 tokyo
+1
+Map1 Reducer2 283398
+# 3: TPC-H query13
+6 197 915
+Reducer5 1 sydney
+Reducer4 1 taipei
+Map1 2 sydney sanjose
+Reducer3 1 bangkok
+Map6 7 madrid osaka london tokyo taipei jakarta dc
+Reducer2 1 sydney
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 88877
+Reducer3 Reducer4 9272
+Map6 Reducer2 392904
+Reducer2 Reducer3 404550
+# 3: TPC-H query13
+6 198 925
+Reducer5 1 sanjose
+Reducer4 1 bangkok
+Map1 3 singapore kualalumpur sanjose
+Reducer3 1 london
+Map6 3 paris sanjose madrid
+Reducer2 2 taipei sanjose
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 199973
+Reducer3 Reducer4 9272
+Map6 Reducer2 252581
+Reducer2 Reducer3 404550
+# 14: TPC-H query5
+11 199 927
+Reducer5 1 paris
+Map1 4 bangkok osaka taipei paris
+Reducer4 5 bangkok london sydney osaka hongkong
+Map10 1 kualalumpur
+Reducer6 1 sydney
+Map11 1 london
+Map8 2 berlin kualalumpur
+Map9 1 madrid
+Reducer3 5 hongkong madrid bangkok tokyo singapore
+Reducer2 1 sydney
+Map7 3 singapore jakarta osaka
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 11685
+Reducer4 Reducer5 220520
+Map10 Reducer4 27568
+Map11 Reducer4 27566
+Map8 Reducer3 657860
+Map9 Reducer4 27586
+Reducer3 Reducer4 266433
+Reducer2 Reducer3 72766
+Map7 Reducer2 22752
+# 3: TPC-H query13
+6 200 928
+Reducer5 1 london
+Reducer4 1 jakarta
+Map1 4 taipei frankfurt hongkong paris
+Reducer3 1 jakarta
+Map6 5 madrid tokyo osaka dc jakarta
+Reducer2 2 sanjose taipei
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 177754
+Reducer3 Reducer4 9272
+Map6 Reducer2 280646
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 201 930
+Map1 5 frankfurt jakarta kualalumpur tokyo singapore
+Reducer3 1 tokyo
+Reducer2 6 tokyo taipei paris berlin sanjose singapore
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 16: TPC-H query7
+11 202 932
+Reducer5 1 sydney
+Reducer4 2 paris bangkok
+Map1 1 taipei
+Map10 1 sydney
+Reducer6 1 taipei
+Map11 1 hongkong
+Map8 3 dc taipei singapore
+Map9 1 berlin
+Reducer3 2 taipei kualalumpur
+Reducer2 2 sanjose singapore
+Map7 5 singapore tokyo sydney sanjose berlin
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 330639
+Map11 Reducer4 330639
+Map8 Reducer3 559576
+Map9 Reducer4 330639
+Reducer3 Reducer4 1030434
+Reducer2 Reducer3 933626
+Map7 Reducer2 1266603
+# 3: TPC-H query13
+6 203 932
+Reducer5 1 taipei
+Reducer4 1 paris
+Map1 3 jakarta sanjose paris
+Reducer3 1 berlin
+Map6 7 madrid paris london sanjose frankfurt berlin bangkok
+Reducer2 1 dc
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 119984
+Reducer3 Reducer4 9272
+Map6 Reducer2 353614
+Reducer2 Reducer3 404550
+# 7: TPC-H query17
+7 204 937
+Map1 3 dc paris jakarta
+Reducer4 1 hongkong
+Reducer7 5 hongkong kualalumpur madrid bangkok tokyo
+Map5 6 berlin hongkong madrid bangkok osaka taipei
+Map6 3 madrid osaka london
+Reducer3 4 singapore paris dc hongkong
+Reducer2 7 london kualalumpur dc sanjose osaka taipei madrid
+6
+Map1 Reducer2 160696
+Reducer7 Reducer3 251652
+Map5 Reducer2 1248156
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 284553
+# 5: TPC-H query15
+8 205 939
+Map1 4 jakarta london taipei berlin
+Reducer4 1 dc
+Reducer7 1 singapore
+Reducer6 2 taipei sanjose
+Map8 1 berlin
+Map5 4 sydney dc bangkok hongkong
+Reducer3 1 madrid
+Reducer2 1 dc
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 1: TPC-H query11
+12 206 943
+Reducer10 1 frankfurt
+Reducer4 1 osaka
+Map1 5 singapore frankfurt dc sydney jakarta
+Reducer9 1 taipei
+Reducer8 1 sydney
+Map11 1 dc
+Map12 1 hongkong
+Map5 1 singapore
+Reducer3 1 taipei
+Map6 1 sanjose
+Reducer2 2 dc kualalumpur
+Map7 3 sydney osaka jakarta
+11
+Reducer10 Reducer3 1846
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 146157
+Map7 Reducer8 46813
+# 9: TPC-H query20
+12 207 944
+Reducer5 1 paris
+Map10 7 jakarta madrid paris osaka bangkok sydney singapore
+Map1 2 sanjose berlin
+Reducer4 1 osaka
+Reducer7 1 taipei
+Reducer6 1 kualalumpur
+Reducer9 1 osaka
+Map11 1 hongkong
+Map12 1 madrid
+Map8 3 london tokyo singapore
+Reducer3 1 frankfurt
+Reducer2 1 dc
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 57527
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 5558
+# 0: TPC-H query10
+8 208 950
+Reducer5 1 paris
+Reducer4 1 singapore
+Map1 3 madrid taipei hongkong
+Map8 1 taipei
+Reducer3 2 berlin hongkong
+Map6 3 bangkok madrid berlin
+Reducer2 1 sydney
+Map7 3 hongkong singapore tokyo
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 21100
+Map8 Reducer3 130269
+Reducer3 Reducer4 671771
+Map6 Reducer2 40186
+Reducer2 Reducer3 137245
+Map7 Reducer3 836317
+# 5: TPC-H query15
+8 209 950
+Map1 3 taipei sydney bangkok
+Reducer4 1 bangkok
+Reducer7 1 osaka
+Reducer6 2 osaka dc
+Map8 1 jakarta
+Map5 3 berlin london osaka
+Reducer3 1 bangkok
+Reducer2 1 tokyo
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 15: TPC-H query6
+2 210 961
+Map1 5 hongkong dc frankfurt singapore london
+Reducer2 1 frankfurt
+1
+Map1 Reducer2 283398
+# 3: TPC-H query13
+6 211 974
+Reducer5 1 kualalumpur
+Reducer4 1 taipei
+Map1 2 bangkok paris
+Reducer3 1 hongkong
+Map6 2 taipei berlin
+Reducer2 2 dc paris
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 199973
+Reducer3 Reducer4 9272
+Map6 Reducer2 252581
+Reducer2 Reducer3 404550
+# 10: TPC-H query21
+14 212 975
+Reducer5 6 dc frankfurt taipei sanjose sydney jakarta
+Map10 6 bangkok madrid paris dc sanjose jakarta
+Map1 1 hongkong
+Reducer4 2 berlin tokyo
+Reducer7 3 osaka sanjose sydney
+Map2 1 singapore
+Reducer6 4 berlin sydney hongkong london
+Reducer14 3 hongkong kualalumpur sanjose
+Map13 2 berlin tokyo
+Reducer8 1 taipei
+Reducer12 7 singapore tokyo kualalumpur berlin paris frankfurt bangkok
+Map11 6 bangkok osaka madrid sydney singapore sanjose
+Map9 2 jakarta paris
+Reducer3 2 tokyo kualalumpur
+13
+Reducer5 Reducer6 129616
+Map10 Reducer4 97606
+Map1 Map2 533
+Reducer4 Reducer5 19901
+Reducer7 Reducer8 1817
+Map2 Reducer3 128614
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 179821
+Map13 Reducer14 1158988
+Reducer12 Reducer5 713919
+Map11 Reducer12 1815325
+Map9 Reducer3 709099
+Reducer3 Reducer4 118728
+# 4: TPC-H query14
+4 213 979
+Map1 3 bangkok sydney jakarta
+Map4 2 berlin london
+Reducer3 1 dc
+Reducer2 1 london
+3
+Map1 Reducer2 411771
+Map4 Reducer2 15035
+Reducer2 Reducer3 33825
+# 0: TPC-H query10
+8 214 981
+Reducer5 1 bangkok
+Reducer4 1 taipei
+Map1 2 frankfurt london
+Map8 1 hongkong
+Reducer3 2 sanjose bangkok
+Map6 4 sydney singapore osaka taipei
+Reducer2 1 jakarta
+Map7 5 sydney tokyo hongkong bangkok madrid
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 14067
+Map8 Reducer3 93049
+Reducer3 Reducer4 671771
+Map6 Reducer2 53581
+Reducer2 Reducer3 98032
+Map7 Reducer3 995615
+# 15: TPC-H query6
+2 215 982
+Map1 7 singapore sydney sanjose taipei kualalumpur hongkong bangkok
+Reducer2 1 singapore
+1
+Map1 Reducer2 283398
+# 2: TPC-H query12
+5 216 982
+Reducer4 1 sydney
+Map1 3 sanjose berlin hongkong
+Map5 4 sanjose paris osaka bangkok
+Reducer3 1 madrid
+Reducer2 2 madrid kualalumpur
+4
+Map1 Reducer2 156836
+Map5 Reducer2 583712
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 13: TPC-H query4
+5 217 986
+Reducer4 1 sydney
+Map1 2 singapore taipei
+Map5 3 taipei tokyo singapore
+Reducer3 3 taipei dc paris
+Reducer2 2 tokyo sydney
+4
+Map1 Reducer2 58708
+Map5 Reducer2 415541
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 1: TPC-H query11
+12 218 991
+Reducer10 1 bangkok
+Reducer4 1 kualalumpur
+Map1 2 london frankfurt
+Reducer9 1 jakarta
+Reducer8 1 kualalumpur
+Map11 1 jakarta
+Map12 1 sanjose
+Map5 1 dc
+Reducer3 1 singapore
+Map6 1 kualalumpur
+Reducer2 1 sydney
+Map7 4 taipei singapore london dc
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 119213
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 8949
+Map12 Reducer8 8889
+Map5 Reducer2 53524
+Reducer3 Reducer4 5556
+Map6 Reducer2 53436
+Reducer2 Reducer3 109618
+Map7 Reducer8 52014
+# 4: TPC-H query14
+4 219 995
+Map1 2 taipei osaka
+Map4 2 taipei london
+Reducer3 1 tokyo
+Reducer2 1 frankfurt
+3
+Map1 Reducer2 343142
+Map4 Reducer2 18794
+Reducer2 Reducer3 33825
+# 11: TPC-H query22
+8 220 998
+Reducer5 1 sanjose
+Map1 3 frankfurt bangkok kualalumpur
+Reducer4 1 tokyo
+Reducer8 1 sydney
+Map6 3 kualalumpur madrid jakarta
+Reducer3 1 tokyo
+Map7 3 osaka tokyo berlin
+Reducer2 2 tokyo jakarta
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 15932
+# 0: TPC-H query10
+8 221 1007
+Reducer5 1 berlin
+Reducer4 1 singapore
+Map1 3 frankfurt tokyo london
+Map8 1 frankfurt
+Reducer3 4 madrid berlin dc sanjose
+Map6 2 madrid sanjose
+Reducer2 1 kualalumpur
+Map7 7 kualalumpur berlin jakarta osaka sanjose madrid taipei
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 25320
+Map8 Reducer3 72371
+Reducer3 Reducer4 671771
+Map6 Reducer2 32148
+Reducer2 Reducer3 76247
+Map7 Reducer3 1084114
+# 16: TPC-H query7
+11 222 1020
+Reducer5 1 dc
+Reducer4 1 hongkong
+Map1 1 jakarta
+Map10 1 paris
+Reducer6 1 dc
+Map11 1 frankfurt
+Map8 4 hongkong sanjose paris jakarta
+Map9 2 tokyo singapore
+Reducer3 3 london osaka jakarta
+Reducer2 2 taipei paris
+Map7 6 kualalumpur berlin sydney paris tokyo sanjose
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 201596
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 621752
+Map9 Reducer4 472342
+Reducer3 Reducer4 1104037
+Reducer2 Reducer3 778021
+Map7 Reducer2 1302792
+# 12: TPC-H query3
+7 223 1027
+Reducer5 1 bangkok
+Map1 4 london berlin paris bangkok
+Reducer4 1 paris
+Map6 3 taipei tokyo hongkong
+Reducer3 4 singapore jakarta sanjose hongkong
+Map7 3 osaka hongkong dc
+Reducer2 1 madrid
+6
+Map1 Reducer2 34074
+Reducer4 Reducer5 4458
+Map6 Reducer2 44300
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 3: TPC-H query13
+6 224 1031
+Reducer5 1 madrid
+Reducer4 1 sanjose
+Map1 4 frankfurt kualalumpur berlin hongkong
+Reducer3 1 taipei
+Map6 2 paris hongkong
+Reducer2 2 london jakarta
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 266631
+Reducer3 Reducer4 9272
+Map6 Reducer2 168387
+Reducer2 Reducer3 404550
+# 5: TPC-H query15
+8 225 1035
+Map1 3 frankfurt paris madrid
+Reducer4 1 sanjose
+Reducer7 1 sydney
+Reducer6 1 tokyo
+Map8 1 london
+Map5 6 dc tokyo frankfurt bangkok london sydney
+Reducer3 1 osaka
+Reducer2 2 sanjose dc
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 2546
+Reducer6 Reducer7 5096
+Map8 Reducer3 2657
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 13084
+# 7: TPC-H query17
+7 226 1048
+Map1 2 berlin taipei
+Reducer4 1 frankfurt
+Reducer7 5 osaka tokyo hongkong dc london
+Map5 3 berlin tokyo kualalumpur
+Map6 6 tokyo dc osaka london berlin jakarta
+Reducer3 6 taipei jakarta osaka sydney sanjose kualalumpur
+Reducer2 7 bangkok singapore tokyo hongkong jakarta kualalumpur osaka
+6
+Map1 Reducer2 192835
+Reducer7 Reducer3 251652
+Map5 Reducer2 1123340
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 284553
+# 10: TPC-H query21
+14 227 1051
+Reducer5 5 tokyo frankfurt jakarta kualalumpur osaka
+Map10 3 dc jakarta london
+Map1 1 osaka
+Reducer4 2 osaka taipei
+Reducer7 2 osaka tokyo
+Map2 1 frankfurt
+Reducer6 5 madrid osaka singapore sanjose taipei
+Reducer14 2 kualalumpur sydney
+Map13 7 taipei singapore tokyo osaka madrid jakarta kualalumpur
+Reducer8 1 kualalumpur
+Reducer12 3 berlin paris sydney
+Map11 5 berlin tokyo taipei jakarta sanjose
+Map9 3 paris dc hongkong
+Reducer3 1 tokyo
+13
+Reducer5 Reducer6 138874
+Map10 Reducer4 97606
+Map1 Map2 533
+Reducer4 Reducer5 35822
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 154133
+Map13 Reducer14 1158988
+Reducer12 Reducer5 550737
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 118728
+# 14: TPC-H query5
+11 228 1057
+Reducer5 1 hongkong
+Map1 2 madrid frankfurt
+Reducer4 5 tokyo frankfurt madrid berlin kualalumpur
+Map10 1 sydney
+Reducer6 1 tokyo
+Map11 1 singapore
+Map8 5 hongkong frankfurt sanjose taipei osaka
+Map9 1 tokyo
+Reducer3 3 berlin paris dc
+Reducer2 1 london
+Map7 6 dc jakarta tokyo taipei madrid berlin
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 5112
+Reducer4 Reducer5 220520
+Map10 Reducer4 36757
+Map11 Reducer4 36754
+Map8 Reducer3 822325
+Map9 Reducer4 36781
+Reducer3 Reducer4 213146
+Reducer2 Reducer3 36383
+Map7 Reducer2 39816
+# 9: TPC-H query20
+12 229 1064
+Reducer5 1 tokyo
+Map10 2 hongkong madrid
+Map1 2 sanjose osaka
+Reducer4 1 kualalumpur
+Reducer7 1 dc
+Reducer6 1 taipei
+Reducer9 1 frankfurt
+Map11 1 taipei
+Map12 1 taipei
+Map8 3 dc london paris
+Reducer3 1 sanjose
+Reducer2 1 sydney
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 43830
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 14823
+# 13: TPC-H query4
+5 230 1064
+Reducer4 1 bangkok
+Map1 3 jakarta frankfurt hongkong
+Map5 5 dc sanjose kualalumpur hongkong tokyo
+Reducer3 4 jakarta singapore taipei paris
+Reducer2 2 kualalumpur london
+4
+Map1 Reducer2 55039
+Map5 Reducer2 432855
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 2: TPC-H query12
+5 231 1065
+Reducer4 1 kualalumpur
+Map1 7 berlin london kualalumpur sanjose singapore paris tokyo
+Map5 7 osaka frankfurt paris sanjose berlin kualalumpur madrid
+Reducer3 1 taipei
+Reducer2 1 paris
+4
+Map1 Reducer2 182975
+Map5 Reducer2 510748
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 5: TPC-H query15
+8 232 1066
+Map1 7 jakarta taipei osaka dc singapore frankfurt london
+Reducer4 1 kualalumpur
+Reducer7 1 kualalumpur
+Reducer6 2 tokyo dc
+Map8 1 kualalumpur
+Map5 4 berlin hongkong sanjose tokyo
+Reducer3 1 hongkong
+Reducer2 1 frankfurt
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 9: TPC-H query20
+12 233 1075
+Reducer5 1 kualalumpur
+Map10 2 singapore taipei
+Map1 2 jakarta dc
+Reducer4 1 singapore
+Reducer7 1 taipei
+Reducer6 1 jakarta
+Reducer9 1 jakarta
+Map11 1 hongkong
+Map12 1 hongkong
+Map8 7 taipei sydney singapore kualalumpur jakarta osaka bangkok
+Reducer3 1 dc
+Reducer2 1 singapore
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 43830
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 14823
+# 14: TPC-H query5
+11 234 1089
+Reducer5 1 hongkong
+Map1 4 singapore frankfurt dc sydney
+Reducer4 2 sydney singapore
+Map10 1 taipei
+Reducer6 1 london
+Map11 1 kualalumpur
+Map8 4 singapore madrid paris frankfurt
+Map9 1 paris
+Reducer3 5 singapore london tokyo dc taipei
+Reducer2 1 kualalumpur
+Map7 5 osaka sanjose madrid hongkong singapore
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 9089
+Reducer4 Reducer5 220520
+Map10 Reducer4 27568
+Map11 Reducer4 27566
+Map8 Reducer3 789432
+Map9 Reducer4 27586
+Reducer3 Reducer4 266433
+Reducer2 Reducer3 43659
+Map7 Reducer2 29493
+# 15: TPC-H query6
+2 235 1090
+Map1 6 london madrid sydney paris kualalumpur sanjose
+Reducer2 1 sydney
+1
+Map1 Reducer2 283398
+# 2: TPC-H query12
+5 236 1097
+Reducer4 1 singapore
+Map1 3 london bangkok hongkong
+Map5 5 taipei frankfurt paris madrid bangkok
+Reducer3 1 madrid
+Reducer2 1 jakarta
+4
+Map1 Reducer2 137231
+Map5 Reducer2 638435
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 11: TPC-H query22
+8 237 1104
+Reducer5 1 madrid
+Map1 4 sydney london taipei singapore
+Reducer4 1 berlin
+Reducer8 1 tokyo
+Map6 3 kualalumpur london bangkok
+Reducer3 2 frankfurt osaka
+Map7 1 paris
+Reducer2 2 taipei london
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 15932
+# 15: TPC-H query6
+2 238 1105
+Map1 3 osaka taipei tokyo
+Reducer2 1 jakarta
+1
+Map1 Reducer2 283398
+# 7: TPC-H query17
+7 239 1106
+Map1 2 kualalumpur jakarta
+Reducer4 1 berlin
+Reducer7 9 bangkok taipei osaka singapore london frankfurt sydney jakarta kualalumpur
+Map5 6 berlin kualalumpur bangkok singapore taipei madrid
+Map6 6 paris hongkong taipei tokyo berlin dc
+Reducer3 6 sanjose sydney osaka jakarta berlin kualalumpur
+Reducer2 6 hongkong berlin sydney tokyo singapore paris
+6
+Map1 Reducer2 120522
+Reducer7 Reducer3 362380
+Map5 Reducer2 1404175
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 195122
+# 7: TPC-H query17
+7 240 1106
+Map1 1 sanjose
+Reducer4 1 tokyo
+Reducer7 5 berlin bangkok dc osaka frankfurt
+Map5 4 kualalumpur singapore sanjose osaka
+Map6 3 singapore osaka taipei
+Reducer3 3 hongkong berlin madrid
+Reducer2 7 frankfurt kualalumpur london taipei dc berlin hongkong
+6
+Map1 Reducer2 96417
+Reducer7 Reducer3 251652
+Map5 Reducer2 1497787
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 284553
+# 8: TPC-H query1
+3 241 1110
+Map1 7 taipei tokyo sydney osaka bangkok hongkong jakarta
+Reducer3 1 osaka
+Reducer2 4 dc sanjose frankfurt osaka
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 11: TPC-H query22
+8 242 1111
+Reducer5 1 hongkong
+Map1 2 berlin sydney
+Reducer4 1 frankfurt
+Reducer8 1 tokyo
+Map6 3 taipei london berlin
+Reducer3 2 jakarta dc
+Map7 3 berlin bangkok singapore
+Reducer2 1 paris
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 954
+Map6 Reducer3 7021
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 9559
+# 5: TPC-H query15
+8 243 1114
+Map1 7 frankfurt dc sydney madrid jakarta kualalumpur paris
+Reducer4 1 taipei
+Reducer7 1 berlin
+Reducer6 1 taipei
+Map8 1 sydney
+Map5 2 kualalumpur sanjose
+Reducer3 1 tokyo
+Reducer2 2 paris jakarta
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 2546
+Reducer6 Reducer7 5096
+Map8 Reducer3 2657
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 13084
+# 0: TPC-H query10
+8 244 1123
+Reducer5 1 london
+Reducer4 1 singapore
+Map1 4 dc madrid kualalumpur taipei
+Map8 1 paris
+Reducer3 5 tokyo taipei kualalumpur sydney paris
+Map6 2 dc sanjose
+Reducer2 1 taipei
+Map7 3 berlin osaka london
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 28134
+Map8 Reducer3 130269
+Reducer3 Reducer4 671771
+Map6 Reducer2 26790
+Reducer2 Reducer3 137245
+Map7 Reducer3 836317
+# 11: TPC-H query22
+8 245 1123
+Reducer5 1 frankfurt
+Map1 5 singapore jakarta frankfurt taipei paris
+Reducer4 1 hongkong
+Reducer8 1 dc
+Map6 2 paris singapore
+Reducer3 1 dc
+Map7 4 sanjose singapore paris london
+Reducer2 3 dc sanjose paris
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 3901
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 13: TPC-H query4
+5 246 1141
+Reducer4 1 tokyo
+Map1 3 frankfurt osaka madrid
+Map5 5 kualalumpur hongkong sanjose paris osaka
+Reducer3 2 madrid paris
+Reducer2 1 sanjose
+4
+Map1 Reducer2 55039
+Map5 Reducer2 432855
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 7: TPC-H query17
+7 247 1146
+Map1 2 sydney taipei
+Reducer4 1 osaka
+Reducer7 9 singapore taipei jakarta paris tokyo bangkok kualalumpur madrid berlin
+Map5 7 bangkok singapore madrid taipei frankfurt sanjose london
+Map6 4 singapore dc tokyo berlin
+Reducer3 7 singapore kualalumpur madrid taipei dc bangkok berlin
+Reducer2 2 tokyo berlin
+6
+Map1 Reducer2 107130
+Reducer7 Reducer3 494154
+Map5 Reducer2 1456182
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 88692
+# 13: TPC-H query4
+5 248 1154
+Reducer4 1 kualalumpur
+Map1 4 hongkong tokyo osaka sydney
+Map5 3 sydney osaka hongkong
+Reducer3 4 dc taipei bangkok frankfurt
+Reducer2 4 sanjose kualalumpur madrid osaka
+4
+Map1 Reducer2 83869
+Map5 Reducer2 296815
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 2: TPC-H query12
+5 249 1156
+Reducer4 1 berlin
+Map1 7 frankfurt hongkong kualalumpur paris jakarta madrid sydney
+Map5 4 paris madrid singapore taipei
+Reducer3 1 osaka
+Reducer2 2 sanjose london
+4
+Map1 Reducer2 232878
+Map5 Reducer2 371453
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 13: TPC-H query4
+5 250 1158
+Reducer4 1 paris
+Map1 5 sydney bangkok dc sanjose madrid
+Map5 6 london tokyo paris bangkok kualalumpur madrid
+Reducer3 3 tokyo kualalumpur dc
+Reducer2 3 paris sydney london
+4
+Map1 Reducer2 66714
+Map5 Reducer2 377765
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 11: TPC-H query22
+8 251 1181
+Reducer5 1 frankfurt
+Map1 3 tokyo dc kualalumpur
+Reducer4 1 osaka
+Reducer8 1 tokyo
+Map6 2 tokyo singapore
+Reducer3 2 jakarta frankfurt
+Map7 4 singapore madrid tokyo frankfurt
+Reducer2 2 dc frankfurt
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 954
+Map6 Reducer3 4681
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 19119
+# 16: TPC-H query7
+11 252 1192
+Reducer5 1 hongkong
+Reducer4 1 hongkong
+Map1 1 paris
+Map10 1 frankfurt
+Reducer6 1 kualalumpur
+Map11 1 singapore
+Map8 3 kualalumpur madrid frankfurt
+Map9 2 jakarta kualalumpur
+Reducer3 3 kualalumpur paris hongkong
+Reducer2 1 madrid
+Map7 3 kualalumpur dc bangkok
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 699471
+Map9 Reducer4 472342
+Reducer3 Reducer4 1104037
+Reducer2 Reducer3 583516
+Map7 Reducer2 1139943
+# 16: TPC-H query7
+11 253 1202
+Reducer5 1 osaka
+Reducer4 1 madrid
+Map1 1 frankfurt
+Map10 1 jakarta
+Reducer6 1 berlin
+Map11 1 paris
+Map8 6 sanjose dc berlin london frankfurt osaka
+Map9 3 sanjose singapore bangkok
+Reducer3 2 bangkok berlin
+Reducer2 2 taipei tokyo
+Map7 5 london madrid osaka jakarta paris
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 699471
+Map9 Reducer4 708514
+Reducer3 Reducer4 736024
+Reducer2 Reducer3 583516
+Map7 Reducer2 1266603
+# 2: TPC-H query12
+5 254 1251
+Reducer4 1 paris
+Map1 5 hongkong bangkok osaka singapore paris
+Map5 6 madrid berlin london tokyo dc hongkong
+Reducer3 1 tokyo
+Reducer2 2 london tokyo
+4
+Map1 Reducer2 166341
+Map5 Reducer2 557180
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 13: TPC-H query4
+5 255 1253
+Reducer4 1 kualalumpur
+Map1 5 madrid bangkok sanjose jakarta hongkong
+Map5 3 taipei london tokyo
+Reducer3 2 bangkok hongkong
+Reducer2 2 frankfurt paris
+4
+Map1 Reducer2 91732
+Map5 Reducer2 259713
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 8: TPC-H query1
+3 256 1253
+Map1 2 frankfurt singapore
+Reducer3 1 frankfurt
+Reducer2 6 taipei sydney bangkok jakarta madrid paris
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 13: TPC-H query4
+5 257 1254
+Reducer4 1 taipei
+Map1 7 bangkok kualalumpur dc paris singapore frankfurt jakarta
+Map5 4 madrid frankfurt london kualalumpur
+Reducer3 1 kualalumpur
+Reducer2 3 sydney kualalumpur sanjose
+4
+Map1 Reducer2 93400
+Map5 Reducer2 251843
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 11: TPC-H query22
+8 258 1255
+Reducer5 1 hongkong
+Map1 3 tokyo kualalumpur taipei
+Reducer4 1 kualalumpur
+Reducer8 1 taipei
+Map6 3 hongkong dc bangkok
+Reducer3 2 osaka singapore
+Map7 4 sydney london taipei bangkok
+Reducer2 3 paris tokyo frankfurt
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 5015
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 20485
+# 11: TPC-H query22
+8 259 1257
+Reducer5 1 kualalumpur
+Map1 7 jakarta london singapore tokyo madrid bangkok kualalumpur
+Reducer4 1 paris
+Reducer8 1 madrid
+Map6 3 london paris bangkok
+Reducer3 2 paris madrid
+Map7 4 berlin london bangkok sanjose
+Reducer2 2 madrid singapore
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 15932
+# 1: TPC-H query11
+12 260 1259
+Reducer10 1 tokyo
+Reducer4 1 london
+Map1 5 taipei tokyo paris hongkong sydney
+Reducer9 1 osaka
+Reducer8 1 frankfurt
+Map11 1 osaka
+Map12 1 dc
+Map5 1 jakarta
+Reducer3 1 bangkok
+Map6 1 london
+Reducer2 1 bangkok
+Map7 5 hongkong madrid kualalumpur paris berlin
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 6: TPC-H query16
+9 261 1260
+Reducer5 1 singapore
+Map1 7 tokyo frankfurt hongkong sanjose osaka dc kualalumpur
+Reducer4 1 sanjose
+Reducer9 1 bangkok
+Map8 1 berlin
+Reducer3 1 paris
+Map6 2 sydney kualalumpur
+Reducer2 1 frankfurt
+Map7 1 paris
+8
+Map1 Reducer2 131415
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 16138
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 33282
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 6: TPC-H query16
+9 262 1263
+Reducer5 1 hongkong
+Map1 6 osaka jakarta madrid sanjose taipei dc
+Reducer4 1 osaka
+Reducer9 1 jakarta
+Map8 1 berlin
+Reducer3 1 kualalumpur
+Map6 2 osaka tokyo
+Reducer2 1 madrid
+Map7 1 hongkong
+8
+Map1 Reducer2 125158
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 17931
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 36980
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 0: TPC-H query10
+8 263 1275
+Reducer5 1 hongkong
+Reducer4 1 tokyo
+Map1 3 tokyo frankfurt osaka
+Map8 1 sydney
+Reducer3 3 paris frankfurt tokyo
+Map6 5 sanjose tokyo dc osaka kualalumpur
+Reducer2 1 frankfurt
+Map7 6 sydney bangkok sanjose osaka tokyo kualalumpur
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 15825
+Map8 Reducer3 81418
+Reducer3 Reducer4 671771
+Map6 Reducer2 50232
+Reducer2 Reducer3 85778
+Map7 Reducer3 1045396
+# 2: TPC-H query12
+5 264 1287
+Reducer4 1 osaka
+Map1 6 hongkong jakarta madrid taipei sydney kualalumpur
+Map5 2 jakarta osaka
+Reducer3 1 bangkok
+Reducer2 1 osaka
+4
+Map1 Reducer2 274463
+Map5 Reducer2 255374
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 11: TPC-H query22
+8 265 1303
+Reducer5 1 tokyo
+Map1 3 kualalumpur osaka dc
+Reducer4 1 tokyo
+Reducer8 1 dc
+Map6 3 tokyo london osaka
+Reducer3 2 singapore hongkong
+Map7 3 frankfurt osaka hongkong
+Reducer2 2 bangkok london
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 15932
+# 15: TPC-H query6
+2 266 1334
+Map1 3 osaka madrid jakarta
+Reducer2 1 tokyo
+1
+Map1 Reducer2 283398
+# 8: TPC-H query1
+3 267 1334
+Map1 5 osaka bangkok berlin kualalumpur madrid
+Reducer3 1 berlin
+Reducer2 6 jakarta osaka singapore madrid frankfurt sydney
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 8: TPC-H query1
+3 268 1335
+Map1 3 kualalumpur bangkok sydney
+Reducer3 1 jakarta
+Reducer2 3 tokyo madrid singapore
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 9: TPC-H query20
+12 269 1337
+Reducer5 1 dc
+Map10 6 osaka kualalumpur dc singapore jakarta hongkong
+Map1 2 berlin singapore
+Reducer4 1 singapore
+Reducer7 1 kualalumpur
+Reducer6 1 berlin
+Reducer9 1 berlin
+Map11 1 singapore
+Map12 1 paris
+Map8 2 tokyo london
+Reducer3 1 taipei
+Reducer2 1 kualalumpur
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 56352
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 6352
+# 13: TPC-H query4
+5 270 1346
+Reducer4 1 bangkok
+Map1 3 paris kualalumpur dc
+Map5 3 singapore taipei berlin
+Reducer3 4 sanjose sydney frankfurt taipei
+Reducer2 1 madrid
+4
+Map1 Reducer2 73385
+Map5 Reducer2 346284
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 13: TPC-H query4
+5 271 1354
+Reducer4 1 frankfurt
+Map1 5 dc frankfurt hongkong tokyo sydney
+Map5 3 hongkong sydney paris
+Reducer3 2 sanjose osaka
+Reducer2 3 jakarta berlin london
+4
+Map1 Reducer2 91732
+Map5 Reducer2 259713
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 6: TPC-H query16
+9 272 1356
+Reducer5 1 tokyo
+Map1 3 berlin bangkok hongkong
+Reducer4 1 frankfurt
+Reducer9 1 sydney
+Map8 1 sydney
+Reducer3 1 tokyo
+Map6 3 dc berlin sydney
+Reducer2 1 osaka
+Map7 1 hongkong
+8
+Map1 Reducer2 80458
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 23054
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 71320
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 1: TPC-H query11
+12 273 1356
+Reducer10 1 london
+Reducer4 1 kualalumpur
+Map1 6 berlin sydney tokyo sanjose osaka frankfurt
+Reducer9 1 frankfurt
+Reducer8 1 frankfurt
+Map11 1 taipei
+Map12 1 taipei
+Map5 1 hongkong
+Reducer3 1 osaka
+Map6 1 taipei
+Reducer2 1 jakarta
+Map7 3 paris bangkok london
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 178820
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 26762
+Reducer3 Reducer4 5556
+Map6 Reducer2 26718
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 0: TPC-H query10
+8 274 1368
+Reducer5 1 berlin
+Reducer4 1 frankfurt
+Map1 3 kualalumpur hongkong sanjose
+Map8 1 bangkok
+Reducer3 4 osaka tokyo hongkong frankfurt
+Map6 7 sanjose berlin dc tokyo taipei jakarta kualalumpur
+Reducer2 1 osaka
+Map7 3 paris tokyo sydney
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 12660
+Map8 Reducer3 130269
+Reducer3 Reducer4 671771
+Map6 Reducer2 56260
+Reducer2 Reducer3 137245
+Map7 Reducer3 836317
+# 8: TPC-H query1
+3 275 1381
+Map1 4 sanjose singapore madrid frankfurt
+Reducer3 1 osaka
+Reducer2 5 sanjose osaka bangkok taipei kualalumpur
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 13: TPC-H query4
+5 276 1387
+Reducer4 1 frankfurt
+Map1 7 taipei osaka madrid dc sydney jakarta berlin
+Map5 2 jakarta madrid
+Reducer3 1 sanjose
+Reducer2 2 dc singapore
+4
+Map1 Reducer2 114155
+Map5 Reducer2 153904
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 11: TPC-H query22
+8 277 1390
+Reducer5 1 taipei
+Map1 5 paris london dc singapore taipei
+Reducer4 1 hongkong
+Reducer8 1 berlin
+Map6 3 taipei kualalumpur singapore
+Reducer3 2 osaka sydney
+Map7 2 berlin singapore
+Reducer2 1 sanjose
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 954
+Map6 Reducer3 7021
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 9559
+# 14: TPC-H query5
+11 278 1395
+Reducer5 1 hongkong
+Map1 3 sanjose paris tokyo
+Reducer4 2 hongkong berlin
+Map10 1 sydney
+Reducer6 1 tokyo
+Map11 1 paris
+Map8 5 kualalumpur taipei jakarta hongkong sanjose
+Map9 1 sanjose
+Reducer3 4 bangkok paris berlin hongkong
+Reducer2 1 sanjose
+Map7 2 madrid taipei
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 12270
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 822325
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 36383
+Map7 Reducer2 21235
+# 0: TPC-H query10
+8 279 1417
+Reducer5 1 tokyo
+Reducer4 1 madrid
+Map1 4 dc bangkok hongkong frankfurt
+Map8 1 osaka
+Reducer3 1 taipei
+Map6 5 london dc berlin kualalumpur jakarta
+Reducer2 1 taipei
+Map7 4 berlin frankfurt dc madrid
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 18756
+Map8 Reducer3 108557
+Reducer3 Reducer4 671771
+Map6 Reducer2 44651
+Reducer2 Reducer3 114371
+Map7 Reducer3 929241
+# 9: TPC-H query20
+12 280 1417
+Reducer5 1 berlin
+Map10 6 dc sydney berlin taipei frankfurt hongkong
+Map1 1 kualalumpur
+Reducer4 1 osaka
+Reducer7 1 madrid
+Reducer6 1 dc
+Reducer9 1 paris
+Map11 1 sydney
+Map12 1 berlin
+Map8 7 frankfurt tokyo paris singapore berlin bangkok london
+Reducer3 1 dc
+Reducer2 1 paris
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 56352
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 6352
+# 1: TPC-H query11
+12 281 1419
+Reducer10 1 london
+Reducer4 1 madrid
+Map1 3 kualalumpur frankfurt jakarta
+Reducer9 1 sanjose
+Reducer8 2 sanjose paris
+Map11 1 berlin
+Map12 1 tokyo
+Map5 1 sydney
+Reducer3 1 london
+Map6 1 jakarta
+Reducer2 1 madrid
+Map7 7 hongkong paris osaka singapore london tokyo frankfurt
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 143056
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 5966
+Map12 Reducer8 5926
+Map5 Reducer2 42819
+Reducer3 Reducer4 5556
+Map6 Reducer2 42748
+Reducer2 Reducer3 109618
+Map7 Reducer8 60683
+# 14: TPC-H query5
+11 282 1421
+Reducer5 1 berlin
+Map1 4 osaka london taipei sanjose
+Reducer4 3 paris dc sydney
+Map10 1 paris
+Reducer6 1 jakarta
+Map11 1 osaka
+Map8 7 taipei london osaka jakarta kualalumpur hongkong sanjose
+Map9 1 frankfurt
+Reducer3 2 kualalumpur dc
+Reducer2 1 dc
+Map7 5 tokyo hongkong osaka london dc
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 9089
+Reducer4 Reducer5 220520
+Map10 Reducer4 44109
+Map11 Reducer4 44105
+Map8 Reducer3 863442
+Map9 Reducer4 44138
+Reducer3 Reducer4 170517
+Reducer2 Reducer3 27287
+Map7 Reducer2 29493
+# 3: TPC-H query13
+6 283 1433
+Reducer5 1 madrid
+Reducer4 1 london
+Map1 1 kualalumpur
+Reducer3 1 paris
+Map6 2 kualalumpur osaka
+Reducer2 1 madrid
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 133315
+Reducer3 Reducer4 9272
+Map6 Reducer2 336775
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 284 1447
+Map1 2 hongkong tokyo
+Reducer3 1 taipei
+Reducer2 6 osaka sydney dc sanjose hongkong paris
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 4: TPC-H query14
+4 285 1468
+Map1 4 bangkok tokyo kualalumpur paris
+Map4 1 london
+Reducer3 1 berlin
+Reducer2 1 madrid
+3
+Map1 Reducer2 549028
+Map4 Reducer2 7517
+Reducer2 Reducer3 33825
+# 1: TPC-H query11
+12 286 1474
+Reducer10 1 hongkong
+Reducer4 1 kualalumpur
+Map1 3 tokyo hongkong osaka
+Reducer9 1 tokyo
+Reducer8 1 sydney
+Map11 1 tokyo
+Map12 1 kualalumpur
+Map5 1 bangkok
+Reducer3 1 frankfurt
+Map6 1 tokyo
+Reducer2 1 london
+Map7 4 jakarta bangkok sydney singapore
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 143056
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 8949
+Map12 Reducer8 8889
+Map5 Reducer2 42819
+Reducer3 Reducer4 5556
+Map6 Reducer2 42748
+Reducer2 Reducer3 109618
+Map7 Reducer8 52014
+# 10: TPC-H query21
+14 287 1495
+Reducer5 6 hongkong london jakarta paris taipei sydney
+Map10 3 sydney hongkong sanjose
+Map1 1 jakarta
+Reducer4 2 osaka paris
+Reducer7 3 kualalumpur london taipei
+Map2 1 taipei
+Reducer6 2 kualalumpur sanjose
+Reducer14 1 jakarta
+Map13 3 sydney hongkong berlin
+Reducer8 1 singapore
+Reducer12 7 taipei singapore sanjose madrid kualalumpur bangkok sydney
+Map11 7 kualalumpur sanjose madrid taipei bangkok singapore london
+Map9 3 paris hongkong singapore
+Reducer3 1 singapore
+13
+Reducer5 Reducer6 166649
+Map10 Reducer4 97606
+Map1 Map2 533
+Reducer4 Reducer5 19901
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 77066
+Map13 Reducer14 1158988
+Reducer12 Reducer5 713919
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 118728
+# 4: TPC-H query14
+4 288 1501
+Map1 3 osaka singapore sydney
+Map4 3 dc singapore kualalumpur
+Reducer3 1 tokyo
+Reducer2 1 frankfurt
+3
+Map1 Reducer2 343142
+Map4 Reducer2 18794
+Reducer2 Reducer3 33825
+# 15: TPC-H query6
+2 289 1525
+Map1 5 taipei dc osaka jakarta tokyo
+Reducer2 1 london
+1
+Map1 Reducer2 283398
+# 9: TPC-H query20
+12 290 1528
+Reducer5 1 kualalumpur
+Map10 3 frankfurt osaka berlin
+Map1 2 tokyo taipei
+Reducer4 1 sanjose
+Reducer7 1 jakarta
+Reducer6 1 sanjose
+Reducer9 1 london
+Map11 1 kualalumpur
+Map12 1 sanjose
+Map8 7 jakarta osaka sanjose london singapore bangkok sydney
+Reducer3 1 tokyo
+Reducer2 1 osaka
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 49308
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 11117
+# 4: TPC-H query14
+4 291 1534
+Map1 3 london sanjose sydney
+Map4 2 berlin singapore
+Reducer3 1 taipei
+Reducer2 1 taipei
+3
+Map1 Reducer2 411771
+Map4 Reducer2 15035
+Reducer2 Reducer3 33825
+# 8: TPC-H query1
+3 292 1550
+Map1 7 taipei madrid bangkok hongkong osaka sanjose berlin
+Reducer3 1 frankfurt
+Reducer2 5 osaka jakarta kualalumpur frankfurt singapore
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 9: TPC-H query20
+12 293 1550
+Reducer5 1 madrid
+Map10 6 sydney tokyo madrid frankfurt hongkong kualalumpur
+Map1 1 frankfurt
+Reducer4 1 london
+Reducer7 1 hongkong
+Reducer6 1 bangkok
+Reducer9 1 jakarta
+Map11 1 jakarta
+Map12 1 taipei
+Map8 3 frankfurt jakarta paris
+Reducer3 1 dc
+Reducer2 1 london
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 56352
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 6352
+# 9: TPC-H query20
+12 294 1551
+Reducer5 1 madrid
+Map10 5 london jakarta osaka hongkong sanjose
+Map1 1 taipei
+Reducer4 1 osaka
+Reducer7 1 hongkong
+Reducer6 1 bangkok
+Reducer9 1 frankfurt
+Map11 1 osaka
+Map12 1 frankfurt
+Map8 5 tokyo frankfurt berlin jakarta taipei
+Reducer3 1 tokyo
+Reducer2 1 jakarta
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 54787
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 7411
+# 0: TPC-H query10
+8 295 1553
+Reducer5 1 sanjose
+Reducer4 1 dc
+Map1 4 sanjose jakarta osaka frankfurt
+Map8 1 bangkok
+Reducer3 1 paris
+Map6 5 sanjose paris dc hongkong taipei
+Reducer2 1 sydney
+Map7 6 taipei tokyo london jakarta bangkok dc
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 18756
+Map8 Reducer3 81418
+Reducer3 Reducer4 671771
+Map6 Reducer2 44651
+Reducer2 Reducer3 85778
+Map7 Reducer3 1045396
+# 12: TPC-H query3
+7 296 1554
+Reducer5 1 frankfurt
+Map1 3 taipei hongkong bangkok
+Reducer4 1 tokyo
+Map6 4 frankfurt tokyo paris london
+Reducer3 2 london tokyo
+Map7 4 tokyo osaka kualalumpur london
+Reducer2 1 hongkong
+6
+Map1 Reducer2 25556
+Reducer4 Reducer5 4458
+Map6 Reducer2 59066
+Reducer3 Reducer4 290950
+Map7 Reducer3 772704
+Reducer2 Reducer3 68450
+# 2: TPC-H query12
+5 297 1555
+Reducer4 1 sydney
+Map1 4 kualalumpur berlin paris jakarta
+Map5 7 paris dc madrid taipei jakarta hongkong osaka
+Reducer3 1 london
+Reducer2 2 dc berlin
+4
+Map1 Reducer2 133073
+Map5 Reducer2 650043
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 5: TPC-H query15
+8 298 1559
+Map1 5 singapore paris tokyo kualalumpur berlin
+Reducer4 1 frankfurt
+Reducer7 1 frankfurt
+Reducer6 2 taipei sanjose
+Map8 1 tokyo
+Map5 5 taipei frankfurt singapore bangkok kualalumpur
+Reducer3 1 frankfurt
+Reducer2 1 taipei
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 14: TPC-H query5
+11 299 1580
+Reducer5 1 jakarta
+Map1 4 madrid berlin london singapore
+Reducer4 4 bangkok berlin madrid sanjose
+Map10 1 kualalumpur
+Reducer6 1 sydney
+Map11 1 singapore
+Map8 3 london osaka singapore
+Map9 1 madrid
+Reducer3 4 sanjose frankfurt sydney hongkong
+Reducer2 1 taipei
+Map7 3 sanjose jakarta tokyo
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 11685
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 740093
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 54574
+Map7 Reducer2 22752
+# 8: TPC-H query1
+3 300 1580
+Map1 5 madrid hongkong frankfurt dc jakarta
+Reducer3 1 frankfurt
+Reducer2 2 dc frankfurt
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 7: TPC-H query17
+7 301 1586
+Map1 2 jakarta kualalumpur
+Reducer4 1 hongkong
+Reducer7 5 kualalumpur sydney paris madrid frankfurt
+Map5 4 dc kualalumpur tokyo frankfurt
+Map6 7 sanjose berlin frankfurt kualalumpur hongkong jakarta madrid
+Reducer3 3 frankfurt tokyo hongkong
+Reducer2 6 dc osaka taipei sydney singapore frankfurt
+6
+Map1 Reducer2 160696
+Reducer7 Reducer3 274530
+Map5 Reducer2 1248156
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 266076
+# 5: TPC-H query15
+8 302 1606
+Map1 2 madrid jakarta
+Reducer4 1 osaka
+Reducer7 1 kualalumpur
+Reducer6 2 hongkong osaka
+Map8 1 madrid
+Map5 2 paris frankfurt
+Reducer3 1 london
+Reducer2 1 madrid
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 5: TPC-H query15
+8 303 1607
+Map1 2 singapore sydney
+Reducer4 1 singapore
+Reducer7 1 dc
+Reducer6 1 sydney
+Map8 1 berlin
+Map5 3 singapore frankfurt sanjose
+Reducer3 1 berlin
+Reducer2 1 jakarta
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 3: TPC-H query13
+6 304 1615
+Reducer5 1 kualalumpur
+Reducer4 1 dc
+Map1 3 tokyo sydney sanjose
+Reducer3 1 london
+Map6 5 dc london paris singapore sydney
+Reducer2 2 tokyo sanjose
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 149980
+Reducer3 Reducer4 9272
+Map6 Reducer2 315727
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 305 1619
+Map1 3 bangkok kualalumpur frankfurt
+Reducer3 1 jakarta
+Reducer2 2 berlin bangkok
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 3: TPC-H query13
+6 306 1620
+Reducer5 1 paris
+Reducer4 1 paris
+Map1 3 singapore berlin taipei
+Reducer3 1 hongkong
+Map6 3 sanjose bangkok tokyo
+Reducer2 3 paris bangkok berlin
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 199973
+Reducer3 Reducer4 9272
+Map6 Reducer2 252581
+Reducer2 Reducer3 404550
+# 8: TPC-H query1
+3 307 1632
+Map1 5 sydney paris kualalumpur bangkok tokyo
+Reducer3 1 taipei
+Reducer2 3 madrid sanjose frankfurt
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 4: TPC-H query14
+4 308 1634
+Map1 5 osaka paris singapore frankfurt london
+Map4 3 tokyo singapore osaka
+Reducer3 1 sanjose
+Reducer2 1 bangkok
+3
+Map1 Reducer2 428928
+Map4 Reducer2 14096
+Reducer2 Reducer3 33825
+# 1: TPC-H query11
+12 309 1677
+Reducer10 1 sanjose
+Reducer4 1 hongkong
+Map1 5 berlin sydney singapore madrid sanjose
+Reducer9 1 taipei
+Reducer8 1 berlin
+Map11 1 paris
+Map12 1 sydney
+Map5 1 hongkong
+Reducer3 1 berlin
+Map6 1 berlin
+Reducer2 1 kualalumpur
+Map7 5 taipei jakarta osaka berlin singapore
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 11: TPC-H query22
+8 310 1678
+Reducer5 1 hongkong
+Map1 5 singapore kualalumpur osaka sydney sanjose
+Reducer4 1 frankfurt
+Reducer8 1 madrid
+Map6 4 paris taipei hongkong osaka
+Reducer3 3 bangkok paris sanjose
+Map7 1 sanjose
+Reducer2 3 sanjose jakarta osaka
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 596
+Map6 Reducer3 5851
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 17924
+# 9: TPC-H query20
+12 311 1678
+Reducer5 1 tokyo
+Map10 2 kualalumpur madrid
+Map1 2 osaka sydney
+Reducer4 1 bangkok
+Reducer7 1 madrid
+Reducer6 1 bangkok
+Reducer9 1 tokyo
+Map11 1 jakarta
+Map12 1 taipei
+Map8 7 kualalumpur osaka jakarta berlin taipei frankfurt sanjose
+Reducer3 1 paris
+Reducer2 1 singapore
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 43830
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 14823
+# 5: TPC-H query15
+8 312 1680
+Map1 7 sydney bangkok singapore frankfurt berlin tokyo kualalumpur
+Reducer4 1 jakarta
+Reducer7 1 hongkong
+Reducer6 1 sanjose
+Map8 1 paris
+Map5 2 kualalumpur paris
+Reducer3 1 bangkok
+Reducer2 1 paris
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 16: TPC-H query7
+11 313 1680
+Reducer5 1 singapore
+Reducer4 2 kualalumpur dc
+Map1 1 hongkong
+Map10 1 dc
+Reducer6 1 berlin
+Map11 1 hongkong
+Map8 2 sanjose london
+Map9 3 berlin london sanjose
+Reducer3 3 london sydney hongkong
+Reducer2 2 bangkok london
+Map7 2 tokyo sanjose
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 470392
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 466314
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 1167032
+Map7 Reducer2 1013283
+# 1: TPC-H query11
+12 314 1682
+Reducer10 1 sanjose
+Reducer4 1 singapore
+Map1 4 bangkok singapore jakarta london
+Reducer9 1 taipei
+Reducer8 1 sydney
+Map11 1 madrid
+Map12 1 madrid
+Map5 1 dc
+Reducer3 1 london
+Map6 1 madrid
+Reducer2 2 hongkong jakarta
+Map7 6 jakarta sanjose frankfurt sydney tokyo hongkong
+11
+Reducer10 Reducer3 1846
+Map1 Reducer2 158951
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 6711
+Map12 Reducer8 6667
+Map5 Reducer2 35683
+Reducer3 Reducer4 5556
+Map6 Reducer2 35624
+Reducer2 Reducer3 146157
+Map7 Reducer8 58516
+# 3: TPC-H query13
+6 315 1683
+Reducer5 1 sydney
+Reducer4 1 kualalumpur
+Map1 4 singapore madrid jakarta dc
+Reducer3 1 kualalumpur
+Map6 5 frankfurt madrid singapore dc hongkong
+Reducer2 3 madrid tokyo dc
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 177754
+Reducer3 Reducer4 9272
+Map6 Reducer2 280646
+Reducer2 Reducer3 404550
+# 3: TPC-H query13
+6 316 1687
+Reducer5 1 bangkok
+Reducer4 1 singapore
+Map1 1 singapore
+Reducer3 1 london
+Map6 3 frankfurt kualalumpur osaka
+Reducer2 2 madrid singapore
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 99986
+Reducer3 Reducer4 9272
+Map6 Reducer2 378872
+Reducer2 Reducer3 404550
+# 16: TPC-H query7
+11 317 1688
+Reducer5 1 sydney
+Reducer4 1 sydney
+Map1 1 kualalumpur
+Map10 1 dc
+Reducer6 1 hongkong
+Map11 1 dc
+Map8 4 bangkok berlin singapore paris
+Map9 4 sydney kualalumpur tokyo bangkok
+Reducer3 3 berlin singapore hongkong
+Reducer2 1 madrid
+Map7 3 singapore madrid dc
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 183688
+Map11 Reducer4 183688
+Map8 Reducer3 746102
+Map9 Reducer4 734755
+Reducer3 Reducer4 858695
+Reducer2 Reducer3 466813
+Map7 Reducer2 1139943
+# 10: TPC-H query21
+14 318 1688
+Reducer5 3 madrid sanjose osaka
+Map10 5 hongkong singapore tokyo madrid frankfurt
+Map1 1 osaka
+Reducer4 2 paris berlin
+Reducer7 2 frankfurt singapore
+Map2 1 sydney
+Reducer6 2 osaka madrid
+Reducer14 2 singapore sanjose
+Map13 3 singapore sydney jakarta
+Reducer8 1 london
+Reducer12 3 osaka bangkok singapore
+Map11 5 paris sanjose tokyo madrid dc
+Map9 3 tokyo madrid hongkong
+Reducer3 2 berlin london
+13
+Reducer5 Reducer6 116654
+Map10 Reducer4 92958
+Map1 Map2 533
+Reducer4 Reducer5 35822
+Reducer7 Reducer8 1817
+Map2 Reducer3 96461
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 215786
+Map13 Reducer14 1158988
+Reducer12 Reducer5 550737
+Map11 Reducer12 1815325
+Map9 Reducer3 797737
+Reducer3 Reducer4 135690
+# 4: TPC-H query14
+4 319 1689
+Map1 5 london berlin kualalumpur sanjose singapore
+Map4 1 osaka
+Reducer3 1 singapore
+Reducer2 1 dc
+3
+Map1 Reducer2 571904
+Map4 Reducer2 6264
+Reducer2 Reducer3 33825
+# 10: TPC-H query21
+14 320 1690
+Reducer5 2 london dc
+Map10 7 kualalumpur tokyo madrid frankfurt taipei hongkong dc
+Map1 1 dc
+Reducer4 2 jakarta osaka
+Reducer7 3 madrid dc tokyo
+Map2 1 osaka
+Reducer6 5 tokyo frankfurt sanjose bangkok singapore
+Reducer14 2 london kualalumpur
+Map13 7 sanjose dc jakarta sydney paris berlin singapore
+Reducer8 1 paris
+Reducer12 5 frankfurt tokyo bangkok singapore jakarta
+Map11 2 paris kualalumpur
+Map9 6 kualalumpur bangkok singapore sanjose hongkong madrid
+Reducer3 1 sydney
+13
+Reducer5 Reducer6 97212
+Map10 Reducer4 113873
+Map1 Map2 533
+Reducer4 Reducer5 25587
+Reducer7 Reducer8 1817
+Map2 Reducer3 55120
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 269732
+Map13 Reducer14 1158988
+Reducer12 Reducer5 655640
+Map11 Reducer12 1815325
+Map9 Reducer3 911699
+Reducer3 Reducer4 59364
+# 6: TPC-H query16
+9 321 1694
+Reducer5 1 frankfurt
+Map1 4 singapore kualalumpur bangkok madrid
+Reducer4 1 paris
+Reducer9 1 hongkong
+Map8 1 sanjose
+Reducer3 1 hongkong
+Map6 2 kualalumpur berlin
+Reducer2 1 jakarta
+Map7 1 london
+8
+Map1 Reducer2 107278
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 23054
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 47546
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 9: TPC-H query20
+12 322 1699
+Reducer5 1 jakarta
+Map10 5 madrid sanjose hongkong paris jakarta
+Map1 2 madrid bangkok
+Reducer4 1 osaka
+Reducer7 1 tokyo
+Reducer6 1 berlin
+Reducer9 1 jakarta
+Map11 1 tokyo
+Map12 1 jakarta
+Map8 3 madrid sanjose bangkok
+Reducer3 1 frankfurt
+Reducer2 1 tokyo
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 54787
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 7411
+# 15: TPC-H query6
+2 323 1700
+Map1 5 osaka berlin london madrid dc
+Reducer2 1 hongkong
+1
+Map1 Reducer2 283398
+# 13: TPC-H query4
+5 324 1704
+Reducer4 1 sydney
+Map1 5 tokyo madrid london sanjose paris
+Map5 2 bangkok paris
+Reducer3 2 osaka dc
+Reducer2 3 bangkok dc osaka
+4
+Map1 Reducer2 104836
+Map5 Reducer2 197876
+Reducer3 Reducer4 613
+Reducer2 Reducer3 119197
+# 9: TPC-H query20
+12 325 1709
+Reducer5 1 taipei
+Map10 3 tokyo madrid dc
+Map1 2 hongkong bangkok
+Reducer4 1 hongkong
+Reducer7 1 osaka
+Reducer6 1 taipei
+Reducer9 1 tokyo
+Map11 1 frankfurt
+Map12 1 tokyo
+Map8 7 berlin singapore tokyo madrid dc jakarta frankfurt
+Reducer3 1 singapore
+Reducer2 1 sydney
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 49308
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 11117
+# 7: TPC-H query17
+7 326 1726
+Map1 2 sydney jakarta
+Reducer4 1 dc
+Reducer7 8 bangkok madrid tokyo sydney taipei sanjose berlin singapore
+Map5 5 singapore sanjose taipei berlin tokyo
+Map6 4 tokyo madrid kualalumpur berlin
+Reducer3 4 jakarta kualalumpur sydney dc
+Reducer2 5 tokyo madrid frankfurt taipei dc
+6
+Map1 Reducer2 137739
+Reducer7 Reducer3 371671
+Map5 Reducer2 1337310
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 187617
+# 4: TPC-H query14
+4 327 1729
+Map1 3 sydney sanjose jakarta
+Map4 3 sanjose dc kualalumpur
+Reducer3 1 taipei
+Reducer2 1 tokyo
+3
+Map1 Reducer2 343142
+Map4 Reducer2 18794
+Reducer2 Reducer3 33825
+# 1: TPC-H query11
+12 328 1731
+Reducer10 1 singapore
+Reducer4 1 madrid
+Map1 7 berlin hongkong sydney madrid frankfurt paris sanjose
+Reducer9 1 dc
+Reducer8 2 sydney berlin
+Map11 1 tokyo
+Map12 1 dc
+Map5 1 jakarta
+Reducer3 1 madrid
+Map6 1 osaka
+Reducer2 1 tokyo
+Map7 3 kualalumpur bangkok frankfurt
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 185443
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 23788
+Reducer3 Reducer4 5556
+Map6 Reducer2 23749
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 8: TPC-H query1
+3 329 1731
+Map1 5 sanjose berlin tokyo jakarta hongkong
+Reducer3 1 osaka
+Reducer2 4 kualalumpur jakarta singapore sydney
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 3: TPC-H query13
+6 330 1741
+Reducer5 1 taipei
+Reducer4 1 berlin
+Map1 2 dc madrid
+Reducer3 1 jakarta
+Map6 6 singapore taipei kualalumpur dc osaka london
+Reducer2 2 osaka berlin
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 99986
+Reducer3 Reducer4 9272
+Map6 Reducer2 378872
+Reducer2 Reducer3 404550
+# 4: TPC-H query14
+4 331 1750
+Map1 5 taipei madrid singapore sanjose tokyo
+Map4 1 madrid
+Reducer3 1 osaka
+Reducer2 2 kualalumpur dc
+3
+Map1 Reducer2 571904
+Map4 Reducer2 6264
+Reducer2 Reducer3 33825
+# 15: TPC-H query6
+2 332 1762
+Map1 5 frankfurt dc sanjose kualalumpur madrid
+Reducer2 1 sydney
+1
+Map1 Reducer2 283398
+# 5: TPC-H query15
+8 333 1767
+Map1 4 tokyo berlin dc hongkong
+Reducer4 1 jakarta
+Reducer7 1 singapore
+Reducer6 2 kualalumpur sanjose
+Map8 1 kualalumpur
+Map5 3 sanjose tokyo frankfurt
+Reducer3 1 bangkok
+Reducer2 1 dc
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 2: TPC-H query12
+5 334 1781
+Reducer4 1 bangkok
+Map1 6 osaka paris madrid hongkong tokyo kualalumpur
+Map5 5 sydney kualalumpur tokyo paris bangkok
+Reducer3 1 bangkok
+Reducer2 2 osaka tokyo
+4
+Map1 Reducer2 199610
+Map5 Reducer2 464316
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 2: TPC-H query12
+5 335 1783
+Reducer4 1 london
+Map1 3 kualalumpur tokyo berlin
+Map5 2 frankfurt taipei
+Reducer3 1 singapore
+Reducer2 2 paris bangkok
+4
+Map1 Reducer2 219571
+Map5 Reducer2 408598
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 16: TPC-H query7
+11 336 1783
+Reducer5 1 frankfurt
+Reducer4 1 jakarta
+Map1 1 madrid
+Map10 1 paris
+Reducer6 1 hongkong
+Map11 1 frankfurt
+Map8 2 sanjose kualalumpur
+Map9 3 osaka berlin dc
+Reducer3 3 hongkong dc jakarta
+Reducer2 3 kualalumpur sydney singapore
+Map7 4 hongkong dc jakarta taipei
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 282235
+Map10 Reducer4 206649
+Map11 Reducer4 206649
+Map8 Reducer3 373051
+Map9 Reducer4 619949
+Reducer3 Reducer4 966032
+Reducer2 Reducer3 1400439
+Map7 Reducer2 1215939
+# 1: TPC-H query11
+12 337 1786
+Reducer10 1 madrid
+Reducer4 1 madrid
+Map1 6 taipei frankfurt paris bangkok madrid sydney
+Reducer9 1 singapore
+Reducer8 1 paris
+Map11 1 berlin
+Map12 1 taipei
+Map5 1 sanjose
+Reducer3 1 dc
+Map6 1 osaka
+Reducer2 1 london
+Map7 6 frankfurt madrid paris london kualalumpur jakarta
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 178820
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 6711
+Map12 Reducer8 6667
+Map5 Reducer2 26762
+Reducer3 Reducer4 5556
+Map6 Reducer2 26718
+Reducer2 Reducer3 109618
+Map7 Reducer8 58516
+# 10: TPC-H query21
+14 338 1786
+Reducer5 6 berlin sydney tokyo paris hongkong osaka
+Map10 6 taipei paris london jakarta osaka sydney
+Map1 1 berlin
+Reducer4 1 osaka
+Reducer7 3 tokyo singapore dc
+Map2 1 kualalumpur
+Reducer6 6 berlin sydney hongkong osaka jakarta paris
+Reducer14 1 london
+Map13 2 kualalumpur hongkong
+Reducer8 1 singapore
+Reducer12 5 london kualalumpur bangkok berlin tokyo
+Map11 3 tokyo bangkok osaka
+Map9 6 kualalumpur dc jakarta tokyo berlin bangkok
+Reducer3 1 frankfurt
+13
+Reducer5 Reducer6 166649
+Map10 Reducer4 111549
+Map1 Map2 533
+Reducer4 Reducer5 14925
+Reducer7 Reducer8 1817
+Map2 Reducer3 55120
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 77066
+Map13 Reducer14 1158988
+Reducer12 Reducer5 764913
+Map11 Reducer12 1815325
+Map9 Reducer3 911699
+Reducer3 Reducer4 67845
+# 8: TPC-H query1
+3 339 1799
+Map1 5 bangkok tokyo hongkong taipei dc
+Reducer3 1 kualalumpur
+Reducer2 6 berlin osaka madrid sydney bangkok tokyo
+2
+Map1 Reducer2 1469597
+Reducer2 Reducer3 1607
+# 11: TPC-H query22
+8 340 1803
+Reducer5 1 paris
+Map1 3 osaka tokyo berlin
+Reducer4 1 berlin
+Reducer8 1 singapore
+Map6 2 taipei bangkok
+Reducer3 1 berlin
+Map7 3 paris osaka jakarta
+Reducer2 4 london sanjose osaka madrid
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 3343
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 27313
+# 7: TPC-H query17
+7 341 1809
+Map1 1 sanjose
+Reducer4 1 hongkong
+Reducer7 2 berlin london
+Map5 5 dc frankfurt berlin osaka jakarta
+Map6 4 kualalumpur dc hongkong bangkok
+Reducer3 6 paris jakarta taipei berlin bangkok kualalumpur
+Reducer2 4 jakarta dc paris madrid
+6
+Map1 Reducer2 80348
+Reducer7 Reducer3 201322
+Map5 Reducer2 1560195
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 325204
+# 15: TPC-H query6
+2 342 1811
+Map1 3 berlin singapore tokyo
+Reducer2 1 sydney
+1
+Map1 Reducer2 283398
+# 6: TPC-H query16
+9 343 1816
+Reducer5 1 berlin
+Map1 7 sydney jakarta frankfurt kualalumpur dc hongkong paris
+Reducer4 1 berlin
+Reducer9 1 berlin
+Map8 1 frankfurt
+Reducer3 2 singapore hongkong
+Map6 3 sydney dc singapore
+Reducer2 1 dc
+Map7 1 osaka
+8
+Map1 Reducer2 119469
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 14671
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 45385
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 11: TPC-H query22
+8 344 1826
+Reducer5 1 jakarta
+Map1 6 london hongkong berlin dc paris osaka
+Reducer4 1 paris
+Reducer8 1 sydney
+Map6 2 kualalumpur singapore
+Reducer3 2 berlin hongkong
+Map7 1 jakarta
+Reducer2 3 frankfurt taipei bangkok
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 3901
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 4: TPC-H query14
+4 345 1833
+Map1 4 hongkong sanjose jakarta taipei
+Map4 2 singapore hongkong
+Reducer3 1 sydney
+Reducer2 2 singapore hongkong
+3
+Map1 Reducer2 457523
+Map4 Reducer2 12529
+Reducer2 Reducer3 33825
+# 0: TPC-H query10
+8 346 1834
+Reducer5 1 madrid
+Reducer4 1 frankfurt
+Map1 2 madrid sanjose
+Map8 1 madrid
+Reducer3 4 singapore london sanjose dc
+Map6 3 paris berlin london
+Reducer2 1 kualalumpur
+Map7 6 madrid hongkong kualalumpur jakarta sanjose taipei
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 16880
+Map8 Reducer3 81418
+Reducer3 Reducer4 671771
+Map6 Reducer2 48223
+Reducer2 Reducer3 85778
+Map7 Reducer3 1045396
+# 11: TPC-H query22
+8 347 1836
+Reducer5 1 bangkok
+Map1 4 singapore madrid bangkok frankfurt
+Reducer4 1 dc
+Reducer8 1 bangkok
+Map6 4 bangkok berlin frankfurt singapore
+Reducer3 3 taipei kualalumpur berlin
+Map7 3 madrid paris kualalumpur
+Reducer2 1 hongkong
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 795
+Map6 Reducer3 7802
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 7966
+# 9: TPC-H query20
+12 348 1840
+Reducer5 1 bangkok
+Map10 7 tokyo london sanjose singapore jakarta dc osaka
+Map1 3 jakarta sydney frankfurt
+Reducer4 1 singapore
+Reducer7 1 london
+Reducer6 1 hongkong
+Reducer9 1 sydney
+Map11 1 sydney
+Map12 1 sydney
+Map8 6 kualalumpur dc madrid hongkong bangkok taipei
+Reducer3 1 tokyo
+Reducer2 1 hongkong
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 57527
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 5558
+# 3: TPC-H query13
+6 349 1880
+Reducer5 1 madrid
+Reducer4 1 dc
+Map1 3 tokyo frankfurt jakarta
+Reducer3 1 sanjose
+Map6 3 bangkok kualalumpur sanjose
+Reducer2 1 berlin
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 199973
+Reducer3 Reducer4 9272
+Map6 Reducer2 252581
+Reducer2 Reducer3 404550
+# 12: TPC-H query3
+7 350 1882
+Reducer5 1 madrid
+Map1 4 sanjose madrid frankfurt sydney
+Reducer4 1 tokyo
+Map6 5 sydney jakarta sanjose hongkong singapore
+Reducer3 3 jakarta osaka madrid
+Map7 3 london kualalumpur dc
+Reducer2 1 bangkok
+6
+Map1 Reducer2 26502
+Reducer4 Reducer5 4458
+Map6 Reducer2 57426
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 11: TPC-H query22
+8 351 1884
+Reducer5 1 kualalumpur
+Map1 2 london singapore
+Reducer4 1 osaka
+Reducer8 1 london
+Map6 3 kualalumpur hongkong london
+Reducer3 3 london kualalumpur paris
+Map7 2 hongkong dc
+Reducer2 3 hongkong taipei london
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 681
+Map6 Reducer3 5015
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 20485
+# 2: TPC-H query12
+5 352 1885
+Reducer4 1 jakarta
+Map1 3 berlin singapore jakarta
+Map5 5 berlin paris sanjose madrid bangkok
+Reducer3 1 jakarta
+Reducer2 1 dc
+4
+Map1 Reducer2 137231
+Map5 Reducer2 638435
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 15: TPC-H query6
+2 353 1886
+Map1 5 madrid singapore tokyo london bangkok
+Reducer2 1 madrid
+1
+Map1 Reducer2 283398
+# 11: TPC-H query22
+8 354 1904
+Reducer5 1 jakarta
+Map1 7 paris singapore berlin bangkok sanjose london madrid
+Reducer4 1 paris
+Reducer8 1 tokyo
+Map6 3 tokyo hongkong bangkok
+Reducer3 2 jakarta paris
+Map7 3 berlin sydney kualalumpur
+Reducer2 4 singapore bangkok berlin frankfurt
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 596
+Map6 Reducer3 4388
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 7: TPC-H query17
+7 355 1911
+Map1 3 berlin singapore osaka
+Reducer4 1 london
+Reducer7 2 singapore hongkong
+Map5 3 bangkok berlin kualalumpur
+Map6 5 sydney madrid bangkok taipei berlin
+Reducer3 4 sanjose frankfurt dc paris
+Reducer2 9 singapore kualalumpur sanjose hongkong dc jakarta london frankfurt madrid
+6
+Map1 Reducer2 241044
+Reducer7 Reducer3 109812
+Map5 Reducer2 936117
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 399114
+# 6: TPC-H query16
+9 356 1913
+Reducer5 1 kualalumpur
+Map1 3 madrid hongkong bangkok
+Reducer4 1 frankfurt
+Reducer9 1 hongkong
+Map8 1 taipei
+Reducer3 2 berlin hongkong
+Map6 2 berlin hongkong
+Reducer2 1 taipei
+Map7 1 dc
+8
+Map1 Reducer2 93868
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 26897
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 55471
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 12: TPC-H query3
+7 357 1926
+Reducer5 1 london
+Map1 3 jakarta berlin kualalumpur
+Reducer4 1 tokyo
+Map6 5 osaka bangkok berlin london sydney
+Reducer3 2 bangkok paris
+Map7 3 tokyo frankfurt taipei
+Reducer2 1 london
+6
+Map1 Reducer2 22361
+Reducer4 Reducer5 4458
+Map6 Reducer2 64604
+Reducer3 Reducer4 290950
+Map7 Reducer3 724410
+Reducer2 Reducer3 85563
+# 0: TPC-H query10
+8 358 1929
+Reducer5 1 hongkong
+Reducer4 1 kualalumpur
+Map1 3 bangkok sanjose taipei
+Map8 1 jakarta
+Reducer3 3 tokyo sanjose bangkok
+Map6 3 sydney jakarta taipei
+Reducer2 1 sanjose
+Map7 5 jakarta singapore tokyo dc sydney
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 21100
+Map8 Reducer3 93049
+Reducer3 Reducer4 671771
+Map6 Reducer2 40186
+Reducer2 Reducer3 98032
+Map7 Reducer3 995615
+# 0: TPC-H query10
+8 359 1939
+Reducer5 1 paris
+Reducer4 1 frankfurt
+Map1 4 osaka sanjose hongkong frankfurt
+Map8 1 hongkong
+Reducer3 4 jakarta london dc tokyo
+Map6 5 kualalumpur paris hongkong tokyo bangkok
+Reducer2 1 sydney
+Map7 2 sanjose berlin
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 18756
+Map8 Reducer3 162836
+Reducer3 Reducer4 671771
+Map6 Reducer2 44651
+Reducer2 Reducer3 171557
+Map7 Reducer3 696930
+# 1: TPC-H query11
+12 360 1943
+Reducer10 1 frankfurt
+Reducer4 1 taipei
+Map1 2 taipei sanjose
+Reducer9 1 dc
+Reducer8 1 sanjose
+Map11 1 jakarta
+Map12 1 kualalumpur
+Map5 1 bangkok
+Reducer3 1 paris
+Map6 1 madrid
+Reducer2 1 madrid
+Map7 5 london osaka bangkok madrid singapore
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 119213
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 53524
+Reducer3 Reducer4 5556
+Map6 Reducer2 53436
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 1: TPC-H query11
+12 361 1952
+Reducer10 1 tokyo
+Reducer4 1 osaka
+Map1 2 taipei kualalumpur
+Reducer9 1 madrid
+Reducer8 1 tokyo
+Map11 1 osaka
+Map12 1 madrid
+Map5 1 jakarta
+Reducer3 1 dc
+Map6 1 hongkong
+Reducer2 1 jakarta
+Map7 5 london madrid paris hongkong tokyo
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 119213
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 53524
+Reducer3 Reducer4 5556
+Map6 Reducer2 53436
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 5: TPC-H query15
+8 362 1972
+Map1 3 berlin sydney jakarta
+Reducer4 1 hongkong
+Reducer7 1 bangkok
+Reducer6 2 kualalumpur sanjose
+Map8 1 sanjose
+Map5 5 singapore berlin dc paris bangkok
+Reducer3 1 berlin
+Reducer2 1 tokyo
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 1: TPC-H query11
+12 363 1982
+Reducer10 1 madrid
+Reducer4 1 tokyo
+Map1 5 dc berlin hongkong madrid frankfurt
+Reducer9 1 dc
+Reducer8 2 tokyo london
+Map11 1 sanjose
+Map12 1 hongkong
+Map5 1 tokyo
+Reducer3 1 jakarta
+Map6 1 singapore
+Reducer2 1 jakarta
+Map7 5 tokyo frankfurt sydney taipei madrid
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 170305
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 7670
+Map12 Reducer8 7619
+Map5 Reducer2 30585
+Reducer3 Reducer4 5556
+Map6 Reducer2 30534
+Reducer2 Reducer3 109618
+Map7 Reducer8 55729
+# 12: TPC-H query3
+7 364 2013
+Reducer5 1 berlin
+Map1 3 taipei hongkong jakarta
+Reducer4 1 kualalumpur
+Map6 3 madrid taipei sanjose
+Reducer3 1 jakarta
+Map7 2 jakarta singapore
+Reducer2 1 sanjose
+6
+Map1 Reducer2 29815
+Reducer4 Reducer5 4458
+Map6 Reducer2 51683
+Reducer3 Reducer4 290950
+Map7 Reducer3 643920
+Reducer2 Reducer3 114084
+# 16: TPC-H query7
+11 365 2021
+Reducer5 1 bangkok
+Reducer4 2 london dc
+Map1 1 jakarta
+Map10 1 frankfurt
+Reducer6 1 sydney
+Map11 1 berlin
+Map8 4 frankfurt sanjose jakarta kualalumpur
+Map9 3 osaka madrid paris
+Reducer3 2 taipei sydney
+Reducer2 1 singapore
+Map7 3 paris tokyo hongkong
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 746102
+Map9 Reducer4 708514
+Reducer3 Reducer4 736024
+Reducer2 Reducer3 466813
+Map7 Reducer2 1139943
+# 7: TPC-H query17
+7 366 2028
+Map1 2 sanjose madrid
+Reducer4 1 frankfurt
+Reducer7 9 berlin frankfurt madrid sanjose hongkong paris sydney london taipei
+Map5 5 bangkok osaka london tokyo frankfurt
+Map6 7 singapore bangkok tokyo sanjose madrid jakarta dc
+Reducer3 8 hongkong frankfurt bangkok tokyo london osaka berlin madrid
+Reducer2 7 singapore kualalumpur tokyo paris madrid sydney osaka
+6
+Map1 Reducer2 137739
+Reducer7 Reducer3 339731
+Map5 Reducer2 1337310
+Map6 Reducer7 2092198
+Reducer3 Reducer4 9530
+Reducer2 Reducer3 213415
+# 12: TPC-H query3
+7 367 2030
+Reducer5 1 bangkok
+Map1 3 osaka london bangkok
+Reducer4 1 frankfurt
+Map6 2 frankfurt bangkok
+Reducer3 1 tokyo
+Map7 6 london hongkong taipei berlin madrid dc
+Reducer2 1 paris
+6
+Map1 Reducer2 35778
+Reducer4 Reducer5 4458
+Map6 Reducer2 41346
+Reducer3 Reducer4 290950
+Map7 Reducer3 827897
+Reducer2 Reducer3 48893
+# 9: TPC-H query20
+12 368 2041
+Reducer5 1 madrid
+Map10 3 singapore berlin tokyo
+Map1 3 jakarta berlin dc
+Reducer4 1 frankfurt
+Reducer7 1 paris
+Reducer6 1 paris
+Reducer9 1 bangkok
+Map11 1 kualalumpur
+Map12 1 london
+Map8 4 berlin london sydney singapore
+Reducer3 1 london
+Reducer2 1 frankfurt
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 49308
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 11117
+# 1: TPC-H query11
+12 369 2043
+Reducer10 1 berlin
+Reducer4 1 frankfurt
+Map1 7 madrid tokyo london paris taipei sanjose osaka
+Reducer9 1 singapore
+Reducer8 1 tokyo
+Map11 1 bangkok
+Map12 1 paris
+Map5 1 tokyo
+Reducer3 1 dc
+Map6 1 sanjose
+Reducer2 2 jakarta london
+Map7 7 berlin madrid jakarta paris hongkong dc sanjose
+11
+Reducer10 Reducer3 1846
+Map1 Reducer2 185443
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 5966
+Map12 Reducer8 5926
+Map5 Reducer2 23788
+Reducer3 Reducer4 5556
+Map6 Reducer2 23749
+Reducer2 Reducer3 146157
+Map7 Reducer8 60683
+# 2: TPC-H query12
+5 370 2047
+Reducer4 1 kualalumpur
+Map1 3 hongkong osaka kualalumpur
+Map5 5 dc sydney jakarta paris london
+Reducer3 1 sanjose
+Reducer2 2 sanjose berlin
+4
+Map1 Reducer2 137231
+Map5 Reducer2 638435
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 2: TPC-H query12
+5 371 2063
+Reducer4 1 dc
+Map1 2 taipei kualalumpur
+Map5 2 hongkong bangkok
+Reducer3 1 madrid
+Reducer2 2 berlin sanjose
+4
+Map1 Reducer2 182975
+Map5 Reducer2 510748
+Reducer3 Reducer4 48
+Reducer2 Reducer3 307524
+# 3: TPC-H query13
+6 372 2065
+Reducer5 1 taipei
+Reducer4 1 frankfurt
+Map1 3 bangkok kualalumpur berlin
+Reducer3 1 dc
+Map6 4 madrid taipei berlin tokyo
+Reducer2 2 jakarta kualalumpur
+5
+Reducer4 Reducer5 48
+Map1 Reducer2 171405
+Reducer3 Reducer4 9272
+Map6 Reducer2 288664
+Reducer2 Reducer3 404550
+# 16: TPC-H query7
+11 373 2065
+Reducer5 1 taipei
+Reducer4 1 paris
+Map1 1 berlin
+Map10 1 tokyo
+Reducer6 1 dc
+Map11 1 jakarta
+Map8 3 madrid sydney tokyo
+Map9 3 sanjose taipei jakarta
+Reducer3 1 frankfurt
+Reducer2 1 dc
+Map7 3 osaka kualalumpur bangkok
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 352794
+Map10 Reducer4 275533
+Map11 Reducer4 275533
+Map8 Reducer3 699471
+Map9 Reducer4 826599
+Reducer3 Reducer4 429347
+Reducer2 Reducer3 583516
+Map7 Reducer2 1139943
+# 6: TPC-H query16
+9 374 2089
+Reducer5 1 hongkong
+Map1 7 sydney singapore sanjose london hongkong bangkok osaka
+Reducer4 1 osaka
+Reducer9 1 madrid
+Map8 1 frankfurt
+Reducer3 1 kualalumpur
+Map6 2 kualalumpur madrid
+Reducer2 1 hongkong
+Map7 1 dc
+8
+Map1 Reducer2 131415
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 16138
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 33282
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 16: TPC-H query7
+11 375 2096
+Reducer5 1 singapore
+Reducer4 1 taipei
+Map1 1 jakarta
+Map10 1 singapore
+Reducer6 1 jakarta
+Map11 1 sydney
+Map8 4 osaka sanjose berlin taipei
+Map9 3 hongkong sydney osaka
+Reducer3 2 berlin dc
+Reducer2 3 sanjose tokyo taipei
+Map7 4 kualalumpur bangkok berlin dc
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 282235
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 532930
+Map9 Reducer4 708514
+Reducer3 Reducer4 736024
+Reducer2 Reducer3 1000313
+Map7 Reducer2 1215939
+# 9: TPC-H query20
+12 376 2118
+Reducer5 1 bangkok
+Map10 5 madrid kualalumpur bangkok hongkong singapore
+Map1 3 sanjose tokyo dc
+Reducer4 1 sydney
+Reducer7 1 berlin
+Reducer6 1 sanjose
+Reducer9 1 taipei
+Map11 1 singapore
+Map12 1 kualalumpur
+Map8 3 hongkong singapore london
+Reducer3 1 bangkok
+Reducer2 1 berlin
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 54787
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 7411
+# 4: TPC-H query14
+4 377 2150
+Map1 3 taipei frankfurt osaka
+Map4 2 sydney tokyo
+Reducer3 1 bangkok
+Reducer2 2 sydney sanjose
+3
+Map1 Reducer2 411771
+Map4 Reducer2 15035
+Reducer2 Reducer3 33825
+# 1: TPC-H query11
+12 378 2152
+Reducer10 1 berlin
+Reducer4 1 kualalumpur
+Map1 7 taipei london paris jakarta hongkong madrid tokyo
+Reducer9 1 madrid
+Reducer8 1 bangkok
+Map11 1 tokyo
+Map12 1 bangkok
+Map5 1 singapore
+Reducer3 1 dc
+Map6 1 dc
+Reducer2 1 madrid
+Map7 4 madrid taipei berlin singapore
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 185443
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 8949
+Map12 Reducer8 8889
+Map5 Reducer2 23788
+Reducer3 Reducer4 5556
+Map6 Reducer2 23749
+Reducer2 Reducer3 109618
+Map7 Reducer8 52014
+# 11: TPC-H query22
+8 379 2154
+Reducer5 1 sydney
+Map1 4 frankfurt singapore jakarta tokyo
+Reducer4 1 sydney
+Reducer8 1 london
+Map6 3 dc hongkong london
+Reducer3 1 dc
+Map7 4 jakarta london taipei singapore
+Reducer2 4 kualalumpur sanjose frankfurt singapore
+7
+Map1 Reducer2 82011
+Reducer4 Reducer5 153
+Reducer8 Reducer3 596
+Map6 Reducer3 4388
+Reducer3 Reducer4 4870
+Map7 Reducer8 5984
+Reducer2 Reducer3 23899
+# 5: TPC-H query15
+8 380 2158
+Map1 6 hongkong bangkok singapore london kualalumpur dc
+Reducer4 1 sydney
+Reducer7 1 madrid
+Reducer6 1 bangkok
+Map8 1 sanjose
+Map5 7 tokyo osaka singapore sanjose taipei kualalumpur hongkong
+Reducer3 1 bangkok
+Reducer2 2 jakarta taipei
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 2546
+Reducer6 Reducer7 5096
+Map8 Reducer3 2657
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 13084
+# 1: TPC-H query11
+12 381 2173
+Reducer10 1 madrid
+Reducer4 1 osaka
+Map1 6 madrid jakarta paris taipei dc frankfurt
+Reducer9 1 bangkok
+Reducer8 1 sydney
+Map11 1 hongkong
+Map12 1 bangkok
+Map5 1 jakarta
+Reducer3 1 taipei
+Map6 1 hongkong
+Reducer2 1 london
+Map7 3 london kualalumpur tokyo
+11
+Reducer10 Reducer3 2770
+Map1 Reducer2 178820
+Reducer9 Reducer10 1760
+Reducer8 Reducer9 55051
+Map11 Reducer8 10738
+Map12 Reducer8 10667
+Map5 Reducer2 26762
+Reducer3 Reducer4 5556
+Map6 Reducer2 26718
+Reducer2 Reducer3 109618
+Map7 Reducer8 46813
+# 4: TPC-H query14
+4 382 2176
+Map1 3 osaka sanjose bangkok
+Map4 2 bangkok dc
+Reducer3 1 singapore
+Reducer2 1 jakarta
+3
+Map1 Reducer2 411771
+Map4 Reducer2 15035
+Reducer2 Reducer3 33825
+# 4: TPC-H query14
+4 383 2178
+Map1 5 london sydney paris madrid tokyo
+Map4 2 singapore sydney
+Reducer3 1 bangkok
+Reducer2 1 osaka
+3
+Map1 Reducer2 490204
+Map4 Reducer2 10739
+Reducer2 Reducer3 33825
+# 9: TPC-H query20
+12 384 2180
+Reducer5 1 jakarta
+Map10 4 sydney paris bangkok tokyo
+Map1 2 bangkok jakarta
+Reducer4 1 paris
+Reducer7 1 bangkok
+Reducer6 1 frankfurt
+Reducer9 1 paris
+Map11 1 singapore
+Map12 1 london
+Map8 5 madrid london jakarta hongkong tokyo
+Reducer3 1 tokyo
+Reducer2 1 berlin
+11
+Reducer5 Reducer6 145
+Map10 Reducer3 52596
+Map1 Reducer2 3925
+Reducer4 Reducer5 134430
+Reducer6 Reducer7 266
+Reducer9 Reducer4 91881
+Map11 Reducer6 339
+Map12 Map11 533
+Map8 Reducer9 581626
+Reducer3 Reducer4 89329
+Reducer2 Reducer3 8894
+# 12: TPC-H query3
+7 385 2184
+Reducer5 1 kualalumpur
+Map1 1 hongkong
+Reducer4 1 london
+Map6 5 london singapore dc kualalumpur bangkok
+Reducer3 2 madrid tokyo
+Map7 5 madrid tokyo bangkok jakarta osaka
+Reducer2 1 taipei
+6
+Map1 Reducer2 9938
+Reducer4 Reducer5 4458
+Map6 Reducer2 86139
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 6: TPC-H query16
+9 386 2215
+Reducer5 1 taipei
+Map1 5 singapore jakarta madrid tokyo osaka
+Reducer4 1 madrid
+Reducer9 1 sydney
+Map8 1 bangkok
+Reducer3 1 osaka
+Map6 3 london jakarta singapore
+Reducer2 1 madrid
+Map7 1 taipei
+8
+Map1 Reducer2 104298
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 17931
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 55471
+Reducer2 Reducer3 102171
+Map7 Reducer3 21565
+# 16: TPC-H query7
+11 387 2216
+Reducer5 1 berlin
+Reducer4 1 london
+Map1 1 frankfurt
+Map10 1 bangkok
+Reducer6 1 kualalumpur
+Map11 1 madrid
+Map8 5 kualalumpur london sanjose osaka tokyo
+Map9 3 dc bangkok tokyo
+Reducer3 2 sydney osaka
+Reducer2 1 paris
+Map7 5 hongkong tokyo madrid taipei jakarta
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 1653199
+Map1 Reducer2 235196
+Map10 Reducer4 236171
+Map11 Reducer4 236171
+Map8 Reducer3 777190
+Map9 Reducer4 708514
+Reducer3 Reducer4 736024
+Reducer2 Reducer3 389010
+Map7 Reducer2 1266603
+# 12: TPC-H query3
+7 388 2218
+Reducer5 1 osaka
+Map1 2 sydney bangkok
+Reducer4 1 sydney
+Map6 3 london kualalumpur bangkok
+Reducer3 2 taipei sanjose
+Map7 5 kualalumpur madrid singapore bangkok berlin
+Reducer2 1 singapore
+6
+Map1 Reducer2 23852
+Reducer4 Reducer5 4458
+Map6 Reducer2 62020
+Reducer3 Reducer4 290950
+Map7 Reducer3 804900
+Reducer2 Reducer3 57042
+# 12: TPC-H query3
+7 389 2222
+Reducer5 1 jakarta
+Map1 3 london kualalumpur bangkok
+Reducer4 1 hongkong
+Map6 2 sydney singapore
+Reducer3 4 taipei sanjose bangkok frankfurt
+Map7 6 tokyo london osaka kualalumpur sydney frankfurt
+Reducer2 1 bangkok
+6
+Map1 Reducer2 35778
+Reducer4 Reducer5 4458
+Map6 Reducer2 41346
+Reducer3 Reducer4 290950
+Map7 Reducer3 827897
+Reducer2 Reducer3 48893
+# 10: TPC-H query21
+14 390 2224
+Reducer5 5 jakarta hongkong madrid kualalumpur osaka
+Map10 5 jakarta sanjose hongkong paris osaka
+Map1 1 berlin
+Reducer4 1 tokyo
+Reducer7 3 taipei dc madrid
+Map2 1 kualalumpur
+Reducer6 5 taipei kualalumpur jakarta frankfurt hongkong
+Reducer14 3 sanjose london berlin
+Map13 5 london osaka sydney sanjose hongkong
+Reducer8 1 dc
+Reducer12 9 osaka hongkong sydney berlin taipei dc kualalumpur london singapore
+Map11 5 sydney frankfurt madrid jakarta bangkok
+Map9 5 hongkong osaka madrid kualalumpur sanjose
+Reducer3 1 tokyo
+13
+Reducer5 Reducer6 121515
+Map10 Reducer4 108451
+Map1 Map2 533
+Reducer4 Reducer5 8955
+Reducer7 Reducer8 1817
+Map2 Reducer3 64307
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 202299
+Map13 Reducer14 1158988
+Reducer12 Reducer5 826106
+Map11 Reducer12 1815325
+Map9 Reducer3 886374
+Reducer3 Reducer4 79152
+# 10: TPC-H query21
+14 391 2225
+Reducer5 2 london paris
+Map10 3 sanjose sydney berlin
+Map1 1 sydney
+Reducer4 3 bangkok sanjose london
+Reducer7 2 tokyo hongkong
+Map2 1 paris
+Reducer6 4 tokyo paris london jakarta
+Reducer14 1 tokyo
+Map13 6 madrid hongkong sydney london paris tokyo
+Reducer8 1 hongkong
+Reducer12 8 hongkong taipei jakarta sanjose paris frankfurt madrid dc
+Map11 7 sydney jakarta paris taipei sanjose kualalumpur berlin
+Map9 7 sanjose sydney london singapore berlin frankfurt osaka
+Reducer3 2 berlin hongkong
+13
+Reducer5 Reducer6 129616
+Map10 Reducer4 78084
+Map1 Map2 533
+Reducer4 Reducer5 24424
+Reducer7 Reducer8 1817
+Map2 Reducer3 48230
+Reducer6 Reducer7 196169
+Reducer14 Reducer6 179821
+Map13 Reducer14 1158988
+Reducer12 Reducer5 667560
+Map11 Reducer12 1815325
+Map9 Reducer3 930693
+Reducer3 Reducer4 189966
+# 6: TPC-H query16
+9 392 2226
+Reducer5 1 osaka
+Map1 3 sanjose london paris
+Reducer4 1 jakarta
+Reducer9 1 tokyo
+Map8 1 osaka
+Reducer3 1 tokyo
+Map6 3 hongkong sanjose osaka
+Reducer2 2 sanjose paris
+Map7 1 sydney
+8
+Map1 Reducer2 80458
+Reducer4 Reducer5 1227
+Reducer9 Reducer2 23054
+Map8 Reducer9 169
+Reducer3 Reducer4 44180
+Map6 Reducer2 71320
+Reducer2 Reducer3 136228
+Map7 Reducer3 14376
+# 14: TPC-H query5
+11 393 2231
+Reducer5 1 bangkok
+Map1 2 paris jakarta
+Reducer4 3 paris london kualalumpur
+Map10 1 frankfurt
+Reducer6 1 osaka
+Map11 1 sanjose
+Map8 3 osaka dc singapore
+Map9 1 singapore
+Reducer3 4 taipei sanjose paris madrid
+Reducer2 1 jakarta
+Map7 3 madrid dc singapore
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 8180
+Reducer4 Reducer5 220520
+Map10 Reducer4 31506
+Map11 Reducer4 31504
+Map8 Reducer3 740093
+Map9 Reducer4 31527
+Reducer3 Reducer4 243596
+Reducer2 Reducer3 54574
+Map7 Reducer2 31853
+# 14: TPC-H query5
+11 394 2245
+Reducer5 1 sanjose
+Map1 4 tokyo frankfurt taipei sydney
+Reducer4 5 tokyo london osaka bangkok hongkong
+Map10 1 singapore
+Reducer6 1 sanjose
+Map11 1 kualalumpur
+Map8 5 tokyo kualalumpur sydney singapore dc
+Map9 1 sanjose
+Reducer3 2 hongkong jakarta
+Reducer2 1 hongkong
+Map7 6 dc london madrid berlin sanjose kualalumpur
+10
+Reducer5 Reducer6 56
+Map1 Reducer2 8180
+Reducer4 Reducer5 220520
+Map10 Reducer4 44109
+Map11 Reducer4 44105
+Map8 Reducer3 822325
+Map9 Reducer4 44138
+Reducer3 Reducer4 170517
+Reducer2 Reducer3 36383
+Map7 Reducer2 31853
+# 5: TPC-H query15
+8 395 2257
+Map1 4 singapore osaka kualalumpur taipei
+Reducer4 1 sanjose
+Reducer7 1 frankfurt
+Reducer6 2 dc paris
+Map8 1 jakarta
+Map5 2 singapore paris
+Reducer3 1 berlin
+Reducer2 1 taipei
+7
+Map1 Reducer2 668468
+Reducer7 Reducer3 3394
+Reducer6 Reducer7 5096
+Map8 Reducer3 3543
+Map5 Reducer6 657564
+Reducer3 Reducer4 10192
+Reducer2 Reducer3 8722
+# 15: TPC-H query6
+2 396 2258
+Map1 5 taipei frankfurt hongkong tokyo paris
+Reducer2 1 madrid
+1
+Map1 Reducer2 283398
+# 0: TPC-H query10
+8 397 2263
+Reducer5 1 taipei
+Reducer4 1 singapore
+Map1 3 sanjose kualalumpur taipei
+Map8 1 bangkok
+Reducer3 4 paris london bangkok osaka
+Map6 6 kualalumpur london tokyo berlin dc singapore
+Reducer2 1 kualalumpur
+Map7 4 frankfurt sydney paris hongkong
+7
+Reducer4 Reducer5 34697
+Map1 Reducer2 14067
+Map8 Reducer3 108557
+Reducer3 Reducer4 671771
+Map6 Reducer2 53581
+Reducer2 Reducer3 114371
+Map7 Reducer3 929241
+# 15: TPC-H query6
+2 398 2285
+Map1 3 dc madrid jakarta
+Reducer2 1 bangkok
+1
+Map1 Reducer2 283398

@@ -1,0 +1,8139 @@
+# 7: BIG_BENCH query19
+13 0 0
+Reducer5 1 kualalumpur
+Map1 1 sydney
+Map10 1 kualalumpur
+Reducer7 1 madrid
+Map3 1 singapore
+Reducer6 1 taipei
+Reducer9 1 singapore
+Map13 1 frankfurt
+Reducer12 1 sydney
+Map11 1 kualalumpur
+Map8 1 taipei
+Map4 1 paris
+Reducer2 1 paris
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 13: BIG_BENCH query26
+4 1 11
+Map1 1 dc
+Map4 1 sanjose
+Reducer3 3 tokyo paris singapore
+Reducer2 3 tokyo london dc
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 12: BIG_BENCH query24
+19 2 13
+Reducer17 5 osaka berlin madrid taipei singapore
+Map18 1 taipei
+Reducer16 5 hongkong london osaka sydney bangkok
+Reducer15 1 hongkong
+Map19 1 sanjose
+Reducer10 2 bangkok sanjose
+Reducer4 4 tokyo sanjose london bangkok
+Map1 1 singapore
+Reducer7 1 london
+Reducer9 8 hongkong london sydney berlin sanjose paris frankfurt jakarta
+Reducer14 1 bangkok
+Map13 1 paris
+Reducer8 1 frankfurt
+Map11 1 sydney
+Map12 1 london
+Map5 1 singapore
+Reducer3 1 tokyo
+Map6 1 dc
+Reducer2 1 jakarta
+18
+Reducer17 Reducer4 23059
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 28002
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 3208
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 20: BIG_BENCH query9
+9 3 16
+Reducer5 1 london
+Reducer4 1 london
+Map1 1 hongkong
+Map8 1 berlin
+Map9 1 sydney
+Map6 1 sydney
+Reducer3 1 frankfurt
+Map7 1 dc
+Reducer2 1 osaka
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 10: BIG_BENCH query21
+16 4 22
+Map15 1 berlin
+Map16 1 sanjose
+Reducer5 2 frankfurt jakarta
+Map1 1 sydney
+Map10 1 singapore
+Reducer4 2 hongkong sanjose
+Reducer7 2 madrid jakarta
+Reducer6 2 tokyo bangkok
+Map13 1 tokyo
+Reducer9 1 paris
+Map14 1 sydney
+Reducer8 1 kualalumpur
+Map11 1 taipei
+Map12 1 london
+Reducer3 1 london
+Reducer2 1 tokyo
+15
+Map15 Reducer6 2188
+Map16 Reducer7 10685
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 0: BIG_BENCH query10
+2 5 35
+Map1 1 sydney
+Reducer2 1 sanjose
+1
+Map1 Reducer2 6138
+# 14: BIG_BENCH query27
+2 6 67
+Map1 1 paris
+Reducer2 1 paris
+1
+Map1 Reducer2 6089
+# 18: BIG_BENCH query6
+11 7 70
+Reducer5 1 paris
+Reducer4 1 madrid
+Map10 1 bangkok
+Map1 1 sydney
+Reducer9 1 bangkok
+Reducer8 4 sydney sanjose paris madrid
+Map11 1 hongkong
+Reducer3 1 hongkong
+Map6 1 taipei
+Map7 1 paris
+Reducer2 1 sanjose
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 1: BIG_BENCH query11
+7 8 71
+Map1 1 jakarta
+Reducer4 1 kualalumpur
+Reducer7 3 dc singapore osaka
+Map5 1 singapore
+Map6 1 sydney
+Reducer3 2 frankfurt singapore
+Reducer2 1 london
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 13520
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1074
+# 14: BIG_BENCH query27
+2 9 72
+Map1 1 sydney
+Reducer2 1 jakarta
+1
+Map1 Reducer2 6089
+# 12: BIG_BENCH query24
+19 10 74
+Reducer17 6 osaka dc taipei jakarta london sanjose
+Map18 1 osaka
+Reducer16 5 sanjose osaka london dc madrid
+Reducer15 1 frankfurt
+Map19 1 london
+Reducer10 7 frankfurt dc singapore hongkong paris kualalumpur tokyo
+Reducer4 5 osaka kualalumpur paris madrid london
+Map1 1 dc
+Reducer7 1 singapore
+Reducer9 3 paris hongkong berlin
+Reducer14 1 london
+Map13 1 jakarta
+Reducer8 1 osaka
+Map11 1 jakarta
+Map12 1 hongkong
+Map5 1 singapore
+Reducer3 1 frankfurt
+Map6 1 frankfurt
+Reducer2 1 tokyo
+18
+Reducer17 Reducer4 15812
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 56004
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 1833
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 15: BIG_BENCH query2
+5 11 82
+Reducer5 1 kualalumpur
+Reducer4 1 singapore
+Map1 1 berlin
+Reducer3 1 hongkong
+Reducer2 1 sydney
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 18: BIG_BENCH query6
+11 12 82
+Reducer5 1 dc
+Reducer4 1 hongkong
+Map10 1 hongkong
+Map1 1 berlin
+Reducer9 1 osaka
+Reducer8 4 london berlin hongkong frankfurt
+Map11 1 madrid
+Reducer3 1 hongkong
+Map6 1 berlin
+Map7 1 osaka
+Reducer2 2 madrid kualalumpur
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 14: BIG_BENCH query27
+2 13 84
+Map1 1 bangkok
+Reducer2 1 taipei
+1
+Map1 Reducer2 6089
+# 1: BIG_BENCH query11
+7 14 88
+Map1 1 sydney
+Reducer4 1 tokyo
+Reducer7 1 taipei
+Map5 1 singapore
+Map6 1 paris
+Reducer3 1 dc
+Reducer2 1 hongkong
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 9013
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 2148
+# 20: BIG_BENCH query9
+9 15 92
+Reducer5 1 london
+Reducer4 1 bangkok
+Map1 1 hongkong
+Map8 1 paris
+Map9 1 sanjose
+Map6 1 jakarta
+Reducer3 1 bangkok
+Map7 1 berlin
+Reducer2 1 dc
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 19: BIG_BENCH query7
+11 16 96
+Reducer5 1 jakarta
+Map1 1 frankfurt
+Reducer4 2 kualalumpur tokyo
+Map10 1 frankfurt
+Reducer6 1 sydney
+Map8 1 taipei
+Map9 1 frankfurt
+Map4 1 taipei
+Reducer3 1 bangkok
+Reducer2 1 paris
+Map7 1 madrid
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 3: BIG_BENCH query14
+10 17 97
+Map1 1 berlin
+Map10 1 hongkong
+Reducer7 1 madrid
+Map3 1 singapore
+Map8 1 taipei
+Map9 1 tokyo
+Map4 1 jakarta
+Map5 1 kualalumpur
+Map6 1 jakarta
+Reducer2 1 london
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 9: BIG_BENCH query20
+6 18 102
+Map1 1 london
+Reducer4 5 sydney london bangkok hongkong singapore
+Reducer6 1 berlin
+Map5 1 paris
+Reducer3 2 berlin dc
+Reducer2 8 sanjose bangkok frankfurt london dc jakarta sydney osaka
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 444
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 43463
+# 10: BIG_BENCH query21
+16 19 112
+Map15 1 sydney
+Map16 1 singapore
+Reducer5 1 osaka
+Map1 1 berlin
+Map10 1 singapore
+Reducer4 1 madrid
+Reducer7 3 frankfurt berlin sanjose
+Reducer6 2 taipei sydney
+Map13 1 madrid
+Reducer9 1 frankfurt
+Map14 1 osaka
+Reducer8 1 sanjose
+Map11 1 berlin
+Map12 1 hongkong
+Reducer3 2 singapore madrid
+Reducer2 1 berlin
+15
+Map15 Reducer6 2918
+Map16 Reducer7 10685
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 24
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 9: BIG_BENCH query20
+6 20 113
+Map1 1 osaka
+Reducer4 4 madrid taipei dc sydney
+Reducer6 1 dc
+Map5 1 berlin
+Reducer3 2 paris sanjose
+Reducer2 2 tokyo taipei
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 1332
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 32597
+# 6: BIG_BENCH query17
+25 21 115
+Map20 1 singapore
+Map1 1 frankfurt
+Map21 1 madrid
+Map24 1 frankfurt
+Map25 1 dc
+Map22 1 singapore
+Map23 1 berlin
+Map8 1 kualalumpur
+Map9 1 tokyo
+Reducer18 1 sanjose
+Reducer17 1 tokyo
+Reducer16 1 madrid
+Reducer15 1 taipei
+Reducer19 1 jakarta
+Reducer5 1 madrid
+Reducer4 1 dc
+Map10 1 madrid
+Reducer7 1 dc
+Reducer6 1 jakarta
+Map13 1 paris
+Map14 1 london
+Map11 1 taipei
+Map12 1 osaka
+Reducer3 1 sanjose
+Reducer2 1 osaka
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 12: BIG_BENCH query24
+19 22 120
+Reducer17 5 hongkong madrid sanjose osaka dc
+Map18 1 paris
+Reducer16 6 dc paris taipei madrid tokyo singapore
+Reducer15 1 singapore
+Map19 1 kualalumpur
+Reducer10 4 frankfurt kualalumpur taipei madrid
+Reducer4 7 tokyo osaka london hongkong taipei berlin dc
+Map1 1 bangkok
+Reducer7 1 taipei
+Reducer9 4 paris frankfurt singapore kualalumpur
+Reducer14 1 bangkok
+Map13 1 sanjose
+Reducer8 1 dc
+Map11 1 osaka
+Map12 1 singapore
+Map5 1 london
+Reducer3 1 tokyo
+Map6 1 berlin
+Reducer2 1 madrid
+18
+Reducer17 Reducer4 18447
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 44803
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2566
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 12: BIG_BENCH query24
+19 23 132
+Reducer17 7 bangkok frankfurt london kualalumpur jakarta singapore osaka
+Map18 1 sydney
+Reducer16 2 hongkong berlin
+Reducer15 1 jakarta
+Map19 1 sydney
+Reducer10 3 dc singapore berlin
+Reducer4 7 osaka taipei sydney paris madrid sanjose hongkong
+Map1 1 madrid
+Reducer7 1 hongkong
+Reducer9 8 madrid sanjose taipei berlin kualalumpur tokyo frankfurt singapore
+Reducer14 1 jakarta
+Map13 1 kualalumpur
+Reducer8 1 osaka
+Map11 1 sydney
+Map12 1 jakarta
+Map5 1 singapore
+Reducer3 1 singapore
+Map6 1 berlin
+Reducer2 1 hongkong
+18
+Reducer17 Reducer4 23478
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 30547
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 4: BIG_BENCH query15
+6 24 143
+Reducer5 1 berlin
+Reducer4 2 hongkong berlin
+Map1 1 dc
+Map2 1 kualalumpur
+Map6 1 singapore
+Reducer3 1 hongkong
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 3: BIG_BENCH query14
+10 25 151
+Map1 1 kualalumpur
+Map10 1 osaka
+Reducer7 1 bangkok
+Map3 1 jakarta
+Map8 1 hongkong
+Map9 1 madrid
+Map4 1 osaka
+Map5 1 singapore
+Map6 1 frankfurt
+Reducer2 1 bangkok
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 13: BIG_BENCH query26
+4 26 152
+Map1 1 sydney
+Map4 1 berlin
+Reducer3 2 dc sanjose
+Reducer2 3 frankfurt singapore jakarta
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 17: BIG_BENCH query4
+5 27 157
+Map1 1 kualalumpur
+Reducer4 1 paris
+Map5 1 singapore
+Reducer3 1 singapore
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 17: BIG_BENCH query4
+5 28 159
+Map1 1 kualalumpur
+Reducer4 1 sanjose
+Map5 1 kualalumpur
+Reducer3 1 paris
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 13: BIG_BENCH query26
+4 29 159
+Map1 1 tokyo
+Map4 1 paris
+Reducer3 1 singapore
+Reducer2 2 singapore hongkong
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 2: BIG_BENCH query12
+9 30 159
+Reducer5 1 frankfurt
+Reducer4 1 kualalumpur
+Map1 1 paris
+Reducer8 2 madrid berlin
+Map9 1 hongkong
+Reducer3 1 berlin
+Map6 1 kualalumpur
+Reducer2 1 taipei
+Map7 1 sydney
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 0: BIG_BENCH query10
+2 31 159
+Map1 1 tokyo
+Reducer2 1 berlin
+1
+Map1 Reducer2 6138
+# 1: BIG_BENCH query11
+7 32 160
+Map1 1 dc
+Reducer4 1 dc
+Reducer7 2 paris sydney
+Map5 1 kualalumpur
+Map6 1 frankfurt
+Reducer3 1 tokyo
+Reducer2 1 kualalumpur
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 14: BIG_BENCH query27
+2 33 160
+Map1 1 dc
+Reducer2 1 dc
+1
+Map1 Reducer2 6089
+# 8: BIG_BENCH query1
+6 34 162
+Reducer5 1 kualalumpur
+Reducer4 1 singapore
+Map1 1 paris
+Map6 1 jakarta
+Reducer3 1 jakarta
+Reducer2 1 sanjose
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 6: BIG_BENCH query17
+25 35 163
+Map20 1 sanjose
+Map1 1 berlin
+Map21 1 taipei
+Map24 1 madrid
+Map25 1 berlin
+Map22 1 osaka
+Map23 1 bangkok
+Map8 1 kualalumpur
+Map9 1 madrid
+Reducer18 1 tokyo
+Reducer17 1 jakarta
+Reducer16 1 paris
+Reducer15 1 madrid
+Reducer19 1 frankfurt
+Reducer5 1 singapore
+Reducer4 1 berlin
+Map10 1 singapore
+Reducer7 1 london
+Reducer6 1 berlin
+Map13 1 taipei
+Map14 1 singapore
+Map11 1 bangkok
+Map12 1 frankfurt
+Reducer3 1 bangkok
+Reducer2 1 sydney
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 19: BIG_BENCH query7
+11 36 164
+Reducer5 1 sanjose
+Map1 1 madrid
+Reducer4 1 taipei
+Map10 1 madrid
+Reducer6 1 osaka
+Map8 1 dc
+Map9 1 bangkok
+Map4 1 bangkok
+Reducer3 1 paris
+Reducer2 1 sydney
+Map7 1 sydney
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 12: BIG_BENCH query24
+19 37 169
+Reducer17 3 jakarta singapore london
+Map18 1 hongkong
+Reducer16 2 singapore taipei
+Reducer15 1 singapore
+Map19 1 berlin
+Reducer10 6 berlin sydney sanjose hongkong tokyo paris
+Reducer4 5 singapore sanjose bangkok frankfurt dc
+Map1 1 dc
+Reducer7 1 london
+Reducer9 8 london osaka frankfurt singapore sanjose dc bangkok berlin
+Reducer14 1 kualalumpur
+Map13 1 berlin
+Reducer8 1 madrid
+Map11 1 tokyo
+Map12 1 dc
+Map5 1 london
+Reducer3 1 jakarta
+Map6 1 frankfurt
+Reducer2 1 tokyo
+18
+Reducer17 Reducer4 11068
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 67205
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2566
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 14: BIG_BENCH query27
+2 38 200
+Map1 1 sanjose
+Reducer2 1 jakarta
+1
+Map1 Reducer2 6089
+# 12: BIG_BENCH query24
+19 39 200
+Reducer17 3 tokyo paris osaka
+Map18 1 paris
+Reducer16 3 sydney madrid paris
+Reducer15 1 tokyo
+Map19 1 dc
+Reducer10 8 london jakarta berlin singapore paris kualalumpur hongkong osaka
+Reducer4 8 taipei singapore dc osaka sydney hongkong berlin tokyo
+Map1 1 hongkong
+Reducer7 1 hongkong
+Reducer9 5 sydney berlin hongkong sanjose madrid
+Reducer14 1 taipei
+Map13 1 taipei
+Reducer8 1 sanjose
+Map11 1 dc
+Map12 1 kualalumpur
+Map5 1 jakarta
+Reducer3 1 london
+Map6 1 jakarta
+Reducer2 1 frankfurt
+18
+Reducer17 Reducer4 9223
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 74672
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2139
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 12: BIG_BENCH query24
+19 40 200
+Reducer17 7 osaka sydney sanjose singapore jakarta tokyo kualalumpur
+Map18 1 dc
+Reducer16 4 jakarta dc singapore frankfurt
+Reducer15 1 kualalumpur
+Map19 1 osaka
+Reducer10 5 jakarta kualalumpur hongkong bangkok osaka
+Reducer4 6 kualalumpur bangkok tokyo hongkong singapore osaka
+Map1 1 berlin
+Reducer7 1 london
+Reducer9 5 dc sanjose bangkok singapore madrid
+Reducer14 1 osaka
+Map13 1 singapore
+Reducer8 1 sydney
+Map11 1 sanjose
+Map12 1 london
+Map5 1 berlin
+Reducer3 1 kualalumpur
+Map6 1 jakarta
+Reducer2 1 kualalumpur
+18
+Reducer17 Reducer4 19866
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 43080
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 1974
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 13: BIG_BENCH query26
+4 41 200
+Map1 1 dc
+Map4 1 berlin
+Reducer3 2 osaka jakarta
+Reducer2 1 kualalumpur
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 9: BIG_BENCH query20
+6 42 201
+Map1 1 taipei
+Reducer4 3 sydney paris dc
+Reducer6 1 osaka
+Map5 1 hongkong
+Reducer3 6 singapore kualalumpur bangkok osaka jakarta london
+Reducer2 2 paris bangkok
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 1332
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 32597
+# 1: BIG_BENCH query11
+7 43 201
+Map1 1 osaka
+Reducer4 1 tokyo
+Reducer7 4 osaka tokyo sydney jakarta
+Map5 1 frankfurt
+Map6 1 berlin
+Reducer3 2 london sydney
+Reducer2 1 sydney
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 0: BIG_BENCH query10
+2 44 201
+Map1 1 sydney
+Reducer2 1 berlin
+1
+Map1 Reducer2 6138
+# 14: BIG_BENCH query27
+2 45 202
+Map1 1 kualalumpur
+Reducer2 1 bangkok
+1
+Map1 Reducer2 6089
+# 17: BIG_BENCH query4
+5 46 202
+Map1 1 taipei
+Reducer4 1 osaka
+Map5 1 jakarta
+Reducer3 1 berlin
+Reducer2 1 sydney
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 18: BIG_BENCH query6
+11 47 203
+Reducer5 1 berlin
+Reducer4 1 sanjose
+Map10 1 sydney
+Map1 1 hongkong
+Reducer9 1 tokyo
+Reducer8 4 jakarta taipei madrid dc
+Map11 1 sydney
+Reducer3 1 berlin
+Map6 1 frankfurt
+Map7 1 paris
+Reducer2 3 kualalumpur sanjose bangkok
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 14: BIG_BENCH query27
+2 48 203
+Map1 1 dc
+Reducer2 1 paris
+1
+Map1 Reducer2 6089
+# 17: BIG_BENCH query4
+5 49 205
+Map1 1 osaka
+Reducer4 1 sydney
+Map5 1 singapore
+Reducer3 1 osaka
+Reducer2 1 hongkong
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 13: BIG_BENCH query26
+4 50 207
+Map1 1 sanjose
+Map4 1 paris
+Reducer3 4 tokyo berlin sanjose taipei
+Reducer2 2 singapore kualalumpur
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 1: BIG_BENCH query11
+7 51 226
+Map1 1 kualalumpur
+Reducer4 1 singapore
+Reducer7 2 berlin dc
+Map5 1 frankfurt
+Map6 1 london
+Reducer3 2 madrid taipei
+Reducer2 1 berlin
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 14: BIG_BENCH query27
+2 52 237
+Map1 1 frankfurt
+Reducer2 1 madrid
+1
+Map1 Reducer2 6089
+# 11: BIG_BENCH query22
+7 53 239
+Map1 1 jakarta
+Reducer4 1 london
+Map5 1 paris
+Map6 1 berlin
+Reducer3 1 tokyo
+Map7 1 kualalumpur
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 6: BIG_BENCH query17
+25 54 247
+Map20 1 dc
+Map1 1 tokyo
+Map21 1 bangkok
+Map24 1 tokyo
+Map25 1 berlin
+Map22 1 tokyo
+Map23 1 frankfurt
+Map8 1 paris
+Map9 1 paris
+Reducer18 1 bangkok
+Reducer17 1 bangkok
+Reducer16 1 madrid
+Reducer15 1 taipei
+Reducer19 1 paris
+Reducer5 1 berlin
+Reducer4 1 frankfurt
+Map10 1 osaka
+Reducer7 1 singapore
+Reducer6 1 berlin
+Map13 1 bangkok
+Map14 1 london
+Map11 1 london
+Map12 1 bangkok
+Reducer3 1 london
+Reducer2 1 dc
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 3: BIG_BENCH query14
+10 55 251
+Map1 1 osaka
+Map10 1 tokyo
+Reducer7 1 singapore
+Map3 1 paris
+Map8 1 osaka
+Map9 1 jakarta
+Map4 1 paris
+Map5 1 london
+Map6 1 dc
+Reducer2 1 london
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 16: BIG_BENCH query3
+7 56 256
+Reducer5 1 hongkong
+Reducer4 1 london
+Map1 1 london
+Reducer6 1 osaka
+Reducer3 1 madrid
+Reducer2 1 taipei
+Map7 1 osaka
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 11: BIG_BENCH query22
+7 57 276
+Map1 1 tokyo
+Reducer4 1 sydney
+Map5 1 berlin
+Map6 1 taipei
+Reducer3 1 madrid
+Map7 1 kualalumpur
+Reducer2 1 osaka
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 16: BIG_BENCH query3
+7 58 287
+Reducer5 1 frankfurt
+Reducer4 1 dc
+Map1 1 sydney
+Reducer6 1 london
+Reducer3 1 berlin
+Reducer2 1 kualalumpur
+Map7 1 tokyo
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 14: BIG_BENCH query27
+2 59 299
+Map1 1 taipei
+Reducer2 1 paris
+1
+Map1 Reducer2 6089
+# 3: BIG_BENCH query14
+10 60 343
+Map1 1 kualalumpur
+Map10 1 frankfurt
+Reducer7 1 berlin
+Map3 1 bangkok
+Map8 1 osaka
+Map9 1 london
+Map4 1 taipei
+Map5 1 kualalumpur
+Map6 1 bangkok
+Reducer2 1 bangkok
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 7: BIG_BENCH query19
+13 61 344
+Reducer5 1 dc
+Map1 1 berlin
+Map10 1 london
+Reducer7 1 sydney
+Map3 1 jakarta
+Reducer6 1 hongkong
+Reducer9 1 madrid
+Map13 1 kualalumpur
+Reducer12 1 singapore
+Map11 1 berlin
+Map8 1 jakarta
+Map4 1 hongkong
+Reducer2 1 sydney
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 14: BIG_BENCH query27
+2 62 344
+Map1 1 bangkok
+Reducer2 1 dc
+1
+Map1 Reducer2 6089
+# 6: BIG_BENCH query17
+25 63 345
+Map20 1 osaka
+Map1 1 sydney
+Map21 1 sydney
+Map24 1 taipei
+Map25 1 dc
+Map22 1 london
+Map23 1 bangkok
+Map8 1 berlin
+Map9 1 paris
+Reducer18 1 tokyo
+Reducer17 1 bangkok
+Reducer16 1 paris
+Reducer15 1 tokyo
+Reducer19 1 tokyo
+Reducer5 1 osaka
+Reducer4 1 frankfurt
+Map10 1 sanjose
+Reducer7 1 berlin
+Reducer6 1 sydney
+Map13 1 berlin
+Map14 1 hongkong
+Map11 1 sydney
+Map12 1 frankfurt
+Reducer3 1 taipei
+Reducer2 1 dc
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 12: BIG_BENCH query24
+19 64 345
+Reducer17 5 tokyo sydney berlin frankfurt bangkok
+Map18 1 jakarta
+Reducer16 2 tokyo osaka
+Reducer15 1 tokyo
+Map19 1 dc
+Reducer10 7 taipei sydney dc singapore kualalumpur frankfurt bangkok
+Reducer4 6 berlin hongkong tokyo frankfurt singapore bangkok
+Map1 1 london
+Reducer7 1 berlin
+Reducer9 5 sanjose singapore paris dc berlin
+Reducer14 1 sanjose
+Map13 1 tokyo
+Reducer8 1 jakarta
+Map11 1 frankfurt
+Map12 1 london
+Map5 1 singapore
+Reducer3 1 dc
+Map6 1 sydney
+Reducer2 1 sydney
+18
+Reducer17 Reducer4 14190
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 60312
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 1974
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 8: BIG_BENCH query1
+6 65 345
+Reducer5 1 frankfurt
+Reducer4 1 dc
+Map1 1 kualalumpur
+Map6 1 jakarta
+Reducer3 1 tokyo
+Reducer2 1 bangkok
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 14: BIG_BENCH query27
+2 66 347
+Map1 1 berlin
+Reducer2 1 jakarta
+1
+Map1 Reducer2 6089
+# 6: BIG_BENCH query17
+25 67 348
+Map20 1 tokyo
+Map1 1 sydney
+Map21 1 paris
+Map24 1 bangkok
+Map25 1 frankfurt
+Map22 1 london
+Map23 1 bangkok
+Map8 1 tokyo
+Map9 1 osaka
+Reducer18 1 sydney
+Reducer17 1 paris
+Reducer16 1 madrid
+Reducer15 1 sydney
+Reducer19 1 madrid
+Reducer5 1 berlin
+Reducer4 1 jakarta
+Map10 1 hongkong
+Reducer7 1 paris
+Reducer6 1 singapore
+Map13 1 frankfurt
+Map14 1 bangkok
+Map11 1 bangkok
+Map12 1 sanjose
+Reducer3 1 paris
+Reducer2 1 taipei
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 17: BIG_BENCH query4
+5 68 351
+Map1 1 taipei
+Reducer4 1 berlin
+Map5 1 sydney
+Reducer3 1 hongkong
+Reducer2 1 london
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 2: BIG_BENCH query12
+9 69 352
+Reducer5 1 osaka
+Reducer4 1 dc
+Map1 1 paris
+Reducer8 1 taipei
+Map9 1 frankfurt
+Reducer3 1 kualalumpur
+Map6 1 sanjose
+Reducer2 1 dc
+Map7 1 singapore
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 19: BIG_BENCH query7
+11 70 353
+Reducer5 1 singapore
+Map1 1 paris
+Reducer4 2 singapore kualalumpur
+Map10 1 tokyo
+Reducer6 1 madrid
+Map8 1 taipei
+Map9 1 london
+Map4 1 kualalumpur
+Reducer3 1 madrid
+Reducer2 1 frankfurt
+Map7 1 singapore
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 10: BIG_BENCH query21
+16 71 356
+Map15 1 sydney
+Map16 1 bangkok
+Reducer5 1 dc
+Map1 1 london
+Map10 1 dc
+Reducer4 2 tokyo sanjose
+Reducer7 2 bangkok sanjose
+Reducer6 2 london jakarta
+Map13 1 jakarta
+Reducer9 1 kualalumpur
+Map14 1 hongkong
+Reducer8 1 kualalumpur
+Map11 1 madrid
+Map12 1 bangkok
+Reducer3 1 dc
+Reducer2 1 osaka
+15
+Map15 Reducer6 2918
+Map16 Reducer7 10685
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 17: BIG_BENCH query4
+5 72 359
+Map1 1 tokyo
+Reducer4 1 sydney
+Map5 1 taipei
+Reducer3 1 singapore
+Reducer2 1 hongkong
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 12: BIG_BENCH query24
+19 73 362
+Reducer17 3 london sanjose singapore
+Map18 1 taipei
+Reducer16 2 sanjose berlin
+Reducer15 1 bangkok
+Map19 1 singapore
+Reducer10 8 osaka jakarta sanjose tokyo sydney frankfurt kualalumpur hongkong
+Reducer4 2 bangkok sydney
+Map1 1 sanjose
+Reducer7 1 dc
+Reducer9 7 dc berlin sydney sanjose madrid tokyo taipei
+Reducer14 1 taipei
+Map13 1 tokyo
+Reducer8 1 jakarta
+Map11 1 tokyo
+Map12 1 osaka
+Map5 1 kualalumpur
+Reducer3 1 kualalumpur
+Map6 1 paris
+Reducer2 1 hongkong
+18
+Reducer17 Reducer4 9223
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 74672
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2139
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 9: BIG_BENCH query20
+6 74 367
+Map1 1 frankfurt
+Reducer4 3 taipei tokyo jakarta
+Reducer6 1 jakarta
+Map5 1 sanjose
+Reducer3 3 frankfurt tokyo singapore
+Reducer2 7 tokyo frankfurt hongkong sydney berlin jakarta madrid
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 499
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 42784
+# 12: BIG_BENCH query24
+19 75 379
+Reducer17 3 kualalumpur bangkok hongkong
+Map18 1 taipei
+Reducer16 5 taipei bangkok singapore osaka madrid
+Reducer15 1 berlin
+Map19 1 hongkong
+Reducer10 7 taipei paris sydney sanjose osaka hongkong bangkok
+Reducer4 4 jakarta sydney london paris
+Map1 1 tokyo
+Reducer7 1 frankfurt
+Reducer9 2 taipei tokyo
+Reducer14 1 berlin
+Map13 1 sanjose
+Reducer8 1 madrid
+Map11 1 madrid
+Map12 1 sydney
+Map5 1 kualalumpur
+Reducer3 1 hongkong
+Map6 1 paris
+Reducer2 1 paris
+18
+Reducer17 Reducer4 10062
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 71278
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 3: BIG_BENCH query14
+10 76 379
+Map1 1 tokyo
+Map10 1 hongkong
+Reducer7 1 dc
+Map3 1 sydney
+Map8 1 madrid
+Map9 1 sanjose
+Map4 1 hongkong
+Map5 1 london
+Map6 1 sanjose
+Reducer2 1 sydney
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 12: BIG_BENCH query24
+19 77 383
+Reducer17 2 tokyo jakarta
+Map18 1 bangkok
+Reducer16 5 london tokyo frankfurt sydney madrid
+Reducer15 1 bangkok
+Map19 1 dc
+Reducer10 8 dc bangkok sanjose berlin singapore hongkong kualalumpur tokyo
+Reducer4 4 tokyo frankfurt jakarta london
+Map1 1 frankfurt
+Reducer7 1 singapore
+Reducer9 6 berlin bangkok sydney osaka london taipei
+Reducer14 1 dc
+Map13 1 jakarta
+Reducer8 1 hongkong
+Map11 1 tokyo
+Map12 1 osaka
+Map5 1 frankfurt
+Reducer3 1 hongkong
+Map6 1 sydney
+Reducer2 1 singapore
+18
+Reducer17 Reducer4 6708
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 81461
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 0: BIG_BENCH query10
+2 78 384
+Map1 1 madrid
+Reducer2 1 bangkok
+1
+Map1 Reducer2 6138
+# 11: BIG_BENCH query22
+7 79 385
+Map1 1 london
+Reducer4 1 frankfurt
+Map5 1 london
+Map6 1 frankfurt
+Reducer3 1 sydney
+Map7 1 singapore
+Reducer2 1 sanjose
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 18: BIG_BENCH query6
+11 80 395
+Reducer5 1 jakarta
+Reducer4 1 tokyo
+Map10 1 madrid
+Map1 1 jakarta
+Reducer9 1 singapore
+Reducer8 1 singapore
+Map11 1 sydney
+Reducer3 1 madrid
+Map6 1 frankfurt
+Map7 1 hongkong
+Reducer2 1 hongkong
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 13: BIG_BENCH query26
+4 81 398
+Map1 1 hongkong
+Map4 1 madrid
+Reducer3 2 frankfurt paris
+Reducer2 2 tokyo singapore
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 6: BIG_BENCH query17
+25 82 399
+Map20 1 madrid
+Map1 1 osaka
+Map21 1 madrid
+Map24 1 osaka
+Map25 1 taipei
+Map22 1 berlin
+Map23 1 osaka
+Map8 1 osaka
+Map9 1 frankfurt
+Reducer18 1 london
+Reducer17 1 hongkong
+Reducer16 1 hongkong
+Reducer15 1 paris
+Reducer19 1 jakarta
+Reducer5 1 london
+Reducer4 1 taipei
+Map10 1 hongkong
+Reducer7 1 taipei
+Reducer6 1 london
+Map13 1 tokyo
+Map14 1 sydney
+Map11 1 sanjose
+Map12 1 osaka
+Reducer3 1 taipei
+Reducer2 1 bangkok
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 2: BIG_BENCH query12
+9 83 401
+Reducer5 1 london
+Reducer4 1 taipei
+Map1 1 hongkong
+Reducer8 1 london
+Map9 1 jakarta
+Reducer3 1 kualalumpur
+Map6 1 hongkong
+Reducer2 1 paris
+Map7 1 sydney
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 12: BIG_BENCH query24
+19 84 401
+Reducer17 7 berlin jakarta tokyo frankfurt madrid sydney dc
+Map18 1 kualalumpur
+Reducer16 5 jakarta sydney taipei berlin paris
+Reducer15 1 frankfurt
+Map19 1 jakarta
+Reducer10 8 singapore bangkok frankfurt osaka sanjose london dc jakarta
+Reducer4 7 london hongkong sydney sanjose tokyo madrid kualalumpur
+Map1 1 singapore
+Reducer7 1 london
+Reducer9 5 sanjose jakarta singapore berlin kualalumpur
+Reducer14 1 osaka
+Map13 1 tokyo
+Reducer8 1 sanjose
+Map11 1 hongkong
+Map12 1 madrid
+Map5 1 singapore
+Reducer3 1 osaka
+Map6 1 dc
+Reducer2 1 dc
+18
+Reducer17 Reducer4 16141
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 56004
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 1604
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 13: BIG_BENCH query26
+4 85 401
+Map1 1 bangkok
+Map4 1 jakarta
+Reducer3 4 sydney bangkok jakarta paris
+Reducer2 3 frankfurt madrid berlin
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 5: BIG_BENCH query16
+9 86 401
+Reducer5 1 dc
+Reducer4 1 sydney
+Map1 1 bangkok
+Map8 1 london
+Map9 1 taipei
+Map6 1 dc
+Reducer3 2 dc bangkok
+Map7 1 madrid
+Reducer2 3 taipei kualalumpur sanjose
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 27167
+Map9 Reducer3 27143
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 27154
+Reducer2 Reducer3 368738
+# 17: BIG_BENCH query4
+5 87 404
+Map1 1 hongkong
+Reducer4 1 london
+Map5 1 berlin
+Reducer3 1 london
+Reducer2 1 osaka
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 14: BIG_BENCH query27
+2 88 404
+Map1 1 sydney
+Reducer2 1 dc
+1
+Map1 Reducer2 6089
+# 20: BIG_BENCH query9
+9 89 409
+Reducer5 1 hongkong
+Reducer4 1 paris
+Map1 1 madrid
+Map8 1 tokyo
+Map9 1 sanjose
+Map6 1 sydney
+Reducer3 1 sydney
+Map7 1 tokyo
+Reducer2 1 jakarta
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 20: BIG_BENCH query9
+9 90 410
+Reducer5 1 jakarta
+Reducer4 1 frankfurt
+Map1 1 tokyo
+Map8 1 osaka
+Map9 1 london
+Map6 1 singapore
+Reducer3 1 sydney
+Map7 1 hongkong
+Reducer2 1 kualalumpur
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 19: BIG_BENCH query7
+11 91 414
+Reducer5 1 paris
+Map1 1 jakarta
+Reducer4 2 madrid london
+Map10 1 tokyo
+Reducer6 1 sydney
+Map8 1 paris
+Map9 1 taipei
+Map4 1 bangkok
+Reducer3 1 bangkok
+Reducer2 1 london
+Map7 1 dc
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 15: BIG_BENCH query2
+5 92 416
+Reducer5 1 madrid
+Reducer4 1 berlin
+Map1 1 singapore
+Reducer3 1 hongkong
+Reducer2 1 sydney
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 5: BIG_BENCH query16
+9 93 437
+Reducer5 1 sanjose
+Reducer4 2 paris berlin
+Map1 1 berlin
+Map8 1 paris
+Map9 1 singapore
+Map6 1 sydney
+Reducer3 2 osaka dc
+Map7 1 berlin
+Reducer2 2 hongkong bangkok
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 3: BIG_BENCH query14
+10 94 446
+Map1 1 sydney
+Map10 1 tokyo
+Reducer7 1 tokyo
+Map3 1 jakarta
+Map8 1 osaka
+Map9 1 tokyo
+Map4 1 singapore
+Map5 1 bangkok
+Map6 1 tokyo
+Reducer2 1 london
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 7: BIG_BENCH query19
+13 95 463
+Reducer5 1 berlin
+Map1 1 osaka
+Map10 1 london
+Reducer7 1 bangkok
+Map3 1 jakarta
+Reducer6 1 dc
+Reducer9 1 jakarta
+Map13 1 dc
+Reducer12 1 tokyo
+Map11 1 madrid
+Map8 1 osaka
+Map4 1 frankfurt
+Reducer2 1 bangkok
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 17: BIG_BENCH query4
+5 96 465
+Map1 1 bangkok
+Reducer4 1 paris
+Map5 1 tokyo
+Reducer3 1 berlin
+Reducer2 1 berlin
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 15: BIG_BENCH query2
+5 97 466
+Reducer5 1 berlin
+Reducer4 1 taipei
+Map1 1 paris
+Reducer3 1 paris
+Reducer2 1 singapore
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 11: BIG_BENCH query22
+7 98 468
+Map1 1 london
+Reducer4 1 jakarta
+Map5 1 hongkong
+Map6 1 hongkong
+Reducer3 1 dc
+Map7 1 hongkong
+Reducer2 1 london
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 12: BIG_BENCH query24
+19 99 471
+Reducer17 5 london singapore dc hongkong frankfurt
+Map18 1 sanjose
+Reducer16 2 tokyo hongkong
+Reducer15 1 frankfurt
+Map19 1 kualalumpur
+Reducer10 4 madrid taipei berlin london
+Reducer4 2 frankfurt jakarta
+Map1 1 berlin
+Reducer7 1 jakarta
+Reducer9 6 kualalumpur jakarta sanjose dc sydney london
+Reducer14 1 sanjose
+Map13 1 kualalumpur
+Reducer8 1 sanjose
+Map11 1 paris
+Map12 1 kualalumpur
+Map5 1 sanjose
+Reducer3 1 hongkong
+Map6 1 sanjose
+Reducer2 1 dc
+18
+Reducer17 Reducer4 18447
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 44803
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2566
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 5: BIG_BENCH query16
+9 100 479
+Reducer5 1 hongkong
+Reducer4 3 sanjose jakarta singapore
+Map1 1 kualalumpur
+Map8 1 jakarta
+Map9 1 sanjose
+Map6 1 paris
+Reducer3 2 london berlin
+Map7 1 taipei
+Reducer2 2 madrid taipei
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 11: BIG_BENCH query22
+7 101 493
+Map1 1 madrid
+Reducer4 1 tokyo
+Map5 1 kualalumpur
+Map6 1 london
+Reducer3 1 bangkok
+Map7 1 osaka
+Reducer2 1 paris
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 6: BIG_BENCH query17
+25 102 505
+Map20 1 london
+Map1 1 paris
+Map21 1 sydney
+Map24 1 jakarta
+Map25 1 frankfurt
+Map22 1 jakarta
+Map23 1 sydney
+Map8 1 london
+Map9 1 madrid
+Reducer18 1 hongkong
+Reducer17 1 kualalumpur
+Reducer16 1 taipei
+Reducer15 1 tokyo
+Reducer19 1 dc
+Reducer5 1 berlin
+Reducer4 1 tokyo
+Map10 1 paris
+Reducer7 1 berlin
+Reducer6 1 frankfurt
+Map13 1 berlin
+Map14 1 tokyo
+Map11 1 sanjose
+Map12 1 sydney
+Reducer3 1 jakarta
+Reducer2 1 osaka
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 1: BIG_BENCH query11
+7 103 506
+Map1 1 london
+Reducer4 1 jakarta
+Reducer7 4 london paris sanjose dc
+Map5 1 berlin
+Map6 1 frankfurt
+Reducer3 2 singapore bangkok
+Reducer2 1 berlin
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 8: BIG_BENCH query1
+6 104 507
+Reducer5 1 madrid
+Reducer4 1 sydney
+Map1 1 sydney
+Map6 1 hongkong
+Reducer3 1 tokyo
+Reducer2 2 paris osaka
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 3: BIG_BENCH query14
+10 105 515
+Map1 1 madrid
+Map10 1 osaka
+Reducer7 1 paris
+Map3 1 sanjose
+Map8 1 sydney
+Map9 1 bangkok
+Map4 1 tokyo
+Map5 1 london
+Map6 1 jakarta
+Reducer2 1 sydney
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 10: BIG_BENCH query21
+16 106 517
+Map15 1 osaka
+Map16 1 sanjose
+Reducer5 2 dc jakarta
+Map1 1 sanjose
+Map10 1 taipei
+Reducer4 1 hongkong
+Reducer7 3 hongkong madrid sanjose
+Reducer6 2 paris osaka
+Map13 1 taipei
+Reducer9 1 london
+Map14 1 tokyo
+Reducer8 1 osaka
+Map11 1 singapore
+Map12 1 tokyo
+Reducer3 1 frankfurt
+Reducer2 1 tokyo
+15
+Map15 Reducer6 2188
+Map16 Reducer7 10685
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 24
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 15: BIG_BENCH query2
+5 107 520
+Reducer5 1 sanjose
+Reducer4 1 tokyo
+Map1 1 kualalumpur
+Reducer3 1 taipei
+Reducer2 1 kualalumpur
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 3: BIG_BENCH query14
+10 108 525
+Map1 1 madrid
+Map10 1 paris
+Reducer7 1 sydney
+Map3 1 madrid
+Map8 1 kualalumpur
+Map9 1 osaka
+Map4 1 paris
+Map5 1 paris
+Map6 1 tokyo
+Reducer2 1 paris
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 1: BIG_BENCH query11
+7 109 533
+Map1 1 frankfurt
+Reducer4 1 bangkok
+Reducer7 4 sanjose berlin taipei jakarta
+Map5 1 hongkong
+Map6 1 london
+Reducer3 2 jakarta singapore
+Reducer2 1 singapore
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 12: BIG_BENCH query24
+19 110 540
+Reducer17 3 madrid berlin jakarta
+Map18 1 jakarta
+Reducer16 4 kualalumpur sydney sanjose bangkok
+Reducer15 1 dc
+Map19 1 taipei
+Reducer10 5 sydney bangkok osaka madrid frankfurt
+Reducer4 6 madrid sydney sanjose singapore berlin dc
+Map1 1 dc
+Reducer7 1 jakarta
+Reducer9 8 singapore osaka paris madrid hongkong london frankfurt kualalumpur
+Reducer14 1 kualalumpur
+Map13 1 osaka
+Reducer8 1 tokyo
+Map11 1 hongkong
+Map12 1 hongkong
+Map5 1 berlin
+Reducer3 1 singapore
+Map6 1 singapore
+Reducer2 1 madrid
+18
+Reducer17 Reducer4 12298
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 62227
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2852
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 7: BIG_BENCH query19
+13 111 558
+Reducer5 1 tokyo
+Map1 1 singapore
+Map10 1 sanjose
+Reducer7 1 sanjose
+Map3 1 kualalumpur
+Reducer6 1 dc
+Reducer9 1 paris
+Map13 1 sanjose
+Reducer12 1 sanjose
+Map11 1 hongkong
+Map8 1 paris
+Map4 1 bangkok
+Reducer2 1 hongkong
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 20: BIG_BENCH query9
+9 112 572
+Reducer5 1 madrid
+Reducer4 1 frankfurt
+Map1 1 sanjose
+Map8 1 osaka
+Map9 1 sydney
+Map6 1 kualalumpur
+Reducer3 1 london
+Map7 1 sydney
+Reducer2 1 tokyo
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 15: BIG_BENCH query2
+5 113 621
+Reducer5 1 dc
+Reducer4 1 taipei
+Map1 1 taipei
+Reducer3 1 london
+Reducer2 1 singapore
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 1: BIG_BENCH query11
+7 114 624
+Map1 1 osaka
+Reducer4 1 jakarta
+Reducer7 3 bangkok dc sydney
+Map5 1 bangkok
+Map6 1 london
+Reducer3 2 berlin dc
+Reducer2 1 madrid
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 13520
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1074
+# 2: BIG_BENCH query12
+9 115 624
+Reducer5 1 taipei
+Reducer4 1 singapore
+Map1 1 kualalumpur
+Reducer8 1 sanjose
+Map9 1 hongkong
+Reducer3 1 osaka
+Map6 1 hongkong
+Reducer2 1 paris
+Map7 1 osaka
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 13: BIG_BENCH query26
+4 116 624
+Map1 1 dc
+Map4 1 hongkong
+Reducer3 2 london hongkong
+Reducer2 3 london jakarta hongkong
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 7: BIG_BENCH query19
+13 117 624
+Reducer5 1 bangkok
+Map1 1 sanjose
+Map10 1 taipei
+Reducer7 1 taipei
+Map3 1 frankfurt
+Reducer6 1 sydney
+Reducer9 1 sanjose
+Map13 1 jakarta
+Reducer12 1 dc
+Map11 1 bangkok
+Map8 1 sanjose
+Map4 1 london
+Reducer2 1 sanjose
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 7: BIG_BENCH query19
+13 118 625
+Reducer5 1 paris
+Map1 1 frankfurt
+Map10 1 madrid
+Reducer7 1 bangkok
+Map3 1 paris
+Reducer6 1 jakarta
+Reducer9 1 osaka
+Map13 1 london
+Reducer12 1 hongkong
+Map11 1 taipei
+Map8 1 bangkok
+Map4 1 sydney
+Reducer2 1 london
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 3: BIG_BENCH query14
+10 119 625
+Map1 1 kualalumpur
+Map10 1 sydney
+Reducer7 1 osaka
+Map3 1 dc
+Map8 1 berlin
+Map9 1 london
+Map4 1 osaka
+Map5 1 hongkong
+Map6 1 dc
+Reducer2 1 madrid
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 14: BIG_BENCH query27
+2 120 625
+Map1 1 madrid
+Reducer2 1 hongkong
+1
+Map1 Reducer2 6089
+# 9: BIG_BENCH query20
+6 121 627
+Map1 1 tokyo
+Reducer4 3 paris madrid tokyo
+Reducer6 1 osaka
+Map5 1 dc
+Reducer3 6 tokyo dc osaka berlin singapore madrid
+Reducer2 2 madrid taipei
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 1332
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 32597
+# 5: BIG_BENCH query16
+9 122 633
+Reducer5 1 singapore
+Reducer4 1 berlin
+Map1 1 dc
+Map8 1 kualalumpur
+Map9 1 berlin
+Map6 1 singapore
+Reducer3 1 kualalumpur
+Map7 1 osaka
+Reducer2 2 paris berlin
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 12: BIG_BENCH query24
+19 123 644
+Reducer17 5 osaka jakarta hongkong dc tokyo
+Map18 1 sydney
+Reducer16 2 tokyo jakarta
+Reducer15 1 london
+Map19 1 madrid
+Reducer10 7 sydney madrid berlin jakarta kualalumpur sanjose london
+Reducer4 5 frankfurt taipei bangkok hongkong madrid
+Map1 1 paris
+Reducer7 1 sydney
+Reducer9 2 osaka frankfurt
+Reducer14 1 sanjose
+Map13 1 london
+Reducer8 1 paris
+Map11 1 frankfurt
+Map12 1 madrid
+Map5 1 dc
+Reducer3 1 sydney
+Map6 1 osaka
+Reducer2 1 tokyo
+18
+Reducer17 Reducer4 14190
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 60312
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 1974
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 12: BIG_BENCH query24
+19 124 644
+Reducer17 6 singapore osaka frankfurt madrid kualalumpur bangkok
+Map18 1 dc
+Reducer16 3 singapore bangkok taipei
+Reducer15 1 frankfurt
+Map19 1 jakarta
+Reducer10 4 jakarta hongkong madrid osaka
+Reducer4 4 jakarta sydney madrid osaka
+Map1 1 tokyo
+Reducer7 1 kualalumpur
+Reducer9 7 bangkok osaka hongkong dc paris singapore kualalumpur
+Reducer14 1 sanjose
+Map13 1 berlin
+Reducer8 1 berlin
+Map11 1 dc
+Map12 1 frankfurt
+Map5 1 paris
+Reducer3 1 berlin
+Map6 1 kualalumpur
+Reducer2 1 tokyo
+18
+Reducer17 Reducer4 20124
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 40730
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 20: BIG_BENCH query9
+9 125 644
+Reducer5 1 kualalumpur
+Reducer4 1 berlin
+Map1 1 singapore
+Map8 1 sydney
+Map9 1 berlin
+Map6 1 kualalumpur
+Reducer3 1 bangkok
+Map7 1 osaka
+Reducer2 1 bangkok
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 15: BIG_BENCH query2
+5 126 645
+Reducer5 1 london
+Reducer4 1 taipei
+Map1 1 london
+Reducer3 1 berlin
+Reducer2 1 bangkok
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 2: BIG_BENCH query12
+9 127 645
+Reducer5 1 jakarta
+Reducer4 1 london
+Map1 1 london
+Reducer8 1 taipei
+Map9 1 hongkong
+Reducer3 1 tokyo
+Map6 1 singapore
+Reducer2 1 jakarta
+Map7 1 dc
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 20: BIG_BENCH query9
+9 128 645
+Reducer5 1 osaka
+Reducer4 1 sydney
+Map1 1 bangkok
+Map8 1 tokyo
+Map9 1 berlin
+Map6 1 singapore
+Reducer3 1 madrid
+Map7 1 tokyo
+Reducer2 1 frankfurt
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 20: BIG_BENCH query9
+9 129 646
+Reducer5 1 sanjose
+Reducer4 1 taipei
+Map1 1 tokyo
+Map8 1 taipei
+Map9 1 osaka
+Map6 1 kualalumpur
+Reducer3 1 kualalumpur
+Map7 1 taipei
+Reducer2 1 london
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 7: BIG_BENCH query19
+13 130 647
+Reducer5 1 jakarta
+Map1 1 bangkok
+Map10 1 paris
+Reducer7 1 london
+Map3 1 dc
+Reducer6 1 singapore
+Reducer9 1 kualalumpur
+Map13 1 london
+Reducer12 1 sanjose
+Map11 1 london
+Map8 1 kualalumpur
+Map4 1 sydney
+Reducer2 1 singapore
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 2: BIG_BENCH query12
+9 131 648
+Reducer5 1 dc
+Reducer4 1 singapore
+Map1 1 sydney
+Reducer8 2 osaka paris
+Map9 1 paris
+Reducer3 1 london
+Map6 1 osaka
+Reducer2 1 jakarta
+Map7 1 kualalumpur
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 4: BIG_BENCH query15
+6 132 650
+Reducer5 1 taipei
+Reducer4 1 bangkok
+Map1 1 kualalumpur
+Map2 1 singapore
+Map6 1 bangkok
+Reducer3 2 madrid berlin
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 133 653
+Map15 1 london
+Map16 1 bangkok
+Reducer5 2 singapore london
+Map1 1 kualalumpur
+Map10 1 london
+Reducer4 1 jakarta
+Reducer7 2 bangkok singapore
+Reducer6 3 kualalumpur tokyo berlin
+Map13 1 frankfurt
+Reducer9 1 london
+Map14 1 hongkong
+Reducer8 1 jakarta
+Map11 1 kualalumpur
+Map12 1 dc
+Reducer3 2 tokyo sydney
+Reducer2 1 singapore
+15
+Map15 Reducer6 2188
+Map16 Reducer7 8014
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 30312
+Map13 Reducer5 24
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 13: BIG_BENCH query26
+4 134 654
+Map1 1 bangkok
+Map4 1 paris
+Reducer3 3 sanjose singapore osaka
+Reducer2 3 berlin singapore tokyo
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 18: BIG_BENCH query6
+11 135 655
+Reducer5 1 paris
+Reducer4 1 taipei
+Map10 1 sanjose
+Map1 1 taipei
+Reducer9 1 singapore
+Reducer8 3 osaka sydney frankfurt
+Map11 1 sydney
+Reducer3 1 kualalumpur
+Map6 1 sydney
+Map7 1 hongkong
+Reducer2 2 london sanjose
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 9: BIG_BENCH query20
+6 136 664
+Map1 1 singapore
+Reducer4 7 london bangkok tokyo kualalumpur frankfurt hongkong sanjose
+Reducer6 1 madrid
+Map5 1 tokyo
+Reducer3 3 london dc madrid
+Reducer2 9 madrid berlin osaka frankfurt sanjose singapore jakarta tokyo dc
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 399
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 44007
+# 2: BIG_BENCH query12
+9 137 664
+Reducer5 1 taipei
+Reducer4 1 sanjose
+Map1 1 jakarta
+Reducer8 1 berlin
+Map9 1 tokyo
+Reducer3 1 sanjose
+Map6 1 hongkong
+Reducer2 1 bangkok
+Map7 1 madrid
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 7: BIG_BENCH query19
+13 138 667
+Reducer5 1 berlin
+Map1 1 sydney
+Map10 1 singapore
+Reducer7 1 bangkok
+Map3 1 kualalumpur
+Reducer6 1 london
+Reducer9 1 madrid
+Map13 1 sydney
+Reducer12 1 tokyo
+Map11 1 frankfurt
+Map8 1 kualalumpur
+Map4 1 osaka
+Reducer2 1 bangkok
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 4: BIG_BENCH query15
+6 139 669
+Reducer5 1 paris
+Reducer4 1 sydney
+Map1 1 paris
+Map2 1 sydney
+Map6 1 dc
+Reducer3 2 paris sanjose
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 3: BIG_BENCH query14
+10 140 673
+Map1 1 paris
+Map10 1 paris
+Reducer7 1 berlin
+Map3 1 kualalumpur
+Map8 1 kualalumpur
+Map9 1 frankfurt
+Map4 1 paris
+Map5 1 hongkong
+Map6 1 singapore
+Reducer2 1 hongkong
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 12: BIG_BENCH query24
+19 141 673
+Reducer17 2 jakarta sanjose
+Map18 1 tokyo
+Reducer16 2 taipei berlin
+Reducer15 1 paris
+Map19 1 london
+Reducer10 8 hongkong tokyo jakarta madrid taipei sanjose bangkok paris
+Reducer4 5 sydney london kualalumpur tokyo frankfurt
+Map1 1 singapore
+Reducer7 1 sanjose
+Reducer9 2 taipei berlin
+Reducer14 1 singapore
+Map13 1 dc
+Reducer8 1 dc
+Map11 1 sanjose
+Map12 1 sydney
+Map5 1 taipei
+Reducer3 1 kualalumpur
+Map6 1 london
+Reducer2 1 hongkong
+18
+Reducer17 Reducer4 6708
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 81461
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 19: BIG_BENCH query7
+11 142 673
+Reducer5 1 paris
+Map1 1 sanjose
+Reducer4 2 paris singapore
+Map10 1 paris
+Reducer6 1 bangkok
+Map8 1 dc
+Map9 1 frankfurt
+Map4 1 dc
+Reducer3 1 berlin
+Reducer2 1 kualalumpur
+Map7 1 tokyo
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 12: BIG_BENCH query24
+19 143 679
+Reducer17 5 dc jakarta hongkong sydney frankfurt
+Map18 1 dc
+Reducer16 3 tokyo bangkok madrid
+Reducer15 1 paris
+Map19 1 hongkong
+Reducer10 6 bangkok sanjose singapore paris london sydney
+Reducer4 4 osaka sanjose kualalumpur london
+Map1 1 singapore
+Reducer7 1 dc
+Reducer9 4 berlin singapore kualalumpur paris
+Reducer14 1 hongkong
+Map13 1 london
+Reducer8 1 madrid
+Map11 1 hongkong
+Map12 1 hongkong
+Map5 1 tokyo
+Reducer3 1 sydney
+Map6 1 paris
+Reducer2 1 berlin
+18
+Reducer17 Reducer4 15372
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 56004
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2139
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 10: BIG_BENCH query21
+16 144 679
+Map15 1 sydney
+Map16 1 bangkok
+Reducer5 2 osaka berlin
+Map1 1 taipei
+Map10 1 madrid
+Reducer4 1 sanjose
+Reducer7 1 london
+Reducer6 1 london
+Map13 1 london
+Reducer9 1 kualalumpur
+Map14 1 berlin
+Reducer8 1 taipei
+Map11 1 jakarta
+Map12 1 dc
+Reducer3 2 bangkok jakarta
+Reducer2 1 tokyo
+15
+Map15 Reducer6 2188
+Map16 Reducer7 16028
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 24
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 20: BIG_BENCH query9
+9 145 687
+Reducer5 1 madrid
+Reducer4 1 hongkong
+Map1 1 madrid
+Map8 1 jakarta
+Map9 1 sydney
+Map6 1 frankfurt
+Reducer3 1 tokyo
+Map7 1 singapore
+Reducer2 1 sydney
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 17: BIG_BENCH query4
+5 146 688
+Map1 1 taipei
+Reducer4 1 hongkong
+Map5 1 berlin
+Reducer3 1 madrid
+Reducer2 1 dc
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 16: BIG_BENCH query3
+7 147 688
+Reducer5 1 berlin
+Reducer4 1 jakarta
+Map1 1 london
+Reducer6 1 berlin
+Reducer3 1 dc
+Reducer2 1 frankfurt
+Map7 1 london
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 17: BIG_BENCH query4
+5 148 690
+Map1 1 london
+Reducer4 1 kualalumpur
+Map5 1 tokyo
+Reducer3 1 dc
+Reducer2 1 taipei
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 13: BIG_BENCH query26
+4 149 691
+Map1 1 taipei
+Map4 1 madrid
+Reducer3 4 hongkong madrid frankfurt singapore
+Reducer2 3 sydney paris singapore
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 17: BIG_BENCH query4
+5 150 693
+Map1 1 osaka
+Reducer4 1 kualalumpur
+Map5 1 bangkok
+Reducer3 1 frankfurt
+Reducer2 1 madrid
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 13: BIG_BENCH query26
+4 151 694
+Map1 1 madrid
+Map4 1 madrid
+Reducer3 1 taipei
+Reducer2 2 jakarta london
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 17: BIG_BENCH query4
+5 152 696
+Map1 1 sanjose
+Reducer4 1 berlin
+Map5 1 paris
+Reducer3 1 hongkong
+Reducer2 1 frankfurt
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 2: BIG_BENCH query12
+9 153 697
+Reducer5 1 taipei
+Reducer4 1 dc
+Map1 1 madrid
+Reducer8 2 hongkong jakarta
+Map9 1 singapore
+Reducer3 1 jakarta
+Map6 1 hongkong
+Reducer2 1 osaka
+Map7 1 kualalumpur
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 7: BIG_BENCH query19
+13 154 699
+Reducer5 1 madrid
+Map1 1 osaka
+Map10 1 frankfurt
+Reducer7 1 london
+Map3 1 frankfurt
+Reducer6 1 taipei
+Reducer9 1 kualalumpur
+Map13 1 singapore
+Reducer12 1 kualalumpur
+Map11 1 london
+Map8 1 berlin
+Map4 1 sydney
+Reducer2 1 madrid
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 17: BIG_BENCH query4
+5 155 699
+Map1 1 jakarta
+Reducer4 1 sanjose
+Map5 1 osaka
+Reducer3 1 paris
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 18: BIG_BENCH query6
+11 156 700
+Reducer5 1 singapore
+Reducer4 1 kualalumpur
+Map10 1 singapore
+Map1 1 dc
+Reducer9 1 madrid
+Reducer8 3 osaka jakarta tokyo
+Map11 1 taipei
+Reducer3 1 osaka
+Map6 1 jakarta
+Map7 1 berlin
+Reducer2 3 london paris kualalumpur
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 20: BIG_BENCH query9
+9 157 701
+Reducer5 1 osaka
+Reducer4 1 sydney
+Map1 1 osaka
+Map8 1 taipei
+Map9 1 sanjose
+Map6 1 sanjose
+Reducer3 1 dc
+Map7 1 taipei
+Reducer2 1 jakarta
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 7: BIG_BENCH query19
+13 158 701
+Reducer5 1 sanjose
+Map1 1 berlin
+Map10 1 bangkok
+Reducer7 1 sanjose
+Map3 1 paris
+Reducer6 1 sydney
+Reducer9 1 jakarta
+Map13 1 london
+Reducer12 1 bangkok
+Map11 1 bangkok
+Map8 1 frankfurt
+Map4 1 taipei
+Reducer2 1 madrid
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 16: BIG_BENCH query3
+7 159 704
+Reducer5 1 madrid
+Reducer4 1 jakarta
+Map1 1 singapore
+Reducer6 1 tokyo
+Reducer3 1 sanjose
+Reducer2 1 frankfurt
+Map7 1 singapore
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 12: BIG_BENCH query24
+19 160 709
+Reducer17 3 sanjose singapore paris
+Map18 1 singapore
+Reducer16 5 madrid bangkok hongkong taipei paris
+Reducer15 1 osaka
+Map19 1 dc
+Reducer10 5 singapore sydney jakarta dc frankfurt
+Reducer4 5 dc berlin london taipei kualalumpur
+Map1 1 tokyo
+Reducer7 1 kualalumpur
+Reducer9 4 jakarta dc berlin singapore
+Reducer14 1 sanjose
+Map13 1 sydney
+Reducer8 1 bangkok
+Map11 1 bangkok
+Map12 1 berlin
+Map5 1 paris
+Reducer3 1 sydney
+Map6 1 jakarta
+Reducer2 1 frankfurt
+18
+Reducer17 Reducer4 12298
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 62227
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2852
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 9: BIG_BENCH query20
+6 161 709
+Map1 1 kualalumpur
+Reducer4 3 hongkong sydney madrid
+Reducer6 1 jakarta
+Map5 1 jakarta
+Reducer3 6 tokyo jakarta singapore berlin frankfurt sanjose
+Reducer2 5 hongkong sydney jakarta london paris
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 666
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 40747
+# 8: BIG_BENCH query1
+6 162 713
+Reducer5 1 hongkong
+Reducer4 1 berlin
+Map1 1 tokyo
+Map6 1 bangkok
+Reducer3 1 bangkok
+Reducer2 2 taipei osaka
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 7: BIG_BENCH query19
+13 163 715
+Reducer5 1 jakarta
+Map1 1 tokyo
+Map10 1 hongkong
+Reducer7 1 singapore
+Map3 1 frankfurt
+Reducer6 1 dc
+Reducer9 1 jakarta
+Map13 1 paris
+Reducer12 1 berlin
+Map11 1 hongkong
+Map8 1 paris
+Map4 1 osaka
+Reducer2 1 kualalumpur
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 9: BIG_BENCH query20
+6 164 716
+Map1 1 berlin
+Reducer4 3 frankfurt taipei tokyo
+Reducer6 1 sydney
+Map5 1 paris
+Reducer3 2 osaka bangkok
+Reducer2 4 taipei jakarta london tokyo
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 799
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 39117
+# 5: BIG_BENCH query16
+9 165 725
+Reducer5 1 sanjose
+Reducer4 1 dc
+Map1 1 kualalumpur
+Map8 1 sydney
+Map9 1 sydney
+Map6 1 jakarta
+Reducer3 1 bangkok
+Map7 1 sanjose
+Reducer2 2 jakarta bangkok
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 15: BIG_BENCH query2
+5 166 728
+Reducer5 1 kualalumpur
+Reducer4 1 taipei
+Map1 1 sydney
+Reducer3 1 berlin
+Reducer2 1 hongkong
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 0: BIG_BENCH query10
+2 167 729
+Map1 1 osaka
+Reducer2 1 sanjose
+1
+Map1 Reducer2 6138
+# 16: BIG_BENCH query3
+7 168 729
+Reducer5 1 hongkong
+Reducer4 1 kualalumpur
+Map1 1 hongkong
+Reducer6 1 hongkong
+Reducer3 1 dc
+Reducer2 1 kualalumpur
+Map7 1 paris
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 18: BIG_BENCH query6
+11 169 739
+Reducer5 1 jakarta
+Reducer4 1 singapore
+Map10 1 madrid
+Map1 1 hongkong
+Reducer9 1 tokyo
+Reducer8 3 tokyo singapore bangkok
+Map11 1 tokyo
+Reducer3 1 osaka
+Map6 1 madrid
+Map7 1 dc
+Reducer2 3 taipei berlin osaka
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 19: BIG_BENCH query7
+11 170 739
+Reducer5 1 london
+Map1 1 sanjose
+Reducer4 2 jakarta taipei
+Map10 1 singapore
+Reducer6 1 kualalumpur
+Map8 1 hongkong
+Map9 1 osaka
+Map4 1 kualalumpur
+Reducer3 1 hongkong
+Reducer2 1 kualalumpur
+Map7 1 sanjose
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 20: BIG_BENCH query9
+9 171 739
+Reducer5 1 berlin
+Reducer4 1 hongkong
+Map1 1 paris
+Map8 1 bangkok
+Map9 1 sanjose
+Map6 1 bangkok
+Reducer3 1 dc
+Map7 1 singapore
+Reducer2 1 dc
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 9: BIG_BENCH query20
+6 172 739
+Map1 1 london
+Reducer4 6 singapore london dc osaka paris taipei
+Reducer6 1 madrid
+Map5 1 osaka
+Reducer3 6 frankfurt paris jakarta madrid singapore dc
+Reducer2 9 paris madrid jakarta sanjose dc bangkok sydney hongkong kualalumpur
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 399
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 44007
+# 0: BIG_BENCH query10
+2 173 739
+Map1 1 paris
+Reducer2 1 dc
+1
+Map1 Reducer2 6138
+# 8: BIG_BENCH query1
+6 174 743
+Reducer5 1 osaka
+Reducer4 1 taipei
+Map1 1 frankfurt
+Map6 1 kualalumpur
+Reducer3 1 osaka
+Reducer2 2 osaka kualalumpur
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 7: BIG_BENCH query19
+13 175 763
+Reducer5 1 taipei
+Map1 1 berlin
+Map10 1 singapore
+Reducer7 1 taipei
+Map3 1 frankfurt
+Reducer6 1 hongkong
+Reducer9 1 tokyo
+Map13 1 taipei
+Reducer12 1 tokyo
+Map11 1 jakarta
+Map8 1 osaka
+Map4 1 london
+Reducer2 1 sanjose
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 13: BIG_BENCH query26
+4 176 764
+Map1 1 frankfurt
+Map4 1 sydney
+Reducer3 4 jakarta kualalumpur frankfurt bangkok
+Reducer2 2 osaka bangkok
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 5: BIG_BENCH query16
+9 177 789
+Reducer5 1 taipei
+Reducer4 3 singapore tokyo osaka
+Map1 1 london
+Map8 1 kualalumpur
+Map9 1 sanjose
+Map6 1 bangkok
+Reducer3 2 berlin london
+Map7 1 hongkong
+Reducer2 2 jakarta sanjose
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 15: BIG_BENCH query2
+5 178 793
+Reducer5 1 hongkong
+Reducer4 1 paris
+Map1 1 sanjose
+Reducer3 1 sanjose
+Reducer2 1 madrid
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 8: BIG_BENCH query1
+6 179 798
+Reducer5 1 dc
+Reducer4 1 frankfurt
+Map1 1 paris
+Map6 1 tokyo
+Reducer3 1 tokyo
+Reducer2 2 madrid osaka
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 3: BIG_BENCH query14
+10 180 806
+Map1 1 frankfurt
+Map10 1 frankfurt
+Reducer7 1 paris
+Map3 1 singapore
+Map8 1 frankfurt
+Map9 1 sydney
+Map4 1 hongkong
+Map5 1 taipei
+Map6 1 paris
+Reducer2 1 bangkok
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 2: BIG_BENCH query12
+9 181 829
+Reducer5 1 berlin
+Reducer4 1 berlin
+Map1 1 sanjose
+Reducer8 2 jakarta osaka
+Map9 1 osaka
+Reducer3 1 sydney
+Map6 1 paris
+Reducer2 1 jakarta
+Map7 1 hongkong
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 3: BIG_BENCH query14
+10 182 833
+Map1 1 madrid
+Map10 1 bangkok
+Reducer7 1 jakarta
+Map3 1 madrid
+Map8 1 taipei
+Map9 1 bangkok
+Map4 1 kualalumpur
+Map5 1 sanjose
+Map6 1 frankfurt
+Reducer2 1 paris
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 12: BIG_BENCH query24
+19 183 836
+Reducer17 3 madrid singapore london
+Map18 1 hongkong
+Reducer16 2 taipei bangkok
+Reducer15 1 jakarta
+Map19 1 bangkok
+Reducer10 2 madrid frankfurt
+Reducer4 4 frankfurt osaka dc singapore
+Map1 1 jakarta
+Reducer7 1 osaka
+Reducer9 8 dc taipei bangkok sydney berlin kualalumpur sanjose jakarta
+Reducer14 1 madrid
+Map13 1 bangkok
+Reducer8 1 singapore
+Map11 1 osaka
+Map12 1 hongkong
+Map5 1 frankfurt
+Reducer3 1 frankfurt
+Map6 1 sanjose
+Reducer2 1 kualalumpur
+18
+Reducer17 Reducer4 18447
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 37336
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 4278
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 10: BIG_BENCH query21
+16 184 838
+Map15 1 jakarta
+Map16 1 dc
+Reducer5 1 taipei
+Map1 1 frankfurt
+Map10 1 hongkong
+Reducer4 1 dc
+Reducer7 3 frankfurt hongkong dc
+Reducer6 2 tokyo frankfurt
+Map13 1 bangkok
+Reducer9 1 frankfurt
+Map14 1 tokyo
+Reducer8 1 hongkong
+Map11 1 bangkok
+Map12 1 sanjose
+Reducer3 2 frankfurt jakarta
+Reducer2 1 bangkok
+15
+Map15 Reducer6 2918
+Map16 Reducer7 10685
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 24
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 5: BIG_BENCH query16
+9 185 855
+Reducer5 1 taipei
+Reducer4 2 osaka dc
+Map1 1 madrid
+Map8 1 frankfurt
+Map9 1 london
+Map6 1 berlin
+Reducer3 2 london sanjose
+Map7 1 singapore
+Reducer2 2 dc hongkong
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 1: BIG_BENCH query11
+7 186 860
+Map1 1 madrid
+Reducer4 1 sydney
+Reducer7 1 paris
+Map5 1 tokyo
+Map6 1 london
+Reducer3 1 berlin
+Reducer2 1 hongkong
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 9013
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 2148
+# 18: BIG_BENCH query6
+11 187 865
+Reducer5 1 jakarta
+Reducer4 1 sanjose
+Map10 1 berlin
+Map1 1 tokyo
+Reducer9 1 london
+Reducer8 3 sanjose singapore kualalumpur
+Map11 1 hongkong
+Reducer3 1 tokyo
+Map6 1 london
+Map7 1 taipei
+Reducer2 3 jakarta singapore paris
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 6: BIG_BENCH query17
+25 188 871
+Map20 1 sanjose
+Map1 1 london
+Map21 1 paris
+Map24 1 berlin
+Map25 1 frankfurt
+Map22 1 taipei
+Map23 1 london
+Map8 1 taipei
+Map9 1 singapore
+Reducer18 1 london
+Reducer17 1 london
+Reducer16 1 frankfurt
+Reducer15 1 london
+Reducer19 1 paris
+Reducer5 1 taipei
+Reducer4 1 paris
+Map10 1 taipei
+Reducer7 1 tokyo
+Reducer6 1 paris
+Map13 1 hongkong
+Map14 1 london
+Map11 1 paris
+Map12 1 paris
+Reducer3 1 tokyo
+Reducer2 1 sydney
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 10: BIG_BENCH query21
+16 189 882
+Map15 1 sydney
+Map16 1 sydney
+Reducer5 2 sydney taipei
+Map1 1 sanjose
+Map10 1 madrid
+Reducer4 2 sydney paris
+Reducer7 2 dc paris
+Reducer6 2 singapore sydney
+Map13 1 osaka
+Reducer9 1 madrid
+Map14 1 berlin
+Reducer8 1 bangkok
+Map11 1 singapore
+Map12 1 kualalumpur
+Reducer3 1 bangkok
+Reducer2 1 osaka
+15
+Map15 Reducer6 2188
+Map16 Reducer7 10685
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 11: BIG_BENCH query22
+7 190 883
+Map1 1 dc
+Reducer4 1 singapore
+Map5 1 sydney
+Map6 1 dc
+Reducer3 1 osaka
+Map7 1 tokyo
+Reducer2 1 taipei
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 4: BIG_BENCH query15
+6 191 884
+Reducer5 1 hongkong
+Reducer4 2 jakarta bangkok
+Map1 1 frankfurt
+Map2 1 hongkong
+Map6 1 taipei
+Reducer3 1 sydney
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 192 884
+Map15 1 kualalumpur
+Map16 1 sydney
+Reducer5 3 frankfurt taipei bangkok
+Map1 1 taipei
+Map10 1 london
+Reducer4 2 sydney frankfurt
+Reducer7 2 kualalumpur sanjose
+Reducer6 2 taipei sanjose
+Map13 1 kualalumpur
+Reducer9 1 paris
+Map14 1 dc
+Reducer8 1 sanjose
+Map11 1 singapore
+Map12 1 sanjose
+Reducer3 2 paris hongkong
+Reducer2 1 frankfurt
+15
+Map15 Reducer6 1751
+Map16 Reducer7 10685
+Reducer5 Reducer6 5233
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 1754
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 7: BIG_BENCH query19
+13 193 884
+Reducer5 1 berlin
+Map1 1 dc
+Map10 1 tokyo
+Reducer7 1 berlin
+Map3 1 sydney
+Reducer6 1 taipei
+Reducer9 1 singapore
+Map13 1 sanjose
+Reducer12 1 osaka
+Map11 1 frankfurt
+Map8 1 bangkok
+Map4 1 sydney
+Reducer2 1 kualalumpur
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 10: BIG_BENCH query21
+16 194 886
+Map15 1 london
+Map16 1 sanjose
+Reducer5 1 jakarta
+Map1 1 hongkong
+Map10 1 berlin
+Reducer4 2 taipei sanjose
+Reducer7 3 dc hongkong sanjose
+Reducer6 1 bangkok
+Map13 1 berlin
+Reducer9 1 paris
+Map14 1 sanjose
+Reducer8 1 madrid
+Map11 1 sanjose
+Map12 1 berlin
+Reducer3 2 london kualalumpur
+Reducer2 1 bangkok
+15
+Map15 Reducer6 2918
+Map16 Reducer7 16028
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 16
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 12: BIG_BENCH query24
+19 195 886
+Reducer17 2 kualalumpur london
+Map18 1 kualalumpur
+Reducer16 2 berlin jakarta
+Reducer15 1 hongkong
+Map19 1 jakarta
+Reducer10 8 london tokyo osaka jakarta taipei paris hongkong singapore
+Reducer4 5 singapore frankfurt sydney london hongkong
+Map1 1 london
+Reducer7 1 jakarta
+Reducer9 6 sydney bangkok london osaka paris hongkong
+Reducer14 1 hongkong
+Map13 1 singapore
+Reducer8 1 kualalumpur
+Map11 1 sydney
+Map12 1 sydney
+Map5 1 hongkong
+Reducer3 1 bangkok
+Map6 1 paris
+Reducer2 1 taipei
+18
+Reducer17 Reducer4 6708
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 81461
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 19: BIG_BENCH query7
+11 196 909
+Reducer5 1 jakarta
+Map1 1 dc
+Reducer4 1 berlin
+Map10 1 kualalumpur
+Reducer6 1 bangkok
+Map8 1 hongkong
+Map9 1 osaka
+Map4 1 paris
+Reducer3 1 bangkok
+Reducer2 1 kualalumpur
+Map7 1 tokyo
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 4: BIG_BENCH query15
+6 197 915
+Reducer5 1 berlin
+Reducer4 1 frankfurt
+Map1 1 tokyo
+Map2 1 taipei
+Map6 1 osaka
+Reducer3 2 london singapore
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 4: BIG_BENCH query15
+6 198 925
+Reducer5 1 paris
+Reducer4 1 sanjose
+Map1 1 hongkong
+Map2 1 singapore
+Map6 1 tokyo
+Reducer3 1 kualalumpur
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 18: BIG_BENCH query6
+11 199 927
+Reducer5 1 taipei
+Reducer4 1 madrid
+Map10 1 dc
+Map1 1 frankfurt
+Reducer9 1 taipei
+Reducer8 3 singapore tokyo frankfurt
+Map11 1 madrid
+Reducer3 1 sanjose
+Map6 1 taipei
+Map7 1 singapore
+Reducer2 1 berlin
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 4: BIG_BENCH query15
+6 200 928
+Reducer5 1 frankfurt
+Reducer4 1 madrid
+Map1 1 jakarta
+Map2 1 madrid
+Map6 1 jakarta
+Reducer3 2 sanjose tokyo
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 201 930
+Map15 1 paris
+Map16 1 sydney
+Reducer5 1 taipei
+Map1 1 osaka
+Map10 1 frankfurt
+Reducer4 2 sydney london
+Reducer7 3 frankfurt berlin tokyo
+Reducer6 2 dc hongkong
+Map13 1 madrid
+Reducer9 1 sydney
+Map14 1 osaka
+Reducer8 1 dc
+Map11 1 london
+Map12 1 sydney
+Reducer3 3 madrid tokyo sydney
+Reducer2 1 berlin
+15
+Map15 Reducer6 2918
+Map16 Reducer7 10685
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 49543
+Reducer3 Reducer4 443646
+Reducer2 Reducer3 285611
+# 19: BIG_BENCH query7
+11 202 932
+Reducer5 1 sydney
+Map1 1 taipei
+Reducer4 2 sanjose singapore
+Map10 1 taipei
+Reducer6 1 sydney
+Map8 1 madrid
+Map9 1 osaka
+Map4 1 london
+Reducer3 1 dc
+Reducer2 1 sydney
+Map7 1 hongkong
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 3: BIG_BENCH query14
+10 203 932
+Map1 1 frankfurt
+Map10 1 tokyo
+Reducer7 1 hongkong
+Map3 1 taipei
+Map8 1 sanjose
+Map9 1 dc
+Map4 1 taipei
+Map5 1 taipei
+Map6 1 dc
+Reducer2 1 hongkong
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 9: BIG_BENCH query20
+6 204 937
+Map1 1 sydney
+Reducer4 3 kualalumpur singapore sanjose
+Reducer6 1 jakarta
+Map5 1 dc
+Reducer3 6 berlin osaka dc singapore sanjose paris
+Reducer2 3 sanjose sydney jakarta
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 999
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 36672
+# 6: BIG_BENCH query17
+25 205 939
+Map20 1 bangkok
+Map1 1 dc
+Map21 1 london
+Map24 1 osaka
+Map25 1 frankfurt
+Map22 1 osaka
+Map23 1 london
+Map8 1 bangkok
+Map9 1 london
+Reducer18 1 jakarta
+Reducer17 1 singapore
+Reducer16 1 osaka
+Reducer15 1 madrid
+Reducer19 1 paris
+Reducer5 1 kualalumpur
+Reducer4 1 madrid
+Map10 1 tokyo
+Reducer7 1 london
+Reducer6 1 bangkok
+Map13 1 london
+Map14 1 berlin
+Map11 1 paris
+Map12 1 hongkong
+Reducer3 1 kualalumpur
+Reducer2 1 osaka
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 1: BIG_BENCH query11
+7 206 943
+Map1 1 taipei
+Reducer4 1 singapore
+Reducer7 2 singapore bangkok
+Map5 1 dc
+Map6 1 kualalumpur
+Reducer3 1 hongkong
+Reducer2 1 berlin
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 11: BIG_BENCH query22
+7 207 944
+Map1 1 jakarta
+Reducer4 1 london
+Map5 1 singapore
+Map6 1 kualalumpur
+Reducer3 1 hongkong
+Map7 1 berlin
+Reducer2 1 osaka
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 0: BIG_BENCH query10
+2 208 950
+Map1 1 singapore
+Reducer2 1 singapore
+1
+Map1 Reducer2 6138
+# 6: BIG_BENCH query17
+25 209 950
+Map20 1 london
+Map1 1 hongkong
+Map21 1 jakarta
+Map24 1 singapore
+Map25 1 frankfurt
+Map22 1 singapore
+Map23 1 osaka
+Map8 1 bangkok
+Map9 1 sydney
+Reducer18 1 kualalumpur
+Reducer17 1 jakarta
+Reducer16 1 osaka
+Reducer15 1 madrid
+Reducer19 1 sydney
+Reducer5 1 osaka
+Reducer4 1 singapore
+Map10 1 dc
+Reducer7 1 dc
+Reducer6 1 kualalumpur
+Map13 1 paris
+Map14 1 tokyo
+Map11 1 london
+Map12 1 hongkong
+Reducer3 1 madrid
+Reducer2 1 hongkong
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 19: BIG_BENCH query7
+11 210 961
+Reducer5 1 sanjose
+Map1 1 madrid
+Reducer4 1 sydney
+Map10 1 hongkong
+Reducer6 1 madrid
+Map8 1 hongkong
+Map9 1 singapore
+Map4 1 dc
+Reducer3 1 taipei
+Reducer2 1 jakarta
+Map7 1 dc
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 4: BIG_BENCH query15
+6 211 974
+Reducer5 1 sydney
+Reducer4 2 osaka sydney
+Map1 1 paris
+Map2 1 singapore
+Map6 1 madrid
+Reducer3 2 bangkok berlin
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 12: BIG_BENCH query24
+19 212 975
+Reducer17 3 berlin london osaka
+Map18 1 paris
+Reducer16 2 singapore kualalumpur
+Reducer15 1 kualalumpur
+Map19 1 dc
+Reducer10 3 madrid tokyo kualalumpur
+Reducer4 4 tokyo kualalumpur bangkok taipei
+Map1 1 jakarta
+Reducer7 1 tokyo
+Reducer9 2 sanjose jakarta
+Reducer14 1 london
+Map13 1 tokyo
+Reducer8 1 sydney
+Map11 1 singapore
+Map12 1 berlin
+Map5 1 taipei
+Reducer3 1 jakarta
+Map6 1 berlin
+Reducer2 1 frankfurt
+18
+Reducer17 Reducer4 15812
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 48003
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 3666
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 5: BIG_BENCH query16
+9 213 979
+Reducer5 1 singapore
+Reducer4 2 singapore dc
+Map1 1 taipei
+Map8 1 tokyo
+Map9 1 berlin
+Map6 1 dc
+Reducer3 1 london
+Map7 1 osaka
+Reducer2 2 singapore taipei
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 0: BIG_BENCH query10
+2 214 981
+Map1 1 sanjose
+Reducer2 1 kualalumpur
+1
+Map1 Reducer2 6138
+# 19: BIG_BENCH query7
+11 215 982
+Reducer5 1 london
+Map1 1 bangkok
+Reducer4 1 osaka
+Map10 1 taipei
+Reducer6 1 paris
+Map8 1 frankfurt
+Map9 1 osaka
+Map4 1 madrid
+Reducer3 1 paris
+Reducer2 1 berlin
+Map7 1 frankfurt
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 2: BIG_BENCH query12
+9 216 982
+Reducer5 1 hongkong
+Reducer4 1 london
+Map1 1 taipei
+Reducer8 2 sydney singapore
+Map9 1 paris
+Reducer3 1 madrid
+Map6 1 taipei
+Reducer2 1 bangkok
+Map7 1 tokyo
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 16: BIG_BENCH query3
+7 217 986
+Reducer5 1 sydney
+Reducer4 1 tokyo
+Map1 1 frankfurt
+Reducer6 1 sanjose
+Reducer3 1 madrid
+Reducer2 1 paris
+Map7 1 singapore
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 1: BIG_BENCH query11
+7 218 991
+Map1 1 dc
+Reducer4 1 frankfurt
+Reducer7 2 paris sydney
+Map5 1 sanjose
+Map6 1 kualalumpur
+Reducer3 1 singapore
+Reducer2 1 paris
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 5: BIG_BENCH query16
+9 219 995
+Reducer5 1 hongkong
+Reducer4 2 bangkok london
+Map1 1 osaka
+Map8 1 paris
+Map9 1 singapore
+Map6 1 bangkok
+Reducer3 2 tokyo singapore
+Map7 1 taipei
+Reducer2 2 hongkong sanjose
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 14: BIG_BENCH query27
+2 220 998
+Map1 1 singapore
+Reducer2 1 frankfurt
+1
+Map1 Reducer2 6089
+# 1: BIG_BENCH query11
+7 221 1007
+Map1 1 madrid
+Reducer4 1 singapore
+Reducer7 2 london sanjose
+Map5 1 sydney
+Map6 1 madrid
+Reducer3 2 hongkong berlin
+Reducer2 1 taipei
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 20: BIG_BENCH query9
+9 222 1020
+Reducer5 1 paris
+Reducer4 1 kualalumpur
+Map1 1 tokyo
+Map8 1 taipei
+Map9 1 berlin
+Map6 1 taipei
+Reducer3 1 jakarta
+Map7 1 tokyo
+Reducer2 1 sydney
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 15: BIG_BENCH query2
+5 223 1027
+Reducer5 1 dc
+Reducer4 1 berlin
+Map1 1 kualalumpur
+Reducer3 1 kualalumpur
+Reducer2 1 berlin
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 4: BIG_BENCH query15
+6 224 1031
+Reducer5 1 sydney
+Reducer4 2 tokyo madrid
+Map1 1 madrid
+Map2 1 paris
+Map6 1 frankfurt
+Reducer3 2 berlin bangkok
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 7: BIG_BENCH query19
+13 225 1035
+Reducer5 1 frankfurt
+Map1 1 sydney
+Map10 1 frankfurt
+Reducer7 1 dc
+Map3 1 berlin
+Reducer6 1 berlin
+Reducer9 1 bangkok
+Map13 1 dc
+Reducer12 1 paris
+Map11 1 bangkok
+Map8 1 singapore
+Map4 1 jakarta
+Reducer2 1 hongkong
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 8: BIG_BENCH query1
+6 226 1048
+Reducer5 1 kualalumpur
+Reducer4 1 jakarta
+Map1 1 dc
+Map6 1 sydney
+Reducer3 1 berlin
+Reducer2 2 singapore taipei
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 13: BIG_BENCH query26
+4 227 1051
+Map1 1 kualalumpur
+Map4 1 osaka
+Reducer3 3 singapore sanjose madrid
+Reducer2 3 tokyo sanjose london
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 17: BIG_BENCH query4
+5 228 1057
+Map1 1 madrid
+Reducer4 1 berlin
+Map5 1 madrid
+Reducer3 1 sanjose
+Reducer2 1 bangkok
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 11: BIG_BENCH query22
+7 229 1064
+Map1 1 kualalumpur
+Reducer4 1 bangkok
+Map5 1 frankfurt
+Map6 1 madrid
+Reducer3 1 bangkok
+Map7 1 berlin
+Reducer2 1 sydney
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 16: BIG_BENCH query3
+7 230 1064
+Reducer5 1 madrid
+Reducer4 1 london
+Map1 1 sanjose
+Reducer6 1 paris
+Reducer3 1 jakarta
+Reducer2 1 sydney
+Map7 1 dc
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 2: BIG_BENCH query12
+9 231 1065
+Reducer5 1 madrid
+Reducer4 1 osaka
+Map1 1 sydney
+Reducer8 2 taipei dc
+Map9 1 sanjose
+Reducer3 1 singapore
+Map6 1 sydney
+Reducer2 1 sanjose
+Map7 1 hongkong
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 6: BIG_BENCH query17
+25 232 1066
+Map20 1 sanjose
+Map1 1 paris
+Map21 1 sanjose
+Map24 1 london
+Map25 1 tokyo
+Map22 1 tokyo
+Map23 1 osaka
+Map8 1 frankfurt
+Map9 1 jakarta
+Reducer18 1 frankfurt
+Reducer17 1 tokyo
+Reducer16 1 sydney
+Reducer15 1 frankfurt
+Reducer19 1 kualalumpur
+Reducer5 1 hongkong
+Reducer4 1 bangkok
+Map10 1 sydney
+Reducer7 1 kualalumpur
+Reducer6 1 taipei
+Map13 1 madrid
+Map14 1 madrid
+Map11 1 bangkok
+Map12 1 sydney
+Reducer3 1 hongkong
+Reducer2 1 osaka
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 11: BIG_BENCH query22
+7 233 1075
+Map1 1 jakarta
+Reducer4 1 kualalumpur
+Map5 1 bangkok
+Map6 1 sydney
+Reducer3 1 berlin
+Map7 1 paris
+Reducer2 1 sanjose
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 18: BIG_BENCH query6
+11 234 1089
+Reducer5 1 bangkok
+Reducer4 1 jakarta
+Map10 1 jakarta
+Map1 1 tokyo
+Reducer9 1 sydney
+Reducer8 1 london
+Map11 1 jakarta
+Reducer3 1 dc
+Map6 1 osaka
+Map7 1 kualalumpur
+Reducer2 1 madrid
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 18: BIG_BENCH query6
+11 235 1090
+Reducer5 1 sydney
+Reducer4 1 tokyo
+Map10 1 jakarta
+Map1 1 dc
+Reducer9 1 sanjose
+Reducer8 3 bangkok frankfurt berlin
+Map11 1 hongkong
+Reducer3 1 kualalumpur
+Map6 1 tokyo
+Map7 1 tokyo
+Reducer2 3 tokyo london jakarta
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 2: BIG_BENCH query12
+9 236 1097
+Reducer5 1 jakarta
+Reducer4 1 hongkong
+Map1 1 paris
+Reducer8 1 osaka
+Map9 1 dc
+Reducer3 1 paris
+Map6 1 sanjose
+Reducer2 1 singapore
+Map7 1 tokyo
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 14: BIG_BENCH query27
+2 237 1104
+Map1 1 kualalumpur
+Reducer2 1 london
+1
+Map1 Reducer2 6089
+# 18: BIG_BENCH query6
+11 238 1105
+Reducer5 1 osaka
+Reducer4 1 dc
+Map10 1 sydney
+Map1 1 sanjose
+Reducer9 1 hongkong
+Reducer8 4 taipei dc tokyo madrid
+Map11 1 kualalumpur
+Reducer3 1 sydney
+Map6 1 london
+Map7 1 kualalumpur
+Reducer2 2 berlin sanjose
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 8: BIG_BENCH query1
+6 239 1106
+Reducer5 1 singapore
+Reducer4 1 kualalumpur
+Map1 1 jakarta
+Map6 1 jakarta
+Reducer3 1 taipei
+Reducer2 1 tokyo
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 9: BIG_BENCH query20
+6 240 1106
+Map1 1 london
+Reducer4 5 madrid frankfurt berlin singapore hongkong
+Reducer6 1 paris
+Map5 1 osaka
+Reducer3 5 paris tokyo singapore dc hongkong
+Reducer2 4 dc madrid bangkok hongkong
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 799
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 39117
+# 11: BIG_BENCH query22
+7 241 1110
+Map1 1 berlin
+Reducer4 1 kualalumpur
+Map5 1 jakarta
+Map6 1 bangkok
+Reducer3 1 berlin
+Map7 1 sydney
+Reducer2 1 madrid
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 14: BIG_BENCH query27
+2 242 1111
+Map1 1 berlin
+Reducer2 1 berlin
+1
+Map1 Reducer2 6089
+# 7: BIG_BENCH query19
+13 243 1114
+Reducer5 1 frankfurt
+Map1 1 frankfurt
+Map10 1 osaka
+Reducer7 1 sanjose
+Map3 1 berlin
+Reducer6 1 taipei
+Reducer9 1 sydney
+Map13 1 singapore
+Reducer12 1 paris
+Map11 1 singapore
+Map8 1 sydney
+Map4 1 tokyo
+Reducer2 1 london
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 0: BIG_BENCH query10
+2 244 1123
+Map1 1 paris
+Reducer2 1 frankfurt
+1
+Map1 Reducer2 6138
+# 13: BIG_BENCH query26
+4 245 1123
+Map1 1 paris
+Map4 1 singapore
+Reducer3 2 bangkok frankfurt
+Reducer2 3 paris sydney frankfurt
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 16: BIG_BENCH query3
+7 246 1141
+Reducer5 1 frankfurt
+Reducer4 1 sanjose
+Map1 1 taipei
+Reducer6 1 madrid
+Reducer3 1 frankfurt
+Reducer2 1 sydney
+Map7 1 jakarta
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 9: BIG_BENCH query20
+6 247 1146
+Map1 1 madrid
+Reducer4 3 hongkong taipei paris
+Reducer6 1 hongkong
+Map5 1 tokyo
+Reducer3 2 taipei hongkong
+Reducer2 3 singapore london kualalumpur
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 999
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 36672
+# 16: BIG_BENCH query3
+7 248 1154
+Reducer5 1 bangkok
+Reducer4 1 madrid
+Map1 1 madrid
+Reducer6 1 taipei
+Reducer3 1 sanjose
+Reducer2 1 bangkok
+Map7 1 tokyo
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 3: BIG_BENCH query14
+10 249 1156
+Map1 1 osaka
+Map10 1 frankfurt
+Reducer7 1 osaka
+Map3 1 taipei
+Map8 1 dc
+Map9 1 osaka
+Map4 1 london
+Map5 1 sanjose
+Map6 1 singapore
+Reducer2 1 sanjose
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 16: BIG_BENCH query3
+7 250 1158
+Reducer5 1 osaka
+Reducer4 1 dc
+Map1 1 kualalumpur
+Reducer6 1 madrid
+Reducer3 1 hongkong
+Reducer2 1 tokyo
+Map7 1 sanjose
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 13: BIG_BENCH query26
+4 251 1181
+Map1 1 hongkong
+Map4 1 tokyo
+Reducer3 2 kualalumpur madrid
+Reducer2 3 paris dc jakarta
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 20: BIG_BENCH query9
+9 252 1192
+Reducer5 1 taipei
+Reducer4 1 bangkok
+Map1 1 tokyo
+Map8 1 london
+Map9 1 tokyo
+Map6 1 berlin
+Reducer3 1 singapore
+Map7 1 bangkok
+Reducer2 1 taipei
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 19: BIG_BENCH query7
+11 253 1202
+Reducer5 1 jakarta
+Map1 1 london
+Reducer4 2 taipei tokyo
+Map10 1 osaka
+Reducer6 1 singapore
+Map8 1 hongkong
+Map9 1 madrid
+Map4 1 dc
+Reducer3 1 bangkok
+Reducer2 1 paris
+Map7 1 london
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 3: BIG_BENCH query14
+10 254 1251
+Map1 1 tokyo
+Map10 1 frankfurt
+Reducer7 1 singapore
+Map3 1 frankfurt
+Map8 1 dc
+Map9 1 taipei
+Map4 1 taipei
+Map5 1 paris
+Map6 1 dc
+Reducer2 1 dc
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 16: BIG_BENCH query3
+7 255 1253
+Reducer5 1 berlin
+Reducer4 1 paris
+Map1 1 osaka
+Reducer6 1 hongkong
+Reducer3 1 frankfurt
+Reducer2 1 tokyo
+Map7 1 sydney
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 10: BIG_BENCH query21
+16 256 1253
+Map15 1 madrid
+Map16 1 sanjose
+Reducer5 1 osaka
+Map1 1 dc
+Map10 1 sydney
+Reducer4 1 london
+Reducer7 3 kualalumpur bangkok taipei
+Reducer6 1 osaka
+Map13 1 osaka
+Reducer9 1 madrid
+Map14 1 bangkok
+Reducer8 1 taipei
+Map11 1 jakarta
+Map12 1 berlin
+Reducer3 3 jakarta taipei sydney
+Reducer2 1 osaka
+15
+Map15 Reducer6 2918
+Map16 Reducer7 16028
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 24
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 49543
+Reducer3 Reducer4 443646
+Reducer2 Reducer3 285611
+# 17: BIG_BENCH query4
+5 257 1254
+Map1 1 london
+Reducer4 1 dc
+Map5 1 berlin
+Reducer3 1 dc
+Reducer2 1 osaka
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 14: BIG_BENCH query27
+2 258 1255
+Map1 1 dc
+Reducer2 1 jakarta
+1
+Map1 Reducer2 6089
+# 14: BIG_BENCH query27
+2 259 1257
+Map1 1 singapore
+Reducer2 1 sydney
+1
+Map1 Reducer2 6089
+# 2: BIG_BENCH query12
+9 260 1259
+Reducer5 1 paris
+Reducer4 1 madrid
+Map1 1 madrid
+Reducer8 1 dc
+Map9 1 london
+Reducer3 1 bangkok
+Map6 1 madrid
+Reducer2 1 berlin
+Map7 1 tokyo
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 8: BIG_BENCH query1
+6 261 1260
+Reducer5 1 frankfurt
+Reducer4 1 frankfurt
+Map1 1 bangkok
+Map6 1 sydney
+Reducer3 1 london
+Reducer2 3 dc bangkok tokyo
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 8: BIG_BENCH query1
+6 262 1263
+Reducer5 1 sanjose
+Reducer4 1 tokyo
+Map1 1 osaka
+Map6 1 jakarta
+Reducer3 1 kualalumpur
+Reducer2 1 paris
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 0: BIG_BENCH query10
+2 263 1275
+Map1 1 sanjose
+Reducer2 1 berlin
+1
+Map1 Reducer2 6138
+# 3: BIG_BENCH query14
+10 264 1287
+Map1 1 dc
+Map10 1 sydney
+Reducer7 1 madrid
+Map3 1 singapore
+Map8 1 singapore
+Map9 1 berlin
+Map4 1 frankfurt
+Map5 1 berlin
+Map6 1 kualalumpur
+Reducer2 1 madrid
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 14: BIG_BENCH query27
+2 265 1303
+Map1 1 frankfurt
+Reducer2 1 hongkong
+1
+Map1 Reducer2 6089
+# 18: BIG_BENCH query6
+11 266 1334
+Reducer5 1 kualalumpur
+Reducer4 1 dc
+Map10 1 sanjose
+Map1 1 hongkong
+Reducer9 1 tokyo
+Reducer8 4 tokyo dc sydney osaka
+Map11 1 hongkong
+Reducer3 1 dc
+Map6 1 madrid
+Map7 1 london
+Reducer2 2 osaka singapore
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 10: BIG_BENCH query21
+16 267 1334
+Map15 1 madrid
+Map16 1 bangkok
+Reducer5 1 sydney
+Map1 1 madrid
+Map10 1 taipei
+Reducer4 2 madrid hongkong
+Reducer7 1 dc
+Reducer6 3 kualalumpur bangkok berlin
+Map13 1 osaka
+Reducer9 1 sanjose
+Map14 1 dc
+Reducer8 1 sanjose
+Map11 1 sanjose
+Map12 1 sydney
+Reducer3 1 bangkok
+Reducer2 1 hongkong
+15
+Map15 Reducer6 2918
+Map16 Reducer7 8014
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 30312
+Map13 Reducer5 16
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 10: BIG_BENCH query21
+16 268 1335
+Map15 1 bangkok
+Map16 1 dc
+Reducer5 1 berlin
+Map1 1 sydney
+Map10 1 sanjose
+Reducer4 2 bangkok berlin
+Reducer7 2 sydney paris
+Reducer6 1 kualalumpur
+Map13 1 paris
+Reducer9 1 dc
+Map14 1 dc
+Reducer8 1 osaka
+Map11 1 hongkong
+Map12 1 paris
+Reducer3 2 tokyo hongkong
+Reducer2 1 dc
+15
+Map15 Reducer6 2918
+Map16 Reducer7 16028
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 16
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 11: BIG_BENCH query22
+7 269 1337
+Map1 1 paris
+Reducer4 1 dc
+Map5 1 singapore
+Map6 1 london
+Reducer3 1 singapore
+Map7 1 paris
+Reducer2 1 dc
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 17: BIG_BENCH query4
+5 270 1346
+Map1 1 hongkong
+Reducer4 1 bangkok
+Map5 1 london
+Reducer3 1 berlin
+Reducer2 1 hongkong
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 16: BIG_BENCH query3
+7 271 1354
+Reducer5 1 kualalumpur
+Reducer4 1 berlin
+Map1 1 frankfurt
+Reducer6 1 osaka
+Reducer3 1 london
+Reducer2 1 sanjose
+Map7 1 tokyo
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 8: BIG_BENCH query1
+6 272 1356
+Reducer5 1 jakarta
+Reducer4 1 london
+Map1 1 berlin
+Map6 1 singapore
+Reducer3 1 dc
+Reducer2 3 madrid frankfurt paris
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 2: BIG_BENCH query12
+9 273 1356
+Reducer5 1 kualalumpur
+Reducer4 1 madrid
+Map1 1 kualalumpur
+Reducer8 1 taipei
+Map9 1 jakarta
+Reducer3 1 taipei
+Map6 1 dc
+Reducer2 1 paris
+Map7 1 taipei
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 0: BIG_BENCH query10
+2 274 1368
+Map1 1 bangkok
+Reducer2 1 tokyo
+1
+Map1 Reducer2 6138
+# 9: BIG_BENCH query20
+6 275 1381
+Map1 1 tokyo
+Reducer4 2 sydney dc
+Reducer6 1 singapore
+Map5 1 sydney
+Reducer3 3 singapore dc taipei
+Reducer2 7 bangkok frankfurt osaka london sydney berlin singapore
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 499
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 42784
+# 17: BIG_BENCH query4
+5 276 1387
+Map1 1 sydney
+Reducer4 1 bangkok
+Map5 1 tokyo
+Reducer3 1 sanjose
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 14: BIG_BENCH query27
+2 277 1390
+Map1 1 sanjose
+Reducer2 1 berlin
+1
+Map1 Reducer2 6089
+# 17: BIG_BENCH query4
+5 278 1395
+Map1 1 dc
+Reducer4 1 madrid
+Map5 1 tokyo
+Reducer3 1 sydney
+Reducer2 1 kualalumpur
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 0: BIG_BENCH query10
+2 279 1417
+Map1 1 tokyo
+Reducer2 1 osaka
+1
+Map1 Reducer2 6138
+# 12: BIG_BENCH query24
+19 280 1417
+Reducer17 6 kualalumpur paris madrid berlin osaka hongkong
+Map18 1 hongkong
+Reducer16 4 sanjose singapore frankfurt osaka
+Reducer15 1 taipei
+Map19 1 taipei
+Reducer10 3 madrid osaka hongkong
+Reducer4 5 london bangkok paris osaka berlin
+Map1 1 osaka
+Reducer7 1 hongkong
+Reducer9 2 dc madrid
+Reducer14 1 hongkong
+Map13 1 london
+Reducer8 1 kualalumpur
+Map11 1 sydney
+Map12 1 dc
+Map5 1 tokyo
+Reducer3 1 tokyo
+Map6 1 london
+Reducer2 1 frankfurt
+18
+Reducer17 Reducer4 22136
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 33602
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2566
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 1: BIG_BENCH query11
+7 281 1419
+Map1 1 hongkong
+Reducer4 1 berlin
+Reducer7 4 sanjose jakarta hongkong madrid
+Map5 1 hongkong
+Map6 1 singapore
+Reducer3 2 singapore dc
+Reducer2 1 osaka
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 17: BIG_BENCH query4
+5 282 1421
+Map1 1 frankfurt
+Reducer4 1 bangkok
+Map5 1 taipei
+Reducer3 1 paris
+Reducer2 1 madrid
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 4: BIG_BENCH query15
+6 283 1433
+Reducer5 1 dc
+Reducer4 2 london taipei
+Map1 1 osaka
+Map2 1 sydney
+Map6 1 paris
+Reducer3 2 hongkong paris
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 284 1447
+Map15 1 frankfurt
+Map16 1 dc
+Reducer5 2 taipei jakarta
+Map1 1 taipei
+Map10 1 paris
+Reducer4 2 berlin tokyo
+Reducer7 2 singapore sanjose
+Reducer6 2 london hongkong
+Map13 1 frankfurt
+Reducer9 1 bangkok
+Map14 1 paris
+Reducer8 1 kualalumpur
+Map11 1 hongkong
+Map12 1 paris
+Reducer3 1 paris
+Reducer2 1 hongkong
+15
+Map15 Reducer6 2188
+Map16 Reducer7 10685
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 5: BIG_BENCH query16
+9 285 1468
+Reducer5 1 kualalumpur
+Reducer4 1 paris
+Map1 1 tokyo
+Map8 1 taipei
+Map9 1 sanjose
+Map6 1 berlin
+Reducer3 1 singapore
+Map7 1 paris
+Reducer2 1 osaka
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 40751
+Map9 Reducer3 40715
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 40731
+Reducer2 Reducer3 184369
+# 1: BIG_BENCH query11
+7 286 1474
+Map1 1 tokyo
+Reducer4 1 berlin
+Reducer7 4 kualalumpur london berlin frankfurt
+Map5 1 hongkong
+Map6 1 frankfurt
+Reducer3 2 sydney paris
+Reducer2 1 taipei
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 12: BIG_BENCH query24
+19 287 1495
+Reducer17 3 sanjose madrid paris
+Map18 1 kualalumpur
+Reducer16 2 berlin kualalumpur
+Reducer15 1 hongkong
+Map19 1 dc
+Reducer10 3 taipei frankfurt sydney
+Reducer4 7 london madrid osaka frankfurt berlin sydney sanjose
+Map1 1 berlin
+Reducer7 1 hongkong
+Reducer9 5 sydney madrid singapore paris bangkok
+Reducer14 1 dc
+Map13 1 paris
+Reducer8 1 singapore
+Map11 1 madrid
+Map12 1 osaka
+Map5 1 paris
+Reducer3 1 sanjose
+Map6 1 kualalumpur
+Reducer2 1 madrid
+18
+Reducer17 Reducer4 15812
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 48003
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 3666
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 5: BIG_BENCH query16
+9 288 1501
+Reducer5 1 kualalumpur
+Reducer4 2 osaka london
+Map1 1 tokyo
+Map8 1 singapore
+Map9 1 jakarta
+Map6 1 frankfurt
+Reducer3 1 london
+Map7 1 taipei
+Reducer2 2 osaka tokyo
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 19: BIG_BENCH query7
+11 289 1525
+Reducer5 1 kualalumpur
+Map1 1 frankfurt
+Reducer4 2 tokyo hongkong
+Map10 1 singapore
+Reducer6 1 dc
+Map8 1 madrid
+Map9 1 singapore
+Map4 1 osaka
+Reducer3 1 jakarta
+Reducer2 1 frankfurt
+Map7 1 singapore
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 12: BIG_BENCH query24
+19 290 1528
+Reducer17 3 jakarta sanjose berlin
+Map18 1 taipei
+Reducer16 6 jakarta berlin taipei london paris dc
+Reducer15 1 jakarta
+Map19 1 hongkong
+Reducer10 5 singapore sanjose jakarta bangkok hongkong
+Reducer4 7 sydney osaka london bangkok paris tokyo berlin
+Map1 1 kualalumpur
+Reducer7 1 tokyo
+Reducer9 3 frankfurt jakarta paris
+Reducer14 1 kualalumpur
+Map13 1 bangkok
+Reducer8 1 sydney
+Map11 1 sanjose
+Map12 1 singapore
+Map5 1 kualalumpur
+Reducer3 1 bangkok
+Map6 1 sanjose
+Reducer2 1 berlin
+18
+Reducer17 Reducer4 12298
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 62227
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2852
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 6: BIG_BENCH query17
+25 291 1534
+Map20 1 london
+Map1 1 osaka
+Map21 1 frankfurt
+Map24 1 london
+Map25 1 london
+Map22 1 hongkong
+Map23 1 taipei
+Map8 1 paris
+Map9 1 hongkong
+Reducer18 1 sanjose
+Reducer17 1 london
+Reducer16 1 jakarta
+Reducer15 1 london
+Reducer19 1 frankfurt
+Reducer5 1 sanjose
+Reducer4 1 bangkok
+Map10 1 jakarta
+Reducer7 1 dc
+Reducer6 1 dc
+Map13 1 dc
+Map14 1 singapore
+Map11 1 sydney
+Map12 1 hongkong
+Reducer3 1 sydney
+Reducer2 1 bangkok
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 11: BIG_BENCH query22
+7 292 1550
+Map1 1 frankfurt
+Reducer4 1 tokyo
+Map5 1 madrid
+Map6 1 berlin
+Reducer3 1 dc
+Map7 1 berlin
+Reducer2 1 hongkong
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 11: BIG_BENCH query22
+7 293 1550
+Map1 1 frankfurt
+Reducer4 1 sydney
+Map5 1 bangkok
+Map6 1 taipei
+Reducer3 1 sydney
+Map7 1 sanjose
+Reducer2 1 bangkok
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 11: BIG_BENCH query22
+7 294 1551
+Map1 1 jakarta
+Reducer4 1 sanjose
+Map5 1 dc
+Map6 1 bangkok
+Reducer3 1 frankfurt
+Map7 1 sydney
+Reducer2 1 sanjose
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 0: BIG_BENCH query10
+2 295 1553
+Map1 1 berlin
+Reducer2 1 taipei
+1
+Map1 Reducer2 6138
+# 15: BIG_BENCH query2
+5 296 1554
+Reducer5 1 kualalumpur
+Reducer4 1 tokyo
+Map1 1 tokyo
+Reducer3 1 madrid
+Reducer2 1 madrid
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 2: BIG_BENCH query12
+9 297 1555
+Reducer5 1 sanjose
+Reducer4 1 london
+Map1 1 tokyo
+Reducer8 1 singapore
+Map9 1 hongkong
+Reducer3 1 kualalumpur
+Map6 1 london
+Reducer2 1 singapore
+Map7 1 frankfurt
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 6: BIG_BENCH query17
+25 298 1559
+Map20 1 paris
+Map1 1 hongkong
+Map21 1 hongkong
+Map24 1 london
+Map25 1 jakarta
+Map22 1 singapore
+Map23 1 kualalumpur
+Map8 1 taipei
+Map9 1 sydney
+Reducer18 1 paris
+Reducer17 1 singapore
+Reducer16 1 tokyo
+Reducer15 1 bangkok
+Reducer19 1 jakarta
+Reducer5 1 tokyo
+Reducer4 1 jakarta
+Map10 1 singapore
+Reducer7 1 berlin
+Reducer6 1 sanjose
+Map13 1 taipei
+Map14 1 sydney
+Map11 1 taipei
+Map12 1 jakarta
+Reducer3 1 dc
+Reducer2 1 sydney
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 17: BIG_BENCH query4
+5 299 1580
+Map1 1 madrid
+Reducer4 1 london
+Map5 1 london
+Reducer3 1 kualalumpur
+Reducer2 1 sydney
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 10: BIG_BENCH query21
+16 300 1580
+Map15 1 sydney
+Map16 1 tokyo
+Reducer5 2 singapore tokyo
+Map1 1 sanjose
+Map10 1 kualalumpur
+Reducer4 2 sanjose london
+Reducer7 2 sanjose singapore
+Reducer6 1 kualalumpur
+Map13 1 berlin
+Reducer9 1 kualalumpur
+Map14 1 kualalumpur
+Reducer8 1 frankfurt
+Map11 1 bangkok
+Map12 1 berlin
+Reducer3 1 osaka
+Reducer2 1 sydney
+15
+Map15 Reducer6 2188
+Map16 Reducer7 16028
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 99086
+Reducer3 Reducer4 295764
+Reducer2 Reducer3 285611
+# 9: BIG_BENCH query20
+6 301 1586
+Map1 1 hongkong
+Reducer4 3 dc tokyo osaka
+Reducer6 1 singapore
+Map5 1 paris
+Reducer3 4 sanjose berlin sydney paris
+Reducer2 8 paris london sanjose frankfurt jakarta dc hongkong bangkok
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 444
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 43463
+# 6: BIG_BENCH query17
+25 302 1606
+Map20 1 taipei
+Map1 1 jakarta
+Map21 1 hongkong
+Map24 1 sydney
+Map25 1 tokyo
+Map22 1 sydney
+Map23 1 osaka
+Map8 1 paris
+Map9 1 hongkong
+Reducer18 1 frankfurt
+Reducer17 1 taipei
+Reducer16 1 berlin
+Reducer15 1 frankfurt
+Reducer19 1 kualalumpur
+Reducer5 1 dc
+Reducer4 1 singapore
+Map10 1 madrid
+Reducer7 1 hongkong
+Reducer6 1 bangkok
+Map13 1 paris
+Map14 1 taipei
+Map11 1 jakarta
+Map12 1 sanjose
+Reducer3 1 madrid
+Reducer2 1 paris
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 6: BIG_BENCH query17
+25 303 1607
+Map20 1 madrid
+Map1 1 london
+Map21 1 frankfurt
+Map24 1 kualalumpur
+Map25 1 singapore
+Map22 1 osaka
+Map23 1 dc
+Map8 1 berlin
+Map9 1 jakarta
+Reducer18 1 tokyo
+Reducer17 1 bangkok
+Reducer16 1 jakarta
+Reducer15 1 hongkong
+Reducer19 1 tokyo
+Reducer5 1 berlin
+Reducer4 1 bangkok
+Map10 1 singapore
+Reducer7 1 kualalumpur
+Reducer6 1 jakarta
+Map13 1 bangkok
+Map14 1 paris
+Map11 1 london
+Map12 1 frankfurt
+Reducer3 1 dc
+Reducer2 1 singapore
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 4: BIG_BENCH query15
+6 304 1615
+Reducer5 1 kualalumpur
+Reducer4 1 sydney
+Map1 1 taipei
+Map2 1 dc
+Map6 1 paris
+Reducer3 2 taipei frankfurt
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 305 1619
+Map15 1 hongkong
+Map16 1 frankfurt
+Reducer5 2 sydney bangkok
+Map1 1 jakarta
+Map10 1 madrid
+Reducer4 2 frankfurt osaka
+Reducer7 3 madrid singapore hongkong
+Reducer6 3 london kualalumpur paris
+Map13 1 taipei
+Reducer9 1 bangkok
+Map14 1 singapore
+Reducer8 1 dc
+Map11 1 sydney
+Map12 1 singapore
+Reducer3 2 taipei jakarta
+Reducer2 1 osaka
+15
+Map15 Reducer6 2188
+Map16 Reducer7 8014
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 30312
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 4: BIG_BENCH query15
+6 306 1620
+Reducer5 1 frankfurt
+Reducer4 2 hongkong kualalumpur
+Map1 1 jakarta
+Map2 1 osaka
+Map6 1 hongkong
+Reducer3 1 taipei
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 10: BIG_BENCH query21
+16 307 1632
+Map15 1 london
+Map16 1 frankfurt
+Reducer5 2 berlin frankfurt
+Map1 1 madrid
+Map10 1 taipei
+Reducer4 2 sanjose osaka
+Reducer7 2 dc berlin
+Reducer6 1 osaka
+Map13 1 london
+Reducer9 1 sydney
+Map14 1 singapore
+Reducer8 1 bangkok
+Map11 1 tokyo
+Map12 1 bangkok
+Reducer3 3 sanjose dc berlin
+Reducer2 1 kualalumpur
+15
+Map15 Reducer6 2188
+Map16 Reducer7 16028
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 49543
+Reducer3 Reducer4 443646
+Reducer2 Reducer3 285611
+# 5: BIG_BENCH query16
+9 308 1634
+Reducer5 1 osaka
+Reducer4 1 kualalumpur
+Map1 1 paris
+Map8 1 osaka
+Map9 1 bangkok
+Map6 1 kualalumpur
+Reducer3 2 dc sanjose
+Map7 1 jakarta
+Reducer2 3 sanjose sydney kualalumpur
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 27167
+Map9 Reducer3 27143
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 27154
+Reducer2 Reducer3 368738
+# 1: BIG_BENCH query11
+7 309 1677
+Map1 1 bangkok
+Reducer4 1 paris
+Reducer7 1 sanjose
+Map5 1 sanjose
+Map6 1 dc
+Reducer3 1 paris
+Reducer2 1 berlin
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 9013
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 2148
+# 14: BIG_BENCH query27
+2 310 1678
+Map1 1 kualalumpur
+Reducer2 1 hongkong
+1
+Map1 Reducer2 6089
+# 11: BIG_BENCH query22
+7 311 1678
+Map1 1 bangkok
+Reducer4 1 singapore
+Map5 1 frankfurt
+Map6 1 berlin
+Reducer3 1 kualalumpur
+Map7 1 bangkok
+Reducer2 1 sydney
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 6: BIG_BENCH query17
+25 312 1680
+Map20 1 bangkok
+Map1 1 jakarta
+Map21 1 paris
+Map24 1 london
+Map25 1 sanjose
+Map22 1 kualalumpur
+Map23 1 london
+Map8 1 madrid
+Map9 1 london
+Reducer18 1 sydney
+Reducer17 1 madrid
+Reducer16 1 paris
+Reducer15 1 madrid
+Reducer19 1 berlin
+Reducer5 1 tokyo
+Reducer4 1 taipei
+Map10 1 frankfurt
+Reducer7 1 sanjose
+Reducer6 1 sanjose
+Map13 1 singapore
+Map14 1 kualalumpur
+Map11 1 berlin
+Map12 1 paris
+Reducer3 1 sydney
+Reducer2 1 bangkok
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 20: BIG_BENCH query9
+9 313 1680
+Reducer5 1 sanjose
+Reducer4 1 kualalumpur
+Map1 1 singapore
+Map8 1 london
+Map9 1 sydney
+Map6 1 sanjose
+Reducer3 1 bangkok
+Map7 1 sanjose
+Reducer2 1 sydney
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 2: BIG_BENCH query12
+9 314 1682
+Reducer5 1 london
+Reducer4 1 hongkong
+Map1 1 osaka
+Reducer8 1 osaka
+Map9 1 hongkong
+Reducer3 1 paris
+Map6 1 jakarta
+Reducer2 1 london
+Map7 1 hongkong
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 4: BIG_BENCH query15
+6 315 1683
+Reducer5 1 jakarta
+Reducer4 1 frankfurt
+Map1 1 frankfurt
+Map2 1 taipei
+Map6 1 sanjose
+Reducer3 1 frankfurt
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 3: BIG_BENCH query14
+10 316 1687
+Map1 1 berlin
+Map10 1 london
+Reducer7 1 sanjose
+Map3 1 dc
+Map8 1 sydney
+Map9 1 bangkok
+Map4 1 dc
+Map5 1 bangkok
+Map6 1 hongkong
+Reducer2 1 singapore
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 19: BIG_BENCH query7
+11 317 1688
+Reducer5 1 tokyo
+Map1 1 bangkok
+Reducer4 2 bangkok berlin
+Map10 1 paris
+Reducer6 1 dc
+Map8 1 sydney
+Map9 1 madrid
+Map4 1 tokyo
+Reducer3 1 sanjose
+Reducer2 1 kualalumpur
+Map7 1 paris
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 12: BIG_BENCH query24
+19 318 1688
+Reducer17 4 singapore taipei tokyo kualalumpur
+Map18 1 taipei
+Reducer16 6 sanjose taipei singapore osaka paris berlin
+Reducer15 1 london
+Map19 1 paris
+Reducer10 6 kualalumpur berlin hongkong taipei madrid paris
+Reducer4 5 paris berlin dc frankfurt kualalumpur
+Map1 1 kualalumpur
+Reducer7 1 madrid
+Reducer9 2 bangkok kualalumpur
+Reducer14 1 taipei
+Map13 1 sydney
+Reducer8 1 paris
+Map11 1 berlin
+Map12 1 berlin
+Map5 1 paris
+Reducer3 1 sanjose
+Map6 1 berlin
+Reducer2 1 sanjose
+18
+Reducer17 Reducer4 13416
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 61095
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 2333
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 5: BIG_BENCH query16
+9 319 1689
+Reducer5 1 sanjose
+Reducer4 1 sanjose
+Map1 1 paris
+Map8 1 paris
+Map9 1 tokyo
+Map6 1 london
+Reducer3 2 bangkok dc
+Map7 1 osaka
+Reducer2 2 hongkong berlin
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 13: BIG_BENCH query26
+4 320 1690
+Map1 1 tokyo
+Map4 1 madrid
+Reducer3 1 taipei
+Reducer2 2 jakarta paris
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 7: BIG_BENCH query19
+13 321 1694
+Reducer5 1 dc
+Map1 1 osaka
+Map10 1 sydney
+Reducer7 1 berlin
+Map3 1 madrid
+Reducer6 1 paris
+Reducer9 1 sanjose
+Map13 1 kualalumpur
+Reducer12 1 frankfurt
+Map11 1 singapore
+Map8 1 sydney
+Map4 1 jakarta
+Reducer2 1 sydney
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 11: BIG_BENCH query22
+7 322 1699
+Map1 1 hongkong
+Reducer4 1 singapore
+Map5 1 sanjose
+Map6 1 frankfurt
+Reducer3 1 sydney
+Map7 1 taipei
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 19: BIG_BENCH query7
+11 323 1700
+Reducer5 1 frankfurt
+Map1 1 hongkong
+Reducer4 1 sanjose
+Map10 1 tokyo
+Reducer6 1 singapore
+Map8 1 tokyo
+Map9 1 dc
+Map4 1 osaka
+Reducer3 1 singapore
+Reducer2 1 paris
+Map7 1 london
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 16: BIG_BENCH query3
+7 324 1704
+Reducer5 1 dc
+Reducer4 1 singapore
+Map1 1 hongkong
+Reducer6 1 frankfurt
+Reducer3 1 kualalumpur
+Reducer2 1 paris
+Map7 1 frankfurt
+6
+Reducer5 Reducer6 1259
+Reducer4 Reducer5 1453
+Map1 Reducer2 1324530
+Reducer3 Reducer4 1679
+Reducer2 Reducer3 377235
+Map7 Reducer3 726
+# 11: BIG_BENCH query22
+7 325 1709
+Map1 1 jakarta
+Reducer4 1 madrid
+Map5 1 paris
+Map6 1 sanjose
+Reducer3 1 osaka
+Map7 1 frankfurt
+Reducer2 1 madrid
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 9: BIG_BENCH query20
+6 326 1726
+Map1 1 london
+Reducer4 5 madrid osaka dc paris london
+Reducer6 1 london
+Map5 1 hongkong
+Reducer3 5 osaka hongkong frankfurt singapore madrid
+Reducer2 3 hongkong frankfurt london
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 999
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 36672
+# 6: BIG_BENCH query17
+25 327 1729
+Map20 1 frankfurt
+Map1 1 sydney
+Map21 1 taipei
+Map24 1 frankfurt
+Map25 1 berlin
+Map22 1 hongkong
+Map23 1 london
+Map8 1 osaka
+Map9 1 kualalumpur
+Reducer18 1 dc
+Reducer17 1 tokyo
+Reducer16 1 tokyo
+Reducer15 1 osaka
+Reducer19 1 osaka
+Reducer5 1 bangkok
+Reducer4 1 taipei
+Map10 1 paris
+Reducer7 1 tokyo
+Reducer6 1 bangkok
+Map13 1 taipei
+Map14 1 sydney
+Map11 1 dc
+Map12 1 taipei
+Reducer3 1 bangkok
+Reducer2 1 kualalumpur
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 1: BIG_BENCH query11
+7 328 1731
+Map1 1 osaka
+Reducer4 1 bangkok
+Reducer7 2 singapore jakarta
+Map5 1 london
+Map6 1 osaka
+Reducer3 1 osaka
+Reducer2 1 bangkok
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 10: BIG_BENCH query21
+16 329 1731
+Map15 1 hongkong
+Map16 1 paris
+Reducer5 1 hongkong
+Map1 1 bangkok
+Map10 1 sanjose
+Reducer4 1 london
+Reducer7 3 singapore berlin jakarta
+Reducer6 2 dc kualalumpur
+Map13 1 sydney
+Reducer9 1 hongkong
+Map14 1 hongkong
+Reducer8 1 bangkok
+Map11 1 paris
+Map12 1 madrid
+Reducer3 2 tokyo kualalumpur
+Reducer2 1 berlin
+15
+Map15 Reducer6 2918
+Map16 Reducer7 10685
+Reducer5 Reducer6 2907
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 99061
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 26944
+Map13 Reducer5 24
+Map14 Reducer6 2923
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 4: BIG_BENCH query15
+6 330 1741
+Reducer5 1 dc
+Reducer4 1 taipei
+Map1 1 madrid
+Map2 1 bangkok
+Map6 1 tokyo
+Reducer3 2 taipei bangkok
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 5: BIG_BENCH query16
+9 331 1750
+Reducer5 1 frankfurt
+Reducer4 1 osaka
+Map1 1 osaka
+Map8 1 london
+Map9 1 jakarta
+Map6 1 sydney
+Reducer3 2 london sydney
+Map7 1 sanjose
+Reducer2 2 singapore berlin
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 32601
+Map9 Reducer3 32572
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 32585
+Reducer2 Reducer3 294990
+# 18: BIG_BENCH query6
+11 332 1762
+Reducer5 1 singapore
+Reducer4 1 kualalumpur
+Map10 1 madrid
+Map1 1 bangkok
+Reducer9 1 sanjose
+Reducer8 3 paris london madrid
+Map11 1 sanjose
+Reducer3 1 paris
+Map6 1 london
+Map7 1 frankfurt
+Reducer2 3 sydney jakarta london
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 7: BIG_BENCH query19
+13 333 1767
+Reducer5 1 berlin
+Map1 1 bangkok
+Map10 1 frankfurt
+Reducer7 1 singapore
+Map3 1 tokyo
+Reducer6 1 sydney
+Reducer9 1 singapore
+Map13 1 dc
+Reducer12 1 singapore
+Map11 1 tokyo
+Map8 1 sanjose
+Map4 1 madrid
+Reducer2 1 jakarta
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 2: BIG_BENCH query12
+9 334 1781
+Reducer5 1 osaka
+Reducer4 1 madrid
+Map1 1 sanjose
+Reducer8 2 kualalumpur hongkong
+Map9 1 kualalumpur
+Reducer3 1 dc
+Map6 1 singapore
+Reducer2 1 sanjose
+Map7 1 london
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 2: BIG_BENCH query12
+9 335 1783
+Reducer5 1 sydney
+Reducer4 1 sydney
+Map1 1 taipei
+Reducer8 1 hongkong
+Map9 1 dc
+Reducer3 1 frankfurt
+Map6 1 paris
+Reducer2 1 tokyo
+Map7 1 bangkok
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 20: BIG_BENCH query9
+9 336 1783
+Reducer5 1 paris
+Reducer4 1 dc
+Map1 1 london
+Map8 1 osaka
+Map9 1 dc
+Map6 1 jakarta
+Reducer3 1 sydney
+Map7 1 frankfurt
+Reducer2 1 jakarta
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 2: BIG_BENCH query12
+9 337 1786
+Reducer5 1 berlin
+Reducer4 1 kualalumpur
+Map1 1 london
+Reducer8 2 kualalumpur jakarta
+Map9 1 paris
+Reducer3 1 tokyo
+Map6 1 bangkok
+Reducer2 1 frankfurt
+Map7 1 madrid
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 13: BIG_BENCH query26
+4 338 1786
+Map1 1 singapore
+Map4 1 dc
+Reducer3 2 madrid dc
+Reducer2 2 osaka tokyo
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 10: BIG_BENCH query21
+16 339 1799
+Map15 1 osaka
+Map16 1 osaka
+Reducer5 2 frankfurt osaka
+Map1 1 hongkong
+Map10 1 tokyo
+Reducer4 2 kualalumpur tokyo
+Reducer7 2 jakarta london
+Reducer6 1 hongkong
+Map13 1 sanjose
+Reducer9 1 taipei
+Map14 1 jakarta
+Reducer8 1 bangkok
+Map11 1 kualalumpur
+Map12 1 singapore
+Reducer3 2 sanjose madrid
+Reducer2 1 bangkok
+15
+Map15 Reducer6 2188
+Map16 Reducer7 16028
+Reducer5 Reducer6 4361
+Map1 Reducer2 97793
+Map10 Reducer2 92301
+Reducer4 Reducer5 132082
+Reducer7 Reducer8 31790
+Reducer6 Reducer7 20208
+Map13 Reducer5 16
+Map14 Reducer6 2192
+Reducer8 Reducer9 145
+Map11 Reducer3 203196
+Map12 Reducer4 66057
+Reducer3 Reducer4 394352
+Reducer2 Reducer3 285611
+# 14: BIG_BENCH query27
+2 340 1803
+Map1 1 kualalumpur
+Reducer2 1 frankfurt
+1
+Map1 Reducer2 6089
+# 9: BIG_BENCH query20
+6 341 1809
+Map1 1 kualalumpur
+Reducer4 7 taipei dc tokyo frankfurt jakarta singapore sydney
+Reducer6 1 dc
+Map5 1 kualalumpur
+Reducer3 2 london tokyo
+Reducer2 2 madrid kualalumpur
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 1332
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 32597
+# 18: BIG_BENCH query6
+11 342 1811
+Reducer5 1 frankfurt
+Reducer4 1 jakarta
+Map10 1 kualalumpur
+Map1 1 taipei
+Reducer9 1 sydney
+Reducer8 2 berlin jakarta
+Map11 1 hongkong
+Reducer3 1 sydney
+Map6 1 london
+Map7 1 berlin
+Reducer2 3 bangkok dc madrid
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 7: BIG_BENCH query19
+13 343 1816
+Reducer5 1 kualalumpur
+Map1 1 frankfurt
+Map10 1 frankfurt
+Reducer7 1 sanjose
+Map3 1 madrid
+Reducer6 1 taipei
+Reducer9 1 jakarta
+Map13 1 tokyo
+Reducer12 1 kualalumpur
+Map11 1 tokyo
+Map8 1 taipei
+Map4 1 sanjose
+Reducer2 1 kualalumpur
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 14: BIG_BENCH query27
+2 344 1826
+Map1 1 madrid
+Reducer2 1 dc
+1
+Map1 Reducer2 6089
+# 5: BIG_BENCH query16
+9 345 1833
+Reducer5 1 hongkong
+Reducer4 1 dc
+Map1 1 kualalumpur
+Map8 1 sydney
+Map9 1 dc
+Map6 1 taipei
+Reducer3 2 taipei sydney
+Map7 1 paris
+Reducer2 1 osaka
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 40751
+Map9 Reducer3 40715
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 40731
+Reducer2 Reducer3 184369
+# 0: BIG_BENCH query10
+2 346 1834
+Map1 1 hongkong
+Reducer2 1 tokyo
+1
+Map1 Reducer2 6138
+# 14: BIG_BENCH query27
+2 347 1836
+Map1 1 hongkong
+Reducer2 1 jakarta
+1
+Map1 Reducer2 6089
+# 11: BIG_BENCH query22
+7 348 1840
+Map1 1 singapore
+Reducer4 1 taipei
+Map5 1 sanjose
+Map6 1 london
+Reducer3 1 singapore
+Map7 1 madrid
+Reducer2 1 taipei
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 4: BIG_BENCH query15
+6 349 1880
+Reducer5 1 sanjose
+Reducer4 2 frankfurt tokyo
+Map1 1 berlin
+Map2 1 hongkong
+Map6 1 paris
+Reducer3 1 sydney
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 15: BIG_BENCH query2
+5 350 1882
+Reducer5 1 singapore
+Reducer4 1 taipei
+Map1 1 bangkok
+Reducer3 1 sydney
+Reducer2 1 hongkong
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 14: BIG_BENCH query27
+2 351 1884
+Map1 1 jakarta
+Reducer2 1 taipei
+1
+Map1 Reducer2 6089
+# 2: BIG_BENCH query12
+9 352 1885
+Reducer5 1 kualalumpur
+Reducer4 1 sydney
+Map1 1 hongkong
+Reducer8 1 osaka
+Map9 1 singapore
+Reducer3 1 tokyo
+Map6 1 sanjose
+Reducer2 1 sydney
+Map7 1 frankfurt
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 18: BIG_BENCH query6
+11 353 1886
+Reducer5 1 tokyo
+Reducer4 1 singapore
+Map10 1 sydney
+Map1 1 taipei
+Reducer9 1 london
+Reducer8 2 berlin bangkok
+Map11 1 osaka
+Reducer3 1 jakarta
+Map6 1 dc
+Map7 1 dc
+Reducer2 1 tokyo
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 14: BIG_BENCH query27
+2 354 1904
+Map1 1 kualalumpur
+Reducer2 1 taipei
+1
+Map1 Reducer2 6089
+# 9: BIG_BENCH query20
+6 355 1911
+Map1 1 bangkok
+Reducer4 4 bangkok taipei kualalumpur sydney
+Reducer6 1 berlin
+Map5 1 berlin
+Reducer3 6 jakarta kualalumpur hongkong dc osaka sanjose
+Reducer2 8 dc bangkok kualalumpur london hongkong osaka sydney madrid
+5
+Map1 Reducer2 65050
+Reducer6 Reducer3 444
+Map5 Reducer6 5128
+Reducer3 Reducer4 202372
+Reducer2 Reducer3 43463
+# 7: BIG_BENCH query19
+13 356 1913
+Reducer5 1 sydney
+Map1 1 bangkok
+Map10 1 osaka
+Reducer7 1 frankfurt
+Map3 1 singapore
+Reducer6 1 london
+Reducer9 1 singapore
+Map13 1 sanjose
+Reducer12 1 osaka
+Map11 1 sanjose
+Map8 1 tokyo
+Map4 1 hongkong
+Reducer2 1 kualalumpur
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 15: BIG_BENCH query2
+5 357 1926
+Reducer5 1 madrid
+Reducer4 1 singapore
+Map1 1 london
+Reducer3 1 berlin
+Reducer2 1 tokyo
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 0: BIG_BENCH query10
+2 358 1929
+Map1 1 dc
+Reducer2 1 dc
+1
+Map1 Reducer2 6138
+# 0: BIG_BENCH query10
+2 359 1939
+Map1 1 jakarta
+Reducer2 1 hongkong
+1
+Map1 Reducer2 6138
+# 1: BIG_BENCH query11
+7 360 1943
+Map1 1 singapore
+Reducer4 1 dc
+Reducer7 2 taipei jakarta
+Map5 1 madrid
+Map6 1 london
+Reducer3 1 tokyo
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 1: BIG_BENCH query11
+7 361 1952
+Map1 1 dc
+Reducer4 1 hongkong
+Reducer7 2 paris bangkok
+Map5 1 singapore
+Map6 1 osaka
+Reducer3 2 sydney bangkok
+Reducer2 1 taipei
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 12018
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1432
+# 6: BIG_BENCH query17
+25 362 1972
+Map20 1 sydney
+Map1 1 sanjose
+Map21 1 kualalumpur
+Map24 1 frankfurt
+Map25 1 sydney
+Map22 1 madrid
+Map23 1 frankfurt
+Map8 1 hongkong
+Map9 1 jakarta
+Reducer18 1 kualalumpur
+Reducer17 1 madrid
+Reducer16 1 osaka
+Reducer15 1 london
+Reducer19 1 hongkong
+Reducer5 1 bangkok
+Reducer4 1 dc
+Map10 1 jakarta
+Reducer7 1 singapore
+Reducer6 1 taipei
+Map13 1 paris
+Map14 1 sanjose
+Map11 1 berlin
+Map12 1 berlin
+Reducer3 1 jakarta
+Reducer2 1 dc
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 2: BIG_BENCH query12
+9 363 1982
+Reducer5 1 jakarta
+Reducer4 1 kualalumpur
+Map1 1 tokyo
+Reducer8 1 berlin
+Map9 1 singapore
+Reducer3 1 bangkok
+Map6 1 dc
+Reducer2 1 london
+Map7 1 taipei
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 15: BIG_BENCH query2
+5 364 2013
+Reducer5 1 kualalumpur
+Reducer4 1 jakarta
+Map1 1 sydney
+Reducer3 1 jakarta
+Reducer2 1 sydney
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 20: BIG_BENCH query9
+9 365 2021
+Reducer5 1 osaka
+Reducer4 1 singapore
+Map1 1 dc
+Map8 1 tokyo
+Map9 1 madrid
+Map6 1 london
+Reducer3 1 sydney
+Map7 1 frankfurt
+Reducer2 1 dc
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 8: BIG_BENCH query1
+6 366 2028
+Reducer5 1 taipei
+Reducer4 1 london
+Map1 1 kualalumpur
+Map6 1 bangkok
+Reducer3 1 osaka
+Reducer2 2 osaka frankfurt
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 14: BIG_BENCH query27
+2 367 2030
+Map1 1 berlin
+Reducer2 1 taipei
+1
+Map1 Reducer2 6089
+# 11: BIG_BENCH query22
+7 368 2041
+Map1 1 london
+Reducer4 1 taipei
+Map5 1 osaka
+Map6 1 kualalumpur
+Reducer3 1 madrid
+Map7 1 jakarta
+Reducer2 1 kualalumpur
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 2: BIG_BENCH query12
+9 369 2043
+Reducer5 1 singapore
+Reducer4 1 singapore
+Map1 1 tokyo
+Reducer8 2 sydney dc
+Map9 1 bangkok
+Reducer3 1 tokyo
+Map6 1 berlin
+Reducer2 1 tokyo
+Map7 1 osaka
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 7656
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 3747
+Map7 Reducer8 5871
+# 3: BIG_BENCH query14
+10 370 2047
+Map1 1 singapore
+Map10 1 berlin
+Reducer7 1 berlin
+Map3 1 madrid
+Map8 1 berlin
+Map9 1 berlin
+Map4 1 bangkok
+Map5 1 tokyo
+Map6 1 dc
+Reducer2 1 dc
+9
+Map1 Reducer2 3263
+Map10 Map6 2186
+Reducer7 Reducer2 32
+Map3 Map1 2175
+Map8 Map6 2175
+Map9 Map6 2175
+Map4 Map1 2175
+Map5 Map1 2186
+Map6 Reducer7 6526
+# 2: BIG_BENCH query12
+9 371 2063
+Reducer5 1 jakarta
+Reducer4 1 jakarta
+Map1 1 dc
+Reducer8 1 sydney
+Map9 1 madrid
+Reducer3 1 madrid
+Map6 1 tokyo
+Reducer2 1 jakarta
+Map7 1 hongkong
+8
+Reducer4 Reducer5 121
+Map1 Reducer2 68668
+Reducer8 Reducer3 5742
+Map9 Reducer8 3852
+Reducer3 Reducer4 3828
+Map6 Reducer2 3763
+Reducer2 Reducer3 5621
+Map7 Reducer8 5871
+# 4: BIG_BENCH query15
+6 372 2065
+Reducer5 1 paris
+Reducer4 2 paris sydney
+Map1 1 berlin
+Map2 1 bangkok
+Map6 1 sanjose
+Reducer3 1 berlin
+5
+Reducer4 Reducer5 18657
+Map1 Map2 19384
+Map2 Reducer3 9692
+Map6 Reducer3 48
+Reducer3 Reducer4 18608
+# 20: BIG_BENCH query9
+9 373 2065
+Reducer5 1 london
+Reducer4 1 osaka
+Map1 1 jakarta
+Map8 1 berlin
+Map9 1 singapore
+Map6 1 bangkok
+Reducer3 1 kualalumpur
+Map7 1 osaka
+Reducer2 1 taipei
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 7: BIG_BENCH query19
+13 374 2089
+Reducer5 1 jakarta
+Map1 1 taipei
+Map10 1 tokyo
+Reducer7 1 berlin
+Map3 1 hongkong
+Reducer6 1 frankfurt
+Reducer9 1 singapore
+Map13 1 osaka
+Reducer12 1 tokyo
+Map11 1 madrid
+Map8 1 dc
+Map4 1 sanjose
+Reducer2 1 bangkok
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 20: BIG_BENCH query9
+9 375 2096
+Reducer5 1 jakarta
+Reducer4 1 bangkok
+Map1 1 frankfurt
+Map8 1 osaka
+Map9 1 taipei
+Map6 1 sanjose
+Reducer3 1 kualalumpur
+Map7 1 frankfurt
+Reducer2 1 bangkok
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 11: BIG_BENCH query22
+7 376 2118
+Map1 1 kualalumpur
+Reducer4 1 singapore
+Map5 1 madrid
+Map6 1 kualalumpur
+Reducer3 1 tokyo
+Map7 1 frankfurt
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 5: BIG_BENCH query16
+9 377 2150
+Reducer5 1 osaka
+Reducer4 3 frankfurt dc tokyo
+Map1 1 sanjose
+Map8 1 madrid
+Map9 1 kualalumpur
+Map6 1 singapore
+Reducer3 1 singapore
+Map7 1 madrid
+Reducer2 1 dc
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 40751
+Map9 Reducer3 40715
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 40731
+Reducer2 Reducer3 184369
+# 1: BIG_BENCH query11
+7 378 2152
+Map1 1 hongkong
+Reducer4 1 taipei
+Reducer7 4 kualalumpur osaka paris dc
+Map5 1 jakarta
+Map6 1 jakarta
+Reducer3 2 dc hongkong
+Reducer2 1 london
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 14421
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 859
+# 14: BIG_BENCH query27
+2 379 2154
+Map1 1 berlin
+Reducer2 1 sanjose
+1
+Map1 Reducer2 6089
+# 7: BIG_BENCH query19
+13 380 2158
+Reducer5 1 london
+Map1 1 kualalumpur
+Map10 1 london
+Reducer7 1 sydney
+Map3 1 madrid
+Reducer6 1 frankfurt
+Reducer9 1 kualalumpur
+Map13 1 sydney
+Reducer12 1 taipei
+Map11 1 frankfurt
+Map8 1 bangkok
+Map4 1 tokyo
+Reducer2 1 dc
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 1: BIG_BENCH query11
+7 381 2173
+Map1 1 bangkok
+Reducer4 1 paris
+Reducer7 3 kualalumpur paris tokyo
+Map5 1 frankfurt
+Map6 1 kualalumpur
+Reducer3 1 madrid
+Reducer2 1 frankfurt
+6
+Map1 Reducer2 1066
+Reducer7 Reducer3 13520
+Map5 Map6 9772
+Map6 Reducer7 24149
+Reducer3 Reducer4 3650
+Reducer2 Reducer3 1074
+# 5: BIG_BENCH query16
+9 382 2176
+Reducer5 1 taipei
+Reducer4 2 paris dc
+Map1 1 kualalumpur
+Map8 1 singapore
+Map9 1 sanjose
+Map6 1 paris
+Reducer3 2 sydney frankfurt
+Map7 1 taipei
+Reducer2 3 london berlin sydney
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 27167
+Map9 Reducer3 27143
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 27154
+Reducer2 Reducer3 368738
+# 5: BIG_BENCH query16
+9 383 2178
+Reducer5 1 sydney
+Reducer4 2 kualalumpur dc
+Map1 1 jakarta
+Map8 1 osaka
+Map9 1 singapore
+Map6 1 bangkok
+Reducer3 2 frankfurt singapore
+Map7 1 paris
+Reducer2 1 dc
+8
+Reducer4 Reducer5 20369
+Map1 Reducer2 304640
+Map8 Reducer3 40751
+Map9 Reducer3 40715
+Map6 Reducer2 288616
+Reducer3 Reducer4 177221
+Map7 Reducer3 40731
+Reducer2 Reducer3 184369
+# 11: BIG_BENCH query22
+7 384 2180
+Map1 1 kualalumpur
+Reducer4 1 london
+Map5 1 madrid
+Map6 1 jakarta
+Reducer3 1 dc
+Map7 1 sydney
+Reducer2 1 dc
+6
+Map1 Reducer2 138074
+Map5 Reducer2 120485
+Map6 Reducer2 120473
+Reducer3 Reducer4 250
+Map7 Reducer2 120477
+Reducer2 Reducer3 482079
+# 15: BIG_BENCH query2
+5 385 2184
+Reducer5 1 sydney
+Reducer4 1 singapore
+Map1 1 dc
+Reducer3 1 dc
+Reducer2 1 paris
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 8: BIG_BENCH query1
+6 386 2215
+Reducer5 1 hongkong
+Reducer4 1 kualalumpur
+Map1 1 madrid
+Map6 1 berlin
+Reducer3 1 dc
+Reducer2 3 jakarta sydney frankfurt
+5
+Reducer4 Reducer5 7850
+Map1 Reducer2 26273
+Map6 Reducer2 23075
+Reducer3 Reducer4 18479
+Reducer2 Reducer3 56747
+# 20: BIG_BENCH query9
+9 387 2216
+Reducer5 1 hongkong
+Reducer4 1 sanjose
+Map1 1 osaka
+Map8 1 osaka
+Map9 1 madrid
+Map6 1 paris
+Reducer3 1 madrid
+Map7 1 dc
+Reducer2 1 sydney
+8
+Reducer4 Reducer5 24262
+Map1 Reducer2 119536
+Map8 Reducer3 10580
+Map9 Reducer4 12099
+Map6 Reducer2 87277
+Reducer3 Reducer4 27913
+Map7 Reducer3 10542
+Reducer2 Reducer3 68695
+# 15: BIG_BENCH query2
+5 388 2218
+Reducer5 1 jakarta
+Reducer4 1 frankfurt
+Map1 1 bangkok
+Reducer3 1 madrid
+Reducer2 1 sanjose
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 15: BIG_BENCH query2
+5 389 2222
+Reducer5 1 bangkok
+Reducer4 1 kualalumpur
+Map1 1 bangkok
+Reducer3 1 london
+Reducer2 1 frankfurt
+4
+Reducer4 Reducer5 9619
+Map1 Reducer2 2776739
+Reducer3 Reducer4 371112
+Reducer2 Reducer3 2584220
+# 13: BIG_BENCH query26
+4 390 2224
+Map1 1 osaka
+Map4 1 berlin
+Reducer3 3 jakarta london sanjose
+Reducer2 2 hongkong berlin
+3
+Map1 Reducer2 124843
+Map4 Reducer2 53799
+Reducer2 Reducer3 132831
+# 12: BIG_BENCH query24
+19 391 2225
+Reducer17 2 kualalumpur madrid
+Map18 1 kualalumpur
+Reducer16 6 hongkong paris sydney jakarta bangkok dc
+Reducer15 1 berlin
+Map19 1 dc
+Reducer10 2 sanjose bangkok
+Reducer4 5 bangkok frankfurt tokyo hongkong dc
+Map1 1 bangkok
+Reducer7 1 taipei
+Reducer9 8 bangkok paris dc tokyo hongkong berlin sydney madrid
+Reducer14 1 london
+Map13 1 singapore
+Reducer8 1 sydney
+Map11 1 frankfurt
+Map12 1 osaka
+Map5 1 dc
+Reducer3 1 sydney
+Map6 1 frankfurt
+Reducer2 1 frankfurt
+18
+Reducer17 Reducer4 14757
+Map18 Reducer14 76
+Reducer16 Reducer17 379351
+Reducer15 Reducer16 184159
+Map19 Reducer16 190515
+Reducer10 Reducer4 44803
+Map1 Reducer2 40
+Reducer7 Reducer8 48
+Reducer9 Reducer10 164863
+Reducer14 Reducer15 242
+Map13 Reducer14 40
+Reducer8 Reducer9 39261
+Map11 Reducer7 56
+Map12 Reducer9 44664
+Map5 Reducer2 56
+Reducer3 Reducer4 5133
+Map6 Reducer7 125
+Reducer2 Reducer3 48
+# 7: BIG_BENCH query19
+13 392 2226
+Reducer5 1 paris
+Map1 1 berlin
+Map10 1 sydney
+Reducer7 1 tokyo
+Map3 1 london
+Reducer6 1 kualalumpur
+Reducer9 1 london
+Map13 1 sydney
+Reducer12 1 dc
+Map11 1 taipei
+Map8 1 sanjose
+Map4 1 tokyo
+Reducer2 1 london
+12
+Reducer5 Reducer6 57377
+Map1 Reducer2 44
+Map10 Reducer9 60
+Map3 Reducer2 104
+Reducer6 Reducer7 172875
+Reducer9 Map11 1146
+Map13 Reducer6 57942
+Reducer12 Reducer6 57937
+Map11 Reducer12 2778
+Map8 Reducer9 60
+Map4 Reducer5 10855
+Reducer2 Map4 10871
+# 17: BIG_BENCH query4
+5 393 2231
+Map1 1 sanjose
+Reducer4 1 bangkok
+Map5 1 sanjose
+Reducer3 1 sydney
+Reducer2 1 sanjose
+4
+Map1 Reducer2 716904
+Map5 Map1 235527
+Reducer3 Reducer4 1016578
+Reducer2 Reducer3 1498020
+# 18: BIG_BENCH query6
+11 394 2245
+Reducer5 1 tokyo
+Reducer4 1 bangkok
+Map10 1 osaka
+Map1 1 sanjose
+Reducer9 1 sanjose
+Reducer8 4 paris tokyo hongkong frankfurt
+Map11 1 tokyo
+Reducer3 1 tokyo
+Map6 1 taipei
+Map7 1 dc
+Reducer2 1 osaka
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
+# 6: BIG_BENCH query17
+25 395 2257
+Map20 1 singapore
+Map1 1 hongkong
+Map21 1 madrid
+Map24 1 hongkong
+Map25 1 sydney
+Map22 1 dc
+Map23 1 tokyo
+Map8 1 hongkong
+Map9 1 bangkok
+Reducer18 1 tokyo
+Reducer17 1 bangkok
+Reducer16 1 bangkok
+Reducer15 1 taipei
+Reducer19 1 sydney
+Reducer5 1 paris
+Reducer4 1 hongkong
+Map10 1 hongkong
+Reducer7 1 singapore
+Reducer6 1 osaka
+Map13 1 paris
+Map14 1 madrid
+Map11 1 hongkong
+Map12 1 dc
+Reducer3 1 taipei
+Reducer2 1 sanjose
+24
+Map20 Reducer15 221138
+Map1 Reducer2 268149
+Map21 Reducer16 3578
+Map24 Reducer17 2237
+Map25 Reducer18 4757
+Map22 Reducer16 3521
+Map23 Reducer16 3473
+Map8 Reducer2 248922
+Map9 Reducer3 1098
+Reducer18 Reducer19 9474
+Reducer17 Reducer18 6905
+Reducer16 Reducer17 9110
+Reducer15 Reducer16 113955
+Reducer19 Reducer6 36
+Reducer5 Reducer6 24
+Reducer4 Reducer5 5815
+Map10 Reducer3 1078
+Reducer6 Reducer7 96
+Map13 Reducer5 96
+Map14 Reducer15 240365
+Map11 Reducer3 1078
+Map12 Reducer4 5900
+Reducer3 Reducer4 7947
+Reducer2 Reducer3 125448
+# 19: BIG_BENCH query7
+11 396 2258
+Reducer5 1 singapore
+Map1 1 sydney
+Reducer4 2 sanjose berlin
+Map10 1 paris
+Reducer6 1 singapore
+Map8 1 jakarta
+Map9 1 madrid
+Map4 1 bangkok
+Reducer3 1 taipei
+Reducer2 1 kualalumpur
+Map7 1 bangkok
+9
+Reducer5 Reducer6 1195
+Map1 Reducer2 209
+Reducer4 Reducer5 311279
+Map10 Reducer4 155123
+Map8 Reducer3 9000
+Map9 Reducer3 417
+Reducer3 Reducer4 155652
+Reducer2 Reducer3 428
+Map7 Reducer2 193
+# 0: BIG_BENCH query10
+2 397 2263
+Map1 1 dc
+Reducer2 1 bangkok
+1
+Map1 Reducer2 6138
+# 18: BIG_BENCH query6
+11 398 2285
+Reducer5 1 berlin
+Reducer4 1 singapore
+Map10 1 paris
+Map1 1 london
+Reducer9 1 sydney
+Reducer8 2 berlin paris
+Map11 1 bangkok
+Reducer3 1 tokyo
+Map6 1 osaka
+Map7 1 paris
+Reducer2 1 london
+10
+Reducer4 Reducer5 22445
+Map10 Reducer8 42572
+Map1 Reducer2 163862
+Reducer9 Reducer4 11032
+Reducer8 Reducer9 95903
+Map11 Reducer4 7632
+Reducer3 Reducer4 7414
+Map6 Reducer2 164007
+Map7 Reducer8 69581
+Reducer2 Reducer3 327724
