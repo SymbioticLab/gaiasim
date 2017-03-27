@@ -2,6 +2,7 @@ package gaiasim.comm;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
+import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Flow;
 
@@ -13,12 +14,16 @@ public class SendingAgentContact {
 
     // Queue of messages between controller and SendingAgentContact.
     // The SendingAgentContact should only place messages on the queue.
-    public LinkedBlockingQueue<ScheduleMessage> message_queue_;
+    public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
+
+    // DEBUG ONLY
+    public LinkedBlockingQueue<ControlMessage> to_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
+    public LinkedBlockingQueue<ControlMessage> from_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
 
     public SendingAgentContact(String id, String sa_ip, String sa_port, 
-                               LinkedBlockingQueue<ScheduleMessage> message_queue) {
+                               LinkedBlockingQueue<ScheduleMessage> schedule_queue) {
         id_ = id;
-        message_queue_ = message_queue;
+        schedule_queue_ = schedule_queue;
 
         // TODO: Open connection with sending agent and
         //       get the port numbers that it plans to use
