@@ -24,20 +24,12 @@ import gaiasim.spark.JobInserter;
 import gaiasim.util.Constants;
 
 public class Manager {
-    // The mode of operation that the controller is in
-    public enum Mode {
-        RUNNING, // Flows are currently progressing in the
-                 // topology. The controller is waiting for
-                 // flows to finish or for a job to be inserted.
-
-        RESCHED  // Either a flow finishing or job being inserted
-                 // has caused the controller to re-optomize the
-                 // routes and allocations given to flows.
-    }
-
     public NetGraph net_graph_;
 
     public Scheduler scheduler_;
+
+    // The number of jobs that have been inserted
+    int num_dispatched_jobs_ = 0;
 
     // Path to directory to save output files
     public String outdir_;
@@ -63,8 +55,6 @@ public class Manager {
     // SendingAgentContacts indexed by sending agent id
     public HashMap<String, SendingAgentContact> sa_contacts_ = 
         new HashMap<String, SendingAgentContact>();
-
-    public Mode mode_ = Mode.RUNNING;
 
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
@@ -95,7 +85,7 @@ public class Manager {
             }
         });
     }
-
+ 
     public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
         c.determine_start_time();
         c.end_timestamp_ = cur_time;
@@ -117,6 +107,25 @@ public class Manager {
             completed_jobs_.addElement(owning_job);
             print_statistics("/tmp_job.csv", "/tmp_cct.csv");
         }
+    }
+
+    // Returns true if the completion of this flow caused a coflow
+    // to be completed.
+    public boolean handle_finished_flow(Flow f, long cur_time) throws java.io.IOException {
+        active_flows_.remove(f.id_);
+        f.done_ = true;
+        f.end_timestamp_ = cur_time;
+        scheduler_.finish_flow(f);
+        System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
+
+        // After completing a flow, an owning coflow may have been completed
+        Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
+        if (owning_coflow.done()) {
+            handle_finished_coflow(owning_coflow, cur_time); 
+            return true;
+        } // if coflow.done
+
+        return false;
     }
 
     public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
@@ -166,13 +175,13 @@ public class Manager {
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
             sa_contacts_.put(sa_id, 
-                             new SendingAgentContact("10.0.0." + sa_id, "1234", message_queue_));
+                             new SendingAgentContact(sa_id, "10.0.0." + sa_id, "1234", message_queue_));
         }
 
         // TODO: - Receive connection port numbers from sending agents
         //       - Set up forwarding rules for specified paths
 
-        int num_dispatched_jobs = 0;
+        int num_dispatched_jobs_ = 0;
         int total_num_jobs = jobs_.size();
 
         // Start inserting jobs
@@ -180,69 +189,91 @@ public class Manager {
 
         // Handle job insertions and flow updates
         try {
-            while ((num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty()) {
+            while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
                 ScheduleMessage m = message_queue_.take(); 
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
                     Job j = jobs_.get(m.job_id_);
-
-                    // Start arriving job
-                    // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
-                    j.start_timestamp_ = System.currentTimeMillis();
-                    j.start();
-
-                    // The next coflow in the job may be the last coflow in the job. If the stages involved
-                    // in that coflow are colocated, then there's nothing for us to do. This could cause
-                    // the job to be marked as done.
-                    if (j.done()) {
-                        j.end_timestamp_ = j.start_timestamp_;
-                        System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
-                    }
-                    else {
-                        active_jobs_.put(j.id_, j);
-                    }
-
-                    System.out.println("Took " + m.job_id_);
-                    num_dispatched_jobs++;
-
+                    start_job(j);
                     reschedule();
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                     System.out.println("Registering flow completion for " + m.flow_id_);
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                    System.out.println("Flow status response for flow " + m.flow_id_ + " transmitted " + m.transmitted_);
-                    if (mode_ == Mode.RUNNING) {
-                        System.err.println("ERROR: Received a flow status response for " + m.flow_id_ + " while controller was not expecting flow status responses");
-                        System.exit(1);
-                    }
+                    System.err.println("ERROR: Received a flow status response for " + m.flow_id_ + " while controller was not expecting flow status responses");
+                    System.exit(1);
                 }
             }
         }
         catch (InterruptedException e) {
+            // This shouldn't happen. Fail if it does.
             e.printStackTrace();
             System.exit(1);
         }
     }
 
-    public void reschedule() {
-        mode_ = Mode.RESCHED;
+    public void reschedule() throws Exception {
 
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
-        
+        for (String sa_id : sa_contacts_.keySet()) {
+            SendingAgentContact sac = sa_contacts_.get(sa_id);
+            sac.sendStatusRequest();
+        }
+      
         // Wait until we've received either a FLOW_COMPLETION or
         // FLOW_STATUS_RESPONSE for every active flow
+        while (!active_flows_.isEmpty()) {
+            try {
+                // Block until we have a message to receive
+                ScheduleMessage m = message_queue_.take();
+
+                if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
+                    System.out.println("Registering JOB_INSERTION for " + m.job_id_);
+                    Job j = jobs_.get(m.job_id_);
+                    start_job(j);
+                }
+                else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
+                    System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
+                    Flow f = active_flows_.get(m.flow_id_);
+                    handle_finished_flow(f, System.currentTimeMillis());
+                }
+                else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
+                    System.out.println("Registering  FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_);
+                    Flow f = active_flows_.get(m.flow_id_);
+                    f.transmitted_ = m.transmitted_;
+                    f.updated_ = true;
+                    active_flows_.remove(f);
+                }
+            }
+            catch (InterruptedException e) {
+                // This shouldn't happen. Fail if it does.
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
 
         // Reschedule the current flows
+        update_and_schedule_flows(System.currentTimeMillis());
 
         // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
+        for (String flow_id : active_flows_.keySet()) {
+            Flow f = active_flows_.get(flow_id);
 
-        mode_ = Mode.RUNNING;
+            // The ID of the sending agent from which this flow will
+            // be sent is the first sending agent id in the flow's path.
+            // Flows can have multiple paths, but the starting and ending
+            // points of all paths will be the same, so we can just look
+            // at the first path.
+            String sa_id = f.paths_.get(0).node_list_.get(0);
+            sa_contacts_.get(sa_id).startFlow(f);
+        }
+
     }
 
     public void simulate() throws Exception {
-        int num_dispatched_jobs = 0;
+        int num_dispatched_jobs_ = 0;
         int total_num_jobs = jobs_.size();
 
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
@@ -251,12 +282,12 @@ public class Manager {
         boolean coflow_finished = false;
 
         for (CURRENT_TIME_ = 0; 
-                (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
+                (num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
             // Add any jobs which should be added during this epoch
-            for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
-                Job j = jobs_by_time_.get(num_dispatched_jobs);
+            for (; num_dispatched_jobs_ < total_num_jobs; num_dispatched_jobs_++) {
+                Job j = jobs_by_time_.get(num_dispatched_jobs_);
 
                 // If the next job to start won't start during this epoch, no
                 // further jobs should be considered.
@@ -293,7 +324,7 @@ public class Manager {
                     }
                 }
 
-                update_and_schedule_flows();
+                update_and_schedule_flows(CURRENT_TIME_);
                 ready_jobs.clear();
             }
 
@@ -318,19 +349,8 @@ public class Manager {
 
                 // Handle flows which have completed
                 for (Flow f : finished) {
-                    active_flows_.remove(f.id_);
-                    f.done_ = true;
-                    f.end_timestamp_ = CURRENT_TIME_ + ts;
-                    scheduler_.finish_flow(f);
-                    System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
-
-                    // After completing a flow, an owning coflow may have been completed
-                    Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
-                    if (owning_coflow.done()) {
-                        handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts); 
-                        coflow_finished = true;
-                    } // if coflow.done
-
+                    boolean caused_coflow_finish = handle_finished_flow(f, CURRENT_TIME_ + ts);
+                    coflow_finished = coflow_finished || caused_coflow_finish;
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated
@@ -344,7 +364,7 @@ public class Manager {
             } // for EPOCH_MILLI
 
             System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
-                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
+                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
 
         } // while stuff to do
 
@@ -352,7 +372,27 @@ public class Manager {
         print_statistics("/job.csv", "/cct.csv");
     }
 
-    public void update_and_schedule_flows() throws Exception {
+    public void start_job(Job j) {
+        // Start arriving job
+        // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
+        j.start_timestamp_ = System.currentTimeMillis();
+        j.start();
+
+        // The next coflow in the job may be the last coflow in the job. If the stages involved
+        // in that coflow are colocated, then there's nothing for us to do. This could cause
+        // the job to be marked as done.
+        if (j.done()) {
+            j.end_timestamp_ = j.start_timestamp_;
+            System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+        }
+        else {
+            active_jobs_.put(j.id_, j);
+        }
+
+        num_dispatched_jobs_++;
+    }
+
+    public void update_and_schedule_flows(long current_time) throws Exception {
         // Update our set of active coflows
         active_coflows_.clear();
         for (String k : active_jobs_.keySet()) {
@@ -361,8 +401,8 @@ public class Manager {
             ArrayList<Coflow> coflows = j.get_running_coflows();
             for (Coflow c : coflows) {
                 if (c.done()) {
-                    c.start_timestamp_ = CURRENT_TIME_;
-                    handle_finished_coflow(c, CURRENT_TIME_);
+                    c.start_timestamp_ = current_time;
+                    handle_finished_coflow(c, current_time);
                 }
                 else {
                     System.out.println("Adding coflow " + c.id_);
@@ -373,7 +413,7 @@ public class Manager {
 
         // Update our set of flows
         active_flows_.clear();
-        HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(active_coflows_, CURRENT_TIME_);
+        HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(active_coflows_, current_time);
         active_flows_.putAll(scheduled_flows);
     }
 }
