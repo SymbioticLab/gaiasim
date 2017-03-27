@@ -219,13 +219,6 @@ public class Manager {
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
-            if (active_jobs_.size() == 4 && num_dispatched_jobs == 399) {
-                for (String k : active_flows_.keySet()) {
-                    Flow f = active_flows_.get(k);
-                    System.out.println("    Flow " + f.id_ + " transmitted " + f.transmitted_ + " / " + f.volume_);
-                }
-            }
-
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
                     ts <= Constants.EPOCH_MILLI; 
