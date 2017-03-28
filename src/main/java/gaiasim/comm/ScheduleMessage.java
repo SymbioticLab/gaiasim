@@ -11,7 +11,7 @@ public class ScheduleMessage {
     public String job_id_;      // Used only by JOB_INSERTION
     public String flow_id_;     // Used by FLOW_COMPLETION and FLOW_STATUS_RESPONSE
     public String coflow_id_;   // Used by FLOW_COMPLETION and FLOW_STATUS_RESPONSE
-    public long transmitted_;   // Used only by FLOW_STATUS_RESPONSE
+    public double transmitted_; // Used only by FLOW_STATUS_RESPONSE
 
     // For constructing JOB_INSERTION messages
     public ScheduleMessage(Type type, String job_id) {
@@ -29,7 +29,7 @@ public class ScheduleMessage {
 
     // For constructing FLOW_STATUS_RESPONSE messages
     public ScheduleMessage(Type type, String flow_id, 
-                           String coflow_id, long transmitted) {
+                           String coflow_id, double transmitted) {
         type_ = type;
         flow_id_ = flow_id;
         coflow_id_ = coflow_id;

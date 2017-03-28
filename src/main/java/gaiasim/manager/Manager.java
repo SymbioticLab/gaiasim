@@ -175,7 +175,7 @@ public class Manager {
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
             sa_contacts_.put(sa_id, 
-                             new SendingAgentContact(sa_id, "10.0.0." + sa_id, "1234", message_queue_));
+                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, "1234", message_queue_));
         }
 
         // TODO: - Receive connection port numbers from sending agents

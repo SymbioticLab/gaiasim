@@ -19,61 +19,92 @@ public class Connection {
         }
     }
 
-    public HashMap<String, Subscription> subscribers_ = new HashMap<String, Subscription>();
+    public class ConnectionData {
+        public String id_;
 
-    // Current total rate requested by subscribers
-    public double rate_ = 0.0;
-
-    public String id_;
-
-    public Connection(String id, String ra_ip, String ra_port) {
-        id_ = id;
-
-        // TODO: Setup a socket with designated receiving agent
+        // The following two variables should probably be volatile,
+        // but a small lack of visibility between two threads likely
+        // won't cause enough damage to merit the perfomance loss
+        // caused by making these frequently-accessed objects voltile.
+        public HashMap<String, Subscription> subscribers_ = new HashMap<String, Subscription>();
         
-    } 
+        // Current total rate requested by subscribers
+        public double rate_ = 0.0;
 
-    public synchronized void distribute_transmitted(double transmitted) {
-        if (transmitted > 0.0) {
-         
-            ArrayList<Subscription> to_remove = new ArrayList<Subscription>();
-            FlowInfo f;
-            double flow_rate;
-            for (String k : subscribers_.keySet()) {
-                Subscription s = subscribers_.get(k);
-                f = s.flow_info_;
-                flow_rate = s.rate_;
+        public ConnectionData(String id) {
+            id_ = id;
+        }
 
-                boolean flow_done = f.transmit(transmitted * flow_rate / rate_, this);
-                if (flow_done) {
-                    to_remove.add(s);
+        public synchronized void distribute_transmitted(double transmitted) {
+            if (transmitted > 0.0) {
+
+                ArrayList<Subscription> to_remove = new ArrayList<Subscription>();
+                FlowInfo f;
+                double flow_rate;
+                for (String k : subscribers_.keySet()) {
+                    Subscription s = subscribers_.get(k);
+                    f = s.flow_info_;
+                    flow_rate = s.rate_;
+
+                    boolean flow_done = f.transmit(transmitted * flow_rate / rate_, id_);
+                    if (flow_done) {
+                        to_remove.add(s);
+                    }
+                }
+
+                // Unsubscribe any flows that were done
+                for (Subscription s : to_remove) {
+                    rate_ -= s.rate_;
+                    subscribers_.remove(s.flow_info_.id_);
+                }
+
+                // Ensure we don't have any rounding errors
+                if (subscribers_.isEmpty()) {
+                    rate_ = 0.0;
                 }
             }
+        }
 
-            // Unsubscribe any flows that were done
-            for (Subscription s : to_remove) {
-                rate_ -= s.rate_;
-                subscribers_.remove(s.flow_info_.id_);
-            }
-
-            // Ensure we don't have any rounding errors
-            if (subscribers_.isEmpty()) {
-                rate_ = 0.0;
-            }
+        public synchronized void subscribe(FlowInfo f, double rate) {
+            rate_ += rate;
+            subscribers_.put(f.id_, new Subscription(f, rate));
         }
     }
 
-    public void send() {
-        Random rnd = new Random(13);
+    private class Sender implements Runnable {
+        public ConnectionData data_;
 
-        if (rate_ > 0.0) {
-            // TODO: Actually send data
-            distribute_transmitted(1048576 * (rnd.nextDouble() + 0.5));
+        public Sender(ConnectionData data) {
+            data_ = data;
         }
+
+        public void run() {
+            while (!Thread.interrupted()) {
+                Random rnd = new Random(13);
+
+                if (data_.rate_ > 0.0) {
+                    // TODO: Actually send data
+                    data_.distribute_transmitted(1048576 * (rnd.nextDouble() + 0.5));
+                }
+            }
+            // TODO: Close socket
+            return;
+        }
+    } // class Sender
+
+    public ConnectionData data_;
+    public Thread sending_thread_;
+
+    public Connection(String id) {
+        data_ = new ConnectionData(id);
+
+        // TODO: Start Sender thread
+        sending_thread_ = new Thread(new Sender(data_));
+        sending_thread_.start();
+    } 
+
+    public void terminate() {
+        sending_thread_.interrupt();
     }
-    
-    public synchronized void subscribe(FlowInfo f, double rate) {
-        rate_ += rate;
-        subscribers_.put(f.id_, new Subscription(f, rate));
-    }
+
 }

@@ -1,6 +1,6 @@
 package gaiasim.agent;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import gaiasim.agent.Connection;
 
@@ -9,8 +9,8 @@ public class FlowInfo {
     public String id_;
     public double volume_;
     public double transmitted_;
-    public ArrayList<Connection> subscriptions_;
-    public boolean done_ = false;
+    public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
+    public volatile boolean done_ = false;
 
     public void FlowInfo(String id, double volume) {
         id_ = id;
@@ -18,8 +18,8 @@ public class FlowInfo {
     }
 
     public synchronized void add_subflow(Connection c, double rate) {
-        c.subscribe(this, rate);
-        subscriptions_.add(c);
+        c.data_.subscribe(this, rate);
+        subscriptions_.put(c.data_.id_, c);
     }
 
     // Returns true if the flow is done and false otherwise.
@@ -30,14 +30,14 @@ public class FlowInfo {
     // upon calling this function and finding a flow complete. Yes, this
     // this means that some extra data might be transmitted, but this
     // should only be a small amount.
-    public synchronized boolean transmit(double transmitted, Connection conn) {
+    public synchronized boolean transmit(double transmitted, String conn_id) {
 
         // If the flow is already done, remove our this connection from the flow.
         // NOTE: Could have just incremented transmitted_ and checked against
         //       volume_, but doing so could cause overflow in the case where
         //       where more than one connection is adding its transmitted amount.
         if (done_) {
-            subscriptions_.remove(conn);
+            subscriptions_.remove(conn_id);
 
             // We know that all connections have recognized this flow as complete
             // once the subscriptions are empty. At that point we may remove the flow.
@@ -55,7 +55,7 @@ public class FlowInfo {
         transmitted_ += transmitted;
         if (transmitted_ >= volume_) {
             done_ = true;
-            subscriptions_.remove(conn);
+            subscriptions_.remove(conn_id);
 
             if (subscriptions_.isEmpty()) {
                 // TODO: Send a FIN
