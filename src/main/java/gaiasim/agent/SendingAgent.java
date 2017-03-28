@@ -66,6 +66,27 @@ public class SendingAgent {
             } // for dst in nodes
         }
 
+        public synchronized void get_status() {
+            try {
+                for (String k : flows_.keySet()) {
+                    FlowInfo f = flows_.get(k);
+                    f.set_update_pending(true);
+                    ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
+                            f.id_, "JACK DEAL WITH THIS",
+                            f.transmitted_);
+                    to_sac_queue_.put(s);
+                }
+            }
+            catch (InterruptedException e) {
+                // TODO: Close socket
+                return;
+            }
+        }
+
+        public synchronized void remove_flow(String flow_id) {
+            flows_.remove(flow_id);
+        }
+
     } // class Data
 
     private class Listener implements Runnable {
@@ -80,19 +101,20 @@ public class SendingAgent {
                 ControlMessage c = data_.from_sac_queue_.take();
                 
                 if (c.type_ == ControlMessage.Type.FLOW_START) {
+                    assert(!data_.flows_.containsKey(c.flow_id_));
+                    
+                    FlowInfo f = new FlowInfo(c.flow_id_, c.field1_);
+                    data_.flows_.put(f.id_, f);
+
+                    // TODO: Figure out a good way to wait for flows
+                    //       to start all subflows at roughly same time
                 }
                 else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                 }
                 else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
                 }
                 else if (c.type_ == ControlMessage.Type.FLOW_STATUS_REQUEST) {
-                    for (String k : data_.flows_.keySet()) {
-                        FlowInfo f = data_.flows_.get(k);
-                        ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
-                                                                f.id_, "JACK DEAL WITH THIS",
-                                                                f.transmitted_);
-                        data_.to_sac_queue_.put(s);
-                    }
+                    data_.get_status();
                 }
             }
             catch (InterruptedException e) {

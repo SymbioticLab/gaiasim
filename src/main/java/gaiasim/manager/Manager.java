@@ -200,6 +200,12 @@ public class Manager {
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                     System.out.println("Registering flow completion for " + m.flow_id_);
+                    
+                    Flow f = active_flows_.get(m.flow_id_);
+                    boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
+                    if (coflow_finished) {
+                        reschedule();
+                    }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
                     System.err.println("ERROR: Received a flow status response for " + m.flow_id_ + " while controller was not expecting flow status responses");

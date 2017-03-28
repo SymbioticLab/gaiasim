@@ -15,7 +15,7 @@ public class ControlMessage implements Serializable {
     }
 
     public Type type_;
-    public long flow_id_;
-    public int field0;      // Either number of subflows or path_id
-    public double field1;   // Either flow volume or subflow rate
+    public String flow_id_;
+    public int field0_;      // Either number of subflows or path_id
+    public double field1_;   // Either flow volume or subflow rate
 }

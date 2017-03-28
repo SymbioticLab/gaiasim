@@ -12,7 +12,17 @@ public class FlowInfo {
     public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
     public volatile boolean done_ = false;
 
-    public void FlowInfo(String id, double volume) {
+    // Flag to check to determine whether we should send a FIN
+    // for this flow immediatly upon completion. If the flow's
+    // status has just been reported to the controller, and the
+    // sending agent completes the flow before receiving an
+    // update from the controller, the flag is set to true. This
+    // informs the sending agent to wait until it receives an
+    // update for the flow to send the FIN message. If the flag
+    // is set to false, it is safe to send a FIN.
+    public volatile boolean update_pending_ = false;
+
+    public FlowInfo(String id, double volume) {
         id_ = id;
         volume_ = volume;
     }
@@ -20,6 +30,10 @@ public class FlowInfo {
     public synchronized void add_subflow(Connection c, double rate) {
         c.data_.subscribe(this, rate);
         subscriptions_.put(c.data_.id_, c);
+    }
+
+    public synchronized void set_update_pending(boolean val) {
+        update_pending_ = val;
     }
 
     // Returns true if the flow is done and false otherwise.
@@ -45,7 +59,7 @@ public class FlowInfo {
             //       recognizes completion, and simply delay flow deletion. We want
             //       the FIN to reach the controller as fast as possible, but to
             //       delay deletion until it is safe to do so.
-            if (subscriptions_.isEmpty()) {
+            if (!update_pending_ && subscriptions_.isEmpty()) {
                 // TODO: Send a FIN
             }
 
@@ -57,7 +71,7 @@ public class FlowInfo {
             done_ = true;
             subscriptions_.remove(conn_id);
 
-            if (subscriptions_.isEmpty()) {
+            if (!update_pending_ && subscriptions_.isEmpty()) {
                 // TODO: Send a FIN
             }
             
