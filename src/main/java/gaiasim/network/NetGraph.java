@@ -28,6 +28,11 @@ public class NetGraph {
     // minimum link bandwidth).
     public Pathway[][] apmb_;
 
+    // All pairs all paths. First index is src node, second index is
+    // dst node, resulting in a list of all paths used between
+    // the src and dst node.
+    public HashMap<String, HashMap<String, ArrayList<Pathway>>> apap_;
+
     // Max bandwidth of each link
     public Double[][] link_bw_;
 
@@ -64,17 +69,20 @@ public class NetGraph {
         // at 1, we need num_nodes+1 entries in the array.
         apsp_ = new Path[nodes_.size() + 1][nodes_.size() + 1];
         apmb_ = new Pathway[nodes_.size() + 1][nodes_.size() + 1];
+        apap_ = new HashMap<String, HashMap<String, ArrayList<Pathway>>>();
 
         for (Node n : graph_) {
             APSPInfo info = n.getAttribute(APSPInfo.ATTRIBUTE_NAME);
+            apap_.put(n.toString(), new HashMap<String, ArrayList<Pathway>>());
 
             for (Node n_ : graph_) {
-                if (n.toString() != n_.toString()) {
+                if (!n.toString().equals(n_.toString())) {
                     int src = Integer.parseInt(n.toString());
                     int dst = Integer.parseInt(n_.toString());
                     apsp_[src][dst] = info.getShortestPathTo(n_.toString());
 
                     ArrayList<Pathway> paths = make_paths(n, n_);
+                    apap_.get(n.toString()).put(n_.toString(), paths);
                     Pathway max_bw_path = new Pathway();
                     for (Pathway p : paths) {
                         assign_bw(p);
