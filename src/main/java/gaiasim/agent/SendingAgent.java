@@ -11,7 +11,7 @@ import gaiasim.network.NetGraph;
 
 public class SendingAgent {
    
-    private class Data {
+    public class Data {
         String id_;
 
         // A Map containing Connections for each path from this SendingAgent to each
@@ -72,8 +72,8 @@ public class SendingAgent {
                     FlowInfo f = flows_.get(k);
                     f.set_update_pending(true);
                     ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
-                            f.id_, "JACK DEAL WITH THIS",
-                            f.transmitted_);
+                                                            f.id_, "JACK DEAL WITH THIS",
+                                                            f.transmitted_);
                     to_sac_queue_.put(s);
                 }
             }
@@ -81,6 +81,20 @@ public class SendingAgent {
                 // TODO: Close socket
                 return;
             }
+        }
+
+        public synchronized void finish_flow(String flow_id) {
+            ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION,
+                                                    flow_id, "JACK DEAL WITH THIS");
+
+            try {
+                to_sac_queue_.put(s);
+            }
+            catch (InterruptedException e) {
+                // TODO: Close socket
+                return;
+            }
+            remove_flow(flow_id);
         }
 
         public synchronized void remove_flow(String flow_id) {
@@ -103,15 +117,22 @@ public class SendingAgent {
                 if (c.type_ == ControlMessage.Type.FLOW_START) {
                     assert(!data_.flows_.containsKey(c.flow_id_));
                     
-                    FlowInfo f = new FlowInfo(c.flow_id_, c.field1_);
+                    FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, data_);
                     data_.flows_.put(f.id_, f);
-
-                    // TODO: Figure out a good way to wait for flows
-                    //       to start all subflows at roughly same time
                 }
                 else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
+                    assert(data_.flows_.containsKey(c.flow_id_));
+                    FlowInfo f = data_.flows_.get(c.flow_id_);
+                   
+                    boolean flow_completed = f.update_flow(c.field0_, c.field1_);
+                    if (flow_completed) {
+                        data_.finish_flow(f.id_);
+                    }
                 }
                 else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
+                    FlowInfo f = data_.flows_.get(c.flow_id_);
+                    Connection conn = data_.connection_pools_.get(c.ra_id_)[c.field0_];
+                    f.add_subflow(conn, c.field1_);
                 }
                 else if (c.type_ == ControlMessage.Type.FLOW_STATUS_REQUEST) {
                     data_.get_status();

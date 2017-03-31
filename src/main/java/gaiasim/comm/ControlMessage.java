@@ -16,6 +16,8 @@ public class ControlMessage implements Serializable {
 
     public Type type_;
     public String flow_id_;
+    public String ra_id_;    // ID of the receiving agent that is destination
+                             //     of this flow. Only used for SUBFLOW_INFO.
     public int field0_;      // Either number of subflows or path_id
     public double field1_;   // Either flow volume or subflow rate
 }

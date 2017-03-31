@@ -69,6 +69,13 @@ public class Connection {
             rate_ += rate;
             subscribers_.put(f.id_, new Subscription(f, rate));
         }
+
+        public synchronized void unsubscribe(String id) {
+            Subscription s = subscribers_.get(id);
+            rate_ -= s.rate_;
+            subscribers_.remove(id);
+        }
+
     }
 
     private class Sender implements Runnable {

@@ -1,14 +1,28 @@
 package gaiasim.agent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import gaiasim.agent.Connection;
+import gaiasim.agent.SendingAgent;
 
 // Information about a flow as tracked by a sending agent.
 public class FlowInfo {
+    public class PendingSubscription {
+        public Connection conn_;
+        public double rate_;
+        public PendingSubscription(Connection conn, double rate) {
+            conn_ = conn;
+            rate_ = rate;
+        }
+    }
     public String id_;
     public double volume_;
     public double transmitted_;
+    public int num_subflows_;
+    public SendingAgent.Data sa_;
+    public ArrayList<PendingSubscription> pending_subscriptions_ = 
+        new ArrayList<PendingSubscription>();
     public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
     public volatile boolean done_ = false;
 
@@ -22,14 +36,29 @@ public class FlowInfo {
     // is set to false, it is safe to send a FIN.
     public volatile boolean update_pending_ = false;
 
-    public FlowInfo(String id, double volume) {
+    public FlowInfo(String id, int num_subflows, double volume, SendingAgent.Data sa) {
         id_ = id;
         volume_ = volume;
+        num_subflows_ = num_subflows;
+        sa_ = sa;
     }
-
+ 
     public synchronized void add_subflow(Connection c, double rate) {
-        c.data_.subscribe(this, rate);
-        subscriptions_.put(c.data_.id_, c);
+        if (pending_subscriptions_.size() + 1 == num_subflows_) {
+            c.data_.subscribe(this, rate);
+            subscriptions_.put(c.data_.id_, c);
+
+            for (PendingSubscription s : pending_subscriptions_) {
+                s.conn_.data_.subscribe(this, s.rate_);
+                subscriptions_.put(s.conn_.data_.id_, s.conn_);
+            }
+
+            pending_subscriptions_.clear();
+        }
+        else {
+            pending_subscriptions_.add(new PendingSubscription(c, rate));
+        }
+
     }
 
     public synchronized void set_update_pending(boolean val) {
@@ -60,7 +89,7 @@ public class FlowInfo {
             //       the FIN to reach the controller as fast as possible, but to
             //       delay deletion until it is safe to do so.
             if (!update_pending_ && subscriptions_.isEmpty()) {
-                // TODO: Send a FIN
+                sa_.finish_flow(id_);
             }
 
             return true;
@@ -72,7 +101,7 @@ public class FlowInfo {
             subscriptions_.remove(conn_id);
 
             if (!update_pending_ && subscriptions_.isEmpty()) {
-                // TODO: Send a FIN
+                sa_.finish_flow(id_);
             }
             
             return true;
@@ -80,4 +109,28 @@ public class FlowInfo {
 
         return false;
     }
+
+    // If the flow was not completed while we waited for an update,
+    // unsubscribe from all connections and prepare to receive all
+    // subflow announcements (return false). If the flow was completed
+    // while we were waiting for an update, return true to tell the
+    // SendingAgent to send a FIN for this flow and discard it.
+    public synchronized boolean update_flow(int num_subflows, double volume) {
+        if (done_) {
+            return true;
+        }
+
+        volume_ = volume;
+        num_subflows_ = num_subflows;
+        for (String k : subscriptions_.keySet()) {
+            Connection c = subscriptions_.get(k);
+            c.data_.unsubscribe(id_);    
+        }
+        subscriptions_.clear();
+        pending_subscriptions_.clear();
+
+        update_pending_ = false;
+        return false;
+    }
+
 }
