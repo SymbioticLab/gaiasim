@@ -26,8 +26,13 @@ public class Pathway {
         node_list_ = new ArrayList<String>(p.node_list_);
     }
 
-    // Returns the last node in the node_list_
-    public String last_node() {
+    // Returns the first node in the node_list
+    public String src() {
+        return node_list_.get(0);
+    }
+
+    // Returns the last node in the node_list
+    public String dst() {
         return node_list_.get(node_list_.size() - 1);
     }
 
@@ -39,5 +44,15 @@ public class Pathway {
         }
         str.append("] " + bandwidth_);
         return str.toString();
+    }
+
+    // Returns whether this Pathway has an equivalent node_list as other.
+    public boolean equals(Pathway other) {
+        for (int i = 0; i < node_list_.size(); i++) {
+            if (!node_list_.get(i).equals(other.node_list_.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }

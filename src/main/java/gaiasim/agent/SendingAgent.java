@@ -8,11 +8,13 @@ import gaiasim.agent.FlowInfo;
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.NetGraph;
+import gaiasim.util.Constants;
 
 public class SendingAgent {
    
     public class Data {
         String id_;
+        String trace_id_;
 
         // A Map containing Connections for each path from this SendingAgent to each
         // ReceivingAgent. The first index of the Map is the ReceivingAgent ID. The
@@ -41,6 +43,7 @@ public class SendingAgent {
                     LinkedBlockingQueue<ControlMessage> from_sac_queue,
                     LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
             id_ = id;
+            trace_id_ = Constants.node_id_to_trace_id.get(id);
             from_sac_queue_ = from_sac_queue;
             to_sac_queue_ = to_sac_queue;
 
@@ -110,30 +113,40 @@ public class SendingAgent {
 
         public void run() {
             try {
-                ControlMessage c = data_.from_sac_queue_.take();
-                
-                if (c.type_ == ControlMessage.Type.FLOW_START) {
-                    assert(!data_.flows_.containsKey(c.flow_id_));
-                    
-                    FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, data_);
-                    data_.flows_.put(f.id_, f);
-                }
-                else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
-                    assert(data_.flows_.containsKey(c.flow_id_));
-                    FlowInfo f = data_.flows_.get(c.flow_id_);
-                   
-                    boolean flow_completed = f.update_flow(c.field0_, c.field1_);
-                    if (flow_completed) {
-                        data_.finish_flow(f.id_);
+                while (true) {
+                    ControlMessage c = data_.from_sac_queue_.take();
+
+                    if (c.type_ == ControlMessage.Type.FLOW_START) {
+                        System.out.println(data_.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert(!data_.flows_.containsKey(c.flow_id_));
+
+                        FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, data_);
+                        data_.flows_.put(f.id_, f);
                     }
-                }
-                else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
-                    FlowInfo f = data_.flows_.get(c.flow_id_);
-                    Connection conn = data_.connection_pools_.get(c.ra_id_)[c.field0_];
-                    f.add_subflow(conn, c.field1_);
-                }
-                else if (c.type_ == ControlMessage.Type.FLOW_STATUS_REQUEST) {
-                    data_.get_status();
+                    else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
+                        System.out.println(data_.trace_id_ + " FLOW_UPDATE(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert(data_.flows_.containsKey(c.flow_id_));
+                        FlowInfo f = data_.flows_.get(c.flow_id_);
+
+                        boolean flow_completed = f.update_flow(c.field0_, c.field1_);
+                        if (flow_completed) {
+                            data_.finish_flow(f.id_);
+                        }
+                    }
+                    else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
+                        System.out.println(data_.trace_id_ + " SUBFLOW_INFO(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        FlowInfo f = data_.flows_.get(c.flow_id_);
+                        Connection conn = data_.connection_pools_.get(c.ra_id_)[c.field0_];
+                        f.add_subflow(conn, c.field1_);
+                    }
+                    else if (c.type_ == ControlMessage.Type.FLOW_STATUS_REQUEST) {
+                        System.out.println(data_.trace_id_ + " FLOW_STATUS_REQUEST");
+                        data_.get_status();
+                    }
+                    else {
+                        System.out.println(data_.trace_id_ + " received an unexpected ControlMessage");
+                        System.exit(1);
+                    }
                 }
             }
             catch (InterruptedException e) {

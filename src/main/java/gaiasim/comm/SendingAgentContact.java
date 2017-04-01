@@ -8,6 +8,7 @@ import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
+import gaiasim.util.Constants;
 
 // A SendingAgentContact facilitates communication between
 // the GAIA controller and a sending agent at a certain datacenter.
@@ -18,6 +19,8 @@ public class SendingAgentContact {
     // Queue of messages between controller and SendingAgentContact.
     // The SendingAgentContact should only place messages on the queue.
     public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
+
+    public NetGraph net_graph_;
 
     // DEBUG ONLY
     public LinkedBlockingQueue<ControlMessage> to_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
@@ -32,7 +35,7 @@ public class SendingAgentContact {
         public SendingAgentListener(LinkedBlockingQueue<ScheduleMessage> schedule_queue, 
                                     LinkedBlockingQueue<ScheduleMessage> from_sa_queue) {
             schedule_queue_ = schedule_queue;
-            from_sa_queue_ = from_sa_queue_;
+            from_sa_queue_ = from_sa_queue;
         }
          
         public void run() {
@@ -54,6 +57,7 @@ public class SendingAgentContact {
     public SendingAgentContact(String id, NetGraph net_graph, String sa_ip, String sa_port, 
                                LinkedBlockingQueue<ScheduleMessage> schedule_queue) {
         id_ = id;
+        net_graph_ = net_graph;
         schedule_queue_ = schedule_queue;
 
         // TODO: Open connection with sending agent and
@@ -70,7 +74,7 @@ public class SendingAgentContact {
     // with information about the paths and rates used by the flow.
     public void startFlow(Flow f) {
         String start_or_update = f.updated_ ? "UPDATING" : "STARTING";
-        System.out.println(start_or_update + " flow " + f.id_ + " at " + id_);
+        System.out.println(start_or_update + " flow " + f.id_ + " at " + Constants.node_id_to_trace_id.get(id_));
 
         ControlMessage c = new ControlMessage();
         c.type_ = f.updated_ ? ControlMessage.Type.FLOW_UPDATE : ControlMessage.Type.FLOW_START;
@@ -86,7 +90,8 @@ public class SendingAgentContact {
                 ControlMessage sub_c = new ControlMessage();
                 sub_c.type_ = ControlMessage.Type.SUBFLOW_INFO;
                 sub_c.flow_id_ = f.id_;
-                sub_c.field0_ = 0; // TODO: Get the path ID -- probably store this with the path
+                sub_c.ra_id_ = p.dst();
+                sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
                 sub_c.field1_ = p.bandwidth_;
 
                 to_sa_queue_.put(sub_c);
@@ -94,6 +99,7 @@ public class SendingAgentContact {
         }
         catch (InterruptedException e) {
             // TODO: Close socket
+            e.printStackTrace();
             System.exit(1);
         }
     }

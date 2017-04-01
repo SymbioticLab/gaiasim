@@ -84,7 +84,7 @@ public class PoorManScheduler extends Scheduler {
 
                 for (Pathway p : potential_paths) {
                     // Does this link fit after the current last node in the path?
-                    if (!p.last_node().equals(l.src_loc_)) {
+                    if (!p.dst().equals(l.src_loc_)) {
                         continue;
                     }
 

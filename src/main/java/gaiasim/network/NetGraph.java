@@ -116,6 +116,18 @@ public class NetGraph {
         p.bandwidth_ = min_bw;
     }
 
+    // Returns the id of the path with matching node_list to p
+    public int get_path_id(Pathway p) {
+        int path_id = 0;
+        for (Pathway other : apap_.get(p.src()).get(p.dst())) {
+            if (p.equals(other)) {
+                return path_id;
+            }
+            path_id++;
+        }
+        return -1;
+    }
+
     // Make all paths from src to dst
     private ArrayList<Pathway> make_paths(Node src, Node dst) {
         ArrayList<Pathway> pathways = new ArrayList<Pathway>();
