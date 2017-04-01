@@ -29,4 +29,11 @@ public class Constants {
         // Stage, Coflow, and Flow ids begin in the form <job_id>:
         return id.split(":")[0];
     }
+
+    // Return the id of the coflow owining this flow
+    public static String get_coflow_id(String id) {
+        // Flow ids are of the form <job_id>:<coflow_id>:<flow_id>
+        String[] splits = id.split(":");
+        return splits[0] + ":" + splits[1];
+    }
 }

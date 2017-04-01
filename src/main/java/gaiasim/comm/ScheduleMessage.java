@@ -10,29 +10,23 @@ public class ScheduleMessage {
     public Type type_;
     public String job_id_;      // Used only by JOB_INSERTION
     public String flow_id_;     // Used by FLOW_COMPLETION and FLOW_STATUS_RESPONSE
-    public String coflow_id_;   // Used by FLOW_COMPLETION and FLOW_STATUS_RESPONSE
     public double transmitted_; // Used only by FLOW_STATUS_RESPONSE
 
-    // For constructing JOB_INSERTION messages
-    public ScheduleMessage(Type type, String job_id) {
+    // For constructing JOB_INSERTION or FLOW_COMPLETION messages
+    public ScheduleMessage(Type type, String id) {
         type_ = type;
-        job_id_ = job_id;
+        if (type == Type.JOB_INSERTION) {
+            job_id_ = id;
+        }
+        else {
+            flow_id_ = id;
+        }
     }
-
-    // For constructing FLOW_COMPLETION messages
-    public ScheduleMessage(Type type, String flow_id, 
-                           String coflow_id) {
-        type_ = type;
-        flow_id_ = flow_id;
-        coflow_id_ = coflow_id;
-    }
-
+    
     // For constructing FLOW_STATUS_RESPONSE messages
-    public ScheduleMessage(Type type, String flow_id, 
-                           String coflow_id, double transmitted) {
+    public ScheduleMessage(Type type, String flow_id, double transmitted) {
         type_ = type;
         flow_id_ = flow_id;
-        coflow_id_ = coflow_id;
         transmitted_ = transmitted;
     }
 

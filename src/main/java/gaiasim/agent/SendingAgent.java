@@ -72,8 +72,7 @@ public class SendingAgent {
                     FlowInfo f = flows_.get(k);
                     f.set_update_pending(true);
                     ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
-                                                            f.id_, "JACK DEAL WITH THIS",
-                                                            f.transmitted_);
+                                                            f.id_, f.transmitted_);
                     to_sac_queue_.put(s);
                 }
             }
@@ -84,8 +83,7 @@ public class SendingAgent {
         }
 
         public synchronized void finish_flow(String flow_id) {
-            ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION,
-                                                    flow_id, "JACK DEAL WITH THIS");
+            ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_id);
 
             try {
                 to_sac_queue_.put(s);
