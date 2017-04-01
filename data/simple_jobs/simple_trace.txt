@@ -1,0 +1,28 @@
+# 7: BIG_BENCH query19
+13 0 0
+Reducer5 1
+Map1 1
+Map10 1
+Reducer7 1
+Map3 1
+Reducer6 1
+Reducer9 1
+Map13 1
+Reducer12 1
+Map11 1
+Map8 1
+Map4 1
+Reducer2 1
+12
+Reducer5 Reducer6 4546
+Map1 Reducer2 3
+Map10 Reducer9 4
+Map3 Reducer2 8
+Reducer6 Reducer7 13698
+Reducer9 Map11 90
+Map13 Reducer6 4591
+Reducer12 Reducer6 4590
+Map11 Reducer12 220
+Map8 Reducer9 4
+Map4 Reducer5 860
+Reducer2 Map4 861
