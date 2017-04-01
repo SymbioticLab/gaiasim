@@ -29,7 +29,7 @@ public class Manager {
     public Scheduler scheduler_;
 
     // The number of jobs that have been inserted
-    int num_dispatched_jobs_ = 0;
+    public int num_dispatched_jobs_ = 0;
 
     // Path to directory to save output files
     public String outdir_;
@@ -181,16 +181,18 @@ public class Manager {
         // TODO: - Receive connection port numbers from sending agents
         //       - Set up forwarding rules for specified paths
 
-        int num_dispatched_jobs_ = 0;
+        num_dispatched_jobs_ = 0;
         int total_num_jobs = jobs_.size();
 
         // Start inserting jobs
-        new Thread(new JobInserter(jobs_by_time_, message_queue_)).start();
+        Thread job_inserter = new Thread(new JobInserter(jobs_by_time_, message_queue_));
+        job_inserter.start();
 
         // Handle job insertions and flow updates
         try {
             while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
+                System.out.println("dispatched=" + num_dispatched_jobs_ + " total=" + total_num_jobs);
                 ScheduleMessage m = message_queue_.take(); 
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
@@ -199,11 +201,12 @@ public class Manager {
                     reschedule();
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
-                    System.out.println("Registering flow completion for " + m.flow_id_);
+                    System.out.println("Received FIN for " + m.flow_id_);
                     
                     Flow f = active_flows_.get(m.flow_id_);
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
+                        System.out.println("    results in reschedule");
                         reschedule();
                     }
                 }
@@ -218,18 +221,22 @@ public class Manager {
             e.printStackTrace();
             System.exit(1);
         }
+        System.out.println("DONE");
     }
 
     public void reschedule() throws Exception {
 
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
-        for (String sa_id : sa_contacts_.keySet()) {
-            SendingAgentContact sac = sa_contacts_.get(sa_id);
-            sac.sendStatusRequest();
+        if (!active_flows_.isEmpty()) {
+            for (String sa_id : sa_contacts_.keySet()) {
+                SendingAgentContact sac = sa_contacts_.get(sa_id);
+                sac.sendStatusRequest();
+            }
         }
       
         // Wait until we've received either a FLOW_COMPLETION or
         // FLOW_STATUS_RESPONSE for every active flow
+        System.out.println("Need flow responses from " + active_flows_.size());
         while (!active_flows_.isEmpty()) {
             try {
                 // Block until we have a message to receive
@@ -259,7 +266,6 @@ public class Manager {
                 System.exit(1);
             }
         }
-
         // Reschedule the current flows
         update_and_schedule_flows(System.currentTimeMillis());
 
