@@ -79,7 +79,7 @@ public class DAGReader {
 
                 // TODO(jack): Consider making this a long
                 int data_size = Integer.parseInt(splits[2]); 
-                data_size = Math.max(1, data_size) * 8; // * 8 to conver to megabits
+                data_size = Math.max(1, data_size) * 8; // * 8 to convert to megabits
 
                 Coflow child = coflow_map.get(src_task);
                 Coflow parent = coflow_map.get(dst_task);

@@ -253,11 +253,12 @@ public class Manager {
                     handle_finished_flow(f, System.currentTimeMillis());
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                    System.out.println("Registering  FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_);
+                    System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_);
                     Flow f = active_flows_.get(m.flow_id_);
                     f.transmitted_ = m.transmitted_;
                     f.updated_ = true;
-                    active_flows_.remove(f);
+                    active_flows_.remove(m.flow_id_);
+                    System.out.println("active_flows_.size() = " + active_flows_.size());
                 }
             }
             catch (InterruptedException e) {
@@ -266,11 +267,13 @@ public class Manager {
                 System.exit(1);
             }
         }
+
         // Reschedule the current flows
         update_and_schedule_flows(System.currentTimeMillis());
 
         // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
         for (String flow_id : active_flows_.keySet()) {
+            System.out.println("Starting " + flow_id);
             Flow f = active_flows_.get(flow_id);
 
             // The ID of the sending agent from which this flow will
@@ -278,7 +281,7 @@ public class Manager {
             // Flows can have multiple paths, but the starting and ending
             // points of all paths will be the same, so we can just look
             // at the first path.
-            String sa_id = f.paths_.get(0).node_list_.get(0);
+            String sa_id = f.paths_.get(0).src();
             sa_contacts_.get(sa_id).startFlow(f);
         }
 

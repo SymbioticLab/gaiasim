@@ -42,18 +42,40 @@ public class FlowInfo {
         num_subflows_ = num_subflows;
         sa_ = sa;
     }
- 
+
+    // Called by a sending agent upon receiving a SUBFLOW_INFO message
+    // for this flow from the controller. We do not immediately add
+    // a subscrition for a subflow in response to a SUBFLOW_INFO message.
+    // Rather, we wait until we've received all expected SUBFLOW_INFO
+    // messages for this flow (we know how many we're expecting from
+    // field0 of the preceding FLOW_{START,UPDATE}). This way all subflows
+    // will start at roughly the same time, so we don't have to worry
+    // about an earlier-starting subflow completing a small flow before
+    // all other subflows have been added.
     public synchronized void add_subflow(Connection c, double rate) {
         if (pending_subscriptions_.size() + 1 == num_subflows_) {
-            c.data_.subscribe(this, rate);
-            subscriptions_.put(c.data_.id_, c);
 
-            for (PendingSubscription s : pending_subscriptions_) {
-                s.conn_.data_.subscribe(this, s.rate_);
-                subscriptions_.put(s.conn_.data_.id_, s.conn_);
+            // If the flow was finished while we were waiting for
+            // an update, we should now send the FIN message for this flow.
+            // We should wait until we've received all subflow updates
+            // before sending the FIN so that we don't remove the flow
+            // from the sending agent's flow_table when there are still
+            // potentially in-flight updates for the flow (could result
+            // in a null-access to the table).
+            if (done_) {
+                sa_.finish_flow(id_); 
             }
+            else {
+                c.data_.subscribe(this, rate);
+                subscriptions_.put(c.data_.id_, c);
 
-            pending_subscriptions_.clear();
+                for (PendingSubscription s : pending_subscriptions_) {
+                    s.conn_.data_.subscribe(this, s.rate_);
+                    subscriptions_.put(s.conn_.data_.id_, s.conn_);
+                }
+
+                pending_subscriptions_.clear();
+            }
         }
         else {
             pending_subscriptions_.add(new PendingSubscription(c, rate));
@@ -91,6 +113,9 @@ public class FlowInfo {
             if (!update_pending_ && subscriptions_.isEmpty()) {
                 sa_.finish_flow(id_);
             }
+            else {
+                System.out.println(id_ + " subflow finished, but not sending FIN. update_pending_=" + update_pending_ + " subs.size()=" + subscriptions_.size());
+            }
 
             return true;
         }
@@ -103,6 +128,10 @@ public class FlowInfo {
             if (!update_pending_ && subscriptions_.isEmpty()) {
                 sa_.finish_flow(id_);
             }
+            else {
+                System.out.println(id_ + " subflow finished, but not sending FIN. update_pending_=" + update_pending_ + " subs.size()=" + subscriptions_.size());
+            }
+
             
             return true;
         } // transmitted_ >= volume_
@@ -110,16 +139,7 @@ public class FlowInfo {
         return false;
     }
 
-    // If the flow was not completed while we waited for an update,
-    // unsubscribe from all connections and prepare to receive all
-    // subflow announcements (return false). If the flow was completed
-    // while we were waiting for an update, return true to tell the
-    // SendingAgent to send a FIN for this flow and discard it.
-    public synchronized boolean update_flow(int num_subflows, double volume) {
-        if (done_) {
-            return true;
-        }
-
+    public synchronized void update_flow(int num_subflows, double volume) {
         volume_ = volume;
         num_subflows_ = num_subflows;
         for (String k : subscriptions_.keySet()) {
@@ -130,7 +150,6 @@ public class FlowInfo {
         pending_subscriptions_.clear();
 
         update_pending_ = false;
-        return false;
     }
 
 }

@@ -87,11 +87,21 @@ public class Connection {
 
         public void run() {
             while (!Thread.interrupted()) {
-                Random rnd = new Random(13);
 
                 if (data_.rate_ > 0.0) {
                     // TODO: Actually send data
-                    data_.distribute_transmitted(1048576 * (rnd.nextDouble() + 0.5));
+                    data_.distribute_transmitted(data_.rate_);
+                }
+                else {
+                    // TODO: This is janky. Should probably use some kind
+                    // of an update queue similar to what we have between
+                    // controller and SendingAgentContacts.
+                    try {
+                        Thread.sleep(1000);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             // TODO: Close socket

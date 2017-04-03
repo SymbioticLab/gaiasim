@@ -57,7 +57,7 @@ public class SendingAgent {
                         //       - Retrieve the socket's port (getsockopt) and send
                         //            <dst, i, port_no> back to controller
 
-                        Connection conn = new Connection(dst + Integer.toString(i));
+                        Connection conn = new Connection(trace_id_ + "-" + Constants.node_id_to_trace_id.get(dst) + "." + Integer.toString(i));
                         conns[i] = conn;
                         connections_.put(conn.data_.id_, conn);
                     }
@@ -74,6 +74,7 @@ public class SendingAgent {
                 for (String k : flows_.keySet()) {
                     FlowInfo f = flows_.get(k);
                     f.set_update_pending(true);
+                    System.out.println("Sending STATUS_RESPONSE for " + f.id_ + " transmitted " + f.transmitted_ + " / " + f.volume_ + " and done=" + f.done_);
                     ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
                                                             f.id_, f.transmitted_);
                     to_sac_queue_.put(s);
@@ -127,14 +128,11 @@ public class SendingAgent {
                         System.out.println(data_.trace_id_ + " FLOW_UPDATE(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
                         assert(data_.flows_.containsKey(c.flow_id_));
                         FlowInfo f = data_.flows_.get(c.flow_id_);
-
-                        boolean flow_completed = f.update_flow(c.field0_, c.field1_);
-                        if (flow_completed) {
-                            data_.finish_flow(f.id_);
-                        }
+                        f.update_flow(c.field0_, c.field1_);
                     }
                     else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
                         System.out.println(data_.trace_id_ + " SUBFLOW_INFO(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert data_.flows_.containsKey(c.flow_id_) : data_.trace_id_ + " does not currently have " + c.flow_id_;
                         FlowInfo f = data_.flows_.get(c.flow_id_);
                         Connection conn = data_.connection_pools_.get(c.ra_id_)[c.field0_];
                         f.add_subflow(conn, c.field1_);
@@ -164,7 +162,6 @@ public class SendingAgent {
                         LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
         data_ = new Data(id, net_graph, from_sac_queue, to_sac_queue);
 
-        // TODO: Start a thread to listen for messages from the Controller
         listen_ctrl_thread_ = new Thread(new Listener(data_));
         listen_ctrl_thread_.start();
     }
