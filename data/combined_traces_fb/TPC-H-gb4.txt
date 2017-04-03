@@ -1,0 +1,7118 @@
+# 5: TPC-H query15
+8 0 0
+Map1 5 EU3 EU1 US3 US4 US5
+Reducer4 1 US3
+Reducer7 1 AS2
+Reducer6 2 US3 EU1
+Map8 1 EU3
+Map5 5 AS1 EU1 EU3 EU4 US1
+Reducer3 1 US4
+Reducer2 1 EU2
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 10: TPC-H query21
+14 1 11
+Reducer5 5 US2 EU4 US6 AS1 US4
+Map10 5 AS1 EU4 US1 US6 AS2
+Map1 1 US4
+Reducer4 2 AS1 AS2
+Reducer7 3 US4 EU4 US2
+Map2 1 EU2
+Reducer6 5 AS1 US4 AS2 EU2 US6
+Reducer14 3 US1 AS1 EU1
+Map13 5 US3 US5 AS2 EU4 US4
+Reducer8 1 AS1
+Reducer12 7 US4 AS1 EU4 US1 US6 AS2 US3
+Map11 5 EU2 AS1 US1 US6 EU4
+Map9 5 EU1 US4 US1 EU4 AS1
+Reducer3 2 AS2 EU4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 10: TPC-H query21
+14 2 13
+Reducer5 5 EU2 AS2 US4 US2 EU3
+Map10 5 AS1 US3 US6 US5 EU3
+Map1 1 US4
+Reducer4 2 EU3 EU2
+Reducer7 3 US1 US2 AS2
+Map2 1 US1
+Reducer6 5 US1 EU1 US3 EU3 US4
+Reducer14 3 EU1 US1 EU4
+Map13 5 US6 EU1 EU3 US5 EU2
+Reducer8 1 US4
+Reducer12 7 US5 US3 US4 US6 EU2 US2 EU4
+Map11 5 US1 AS1 EU2 US6 EU3
+Map9 5 US4 EU4 US1 EU3 AS1
+Reducer3 2 US5 US1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 16: TPC-H query7
+11 3 16
+Reducer5 1 US2
+Reducer4 1 EU3
+Map1 1 EU4
+Map10 1 AS2
+Reducer6 1 US1
+Map11 1 EU4
+Map8 5 EU3 US1 US3 US4 EU1
+Map9 3 EU1 EU4 EU2
+Reducer3 3 EU2 EU4 US4
+Reducer2 2 US2 US1
+Map7 5 EU1 AS2 US1 EU4 EU3
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 8: TPC-H query1
+3 4 22
+Map1 5 EU4 EU1 EU2 US1 US4
+Reducer3 1 EU2
+Reducer2 5 US3 US6 EU2 EU3 AS2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 0: TPC-H query10
+8 5 35
+Reducer5 1 EU1
+Reducer4 1 US4
+Map1 3 US5 EU4 US6
+Map8 1 US5
+Reducer3 4 AS2 US1 EU1 US6
+Map6 5 EU4 US2 EU3 US1 US6
+Reducer2 1 US2
+Map7 5 AS1 US1 EU3 EU2 EU1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 12: TPC-H query3
+7 6 67
+Reducer5 1 EU2
+Map1 3 US4 EU2 US2
+Reducer4 1 EU1
+Map6 5 EU1 AS2 US3 US5 US2
+Reducer3 3 US3 EU2 US1
+Map7 5 US6 AS2 EU3 US2 US1
+Reducer2 1 US3
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 15: TPC-H query6
+2 7 70
+Map1 5 US3 US5 EU4 EU1 EU3
+Reducer2 1 EU4
+1
+Map1 Reducer2 3181
+# 1: TPC-H query11
+12 8 71
+Reducer10 1 EU1
+Reducer4 1 US2
+Map1 5 EU1 US3 EU2 AS2 EU3
+Reducer9 1 US6
+Reducer8 1 EU3
+Map11 1 AS1
+Map12 1 EU3
+Map5 1 EU3
+Reducer3 1 EU1
+Map6 1 EU1
+Reducer2 1 EU2
+Map7 5 EU1 US5 EU4 AS2 EU3
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 12: TPC-H query3
+7 9 72
+Reducer5 1 EU1
+Map1 3 EU3 EU4 US2
+Reducer4 1 EU4
+Map6 5 US4 AS1 US3 US6 EU3
+Reducer3 3 US6 EU1 EU2
+Map7 5 AS2 US5 US1 US3 EU3
+Reducer2 1 AS1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 10: TPC-H query21
+14 10 74
+Reducer5 5 AS1 EU2 EU3 US5 US6
+Map10 5 US3 EU1 US5 US1 US6
+Map1 1 AS2
+Reducer4 2 US3 US2
+Reducer7 3 AS2 EU3 US1
+Map2 1 US6
+Reducer6 5 US1 EU1 AS1 AS2 EU4
+Reducer14 3 US3 EU3 AS1
+Map13 5 US6 AS2 EU3 US3 EU1
+Reducer8 1 US5
+Reducer12 7 EU1 EU3 US3 US6 AS1 US5 AS2
+Map11 5 AS1 US5 US1 US2 US6
+Map9 5 US3 US2 AS1 US6 EU1
+Reducer3 2 US4 US6
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 12: TPC-H query3
+7 11 82
+Reducer5 1 US3
+Map1 3 EU3 AS1 EU1
+Reducer4 1 EU3
+Map6 5 US3 EU4 EU3 AS2 EU2
+Reducer3 3 US2 EU4 EU1
+Map7 5 EU1 US2 AS1 US5 US3
+Reducer2 1 EU2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 15: TPC-H query6
+2 12 82
+Map1 5 EU4 EU2 US6 US4 AS1
+Reducer2 1 US2
+1
+Map1 Reducer2 3181
+# 11: TPC-H query22
+8 13 84
+Reducer5 1 AS1
+Map1 5 EU2 US6 EU1 EU4 US3
+Reducer4 1 AS1
+Reducer8 1 US2
+Map6 3 EU1 US5 US3
+Reducer3 2 EU2 US6
+Map7 3 US4 EU2 EU1
+Reducer2 3 EU1 US6 EU3
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 1: TPC-H query11
+12 14 88
+Reducer10 1 EU1
+Reducer4 1 AS1
+Map1 5 US3 EU1 US2 EU3 EU2
+Reducer9 1 US4
+Reducer8 1 AS2
+Map11 1 US2
+Map12 1 EU1
+Map5 1 US4
+Reducer3 1 EU1
+Map6 1 US6
+Reducer2 1 AS1
+Map7 5 US3 US2 EU4 US6 US4
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 16: TPC-H query7
+11 15 92
+Reducer5 1 US2
+Reducer4 1 EU4
+Map1 1 US6
+Map10 1 EU4
+Reducer6 1 US3
+Map11 1 US4
+Map8 5 AS1 EU3 EU4 US3 US1
+Map9 3 US5 EU1 EU3
+Reducer3 3 EU3 US4 US3
+Reducer2 2 EU4 US5
+Map7 5 US3 EU2 EU3 US1 US2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 15: TPC-H query6
+2 16 96
+Map1 5 US5 US3 US6 EU4 EU3
+Reducer2 1 US2
+1
+Map1 Reducer2 3181
+# 2: TPC-H query12
+5 17 97
+Reducer4 1 US6
+Map1 5 US3 US1 US2 EU2 US6
+Map5 5 US1 US6 US5 US2 AS2
+Reducer3 1 US4
+Reducer2 2 EU2 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 7: TPC-H query17
+7 18 102
+Map1 2 EU1 AS2
+Reducer4 1 EU3
+Reducer7 7 EU3 EU1 AS2 US5 US6 EU4 US1
+Map5 5 US3 US2 US1 EU3 EU2
+Map6 5 AS1 US2 AS2 EU1 US1
+Reducer3 7 US3 AS2 EU2 US4 AS1 EU3 US1
+Reducer2 7 EU4 US2 EU3 AS2 AS1 US5 EU1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 8: TPC-H query1
+3 19 112
+Map1 5 EU3 US2 EU2 AS1 AS2
+Reducer3 1 EU2
+Reducer2 5 US5 US3 AS1 EU3 US2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 7: TPC-H query17
+7 20 113
+Map1 2 AS1 US3
+Reducer4 1 US3
+Reducer7 7 EU2 US2 EU4 EU3 US3 AS2 AS1
+Map5 5 US6 US2 AS2 AS1 US4
+Map6 5 EU2 AS2 EU4 EU1 AS1
+Reducer3 7 AS1 EU1 US4 US5 US3 EU2 AS2
+Reducer2 7 US2 US1 EU3 US3 US4 AS1 EU1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 4: TPC-H query14
+4 21 115
+Map1 5 AS1 US5 EU1 US2 AS2
+Map4 2 US4 US1
+Reducer3 1 EU3
+Reducer2 1 US4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 10: TPC-H query21
+14 22 120
+Reducer5 5 US5 AS2 AS1 EU3 EU4
+Map10 5 AS2 US3 EU3 US2 EU2
+Map1 1 AS2
+Reducer4 2 EU4 US5
+Reducer7 3 US4 EU1 EU3
+Map2 1 AS2
+Reducer6 5 US2 EU4 US6 US3 EU3
+Reducer14 3 EU3 US2 AS1
+Map13 5 EU3 EU2 US1 AS1 US3
+Reducer8 1 EU3
+Reducer12 7 US1 EU2 EU1 EU4 US2 AS2 AS1
+Map11 5 US5 AS2 US2 US3 US4
+Map9 5 EU3 US6 US2 US3 US5
+Reducer3 2 US5 US6
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 9: TPC-H query20
+12 23 132
+Reducer5 1 US6
+Map10 5 US3 US2 EU4 US5 AS1
+Map1 2 EU1 US2
+Reducer4 1 US3
+Reducer7 1 US3
+Reducer6 1 US3
+Reducer9 1 EU4
+Map11 1 AS2
+Map12 1 US4
+Map8 5 US2 EU3 US1 US3 EU4
+Reducer3 1 AS1
+Reducer2 1 US2
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 3: TPC-H query13
+6 24 143
+Reducer5 1 US3
+Reducer4 1 AS1
+Map1 3 US5 EU3 US3
+Reducer3 1 EU3
+Map6 5 EU4 US3 EU3 AS2 EU2
+Reducer2 2 AS2 EU2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 2: TPC-H query12
+5 25 151
+Reducer4 1 US1
+Map1 5 US4 EU3 US1 EU1 US5
+Map5 5 EU4 US5 US4 US3 US6
+Reducer3 1 US4
+Reducer2 2 EU2 US3
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 10: TPC-H query21
+14 26 152
+Reducer5 5 US1 US5 AS2 AS1 US4
+Map10 5 EU3 US4 AS2 US3 EU4
+Map1 1 US4
+Reducer4 2 US3 EU1
+Reducer7 3 US6 EU4 AS2
+Map2 1 EU1
+Reducer6 5 US3 EU1 EU2 EU4 US5
+Reducer14 3 US2 EU4 US6
+Map13 5 US4 EU1 US6 AS1 US2
+Reducer8 1 AS2
+Reducer12 7 EU2 US3 US1 EU4 US6 US2 US5
+Map11 5 AS1 US2 US1 EU1 US4
+Map9 5 US1 US6 EU3 US3 US2
+Reducer3 2 US1 AS2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 14: TPC-H query5
+11 27 157
+Reducer5 1 US2
+Map1 3 US4 EU3 EU1
+Reducer4 4 EU2 EU4 EU1 US3
+Map10 1 EU3
+Reducer6 1 US3
+Map11 1 EU1
+Map8 5 AS2 EU1 AS1 US5 EU4
+Map9 1 US5
+Reducer3 4 EU2 EU1 US4 US1
+Reducer2 1 US5
+Map7 5 EU4 US3 EU1 US4 US2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 13: TPC-H query4
+5 28 159
+Reducer4 1 EU3
+Map1 5 US1 US2 AS2 EU2 EU3
+Map5 5 AS2 US5 US2 EU4 US1
+Reducer3 3 EU4 AS1 US2
+Reducer2 3 EU1 EU4 AS2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 10: TPC-H query21
+14 29 159
+Reducer5 5 AS2 EU4 US3 EU3 EU2
+Map10 5 US1 AS2 EU4 US4 US6
+Map1 1 US2
+Reducer4 2 US5 US6
+Reducer7 3 US5 US4 EU4
+Map2 1 US4
+Reducer6 5 US5 EU3 AS1 US2 US6
+Reducer14 3 EU3 US2 EU4
+Map13 5 EU2 US4 US1 AS2 US2
+Reducer8 1 US2
+Reducer12 7 EU2 EU1 US4 AS2 EU4 US1 US3
+Map11 5 AS1 EU4 US5 US3 EU3
+Map9 5 EU2 US1 EU3 AS1 US2
+Reducer3 2 EU2 EU1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 1: TPC-H query11
+12 30 159
+Reducer10 1 EU1
+Reducer4 1 AS1
+Map1 5 US1 AS2 US3 US5 US4
+Reducer9 1 US6
+Reducer8 1 US5
+Map11 1 AS2
+Map12 1 AS2
+Map5 1 EU1
+Reducer3 1 US1
+Map6 1 EU1
+Reducer2 1 EU3
+Map7 5 US2 US6 AS1 EU2 EU3
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 0: TPC-H query10
+8 31 159
+Reducer5 1 AS2
+Reducer4 1 US5
+Map1 3 EU1 US3 EU4
+Map8 1 US1
+Reducer3 4 EU3 US1 AS2 AS1
+Map6 5 EU4 US6 US2 AS1 US3
+Reducer2 1 EU4
+Map7 5 US1 EU2 US5 US2 AS1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 1: TPC-H query11
+12 32 160
+Reducer10 1 US6
+Reducer4 1 US2
+Map1 5 EU3 US6 EU1 EU2 US5
+Reducer9 1 US6
+Reducer8 1 US1
+Map11 1 US3
+Map12 1 AS2
+Map5 1 EU4
+Reducer3 1 US4
+Map6 1 EU2
+Reducer2 1 US2
+Map7 5 US5 EU4 EU3 EU2 AS1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 12: TPC-H query3
+7 33 160
+Reducer5 1 US1
+Map1 3 US4 EU4 EU1
+Reducer4 1 US1
+Map6 5 US5 EU2 EU1 EU3 AS2
+Reducer3 3 AS1 US2 US4
+Map7 5 AS2 US4 US5 EU4 EU2
+Reducer2 1 US3
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 6: TPC-H query16
+9 34 162
+Reducer5 1 US4
+Map1 5 EU4 EU3 US3 US1 US6
+Reducer4 1 US6
+Reducer9 1 US5
+Map8 1 US6
+Reducer3 1 EU1
+Map6 2 US6 US4
+Reducer2 1 EU4
+Map7 1 US2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 5: TPC-H query15
+8 35 163
+Map1 5 AS1 US1 EU3 EU2 US2
+Reducer4 1 EU2
+Reducer7 1 US4
+Reducer6 2 EU2 AS1
+Map8 1 EU1
+Map5 5 US3 US1 EU3 AS1 US5
+Reducer3 1 EU1
+Reducer2 1 EU4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 16: TPC-H query7
+11 36 164
+Reducer5 1 AS1
+Reducer4 1 US5
+Map1 1 AS2
+Map10 1 US1
+Reducer6 1 US6
+Map11 1 US1
+Map8 5 EU1 AS1 AS2 EU3 US6
+Map9 3 AS1 US3 EU4
+Reducer3 3 US3 EU4 EU1
+Reducer2 2 AS2 EU2
+Map7 5 US3 AS2 US1 US6 EU1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 10: TPC-H query21
+14 37 169
+Reducer5 5 US5 AS1 US4 EU1 EU2
+Map10 5 EU1 US1 US5 US6 EU2
+Map1 1 AS2
+Reducer4 2 EU2 US2
+Reducer7 3 AS2 US5 US2
+Map2 1 US5
+Reducer6 5 US1 US4 AS2 EU2 US6
+Reducer14 3 EU2 AS2 US1
+Map13 5 EU1 US5 AS2 US4 EU4
+Reducer8 1 US2
+Reducer12 7 AS2 EU3 EU2 EU1 US3 US4 US1
+Map11 5 EU1 US6 US3 AS1 US1
+Map9 5 EU3 US3 EU4 AS2 US6
+Reducer3 2 AS1 US4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 11: TPC-H query22
+8 38 200
+Reducer5 1 US6
+Map1 5 US5 AS1 EU4 EU3 US6
+Reducer4 1 EU1
+Reducer8 1 US4
+Map6 3 EU4 EU3 US3
+Reducer3 2 US4 US3
+Map7 3 US5 US2 AS1
+Reducer2 3 US5 US1 AS1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 10: TPC-H query21
+14 39 200
+Reducer5 5 EU3 US4 EU2 AS2 US5
+Map10 5 AS1 US5 US1 EU2 EU1
+Map1 1 US4
+Reducer4 2 EU3 US5
+Reducer7 3 US2 AS2 US6
+Map2 1 AS1
+Reducer6 5 EU2 AS1 US3 US6 EU3
+Reducer14 3 EU4 US2 US5
+Map13 5 EU4 AS1 US1 EU3 AS2
+Reducer8 1 EU1
+Reducer12 7 EU3 EU4 US3 AS2 US6 US5 US1
+Map11 5 US3 US1 AS2 EU1 US6
+Map9 5 US4 AS2 EU3 EU4 US5
+Reducer3 2 EU4 EU1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 10: TPC-H query21
+14 40 200
+Reducer5 5 EU4 US4 US6 US3 US5
+Map10 5 AS2 EU4 US5 EU3 US2
+Map1 1 EU1
+Reducer4 2 EU4 AS1
+Reducer7 3 AS1 EU3 EU2
+Map2 1 EU1
+Reducer6 5 AS1 US2 AS2 US4 EU1
+Reducer14 3 EU2 AS1 EU3
+Map13 5 US2 US5 US4 EU3 US1
+Reducer8 1 US1
+Reducer12 7 US3 US4 US1 EU4 US6 AS1 EU1
+Map11 5 US1 EU2 EU3 AS1 EU4
+Map9 5 EU1 US2 US3 EU2 US4
+Reducer3 2 US3 EU2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 11: TPC-H query22
+8 41 200
+Reducer5 1 EU2
+Map1 5 US6 AS1 EU4 EU3 US2
+Reducer4 1 US3
+Reducer8 1 US6
+Map6 3 EU3 EU1 US6
+Reducer3 2 EU2 AS2
+Map7 3 EU4 EU1 US1
+Reducer2 3 US3 EU1 US5
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 7: TPC-H query17
+7 42 201
+Map1 2 EU4 US5
+Reducer4 1 EU1
+Reducer7 7 AS1 EU3 US1 US6 EU4 EU1 AS2
+Map5 5 US6 EU2 US3 EU1 US4
+Map6 5 EU1 US5 US6 AS1 AS2
+Reducer3 7 US3 US1 US5 EU2 EU1 AS1 EU4
+Reducer2 7 EU1 US1 US4 US6 US3 AS2 EU2
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 1: TPC-H query11
+12 43 201
+Reducer10 1 US1
+Reducer4 1 US4
+Map1 5 US6 EU3 US5 AS2 US3
+Reducer9 1 AS1
+Reducer8 1 EU1
+Map11 1 EU4
+Map12 1 AS1
+Map5 1 EU4
+Reducer3 1 EU4
+Map6 1 EU4
+Reducer2 1 US6
+Map7 5 US2 US3 US1 EU1 US4
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 0: TPC-H query10
+8 44 201
+Reducer5 1 EU3
+Reducer4 1 US3
+Map1 3 AS2 US5 US4
+Map8 1 EU3
+Reducer3 4 US1 US6 EU3 US5
+Map6 5 EU3 US3 AS2 EU1 US4
+Reducer2 1 EU3
+Map7 5 EU1 AS1 US2 US4 US1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 11: TPC-H query22
+8 45 202
+Reducer5 1 US4
+Map1 5 US3 US2 US6 AS2 US4
+Reducer4 1 EU2
+Reducer8 1 US6
+Map6 3 US1 US6 AS1
+Reducer3 2 US5 US6
+Map7 3 US4 EU1 US3
+Reducer2 3 EU2 US4 AS1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 13: TPC-H query4
+5 46 202
+Reducer4 1 US4
+Map1 5 US1 EU1 US2 AS1 EU3
+Map5 5 EU1 US4 US6 EU3 US2
+Reducer3 3 US4 US3 US6
+Reducer2 3 EU1 US2 EU2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 15: TPC-H query6
+2 47 203
+Map1 5 US1 US6 EU1 US2 EU3
+Reducer2 1 US1
+1
+Map1 Reducer2 3181
+# 11: TPC-H query22
+8 48 203
+Reducer5 1 US1
+Map1 5 US6 US1 AS2 US3 EU4
+Reducer4 1 EU3
+Reducer8 1 EU2
+Map6 3 US4 EU3 AS2
+Reducer3 2 US4 AS1
+Map7 3 US3 EU1 US6
+Reducer2 3 EU1 US4 AS1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 13: TPC-H query4
+5 49 205
+Reducer4 1 US1
+Map1 5 AS2 US2 US6 EU1 EU4
+Map5 5 EU1 US4 EU3 AS1 US5
+Reducer3 3 US2 US1 US6
+Reducer2 3 EU3 US2 US4
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 10: TPC-H query21
+14 50 207
+Reducer5 5 US5 US1 US3 AS1 AS2
+Map10 5 US6 EU4 US5 US3 EU1
+Map1 1 US3
+Reducer4 2 EU1 US5
+Reducer7 3 US2 US4 EU2
+Map2 1 US4
+Reducer6 5 US4 EU3 US1 EU1 EU4
+Reducer14 3 EU2 EU1 AS1
+Map13 5 US5 AS2 US3 AS1 EU1
+Reducer8 1 US5
+Reducer12 7 US1 US4 US2 AS2 AS1 US5 EU4
+Map11 5 EU3 AS1 US3 US4 EU4
+Map9 5 US1 US4 EU3 US3 EU2
+Reducer3 2 US1 US6
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 1: TPC-H query11
+12 51 226
+Reducer10 1 AS1
+Reducer4 1 US1
+Map1 5 US1 EU4 EU2 US4 AS1
+Reducer9 1 EU3
+Reducer8 1 EU1
+Map11 1 EU2
+Map12 1 US3
+Map5 1 US4
+Reducer3 1 US5
+Map6 1 US3
+Reducer2 1 AS2
+Map7 5 US1 AS2 US2 EU2 EU1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 12: TPC-H query3
+7 52 237
+Reducer5 1 US3
+Map1 3 US3 AS2 EU3
+Reducer4 1 US5
+Map6 5 EU2 EU3 US2 AS2 AS1
+Reducer3 3 US2 EU3 EU4
+Map7 5 AS1 US6 US4 EU4 US1
+Reducer2 1 US1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 9: TPC-H query20
+12 53 239
+Reducer5 1 AS2
+Map10 5 US6 US2 US3 EU1 EU4
+Map1 2 EU3 EU4
+Reducer4 1 US5
+Reducer7 1 EU1
+Reducer6 1 US4
+Reducer9 1 US3
+Map11 1 EU4
+Map12 1 AS1
+Map8 5 US6 AS2 AS1 EU3 US5
+Reducer3 1 AS1
+Reducer2 1 US4
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 4: TPC-H query14
+4 54 247
+Map1 5 EU4 EU3 EU2 US6 AS1
+Map4 2 AS2 US4
+Reducer3 1 US3
+Reducer2 1 US5
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 2: TPC-H query12
+5 55 251
+Reducer4 1 AS2
+Map1 5 US2 US3 EU3 EU4 US4
+Map5 5 EU4 EU3 US4 US3 AS2
+Reducer3 1 EU4
+Reducer2 2 EU4 US3
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 13: TPC-H query4
+5 56 256
+Reducer4 1 EU2
+Map1 5 US2 US5 AS1 US4 EU2
+Map5 5 US3 US6 US5 EU2 EU3
+Reducer3 3 US2 EU4 US4
+Reducer2 3 US3 AS2 US2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 9: TPC-H query20
+12 57 276
+Reducer5 1 EU2
+Map10 5 US3 AS1 US5 EU4 US1
+Map1 2 EU4 AS2
+Reducer4 1 AS2
+Reducer7 1 EU1
+Reducer6 1 AS2
+Reducer9 1 US3
+Map11 1 US3
+Map12 1 US4
+Map8 5 EU3 US4 EU4 US1 US6
+Reducer3 1 AS1
+Reducer2 1 EU3
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 13: TPC-H query4
+5 58 287
+Reducer4 1 US6
+Map1 5 EU2 AS1 EU1 AS2 US1
+Map5 5 US6 AS1 US5 EU4 US2
+Reducer3 3 US5 AS2 EU2
+Reducer2 3 US6 US3 US4
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 12: TPC-H query3
+7 59 299
+Reducer5 1 US6
+Map1 3 EU4 EU3 US4
+Reducer4 1 EU1
+Map6 5 US2 US6 US4 AS1 US5
+Reducer3 3 EU1 US6 EU3
+Map7 5 US2 US3 US5 US6 EU3
+Reducer2 1 US5
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 2: TPC-H query12
+5 60 343
+Reducer4 1 AS2
+Map1 5 EU1 EU4 US4 AS2 EU3
+Map5 5 AS1 US4 US6 US1 AS2
+Reducer3 1 EU3
+Reducer2 2 US4 EU4
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 6: TPC-H query16
+9 61 344
+Reducer5 1 US6
+Map1 5 US4 US5 EU4 US1 AS1
+Reducer4 1 AS1
+Reducer9 1 EU4
+Map8 1 US4
+Reducer3 1 US6
+Map6 2 EU1 US2
+Reducer2 1 US3
+Map7 1 AS1
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 11: TPC-H query22
+8 62 344
+Reducer5 1 US5
+Map1 5 US2 AS2 EU2 EU4 US5
+Reducer4 1 US6
+Reducer8 1 AS2
+Map6 3 EU2 US4 US6
+Reducer3 2 EU3 AS2
+Map7 3 US3 US5 US6
+Reducer2 3 AS2 US5 US6
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 4: TPC-H query14
+4 63 345
+Map1 5 EU2 US6 US1 US5 EU1
+Map4 2 US1 AS1
+Reducer3 1 US5
+Reducer2 1 US1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 10: TPC-H query21
+14 64 345
+Reducer5 5 US3 US5 EU4 US4 EU1
+Map10 5 US2 US4 US1 EU4 AS1
+Map1 1 US4
+Reducer4 2 US1 EU1
+Reducer7 3 US2 AS2 US3
+Map2 1 US4
+Reducer6 5 US3 US6 US4 EU2 EU4
+Reducer14 3 US3 US6 US4
+Map13 5 US5 EU1 EU4 US3 AS1
+Reducer8 1 EU2
+Reducer12 7 US6 EU4 EU2 EU1 US1 AS2 EU3
+Map11 5 AS2 US1 EU2 US4 EU1
+Map9 5 EU2 US4 AS2 EU1 US3
+Reducer3 2 EU2 US6
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 6: TPC-H query16
+9 65 345
+Reducer5 1 EU3
+Map1 5 AS2 EU3 US6 US5 EU2
+Reducer4 1 US3
+Reducer9 1 US1
+Map8 1 US6
+Reducer3 1 US1
+Map6 2 US2 EU2
+Reducer2 1 US3
+Map7 1 US5
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 11: TPC-H query22
+8 66 347
+Reducer5 1 US5
+Map1 5 EU1 US6 EU4 AS1 US4
+Reducer4 1 EU3
+Reducer8 1 EU3
+Map6 3 AS2 US4 AS1
+Reducer3 2 EU3 US3
+Map7 3 US5 AS1 US6
+Reducer2 3 AS1 US2 US6
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 5: TPC-H query15
+8 67 348
+Map1 5 AS2 EU1 US3 US4 EU2
+Reducer4 1 EU2
+Reducer7 1 EU4
+Reducer6 2 US3 US2
+Map8 1 US1
+Map5 5 EU4 EU3 US4 US3 US2
+Reducer3 1 US2
+Reducer2 1 AS2
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 14: TPC-H query5
+11 68 351
+Reducer5 1 EU2
+Map1 3 US1 US5 AS1
+Reducer4 4 US2 US4 AS2 US1
+Map10 1 US6
+Reducer6 1 EU3
+Map11 1 AS1
+Map8 5 AS1 US1 EU4 EU1 EU3
+Map9 1 US1
+Reducer3 4 US6 AS1 US4 AS2
+Reducer2 1 US5
+Map7 5 EU1 AS1 US5 EU3 US2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 2: TPC-H query12
+5 69 352
+Reducer4 1 EU2
+Map1 5 AS1 EU4 US6 US1 EU3
+Map5 5 US2 US4 US3 EU3 EU1
+Reducer3 1 US3
+Reducer2 2 US2 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 16: TPC-H query7
+11 70 353
+Reducer5 1 US4
+Reducer4 1 EU3
+Map1 1 EU3
+Map10 1 US6
+Reducer6 1 AS1
+Map11 1 US6
+Map8 5 US3 AS1 EU3 US4 EU1
+Map9 3 EU4 EU2 US4
+Reducer3 3 AS2 US3 US4
+Reducer2 2 AS1 EU4
+Map7 5 EU2 AS1 EU3 US2 US4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 8: TPC-H query1
+3 71 356
+Map1 5 EU4 US3 US1 US4 EU1
+Reducer3 1 EU4
+Reducer2 5 US5 EU1 US3 US1 US2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 14: TPC-H query5
+11 72 359
+Reducer5 1 EU3
+Map1 3 EU4 EU1 AS1
+Reducer4 4 US5 EU1 US2 US6
+Map10 1 US3
+Reducer6 1 AS1
+Map11 1 AS2
+Map8 5 US2 EU4 US3 EU1 EU3
+Map9 1 US4
+Reducer3 4 US3 EU4 AS2 US1
+Reducer2 1 EU4
+Map7 5 US2 EU4 EU2 US6 US5
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 10: TPC-H query21
+14 73 362
+Reducer5 5 US5 AS2 US4 US1 EU2
+Map10 5 EU1 EU2 US4 US1 US6
+Map1 1 EU4
+Reducer4 2 AS2 EU3
+Reducer7 3 US1 US3 AS1
+Map2 1 EU4
+Reducer6 5 EU2 US6 US3 EU4 US4
+Reducer14 3 US3 US4 AS1
+Map13 5 US3 EU1 US4 AS2 EU2
+Reducer8 1 US6
+Reducer12 7 AS2 US1 US6 US5 US4 EU3 AS1
+Map11 5 US1 EU1 US4 AS2 US2
+Map9 5 US2 US4 AS1 EU4 US6
+Reducer3 2 US4 US3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 7: TPC-H query17
+7 74 367
+Map1 2 EU3 US3
+Reducer4 1 US1
+Reducer7 7 EU2 US6 US5 EU4 US3 US1 EU1
+Map5 5 AS1 US2 AS2 US6 EU2
+Map6 5 US1 EU2 EU1 EU3 US4
+Reducer3 7 EU3 AS2 US5 US2 US1 EU2 AS1
+Reducer2 7 US6 EU4 AS2 US5 EU2 US1 US4
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 9: TPC-H query20
+12 75 379
+Reducer5 1 EU4
+Map10 5 US4 US3 US6 EU1 US2
+Map1 2 EU2 US5
+Reducer4 1 US5
+Reducer7 1 EU3
+Reducer6 1 EU2
+Reducer9 1 EU3
+Map11 1 EU4
+Map12 1 US2
+Map8 5 AS1 EU4 US4 US6 AS2
+Reducer3 1 AS2
+Reducer2 1 US6
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 3: TPC-H query13
+6 76 379
+Reducer5 1 AS1
+Reducer4 1 US4
+Map1 3 US5 US3 AS2
+Reducer3 1 US3
+Map6 5 AS2 EU2 EU4 EU3 US1
+Reducer2 2 US6 US5
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 10: TPC-H query21
+14 77 383
+Reducer5 5 US4 US5 US3 EU4 US1
+Map10 5 EU2 EU4 AS1 US1 US3
+Map1 1 EU3
+Reducer4 2 EU2 US5
+Reducer7 3 EU1 US2 AS2
+Map2 1 AS1
+Reducer6 5 AS1 US5 US3 US2 US6
+Reducer14 3 US6 US3 EU4
+Map13 5 US1 US2 US4 AS1 EU4
+Reducer8 1 AS2
+Reducer12 7 EU1 US3 EU4 AS1 US5 US2 US4
+Map11 5 EU2 US6 US5 EU3 AS2
+Map9 5 AS1 US6 AS2 US1 US3
+Reducer3 2 US1 US2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 0: TPC-H query10
+8 78 384
+Reducer5 1 EU3
+Reducer4 1 EU4
+Map1 3 US3 EU4 EU1
+Map8 1 US1
+Reducer3 4 US3 EU4 EU1 US5
+Map6 5 US3 EU4 US2 US4 EU1
+Reducer2 1 EU2
+Map7 5 AS1 EU4 EU3 US1 EU1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 8: TPC-H query1
+3 79 385
+Map1 5 AS1 EU3 EU1 US1 US5
+Reducer3 1 US4
+Reducer2 5 US2 EU4 US6 EU3 AS1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 15: TPC-H query6
+2 80 395
+Map1 5 EU1 AS2 US3 AS1 US2
+Reducer2 1 US1
+1
+Map1 Reducer2 3181
+# 10: TPC-H query21
+14 81 398
+Reducer5 5 US4 US6 US5 US2 EU4
+Map10 5 US1 US4 US6 US3 EU2
+Map1 1 EU4
+Reducer4 2 AS2 AS1
+Reducer7 3 EU4 EU3 US2
+Map2 1 EU3
+Reducer6 5 US4 EU4 US3 EU2 AS1
+Reducer14 3 US3 EU3 EU2
+Map13 5 US2 US5 US3 AS2 EU3
+Reducer8 1 AS1
+Reducer12 7 US6 US2 AS2 US3 US4 AS1 US1
+Map11 5 AS1 US6 US5 US4 US3
+Map9 5 US6 EU2 EU4 EU3 US5
+Reducer3 2 US6 US3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 5: TPC-H query15
+8 82 399
+Map1 5 US4 AS1 US6 US5 EU1
+Reducer4 1 US6
+Reducer7 1 US4
+Reducer6 2 US5 EU1
+Map8 1 EU4
+Map5 5 AS1 EU2 EU1 US3 EU3
+Reducer3 1 US3
+Reducer2 1 US1
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 2: TPC-H query12
+5 83 401
+Reducer4 1 US6
+Map1 5 US5 US6 AS1 US4 EU4
+Map5 5 AS2 EU4 US2 EU3 US1
+Reducer3 1 EU3
+Reducer2 2 EU4 US4
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 10: TPC-H query21
+14 84 401
+Reducer5 5 US1 US4 EU2 US5 AS2
+Map10 5 US4 US6 US1 EU1 EU3
+Map1 1 AS2
+Reducer4 2 EU2 AS2
+Reducer7 3 AS2 EU2 EU3
+Map2 1 US3
+Reducer6 5 US1 US6 US2 EU3 US3
+Reducer14 3 EU1 US4 AS1
+Map13 5 AS2 US6 US4 EU4 EU2
+Reducer8 1 US1
+Reducer12 7 US1 US6 US3 AS2 EU3 US5 US2
+Map11 5 EU3 US3 US6 AS1 EU2
+Map9 5 US6 US4 EU3 US3 EU4
+Reducer3 2 EU3 AS2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 11: TPC-H query22
+8 85 401
+Reducer5 1 AS1
+Map1 5 US6 EU4 US1 US3 EU2
+Reducer4 1 AS2
+Reducer8 1 AS2
+Map6 3 US6 AS1 EU3
+Reducer3 2 US4 US1
+Map7 3 AS1 US3 EU2
+Reducer2 3 US6 US5 US3
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 4: TPC-H query14
+4 86 401
+Map1 5 US5 US2 US4 EU4 EU2
+Map4 2 EU3 US6
+Reducer3 1 EU4
+Reducer2 1 EU2
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 14: TPC-H query5
+11 87 404
+Reducer5 1 EU2
+Map1 3 EU4 AS2 EU1
+Reducer4 4 US1 US3 US2 US4
+Map10 1 EU1
+Reducer6 1 AS2
+Map11 1 EU1
+Map8 5 EU3 EU4 US2 US1 US6
+Map9 1 EU4
+Reducer3 4 US4 AS2 AS1 US5
+Reducer2 1 US2
+Map7 5 AS2 US1 US3 US4 EU2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 12: TPC-H query3
+7 88 404
+Reducer5 1 US6
+Map1 3 EU3 US2 US3
+Reducer4 1 EU1
+Map6 5 US5 EU2 AS1 EU1 EU3
+Reducer3 3 EU4 US3 AS2
+Map7 5 EU1 US3 AS2 EU2 US2
+Reducer2 1 US4
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 16: TPC-H query7
+11 89 409
+Reducer5 1 EU2
+Reducer4 1 US6
+Map1 1 US1
+Map10 1 US5
+Reducer6 1 AS2
+Map11 1 US4
+Map8 5 AS2 EU3 US4 US6 US5
+Map9 3 US3 US6 EU3
+Reducer3 3 US1 EU1 US2
+Reducer2 2 US2 EU1
+Map7 5 AS1 EU3 EU2 US4 EU4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 16: TPC-H query7
+11 90 410
+Reducer5 1 US4
+Reducer4 1 US3
+Map1 1 US2
+Map10 1 US2
+Reducer6 1 EU1
+Map11 1 US2
+Map8 5 AS1 EU3 EU4 EU1 EU2
+Map9 3 US2 US6 AS2
+Reducer3 3 AS2 US4 US3
+Reducer2 2 EU3 US6
+Map7 5 US3 EU3 US4 US1 EU2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 15: TPC-H query6
+2 91 414
+Map1 5 EU2 US1 AS1 AS2 US4
+Reducer2 1 EU3
+1
+Map1 Reducer2 3181
+# 12: TPC-H query3
+7 92 416
+Reducer5 1 US3
+Map1 3 US5 US3 US6
+Reducer4 1 EU1
+Map6 5 EU4 US3 AS2 EU3 EU1
+Reducer3 3 US6 EU1 EU3
+Map7 5 US1 US4 EU1 US2 AS2
+Reducer2 1 US6
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 4: TPC-H query14
+4 93 437
+Map1 5 US4 EU4 EU3 US1 US6
+Map4 2 US3 US5
+Reducer3 1 US4
+Reducer2 1 US4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 2: TPC-H query12
+5 94 446
+Reducer4 1 AS2
+Map1 5 EU1 US2 EU3 EU2 AS1
+Map5 5 US1 US4 AS1 EU1 US2
+Reducer3 1 EU3
+Reducer2 2 EU1 US5
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 6: TPC-H query16
+9 95 463
+Reducer5 1 US2
+Map1 5 EU3 EU4 US1 EU1 US6
+Reducer4 1 AS1
+Reducer9 1 EU3
+Map8 1 US6
+Reducer3 1 US4
+Map6 2 EU1 AS2
+Reducer2 1 US1
+Map7 1 AS2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 13: TPC-H query4
+5 96 465
+Reducer4 1 US4
+Map1 5 US5 AS1 AS2 US4 EU4
+Map5 5 US3 EU2 AS1 US6 US4
+Reducer3 3 EU3 EU4 US6
+Reducer2 3 US4 US1 AS2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 12: TPC-H query3
+7 97 466
+Reducer5 1 EU1
+Map1 3 US6 US5 US2
+Reducer4 1 EU4
+Map6 5 US3 US6 EU4 EU2 US2
+Reducer3 3 US5 US6 EU3
+Map7 5 AS1 EU2 US1 US5 US3
+Reducer2 1 AS2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 9: TPC-H query20
+12 98 468
+Reducer5 1 US6
+Map10 5 US6 US2 AS1 EU4 US1
+Map1 2 EU4 US1
+Reducer4 1 US5
+Reducer7 1 US1
+Reducer6 1 EU4
+Reducer9 1 EU4
+Map11 1 US4
+Map12 1 EU4
+Map8 5 EU1 US4 AS2 US1 EU3
+Reducer3 1 US2
+Reducer2 1 US1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 10: TPC-H query21
+14 99 471
+Reducer5 5 EU1 US2 AS2 US1 US6
+Map10 5 EU1 EU2 US6 US2 AS1
+Map1 1 EU4
+Reducer4 2 EU4 US5
+Reducer7 3 US6 AS1 EU2
+Map2 1 EU1
+Reducer6 5 US5 US3 US6 AS2 EU1
+Reducer14 3 US2 EU4 US4
+Map13 5 US5 EU4 US6 US1 US4
+Reducer8 1 EU4
+Reducer12 7 US6 AS2 US5 AS1 US4 EU4 EU3
+Map11 5 AS2 US6 EU2 US1 US2
+Map9 5 AS2 AS1 EU2 US2 EU3
+Reducer3 2 EU2 US3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 4: TPC-H query14
+4 100 479
+Map1 5 US5 US3 AS1 US2 EU2
+Map4 2 US6 US1
+Reducer3 1 EU1
+Reducer2 1 AS1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 8: TPC-H query1
+3 101 493
+Map1 5 US5 US6 EU1 EU3 AS2
+Reducer3 1 AS2
+Reducer2 5 US4 US5 EU2 EU3 AS1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 5: TPC-H query15
+8 102 505
+Map1 5 AS2 EU3 US6 US3 US4
+Reducer4 1 US1
+Reducer7 1 AS2
+Reducer6 2 EU3 EU4
+Map8 1 US5
+Map5 5 AS2 EU4 US2 EU2 US5
+Reducer3 1 US3
+Reducer2 1 EU1
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 0: TPC-H query10
+8 103 506
+Reducer5 1 US1
+Reducer4 1 US3
+Map1 3 AS2 EU1 EU2
+Map8 1 US2
+Reducer3 4 EU2 EU3 EU1 AS2
+Map6 5 US5 EU4 US1 AS2 EU2
+Reducer2 1 AS1
+Map7 5 US4 US5 EU4 AS1 US2
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 7: TPC-H query17
+7 104 507
+Map1 2 US6 EU4
+Reducer4 1 AS1
+Reducer7 7 US2 AS2 EU2 EU3 US3 EU4 US6
+Map5 5 US1 EU1 EU3 AS2 US2
+Map6 5 US6 AS2 EU4 US1 US2
+Reducer3 7 US6 EU4 EU2 US3 AS2 US2 AS1
+Reducer2 7 US3 US5 EU3 AS2 EU1 US6 AS1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 2: TPC-H query12
+5 105 515
+Reducer4 1 US4
+Map1 5 EU3 US5 EU4 US1 US2
+Map5 5 AS1 US3 EU1 US1 EU2
+Reducer3 1 EU1
+Reducer2 2 AS1 US6
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 8: TPC-H query1
+3 106 517
+Map1 5 EU1 EU3 US3 US6 AS1
+Reducer3 1 EU4
+Reducer2 5 US3 US2 EU3 US4 EU1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 12: TPC-H query3
+7 107 520
+Reducer5 1 EU2
+Map1 3 AS1 EU3 EU1
+Reducer4 1 US1
+Map6 5 AS1 EU2 US2 US4 US6
+Reducer3 3 AS2 EU3 EU4
+Map7 5 AS2 US4 US5 US3 EU2
+Reducer2 1 AS1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 3: TPC-H query13
+6 108 525
+Reducer5 1 AS2
+Reducer4 1 US6
+Map1 3 EU4 EU3 EU1
+Reducer3 1 AS2
+Map6 5 US2 EU1 US1 US3 US5
+Reducer2 2 US1 EU3
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 1: TPC-H query11
+12 109 533
+Reducer10 1 US4
+Reducer4 1 US2
+Map1 5 US2 EU2 US6 US4 US3
+Reducer9 1 EU2
+Reducer8 1 US2
+Map11 1 EU4
+Map12 1 EU2
+Map5 1 EU3
+Reducer3 1 US5
+Map6 1 EU1
+Reducer2 1 EU1
+Map7 5 EU3 US2 EU2 US3 US1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 10: TPC-H query21
+14 110 540
+Reducer5 5 EU1 EU3 AS1 US5 US3
+Map10 5 EU3 US6 US5 US4 US1
+Map1 1 EU2
+Reducer4 2 US4 EU4
+Reducer7 3 US1 EU2 US6
+Map2 1 US3
+Reducer6 5 US4 EU4 AS1 AS2 EU2
+Reducer14 3 US6 US2 US4
+Map13 5 EU3 AS2 EU2 US4 US1
+Reducer8 1 AS1
+Reducer12 7 EU4 US1 EU1 US5 AS1 US4 EU3
+Map11 5 US2 US6 US3 EU2 US1
+Map9 5 EU2 AS1 US5 US1 US2
+Reducer3 2 AS1 AS2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 6: TPC-H query16
+9 111 558
+Reducer5 1 AS1
+Map1 5 US3 AS1 US6 US4 EU2
+Reducer4 1 EU4
+Reducer9 1 US2
+Map8 1 US5
+Reducer3 1 EU4
+Map6 2 US3 EU4
+Reducer2 1 US1
+Map7 1 US1
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 16: TPC-H query7
+11 112 572
+Reducer5 1 EU2
+Reducer4 1 US3
+Map1 1 EU1
+Map10 1 US4
+Reducer6 1 EU4
+Map11 1 US1
+Map8 5 US1 EU3 AS2 US3 US2
+Map9 3 AS1 US4 US5
+Reducer3 3 US1 US5 EU2
+Reducer2 2 EU4 US3
+Map7 5 US6 US1 EU3 US5 US4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 12: TPC-H query3
+7 113 621
+Reducer5 1 EU2
+Map1 3 US5 EU1 EU3
+Reducer4 1 US2
+Map6 5 US1 US4 EU1 AS1 EU4
+Reducer3 3 AS1 EU1 EU3
+Map7 5 US4 AS1 US6 EU4 US5
+Reducer2 1 AS1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 0: TPC-H query10
+8 114 624
+Reducer5 1 US6
+Reducer4 1 US2
+Map1 3 AS1 EU2 US2
+Map8 1 US5
+Reducer3 4 EU1 US3 US2 AS2
+Map6 5 US4 US6 US5 US3 AS2
+Reducer2 1 EU1
+Map7 5 US3 AS1 EU4 US4 US1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 2: TPC-H query12
+5 115 624
+Reducer4 1 US6
+Map1 5 EU2 US4 AS1 US5 EU4
+Map5 5 US4 US6 AS1 US1 AS2
+Reducer3 1 US2
+Reducer2 2 US2 AS1
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 10: TPC-H query21
+14 116 624
+Reducer5 5 US4 US5 AS1 EU2 US1
+Map10 5 US2 AS1 AS2 EU4 US6
+Map1 1 EU2
+Reducer4 2 AS1 EU1
+Reducer7 3 EU3 US6 US2
+Map2 1 US3
+Reducer6 5 US6 AS2 US4 AS1 EU3
+Reducer14 3 EU3 US3 EU1
+Map13 5 US2 US1 AS2 EU3 EU4
+Reducer8 1 US3
+Reducer12 7 AS1 EU1 AS2 US2 EU2 EU4 US1
+Map11 5 AS1 US5 US6 EU3 US1
+Map9 5 US6 US4 AS2 EU2 US5
+Reducer3 2 US4 EU3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 5: TPC-H query15
+8 117 624
+Map1 5 EU1 AS2 EU3 AS1 US5
+Reducer4 1 US6
+Reducer7 1 US4
+Reducer6 2 US2 US4
+Map8 1 EU1
+Map5 5 US1 US6 EU3 EU2 AS2
+Reducer3 1 EU1
+Reducer2 1 US4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 5: TPC-H query15
+8 118 625
+Map1 5 EU4 US3 EU3 US5 AS1
+Reducer4 1 EU3
+Reducer7 1 US3
+Reducer6 2 EU1 US3
+Map8 1 US6
+Map5 5 AS1 EU4 US4 US3 AS2
+Reducer3 1 AS2
+Reducer2 1 US4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 3: TPC-H query13
+6 119 625
+Reducer5 1 US5
+Reducer4 1 US5
+Map1 3 EU2 EU1 US6
+Reducer3 1 US5
+Map6 5 EU1 AS1 EU4 US1 US4
+Reducer2 2 US3 AS2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 11: TPC-H query22
+8 120 625
+Reducer5 1 EU3
+Map1 5 US5 AS2 EU4 EU2 US4
+Reducer4 1 EU1
+Reducer8 1 AS2
+Map6 3 US5 EU2 EU1
+Reducer3 2 US5 EU4
+Map7 3 AS2 US1 EU2
+Reducer2 3 EU1 AS1 AS2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 7: TPC-H query17
+7 121 627
+Map1 2 EU1 AS2
+Reducer4 1 EU2
+Reducer7 7 US6 EU2 EU4 US2 US3 AS1 US5
+Map5 5 US1 US3 EU2 US4 US6
+Map6 5 AS2 US4 EU2 US2 AS1
+Reducer3 7 EU3 US6 US5 EU4 US1 US2 AS1
+Reducer2 7 US6 US5 US4 US1 US3 EU1 EU2
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 4: TPC-H query14
+4 122 633
+Map1 5 AS1 AS2 US5 EU4 US2
+Map4 2 US5 US4
+Reducer3 1 US5
+Reducer2 1 EU2
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 10: TPC-H query21
+14 123 644
+Reducer5 5 US3 US5 AS1 US2 EU1
+Map10 5 AS1 US6 EU1 EU2 US1
+Map1 1 AS1
+Reducer4 2 US3 US1
+Reducer7 3 EU4 AS2 US4
+Map2 1 US3
+Reducer6 5 EU1 US2 US3 US4 AS1
+Reducer14 3 AS2 US1 US2
+Map13 5 US6 EU4 US1 EU2 EU1
+Reducer8 1 EU3
+Reducer12 7 EU2 EU4 US3 US5 AS1 US6 EU1
+Map11 5 US6 EU1 EU2 US4 US3
+Map9 5 EU3 US2 EU1 US4 US3
+Reducer3 2 US5 EU3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 10: TPC-H query21
+14 124 644
+Reducer5 5 AS1 EU2 US2 EU4 AS2
+Map10 5 EU2 US3 US1 US6 EU3
+Map1 1 US3
+Reducer4 2 EU1 US4
+Reducer7 3 US1 AS1 US5
+Map2 1 EU2
+Reducer6 5 EU1 EU2 AS2 US6 US4
+Reducer14 3 AS1 EU4 US2
+Map13 5 US5 US2 US3 EU2 US4
+Reducer8 1 AS1
+Reducer12 7 AS1 EU1 US3 US5 US1 AS2 EU3
+Map11 5 US3 AS1 US4 EU1 US2
+Map9 5 EU3 US3 US5 US1 US6
+Reducer3 2 AS1 EU3
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 16: TPC-H query7
+11 125 644
+Reducer5 1 EU2
+Reducer4 1 AS2
+Map1 1 AS1
+Map10 1 US6
+Reducer6 1 US4
+Map11 1 US3
+Map8 5 US6 US2 EU1 US1 US3
+Map9 3 US2 EU4 US4
+Reducer3 3 US6 US4 EU2
+Reducer2 2 AS1 EU2
+Map7 5 EU4 EU1 US4 US3 US5
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 12: TPC-H query3
+7 126 645
+Reducer5 1 US2
+Map1 3 AS1 EU4 EU1
+Reducer4 1 US6
+Map6 5 AS2 EU3 US6 AS1 EU4
+Reducer3 3 US4 US5 US3
+Map7 5 EU2 US6 AS1 US3 US2
+Reducer2 1 AS2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 1: TPC-H query11
+12 127 645
+Reducer10 1 US2
+Reducer4 1 US5
+Map1 5 US4 US6 US3 US1 EU1
+Reducer9 1 US3
+Reducer8 1 EU3
+Map11 1 US2
+Map12 1 EU3
+Map5 1 EU4
+Reducer3 1 AS2
+Map6 1 EU1
+Reducer2 1 AS1
+Map7 5 EU2 US6 AS1 US4 AS2
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 16: TPC-H query7
+11 128 645
+Reducer5 1 AS1
+Reducer4 1 US4
+Map1 1 AS1
+Map10 1 US1
+Reducer6 1 US3
+Map11 1 EU4
+Map8 5 US3 AS2 US6 US2 US1
+Map9 3 EU1 US3 EU4
+Reducer3 3 EU4 US4 US5
+Reducer2 2 EU2 AS2
+Map7 5 EU3 AS1 US1 EU4 US3
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 16: TPC-H query7
+11 129 646
+Reducer5 1 EU4
+Reducer4 1 US6
+Map1 1 US6
+Map10 1 US2
+Reducer6 1 US4
+Map11 1 US5
+Map8 5 EU4 US5 US3 US2 EU2
+Map9 3 EU1 US1 US4
+Reducer3 3 EU1 EU2 US3
+Reducer2 2 AS1 EU1
+Map7 5 EU3 US2 EU2 US4 EU4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 5: TPC-H query15
+8 130 647
+Map1 5 US3 EU4 AS2 US5 AS1
+Reducer4 1 EU4
+Reducer7 1 EU1
+Reducer6 2 EU3 US2
+Map8 1 US3
+Map5 5 US5 EU1 US6 EU3 US3
+Reducer3 1 US4
+Reducer2 1 EU1
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 2: TPC-H query12
+5 131 648
+Reducer4 1 EU1
+Map1 5 US3 EU2 US5 AS1 US1
+Map5 5 US3 EU4 US2 EU3 US1
+Reducer3 1 US3
+Reducer2 2 US2 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 3: TPC-H query13
+6 132 650
+Reducer5 1 AS2
+Reducer4 1 AS1
+Map1 3 US2 AS1 US4
+Reducer3 1 US6
+Map6 5 US1 EU1 AS2 EU4 US6
+Reducer2 2 US1 US5
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 133 653
+Map1 5 US4 US6 EU3 US2 EU4
+Reducer3 1 US6
+Reducer2 5 EU4 US2 US5 US6 US4
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 10: TPC-H query21
+14 134 654
+Reducer5 5 US5 AS1 US2 EU1 EU4
+Map10 5 AS1 US3 US5 US6 US4
+Map1 1 US4
+Reducer4 2 EU4 US6
+Reducer7 3 EU1 EU3 EU4
+Map2 1 EU1
+Reducer6 5 US4 US6 US5 US1 AS2
+Reducer14 3 US6 US1 US4
+Map13 5 EU1 US4 AS2 EU3 EU4
+Reducer8 1 US5
+Reducer12 7 US3 AS1 EU2 EU1 EU3 US5 US2
+Map11 5 US2 US5 US3 US4 EU1
+Map9 5 US6 US2 US1 AS1 US3
+Reducer3 2 EU3 US1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 14: TPC-H query5
+11 135 655
+Reducer5 1 US6
+Map1 3 EU4 US6 EU3
+Reducer4 4 AS1 US1 US4 EU3
+Map10 1 US2
+Reducer6 1 AS2
+Map11 1 US4
+Map8 5 EU2 AS1 US5 US2 AS2
+Map9 1 US2
+Reducer3 4 AS2 US2 EU2 EU1
+Reducer2 1 EU3
+Map7 5 AS2 AS1 US5 EU2 EU4
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 8: TPC-H query1
+3 136 664
+Map1 5 EU4 US4 US6 US5 EU3
+Reducer3 1 EU1
+Reducer2 5 US6 AS2 US4 US2 EU2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 1: TPC-H query11
+12 137 664
+Reducer10 1 US4
+Reducer4 1 US3
+Map1 5 US4 AS2 US6 US2 US5
+Reducer9 1 AS2
+Reducer8 1 US6
+Map11 1 US5
+Map12 1 US1
+Map5 1 AS2
+Reducer3 1 US2
+Map6 1 US1
+Reducer2 1 EU3
+Map7 5 US6 EU4 US5 US3 EU3
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 5: TPC-H query15
+8 138 667
+Map1 5 US1 EU1 AS1 AS2 US5
+Reducer4 1 US2
+Reducer7 1 AS2
+Reducer6 2 US1 US4
+Map8 1 AS2
+Map5 5 US4 EU2 US1 EU3 EU1
+Reducer3 1 US5
+Reducer2 1 EU4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 3: TPC-H query13
+6 139 669
+Reducer5 1 US5
+Reducer4 1 EU2
+Map1 3 US4 US6 EU1
+Reducer3 1 US4
+Map6 5 US3 US6 US2 EU4 US1
+Reducer2 2 EU1 EU4
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 3: TPC-H query13
+6 140 673
+Reducer5 1 EU3
+Reducer4 1 AS1
+Map1 3 EU3 US2 US5
+Reducer3 1 EU2
+Map6 5 US2 US4 AS1 US6 US3
+Reducer2 2 US2 US6
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 10: TPC-H query21
+14 141 673
+Reducer5 5 US1 US3 US4 US5 EU1
+Map10 5 AS1 US5 EU3 EU4 EU1
+Map1 1 US5
+Reducer4 2 EU3 EU2
+Reducer7 3 US5 US3 AS1
+Map2 1 EU4
+Reducer6 5 US5 EU4 AS2 AS1 US4
+Reducer14 3 US3 US4 AS1
+Map13 5 US4 EU1 EU4 US2 US6
+Reducer8 1 US1
+Reducer12 7 US2 EU1 AS2 AS1 EU2 EU3 US6
+Map11 5 US6 EU3 US1 US3 EU1
+Map9 5 US3 AS2 EU4 EU1 US1
+Reducer3 2 US3 US5
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 16: TPC-H query7
+11 142 673
+Reducer5 1 US4
+Reducer4 1 US5
+Map1 1 EU2
+Map10 1 EU3
+Reducer6 1 EU4
+Map11 1 US5
+Map8 5 US2 US1 US4 US6 EU1
+Map9 3 US5 US6 US4
+Reducer3 3 EU4 US2 US5
+Reducer2 2 EU4 US5
+Map7 5 US2 EU2 EU3 EU1 US4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 10: TPC-H query21
+14 143 679
+Reducer5 5 US3 AS1 EU3 US1 US4
+Map10 5 EU2 US6 US3 US4 AS2
+Map1 1 AS2
+Reducer4 2 EU3 US6
+Reducer7 3 US6 US1 EU4
+Map2 1 EU1
+Reducer6 5 US3 US5 US1 EU3 AS2
+Reducer14 3 AS1 EU2 US5
+Map13 5 US6 EU4 EU1 US4 US1
+Reducer8 1 US5
+Reducer12 7 US6 US4 US5 US1 AS1 US3 US2
+Map11 5 US5 US4 EU1 US6 US1
+Map9 5 EU1 AS2 US2 US3 US4
+Reducer3 2 AS2 US5
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 8: TPC-H query1
+3 144 679
+Map1 5 EU3 US6 US4 US1 US3
+Reducer3 1 US2
+Reducer2 5 US1 US2 US6 AS1 US3
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 16: TPC-H query7
+11 145 687
+Reducer5 1 US2
+Reducer4 1 AS2
+Map1 1 US3
+Map10 1 AS1
+Reducer6 1 EU3
+Map11 1 US6
+Map8 5 US2 EU4 AS1 EU1 US5
+Map9 3 US2 EU2 US6
+Reducer3 3 US4 US5 US1
+Reducer2 2 US1 EU2
+Map7 5 US4 US6 EU2 US5 US1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 14: TPC-H query5
+11 146 688
+Reducer5 1 US3
+Map1 3 EU2 US2 US4
+Reducer4 4 US3 EU2 AS1 US1
+Map10 1 EU1
+Reducer6 1 US1
+Map11 1 US4
+Map8 5 US2 US6 EU3 US1 US3
+Map9 1 EU2
+Reducer3 4 US2 US3 AS2 US6
+Reducer2 1 EU3
+Map7 5 EU1 US6 US5 US2 US4
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 13: TPC-H query4
+5 147 688
+Reducer4 1 US4
+Map1 5 EU2 EU3 EU1 US5 EU4
+Map5 5 AS2 US3 US1 EU2 US6
+Reducer3 3 US5 EU1 US1
+Reducer2 3 US3 US2 AS2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 14: TPC-H query5
+11 148 690
+Reducer5 1 US2
+Map1 3 US1 US4 EU1
+Reducer4 4 US3 US2 US6 EU4
+Map10 1 EU3
+Reducer6 1 US6
+Map11 1 EU4
+Map8 5 US6 US4 US2 EU3 EU1
+Map9 1 AS1
+Reducer3 4 US2 EU1 EU2 AS2
+Reducer2 1 US3
+Map7 5 EU4 US3 US4 US5 US2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 11: TPC-H query22
+8 149 691
+Reducer5 1 AS2
+Map1 5 EU1 EU4 AS2 US3 EU3
+Reducer4 1 US3
+Reducer8 1 EU4
+Map6 3 EU4 EU3 US2
+Reducer3 2 EU2 AS2
+Map7 3 EU2 EU3 US1
+Reducer2 3 US2 EU2 US4
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 14: TPC-H query5
+11 150 693
+Reducer5 1 US1
+Map1 3 EU2 US3 US4
+Reducer4 4 AS1 US6 US4 EU1
+Map10 1 AS2
+Reducer6 1 US6
+Map11 1 US3
+Map8 5 EU4 EU1 US3 AS1 US1
+Map9 1 US4
+Reducer3 4 US2 US1 EU4 EU1
+Reducer2 1 US1
+Map7 5 US1 US5 US3 EU1 US4
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 10: TPC-H query21
+14 151 694
+Reducer5 5 US4 EU2 US3 EU3 US5
+Map10 5 EU3 US6 EU4 US4 US5
+Map1 1 EU2
+Reducer4 2 EU3 US4
+Reducer7 3 US4 EU4 US3
+Map2 1 EU3
+Reducer6 5 AS2 EU2 EU3 US1 US2
+Reducer14 3 AS1 US4 EU1
+Map13 5 EU2 EU3 US5 EU4 US2
+Reducer8 1 EU2
+Reducer12 7 EU4 AS2 AS1 US6 EU1 EU2 US5
+Map11 5 US2 AS1 US4 US1 EU1
+Map9 5 US3 AS1 US2 US1 US5
+Reducer3 2 EU3 AS1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 14: TPC-H query5
+11 152 696
+Reducer5 1 US3
+Map1 3 US5 EU3 US6
+Reducer4 4 EU2 US4 AS2 US1
+Map10 1 US3
+Reducer6 1 EU3
+Map11 1 EU1
+Map8 5 US5 EU4 US3 US6 US4
+Map9 1 EU4
+Reducer3 4 US1 EU4 US4 US6
+Reducer2 1 US3
+Map7 5 EU3 US6 AS1 US5 AS2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 2: TPC-H query12
+5 153 697
+Reducer4 1 US6
+Map1 5 EU1 AS2 US4 EU4 EU2
+Map5 5 EU2 EU3 EU4 US6 AS2
+Reducer3 1 EU4
+Reducer2 2 AS2 AS1
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 6: TPC-H query16
+9 154 699
+Reducer5 1 AS2
+Map1 5 US6 US4 AS1 US2 EU3
+Reducer4 1 US6
+Reducer9 1 US6
+Map8 1 US5
+Reducer3 1 US2
+Map6 2 US6 EU3
+Reducer2 1 EU2
+Map7 1 US2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 14: TPC-H query5
+11 155 699
+Reducer5 1 US2
+Map1 3 AS1 US6 EU4
+Reducer4 4 US1 EU3 US4 EU1
+Map10 1 US2
+Reducer6 1 US2
+Map11 1 US6
+Map8 5 EU1 US1 EU3 US2 AS1
+Map9 1 EU3
+Reducer3 4 AS2 EU3 EU2 US6
+Reducer2 1 US4
+Map7 5 US4 EU1 US6 US1 EU2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 15: TPC-H query6
+2 156 700
+Map1 5 EU4 US1 AS1 US3 EU3
+Reducer2 1 EU3
+1
+Map1 Reducer2 3181
+# 16: TPC-H query7
+11 157 701
+Reducer5 1 EU3
+Reducer4 1 AS1
+Map1 1 US1
+Map10 1 US5
+Reducer6 1 US6
+Map11 1 AS1
+Map8 5 US5 EU3 US4 AS1 EU4
+Map9 3 EU1 EU4 US6
+Reducer3 3 US1 US6 EU4
+Reducer2 2 US1 AS2
+Map7 5 US3 US6 AS2 US1 EU4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 5: TPC-H query15
+8 158 701
+Map1 5 EU2 US2 AS2 US6 US3
+Reducer4 1 US6
+Reducer7 1 EU4
+Reducer6 2 US6 US1
+Map8 1 US4
+Map5 5 EU3 US1 EU2 US2 US5
+Reducer3 1 US1
+Reducer2 1 AS2
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 13: TPC-H query4
+5 159 704
+Reducer4 1 EU1
+Map1 5 EU3 US4 US1 US3 US5
+Map5 5 AS1 US3 US1 US6 EU1
+Reducer3 3 EU2 AS1 US2
+Reducer2 3 US3 US5 US1
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 9: TPC-H query20
+12 160 709
+Reducer5 1 EU1
+Map10 5 EU3 EU4 EU1 US6 AS1
+Map1 2 US1 US2
+Reducer4 1 US6
+Reducer7 1 AS1
+Reducer6 1 EU1
+Reducer9 1 US2
+Map11 1 US4
+Map12 1 EU4
+Map8 5 AS2 US3 EU4 US1 EU3
+Reducer3 1 EU2
+Reducer2 1 AS1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 7: TPC-H query17
+7 161 709
+Map1 2 AS2 US3
+Reducer4 1 US5
+Reducer7 7 EU1 US4 US2 EU4 US1 AS1 AS2
+Map5 5 EU2 US3 US4 US1 EU3
+Map6 5 EU1 EU2 US3 EU4 US1
+Reducer3 7 EU2 US1 US2 US3 EU4 US6 EU1
+Reducer2 7 EU2 US1 US5 US2 AS1 US6 EU3
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 6: TPC-H query16
+9 162 713
+Reducer5 1 AS1
+Map1 5 US5 EU1 US6 US3 US4
+Reducer4 1 EU4
+Reducer9 1 US1
+Map8 1 AS2
+Reducer3 1 EU3
+Map6 2 EU3 US5
+Reducer2 1 US5
+Map7 1 US4
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 5: TPC-H query15
+8 163 715
+Map1 5 EU4 US3 US5 AS2 EU2
+Reducer4 1 US5
+Reducer7 1 US2
+Reducer6 2 US3 US1
+Map8 1 US4
+Map5 5 US5 US1 EU3 EU2 US3
+Reducer3 1 EU3
+Reducer2 1 AS1
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 7: TPC-H query17
+7 164 716
+Map1 2 US5 AS2
+Reducer4 1 US6
+Reducer7 7 EU4 US4 US3 EU1 US6 US5 US2
+Map5 5 US5 US1 EU2 US6 EU4
+Map6 5 US4 US2 US3 US1 EU3
+Reducer3 7 US1 EU4 US2 EU3 US3 EU2 AS2
+Reducer2 7 US5 US2 EU4 AS1 US1 EU3 US6
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 4: TPC-H query14
+4 165 725
+Map1 5 US4 US1 AS2 US3 EU3
+Map4 2 EU1 US2
+Reducer3 1 US5
+Reducer2 1 US4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 12: TPC-H query3
+7 166 728
+Reducer5 1 US4
+Map1 3 US2 EU2 EU4
+Reducer4 1 AS1
+Map6 5 US4 AS2 US6 US5 EU3
+Reducer3 3 US5 US4 AS2
+Map7 5 US4 US2 EU3 US3 EU4
+Reducer2 1 US1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 0: TPC-H query10
+8 167 729
+Reducer5 1 US2
+Reducer4 1 EU4
+Map1 3 EU3 EU4 US1
+Map8 1 US4
+Reducer3 4 US1 EU3 US5 US6
+Map6 5 AS1 US3 US2 US5 EU4
+Reducer2 1 US6
+Map7 5 US3 EU2 US2 US6 AS1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 13: TPC-H query4
+5 168 729
+Reducer4 1 US6
+Map1 5 US3 EU3 US4 AS2 EU2
+Map5 5 AS2 US5 US6 US4 EU4
+Reducer3 3 US6 US1 EU2
+Reducer2 3 EU2 US1 AS2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 15: TPC-H query6
+2 169 739
+Map1 5 AS1 US3 US6 EU2 US2
+Reducer2 1 EU3
+1
+Map1 Reducer2 3181
+# 15: TPC-H query6
+2 170 739
+Map1 5 US5 US6 EU3 EU1 US1
+Reducer2 1 US6
+1
+Map1 Reducer2 3181
+# 16: TPC-H query7
+11 171 739
+Reducer5 1 EU2
+Reducer4 1 US3
+Map1 1 EU1
+Map10 1 AS2
+Reducer6 1 US3
+Map11 1 AS1
+Map8 5 AS2 US3 EU2 US5 EU3
+Map9 3 US3 EU1 US5
+Reducer3 3 US5 US2 EU3
+Reducer2 2 US1 EU2
+Map7 5 AS1 US5 EU2 US6 US1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 7: TPC-H query17
+7 172 739
+Map1 2 AS1 US5
+Reducer4 1 EU2
+Reducer7 7 US6 US2 AS1 US3 US4 EU1 US1
+Map5 5 EU1 AS1 EU3 US6 EU4
+Map6 5 EU3 EU1 AS1 US2 EU4
+Reducer3 7 EU2 AS2 EU4 US2 AS1 US5 US3
+Reducer2 7 EU2 US6 US4 EU1 US2 US3 EU3
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 0: TPC-H query10
+8 173 739
+Reducer5 1 US2
+Reducer4 1 US5
+Map1 3 AS2 US2 US5
+Map8 1 EU1
+Reducer3 4 AS2 AS1 US6 US3
+Map6 5 US4 EU2 AS1 US3 EU1
+Reducer2 1 US4
+Map7 5 EU3 US5 EU4 US4 US3
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 6: TPC-H query16
+9 174 743
+Reducer5 1 US4
+Map1 5 EU3 EU1 EU4 EU2 US4
+Reducer4 1 US4
+Reducer9 1 US3
+Map8 1 AS2
+Reducer3 1 US3
+Map6 2 US3 EU2
+Reducer2 1 EU1
+Map7 1 US5
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 6: TPC-H query16
+9 175 763
+Reducer5 1 EU3
+Map1 5 EU3 US2 US5 US4 AS1
+Reducer4 1 US5
+Reducer9 1 US2
+Map8 1 EU3
+Reducer3 1 EU3
+Map6 2 US4 EU2
+Reducer2 1 US6
+Map7 1 US5
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 10: TPC-H query21
+14 176 764
+Reducer5 5 US2 US3 AS1 EU1 US6
+Map10 5 US6 US1 EU3 US2 AS1
+Map1 1 US6
+Reducer4 2 US2 US6
+Reducer7 3 US4 US1 EU1
+Map2 1 US5
+Reducer6 5 AS1 AS2 US3 EU3 EU1
+Reducer14 3 US1 EU1 US6
+Map13 5 EU1 US1 AS2 US2 US6
+Reducer8 1 EU1
+Reducer12 7 EU3 US1 AS2 US4 US6 US2 US3
+Map11 5 US1 EU3 EU1 US6 EU2
+Map9 5 US3 US2 EU4 US1 AS1
+Reducer3 2 US4 US2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 4: TPC-H query14
+4 177 789
+Map1 5 US3 US6 AS2 EU1 AS1
+Map4 2 EU2 US1
+Reducer3 1 EU3
+Reducer2 1 EU2
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 12: TPC-H query3
+7 178 793
+Reducer5 1 US4
+Map1 3 AS1 US5 EU4
+Reducer4 1 AS2
+Map6 5 US6 EU3 EU1 US1 EU2
+Reducer3 3 US6 EU2 US2
+Map7 5 US5 US2 AS2 US1 US6
+Reducer2 1 US5
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 6: TPC-H query16
+9 179 798
+Reducer5 1 EU2
+Map1 5 US3 US1 AS1 EU2 US4
+Reducer4 1 US2
+Reducer9 1 US5
+Map8 1 US2
+Reducer3 1 AS2
+Map6 2 US2 EU3
+Reducer2 1 EU3
+Map7 1 AS2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 2: TPC-H query12
+5 180 806
+Reducer4 1 US6
+Map1 5 EU1 EU2 EU4 US1 US3
+Map5 5 EU2 US6 US5 US1 EU1
+Reducer3 1 AS1
+Reducer2 2 AS2 US5
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 1: TPC-H query11
+12 181 829
+Reducer10 1 EU2
+Reducer4 1 US6
+Map1 5 US5 US4 EU2 EU3 US1
+Reducer9 1 US3
+Reducer8 1 AS1
+Map11 1 US1
+Map12 1 EU4
+Map5 1 EU4
+Reducer3 1 EU1
+Map6 1 US5
+Reducer2 1 AS2
+Map7 5 AS2 EU1 EU4 US1 AS1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 2: TPC-H query12
+5 182 833
+Reducer4 1 US5
+Map1 5 AS2 US1 EU4 US5 US6
+Map5 5 US2 EU4 EU1 US3 EU2
+Reducer3 1 AS2
+Reducer2 2 US3 US4
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 10: TPC-H query21
+14 183 836
+Reducer5 5 AS2 EU2 EU1 EU4 US2
+Map10 5 US3 US1 AS1 AS2 EU1
+Map1 1 EU3
+Reducer4 2 AS1 EU3
+Reducer7 3 US2 US6 US5
+Map2 1 US5
+Reducer6 5 EU2 US6 EU3 US4 US2
+Reducer14 3 US2 EU1 EU4
+Map13 5 AS2 US6 US2 AS1 EU2
+Reducer8 1 EU3
+Reducer12 7 US3 US2 AS1 US4 EU1 EU3 US6
+Map11 5 EU3 US1 AS2 EU2 US2
+Map9 5 AS2 US1 US3 EU4 US4
+Reducer3 2 US5 US4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 8: TPC-H query1
+3 184 838
+Map1 5 EU2 US1 US3 EU4 US4
+Reducer3 1 EU2
+Reducer2 5 EU4 US3 EU2 AS2 US1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 4: TPC-H query14
+4 185 855
+Map1 5 EU2 US5 US3 AS2 US6
+Map4 2 US3 EU2
+Reducer3 1 US4
+Reducer2 1 EU3
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 0: TPC-H query10
+8 186 860
+Reducer5 1 US6
+Reducer4 1 US3
+Map1 3 US4 US1 US3
+Map8 1 AS1
+Reducer3 4 AS2 US5 US1 EU3
+Map6 5 US5 US4 AS2 EU4 US3
+Reducer2 1 US3
+Map7 5 EU2 AS2 US1 US6 US3
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 15: TPC-H query6
+2 187 865
+Map1 5 US4 US2 US6 EU1 EU2
+Reducer2 1 AS1
+1
+Map1 Reducer2 3181
+# 5: TPC-H query15
+8 188 871
+Map1 5 US5 US3 EU3 US4 US2
+Reducer4 1 US4
+Reducer7 1 US5
+Reducer6 2 EU4 US5
+Map8 1 EU4
+Map5 5 US4 EU3 US1 EU2 EU1
+Reducer3 1 US6
+Reducer2 1 US2
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 8: TPC-H query1
+3 189 882
+Map1 5 EU3 AS1 US3 EU2 EU1
+Reducer3 1 EU1
+Reducer2 5 EU1 EU2 US3 US6 EU4
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 9: TPC-H query20
+12 190 883
+Reducer5 1 EU1
+Map10 5 EU2 EU1 US5 EU4 US1
+Map1 2 US4 EU4
+Reducer4 1 US6
+Reducer7 1 AS1
+Reducer6 1 US1
+Reducer9 1 US3
+Map11 1 US1
+Map12 1 EU4
+Map8 5 US4 AS2 EU4 US1 EU3
+Reducer3 1 US4
+Reducer2 1 US5
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 3: TPC-H query13
+6 191 884
+Reducer5 1 EU4
+Reducer4 1 US4
+Map1 3 US2 US6 US3
+Reducer3 1 US6
+Map6 5 US2 US5 AS1 US3 EU3
+Reducer2 2 EU1 AS1
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 192 884
+Map1 5 US4 AS1 EU4 US6 EU1
+Reducer3 1 AS1
+Reducer2 5 EU1 EU2 EU3 EU4 US4
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 6: TPC-H query16
+9 193 884
+Reducer5 1 US5
+Map1 5 EU2 EU3 US1 US6 EU4
+Reducer4 1 AS2
+Reducer9 1 US5
+Map8 1 US1
+Reducer3 1 EU4
+Map6 2 US3 EU4
+Reducer2 1 EU2
+Map7 1 US5
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 8: TPC-H query1
+3 194 886
+Map1 5 AS1 EU1 US3 US4 US6
+Reducer3 1 US6
+Reducer2 5 EU3 US5 EU4 US6 US4
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 9: TPC-H query20
+12 195 886
+Reducer5 1 US5
+Map10 5 EU4 EU2 AS1 US4 AS2
+Map1 2 US1 AS2
+Reducer4 1 AS2
+Reducer7 1 US5
+Reducer6 1 EU4
+Reducer9 1 EU3
+Map11 1 US6
+Map12 1 AS2
+Map8 5 EU4 US5 US1 EU1 US6
+Reducer3 1 US2
+Reducer2 1 EU1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 15: TPC-H query6
+2 196 909
+Map1 5 AS1 US4 US5 EU3 US1
+Reducer2 1 US1
+1
+Map1 Reducer2 3181
+# 3: TPC-H query13
+6 197 915
+Reducer5 1 EU3
+Reducer4 1 EU2
+Map1 3 AS1 EU2 US1
+Reducer3 1 AS1
+Map6 5 US2 EU3 US1 US6 US5
+Reducer2 2 US6 US4
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 3: TPC-H query13
+6 198 925
+Reducer5 1 AS2
+Reducer4 1 US3
+Map1 3 EU1 US6 US3
+Reducer3 1 EU4
+Map6 5 EU1 US3 US2 EU4 US5
+Reducer2 2 US3 AS2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 14: TPC-H query5
+11 199 927
+Reducer5 1 US1
+Map1 3 US2 EU4 US6
+Reducer4 4 US1 EU4 US2 AS1
+Map10 1 US2
+Reducer6 1 US2
+Map11 1 US5
+Map8 5 EU4 AS2 EU2 US5 AS1
+Map9 1 US5
+Reducer3 4 US5 AS2 US3 EU3
+Reducer2 1 EU3
+Map7 5 EU2 US4 EU1 AS2 US2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 3: TPC-H query13
+6 200 928
+Reducer5 1 US3
+Reducer4 1 EU1
+Map1 3 US4 US2 US1
+Reducer3 1 AS1
+Map6 5 AS2 EU4 AS1 EU1 US6
+Reducer2 2 US3 US2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 201 930
+Map1 5 AS1 US6 US4 US2 EU1
+Reducer3 1 AS2
+Reducer2 5 US1 US2 US3 US5 EU1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 16: TPC-H query7
+11 202 932
+Reducer5 1 EU3
+Reducer4 1 US6
+Map1 1 US2
+Map10 1 AS2
+Reducer6 1 US4
+Map11 1 AS1
+Map8 5 US1 US5 US3 US6 AS2
+Map9 3 EU3 EU1 US3
+Reducer3 3 US3 US2 US6
+Reducer2 2 EU2 US3
+Map7 5 EU1 EU4 EU3 US6 EU2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 3: TPC-H query13
+6 203 932
+Reducer5 1 AS2
+Reducer4 1 EU1
+Map1 3 US4 AS1 EU4
+Reducer3 1 EU4
+Map6 5 US4 AS1 AS2 EU1 US3
+Reducer2 2 AS2 US2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 7: TPC-H query17
+7 204 937
+Map1 2 AS1 US5
+Reducer4 1 EU3
+Reducer7 7 US1 US2 US6 US4 AS2 EU4 EU2
+Map5 5 EU3 EU2 US6 AS2 US4
+Map6 5 US2 US6 EU4 AS1 US5
+Reducer3 7 AS2 US5 EU4 AS1 US4 US6 EU2
+Reducer2 7 US1 US3 US6 AS2 AS1 US5 EU1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 5: TPC-H query15
+8 205 939
+Map1 5 EU4 EU1 US6 EU2 EU3
+Reducer4 1 US2
+Reducer7 1 US4
+Reducer6 2 EU1 US2
+Map8 1 EU4
+Map5 5 EU1 AS1 EU3 US1 EU2
+Reducer3 1 US4
+Reducer2 1 US5
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 1: TPC-H query11
+12 206 943
+Reducer10 1 US6
+Reducer4 1 US2
+Map1 5 US2 EU4 EU3 US3 EU1
+Reducer9 1 US1
+Reducer8 1 US4
+Map11 1 US1
+Map12 1 US2
+Map5 1 US1
+Reducer3 1 AS2
+Map6 1 EU1
+Reducer2 1 US3
+Map7 5 AS2 AS1 US1 US5 US3
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 9: TPC-H query20
+12 207 944
+Reducer5 1 AS2
+Map10 5 US4 US1 EU4 US6 US3
+Map1 2 EU1 AS2
+Reducer4 1 AS2
+Reducer7 1 US1
+Reducer6 1 US2
+Reducer9 1 US3
+Map11 1 EU2
+Map12 1 EU1
+Map8 5 AS1 US5 EU2 US3 EU3
+Reducer3 1 US5
+Reducer2 1 US5
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 0: TPC-H query10
+8 208 950
+Reducer5 1 US6
+Reducer4 1 US2
+Map1 3 US1 EU2 US3
+Map8 1 EU3
+Reducer3 4 US5 US3 US1 US4
+Map6 5 US5 EU1 US6 US2 AS2
+Reducer2 1 US6
+Map7 5 US3 AS2 EU1 EU4 US2
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 5: TPC-H query15
+8 209 950
+Map1 5 US5 US1 US3 EU1 US6
+Reducer4 1 AS1
+Reducer7 1 AS1
+Reducer6 2 US1 US3
+Map8 1 US5
+Map5 5 US2 EU3 US5 EU2 EU4
+Reducer3 1 US2
+Reducer2 1 EU3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 15: TPC-H query6
+2 210 961
+Map1 5 US3 AS2 US2 US4 EU4
+Reducer2 1 US5
+1
+Map1 Reducer2 3181
+# 3: TPC-H query13
+6 211 974
+Reducer5 1 EU1
+Reducer4 1 EU2
+Map1 3 US6 US2 EU2
+Reducer3 1 US4
+Map6 5 US5 EU4 EU3 AS1 AS2
+Reducer2 2 US4 US1
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 10: TPC-H query21
+14 212 975
+Reducer5 5 AS1 US5 US2 AS2 EU1
+Map10 5 US1 EU4 AS2 EU3 US5
+Map1 1 US5
+Reducer4 2 US6 EU2
+Reducer7 3 EU4 US4 EU1
+Map2 1 EU2
+Reducer6 5 US2 US3 US6 US5 EU3
+Reducer14 3 US2 EU4 US5
+Map13 5 AS2 EU4 US3 US6 EU2
+Reducer8 1 US4
+Reducer12 7 EU1 US4 EU4 AS1 EU2 US1 US3
+Map11 5 AS2 EU2 US4 EU3 US1
+Map9 5 US6 US2 AS2 AS1 US3
+Reducer3 2 US1 AS2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 4: TPC-H query14
+4 213 979
+Map1 5 US1 EU3 US2 EU2 EU1
+Map4 2 US3 US2
+Reducer3 1 EU3
+Reducer2 1 US3
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 0: TPC-H query10
+8 214 981
+Reducer5 1 EU4
+Reducer4 1 US2
+Map1 3 US5 AS2 EU3
+Map8 1 US5
+Reducer3 4 US1 EU3 EU2 US6
+Map6 5 AS2 US1 EU2 US4 EU1
+Reducer2 1 US2
+Map7 5 US3 EU2 EU3 US5 US1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 15: TPC-H query6
+2 215 982
+Map1 5 US6 AS2 US1 US4 AS1
+Reducer2 1 US1
+1
+Map1 Reducer2 3181
+# 2: TPC-H query12
+5 216 982
+Reducer4 1 US3
+Map1 5 US4 EU3 AS2 EU4 EU1
+Map5 5 US3 AS2 EU1 EU3 EU4
+Reducer3 1 AS2
+Reducer2 2 US6 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 13: TPC-H query4
+5 217 986
+Reducer4 1 US3
+Map1 5 US6 US5 EU2 AS2 EU4
+Map5 5 US3 US5 EU4 EU3 EU1
+Reducer3 3 EU4 US4 US3
+Reducer2 3 US5 EU4 AS2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 1: TPC-H query11
+12 218 991
+Reducer10 1 US1
+Reducer4 1 EU1
+Map1 5 EU2 AS1 US6 EU4 US4
+Reducer9 1 US5
+Reducer8 1 US6
+Map11 1 US6
+Map12 1 EU3
+Map5 1 US3
+Reducer3 1 EU2
+Map6 1 US1
+Reducer2 1 US2
+Map7 5 EU4 US6 EU3 AS1 EU2
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 4: TPC-H query14
+4 219 995
+Map1 5 AS2 US5 EU2 EU4 EU3
+Map4 2 US6 EU1
+Reducer3 1 US4
+Reducer2 1 US1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 11: TPC-H query22
+8 220 998
+Reducer5 1 EU1
+Map1 5 US5 EU3 AS1 US6 EU4
+Reducer4 1 AS2
+Reducer8 1 AS2
+Map6 3 US1 EU3 EU2
+Reducer3 2 US5 EU4
+Map7 3 US3 US4 US1
+Reducer2 3 US1 US4 EU4
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 0: TPC-H query10
+8 221 1007
+Reducer5 1 US4
+Reducer4 1 US4
+Map1 3 EU2 US1 EU3
+Map8 1 AS1
+Reducer3 4 EU3 EU4 AS1 US3
+Map6 5 EU1 EU2 AS2 EU4 US3
+Reducer2 1 EU2
+Map7 5 EU1 US4 EU2 US1 US5
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 16: TPC-H query7
+11 222 1020
+Reducer5 1 US3
+Reducer4 1 EU2
+Map1 1 US4
+Map10 1 US1
+Reducer6 1 US1
+Map11 1 EU3
+Map8 5 US4 AS1 EU4 US1 US2
+Map9 3 EU2 US1 EU1
+Reducer3 3 US6 US4 US2
+Reducer2 2 AS2 EU1
+Map7 5 AS1 US3 EU4 US4 US2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 12: TPC-H query3
+7 223 1027
+Reducer5 1 US4
+Map1 3 US6 EU4 AS2
+Reducer4 1 US1
+Map6 5 US1 US6 EU1 EU4 US4
+Reducer3 3 EU1 EU4 US2
+Map7 5 EU4 US5 US6 US4 US3
+Reducer2 1 US4
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 3: TPC-H query13
+6 224 1031
+Reducer5 1 US1
+Reducer4 1 AS1
+Map1 3 US1 US5 AS1
+Reducer3 1 US2
+Map6 5 US4 AS2 US5 EU4 AS1
+Reducer2 2 EU4 AS1
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 5: TPC-H query15
+8 225 1035
+Map1 5 EU2 AS2 US3 EU4 EU3
+Reducer4 1 EU2
+Reducer7 1 US4
+Reducer6 2 EU4 AS2
+Map8 1 EU1
+Map5 5 AS1 EU3 US4 US5 EU2
+Reducer3 1 US1
+Reducer2 1 AS2
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 7: TPC-H query17
+7 226 1048
+Map1 2 EU1 US6
+Reducer4 1 US3
+Reducer7 7 AS2 US6 US3 US5 EU4 AS1 US1
+Map5 5 AS1 AS2 US4 US2 EU4
+Map6 5 US6 AS1 US1 EU1 US5
+Reducer3 7 US6 US1 US2 AS1 US4 EU2 EU3
+Reducer2 7 AS2 EU1 EU2 EU4 EU3 AS1 US3
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 10: TPC-H query21
+14 227 1051
+Reducer5 5 US1 EU4 EU2 EU1 EU3
+Map10 5 AS2 US4 EU1 US6 US1
+Map1 1 EU1
+Reducer4 2 US1 AS2
+Reducer7 3 US1 EU2 EU4
+Map2 1 US3
+Reducer6 5 US5 AS2 US4 AS1 US6
+Reducer14 3 AS2 AS1 US1
+Map13 5 US1 EU2 US3 EU3 US4
+Reducer8 1 AS1
+Reducer12 7 EU4 US5 US4 US2 EU2 EU1 EU3
+Map11 5 EU4 AS1 AS2 US4 US5
+Map9 5 EU1 US4 US2 EU4 EU3
+Reducer3 2 US6 US5
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 14: TPC-H query5
+11 228 1057
+Reducer5 1 AS1
+Map1 3 EU4 US6 US3
+Reducer4 4 AS2 EU2 US4 US1
+Map10 1 AS2
+Reducer6 1 US4
+Map11 1 US1
+Map8 5 US1 US5 US2 AS2 EU4
+Map9 1 US2
+Reducer3 4 EU2 AS2 EU3 EU1
+Reducer2 1 US1
+Map7 5 AS1 EU4 US6 EU3 EU2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 9: TPC-H query20
+12 229 1064
+Reducer5 1 US2
+Map10 5 EU2 EU3 EU4 AS2 US3
+Map1 2 US5 US2
+Reducer4 1 US5
+Reducer7 1 US4
+Reducer6 1 EU4
+Reducer9 1 US2
+Map11 1 EU2
+Map12 1 AS2
+Map8 5 US3 EU2 US6 EU3 US1
+Reducer3 1 AS2
+Reducer2 1 AS1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 13: TPC-H query4
+5 230 1064
+Reducer4 1 US4
+Map1 5 US2 US4 US1 AS2 EU4
+Map5 5 AS1 EU4 US2 US5 AS2
+Reducer3 3 EU4 US5 EU3
+Reducer2 3 US1 AS2 EU1
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 2: TPC-H query12
+5 231 1065
+Reducer4 1 AS1
+Map1 5 AS1 AS2 EU2 US1 US6
+Map5 5 US3 US6 US2 EU2 US5
+Reducer3 1 EU4
+Reducer2 2 AS2 EU1
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 5: TPC-H query15
+8 232 1066
+Map1 5 US6 EU1 US4 EU4 US5
+Reducer4 1 US1
+Reducer7 1 US4
+Reducer6 2 AS2 EU1
+Map8 1 EU4
+Map5 5 US3 EU4 AS1 EU3 EU2
+Reducer3 1 EU4
+Reducer2 1 EU4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 9: TPC-H query20
+12 233 1075
+Reducer5 1 EU2
+Map10 5 AS1 US4 US5 EU4 US1
+Map1 2 EU3 AS1
+Reducer4 1 AS1
+Reducer7 1 US4
+Reducer6 1 US6
+Reducer9 1 US6
+Map11 1 US5
+Map12 1 US3
+Map8 5 US6 AS2 US1 EU2 US3
+Reducer3 1 US3
+Reducer2 1 US6
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 14: TPC-H query5
+11 234 1089
+Reducer5 1 US4
+Map1 3 US2 US3 EU4
+Reducer4 4 US4 AS1 US3 EU3
+Map10 1 AS1
+Reducer6 1 AS1
+Map11 1 US5
+Map8 5 US1 EU4 US4 EU3 US2
+Map9 1 US6
+Reducer3 4 US1 AS2 US2 EU4
+Reducer2 1 EU2
+Map7 5 EU4 US2 AS1 US3 US1
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 15: TPC-H query6
+2 235 1090
+Map1 5 EU2 US6 US4 US1 US2
+Reducer2 1 US6
+1
+Map1 Reducer2 3181
+# 2: TPC-H query12
+5 236 1097
+Reducer4 1 US6
+Map1 5 EU4 EU1 US5 EU2 EU3
+Map5 5 US6 US4 EU3 US1 US5
+Reducer3 1 US2
+Reducer2 2 US4 EU2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 11: TPC-H query22
+8 237 1104
+Reducer5 1 AS1
+Map1 5 EU1 EU2 US2 US5 US6
+Reducer4 1 AS2
+Reducer8 1 EU1
+Map6 3 US4 EU4 US6
+Reducer3 2 US4 US1
+Map7 3 EU4 US3 EU3
+Reducer2 3 US2 US1 AS2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 15: TPC-H query6
+2 238 1105
+Map1 5 EU2 AS2 US6 EU4 US1
+Reducer2 1 US5
+1
+Map1 Reducer2 3181
+# 7: TPC-H query17
+7 239 1106
+Map1 2 EU1 US2
+Reducer4 1 US5
+Reducer7 7 US4 US5 EU3 EU4 EU2 US6 AS2
+Map5 5 EU2 AS1 AS2 US5 US2
+Map6 5 US2 EU2 US4 AS1 US1
+Reducer3 7 US6 EU4 EU2 US4 EU3 US1 AS1
+Reducer2 7 EU2 US6 US1 US5 EU4 AS1 EU1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 7: TPC-H query17
+7 240 1106
+Map1 2 EU3 US4
+Reducer4 1 EU1
+Reducer7 7 EU2 AS1 EU4 US1 US5 US3 EU1
+Map5 5 US3 US5 AS1 US1 US6
+Map6 5 EU4 US5 US2 EU1 US4
+Reducer3 7 US5 EU3 EU4 AS2 US6 EU1 US3
+Reducer2 7 EU1 EU2 US1 US6 US4 EU3 AS1
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 8: TPC-H query1
+3 241 1110
+Map1 5 EU4 US3 US6 US2 AS1
+Reducer3 1 US1
+Reducer2 5 US4 EU4 AS2 US2 AS1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 11: TPC-H query22
+8 242 1111
+Reducer5 1 EU1
+Map1 5 EU1 US4 US1 US2 US3
+Reducer4 1 AS1
+Reducer8 1 US5
+Map6 3 EU3 US6 AS2
+Reducer3 2 EU2 US2
+Map7 3 US6 US5 AS1
+Reducer2 3 US3 EU3 US6
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 5: TPC-H query15
+8 243 1114
+Map1 5 EU4 US1 EU3 US6 EU1
+Reducer4 1 US4
+Reducer7 1 US4
+Reducer6 2 AS2 EU4
+Map8 1 EU4
+Map5 5 US4 AS1 US6 AS2 US2
+Reducer3 1 US3
+Reducer2 1 AS1
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 0: TPC-H query10
+8 244 1123
+Reducer5 1 US5
+Reducer4 1 US5
+Map1 3 US5 EU1 EU3
+Map8 1 EU4
+Reducer3 4 EU3 US3 EU4 AS2
+Map6 5 US4 US5 EU2 US6 US3
+Reducer2 1 US4
+Map7 5 EU4 AS1 US1 US2 AS2
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 11: TPC-H query22
+8 245 1123
+Reducer5 1 EU4
+Map1 5 AS2 AS1 US1 US4 US2
+Reducer4 1 EU4
+Reducer8 1 EU3
+Map6 3 AS2 US2 EU1
+Reducer3 2 US4 EU2
+Map7 3 US6 EU3 AS1
+Reducer2 3 US6 EU4 US2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 13: TPC-H query4
+5 246 1141
+Reducer4 1 US2
+Map1 5 AS2 AS1 EU2 EU3 EU1
+Map5 5 EU4 EU1 US2 EU2 US5
+Reducer3 3 US5 US6 EU2
+Reducer2 3 EU3 US4 EU2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 7: TPC-H query17
+7 247 1146
+Map1 2 US5 EU1
+Reducer4 1 US3
+Reducer7 7 EU1 EU2 US5 US1 EU3 US3 EU4
+Map5 5 EU4 US6 EU3 AS1 EU1
+Map6 5 EU4 EU1 AS1 US2 US6
+Reducer3 7 US4 EU1 AS1 US5 AS2 US1 EU3
+Reducer2 7 AS1 EU3 EU4 US3 US1 US2 US6
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 13: TPC-H query4
+5 248 1154
+Reducer4 1 US1
+Map1 5 EU2 US2 AS2 EU1 EU3
+Map5 5 EU3 US5 US2 EU2 EU1
+Reducer3 3 US5 US6 EU1
+Reducer2 3 AS2 EU3 EU2
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 2: TPC-H query12
+5 249 1156
+Reducer4 1 US6
+Map1 5 EU4 EU3 AS2 US6 EU1
+Map5 5 US3 AS2 EU4 US1 AS1
+Reducer3 1 EU3
+Reducer2 2 US3 US2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 13: TPC-H query4
+5 250 1158
+Reducer4 1 AS1
+Map1 5 US1 EU4 AS1 EU3 EU2
+Map5 5 EU3 EU2 US5 AS2 EU4
+Reducer3 3 US1 EU3 EU4
+Reducer2 3 US5 US6 EU1
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 11: TPC-H query22
+8 251 1181
+Reducer5 1 EU2
+Map1 5 EU2 AS1 US6 US5 US3
+Reducer4 1 US4
+Reducer8 1 EU1
+Map6 3 US2 EU4 US4
+Reducer3 2 US6 EU1
+Map7 3 US2 AS2 EU3
+Reducer2 3 US4 AS2 EU1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 16: TPC-H query7
+11 252 1192
+Reducer5 1 AS2
+Reducer4 1 US1
+Map1 1 US4
+Map10 1 US4
+Reducer6 1 US1
+Map11 1 EU2
+Map8 5 US2 AS1 US1 EU3 US3
+Map9 3 US2 EU4 AS2
+Reducer3 3 US6 EU2 US1
+Reducer2 2 US1 US3
+Map7 5 AS1 US1 US5 EU1 EU3
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 16: TPC-H query7
+11 253 1202
+Reducer5 1 US2
+Reducer4 1 EU1
+Map1 1 US5
+Map10 1 AS1
+Reducer6 1 EU1
+Map11 1 AS2
+Map8 5 EU4 EU3 AS2 US2 EU2
+Map9 3 US5 EU1 AS1
+Reducer3 3 AS2 AS1 US4
+Reducer2 2 US1 EU1
+Map7 5 AS2 US5 US1 US3 EU4
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 2: TPC-H query12
+5 254 1251
+Reducer4 1 AS2
+Map1 5 AS1 EU4 AS2 EU3 US4
+Map5 5 US1 EU2 US6 AS2 EU3
+Reducer3 1 EU1
+Reducer2 2 US3 US5
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 13: TPC-H query4
+5 255 1253
+Reducer4 1 US4
+Map1 5 AS1 EU1 AS2 EU2 EU3
+Map5 5 AS2 US6 EU3 US2 US5
+Reducer3 3 EU1 US3 US6
+Reducer2 3 US3 AS1 US6
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 8: TPC-H query1
+3 256 1253
+Map1 5 EU4 EU1 AS1 EU3 US5
+Reducer3 1 US2
+Reducer2 5 US4 AS2 US6 AS1 US1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 13: TPC-H query4
+5 257 1254
+Reducer4 1 EU4
+Map1 5 US6 EU1 US2 US4 EU2
+Map5 5 US4 US2 EU4 AS2 EU1
+Reducer3 3 US5 EU1 US4
+Reducer2 3 US4 AS2 US6
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 11: TPC-H query22
+8 258 1255
+Reducer5 1 EU3
+Map1 5 EU1 US1 US2 AS1 EU3
+Reducer4 1 US1
+Reducer8 1 US5
+Map6 3 US5 EU4 US6
+Reducer3 2 EU2 EU1
+Map7 3 US5 EU2 US2
+Reducer2 3 US5 US3 US6
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 11: TPC-H query22
+8 259 1257
+Reducer5 1 EU4
+Map1 5 US5 AS1 US6 US3 US2
+Reducer4 1 US1
+Reducer8 1 AS2
+Map6 3 EU2 EU3 US5
+Reducer3 2 US4 EU3
+Map7 3 US4 AS2 US3
+Reducer2 3 US5 AS1 US1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 1: TPC-H query11
+12 260 1259
+Reducer10 1 EU1
+Reducer4 1 EU2
+Map1 5 EU2 AS1 US1 US5 US4
+Reducer9 1 EU4
+Reducer8 1 US4
+Map11 1 EU4
+Map12 1 AS1
+Map5 1 EU1
+Reducer3 1 EU4
+Map6 1 AS2
+Reducer2 1 US2
+Map7 5 US3 EU3 EU1 AS2 EU4
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 6: TPC-H query16
+9 261 1260
+Reducer5 1 AS1
+Map1 5 EU2 AS1 EU1 EU3 AS2
+Reducer4 1 US4
+Reducer9 1 EU4
+Map8 1 US3
+Reducer3 1 US6
+Map6 2 US5 EU1
+Reducer2 1 EU2
+Map7 1 EU3
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 6: TPC-H query16
+9 262 1263
+Reducer5 1 US5
+Map1 5 AS1 US3 EU3 US2 AS2
+Reducer4 1 US4
+Reducer9 1 EU1
+Map8 1 EU2
+Reducer3 1 US5
+Map6 2 US5 EU4
+Reducer2 1 US5
+Map7 1 US1
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 0: TPC-H query10
+8 263 1275
+Reducer5 1 US4
+Reducer4 1 EU3
+Map1 3 US3 AS2 EU2
+Map8 1 EU2
+Reducer3 4 EU2 US2 EU4 EU3
+Map6 5 US2 US3 EU4 US5 US1
+Reducer2 1 EU4
+Map7 5 AS2 EU2 EU4 US5 US1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 2: TPC-H query12
+5 264 1287
+Reducer4 1 AS1
+Map1 5 EU1 US6 US4 US5 US1
+Map5 5 EU1 EU2 EU4 AS1 AS2
+Reducer3 1 AS1
+Reducer2 2 EU1 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 11: TPC-H query22
+8 265 1303
+Reducer5 1 US1
+Map1 5 US5 US1 AS2 EU2 US3
+Reducer4 1 US5
+Reducer8 1 EU4
+Map6 3 AS1 EU3 US6
+Reducer3 2 US3 AS2
+Map7 3 EU1 US2 US6
+Reducer2 3 EU2 EU1 AS2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 15: TPC-H query6
+2 266 1334
+Map1 5 US2 EU1 EU2 EU3 US6
+Reducer2 1 EU4
+1
+Map1 Reducer2 3181
+# 8: TPC-H query1
+3 267 1334
+Map1 5 AS1 EU4 US1 AS2 US3
+Reducer3 1 US3
+Reducer2 5 US4 US2 EU1 EU2 US3
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 8: TPC-H query1
+3 268 1335
+Map1 5 US2 US3 AS1 EU4 US4
+Reducer3 1 EU4
+Reducer2 5 US6 EU4 AS1 EU3 US1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 9: TPC-H query20
+12 269 1337
+Reducer5 1 US6
+Map10 5 EU3 US5 AS1 EU1 US2
+Map1 2 EU1 EU3
+Reducer4 1 EU4
+Reducer7 1 US2
+Reducer6 1 US3
+Reducer9 1 EU1
+Map11 1 EU2
+Map12 1 US4
+Map8 5 EU2 US2 US1 US6 EU3
+Reducer3 1 US4
+Reducer2 1 EU3
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 13: TPC-H query4
+5 270 1346
+Reducer4 1 EU1
+Map1 5 EU4 US3 AS2 US5 EU1
+Map5 5 AS1 EU2 EU4 US4 US3
+Reducer3 3 US6 US4 US3
+Reducer2 3 US1 AS2 EU1
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 13: TPC-H query4
+5 271 1354
+Reducer4 1 EU3
+Map1 5 EU2 AS1 US1 US4 US5
+Map5 5 AS1 EU4 US5 US2 US4
+Reducer3 3 US3 US1 EU4
+Reducer2 3 US3 EU1 AS1
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 6: TPC-H query16
+9 272 1356
+Reducer5 1 EU1
+Map1 5 EU4 US6 US4 US2 US3
+Reducer4 1 EU2
+Reducer9 1 US1
+Map8 1 US3
+Reducer3 1 EU1
+Map6 2 AS2 US3
+Reducer2 1 EU2
+Map7 1 AS2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 1: TPC-H query11
+12 273 1356
+Reducer10 1 US3
+Reducer4 1 AS2
+Map1 5 US3 US1 EU1 EU4 EU3
+Reducer9 1 US6
+Reducer8 1 EU4
+Map11 1 US1
+Map12 1 AS1
+Map5 1 US5
+Reducer3 1 US5
+Map6 1 US6
+Reducer2 1 EU2
+Map7 5 EU3 AS1 EU1 US6 US5
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 0: TPC-H query10
+8 274 1368
+Reducer5 1 AS2
+Reducer4 1 AS2
+Map1 3 US6 EU4 EU3
+Map8 1 US3
+Reducer3 4 EU2 US4 EU4 US3
+Map6 5 US5 US4 EU3 US1 EU1
+Reducer2 1 AS1
+Map7 5 EU3 US5 EU2 AS1 US6
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 8: TPC-H query1
+3 275 1381
+Map1 5 US2 US1 US3 US4 US5
+Reducer3 1 US4
+Reducer2 5 US6 US4 US3 EU3 AS2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 13: TPC-H query4
+5 276 1387
+Reducer4 1 EU1
+Map1 5 US6 AS1 EU1 US5 EU2
+Map5 5 EU1 EU3 EU4 US2 US6
+Reducer3 3 EU4 US6 AS2
+Reducer2 3 US6 US4 US3
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 11: TPC-H query22
+8 277 1390
+Reducer5 1 US4
+Map1 5 EU4 US5 US4 AS1 US6
+Reducer4 1 US2
+Reducer8 1 EU4
+Map6 3 EU2 EU4 US6
+Reducer3 2 EU4 US1
+Map7 3 AS1 EU3 EU2
+Reducer2 3 US1 EU2 AS2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 14: TPC-H query5
+11 278 1395
+Reducer5 1 US1
+Map1 3 EU1 AS1 US3
+Reducer4 4 EU3 EU2 EU4 AS1
+Map10 1 US2
+Reducer6 1 US1
+Map11 1 AS1
+Map8 5 US2 EU2 EU4 EU3 US1
+Map9 1 EU2
+Reducer3 4 EU2 US4 US2 US1
+Reducer2 1 AS2
+Map7 5 EU1 AS2 US6 AS1 US2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 0: TPC-H query10
+8 279 1417
+Reducer5 1 EU1
+Reducer4 1 US4
+Map1 3 EU2 US3 US1
+Map8 1 EU4
+Reducer3 4 US4 EU3 AS1 US2
+Map6 5 US1 AS1 US3 EU3 US6
+Reducer2 1 US5
+Map7 5 EU3 EU1 EU4 US6 AS2
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 9: TPC-H query20
+12 280 1417
+Reducer5 1 US1
+Map10 5 AS1 US1 US2 US5 US4
+Map1 2 EU1 US4
+Reducer4 1 AS2
+Reducer7 1 EU4
+Reducer6 1 US4
+Reducer9 1 US6
+Map11 1 US1
+Map12 1 US3
+Map8 5 US6 US1 US3 EU4 EU1
+Reducer3 1 US3
+Reducer2 1 AS2
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 1: TPC-H query11
+12 281 1419
+Reducer10 1 EU4
+Reducer4 1 US2
+Map1 5 US1 US3 US2 AS1 US6
+Reducer9 1 AS2
+Reducer8 1 AS2
+Map11 1 AS1
+Map12 1 US3
+Map5 1 EU3
+Reducer3 1 US1
+Map6 1 EU1
+Reducer2 1 EU2
+Map7 5 US2 US3 US6 US1 AS1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 14: TPC-H query5
+11 282 1421
+Reducer5 1 EU4
+Map1 3 EU3 US4 US3
+Reducer4 4 AS1 US5 EU2 US3
+Map10 1 US6
+Reducer6 1 US6
+Map11 1 EU3
+Map8 5 AS2 US1 EU4 US2 EU2
+Map9 1 EU3
+Reducer3 4 US3 US6 AS1 US4
+Reducer2 1 US2
+Map7 5 EU2 US2 US1 EU4 US6
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 3: TPC-H query13
+6 283 1433
+Reducer5 1 US3
+Reducer4 1 US5
+Map1 3 US2 EU4 AS2
+Reducer3 1 US5
+Map6 5 EU3 US6 EU1 US3 US1
+Reducer2 2 AS1 AS2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 284 1447
+Map1 5 US3 EU2 US2 US5 EU1
+Reducer3 1 AS1
+Reducer2 5 EU2 EU4 EU1 US3 US5
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 4: TPC-H query14
+4 285 1468
+Map1 5 US1 US4 AS1 EU2 US6
+Map4 2 EU2 EU3
+Reducer3 1 EU1
+Reducer2 1 AS2
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 1: TPC-H query11
+12 286 1474
+Reducer10 1 EU1
+Reducer4 1 US5
+Map1 5 US4 EU2 US6 US1 US2
+Reducer9 1 US3
+Reducer8 1 US1
+Map11 1 US1
+Map12 1 AS2
+Map5 1 AS1
+Reducer3 1 US6
+Map6 1 EU4
+Reducer2 1 EU3
+Map7 5 US1 AS1 EU1 EU4 US6
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 10: TPC-H query21
+14 287 1495
+Reducer5 5 EU3 US5 EU4 EU2 US2
+Map10 5 AS1 US4 EU1 US2 EU4
+Map1 1 US1
+Reducer4 2 US5 EU4
+Reducer7 3 EU3 EU1 US1
+Map2 1 US1
+Reducer6 5 US4 US2 EU2 EU3 EU1
+Reducer14 3 EU4 US1 EU2
+Map13 5 EU2 US1 US4 AS2 EU4
+Reducer8 1 US6
+Reducer12 7 US5 US2 EU4 EU1 US4 US3 EU3
+Map11 5 AS1 US3 EU3 US1 US5
+Map9 5 EU4 AS2 EU3 US4 AS1
+Reducer3 2 EU4 US4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 4: TPC-H query14
+4 288 1501
+Map1 5 US2 US4 AS2 EU3 US6
+Map4 2 US4 EU2
+Reducer3 1 AS2
+Reducer2 1 US1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 15: TPC-H query6
+2 289 1525
+Map1 5 EU1 US4 EU3 US5 US1
+Reducer2 1 US6
+1
+Map1 Reducer2 3181
+# 9: TPC-H query20
+12 290 1528
+Reducer5 1 EU4
+Map10 5 EU2 US2 AS2 US4 US3
+Map1 2 AS2 US2
+Reducer4 1 US4
+Reducer7 1 US4
+Reducer6 1 EU2
+Reducer9 1 US1
+Map11 1 US3
+Map12 1 US6
+Map8 5 AS1 EU4 US4 US6 US5
+Reducer3 1 US2
+Reducer2 1 EU3
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 4: TPC-H query14
+4 291 1534
+Map1 5 EU4 US3 US1 AS1 AS2
+Map4 2 EU2 US2
+Reducer3 1 US1
+Reducer2 1 EU4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 8: TPC-H query1
+3 292 1550
+Map1 5 EU4 US5 EU1 US1 US4
+Reducer3 1 EU3
+Reducer2 5 AS1 EU3 US4 US2 EU2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 9: TPC-H query20
+12 293 1550
+Reducer5 1 US4
+Map10 5 EU2 US4 US3 EU4 EU3
+Map1 2 EU3 US4
+Reducer4 1 US2
+Reducer7 1 EU2
+Reducer6 1 EU3
+Reducer9 1 EU2
+Map11 1 EU1
+Map12 1 US5
+Map8 5 EU4 US6 EU1 US2 AS1
+Reducer3 1 EU4
+Reducer2 1 US1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 9: TPC-H query20
+12 294 1551
+Reducer5 1 AS2
+Map10 5 AS2 EU3 US2 EU1 US1
+Map1 2 AS1 AS2
+Reducer4 1 US6
+Reducer7 1 AS1
+Reducer6 1 AS1
+Reducer9 1 EU3
+Map11 1 US3
+Map12 1 US6
+Map8 5 EU1 AS1 EU4 US6 US4
+Reducer3 1 AS1
+Reducer2 1 US1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 0: TPC-H query10
+8 295 1553
+Reducer5 1 US2
+Reducer4 1 US5
+Map1 3 AS1 US1 US6
+Map8 1 US3
+Reducer3 4 EU1 US6 US5 US3
+Map6 5 US3 AS2 US5 US6 EU1
+Reducer2 1 EU1
+Map7 5 EU3 EU4 US2 EU2 AS2
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 12: TPC-H query3
+7 296 1554
+Reducer5 1 US3
+Map1 3 US6 AS2 US4
+Reducer4 1 EU2
+Map6 5 US6 US4 EU1 AS1 US3
+Reducer3 3 US2 EU3 AS1
+Map7 5 AS2 US2 US1 EU3 EU1
+Reducer2 1 US2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 2: TPC-H query12
+5 297 1555
+Reducer4 1 US1
+Map1 5 EU3 US2 US1 AS1 US4
+Map5 5 EU4 US6 AS2 EU1 US4
+Reducer3 1 US5
+Reducer2 2 US4 EU4
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 5: TPC-H query15
+8 298 1559
+Map1 5 US4 EU4 AS1 US1 US3
+Reducer4 1 US4
+Reducer7 1 AS2
+Reducer6 2 EU4 US1
+Map8 1 EU1
+Map5 5 AS2 US6 US2 US3 AS1
+Reducer3 1 US4
+Reducer2 1 US4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 14: TPC-H query5
+11 299 1580
+Reducer5 1 US5
+Map1 3 EU4 US5 AS1
+Reducer4 4 US6 EU4 AS1 US5
+Map10 1 EU3
+Reducer6 1 US6
+Map11 1 US6
+Map8 5 US6 AS2 AS1 EU1 US4
+Map9 1 EU1
+Reducer3 4 EU1 AS1 US2 US3
+Reducer2 1 US1
+Map7 5 EU3 AS2 EU4 US3 EU2
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 8: TPC-H query1
+3 300 1580
+Map1 5 AS2 AS1 US6 US4 US2
+Reducer3 1 EU1
+Reducer2 5 AS1 US5 US1 US4 EU3
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 7: TPC-H query17
+7 301 1586
+Map1 2 EU3 US4
+Reducer4 1 US5
+Reducer7 7 EU3 AS2 US3 EU1 US5 US6 US2
+Map5 5 EU1 US3 US6 US4 US2
+Map6 5 AS2 US4 US1 US6 US3
+Reducer3 7 US5 EU3 EU1 US2 EU4 US3 US1
+Reducer2 7 US3 US6 AS1 EU3 US4 US1 AS2
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 5: TPC-H query15
+8 302 1606
+Map1 5 US3 EU1 AS1 EU3 US5
+Reducer4 1 US3
+Reducer7 1 EU4
+Reducer6 2 US1 EU1
+Map8 1 US3
+Map5 5 EU3 EU4 EU1 AS1 EU2
+Reducer3 1 US5
+Reducer2 1 EU3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 5: TPC-H query15
+8 303 1607
+Map1 5 AS2 US2 US6 EU1 US5
+Reducer4 1 US3
+Reducer7 1 US5
+Reducer6 2 EU2 US4
+Map8 1 US4
+Map5 5 EU4 US1 EU3 US5 AS1
+Reducer3 1 EU3
+Reducer2 1 EU4
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 3: TPC-H query13
+6 304 1615
+Reducer5 1 EU3
+Reducer4 1 US2
+Map1 3 AS1 US3 US6
+Reducer3 1 AS2
+Map6 5 EU2 US2 US6 US4 EU3
+Reducer2 2 US3 EU4
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 305 1619
+Map1 5 US4 US2 EU1 US6 EU3
+Reducer3 1 US5
+Reducer2 5 US2 EU2 US1 US6 EU1
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 3: TPC-H query13
+6 306 1620
+Reducer5 1 EU4
+Reducer4 1 US3
+Map1 3 EU4 AS2 US1
+Reducer3 1 AS1
+Map6 5 US4 US2 AS2 US3 EU4
+Reducer2 2 EU1 EU3
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 8: TPC-H query1
+3 307 1632
+Map1 5 EU4 US5 AS2 US6 US1
+Reducer3 1 EU4
+Reducer2 5 AS2 EU4 EU3 US6 US4
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 4: TPC-H query14
+4 308 1634
+Map1 5 AS2 AS1 EU1 US3 EU2
+Map4 2 US2 AS2
+Reducer3 1 EU2
+Reducer2 1 EU4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 1: TPC-H query11
+12 309 1677
+Reducer10 1 EU2
+Reducer4 1 US1
+Map1 5 EU2 AS2 US2 EU4 EU3
+Reducer9 1 US6
+Reducer8 1 US1
+Map11 1 EU3
+Map12 1 EU1
+Map5 1 US2
+Reducer3 1 US1
+Map6 1 US1
+Reducer2 1 EU2
+Map7 5 AS1 AS2 US6 EU4 US5
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 11: TPC-H query22
+8 310 1678
+Reducer5 1 US6
+Map1 5 US6 EU3 US3 US4 EU2
+Reducer4 1 EU2
+Reducer8 1 US2
+Map6 3 EU4 US4 EU2
+Reducer3 2 AS1 EU3
+Map7 3 US6 EU2 US1
+Reducer2 3 AS2 EU2 US3
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 9: TPC-H query20
+12 311 1678
+Reducer5 1 US5
+Map10 5 EU2 AS2 US1 US6 US2
+Map1 2 EU2 EU4
+Reducer4 1 EU3
+Reducer7 1 US3
+Reducer6 1 US2
+Reducer9 1 US6
+Map11 1 US1
+Map12 1 AS2
+Map8 5 US4 EU1 US5 US2 AS2
+Reducer3 1 US3
+Reducer2 1 EU1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 5: TPC-H query15
+8 312 1680
+Map1 5 US1 US5 AS2 EU4 US6
+Reducer4 1 EU4
+Reducer7 1 EU2
+Reducer6 2 AS2 US4
+Map8 1 EU1
+Map5 5 AS2 EU3 US4 US6 US3
+Reducer3 1 EU3
+Reducer2 1 US3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 16: TPC-H query7
+11 313 1680
+Reducer5 1 US5
+Reducer4 1 EU2
+Map1 1 US5
+Map10 1 EU3
+Reducer6 1 EU2
+Map11 1 US6
+Map8 5 US4 EU3 EU1 EU4 AS1
+Map9 3 US2 AS1 US3
+Reducer3 3 US6 AS2 EU3
+Reducer2 2 US6 AS2
+Map7 5 AS1 AS2 US4 US1 US6
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 1: TPC-H query11
+12 314 1682
+Reducer10 1 AS2
+Reducer4 1 US5
+Map1 5 AS2 AS1 US2 US3 EU1
+Reducer9 1 US5
+Reducer8 1 US3
+Map11 1 EU3
+Map12 1 US3
+Map5 1 EU2
+Reducer3 1 US2
+Map6 1 EU4
+Reducer2 1 EU1
+Map7 5 US4 US5 EU3 US3 AS2
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 3: TPC-H query13
+6 315 1683
+Reducer5 1 AS1
+Reducer4 1 US3
+Map1 3 US6 US1 US5
+Reducer3 1 US2
+Map6 5 EU2 AS1 AS2 US6 US3
+Reducer2 2 AS1 AS2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 3: TPC-H query13
+6 316 1687
+Reducer5 1 EU2
+Reducer4 1 AS1
+Map1 3 AS1 EU4 US2
+Reducer3 1 US3
+Map6 5 US5 US3 US1 AS1 AS2
+Reducer2 2 AS2 EU1
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 16: TPC-H query7
+11 317 1688
+Reducer5 1 US3
+Reducer4 1 US6
+Map1 1 US6
+Map10 1 US3
+Reducer6 1 US5
+Map11 1 US6
+Map8 5 EU1 EU4 EU2 US1 US6
+Map9 3 EU4 EU1 US5
+Reducer3 3 US6 US4 EU2
+Reducer2 2 EU2 EU1
+Map7 5 US3 EU4 US1 EU2 US2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 10: TPC-H query21
+14 318 1688
+Reducer5 5 EU2 AS2 AS1 EU1 US2
+Map10 5 EU4 AS2 US2 EU3 AS1
+Map1 1 US6
+Reducer4 2 US2 US3
+Reducer7 3 US3 AS2 EU4
+Map2 1 EU2
+Reducer6 5 AS1 US1 AS2 US6 EU3
+Reducer14 3 EU3 US3 US1
+Map13 5 AS2 US5 EU3 EU4 US3
+Reducer8 1 EU4
+Reducer12 7 US3 AS1 US2 US4 EU1 EU4 EU2
+Map11 5 EU1 US3 US2 US1 EU3
+Map9 5 EU1 EU3 AS2 US4 US2
+Reducer3 2 EU2 US2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 4: TPC-H query14
+4 319 1689
+Map1 5 US5 EU4 US1 US4 EU3
+Map4 2 US3 EU3
+Reducer3 1 EU2
+Reducer2 1 AS1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 10: TPC-H query21
+14 320 1690
+Reducer5 5 EU1 US6 AS1 US4 EU4
+Map10 5 US3 EU1 AS1 US1 US6
+Map1 1 US3
+Reducer4 2 US2 US6
+Reducer7 3 US3 EU4 US4
+Map2 1 US1
+Reducer6 5 AS1 US6 EU3 US5 EU2
+Reducer14 3 US4 AS1 EU4
+Map13 5 AS2 US2 EU2 EU3 AS1
+Reducer8 1 US1
+Reducer12 7 US6 EU4 AS2 US5 US1 AS1 EU2
+Map11 5 US5 US4 US2 AS1 US1
+Map9 5 EU2 US6 EU1 EU4 US5
+Reducer3 2 US6 EU4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 6: TPC-H query16
+9 321 1694
+Reducer5 1 US1
+Map1 5 US4 EU2 US3 US2 AS1
+Reducer4 1 US6
+Reducer9 1 EU1
+Map8 1 US3
+Reducer3 1 EU4
+Map6 2 EU2 AS1
+Reducer2 1 US1
+Map7 1 EU4
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 9: TPC-H query20
+12 322 1699
+Reducer5 1 US1
+Map10 5 US3 US2 EU1 EU2 EU3
+Map1 2 US4 US1
+Reducer4 1 EU3
+Reducer7 1 US1
+Reducer6 1 EU3
+Reducer9 1 US4
+Map11 1 US2
+Map12 1 AS2
+Map8 5 EU2 US2 US4 AS2 EU3
+Reducer3 1 EU3
+Reducer2 1 EU2
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 15: TPC-H query6
+2 323 1700
+Map1 5 AS2 AS1 EU4 EU2 US3
+Reducer2 1 EU1
+1
+Map1 Reducer2 3181
+# 13: TPC-H query4
+5 324 1704
+Reducer4 1 US6
+Map1 5 EU2 US4 AS2 AS1 US3
+Map5 5 EU2 EU4 AS1 EU3 US3
+Reducer3 3 US2 US4 EU1
+Reducer2 3 US1 EU1 EU4
+4
+Map1 Reducer2 823
+Map5 Reducer2 3887
+Reducer3 Reducer4 6
+Reducer2 Reducer3 1338
+# 9: TPC-H query20
+12 325 1709
+Reducer5 1 EU2
+Map10 5 US4 US3 EU3 AS2 US6
+Map1 2 US6 AS1
+Reducer4 1 EU4
+Reducer7 1 EU3
+Reducer6 1 US1
+Reducer9 1 AS1
+Map11 1 AS2
+Map12 1 US6
+Map8 5 US4 US6 EU2 EU4 US3
+Reducer3 1 EU3
+Reducer2 1 EU4
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 7: TPC-H query17
+7 326 1726
+Map1 2 US5 EU4
+Reducer4 1 US3
+Reducer7 7 AS1 US2 US6 AS2 EU3 US3 EU2
+Map5 5 US1 US5 US6 EU3 EU2
+Map6 5 US2 US3 AS1 EU3 US5
+Reducer3 7 EU1 US2 US6 US3 AS1 AS2 US4
+Reducer2 7 US1 EU3 EU2 US2 US4 AS1 AS2
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 4: TPC-H query14
+4 327 1729
+Map1 5 EU3 US2 US6 US5 US4
+Map4 2 US5 EU1
+Reducer3 1 US4
+Reducer2 1 EU3
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 1: TPC-H query11
+12 328 1731
+Reducer10 1 US1
+Reducer4 1 EU4
+Map1 5 EU4 US5 US1 US3 US2
+Reducer9 1 US4
+Reducer8 1 EU2
+Map11 1 US3
+Map12 1 US4
+Map5 1 AS2
+Reducer3 1 EU1
+Map6 1 EU2
+Reducer2 1 EU3
+Map7 5 US3 EU3 US2 EU2 US6
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 8: TPC-H query1
+3 329 1731
+Map1 5 US1 AS1 EU2 US6 EU4
+Reducer3 1 US6
+Reducer2 5 EU4 AS2 AS1 US6 EU2
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 3: TPC-H query13
+6 330 1741
+Reducer5 1 US1
+Reducer4 1 US6
+Map1 3 US5 EU4 AS2
+Reducer3 1 US1
+Map6 5 US3 US1 EU1 US2 EU4
+Reducer2 2 EU3 US2
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 4: TPC-H query14
+4 331 1750
+Map1 5 US5 US6 EU1 US3 AS2
+Map4 2 EU4 AS1
+Reducer3 1 US1
+Reducer2 1 US6
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 15: TPC-H query6
+2 332 1762
+Map1 5 US3 EU1 EU3 AS1 EU2
+Reducer2 1 US4
+1
+Map1 Reducer2 3181
+# 5: TPC-H query15
+8 333 1767
+Map1 5 US4 US1 EU1 US3 EU3
+Reducer4 1 EU2
+Reducer7 1 US4
+Reducer6 2 EU3 US1
+Map8 1 EU1
+Map5 5 US6 US3 EU3 US4 EU2
+Reducer3 1 EU4
+Reducer2 1 EU3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 2: TPC-H query12
+5 334 1781
+Reducer4 1 EU2
+Map1 5 EU2 US6 EU4 US5 US2
+Map5 5 US5 US3 AS1 EU1 US2
+Reducer3 1 EU1
+Reducer2 2 US4 AS2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 2: TPC-H query12
+5 335 1783
+Reducer4 1 US6
+Map1 5 US3 EU1 EU4 US5 AS1
+Map5 5 US6 AS2 EU4 US3 EU3
+Reducer3 1 US5
+Reducer2 2 US3 US2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 16: TPC-H query7
+11 336 1783
+Reducer5 1 US2
+Reducer4 1 EU4
+Map1 1 US5
+Map10 1 US6
+Reducer6 1 EU3
+Map11 1 US2
+Map8 5 US1 US5 US2 EU4 EU3
+Map9 3 EU3 US3 EU1
+Reducer3 3 US1 US2 AS2
+Reducer2 2 US6 EU1
+Map7 5 EU3 US3 EU4 US6 EU2
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 1: TPC-H query11
+12 337 1786
+Reducer10 1 AS2
+Reducer4 1 US2
+Map1 5 US2 US1 US3 AS2 EU1
+Reducer9 1 US4
+Reducer8 1 US4
+Map11 1 EU1
+Map12 1 US6
+Map5 1 EU1
+Reducer3 1 AS2
+Map6 1 US6
+Reducer2 1 EU4
+Map7 5 US2 EU3 US6 EU1 US4
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 10: TPC-H query21
+14 338 1786
+Reducer5 5 EU2 EU1 US1 US5 EU3
+Map10 5 US6 US2 AS2 EU1 US1
+Map1 1 EU1
+Reducer4 2 US3 US5
+Reducer7 3 US4 US1 EU4
+Map2 1 EU1
+Reducer6 5 US5 US2 US4 EU3 US1
+Reducer14 3 EU3 EU4 US3
+Map13 5 US4 AS2 US1 EU1 EU4
+Reducer8 1 EU1
+Reducer12 7 EU2 EU4 US3 US1 US5 US2 AS1
+Map11 5 US3 US1 EU4 US2 AS1
+Map9 5 AS1 EU2 US6 US5 EU3
+Reducer3 2 EU2 US1
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 8: TPC-H query1
+3 339 1799
+Map1 5 US6 EU2 US1 EU4 EU3
+Reducer3 1 EU3
+Reducer2 5 EU4 US2 US6 EU1 US3
+2
+Map1 Reducer2 16497
+Reducer2 Reducer3 18
+# 11: TPC-H query22
+8 340 1803
+Reducer5 1 EU4
+Map1 5 EU4 AS1 EU3 US4 US2
+Reducer4 1 US2
+Reducer8 1 US1
+Map6 3 AS1 EU4 US3
+Reducer3 2 US1 EU1
+Map7 3 EU4 US4 AS2
+Reducer2 3 US2 US6 US1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 7: TPC-H query17
+7 341 1809
+Map1 2 US4 US1
+Reducer4 1 US3
+Reducer7 7 US4 US6 EU1 US5 AS1 EU4 US3
+Map5 5 EU2 US1 EU4 US6 AS2
+Map6 5 US4 US1 US5 US6 EU4
+Reducer3 7 US3 US2 EU1 EU4 US6 US4 AS2
+Reducer2 7 EU2 US5 EU1 AS1 EU3 US1 US3
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 15: TPC-H query6
+2 342 1811
+Map1 5 US2 US4 EU3 EU1 US3
+Reducer2 1 EU4
+1
+Map1 Reducer2 3181
+# 6: TPC-H query16
+9 343 1816
+Reducer5 1 EU3
+Map1 5 US5 EU3 US1 AS1 US3
+Reducer4 1 EU3
+Reducer9 1 US4
+Map8 1 US5
+Reducer3 1 EU3
+Map6 2 EU2 EU4
+Reducer2 1 US6
+Map7 1 US3
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 11: TPC-H query22
+8 344 1826
+Reducer5 1 US3
+Map1 5 AS2 US6 AS1 EU3 US2
+Reducer4 1 EU3
+Reducer8 1 US1
+Map6 3 EU3 AS2 US6
+Reducer3 2 US4 EU4
+Map7 3 EU3 US2 AS2
+Reducer2 3 US6 AS2 EU1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 4: TPC-H query14
+4 345 1833
+Map1 5 US2 EU3 EU2 US1 AS2
+Map4 2 EU4 AS2
+Reducer3 1 US6
+Reducer2 1 EU1
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 0: TPC-H query10
+8 346 1834
+Reducer5 1 EU4
+Reducer4 1 AS1
+Map1 3 AS1 EU1 US1
+Map8 1 US1
+Reducer3 4 US4 EU1 US3 US1
+Map6 5 EU1 EU2 US1 AS1 US2
+Reducer2 1 US4
+Map7 5 US5 US3 EU2 EU3 AS1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 11: TPC-H query22
+8 347 1836
+Reducer5 1 US1
+Map1 5 US4 AS2 US2 EU3 AS1
+Reducer4 1 US1
+Reducer8 1 US2
+Map6 3 US3 US2 EU2
+Reducer3 2 US1 US3
+Map7 3 US6 EU1 EU4
+Reducer2 3 US5 EU4 EU1
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 9: TPC-H query20
+12 348 1840
+Reducer5 1 EU2
+Map10 5 EU4 AS1 US4 EU2 US1
+Map1 2 AS1 EU1
+Reducer4 1 US5
+Reducer7 1 EU4
+Reducer6 1 US1
+Reducer9 1 US2
+Map11 1 US6
+Map12 1 AS2
+Map8 5 US4 EU4 EU3 US5 US6
+Reducer3 1 EU2
+Reducer2 1 AS2
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 3: TPC-H query13
+6 349 1880
+Reducer5 1 US1
+Reducer4 1 AS2
+Map1 3 US4 US3 EU4
+Reducer3 1 US1
+Map6 5 EU2 EU3 US4 EU1 AS2
+Reducer2 2 US2 EU3
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 12: TPC-H query3
+7 350 1882
+Reducer5 1 US4
+Map1 3 EU3 US5 US6
+Reducer4 1 EU2
+Map6 5 US3 US5 US4 US6 AS2
+Reducer3 3 US5 US4 EU1
+Map7 5 AS1 US6 US2 EU2 US1
+Reducer2 1 US2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 11: TPC-H query22
+8 351 1884
+Reducer5 1 EU3
+Map1 5 US5 EU2 US6 EU3 US1
+Reducer4 1 EU3
+Reducer8 1 EU1
+Map6 3 US3 AS1 US4
+Reducer3 2 US6 US4
+Map7 3 AS1 US6 AS2
+Reducer2 3 US6 US2 EU2
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 2: TPC-H query12
+5 352 1885
+Reducer4 1 US6
+Map1 5 EU1 US3 EU4 US5 EU3
+Map5 5 AS2 US2 EU2 EU3 US6
+Reducer3 1 US2
+Reducer2 2 US3 EU2
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 15: TPC-H query6
+2 353 1886
+Map1 5 AS1 EU3 US2 US4 US3
+Reducer2 1 US3
+1
+Map1 Reducer2 3181
+# 11: TPC-H query22
+8 354 1904
+Reducer5 1 US1
+Map1 5 US6 US1 EU1 US2 EU3
+Reducer4 1 AS1
+Reducer8 1 US2
+Map6 3 AS2 US5 EU3
+Reducer3 2 US3 EU3
+Map7 3 US3 EU3 EU1
+Reducer2 3 EU4 AS2 US6
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 7: TPC-H query17
+7 355 1911
+Map1 2 EU3 US1
+Reducer4 1 US4
+Reducer7 7 US4 AS2 US2 US1 EU1 EU3 EU2
+Map5 5 US1 US6 AS2 EU4 EU1
+Map6 5 EU1 US5 US2 EU3 AS2
+Reducer3 7 US1 US2 AS2 EU3 EU2 US5 US6
+Reducer2 7 AS1 US4 US1 EU4 EU1 AS2 US3
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 6: TPC-H query16
+9 356 1913
+Reducer5 1 US3
+Map1 5 US2 EU1 AS1 US5 US3
+Reducer4 1 US5
+Reducer9 1 EU3
+Map8 1 US5
+Reducer3 1 AS1
+Map6 2 US4 EU3
+Reducer2 1 US4
+Map7 1 US1
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 12: TPC-H query3
+7 357 1926
+Reducer5 1 US6
+Map1 3 US3 AS2 US2
+Reducer4 1 EU4
+Map6 5 US4 AS1 EU4 US5 AS2
+Reducer3 3 US6 US1 US2
+Map7 5 EU2 US3 EU3 AS1 US1
+Reducer2 1 AS2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 0: TPC-H query10
+8 358 1929
+Reducer5 1 AS2
+Reducer4 1 US4
+Map1 3 US2 EU3 US3
+Map8 1 US6
+Reducer3 4 EU3 US4 US3 US1
+Map6 5 EU1 US6 US4 EU3 EU2
+Reducer2 1 US3
+Map7 5 US3 EU1 EU4 US1 US5
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 0: TPC-H query10
+8 359 1939
+Reducer5 1 EU1
+Reducer4 1 US6
+Map1 3 US2 US4 EU4
+Map8 1 EU2
+Reducer3 4 US3 US6 US5 US1
+Map6 5 US5 US6 EU4 EU2 AS2
+Reducer2 1 EU4
+Map7 5 US5 EU2 EU3 US3 US1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 1: TPC-H query11
+12 360 1943
+Reducer10 1 EU3
+Reducer4 1 EU2
+Map1 5 US6 AS2 US1 US4 AS1
+Reducer9 1 EU2
+Reducer8 1 EU4
+Map11 1 US2
+Map12 1 EU4
+Map5 1 EU3
+Reducer3 1 US6
+Map6 1 EU4
+Reducer2 1 EU3
+Map7 5 AS1 US1 US6 US2 EU3
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 1: TPC-H query11
+12 361 1952
+Reducer10 1 AS2
+Reducer4 1 EU3
+Map1 5 EU1 US3 US4 US5 US6
+Reducer9 1 EU3
+Reducer8 1 AS2
+Map11 1 US6
+Map12 1 AS2
+Map5 1 US1
+Reducer3 1 EU4
+Map6 1 AS2
+Reducer2 1 EU4
+Map7 5 EU2 EU1 US3 US6 AS1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 5: TPC-H query15
+8 362 1972
+Map1 5 US5 US3 US1 EU4 US2
+Reducer4 1 EU1
+Reducer7 1 US4
+Reducer6 2 EU4 EU3
+Map8 1 AS1
+Map5 5 US3 EU2 US5 EU3 US1
+Reducer3 1 US3
+Reducer2 1 EU3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 1: TPC-H query11
+12 363 1982
+Reducer10 1 US6
+Reducer4 1 US2
+Map1 5 US3 AS2 AS1 EU4 US5
+Reducer9 1 AS2
+Reducer8 1 EU2
+Map11 1 US5
+Map12 1 EU1
+Map5 1 US2
+Reducer3 1 US4
+Map6 1 US1
+Reducer2 1 AS1
+Map7 5 AS1 EU1 US2 EU3 US4
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 12: TPC-H query3
+7 364 2013
+Reducer5 1 EU2
+Map1 3 AS1 US5 US2
+Reducer4 1 US1
+Map6 5 US4 US3 US1 US5 EU4
+Reducer3 3 US1 US2 US4
+Map7 5 EU2 US6 EU3 AS1 US5
+Reducer2 1 US1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 16: TPC-H query7
+11 365 2021
+Reducer5 1 AS2
+Reducer4 1 AS1
+Map1 1 US3
+Map10 1 EU2
+Reducer6 1 EU2
+Map11 1 AS1
+Map8 5 US2 AS2 EU1 EU3 US3
+Map9 3 EU3 US6 US1
+Reducer3 3 EU4 US2 US5
+Reducer2 2 AS2 EU4
+Map7 5 US3 EU4 EU3 AS1 US1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 7: TPC-H query17
+7 366 2028
+Map1 2 US2 US1
+Reducer4 1 US6
+Reducer7 7 US6 AS2 EU1 EU4 AS1 EU2 US1
+Map5 5 US2 AS1 EU3 US4 EU2
+Map6 5 US2 AS2 US3 US5 EU2
+Reducer3 7 EU2 US1 AS1 US6 AS2 US5 US4
+Reducer2 7 EU3 EU1 US4 US1 US3 AS1 EU2
+6
+Map1 Reducer2 1546
+Reducer7 Reducer3 3389
+Map5 Reducer2 15012
+Map6 Reducer7 23486
+Reducer3 Reducer4 106
+Reducer2 Reducer3 2737
+# 12: TPC-H query3
+7 367 2030
+Reducer5 1 US5
+Map1 3 EU2 US1 AS2
+Reducer4 1 US5
+Map6 5 US4 EU3 EU4 US6 EU2
+Reducer3 3 US4 US6 AS2
+Map7 5 EU2 US4 US1 EU4 AS1
+Reducer2 1 AS2
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 9: TPC-H query20
+12 368 2041
+Reducer5 1 US3
+Map10 5 EU3 US2 US1 US3 EU4
+Map1 2 AS1 EU2
+Reducer4 1 EU2
+Reducer7 1 EU4
+Reducer6 1 EU4
+Reducer9 1 US2
+Map11 1 EU3
+Map12 1 US1
+Map8 5 EU4 EU2 US1 EU1 US4
+Reducer3 1 EU1
+Reducer2 1 US4
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 1: TPC-H query11
+12 369 2043
+Reducer10 1 US2
+Reducer4 1 AS2
+Map1 5 EU3 US4 US3 AS2 US1
+Reducer9 1 EU2
+Reducer8 1 AS2
+Map11 1 US2
+Map12 1 EU2
+Map5 1 EU4
+Reducer3 1 AS1
+Map6 1 EU3
+Reducer2 1 US1
+Map7 5 US5 US3 EU3 EU2 AS2
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 2: TPC-H query12
+5 370 2047
+Reducer4 1 EU2
+Map1 5 EU2 AS2 EU4 EU1 US4
+Map5 5 US2 AS1 EU4 US4 US1
+Reducer3 1 US1
+Reducer2 2 AS2 US5
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 2: TPC-H query12
+5 371 2063
+Reducer4 1 US4
+Map1 5 US5 US1 US3 AS1 EU1
+Map5 5 AS2 EU1 EU3 AS1 US3
+Reducer3 1 US3
+Reducer2 2 US2 US6
+4
+Map1 Reducer2 2054
+Map5 Reducer2 5733
+Reducer3 Reducer4 1
+Reducer2 Reducer3 3452
+# 3: TPC-H query13
+6 372 2065
+Reducer5 1 EU3
+Reducer4 1 AS2
+Map1 3 US3 US1 US4
+Reducer3 1 EU4
+Map6 5 US6 EU3 US1 AS1 EU1
+Reducer2 2 US2 EU3
+5
+Reducer4 Reducer5 1
+Map1 Reducer2 1683
+Reducer3 Reducer4 104
+Map6 Reducer2 3544
+Reducer2 Reducer3 4541
+# 16: TPC-H query7
+11 373 2065
+Reducer5 1 EU4
+Reducer4 1 US3
+Map1 1 AS1
+Map10 1 EU2
+Reducer6 1 AS2
+Map11 1 AS2
+Map8 5 US1 EU1 US5 US3 US4
+Map9 3 US1 US2 US3
+Reducer3 3 EU2 US3 US1
+Reducer2 2 US2 EU4
+Map7 5 AS2 EU4 US4 US2 AS1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 6: TPC-H query16
+9 374 2089
+Reducer5 1 US6
+Map1 5 US6 US1 EU3 US5 US2
+Reducer4 1 US3
+Reducer9 1 EU3
+Map8 1 EU3
+Reducer3 1 US1
+Map6 2 US3 US4
+Reducer2 1 EU1
+Map7 1 EU4
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 16: TPC-H query7
+11 375 2096
+Reducer5 1 US1
+Reducer4 1 EU4
+Map1 1 US3
+Map10 1 US2
+Reducer6 1 AS2
+Map11 1 AS2
+Map8 5 AS1 EU3 US5 US2 US3
+Map9 3 US6 US4 AS2
+Reducer3 3 US6 EU4 US3
+Reducer2 2 EU1 EU4
+Map7 5 US3 EU3 US6 AS2 US5
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 9: TPC-H query20
+12 376 2118
+Reducer5 1 US6
+Map10 5 US5 EU1 EU2 EU4 US1
+Map1 2 US4 US5
+Reducer4 1 EU3
+Reducer7 1 US4
+Reducer6 1 US2
+Reducer9 1 AS2
+Map11 1 EU1
+Map12 1 EU2
+Map8 5 AS1 EU1 US6 AS2 US3
+Reducer3 1 US2
+Reducer2 1 EU1
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 4: TPC-H query14
+4 377 2150
+Map1 5 EU1 US4 US6 EU3 US1
+Map4 2 US4 AS1
+Reducer3 1 US3
+Reducer2 1 US5
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 1: TPC-H query11
+12 378 2152
+Reducer10 1 US3
+Reducer4 1 EU3
+Map1 5 US6 AS1 EU3 EU1 US3
+Reducer9 1 US3
+Reducer8 1 US4
+Map11 1 US5
+Map12 1 AS2
+Map5 1 EU4
+Reducer3 1 EU4
+Map6 1 AS1
+Reducer2 1 US4
+Map7 5 EU2 EU4 US3 EU1 AS2
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 11: TPC-H query22
+8 379 2154
+Reducer5 1 AS1
+Map1 5 EU1 EU2 US2 US4 US5
+Reducer4 1 EU1
+Reducer8 1 EU3
+Map6 3 AS2 EU3 EU1
+Reducer3 2 US1 US6
+Map7 3 AS2 US2 US4
+Reducer2 3 AS2 AS1 US4
+7
+Map1 Reducer2 920
+Reducer4 Reducer5 1
+Reducer8 Reducer3 7
+Map6 Reducer3 56
+Reducer3 Reducer4 54
+Map7 Reducer8 67
+Reducer2 Reducer3 229
+# 5: TPC-H query15
+8 380 2158
+Map1 5 AS2 US1 US5 EU4 EU2
+Reducer4 1 AS1
+Reducer7 1 US6
+Reducer6 2 EU1 EU4
+Map8 1 EU4
+Map5 5 US4 US6 EU2 US5 EU3
+Reducer3 1 AS2
+Reducer2 1 US3
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 1: TPC-H query11
+12 381 2173
+Reducer10 1 EU3
+Reducer4 1 US5
+Map1 5 US6 US4 AS1 EU1 US3
+Reducer9 1 US6
+Reducer8 1 US4
+Map11 1 AS2
+Map12 1 EU1
+Map5 1 AS2
+Reducer3 1 EU3
+Map6 1 EU2
+Reducer2 1 EU1
+Map7 5 US6 AS2 EU3 US2 EU1
+11
+Reducer10 Reducer3 31
+Map1 Reducer2 1911
+Reducer9 Reducer10 19
+Reducer8 Reducer9 617
+Map11 Reducer8 86
+Map12 Reducer8 85
+Map5 Reducer2 343
+Reducer3 Reducer4 62
+Map6 Reducer2 342
+Reducer2 Reducer3 1230
+Map7 Reducer8 625
+# 4: TPC-H query14
+4 382 2176
+Map1 5 US6 EU4 US2 EU1 AS2
+Map4 2 EU4 US4
+Reducer3 1 US1
+Reducer2 1 EU4
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 4: TPC-H query14
+4 383 2178
+Map1 5 EU4 US5 AS2 AS1 US4
+Map4 2 US1 AS2
+Reducer3 1 AS2
+Reducer2 1 US3
+3
+Map1 Reducer2 5502
+Map4 Reducer2 120
+Reducer2 Reducer3 379
+# 9: TPC-H query20
+12 384 2180
+Reducer5 1 US4
+Map10 5 US5 US6 EU4 AS1 EU3
+Map1 2 EU4 EU3
+Reducer4 1 US1
+Reducer7 1 US4
+Reducer6 1 EU3
+Reducer9 1 AS1
+Map11 1 US5
+Map12 1 US1
+Map8 5 AS1 US4 AS2 US2 US3
+Reducer3 1 EU2
+Reducer2 1 EU2
+11
+Reducer5 Reducer6 1
+Map10 Reducer3 615
+Map1 Reducer2 44
+Reducer4 Reducer5 1509
+Reducer6 Reducer7 2
+Reducer9 Reducer4 1031
+Map11 Reducer6 3
+Map12 Map11 5
+Map8 Reducer9 6529
+Reducer3 Reducer4 1002
+Reducer2 Reducer3 83
+# 12: TPC-H query3
+7 385 2184
+Reducer5 1 EU4
+Map1 3 US4 EU4 EU2
+Reducer4 1 US6
+Map6 5 AS2 AS1 EU1 US4 EU4
+Reducer3 3 US6 US1 US5
+Map7 5 US3 EU4 AS1 US4 US1
+Reducer2 1 EU4
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 6: TPC-H query16
+9 386 2215
+Reducer5 1 US1
+Map1 5 EU4 AS1 US4 AS2 US3
+Reducer4 1 EU3
+Reducer9 1 US4
+Map8 1 US4
+Reducer3 1 US1
+Map6 2 US6 US2
+Reducer2 1 US1
+Map7 1 US2
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 16: TPC-H query7
+11 387 2216
+Reducer5 1 US4
+Reducer4 1 AS1
+Map1 1 EU3
+Map10 1 AS2
+Reducer6 1 EU4
+Map11 1 US5
+Map8 5 US4 US5 EU1 AS2 EU3
+Map9 3 US3 EU2 US1
+Reducer3 3 AS2 US2 EU4
+Reducer2 2 US4 EU3
+Map7 5 EU4 EU3 US3 EU2 AS1
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 18558
+Map1 Reducer2 2640
+Map10 Reducer4 2319
+Map11 Reducer4 2319
+Map8 Reducer3 7478
+Map9 Reducer4 6959
+Reducer3 Reducer4 10844
+Reducer2 Reducer3 7486
+Map7 Reducer2 14218
+# 12: TPC-H query3
+7 388 2218
+Reducer5 1 AS2
+Map1 3 EU4 AS2 US2
+Reducer4 1 US3
+Map6 5 US2 US1 EU3 US4 EU4
+Reducer3 3 US2 US4 EU2
+Map7 5 EU4 US5 EU3 US4 US6
+Reducer2 1 EU1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 12: TPC-H query3
+7 389 2222
+Reducer5 1 US4
+Map1 3 AS1 EU1 EU4
+Reducer4 1 AS1
+Map6 5 EU4 EU2 AS2 US1 US4
+Reducer3 3 EU4 AS2 US4
+Map7 5 EU4 US1 AS2 AS1 EU1
+Reducer2 1 US1
+6
+Map1 Reducer2 251
+Reducer4 Reducer5 50
+Map6 Reducer2 725
+Reducer3 Reducer4 3266
+Map7 Reducer3 9035
+Reducer2 Reducer3 640
+# 10: TPC-H query21
+14 390 2224
+Reducer5 5 AS1 US6 EU4 US4 US1
+Map10 5 US5 US4 EU2 US6 AS1
+Map1 1 AS2
+Reducer4 2 AS1 US4
+Reducer7 3 US1 US2 EU4
+Map2 1 EU2
+Reducer6 5 AS1 US4 EU3 EU1 US6
+Reducer14 3 AS2 US1 US2
+Map13 5 US2 EU4 US6 US5 US3
+Reducer8 1 EU4
+Reducer12 7 AS2 US2 EU4 EU2 EU3 US3 US5
+Map11 5 EU3 EU1 EU2 US3 US4
+Map9 5 US4 AS1 EU3 US6 EU1
+Reducer3 2 US1 US4
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 10: TPC-H query21
+14 391 2225
+Reducer5 5 EU2 EU3 US4 AS2 US6
+Map10 5 EU3 US6 US4 US1 AS1
+Map1 1 US1
+Reducer4 2 AS2 US3
+Reducer7 3 EU3 US5 EU2
+Map2 1 EU4
+Reducer6 5 EU2 US3 EU1 US4 EU4
+Reducer14 3 US2 US3 AS2
+Map13 5 EU1 AS1 US5 AS2 EU3
+Reducer8 1 EU1
+Reducer12 7 EU4 US5 US4 US6 US3 AS2 US2
+Map11 5 US3 US6 AS2 US1 AS1
+Map9 5 US2 US3 EU3 US4 US5
+Reducer3 2 AS2 US2
+13
+Reducer5 Reducer6 1364
+Map10 Reducer4 1043
+Map1 Map2 5
+Reducer4 Reducer5 223
+Reducer7 Reducer8 20
+Map2 Reducer3 721
+Reducer6 Reducer7 2202
+Reducer14 Reducer6 2270
+Map13 Reducer14 13010
+Reducer12 Reducer5 8014
+Map11 Reducer12 20378
+Map9 Reducer3 9950
+Reducer3 Reducer4 1523
+# 6: TPC-H query16
+9 392 2226
+Reducer5 1 US1
+Map1 5 EU2 US4 US2 US1 EU4
+Reducer4 1 US2
+Reducer9 1 EU1
+Map8 1 EU2
+Reducer3 1 US1
+Map6 2 AS2 EU1
+Reducer2 1 EU4
+Map7 1 EU1
+8
+Map1 Reducer2 1317
+Reducer4 Reducer5 13
+Reducer9 Reducer2 226
+Map8 Reducer9 1
+Reducer3 Reducer4 495
+Map6 Reducer2 467
+Reducer2 Reducer3 1146
+Map7 Reducer3 242
+# 14: TPC-H query5
+11 393 2231
+Reducer5 1 AS2
+Map1 3 AS2 US1 EU1
+Reducer4 4 US6 EU2 EU4 US1
+Map10 1 AS1
+Reducer6 1 US6
+Map11 1 US4
+Map8 5 US1 EU2 US3 US5 US4
+Map9 1 US2
+Reducer3 4 US6 EU3 US3 EU4
+Reducer2 1 EU1
+Map7 5 EU1 EU3 EU2 US3 US6
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 14: TPC-H query5
+11 394 2245
+Reducer5 1 US5
+Map1 3 US2 EU2 US1
+Reducer4 4 US6 AS1 US5 US4
+Map10 1 US6
+Reducer6 1 US2
+Map11 1 AS2
+Map8 5 US4 AS1 AS2 US5 US6
+Map9 1 US4
+Reducer3 4 EU3 US1 US3 US5
+Reducer2 1 US4
+Map7 5 EU3 US6 AS2 EU1 US4
+10
+Reducer5 Reducer6 1
+Map1 Reducer2 86
+Reducer4 Reducer5 2475
+Map10 Reducer4 353
+Map11 Reducer4 353
+Map8 Reducer3 9231
+Map9 Reducer4 353
+Reducer3 Reducer4 2734
+Reducer2 Reducer3 408
+Map7 Reducer2 372
+# 5: TPC-H query15
+8 395 2257
+Map1 5 US4 US2 US5 EU4 AS1
+Reducer4 1 EU4
+Reducer7 1 AS2
+Reducer6 2 AS1 US3
+Map8 1 EU1
+Map5 5 EU1 AS2 AS1 EU2 EU4
+Reducer3 1 AS2
+Reducer2 1 US6
+7
+Map1 Reducer2 7503
+Reducer7 Reducer3 38
+Reducer6 Reducer7 57
+Map8 Reducer3 39
+Map5 Reducer6 7381
+Reducer3 Reducer4 114
+Reducer2 Reducer3 97
+# 15: TPC-H query6
+2 396 2258
+Map1 5 US3 US5 AS2 AS1 US2
+Reducer2 1 AS2
+1
+Map1 Reducer2 3181
+# 0: TPC-H query10
+8 397 2263
+Reducer5 1 US3
+Reducer4 1 US6
+Map1 3 EU1 EU3 US5
+Map8 1 EU3
+Reducer3 4 US2 US5 AS2 EU3
+Map6 5 EU4 US3 EU3 US5 AS1
+Reducer2 1 US3
+Map7 5 US2 EU3 US1 US5 AS1
+7
+Reducer4 Reducer5 389
+Map1 Reducer2 177
+Map8 Reducer3 1044
+Reducer3 Reducer4 7541
+Map6 Reducer2 563
+Reducer2 Reducer3 1100
+Map7 Reducer3 11176
+# 15: TPC-H query6
+2 398 2285
+Map1 5 AS2 EU1 EU2 US4 US2
+Reducer2 1 US6
+1
+Map1 Reducer2 3181

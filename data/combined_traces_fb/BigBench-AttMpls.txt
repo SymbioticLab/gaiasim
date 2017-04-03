@@ -1,0 +1,8139 @@
+# 7: BIG_BENCH query19
+13 0 0
+Reducer5 1 STTL
+Map1 1 ORLD
+Map10 1 RLGH
+Reducer7 1 RLGH
+Map3 1 HSTN
+Reducer6 1 SNAN
+Reducer9 1 RLGH
+Map13 1 STLS
+Reducer12 1 SCRM
+Map11 1 KSCY
+Map8 1 DNVR
+Map4 1 RLGH
+Reducer2 1 STTL
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 13: BIG_BENCH query26
+4 1 11
+Map1 2 SCRM NWOR
+Map4 1 NY54
+Reducer3 4 SNAN ORLD SLKC PHNX
+Reducer2 4 KSCY ORLD PHLA RLGH
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 12: BIG_BENCH query24
+19 2 13
+Reducer17 8 NWOR STTL LA03 SNDG NY54 DLLS RLGH PTLD
+Map18 1 NWOR
+Reducer16 7 DLLS ATLN ORLD SLKC LA03 PHNX CLEV
+Reducer15 1 SLKC
+Map19 2 STTL SNFN
+Reducer10 10 NY54 SCRM LA03 WASH CHCG ORLD STLS STTL SNFN SNAN
+Reducer4 9 PHLA SLKC RLGH KSCY ATLN STTL SNFN CMBR HSTN
+Map1 1 ATLN
+Reducer7 1 SNFN
+Reducer9 9 NWOR RLGH NSVL DNVR ORLD DLLS ATLN HSTN CMBR
+Reducer14 1 CMBR
+Map13 1 DNVR
+Reducer8 1 ATLN
+Map11 1 SNDG
+Map12 1 ATLN
+Map5 1 RLGH
+Reducer3 1 SCRM
+Map6 1 SNAN
+Reducer2 1 NY54
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 20: BIG_BENCH query9
+9 3 16
+Reducer5 1 ATLN
+Reducer4 2 RLGH SLKC
+Map1 2 STTL SNFN
+Map8 1 CMBR
+Map9 1 CLEV
+Map6 1 PTLD
+Reducer3 1 STLS
+Map7 1 CHCG
+Reducer2 1 SNFN
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 10: BIG_BENCH query21
+16 4 22
+Map15 1 NY54
+Map16 1 CLEV
+Reducer5 3 SNFN LA03 WASH
+Map1 2 PTLD KSCY
+Map10 1 DNVR
+Reducer4 3 RLGH LA03 SNAN
+Reducer7 4 SNFN KSCY STTL NSVL
+Reducer6 3 PHLA WASH DLLS
+Map13 1 PHNX
+Reducer9 1 ORLD
+Map14 1 STTL
+Reducer8 1 SNAN
+Map11 1 SLKC
+Map12 1 SLKC
+Reducer3 3 CMBR LA03 SNFN
+Reducer2 1 SNAN
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 0: BIG_BENCH query10
+2 5 35
+Map1 1 HSTN
+Reducer2 1 SNDG
+1
+Map1 Reducer2 90
+# 14: BIG_BENCH query27
+2 6 67
+Map1 1 WASH
+Reducer2 1 NWOR
+1
+Map1 Reducer2 90
+# 18: BIG_BENCH query6
+11 7 70
+Reducer5 1 PHLA
+Reducer4 2 CMBR RLGH
+Map10 1 LA03
+Map1 2 LA03 ORLD
+Reducer9 2 WASH CHCG
+Reducer8 5 DNVR CHCG LA03 ORLD NWOR
+Map11 1 CLEV
+Reducer3 1 KSCY
+Map6 1 LA03
+Map7 1 PHNX
+Reducer2 4 PHNX ATLN SCRM PHLA
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 1: BIG_BENCH query11
+7 8 71
+Map1 1 STTL
+Reducer4 1 SCRM
+Reducer7 5 CHCG DNVR SNFN LA03 NY54
+Map5 1 NWOR
+Map6 1 STLS
+Reducer3 3 SLKC ORLD CHCG
+Reducer2 1 NWOR
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 14: BIG_BENCH query27
+2 9 72
+Map1 1 WASH
+Reducer2 1 CHCG
+1
+Map1 Reducer2 90
+# 12: BIG_BENCH query24
+19 10 74
+Reducer17 8 PHNX STTL SNAN WASH HSTN RLGH NSVL NWOR
+Map18 1 NSVL
+Reducer16 7 STLS CMBR SLKC SNDG WASH NWOR LA03
+Reducer15 1 DLLS
+Map19 2 CHCG SNFN
+Reducer10 10 PTLD PHNX DLLS NSVL PHLA SCRM RLGH ATLN KSCY NY54
+Reducer4 9 RLGH NY54 DNVR STTL SLKC STLS KSCY CMBR PHNX
+Map1 1 NSVL
+Reducer7 1 LA03
+Reducer9 9 STLS SNFN LA03 DLLS KSCY HSTN PHNX NSVL WASH
+Reducer14 1 PTLD
+Map13 1 PTLD
+Reducer8 1 HSTN
+Map11 1 NWOR
+Map12 1 PHLA
+Map5 1 RLGH
+Reducer3 1 WASH
+Map6 1 SNFN
+Reducer2 1 WASH
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 15: BIG_BENCH query2
+5 11 82
+Reducer5 1 NY54
+Reducer4 1 HSTN
+Map1 1 DNVR
+Reducer3 1 STLS
+Reducer2 1 LA03
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 18: BIG_BENCH query6
+11 12 82
+Reducer5 1 ORLD
+Reducer4 2 SLKC CHCG
+Map10 1 RLGH
+Map1 2 RLGH CMBR
+Reducer9 2 DLLS KSCY
+Reducer8 5 STLS SLKC SNDG DLLS PTLD
+Map11 1 DLLS
+Reducer3 1 CLEV
+Map6 1 SCRM
+Map7 1 CLEV
+Reducer2 4 PHLA ORLD PHNX SCRM
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 14: BIG_BENCH query27
+2 13 84
+Map1 1 DNVR
+Reducer2 1 HSTN
+1
+Map1 Reducer2 90
+# 1: BIG_BENCH query11
+7 14 88
+Map1 1 KSCY
+Reducer4 1 STTL
+Reducer7 5 NWOR PTLD NY54 PHNX RLGH
+Map5 1 SLKC
+Map6 1 LA03
+Reducer3 3 WASH SCRM STTL
+Reducer2 1 SCRM
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 20: BIG_BENCH query9
+9 15 92
+Reducer5 1 CLEV
+Reducer4 2 STTL DNVR
+Map1 2 SLKC WASH
+Map8 1 NWOR
+Map9 1 SNDG
+Map6 1 CHCG
+Reducer3 1 STTL
+Map7 1 ATLN
+Reducer2 1 STTL
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 19: BIG_BENCH query7
+11 16 96
+Reducer5 1 ORLD
+Map1 1 LA03
+Reducer4 3 SCRM SNFN KSCY
+Map10 1 RLGH
+Reducer6 1 ATLN
+Map8 2 LA03 SLKC
+Map9 1 PHLA
+Map4 1 DNVR
+Reducer3 1 CMBR
+Reducer2 1 SNFN
+Map7 1 NWOR
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 3: BIG_BENCH query14
+10 17 97
+Map1 1 PHNX
+Map10 1 PTLD
+Reducer7 1 LA03
+Map3 1 HSTN
+Map8 1 CLEV
+Map9 1 DLLS
+Map4 1 PTLD
+Map5 1 SNAN
+Map6 1 SCRM
+Reducer2 1 SNFN
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 9: BIG_BENCH query20
+6 18 102
+Map1 2 NSVL SNFN
+Reducer4 8 KSCY ORLD CMBR PTLD DLLS WASH PHNX STLS
+Reducer6 1 LA03
+Map5 1 KSCY
+Reducer3 8 DNVR DLLS NY54 ORLD WASH CMBR SNDG NSVL
+Reducer2 11 ATLN DLLS NY54 STLS CHCG WASH CMBR NWOR KSCY PTLD SNAN
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 10: BIG_BENCH query21
+16 19 112
+Map15 1 KSCY
+Map16 1 CLEV
+Reducer5 3 SNAN DLLS KSCY
+Map1 2 RLGH ATLN
+Map10 1 STLS
+Reducer4 3 STLS NY54 NSVL
+Reducer7 4 SNAN PHNX NY54 NSVL
+Reducer6 3 STLS NY54 CHCG
+Map13 1 CMBR
+Reducer9 1 ATLN
+Map14 1 SLKC
+Reducer8 1 ORLD
+Map11 1 LA03
+Map12 1 CHCG
+Reducer3 3 PHNX NY54 PHLA
+Reducer2 1 ATLN
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 9: BIG_BENCH query20
+6 20 113
+Map1 2 CLEV PHNX
+Reducer4 8 DNVR STTL SCRM CLEV PHNX DLLS NWOR ORLD
+Reducer6 1 HSTN
+Map5 1 WASH
+Reducer3 8 SNDG LA03 STTL SLKC KSCY CHCG SNFN PHLA
+Reducer2 11 RLGH NWOR STTL ATLN STLS PTLD HSTN SNAN SCRM LA03 PHLA
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 6: BIG_BENCH query17
+25 21 115
+Map20 1 PHLA
+Map1 2 HSTN CMBR
+Map21 1 NWOR
+Map24 1 SNFN
+Map25 1 SCRM
+Map22 1 SNAN
+Map23 1 STTL
+Map8 1 CHCG
+Map9 1 CHCG
+Reducer18 1 CMBR
+Reducer17 1 RLGH
+Reducer16 1 ORLD
+Reducer15 1 SNAN
+Reducer19 1 KSCY
+Reducer5 1 SNFN
+Reducer4 1 ATLN
+Map10 1 SLKC
+Reducer7 1 STTL
+Reducer6 1 SLKC
+Map13 1 PHNX
+Map14 2 CHCG HSTN
+Map11 1 STTL
+Map12 1 KSCY
+Reducer3 1 PTLD
+Reducer2 1 SNFN
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 12: BIG_BENCH query24
+19 22 120
+Reducer17 8 CMBR RLGH STLS PTLD WASH NWOR SLKC LA03
+Map18 1 RLGH
+Reducer16 7 STTL SLKC LA03 KSCY PHNX ATLN CMBR
+Reducer15 1 CLEV
+Map19 2 LA03 CLEV
+Reducer10 10 STTL SNDG PHLA CMBR DNVR RLGH CHCG NSVL NWOR SNFN
+Reducer4 9 ATLN HSTN DLLS WASH NWOR SLKC NY54 CHCG SNDG
+Map1 1 ATLN
+Reducer7 1 STTL
+Reducer9 9 STLS PHNX ATLN SNFN STTL WASH ORLD CLEV NWOR
+Reducer14 1 PHNX
+Map13 1 NWOR
+Reducer8 1 PHLA
+Map11 1 SNFN
+Map12 1 STTL
+Map5 1 NWOR
+Reducer3 1 SNFN
+Map6 1 ATLN
+Reducer2 1 STTL
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 23 132
+Reducer17 8 WASH PTLD SNFN STTL STLS SCRM RLGH CMBR
+Map18 1 STLS
+Reducer16 7 CLEV SNAN ATLN RLGH HSTN DLLS WASH
+Reducer15 1 SNAN
+Map19 2 CHCG SNAN
+Reducer10 10 CMBR WASH PHLA ORLD CHCG ATLN KSCY SCRM STLS PTLD
+Reducer4 9 PTLD PHNX STLS SCRM SNFN KSCY STTL NWOR CMBR
+Map1 1 NSVL
+Reducer7 1 ATLN
+Reducer9 9 PHLA LA03 SLKC NWOR WASH CHCG SNFN DNVR NY54
+Reducer14 1 PTLD
+Map13 1 STTL
+Reducer8 1 SNFN
+Map11 1 DNVR
+Map12 1 NWOR
+Map5 1 STLS
+Reducer3 1 NSVL
+Map6 1 CHCG
+Reducer2 1 CHCG
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 4: BIG_BENCH query15
+6 24 143
+Reducer5 1 CLEV
+Reducer4 3 SCRM KSCY RLGH
+Map1 1 NY54
+Map2 2 STLS KSCY
+Map6 1 ORLD
+Reducer3 2 STLS KSCY
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 3: BIG_BENCH query14
+10 25 151
+Map1 1 SNAN
+Map10 1 NY54
+Reducer7 1 SCRM
+Map3 1 SNDG
+Map8 1 SNDG
+Map9 1 DNVR
+Map4 1 PHLA
+Map5 1 STTL
+Map6 1 NY54
+Reducer2 1 LA03
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 13: BIG_BENCH query26
+4 26 152
+Map1 2 PHNX LA03
+Map4 1 WASH
+Reducer3 4 SNDG PHLA KSCY NSVL
+Reducer2 4 SCRM HSTN SLKC STLS
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 17: BIG_BENCH query4
+5 27 157
+Map1 1 SLKC
+Reducer4 1 CHCG
+Map5 1 WASH
+Reducer3 1 SCRM
+Reducer2 1 SNAN
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 17: BIG_BENCH query4
+5 28 159
+Map1 1 NWOR
+Reducer4 1 WASH
+Map5 1 ATLN
+Reducer3 1 ORLD
+Reducer2 1 PTLD
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 13: BIG_BENCH query26
+4 29 159
+Map1 2 SCRM WASH
+Map4 1 PHLA
+Reducer3 4 PHLA DLLS STLS ATLN
+Reducer2 4 CMBR PTLD SLKC NY54
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 2: BIG_BENCH query12
+9 30 159
+Reducer5 1 KSCY
+Reducer4 1 SCRM
+Map1 1 SLKC
+Reducer8 2 ATLN KSCY
+Map9 1 SCRM
+Reducer3 1 RLGH
+Map6 1 NSVL
+Reducer2 1 NWOR
+Map7 2 STTL CLEV
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 0: BIG_BENCH query10
+2 31 159
+Map1 1 SLKC
+Reducer2 1 SCRM
+1
+Map1 Reducer2 90
+# 1: BIG_BENCH query11
+7 32 160
+Map1 1 SCRM
+Reducer4 1 SLKC
+Reducer7 5 STLS KSCY WASH PTLD DNVR
+Map5 1 ATLN
+Map6 1 NSVL
+Reducer3 3 PHLA SLKC SCRM
+Reducer2 1 CLEV
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 14: BIG_BENCH query27
+2 33 160
+Map1 1 PTLD
+Reducer2 1 CHCG
+1
+Map1 Reducer2 90
+# 8: BIG_BENCH query1
+6 34 162
+Reducer5 1 SNDG
+Reducer4 1 PHNX
+Map1 2 NWOR LA03
+Map6 1 NSVL
+Reducer3 1 NY54
+Reducer2 4 PHLA SCRM DLLS STTL
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 6: BIG_BENCH query17
+25 35 163
+Map20 1 PHNX
+Map1 2 CLEV NSVL
+Map21 1 PHNX
+Map24 1 LA03
+Map25 1 NY54
+Map22 1 SNFN
+Map23 1 DLLS
+Map8 1 RLGH
+Map9 1 NWOR
+Reducer18 1 SNAN
+Reducer17 1 DNVR
+Reducer16 1 PHNX
+Reducer15 1 STLS
+Reducer19 1 SLKC
+Reducer5 1 HSTN
+Reducer4 1 CMBR
+Map10 1 PTLD
+Reducer7 1 HSTN
+Reducer6 1 KSCY
+Map13 1 CHCG
+Map14 2 PTLD SNFN
+Map11 1 SCRM
+Map12 1 STTL
+Reducer3 1 NWOR
+Reducer2 1 RLGH
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 19: BIG_BENCH query7
+11 36 164
+Reducer5 1 STTL
+Map1 1 STLS
+Reducer4 3 SNFN STLS DNVR
+Map10 1 NSVL
+Reducer6 1 PHNX
+Map8 2 RLGH SLKC
+Map9 1 NSVL
+Map4 1 WASH
+Reducer3 1 PHNX
+Reducer2 1 PHNX
+Map7 1 DLLS
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 12: BIG_BENCH query24
+19 37 169
+Reducer17 8 STTL PHLA RLGH NSVL PTLD SCRM HSTN WASH
+Map18 1 CHCG
+Reducer16 7 PHLA DLLS SLKC LA03 WASH PTLD ORLD
+Reducer15 1 KSCY
+Map19 2 CMBR ORLD
+Reducer10 10 CMBR PHNX PHLA RLGH PTLD CHCG STTL SLKC SCRM NY54
+Reducer4 9 LA03 SNDG SNAN ATLN RLGH ORLD NWOR CMBR DNVR
+Map1 1 SLKC
+Reducer7 1 CLEV
+Reducer9 9 DNVR HSTN ORLD NY54 KSCY CLEV CHCG STLS DLLS
+Reducer14 1 CMBR
+Map13 1 RLGH
+Reducer8 1 SNFN
+Map11 1 SCRM
+Map12 1 NY54
+Map5 1 SNFN
+Reducer3 1 RLGH
+Map6 1 ATLN
+Reducer2 1 CMBR
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 14: BIG_BENCH query27
+2 38 200
+Map1 1 SLKC
+Reducer2 1 LA03
+1
+Map1 Reducer2 90
+# 12: BIG_BENCH query24
+19 39 200
+Reducer17 8 CMBR SNDG ORLD SLKC CLEV SCRM WASH STTL
+Map18 1 SLKC
+Reducer16 7 WASH ATLN CMBR KSCY SNAN LA03 CLEV
+Reducer15 1 CMBR
+Map19 2 STLS SNAN
+Reducer10 10 SNFN STLS STTL SNDG SLKC PHLA NY54 NWOR WASH PTLD
+Reducer4 9 NWOR ORLD NY54 RLGH SNDG CMBR STTL NSVL PHNX
+Map1 1 NY54
+Reducer7 1 ORLD
+Reducer9 9 SLKC PHNX NY54 HSTN NWOR PTLD SNDG DLLS LA03
+Reducer14 1 DNVR
+Map13 1 SLKC
+Reducer8 1 CMBR
+Map11 1 NY54
+Map12 1 CLEV
+Map5 1 STLS
+Reducer3 1 STTL
+Map6 1 SCRM
+Reducer2 1 CLEV
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 40 200
+Reducer17 8 CLEV DNVR CHCG NWOR PHNX PTLD WASH NY54
+Map18 1 DNVR
+Reducer16 7 SCRM PHLA NWOR NSVL ATLN SNAN KSCY
+Reducer15 1 PTLD
+Map19 2 SNDG HSTN
+Reducer10 10 HSTN CHCG SCRM SLKC SNAN LA03 PTLD WASH CMBR STTL
+Reducer4 9 WASH SNFN STLS PHLA ORLD SNAN HSTN SNDG DLLS
+Map1 1 PHNX
+Reducer7 1 ATLN
+Reducer9 9 NY54 NWOR ATLN ORLD DLLS SNDG LA03 PHNX CMBR
+Reducer14 1 ORLD
+Map13 1 ORLD
+Reducer8 1 PTLD
+Map11 1 SNDG
+Map12 1 PHLA
+Map5 1 NY54
+Reducer3 1 PHLA
+Map6 1 SLKC
+Reducer2 1 CMBR
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 13: BIG_BENCH query26
+4 41 200
+Map1 2 SNFN SNDG
+Map4 1 CMBR
+Reducer3 4 LA03 CLEV ATLN PHNX
+Reducer2 4 NY54 PHLA SNFN SNDG
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 9: BIG_BENCH query20
+6 42 201
+Map1 2 STLS CLEV
+Reducer4 8 SCRM NY54 STTL SNDG SLKC STLS RLGH ORLD
+Reducer6 1 NSVL
+Map5 1 SNFN
+Reducer3 8 SNDG NY54 STTL WASH NSVL PTLD CMBR SLKC
+Reducer2 11 CLEV NY54 SCRM STTL CHCG CMBR SLKC KSCY HSTN PTLD SNAN
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 1: BIG_BENCH query11
+7 43 201
+Map1 1 ORLD
+Reducer4 1 RLGH
+Reducer7 5 PHLA WASH CLEV ATLN PTLD
+Map5 1 ATLN
+Map6 1 CLEV
+Reducer3 3 PTLD CHCG PHLA
+Reducer2 1 STTL
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 0: BIG_BENCH query10
+2 44 201
+Map1 1 LA03
+Reducer2 1 SCRM
+1
+Map1 Reducer2 90
+# 14: BIG_BENCH query27
+2 45 202
+Map1 1 WASH
+Reducer2 1 WASH
+1
+Map1 Reducer2 90
+# 17: BIG_BENCH query4
+5 46 202
+Map1 1 DLLS
+Reducer4 1 DNVR
+Map5 1 HSTN
+Reducer3 1 KSCY
+Reducer2 1 DNVR
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 18: BIG_BENCH query6
+11 47 203
+Reducer5 1 DNVR
+Reducer4 2 WASH ATLN
+Map10 1 SLKC
+Map1 2 WASH DLLS
+Reducer9 2 ATLN PHNX
+Reducer8 5 SNFN KSCY NWOR PHNX ORLD
+Map11 1 DLLS
+Reducer3 1 LA03
+Map6 1 CMBR
+Map7 1 DNVR
+Reducer2 4 CLEV SNAN SNDG PHLA
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 14: BIG_BENCH query27
+2 48 203
+Map1 1 PHLA
+Reducer2 1 DLLS
+1
+Map1 Reducer2 90
+# 17: BIG_BENCH query4
+5 49 205
+Map1 1 SLKC
+Reducer4 1 ORLD
+Map5 1 HSTN
+Reducer3 1 SNAN
+Reducer2 1 STLS
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 13: BIG_BENCH query26
+4 50 207
+Map1 2 SCRM SNFN
+Map4 1 NSVL
+Reducer3 4 WASH DLLS STTL ATLN
+Reducer2 4 SNDG LA03 SNFN SNAN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 1: BIG_BENCH query11
+7 51 226
+Map1 1 NY54
+Reducer4 1 STLS
+Reducer7 5 CHCG NY54 STTL LA03 CLEV
+Map5 1 PHLA
+Map6 1 CLEV
+Reducer3 3 PTLD SLKC SCRM
+Reducer2 1 PTLD
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 14: BIG_BENCH query27
+2 52 237
+Map1 1 RLGH
+Reducer2 1 WASH
+1
+Map1 Reducer2 90
+# 11: BIG_BENCH query22
+7 53 239
+Map1 1 DNVR
+Reducer4 1 PTLD
+Map5 1 CMBR
+Map6 1 DNVR
+Reducer3 1 STTL
+Map7 1 ATLN
+Reducer2 1 DLLS
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 6: BIG_BENCH query17
+25 54 247
+Map20 1 ATLN
+Map1 2 DLLS STTL
+Map21 1 CHCG
+Map24 1 CMBR
+Map25 1 KSCY
+Map22 1 WASH
+Map23 1 NSVL
+Map8 1 SNDG
+Map9 1 DLLS
+Reducer18 1 STTL
+Reducer17 1 SCRM
+Reducer16 1 PTLD
+Reducer15 1 NY54
+Reducer19 1 PHLA
+Reducer5 1 STTL
+Reducer4 1 PTLD
+Map10 1 STTL
+Reducer7 1 STLS
+Reducer6 1 WASH
+Map13 1 PTLD
+Map14 2 STTL WASH
+Map11 1 PHNX
+Map12 1 KSCY
+Reducer3 1 DNVR
+Reducer2 1 PHNX
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 3: BIG_BENCH query14
+10 55 251
+Map1 1 KSCY
+Map10 1 SLKC
+Reducer7 1 RLGH
+Map3 1 NWOR
+Map8 1 PHNX
+Map9 1 SNFN
+Map4 1 ATLN
+Map5 1 HSTN
+Map6 1 SNDG
+Reducer2 1 CLEV
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 16: BIG_BENCH query3
+7 56 256
+Reducer5 1 ORLD
+Reducer4 1 LA03
+Map1 1 ORLD
+Reducer6 1 SNDG
+Reducer3 1 WASH
+Reducer2 1 WASH
+Map7 1 DLLS
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 11: BIG_BENCH query22
+7 57 276
+Map1 1 RLGH
+Reducer4 1 CLEV
+Map5 1 NSVL
+Map6 1 NWOR
+Reducer3 1 NWOR
+Map7 1 SNFN
+Reducer2 1 PHLA
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 16: BIG_BENCH query3
+7 58 287
+Reducer5 1 RLGH
+Reducer4 1 DNVR
+Map1 1 SCRM
+Reducer6 1 PHLA
+Reducer3 1 PHLA
+Reducer2 1 PHNX
+Map7 1 WASH
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 14: BIG_BENCH query27
+2 59 299
+Map1 1 SNAN
+Reducer2 1 ATLN
+1
+Map1 Reducer2 90
+# 3: BIG_BENCH query14
+10 60 343
+Map1 1 KSCY
+Map10 1 WASH
+Reducer7 1 STTL
+Map3 1 STLS
+Map8 1 PHLA
+Map9 1 CHCG
+Map4 1 CLEV
+Map5 1 HSTN
+Map6 1 NY54
+Reducer2 1 RLGH
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 7: BIG_BENCH query19
+13 61 344
+Reducer5 1 ORLD
+Map1 1 NWOR
+Map10 1 ATLN
+Reducer7 1 HSTN
+Map3 1 CMBR
+Reducer6 1 KSCY
+Reducer9 1 ORLD
+Map13 1 STLS
+Reducer12 1 PHNX
+Map11 1 KSCY
+Map8 1 SLKC
+Map4 1 KSCY
+Reducer2 1 NWOR
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 14: BIG_BENCH query27
+2 62 344
+Map1 1 CMBR
+Reducer2 1 WASH
+1
+Map1 Reducer2 90
+# 6: BIG_BENCH query17
+25 63 345
+Map20 1 SCRM
+Map1 2 LA03 DLLS
+Map21 1 SNAN
+Map24 1 STLS
+Map25 1 NSVL
+Map22 1 ATLN
+Map23 1 KSCY
+Map8 1 SNFN
+Map9 1 ORLD
+Reducer18 1 CMBR
+Reducer17 1 SNAN
+Reducer16 1 ORLD
+Reducer15 1 SNDG
+Reducer19 1 DLLS
+Reducer5 1 SLKC
+Reducer4 1 SNFN
+Map10 1 CHCG
+Reducer7 1 LA03
+Reducer6 1 SNFN
+Map13 1 SNAN
+Map14 2 SNDG NWOR
+Map11 1 SNAN
+Map12 1 DNVR
+Reducer3 1 HSTN
+Reducer2 1 DNVR
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 12: BIG_BENCH query24
+19 64 345
+Reducer17 8 SLKC NSVL ATLN SNDG NY54 WASH SNFN SCRM
+Map18 1 ORLD
+Reducer16 7 CMBR CHCG SNAN PHNX ORLD STTL CLEV
+Reducer15 1 WASH
+Map19 2 PTLD NY54
+Reducer10 10 HSTN CMBR DLLS NY54 PHNX ORLD CLEV NSVL KSCY ATLN
+Reducer4 9 SNAN SNDG PHLA KSCY ATLN NWOR RLGH STLS DLLS
+Map1 1 WASH
+Reducer7 1 SNAN
+Reducer9 9 KSCY DLLS SNDG SLKC ORLD PHLA PHNX SNAN STLS
+Reducer14 1 STLS
+Map13 1 CHCG
+Reducer8 1 NSVL
+Map11 1 ATLN
+Map12 1 CHCG
+Map5 1 CMBR
+Reducer3 1 SNAN
+Map6 1 NY54
+Reducer2 1 LA03
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 8: BIG_BENCH query1
+6 65 345
+Reducer5 1 SNDG
+Reducer4 1 PHNX
+Map1 2 PHNX ATLN
+Map6 1 SNFN
+Reducer3 1 ORLD
+Reducer2 4 ATLN RLGH LA03 CMBR
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 14: BIG_BENCH query27
+2 66 347
+Map1 1 PHNX
+Reducer2 1 CHCG
+1
+Map1 Reducer2 90
+# 6: BIG_BENCH query17
+25 67 348
+Map20 1 SLKC
+Map1 2 DLLS CHCG
+Map21 1 RLGH
+Map24 1 ATLN
+Map25 1 NWOR
+Map22 1 ATLN
+Map23 1 CMBR
+Map8 1 KSCY
+Map9 1 ATLN
+Reducer18 1 SCRM
+Reducer17 1 SNDG
+Reducer16 1 LA03
+Reducer15 1 CHCG
+Reducer19 1 NSVL
+Reducer5 1 SNFN
+Reducer4 1 SNFN
+Map10 1 SLKC
+Reducer7 1 SCRM
+Reducer6 1 ORLD
+Map13 1 SNAN
+Map14 2 NY54 CLEV
+Map11 1 STLS
+Map12 1 DLLS
+Reducer3 1 NWOR
+Reducer2 1 CHCG
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 17: BIG_BENCH query4
+5 68 351
+Map1 1 SNAN
+Reducer4 1 SNFN
+Map5 1 SNFN
+Reducer3 1 ORLD
+Reducer2 1 NWOR
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 2: BIG_BENCH query12
+9 69 352
+Reducer5 1 SNDG
+Reducer4 1 SNFN
+Map1 1 STTL
+Reducer8 2 WASH HSTN
+Map9 1 DNVR
+Reducer3 1 NSVL
+Map6 1 PTLD
+Reducer2 1 NSVL
+Map7 2 DNVR SNFN
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 19: BIG_BENCH query7
+11 70 353
+Reducer5 1 SNDG
+Map1 1 STLS
+Reducer4 3 STTL WASH DLLS
+Map10 1 KSCY
+Reducer6 1 PHNX
+Map8 2 KSCY CMBR
+Map9 1 CHCG
+Map4 1 ATLN
+Reducer3 1 SNFN
+Reducer2 1 SLKC
+Map7 1 NSVL
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 10: BIG_BENCH query21
+16 71 356
+Map15 1 STTL
+Map16 1 NSVL
+Reducer5 3 SCRM DLLS DNVR
+Map1 2 SNFN STLS
+Map10 1 CMBR
+Reducer4 3 SLKC SNAN RLGH
+Reducer7 4 CMBR CHCG HSTN KSCY
+Reducer6 3 NSVL CMBR ATLN
+Map13 1 HSTN
+Reducer9 1 KSCY
+Map14 1 SCRM
+Reducer8 1 NSVL
+Map11 1 CMBR
+Map12 1 SNFN
+Reducer3 3 SCRM PTLD STTL
+Reducer2 1 DLLS
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 17: BIG_BENCH query4
+5 72 359
+Map1 1 NSVL
+Reducer4 1 RLGH
+Map5 1 SLKC
+Reducer3 1 NSVL
+Reducer2 1 CMBR
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 12: BIG_BENCH query24
+19 73 362
+Reducer17 8 CLEV HSTN DLLS SNAN PTLD PHNX RLGH ORLD
+Map18 1 DNVR
+Reducer16 7 CLEV NY54 PHLA NSVL RLGH WASH SLKC
+Reducer15 1 PHLA
+Map19 2 NWOR PTLD
+Reducer10 10 SNFN KSCY NY54 SNAN NWOR STTL PTLD LA03 PHNX CLEV
+Reducer4 9 SNAN ATLN RLGH CLEV DLLS DNVR WASH SNFN PTLD
+Map1 1 RLGH
+Reducer7 1 PHLA
+Reducer9 9 STTL DNVR SNDG ATLN DLLS NSVL PHLA LA03 HSTN
+Reducer14 1 DNVR
+Map13 1 ORLD
+Reducer8 1 HSTN
+Map11 1 STLS
+Map12 1 DLLS
+Map5 1 SCRM
+Reducer3 1 STTL
+Map6 1 SNAN
+Reducer2 1 KSCY
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 9: BIG_BENCH query20
+6 74 367
+Map1 2 PHLA CMBR
+Reducer4 8 ATLN STLS DLLS NY54 CLEV PHNX CHCG NWOR
+Reducer6 1 STLS
+Map5 1 RLGH
+Reducer3 8 SCRM STLS CLEV LA03 PHNX KSCY SNAN STTL
+Reducer2 11 LA03 ATLN DLLS HSTN STLS NSVL STTL PTLD WASH CHCG SNAN
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 12: BIG_BENCH query24
+19 75 379
+Reducer17 8 SNAN RLGH ATLN HSTN STTL SNDG PHNX PTLD
+Map18 1 ATLN
+Reducer16 7 CHCG SLKC CMBR HSTN KSCY DLLS ATLN
+Reducer15 1 CHCG
+Map19 2 ATLN WASH
+Reducer10 10 STTL ORLD SNDG SCRM SLKC CMBR NSVL CHCG DNVR SNAN
+Reducer4 9 WASH NY54 CLEV SNFN SNDG STLS STTL PTLD LA03
+Map1 1 STTL
+Reducer7 1 DLLS
+Reducer9 9 KSCY STLS HSTN RLGH NY54 SNDG PHLA CLEV PHNX
+Reducer14 1 WASH
+Map13 1 SNAN
+Reducer8 1 SLKC
+Map11 1 NSVL
+Map12 1 HSTN
+Map5 1 CMBR
+Reducer3 1 HSTN
+Map6 1 PTLD
+Reducer2 1 SNDG
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 3: BIG_BENCH query14
+10 76 379
+Map1 1 STLS
+Map10 1 SCRM
+Reducer7 1 DLLS
+Map3 1 NSVL
+Map8 1 DLLS
+Map9 1 SNFN
+Map4 1 SNAN
+Map5 1 NWOR
+Map6 1 PHNX
+Reducer2 1 NY54
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 12: BIG_BENCH query24
+19 77 383
+Reducer17 8 PHLA KSCY STLS STTL NY54 DNVR SNFN WASH
+Map18 1 PHLA
+Reducer16 7 STLS SNAN PTLD NWOR CHCG LA03 NY54
+Reducer15 1 ORLD
+Map19 2 NSVL SNAN
+Reducer10 10 PHLA STLS CHCG NSVL HSTN LA03 KSCY SNAN NY54 WASH
+Reducer4 9 KSCY RLGH HSTN PHNX DNVR SCRM WASH PTLD DLLS
+Map1 1 RLGH
+Reducer7 1 SNFN
+Reducer9 9 WASH HSTN ORLD RLGH PTLD PHLA SNDG NWOR STTL
+Reducer14 1 PHLA
+Map13 1 NSVL
+Reducer8 1 NSVL
+Map11 1 SCRM
+Map12 1 SNFN
+Map5 1 SLKC
+Reducer3 1 NWOR
+Map6 1 PTLD
+Reducer2 1 PHNX
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 0: BIG_BENCH query10
+2 78 384
+Map1 1 SNDG
+Reducer2 1 DNVR
+1
+Map1 Reducer2 90
+# 11: BIG_BENCH query22
+7 79 385
+Map1 1 DLLS
+Reducer4 1 SNDG
+Map5 1 WASH
+Map6 1 HSTN
+Reducer3 1 DNVR
+Map7 1 NSVL
+Reducer2 1 SNDG
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 18: BIG_BENCH query6
+11 80 395
+Reducer5 1 STLS
+Reducer4 2 NY54 CMBR
+Map10 1 ATLN
+Map1 2 NWOR SNDG
+Reducer9 2 DNVR SNFN
+Reducer8 5 CLEV SNAN CHCG ORLD SLKC
+Map11 1 CHCG
+Reducer3 1 SLKC
+Map6 1 CMBR
+Map7 1 PHNX
+Reducer2 4 CMBR PHNX KSCY CHCG
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 13: BIG_BENCH query26
+4 81 398
+Map1 2 SLKC CLEV
+Map4 1 PHLA
+Reducer3 4 HSTN SLKC ORLD SCRM
+Reducer2 4 SNAN PHLA SCRM HSTN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 6: BIG_BENCH query17
+25 82 399
+Map20 1 HSTN
+Map1 2 CMBR STTL
+Map21 1 SNFN
+Map24 1 SCRM
+Map25 1 PHNX
+Map22 1 PHNX
+Map23 1 KSCY
+Map8 1 KSCY
+Map9 1 KSCY
+Reducer18 1 WASH
+Reducer17 1 NWOR
+Reducer16 1 CHCG
+Reducer15 1 SNDG
+Reducer19 1 SNFN
+Reducer5 1 CHCG
+Reducer4 1 STTL
+Map10 1 DLLS
+Reducer7 1 NSVL
+Reducer6 1 KSCY
+Map13 1 SNFN
+Map14 2 KSCY RLGH
+Map11 1 WASH
+Map12 1 SNAN
+Reducer3 1 SNDG
+Reducer2 1 LA03
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 2: BIG_BENCH query12
+9 83 401
+Reducer5 1 STTL
+Reducer4 1 LA03
+Map1 1 CMBR
+Reducer8 2 SNAN NWOR
+Map9 1 NSVL
+Reducer3 1 ORLD
+Map6 1 CHCG
+Reducer2 1 NY54
+Map7 2 PHLA SLKC
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 12: BIG_BENCH query24
+19 84 401
+Reducer17 8 NY54 CLEV KSCY LA03 CHCG PTLD PHNX SCRM
+Map18 1 NSVL
+Reducer16 7 SCRM KSCY CHCG DLLS SLKC LA03 WASH
+Reducer15 1 SNFN
+Map19 2 CMBR NWOR
+Reducer10 10 PHLA DLLS ATLN WASH CLEV HSTN PHNX RLGH SLKC SCRM
+Reducer4 9 PHNX KSCY ATLN HSTN SNAN DLLS PHLA ORLD DNVR
+Map1 1 CHCG
+Reducer7 1 ATLN
+Reducer9 9 CHCG STTL NSVL NY54 CMBR HSTN RLGH DNVR ATLN
+Reducer14 1 CMBR
+Map13 1 PTLD
+Reducer8 1 ATLN
+Map11 1 NSVL
+Map12 1 WASH
+Map5 1 CMBR
+Reducer3 1 PHNX
+Map6 1 NSVL
+Reducer2 1 NWOR
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 13: BIG_BENCH query26
+4 85 401
+Map1 2 SLKC NY54
+Map4 1 CHCG
+Reducer3 4 NWOR STTL ORLD CMBR
+Reducer2 4 SNFN CHCG LA03 CLEV
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 5: BIG_BENCH query16
+9 86 401
+Reducer5 1 WASH
+Reducer4 4 ORLD PTLD ATLN STTL
+Map1 1 ATLN
+Map8 1 STLS
+Map9 1 WASH
+Map6 1 CHCG
+Reducer3 3 ATLN ORLD LA03
+Map7 1 SNDG
+Reducer2 3 ORLD STTL KSCY
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 17: BIG_BENCH query4
+5 87 404
+Map1 1 PTLD
+Reducer4 1 ORLD
+Map5 1 NSVL
+Reducer3 1 RLGH
+Reducer2 1 PHNX
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 14: BIG_BENCH query27
+2 88 404
+Map1 1 CLEV
+Reducer2 1 STTL
+1
+Map1 Reducer2 90
+# 20: BIG_BENCH query9
+9 89 409
+Reducer5 1 ATLN
+Reducer4 2 PTLD RLGH
+Map1 2 NSVL DLLS
+Map8 1 SNAN
+Map9 1 HSTN
+Map6 1 ORLD
+Reducer3 1 SNAN
+Map7 1 SNDG
+Reducer2 1 NWOR
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 20: BIG_BENCH query9
+9 90 410
+Reducer5 1 PTLD
+Reducer4 2 CMBR NWOR
+Map1 2 DLLS CMBR
+Map8 1 ATLN
+Map9 1 ATLN
+Map6 1 NSVL
+Reducer3 1 SCRM
+Map7 1 STTL
+Reducer2 1 CLEV
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 19: BIG_BENCH query7
+11 91 414
+Reducer5 1 ORLD
+Map1 1 WASH
+Reducer4 3 NSVL SNAN PHLA
+Map10 1 SLKC
+Reducer6 1 CMBR
+Map8 2 HSTN WASH
+Map9 1 ORLD
+Map4 1 WASH
+Reducer3 1 WASH
+Reducer2 1 DLLS
+Map7 1 SNFN
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 15: BIG_BENCH query2
+5 92 416
+Reducer5 1 PHLA
+Reducer4 1 CLEV
+Map1 1 CHCG
+Reducer3 1 STLS
+Reducer2 1 DNVR
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 5: BIG_BENCH query16
+9 93 437
+Reducer5 1 NSVL
+Reducer4 4 SCRM WASH RLGH SNFN
+Map1 1 PHNX
+Map8 1 CHCG
+Map9 1 HSTN
+Map6 1 PHNX
+Reducer3 3 KSCY SLKC DNVR
+Map7 1 KSCY
+Reducer2 3 STLS SNFN DNVR
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 3: BIG_BENCH query14
+10 94 446
+Map1 1 CLEV
+Map10 1 CHCG
+Reducer7 1 SNAN
+Map3 1 STTL
+Map8 1 CLEV
+Map9 1 WASH
+Map4 1 STLS
+Map5 1 DNVR
+Map6 1 CLEV
+Reducer2 1 PHLA
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 7: BIG_BENCH query19
+13 95 463
+Reducer5 1 PTLD
+Map1 1 NWOR
+Map10 1 RLGH
+Reducer7 1 ATLN
+Map3 1 SNAN
+Reducer6 1 KSCY
+Reducer9 1 ATLN
+Map13 1 DLLS
+Reducer12 1 SNFN
+Map11 1 SNDG
+Map8 1 PTLD
+Map4 1 NWOR
+Reducer2 1 PTLD
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 17: BIG_BENCH query4
+5 96 465
+Map1 1 SNDG
+Reducer4 1 SNFN
+Map5 1 PTLD
+Reducer3 1 CLEV
+Reducer2 1 PHNX
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 15: BIG_BENCH query2
+5 97 466
+Reducer5 1 KSCY
+Reducer4 1 DNVR
+Map1 1 SNAN
+Reducer3 1 PHLA
+Reducer2 1 RLGH
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 11: BIG_BENCH query22
+7 98 468
+Map1 1 SCRM
+Reducer4 1 DLLS
+Map5 1 STTL
+Map6 1 RLGH
+Reducer3 1 RLGH
+Map7 1 CLEV
+Reducer2 1 CMBR
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 12: BIG_BENCH query24
+19 99 471
+Reducer17 8 CHCG KSCY PHNX SCRM DLLS ORLD WASH STLS
+Map18 1 WASH
+Reducer16 7 NY54 ATLN HSTN SNAN DLLS STLS CLEV
+Reducer15 1 NSVL
+Map19 2 STLS CLEV
+Reducer10 10 SCRM KSCY NY54 NWOR WASH CLEV HSTN NSVL DLLS SLKC
+Reducer4 9 KSCY PHNX SLKC DNVR SNDG ATLN CLEV PHLA RLGH
+Map1 1 DNVR
+Reducer7 1 HSTN
+Reducer9 9 CLEV PHLA CHCG CMBR STTL SNFN LA03 NSVL ATLN
+Reducer14 1 SNDG
+Map13 1 CMBR
+Reducer8 1 PHLA
+Map11 1 CHCG
+Map12 1 SNFN
+Map5 1 LA03
+Reducer3 1 SCRM
+Map6 1 WASH
+Reducer2 1 SNFN
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 100 479
+Reducer5 1 PHLA
+Reducer4 4 CLEV SNDG SNFN LA03
+Map1 1 SCRM
+Map8 1 PHLA
+Map9 1 SNFN
+Map6 1 WASH
+Reducer3 3 CLEV NSVL SNFN
+Map7 1 NWOR
+Reducer2 3 SCRM PTLD CHCG
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 11: BIG_BENCH query22
+7 101 493
+Map1 1 NY54
+Reducer4 1 ATLN
+Map5 1 STTL
+Map6 1 NY54
+Reducer3 1 PTLD
+Map7 1 STTL
+Reducer2 1 PTLD
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 6: BIG_BENCH query17
+25 102 505
+Map20 1 SNFN
+Map1 2 SNFN RLGH
+Map21 1 CMBR
+Map24 1 NSVL
+Map25 1 NSVL
+Map22 1 SNAN
+Map23 1 SNFN
+Map8 1 RLGH
+Map9 1 CLEV
+Reducer18 1 SNAN
+Reducer17 1 PHLA
+Reducer16 1 CLEV
+Reducer15 1 PTLD
+Reducer19 1 NSVL
+Reducer5 1 WASH
+Reducer4 1 SNDG
+Map10 1 DLLS
+Reducer7 1 SLKC
+Reducer6 1 SCRM
+Map13 1 DNVR
+Map14 2 CMBR HSTN
+Map11 1 PHNX
+Map12 1 NSVL
+Reducer3 1 RLGH
+Reducer2 1 HSTN
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 1: BIG_BENCH query11
+7 103 506
+Map1 1 PHNX
+Reducer4 1 NWOR
+Reducer7 5 DNVR KSCY NY54 DLLS STTL
+Map5 1 WASH
+Map6 1 PHNX
+Reducer3 3 DLLS KSCY DNVR
+Reducer2 1 LA03
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 8: BIG_BENCH query1
+6 104 507
+Reducer5 1 PHNX
+Reducer4 1 NWOR
+Map1 2 ORLD SNFN
+Map6 1 CLEV
+Reducer3 1 PHNX
+Reducer2 4 PTLD PHLA STLS HSTN
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 3: BIG_BENCH query14
+10 105 515
+Map1 1 KSCY
+Map10 1 ORLD
+Reducer7 1 HSTN
+Map3 1 DLLS
+Map8 1 KSCY
+Map9 1 DLLS
+Map4 1 WASH
+Map5 1 PHLA
+Map6 1 CHCG
+Reducer2 1 PHNX
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 10: BIG_BENCH query21
+16 106 517
+Map15 1 SCRM
+Map16 1 SNAN
+Reducer5 3 KSCY PHLA HSTN
+Map1 2 STTL SNFN
+Map10 1 STLS
+Reducer4 3 DNVR PTLD SNDG
+Reducer7 4 STLS PHLA CMBR CHCG
+Reducer6 3 HSTN DNVR CHCG
+Map13 1 ATLN
+Reducer9 1 SCRM
+Map14 1 CMBR
+Reducer8 1 RLGH
+Map11 1 ATLN
+Map12 1 PHLA
+Reducer3 3 NY54 STLS KSCY
+Reducer2 1 SCRM
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 15: BIG_BENCH query2
+5 107 520
+Reducer5 1 LA03
+Reducer4 1 NY54
+Map1 1 PTLD
+Reducer3 1 STTL
+Reducer2 1 CMBR
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 3: BIG_BENCH query14
+10 108 525
+Map1 1 WASH
+Map10 1 PTLD
+Reducer7 1 SNDG
+Map3 1 DNVR
+Map8 1 PHLA
+Map9 1 SNAN
+Map4 1 SNDG
+Map5 1 CMBR
+Map6 1 SNFN
+Reducer2 1 PHNX
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 1: BIG_BENCH query11
+7 109 533
+Map1 1 CLEV
+Reducer4 1 SNAN
+Reducer7 5 PHLA CHCG SNDG SNFN SCRM
+Map5 1 SNAN
+Map6 1 SNDG
+Reducer3 3 LA03 SNAN KSCY
+Reducer2 1 KSCY
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 12: BIG_BENCH query24
+19 110 540
+Reducer17 8 CHCG SNFN ORLD RLGH ATLN NWOR STLS NSVL
+Map18 1 WASH
+Reducer16 7 STTL KSCY NY54 ATLN HSTN DLLS LA03
+Reducer15 1 NY54
+Map19 2 SNDG ATLN
+Reducer10 10 HSTN LA03 WASH CMBR SLKC SCRM DLLS PTLD SNDG NY54
+Reducer4 9 NSVL NWOR SNAN PHNX KSCY SNDG SCRM ATLN SNFN
+Map1 1 STTL
+Reducer7 1 CHCG
+Reducer9 9 NWOR KSCY SNDG DLLS ORLD RLGH LA03 SNFN SLKC
+Reducer14 1 PHLA
+Map13 1 DLLS
+Reducer8 1 LA03
+Map11 1 SNDG
+Map12 1 ORLD
+Map5 1 KSCY
+Reducer3 1 PTLD
+Map6 1 CMBR
+Reducer2 1 CMBR
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 7: BIG_BENCH query19
+13 111 558
+Reducer5 1 STLS
+Map1 1 PTLD
+Map10 1 WASH
+Reducer7 1 CMBR
+Map3 1 SNDG
+Reducer6 1 PTLD
+Reducer9 1 HSTN
+Map13 1 DLLS
+Reducer12 1 CLEV
+Map11 1 ORLD
+Map8 1 HSTN
+Map4 1 KSCY
+Reducer2 1 STLS
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 20: BIG_BENCH query9
+9 112 572
+Reducer5 1 ATLN
+Reducer4 2 SNDG ORLD
+Map1 2 SLKC ATLN
+Map8 1 WASH
+Map9 1 CMBR
+Map6 1 HSTN
+Reducer3 1 PTLD
+Map7 1 CMBR
+Reducer2 1 LA03
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 15: BIG_BENCH query2
+5 113 621
+Reducer5 1 NWOR
+Reducer4 1 SNDG
+Map1 1 PHLA
+Reducer3 1 DNVR
+Reducer2 1 CLEV
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 1: BIG_BENCH query11
+7 114 624
+Map1 1 SLKC
+Reducer4 1 STTL
+Reducer7 5 KSCY SNAN SCRM WASH SNFN
+Map5 1 WASH
+Map6 1 RLGH
+Reducer3 3 DLLS SNAN HSTN
+Reducer2 1 WASH
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 2: BIG_BENCH query12
+9 115 624
+Reducer5 1 CHCG
+Reducer4 1 ORLD
+Map1 1 NY54
+Reducer8 2 ORLD NY54
+Map9 1 NY54
+Reducer3 1 LA03
+Map6 1 HSTN
+Reducer2 1 DNVR
+Map7 2 CLEV SNFN
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 13: BIG_BENCH query26
+4 116 624
+Map1 2 NY54 CMBR
+Map4 1 STLS
+Reducer3 4 NSVL DNVR CHCG PHLA
+Reducer2 4 SNAN SNFN SNDG STTL
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 7: BIG_BENCH query19
+13 117 624
+Reducer5 1 CHCG
+Map1 1 STTL
+Map10 1 ATLN
+Reducer7 1 STLS
+Map3 1 NWOR
+Reducer6 1 SCRM
+Reducer9 1 WASH
+Map13 1 DNVR
+Reducer12 1 NY54
+Map11 1 KSCY
+Map8 1 NY54
+Map4 1 NSVL
+Reducer2 1 CHCG
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 7: BIG_BENCH query19
+13 118 625
+Reducer5 1 STTL
+Map1 1 NWOR
+Map10 1 ATLN
+Reducer7 1 PHNX
+Map3 1 KSCY
+Reducer6 1 PHNX
+Reducer9 1 DNVR
+Map13 1 SNFN
+Reducer12 1 ATLN
+Map11 1 CMBR
+Map8 1 PTLD
+Map4 1 PTLD
+Reducer2 1 RLGH
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 3: BIG_BENCH query14
+10 119 625
+Map1 1 CMBR
+Map10 1 CLEV
+Reducer7 1 DNVR
+Map3 1 PHLA
+Map8 1 SCRM
+Map9 1 NY54
+Map4 1 DLLS
+Map5 1 DLLS
+Map6 1 SNDG
+Reducer2 1 STLS
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 14: BIG_BENCH query27
+2 120 625
+Map1 1 NWOR
+Reducer2 1 PTLD
+1
+Map1 Reducer2 90
+# 9: BIG_BENCH query20
+6 121 627
+Map1 2 CLEV SLKC
+Reducer4 8 SCRM PHLA CLEV DNVR STLS NSVL ORLD DLLS
+Reducer6 1 KSCY
+Map5 1 ORLD
+Reducer3 8 DLLS NWOR NY54 ORLD SNAN STTL PTLD CMBR
+Reducer2 11 HSTN NY54 SNAN SNDG CLEV CHCG DNVR SNFN STLS CMBR WASH
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 5: BIG_BENCH query16
+9 122 633
+Reducer5 1 SNFN
+Reducer4 4 ATLN DLLS WASH STTL
+Map1 1 STTL
+Map8 1 DNVR
+Map9 1 SNAN
+Map6 1 CHCG
+Reducer3 3 HSTN DLLS SLKC
+Map7 1 ORLD
+Reducer2 3 ATLN SCRM NWOR
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 12: BIG_BENCH query24
+19 123 644
+Reducer17 8 STTL HSTN STLS SNDG SLKC ATLN KSCY DNVR
+Map18 1 SLKC
+Reducer16 7 NSVL PHNX PHLA HSTN PTLD SNAN LA03
+Reducer15 1 NY54
+Map19 2 STTL SNAN
+Reducer10 10 CHCG SNAN PTLD LA03 NWOR NSVL ORLD PHNX SLKC DLLS
+Reducer4 9 ORLD CLEV RLGH STLS KSCY PHLA CMBR SNAN NY54
+Map1 1 SLKC
+Reducer7 1 NWOR
+Reducer9 9 ORLD RLGH WASH CLEV ATLN DLLS SNDG HSTN SLKC
+Reducer14 1 CMBR
+Map13 1 KSCY
+Reducer8 1 SCRM
+Map11 1 ORLD
+Map12 1 PTLD
+Map5 1 SNDG
+Reducer3 1 STTL
+Map6 1 SLKC
+Reducer2 1 SCRM
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 12: BIG_BENCH query24
+19 124 644
+Reducer17 8 ATLN SLKC PTLD SCRM NSVL DNVR WASH ORLD
+Map18 1 SNFN
+Reducer16 7 LA03 SNAN STLS CLEV KSCY SLKC CMBR
+Reducer15 1 KSCY
+Map19 2 STLS SNDG
+Reducer10 10 PTLD RLGH SCRM PHNX SNFN SNDG CMBR DNVR ATLN CLEV
+Reducer4 9 SNAN RLGH SLKC PHNX HSTN ATLN NWOR DLLS PHLA
+Map1 1 RLGH
+Reducer7 1 ATLN
+Reducer9 9 NWOR SCRM SNAN CLEV PHNX NY54 STTL SNDG RLGH
+Reducer14 1 WASH
+Map13 1 CMBR
+Reducer8 1 HSTN
+Map11 1 NSVL
+Map12 1 SNAN
+Map5 1 SNDG
+Reducer3 1 SNAN
+Map6 1 LA03
+Reducer2 1 WASH
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 20: BIG_BENCH query9
+9 125 644
+Reducer5 1 WASH
+Reducer4 2 PHLA NSVL
+Map1 2 NSVL CLEV
+Map8 1 CHCG
+Map9 1 PHNX
+Map6 1 KSCY
+Reducer3 1 SNFN
+Map7 1 STLS
+Reducer2 1 PHNX
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 15: BIG_BENCH query2
+5 126 645
+Reducer5 1 WASH
+Reducer4 1 CMBR
+Map1 1 STLS
+Reducer3 1 STTL
+Reducer2 1 DLLS
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 2: BIG_BENCH query12
+9 127 645
+Reducer5 1 RLGH
+Reducer4 1 STLS
+Map1 1 CMBR
+Reducer8 2 PHNX KSCY
+Map9 1 HSTN
+Reducer3 1 DLLS
+Map6 1 NY54
+Reducer2 1 SNDG
+Map7 2 RLGH PTLD
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 20: BIG_BENCH query9
+9 128 645
+Reducer5 1 STTL
+Reducer4 2 STLS PHNX
+Map1 2 DLLS CMBR
+Map8 1 STLS
+Map9 1 NWOR
+Map6 1 RLGH
+Reducer3 1 PHNX
+Map7 1 CHCG
+Reducer2 1 RLGH
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 20: BIG_BENCH query9
+9 129 646
+Reducer5 1 NWOR
+Reducer4 2 SNDG DLLS
+Map1 2 NWOR STLS
+Map8 1 KSCY
+Map9 1 KSCY
+Map6 1 STLS
+Reducer3 1 ATLN
+Map7 1 CMBR
+Reducer2 1 SNFN
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 7: BIG_BENCH query19
+13 130 647
+Reducer5 1 PHNX
+Map1 1 RLGH
+Map10 1 ORLD
+Reducer7 1 SLKC
+Map3 1 PHNX
+Reducer6 1 SLKC
+Reducer9 1 SLKC
+Map13 1 STLS
+Reducer12 1 CHCG
+Map11 1 STLS
+Map8 1 SCRM
+Map4 1 PHLA
+Reducer2 1 LA03
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 2: BIG_BENCH query12
+9 131 648
+Reducer5 1 STLS
+Reducer4 1 DNVR
+Map1 1 SLKC
+Reducer8 2 PHLA NWOR
+Map9 1 SCRM
+Reducer3 1 KSCY
+Map6 1 DNVR
+Reducer2 1 WASH
+Map7 2 RLGH NSVL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 4: BIG_BENCH query15
+6 132 650
+Reducer5 1 LA03
+Reducer4 3 KSCY HSTN STLS
+Map1 1 NSVL
+Map2 2 KSCY SNFN
+Map6 1 RLGH
+Reducer3 2 ATLN SNAN
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 133 653
+Map15 1 NSVL
+Map16 1 ATLN
+Reducer5 3 SNDG LA03 STLS
+Map1 2 DLLS WASH
+Map10 1 PHNX
+Reducer4 3 ORLD DNVR ATLN
+Reducer7 4 ORLD HSTN PHNX DLLS
+Reducer6 3 CLEV SLKC SNFN
+Map13 1 SLKC
+Reducer9 1 CHCG
+Map14 1 PTLD
+Reducer8 1 SCRM
+Map11 1 DLLS
+Map12 1 KSCY
+Reducer3 3 SNDG STLS PTLD
+Reducer2 1 NY54
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 13: BIG_BENCH query26
+4 134 654
+Map1 2 STTL LA03
+Map4 1 PHLA
+Reducer3 4 PHLA NY54 PHNX SNDG
+Reducer2 4 DNVR STTL SCRM CMBR
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 18: BIG_BENCH query6
+11 135 655
+Reducer5 1 SLKC
+Reducer4 2 STTL WASH
+Map10 1 RLGH
+Map1 2 ATLN STLS
+Reducer9 2 ORLD SNDG
+Reducer8 5 PHNX SNFN SLKC SNAN PHLA
+Map11 1 RLGH
+Reducer3 1 PHLA
+Map6 1 SCRM
+Map7 1 NSVL
+Reducer2 4 NWOR RLGH NY54 SNFN
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 9: BIG_BENCH query20
+6 136 664
+Map1 2 RLGH ORLD
+Reducer4 8 SNFN SNAN NWOR PHLA DNVR LA03 ORLD SCRM
+Reducer6 1 NSVL
+Map5 1 HSTN
+Reducer3 8 HSTN DNVR SNDG NSVL SLKC SNFN RLGH CHCG
+Reducer2 11 DNVR SNAN HSTN STTL SNFN NWOR WASH CMBR SNDG STLS SLKC
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 2: BIG_BENCH query12
+9 137 664
+Reducer5 1 CLEV
+Reducer4 1 CMBR
+Map1 1 RLGH
+Reducer8 2 PHNX PHLA
+Map9 1 SLKC
+Reducer3 1 CMBR
+Map6 1 PHNX
+Reducer2 1 HSTN
+Map7 2 NSVL DNVR
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 7: BIG_BENCH query19
+13 138 667
+Reducer5 1 WASH
+Map1 1 STTL
+Map10 1 SCRM
+Reducer7 1 DNVR
+Map3 1 KSCY
+Reducer6 1 ATLN
+Reducer9 1 SLKC
+Map13 1 NSVL
+Reducer12 1 KSCY
+Map11 1 CHCG
+Map8 1 CMBR
+Map4 1 SCRM
+Reducer2 1 SCRM
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 4: BIG_BENCH query15
+6 139 669
+Reducer5 1 PTLD
+Reducer4 3 DLLS CMBR RLGH
+Map1 1 CLEV
+Map2 2 PHNX SNDG
+Map6 1 DNVR
+Reducer3 2 SNAN CHCG
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 3: BIG_BENCH query14
+10 140 673
+Map1 1 CMBR
+Map10 1 RLGH
+Reducer7 1 PTLD
+Map3 1 ATLN
+Map8 1 ATLN
+Map9 1 NSVL
+Map4 1 SLKC
+Map5 1 ATLN
+Map6 1 SNFN
+Reducer2 1 ORLD
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 12: BIG_BENCH query24
+19 141 673
+Reducer17 8 DNVR STLS NY54 SLKC PHNX SNFN CHCG CLEV
+Map18 1 CLEV
+Reducer16 7 CLEV STLS LA03 ATLN CMBR RLGH SNAN
+Reducer15 1 SCRM
+Map19 2 CLEV DLLS
+Reducer10 10 NY54 LA03 DLLS KSCY PHNX SLKC WASH SNAN CHCG SNDG
+Reducer4 9 STTL DNVR NSVL STLS WASH SNFN ORLD KSCY DLLS
+Map1 1 STTL
+Reducer7 1 PHLA
+Reducer9 9 DLLS SNDG DNVR CLEV WASH SNFN PHNX SCRM PTLD
+Reducer14 1 NWOR
+Map13 1 SCRM
+Reducer8 1 DLLS
+Map11 1 STLS
+Map12 1 SLKC
+Map5 1 DLLS
+Reducer3 1 STLS
+Map6 1 ORLD
+Reducer2 1 PTLD
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 19: BIG_BENCH query7
+11 142 673
+Reducer5 1 STLS
+Map1 1 NSVL
+Reducer4 3 SNDG PHNX SNFN
+Map10 1 CHCG
+Reducer6 1 PTLD
+Map8 2 ATLN KSCY
+Map9 1 SCRM
+Map4 1 SNDG
+Reducer3 1 SLKC
+Reducer2 1 SNDG
+Map7 1 WASH
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 12: BIG_BENCH query24
+19 143 679
+Reducer17 8 PHLA SLKC CHCG STTL DNVR ORLD SNAN SNDG
+Map18 1 SNFN
+Reducer16 7 WASH RLGH SCRM NY54 PTLD SNFN SNAN
+Reducer15 1 PTLD
+Map19 2 NY54 PHLA
+Reducer10 10 HSTN ORLD WASH ATLN SNFN NSVL DNVR SLKC SNDG PHNX
+Reducer4 9 SCRM NY54 DLLS CHCG CMBR PTLD CLEV SNAN STLS
+Map1 1 PTLD
+Reducer7 1 CLEV
+Reducer9 9 PHNX LA03 DLLS CMBR NY54 CHCG NWOR KSCY STTL
+Reducer14 1 KSCY
+Map13 1 HSTN
+Reducer8 1 PHLA
+Map11 1 NWOR
+Map12 1 SCRM
+Map5 1 SLKC
+Reducer3 1 CMBR
+Map6 1 WASH
+Reducer2 1 PTLD
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 10: BIG_BENCH query21
+16 144 679
+Map15 1 NY54
+Map16 1 NSVL
+Reducer5 3 SLKC DLLS PTLD
+Map1 2 SCRM SLKC
+Map10 1 HSTN
+Reducer4 3 DNVR KSCY RLGH
+Reducer7 4 PHLA PHNX SNFN PTLD
+Reducer6 3 SLKC SNFN PHLA
+Map13 1 HSTN
+Reducer9 1 PHNX
+Map14 1 DLLS
+Reducer8 1 DNVR
+Map11 1 LA03
+Map12 1 SNDG
+Reducer3 3 WASH NWOR PHLA
+Reducer2 1 NY54
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 20: BIG_BENCH query9
+9 145 687
+Reducer5 1 CMBR
+Reducer4 2 LA03 PTLD
+Map1 2 CMBR CHCG
+Map8 1 SNFN
+Map9 1 DLLS
+Map6 1 STLS
+Reducer3 1 RLGH
+Map7 1 LA03
+Reducer2 1 STTL
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 17: BIG_BENCH query4
+5 146 688
+Map1 1 STTL
+Reducer4 1 NWOR
+Map5 1 PHNX
+Reducer3 1 SLKC
+Reducer2 1 STLS
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 16: BIG_BENCH query3
+7 147 688
+Reducer5 1 LA03
+Reducer4 1 DLLS
+Map1 1 RLGH
+Reducer6 1 NY54
+Reducer3 1 CLEV
+Reducer2 1 WASH
+Map7 1 DLLS
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 17: BIG_BENCH query4
+5 148 690
+Map1 1 ATLN
+Reducer4 1 PHLA
+Map5 1 PHLA
+Reducer3 1 SNFN
+Reducer2 1 NSVL
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 13: BIG_BENCH query26
+4 149 691
+Map1 2 SLKC RLGH
+Map4 1 WASH
+Reducer3 4 ORLD HSTN NY54 KSCY
+Reducer2 4 ATLN NY54 PTLD CLEV
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 17: BIG_BENCH query4
+5 150 693
+Map1 1 STTL
+Reducer4 1 LA03
+Map5 1 ATLN
+Reducer3 1 SLKC
+Reducer2 1 CLEV
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 13: BIG_BENCH query26
+4 151 694
+Map1 2 NSVL NWOR
+Map4 1 NWOR
+Reducer3 4 CHCG CLEV SLKC STTL
+Reducer2 4 WASH NY54 NWOR CLEV
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 17: BIG_BENCH query4
+5 152 696
+Map1 1 RLGH
+Reducer4 1 RLGH
+Map5 1 NSVL
+Reducer3 1 ORLD
+Reducer2 1 NY54
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 2: BIG_BENCH query12
+9 153 697
+Reducer5 1 DNVR
+Reducer4 1 KSCY
+Map1 1 ORLD
+Reducer8 2 SCRM PHNX
+Map9 1 DNVR
+Reducer3 1 NWOR
+Map6 1 SNFN
+Reducer2 1 NY54
+Map7 2 NWOR ORLD
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 7: BIG_BENCH query19
+13 154 699
+Reducer5 1 NY54
+Map1 1 CMBR
+Map10 1 KSCY
+Reducer7 1 LA03
+Map3 1 CLEV
+Reducer6 1 RLGH
+Reducer9 1 PTLD
+Map13 1 DNVR
+Reducer12 1 CLEV
+Map11 1 CMBR
+Map8 1 STLS
+Map4 1 CLEV
+Reducer2 1 SNFN
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 17: BIG_BENCH query4
+5 155 699
+Map1 1 ATLN
+Reducer4 1 KSCY
+Map5 1 CHCG
+Reducer3 1 HSTN
+Reducer2 1 ATLN
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 18: BIG_BENCH query6
+11 156 700
+Reducer5 1 ATLN
+Reducer4 2 SLKC KSCY
+Map10 1 SCRM
+Map1 2 SCRM PTLD
+Reducer9 2 RLGH ORLD
+Reducer8 5 RLGH SNFN DNVR LA03 STTL
+Map11 1 NSVL
+Reducer3 1 SCRM
+Map6 1 PHLA
+Map7 1 SCRM
+Reducer2 4 NWOR STTL CMBR KSCY
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 20: BIG_BENCH query9
+9 157 701
+Reducer5 1 NSVL
+Reducer4 2 ATLN NSVL
+Map1 2 HSTN PTLD
+Map8 1 ATLN
+Map9 1 ATLN
+Map6 1 STLS
+Reducer3 1 PTLD
+Map7 1 PTLD
+Reducer2 1 CLEV
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 7: BIG_BENCH query19
+13 158 701
+Reducer5 1 HSTN
+Map1 1 NY54
+Map10 1 DNVR
+Reducer7 1 ATLN
+Map3 1 CMBR
+Reducer6 1 ATLN
+Reducer9 1 NY54
+Map13 1 LA03
+Reducer12 1 SNFN
+Map11 1 SNDG
+Map8 1 PHLA
+Map4 1 ORLD
+Reducer2 1 SNAN
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 16: BIG_BENCH query3
+7 159 704
+Reducer5 1 NWOR
+Reducer4 1 STTL
+Map1 1 DNVR
+Reducer6 1 NSVL
+Reducer3 1 DNVR
+Reducer2 1 ORLD
+Map7 1 NY54
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 12: BIG_BENCH query24
+19 160 709
+Reducer17 8 LA03 DNVR ATLN SCRM DLLS RLGH ORLD CHCG
+Map18 1 PTLD
+Reducer16 7 RLGH ATLN SNFN CMBR PHNX NSVL PTLD
+Reducer15 1 ORLD
+Map19 2 PHNX SCRM
+Reducer10 10 STLS PHLA CMBR SCRM SNDG NY54 KSCY RLGH SNAN SNFN
+Reducer4 9 SNFN CLEV NWOR CMBR LA03 SNDG SNAN DLLS SLKC
+Map1 1 SCRM
+Reducer7 1 PTLD
+Reducer9 9 SNDG LA03 KSCY NWOR NSVL RLGH PHNX DNVR ATLN
+Reducer14 1 RLGH
+Map13 1 NSVL
+Reducer8 1 PHLA
+Map11 1 ORLD
+Map12 1 STLS
+Map5 1 SNFN
+Reducer3 1 ORLD
+Map6 1 SNAN
+Reducer2 1 KSCY
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 9: BIG_BENCH query20
+6 161 709
+Map1 2 NY54 STLS
+Reducer4 8 SNAN PTLD NWOR SNDG PHLA SCRM NY54 STTL
+Reducer6 1 STTL
+Map5 1 PTLD
+Reducer3 8 WASH SLKC SNAN ATLN PHLA ORLD CLEV DLLS
+Reducer2 11 LA03 NSVL ORLD SLKC SNAN PTLD SCRM KSCY WASH DLLS SNDG
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 8: BIG_BENCH query1
+6 162 713
+Reducer5 1 WASH
+Reducer4 1 WASH
+Map1 2 PHLA CMBR
+Map6 1 SCRM
+Reducer3 1 SNFN
+Reducer2 4 CHCG NWOR SNFN SNDG
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 7: BIG_BENCH query19
+13 163 715
+Reducer5 1 SNFN
+Map1 1 SNAN
+Map10 1 NSVL
+Reducer7 1 PTLD
+Map3 1 CHCG
+Reducer6 1 PHNX
+Reducer9 1 CLEV
+Map13 1 KSCY
+Reducer12 1 RLGH
+Map11 1 DNVR
+Map8 1 ATLN
+Map4 1 DNVR
+Reducer2 1 STTL
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 9: BIG_BENCH query20
+6 164 716
+Map1 2 PHNX CHCG
+Reducer4 8 PHNX NWOR SNDG SLKC DLLS KSCY STTL NY54
+Reducer6 1 DLLS
+Map5 1 NWOR
+Reducer3 8 STLS PHLA ATLN DNVR CHCG ORLD CMBR PTLD
+Reducer2 11 PHLA SNFN NY54 NSVL HSTN PTLD ATLN NWOR SLKC DLLS ORLD
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 5: BIG_BENCH query16
+9 165 725
+Reducer5 1 SLKC
+Reducer4 4 PHLA NY54 SLKC DLLS
+Map1 1 SNFN
+Map8 1 SCRM
+Map9 1 STLS
+Map6 1 SCRM
+Reducer3 3 CMBR SNDG PHLA
+Map7 1 KSCY
+Reducer2 3 LA03 DNVR CHCG
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 15: BIG_BENCH query2
+5 166 728
+Reducer5 1 HSTN
+Reducer4 1 STTL
+Map1 1 CHCG
+Reducer3 1 CLEV
+Reducer2 1 STTL
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 0: BIG_BENCH query10
+2 167 729
+Map1 1 PHLA
+Reducer2 1 CLEV
+1
+Map1 Reducer2 90
+# 16: BIG_BENCH query3
+7 168 729
+Reducer5 1 SLKC
+Reducer4 1 SNAN
+Map1 1 STLS
+Reducer6 1 SNAN
+Reducer3 1 LA03
+Reducer2 1 PHNX
+Map7 1 CHCG
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 18: BIG_BENCH query6
+11 169 739
+Reducer5 1 ATLN
+Reducer4 2 CLEV STTL
+Map10 1 SNFN
+Map1 2 PTLD CHCG
+Reducer9 2 SCRM ORLD
+Reducer8 5 SCRM CLEV RLGH SLKC SNFN
+Map11 1 CLEV
+Reducer3 1 STLS
+Map6 1 KSCY
+Map7 1 PHLA
+Reducer2 4 RLGH SLKC NWOR PHLA
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 19: BIG_BENCH query7
+11 170 739
+Reducer5 1 NSVL
+Map1 1 WASH
+Reducer4 3 PHLA DNVR PTLD
+Map10 1 DNVR
+Reducer6 1 KSCY
+Map8 2 STLS RLGH
+Map9 1 NWOR
+Map4 1 STTL
+Reducer3 1 SLKC
+Reducer2 1 WASH
+Map7 1 ATLN
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 20: BIG_BENCH query9
+9 171 739
+Reducer5 1 NWOR
+Reducer4 2 SNFN SNAN
+Map1 2 KSCY PHLA
+Map8 1 PTLD
+Map9 1 DNVR
+Map6 1 KSCY
+Reducer3 1 SNFN
+Map7 1 LA03
+Reducer2 1 SLKC
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 9: BIG_BENCH query20
+6 172 739
+Map1 2 NSVL STTL
+Reducer4 8 CHCG ORLD WASH PTLD ATLN DNVR STTL LA03
+Reducer6 1 RLGH
+Map5 1 PHLA
+Reducer3 8 PTLD SNDG ATLN SLKC LA03 STLS KSCY ORLD
+Reducer2 11 SNFN ORLD DLLS CHCG RLGH KSCY SNAN LA03 ATLN PHNX NWOR
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 0: BIG_BENCH query10
+2 173 739
+Map1 1 KSCY
+Reducer2 1 NWOR
+1
+Map1 Reducer2 90
+# 8: BIG_BENCH query1
+6 174 743
+Reducer5 1 LA03
+Reducer4 1 STTL
+Map1 2 CMBR SNFN
+Map6 1 PTLD
+Reducer3 1 PHNX
+Reducer2 4 KSCY STTL SNFN ATLN
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 7: BIG_BENCH query19
+13 175 763
+Reducer5 1 PTLD
+Map1 1 KSCY
+Map10 1 STLS
+Reducer7 1 HSTN
+Map3 1 SNDG
+Reducer6 1 STTL
+Reducer9 1 CHCG
+Map13 1 CHCG
+Reducer12 1 SLKC
+Map11 1 KSCY
+Map8 1 ATLN
+Map4 1 DNVR
+Reducer2 1 SLKC
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 13: BIG_BENCH query26
+4 176 764
+Map1 2 ORLD SNFN
+Map4 1 CMBR
+Reducer3 4 PHNX SNFN CLEV PHLA
+Reducer2 4 SNDG CHCG STTL SNAN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 5: BIG_BENCH query16
+9 177 789
+Reducer5 1 STLS
+Reducer4 4 WASH DLLS PHLA DNVR
+Map1 1 NY54
+Map8 1 LA03
+Map9 1 NWOR
+Map6 1 STTL
+Reducer3 3 NSVL SNFN SNDG
+Map7 1 STTL
+Reducer2 3 KSCY CMBR STTL
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 15: BIG_BENCH query2
+5 178 793
+Reducer5 1 PHLA
+Reducer4 1 DNVR
+Map1 1 ORLD
+Reducer3 1 CMBR
+Reducer2 1 LA03
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 8: BIG_BENCH query1
+6 179 798
+Reducer5 1 SNFN
+Reducer4 1 CLEV
+Map1 2 DLLS LA03
+Map6 1 SNDG
+Reducer3 1 STTL
+Reducer2 4 PHNX PHLA SNDG RLGH
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 3: BIG_BENCH query14
+10 180 806
+Map1 1 CMBR
+Map10 1 SLKC
+Reducer7 1 WASH
+Map3 1 PTLD
+Map8 1 SCRM
+Map9 1 SCRM
+Map4 1 STLS
+Map5 1 DNVR
+Map6 1 ORLD
+Reducer2 1 PHLA
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 2: BIG_BENCH query12
+9 181 829
+Reducer5 1 LA03
+Reducer4 1 LA03
+Map1 1 STTL
+Reducer8 2 RLGH KSCY
+Map9 1 STLS
+Reducer3 1 ATLN
+Map6 1 SNAN
+Reducer2 1 SLKC
+Map7 2 PHLA SNAN
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 3: BIG_BENCH query14
+10 182 833
+Map1 1 DLLS
+Map10 1 NSVL
+Reducer7 1 LA03
+Map3 1 DLLS
+Map8 1 NSVL
+Map9 1 RLGH
+Map4 1 NY54
+Map5 1 PTLD
+Map6 1 LA03
+Reducer2 1 SCRM
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 12: BIG_BENCH query24
+19 183 836
+Reducer17 8 SNFN PHLA ORLD KSCY STLS SNAN CMBR SLKC
+Map18 1 KSCY
+Reducer16 7 SLKC SNAN DLLS RLGH ORLD WASH STTL
+Reducer15 1 NY54
+Map19 2 PTLD SNDG
+Reducer10 10 CMBR KSCY STTL DLLS DNVR NWOR ORLD SNFN STLS SNAN
+Reducer4 9 PHLA PTLD RLGH LA03 ORLD STLS DLLS NY54 DNVR
+Map1 1 CMBR
+Reducer7 1 DNVR
+Reducer9 9 SCRM PHNX CMBR PTLD DLLS RLGH SNDG ORLD NSVL
+Reducer14 1 CMBR
+Map13 1 WASH
+Reducer8 1 SNFN
+Map11 1 LA03
+Map12 1 NSVL
+Map5 1 WASH
+Reducer3 1 ORLD
+Map6 1 STLS
+Reducer2 1 DLLS
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 10: BIG_BENCH query21
+16 184 838
+Map15 1 PTLD
+Map16 1 SLKC
+Reducer5 3 ATLN SNAN CLEV
+Map1 2 DNVR PTLD
+Map10 1 RLGH
+Reducer4 3 HSTN PHNX CMBR
+Reducer7 4 ATLN LA03 RLGH WASH
+Reducer6 3 PTLD ATLN CMBR
+Map13 1 CMBR
+Reducer9 1 CHCG
+Map14 1 PTLD
+Reducer8 1 STLS
+Map11 1 SNDG
+Map12 1 KSCY
+Reducer3 3 SLKC NY54 SNDG
+Reducer2 1 CMBR
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 5: BIG_BENCH query16
+9 185 855
+Reducer5 1 SNDG
+Reducer4 4 PHNX NY54 CMBR ORLD
+Map1 1 SCRM
+Map8 1 SNFN
+Map9 1 RLGH
+Map6 1 PHNX
+Reducer3 3 ORLD WASH CHCG
+Map7 1 SCRM
+Reducer2 3 STTL PHNX STLS
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 1: BIG_BENCH query11
+7 186 860
+Map1 1 PHNX
+Reducer4 1 KSCY
+Reducer7 5 STTL WASH SCRM ATLN HSTN
+Map5 1 NSVL
+Map6 1 DNVR
+Reducer3 3 STLS WASH LA03
+Reducer2 1 KSCY
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 18: BIG_BENCH query6
+11 187 865
+Reducer5 1 DNVR
+Reducer4 2 ATLN ORLD
+Map10 1 NSVL
+Map1 2 SLKC PTLD
+Reducer9 2 NY54 PHNX
+Reducer8 5 CLEV NSVL DLLS PHNX NY54
+Map11 1 CMBR
+Reducer3 1 SLKC
+Map6 1 DLLS
+Map7 1 SNDG
+Reducer2 4 SNAN CMBR SCRM LA03
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 6: BIG_BENCH query17
+25 188 871
+Map20 1 PHNX
+Map1 2 SCRM NWOR
+Map21 1 SNAN
+Map24 1 STLS
+Map25 1 SNFN
+Map22 1 RLGH
+Map23 1 HSTN
+Map8 1 SLKC
+Map9 1 KSCY
+Reducer18 1 CHCG
+Reducer17 1 DLLS
+Reducer16 1 DNVR
+Reducer15 1 CHCG
+Reducer19 1 NY54
+Reducer5 1 NSVL
+Reducer4 1 CHCG
+Map10 1 DLLS
+Reducer7 1 SCRM
+Reducer6 1 STTL
+Map13 1 STLS
+Map14 2 DLLS PTLD
+Map11 1 STTL
+Map12 1 DNVR
+Reducer3 1 HSTN
+Reducer2 1 ORLD
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 10: BIG_BENCH query21
+16 189 882
+Map15 1 HSTN
+Map16 1 PHNX
+Reducer5 3 PHNX SLKC CHCG
+Map1 2 LA03 STLS
+Map10 1 DNVR
+Reducer4 3 DLLS SCRM KSCY
+Reducer7 4 PHNX SNAN LA03 SNDG
+Reducer6 3 LA03 NSVL STTL
+Map13 1 CLEV
+Reducer9 1 SLKC
+Map14 1 NY54
+Reducer8 1 SLKC
+Map11 1 ATLN
+Map12 1 PTLD
+Reducer3 3 ORLD PHLA WASH
+Reducer2 1 ORLD
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 11: BIG_BENCH query22
+7 190 883
+Map1 1 SLKC
+Reducer4 1 KSCY
+Map5 1 KSCY
+Map6 1 STLS
+Reducer3 1 NY54
+Map7 1 CLEV
+Reducer2 1 KSCY
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 4: BIG_BENCH query15
+6 191 884
+Reducer5 1 DNVR
+Reducer4 3 SNFN CLEV NWOR
+Map1 1 CHCG
+Map2 2 KSCY CLEV
+Map6 1 SNFN
+Reducer3 2 NSVL DNVR
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 192 884
+Map15 1 PTLD
+Map16 1 SCRM
+Reducer5 3 CHCG WASH NY54
+Map1 2 CMBR WASH
+Map10 1 ATLN
+Reducer4 3 PTLD LA03 CHCG
+Reducer7 4 STLS DLLS RLGH PHNX
+Reducer6 3 STTL SNFN SLKC
+Map13 1 ATLN
+Reducer9 1 KSCY
+Map14 1 CHCG
+Reducer8 1 NWOR
+Map11 1 HSTN
+Map12 1 ATLN
+Reducer3 3 STLS SCRM PTLD
+Reducer2 1 SNDG
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 7: BIG_BENCH query19
+13 193 884
+Reducer5 1 DNVR
+Map1 1 PTLD
+Map10 1 CLEV
+Reducer7 1 PHNX
+Map3 1 WASH
+Reducer6 1 SNFN
+Reducer9 1 PHNX
+Map13 1 SCRM
+Reducer12 1 RLGH
+Map11 1 PHLA
+Map8 1 PTLD
+Map4 1 SLKC
+Reducer2 1 PHLA
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 10: BIG_BENCH query21
+16 194 886
+Map15 1 PHNX
+Map16 1 CLEV
+Reducer5 3 PHLA SNFN NSVL
+Map1 2 PHLA CHCG
+Map10 1 DLLS
+Reducer4 3 SNFN CHCG HSTN
+Reducer7 4 KSCY STLS NY54 SLKC
+Reducer6 3 LA03 PHLA NY54
+Map13 1 SLKC
+Reducer9 1 PTLD
+Map14 1 PTLD
+Reducer8 1 STTL
+Map11 1 KSCY
+Map12 1 CHCG
+Reducer3 3 CHCG NSVL DLLS
+Reducer2 1 ORLD
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 12: BIG_BENCH query24
+19 195 886
+Reducer17 8 LA03 CHCG STLS KSCY NY54 CLEV SCRM SNAN
+Map18 1 HSTN
+Reducer16 7 ATLN PTLD PHNX LA03 STTL WASH NWOR
+Reducer15 1 CLEV
+Map19 2 SLKC RLGH
+Reducer10 10 CMBR DNVR SLKC WASH CLEV STLS NWOR DLLS PHNX LA03
+Reducer4 9 RLGH PHNX NSVL SCRM WASH STLS CMBR STTL NY54
+Map1 1 STLS
+Reducer7 1 WASH
+Reducer9 9 CHCG NY54 SNDG CLEV RLGH SNFN PHLA STTL ATLN
+Reducer14 1 LA03
+Map13 1 DLLS
+Reducer8 1 STTL
+Map11 1 PHNX
+Map12 1 PHNX
+Map5 1 SCRM
+Reducer3 1 PHLA
+Map6 1 DNVR
+Reducer2 1 ATLN
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 19: BIG_BENCH query7
+11 196 909
+Reducer5 1 CLEV
+Map1 1 WASH
+Reducer4 3 SCRM ORLD WASH
+Map10 1 STLS
+Reducer6 1 KSCY
+Map8 2 SCRM STLS
+Map9 1 STTL
+Map4 1 DLLS
+Reducer3 1 ORLD
+Reducer2 1 STTL
+Map7 1 CHCG
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 4: BIG_BENCH query15
+6 197 915
+Reducer5 1 CLEV
+Reducer4 3 STLS ATLN ORLD
+Map1 1 PHNX
+Map2 2 SCRM NWOR
+Map6 1 WASH
+Reducer3 2 HSTN DLLS
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 4: BIG_BENCH query15
+6 198 925
+Reducer5 1 WASH
+Reducer4 3 STTL WASH SNDG
+Map1 1 ATLN
+Map2 2 NSVL PHLA
+Map6 1 DLLS
+Reducer3 2 SLKC PHNX
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 18: BIG_BENCH query6
+11 199 927
+Reducer5 1 RLGH
+Reducer4 2 SCRM ORLD
+Map10 1 NSVL
+Map1 2 LA03 SLKC
+Reducer9 2 WASH CHCG
+Reducer8 5 DLLS CMBR LA03 STTL NSVL
+Map11 1 PHNX
+Reducer3 1 LA03
+Map6 1 PTLD
+Map7 1 DNVR
+Reducer2 4 PHLA ATLN CMBR STTL
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 4: BIG_BENCH query15
+6 200 928
+Reducer5 1 KSCY
+Reducer4 3 ORLD SNAN SNFN
+Map1 1 NSVL
+Map2 2 ATLN HSTN
+Map6 1 LA03
+Reducer3 2 STLS HSTN
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 201 930
+Map15 1 CLEV
+Map16 1 WASH
+Reducer5 3 CMBR CHCG SNAN
+Map1 2 ORLD WASH
+Map10 1 KSCY
+Reducer4 3 SLKC NSVL NWOR
+Reducer7 4 DNVR NSVL SNFN CLEV
+Reducer6 3 DNVR ATLN HSTN
+Map13 1 ORLD
+Reducer9 1 DNVR
+Map14 1 PHNX
+Reducer8 1 SNDG
+Map11 1 SNAN
+Map12 1 LA03
+Reducer3 3 SNAN NWOR PTLD
+Reducer2 1 SNAN
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 19: BIG_BENCH query7
+11 202 932
+Reducer5 1 SNAN
+Map1 1 STLS
+Reducer4 3 ATLN PHLA RLGH
+Map10 1 SLKC
+Reducer6 1 SNDG
+Map8 2 STLS DNVR
+Map9 1 NWOR
+Map4 1 PHNX
+Reducer3 1 CHCG
+Reducer2 1 STTL
+Map7 1 CHCG
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 3: BIG_BENCH query14
+10 203 932
+Map1 1 DLLS
+Map10 1 SNAN
+Reducer7 1 SLKC
+Map3 1 SNFN
+Map8 1 KSCY
+Map9 1 DNVR
+Map4 1 CLEV
+Map5 1 KSCY
+Map6 1 ATLN
+Reducer2 1 CHCG
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 9: BIG_BENCH query20
+6 204 937
+Map1 2 SNFN CLEV
+Reducer4 8 ORLD CHCG PTLD WASH NSVL STTL HSTN STLS
+Reducer6 1 PHNX
+Map5 1 WASH
+Reducer3 8 STLS RLGH SNAN DLLS ATLN ORLD SNFN WASH
+Reducer2 11 NY54 CHCG CLEV NWOR ATLN WASH LA03 SNFN SNDG SCRM STLS
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 6: BIG_BENCH query17
+25 205 939
+Map20 1 SNDG
+Map1 2 ATLN DNVR
+Map21 1 CMBR
+Map24 1 DNVR
+Map25 1 KSCY
+Map22 1 KSCY
+Map23 1 LA03
+Map8 1 NSVL
+Map9 1 NSVL
+Reducer18 1 CMBR
+Reducer17 1 PTLD
+Reducer16 1 SNAN
+Reducer15 1 SNAN
+Reducer19 1 WASH
+Reducer5 1 PTLD
+Reducer4 1 SNAN
+Map10 1 NWOR
+Reducer7 1 STTL
+Reducer6 1 CMBR
+Map13 1 CMBR
+Map14 2 KSCY NWOR
+Map11 1 PHLA
+Map12 1 ATLN
+Reducer3 1 PHNX
+Reducer2 1 SNDG
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 1: BIG_BENCH query11
+7 206 943
+Map1 1 PTLD
+Reducer4 1 DNVR
+Reducer7 5 STLS PHNX CLEV KSCY NSVL
+Map5 1 SLKC
+Map6 1 CLEV
+Reducer3 3 PTLD SNAN SCRM
+Reducer2 1 NWOR
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 11: BIG_BENCH query22
+7 207 944
+Map1 1 ATLN
+Reducer4 1 CHCG
+Map5 1 KSCY
+Map6 1 PHLA
+Reducer3 1 STTL
+Map7 1 SNFN
+Reducer2 1 DNVR
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 0: BIG_BENCH query10
+2 208 950
+Map1 1 NWOR
+Reducer2 1 SLKC
+1
+Map1 Reducer2 90
+# 6: BIG_BENCH query17
+25 209 950
+Map20 1 CMBR
+Map1 2 NY54 SNDG
+Map21 1 LA03
+Map24 1 WASH
+Map25 1 CHCG
+Map22 1 STTL
+Map23 1 NY54
+Map8 1 WASH
+Map9 1 PHNX
+Reducer18 1 HSTN
+Reducer17 1 SNDG
+Reducer16 1 LA03
+Reducer15 1 RLGH
+Reducer19 1 CHCG
+Reducer5 1 PHNX
+Reducer4 1 SNFN
+Map10 1 PHLA
+Reducer7 1 PHNX
+Reducer6 1 SNAN
+Map13 1 RLGH
+Map14 2 SCRM SLKC
+Map11 1 SLKC
+Map12 1 SNDG
+Reducer3 1 SNFN
+Reducer2 1 CLEV
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 19: BIG_BENCH query7
+11 210 961
+Reducer5 1 ATLN
+Map1 1 ORLD
+Reducer4 3 SLKC SNAN CHCG
+Map10 1 CLEV
+Reducer6 1 SCRM
+Map8 2 SNDG CMBR
+Map9 1 STLS
+Map4 1 SLKC
+Reducer3 1 WASH
+Reducer2 1 STLS
+Map7 1 NY54
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 4: BIG_BENCH query15
+6 211 974
+Reducer5 1 NWOR
+Reducer4 3 NY54 SCRM SNFN
+Map1 1 CHCG
+Map2 2 SNDG HSTN
+Map6 1 STLS
+Reducer3 2 SCRM PHNX
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 12: BIG_BENCH query24
+19 212 975
+Reducer17 8 SNDG ATLN PHNX LA03 DNVR HSTN SNAN CLEV
+Map18 1 SCRM
+Reducer16 7 SCRM CLEV HSTN STTL STLS CMBR ATLN
+Reducer15 1 RLGH
+Map19 2 NWOR DNVR
+Reducer10 10 CMBR ORLD PHLA PTLD ATLN NY54 STLS PHNX SLKC WASH
+Reducer4 9 SCRM KSCY NSVL SNDG LA03 DNVR STTL WASH RLGH
+Map1 1 STTL
+Reducer7 1 STTL
+Reducer9 9 PTLD KSCY LA03 SCRM DNVR ATLN WASH SLKC NSVL
+Reducer14 1 STLS
+Map13 1 KSCY
+Reducer8 1 DLLS
+Map11 1 LA03
+Map12 1 NY54
+Map5 1 CMBR
+Reducer3 1 KSCY
+Map6 1 DNVR
+Reducer2 1 STTL
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 213 979
+Reducer5 1 SCRM
+Reducer4 4 DLLS RLGH ORLD NWOR
+Map1 1 CLEV
+Map8 1 STTL
+Map9 1 SCRM
+Map6 1 LA03
+Reducer3 3 PHNX NY54 ATLN
+Map7 1 STLS
+Reducer2 3 SCRM STTL NWOR
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 0: BIG_BENCH query10
+2 214 981
+Map1 1 NSVL
+Reducer2 1 KSCY
+1
+Map1 Reducer2 90
+# 19: BIG_BENCH query7
+11 215 982
+Reducer5 1 CLEV
+Map1 1 CLEV
+Reducer4 3 PHLA NSVL RLGH
+Map10 1 NWOR
+Reducer6 1 SNFN
+Map8 2 DLLS RLGH
+Map9 1 NSVL
+Map4 1 ATLN
+Reducer3 1 ATLN
+Reducer2 1 SNFN
+Map7 1 CMBR
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 2: BIG_BENCH query12
+9 216 982
+Reducer5 1 STLS
+Reducer4 1 STLS
+Map1 1 CHCG
+Reducer8 2 HSTN SNFN
+Map9 1 SLKC
+Reducer3 1 SCRM
+Map6 1 DLLS
+Reducer2 1 PHNX
+Map7 2 SNAN RLGH
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 16: BIG_BENCH query3
+7 217 986
+Reducer5 1 ATLN
+Reducer4 1 NWOR
+Map1 1 PTLD
+Reducer6 1 WASH
+Reducer3 1 NWOR
+Reducer2 1 ATLN
+Map7 1 STLS
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 1: BIG_BENCH query11
+7 218 991
+Map1 1 CLEV
+Reducer4 1 PHLA
+Reducer7 5 PTLD PHLA KSCY CLEV WASH
+Map5 1 CLEV
+Map6 1 NSVL
+Reducer3 3 PHNX SCRM PHLA
+Reducer2 1 SNFN
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 5: BIG_BENCH query16
+9 219 995
+Reducer5 1 CMBR
+Reducer4 4 LA03 NWOR CLEV STLS
+Map1 1 CLEV
+Map8 1 SCRM
+Map9 1 SLKC
+Map6 1 PHNX
+Reducer3 3 SNAN SCRM ATLN
+Map7 1 DLLS
+Reducer2 3 NWOR NY54 SCRM
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 14: BIG_BENCH query27
+2 220 998
+Map1 1 NY54
+Reducer2 1 DLLS
+1
+Map1 Reducer2 90
+# 1: BIG_BENCH query11
+7 221 1007
+Map1 1 HSTN
+Reducer4 1 SCRM
+Reducer7 5 NWOR NSVL SLKC ATLN RLGH
+Map5 1 ATLN
+Map6 1 CMBR
+Reducer3 3 STTL CHCG DLLS
+Reducer2 1 DNVR
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 20: BIG_BENCH query9
+9 222 1020
+Reducer5 1 WASH
+Reducer4 2 CLEV SLKC
+Map1 2 CLEV KSCY
+Map8 1 KSCY
+Map9 1 SNDG
+Map6 1 PTLD
+Reducer3 1 SLKC
+Map7 1 LA03
+Reducer2 1 PHNX
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 15: BIG_BENCH query2
+5 223 1027
+Reducer5 1 NSVL
+Reducer4 1 PHLA
+Map1 1 DLLS
+Reducer3 1 PHLA
+Reducer2 1 RLGH
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 4: BIG_BENCH query15
+6 224 1031
+Reducer5 1 DLLS
+Reducer4 3 LA03 ORLD HSTN
+Map1 1 NSVL
+Map2 2 PTLD CMBR
+Map6 1 HSTN
+Reducer3 2 SCRM ATLN
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 7: BIG_BENCH query19
+13 225 1035
+Reducer5 1 DLLS
+Map1 1 NWOR
+Map10 1 SCRM
+Reducer7 1 PHNX
+Map3 1 PHNX
+Reducer6 1 KSCY
+Reducer9 1 STTL
+Map13 1 SCRM
+Reducer12 1 KSCY
+Map11 1 RLGH
+Map8 1 WASH
+Map4 1 LA03
+Reducer2 1 CHCG
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 8: BIG_BENCH query1
+6 226 1048
+Reducer5 1 HSTN
+Reducer4 1 PHLA
+Map1 2 RLGH LA03
+Map6 1 LA03
+Reducer3 1 DLLS
+Reducer2 4 PHLA NSVL HSTN DLLS
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 13: BIG_BENCH query26
+4 227 1051
+Map1 2 ATLN STLS
+Map4 1 SNDG
+Reducer3 4 LA03 SNAN DNVR PTLD
+Reducer2 4 WASH STLS NSVL NY54
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 17: BIG_BENCH query4
+5 228 1057
+Map1 1 SNFN
+Reducer4 1 DLLS
+Map5 1 NY54
+Reducer3 1 HSTN
+Reducer2 1 ORLD
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 11: BIG_BENCH query22
+7 229 1064
+Map1 1 LA03
+Reducer4 1 SNAN
+Map5 1 SNFN
+Map6 1 WASH
+Reducer3 1 WASH
+Map7 1 PHLA
+Reducer2 1 WASH
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 16: BIG_BENCH query3
+7 230 1064
+Reducer5 1 PTLD
+Reducer4 1 KSCY
+Map1 1 DNVR
+Reducer6 1 ATLN
+Reducer3 1 ATLN
+Reducer2 1 SNAN
+Map7 1 ATLN
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 2: BIG_BENCH query12
+9 231 1065
+Reducer5 1 ATLN
+Reducer4 1 NY54
+Map1 1 PHLA
+Reducer8 2 SNAN SNFN
+Map9 1 CHCG
+Reducer3 1 PHNX
+Map6 1 KSCY
+Reducer2 1 NSVL
+Map7 2 PHNX DNVR
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 6: BIG_BENCH query17
+25 232 1066
+Map20 1 SLKC
+Map1 2 KSCY HSTN
+Map21 1 RLGH
+Map24 1 DLLS
+Map25 1 HSTN
+Map22 1 DLLS
+Map23 1 SCRM
+Map8 1 LA03
+Map9 1 SNFN
+Reducer18 1 NY54
+Reducer17 1 DLLS
+Reducer16 1 CHCG
+Reducer15 1 KSCY
+Reducer19 1 NY54
+Reducer5 1 HSTN
+Reducer4 1 ATLN
+Map10 1 PHNX
+Reducer7 1 NY54
+Reducer6 1 SNFN
+Map13 1 PHLA
+Map14 2 PTLD CHCG
+Map11 1 SCRM
+Map12 1 NWOR
+Reducer3 1 CMBR
+Reducer2 1 CLEV
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 11: BIG_BENCH query22
+7 233 1075
+Map1 1 PHLA
+Reducer4 1 WASH
+Map5 1 PHNX
+Map6 1 HSTN
+Reducer3 1 SNDG
+Map7 1 NSVL
+Reducer2 1 HSTN
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 18: BIG_BENCH query6
+11 234 1089
+Reducer5 1 PHLA
+Reducer4 2 NSVL SNFN
+Map10 1 CMBR
+Map1 2 ORLD SCRM
+Reducer9 2 CHCG PHLA
+Reducer8 5 CMBR NWOR ORLD DNVR LA03
+Map11 1 SLKC
+Reducer3 1 CMBR
+Map6 1 CHCG
+Map7 1 PTLD
+Reducer2 4 DNVR STLS DLLS PHLA
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 18: BIG_BENCH query6
+11 235 1090
+Reducer5 1 ORLD
+Reducer4 2 PHNX CHCG
+Map10 1 SNFN
+Map1 2 SCRM DNVR
+Reducer9 2 CMBR KSCY
+Reducer8 5 PHNX SNDG SCRM CLEV PHLA
+Map11 1 SNFN
+Reducer3 1 SNFN
+Map6 1 SNDG
+Map7 1 SLKC
+Reducer2 4 SNAN RLGH SNDG PHNX
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 2: BIG_BENCH query12
+9 236 1097
+Reducer5 1 DLLS
+Reducer4 1 CMBR
+Map1 1 PTLD
+Reducer8 2 LA03 SNDG
+Map9 1 SLKC
+Reducer3 1 DNVR
+Map6 1 STTL
+Reducer2 1 NSVL
+Map7 2 PHNX CMBR
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 14: BIG_BENCH query27
+2 237 1104
+Map1 1 NY54
+Reducer2 1 RLGH
+1
+Map1 Reducer2 90
+# 18: BIG_BENCH query6
+11 238 1105
+Reducer5 1 HSTN
+Reducer4 2 PHLA SLKC
+Map10 1 NSVL
+Map1 2 SNFN PHLA
+Reducer9 2 PTLD RLGH
+Reducer8 5 STTL NWOR NSVL PHLA DLLS
+Map11 1 PHLA
+Reducer3 1 NSVL
+Map6 1 NWOR
+Map7 1 NSVL
+Reducer2 4 STLS RLGH SLKC LA03
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 8: BIG_BENCH query1
+6 239 1106
+Reducer5 1 PHLA
+Reducer4 1 HSTN
+Map1 2 CHCG RLGH
+Map6 1 SNDG
+Reducer3 1 CLEV
+Reducer2 4 STTL STLS SNDG DLLS
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 9: BIG_BENCH query20
+6 240 1106
+Map1 2 DNVR NSVL
+Reducer4 8 PHLA ATLN SNFN SLKC WASH CHCG NWOR SNAN
+Reducer6 1 LA03
+Map5 1 SNFN
+Reducer3 8 STLS DLLS CHCG CMBR LA03 CLEV ATLN ORLD
+Reducer2 11 LA03 CHCG DNVR WASH CMBR SCRM PTLD SNFN HSTN DLLS NSVL
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 11: BIG_BENCH query22
+7 241 1110
+Map1 1 CMBR
+Reducer4 1 SNAN
+Map5 1 HSTN
+Map6 1 NY54
+Reducer3 1 PHLA
+Map7 1 SNDG
+Reducer2 1 NY54
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 14: BIG_BENCH query27
+2 242 1111
+Map1 1 CMBR
+Reducer2 1 DNVR
+1
+Map1 Reducer2 90
+# 7: BIG_BENCH query19
+13 243 1114
+Reducer5 1 HSTN
+Map1 1 SCRM
+Map10 1 NSVL
+Reducer7 1 CHCG
+Map3 1 SCRM
+Reducer6 1 SLKC
+Reducer9 1 SNFN
+Map13 1 ORLD
+Reducer12 1 WASH
+Map11 1 PTLD
+Map8 1 KSCY
+Map4 1 SNDG
+Reducer2 1 PHNX
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 0: BIG_BENCH query10
+2 244 1123
+Map1 1 ATLN
+Reducer2 1 HSTN
+1
+Map1 Reducer2 90
+# 13: BIG_BENCH query26
+4 245 1123
+Map1 2 RLGH DNVR
+Map4 1 PHNX
+Reducer3 4 WASH SLKC NSVL ORLD
+Reducer2 4 ATLN DNVR PTLD HSTN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 16: BIG_BENCH query3
+7 246 1141
+Reducer5 1 ATLN
+Reducer4 1 LA03
+Map1 1 SCRM
+Reducer6 1 SLKC
+Reducer3 1 PHNX
+Reducer2 1 STLS
+Map7 1 NWOR
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 9: BIG_BENCH query20
+6 247 1146
+Map1 2 NWOR SNDG
+Reducer4 8 ORLD SNFN KSCY NWOR STLS PHLA RLGH DNVR
+Reducer6 1 CHCG
+Map5 1 ATLN
+Reducer3 8 CLEV ATLN SNAN PHLA HSTN NY54 LA03 SNDG
+Reducer2 11 SNFN ORLD NSVL DNVR SNAN NWOR DLLS PHLA WASH ATLN SLKC
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 16: BIG_BENCH query3
+7 248 1154
+Reducer5 1 PTLD
+Reducer4 1 NY54
+Map1 1 DLLS
+Reducer6 1 NSVL
+Reducer3 1 LA03
+Reducer2 1 ATLN
+Map7 1 STLS
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 3: BIG_BENCH query14
+10 249 1156
+Map1 1 NSVL
+Map10 1 SCRM
+Reducer7 1 NSVL
+Map3 1 NY54
+Map8 1 SNFN
+Map9 1 KSCY
+Map4 1 WASH
+Map5 1 ORLD
+Map6 1 ORLD
+Reducer2 1 RLGH
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 16: BIG_BENCH query3
+7 250 1158
+Reducer5 1 PHNX
+Reducer4 1 ATLN
+Map1 1 ORLD
+Reducer6 1 WASH
+Reducer3 1 DNVR
+Reducer2 1 DNVR
+Map7 1 SNAN
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 13: BIG_BENCH query26
+4 251 1181
+Map1 2 PTLD WASH
+Map4 1 LA03
+Reducer3 4 LA03 PHNX SNFN RLGH
+Reducer2 4 LA03 RLGH KSCY ATLN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 20: BIG_BENCH query9
+9 252 1192
+Reducer5 1 KSCY
+Reducer4 2 PHNX CHCG
+Map1 2 KSCY CHCG
+Map8 1 PTLD
+Map9 1 STLS
+Map6 1 KSCY
+Reducer3 1 DLLS
+Map7 1 CHCG
+Reducer2 1 SNAN
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 19: BIG_BENCH query7
+11 253 1202
+Reducer5 1 NWOR
+Map1 1 SNAN
+Reducer4 3 NSVL NY54 KSCY
+Map10 1 KSCY
+Reducer6 1 CLEV
+Map8 2 SCRM RLGH
+Map9 1 SNAN
+Map4 1 LA03
+Reducer3 1 SCRM
+Reducer2 1 ORLD
+Map7 1 CMBR
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 3: BIG_BENCH query14
+10 254 1251
+Map1 1 WASH
+Map10 1 PHNX
+Reducer7 1 CLEV
+Map3 1 SLKC
+Map8 1 PHLA
+Map9 1 ORLD
+Map4 1 NSVL
+Map5 1 SCRM
+Map6 1 WASH
+Reducer2 1 PHNX
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 16: BIG_BENCH query3
+7 255 1253
+Reducer5 1 ORLD
+Reducer4 1 WASH
+Map1 1 PHNX
+Reducer6 1 SNDG
+Reducer3 1 SNDG
+Reducer2 1 ORLD
+Map7 1 ORLD
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 10: BIG_BENCH query21
+16 256 1253
+Map15 1 SNAN
+Map16 1 RLGH
+Reducer5 3 NWOR CMBR SNDG
+Map1 2 CMBR CLEV
+Map10 1 NWOR
+Reducer4 3 ATLN DLLS HSTN
+Reducer7 4 SNAN DLLS NWOR HSTN
+Reducer6 3 CMBR RLGH NWOR
+Map13 1 CLEV
+Reducer9 1 RLGH
+Map14 1 ATLN
+Reducer8 1 SNAN
+Map11 1 DNVR
+Map12 1 ORLD
+Reducer3 3 DLLS STTL CLEV
+Reducer2 1 DNVR
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 17: BIG_BENCH query4
+5 257 1254
+Map1 1 CHCG
+Reducer4 1 STTL
+Map5 1 PTLD
+Reducer3 1 NY54
+Reducer2 1 KSCY
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 14: BIG_BENCH query27
+2 258 1255
+Map1 1 NWOR
+Reducer2 1 SNAN
+1
+Map1 Reducer2 90
+# 14: BIG_BENCH query27
+2 259 1257
+Map1 1 PHNX
+Reducer2 1 ATLN
+1
+Map1 Reducer2 90
+# 2: BIG_BENCH query12
+9 260 1259
+Reducer5 1 SLKC
+Reducer4 1 SLKC
+Map1 1 PTLD
+Reducer8 2 LA03 STTL
+Map9 1 SNAN
+Reducer3 1 PHNX
+Map6 1 ORLD
+Reducer2 1 DLLS
+Map7 2 DNVR NY54
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 8: BIG_BENCH query1
+6 261 1260
+Reducer5 1 NSVL
+Reducer4 1 CHCG
+Map1 2 NY54 CMBR
+Map6 1 CLEV
+Reducer3 1 CHCG
+Reducer2 4 LA03 PHNX NSVL KSCY
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 8: BIG_BENCH query1
+6 262 1263
+Reducer5 1 STLS
+Reducer4 1 STLS
+Map1 2 NWOR SNDG
+Map6 1 PHLA
+Reducer3 1 NWOR
+Reducer2 4 NY54 PHLA STTL SNFN
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 0: BIG_BENCH query10
+2 263 1275
+Map1 1 HSTN
+Reducer2 1 PTLD
+1
+Map1 Reducer2 90
+# 3: BIG_BENCH query14
+10 264 1287
+Map1 1 HSTN
+Map10 1 SNFN
+Reducer7 1 RLGH
+Map3 1 NSVL
+Map8 1 LA03
+Map9 1 NWOR
+Map4 1 DLLS
+Map5 1 CLEV
+Map6 1 LA03
+Reducer2 1 WASH
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 14: BIG_BENCH query27
+2 265 1303
+Map1 1 PHNX
+Reducer2 1 STLS
+1
+Map1 Reducer2 90
+# 18: BIG_BENCH query6
+11 266 1334
+Reducer5 1 RLGH
+Reducer4 2 DLLS LA03
+Map10 1 DNVR
+Map1 2 ATLN CHCG
+Reducer9 2 SNFN HSTN
+Reducer8 5 STTL SLKC PHNX HSTN CMBR
+Map11 1 CHCG
+Reducer3 1 DLLS
+Map6 1 CMBR
+Map7 1 KSCY
+Reducer2 4 RLGH SNFN NWOR KSCY
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 10: BIG_BENCH query21
+16 267 1334
+Map15 1 LA03
+Map16 1 HSTN
+Reducer5 3 CHCG CLEV SNFN
+Map1 2 DNVR NSVL
+Map10 1 PTLD
+Reducer4 3 NWOR SCRM DLLS
+Reducer7 4 WASH NWOR CLEV SNFN
+Reducer6 3 SNDG PHLA DLLS
+Map13 1 PHLA
+Reducer9 1 SNDG
+Map14 1 CHCG
+Reducer8 1 SNDG
+Map11 1 LA03
+Map12 1 SNAN
+Reducer3 3 PTLD KSCY CHCG
+Reducer2 1 SNDG
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 10: BIG_BENCH query21
+16 268 1335
+Map15 1 NWOR
+Map16 1 CHCG
+Reducer5 3 PHNX WASH NWOR
+Map1 2 ATLN NWOR
+Map10 1 SNAN
+Reducer4 3 PHNX STTL ATLN
+Reducer7 4 SCRM NSVL STLS CLEV
+Reducer6 3 STTL CHCG SNDG
+Map13 1 CLEV
+Reducer9 1 PHNX
+Map14 1 STTL
+Reducer8 1 NSVL
+Map11 1 DNVR
+Map12 1 SLKC
+Reducer3 3 CHCG NWOR ORLD
+Reducer2 1 PHLA
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 11: BIG_BENCH query22
+7 269 1337
+Map1 1 PTLD
+Reducer4 1 SNDG
+Map5 1 SNFN
+Map6 1 PHNX
+Reducer3 1 PHLA
+Map7 1 RLGH
+Reducer2 1 ATLN
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 17: BIG_BENCH query4
+5 270 1346
+Map1 1 WASH
+Reducer4 1 SLKC
+Map5 1 STTL
+Reducer3 1 CLEV
+Reducer2 1 PHLA
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 16: BIG_BENCH query3
+7 271 1354
+Reducer5 1 ATLN
+Reducer4 1 CMBR
+Map1 1 SCRM
+Reducer6 1 SNAN
+Reducer3 1 WASH
+Reducer2 1 NY54
+Map7 1 DLLS
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 8: BIG_BENCH query1
+6 272 1356
+Reducer5 1 ATLN
+Reducer4 1 CLEV
+Map1 2 PTLD RLGH
+Map6 1 PHNX
+Reducer3 1 CLEV
+Reducer2 4 PTLD WASH DLLS SCRM
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 2: BIG_BENCH query12
+9 273 1356
+Reducer5 1 LA03
+Reducer4 1 STLS
+Map1 1 PHLA
+Reducer8 2 NSVL HSTN
+Map9 1 PTLD
+Reducer3 1 SNAN
+Map6 1 SCRM
+Reducer2 1 HSTN
+Map7 2 PHLA SNFN
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 0: BIG_BENCH query10
+2 274 1368
+Map1 1 PTLD
+Reducer2 1 NSVL
+1
+Map1 Reducer2 90
+# 9: BIG_BENCH query20
+6 275 1381
+Map1 2 PHLA CLEV
+Reducer4 8 CHCG PTLD SLKC SNFN NY54 HSTN SCRM NWOR
+Reducer6 1 WASH
+Map5 1 SLKC
+Reducer3 8 SNDG RLGH PTLD PHNX DNVR ORLD HSTN DLLS
+Reducer2 11 DLLS NSVL SNFN HSTN STLS ATLN PHLA CMBR LA03 SLKC PTLD
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 17: BIG_BENCH query4
+5 276 1387
+Map1 1 WASH
+Reducer4 1 SNAN
+Map5 1 NSVL
+Reducer3 1 PHLA
+Reducer2 1 KSCY
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 14: BIG_BENCH query27
+2 277 1390
+Map1 1 NWOR
+Reducer2 1 KSCY
+1
+Map1 Reducer2 90
+# 17: BIG_BENCH query4
+5 278 1395
+Map1 1 CHCG
+Reducer4 1 CHCG
+Map5 1 NSVL
+Reducer3 1 HSTN
+Reducer2 1 PTLD
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 0: BIG_BENCH query10
+2 279 1417
+Map1 1 CHCG
+Reducer2 1 SLKC
+1
+Map1 Reducer2 90
+# 12: BIG_BENCH query24
+19 280 1417
+Reducer17 8 STLS HSTN SNAN ATLN STTL NWOR LA03 SLKC
+Map18 1 SNFN
+Reducer16 7 NSVL NWOR KSCY SLKC HSTN ORLD NY54
+Reducer15 1 SLKC
+Map19 2 STTL ORLD
+Reducer10 10 CLEV NY54 STLS PHNX PHLA WASH NSVL CHCG LA03 SLKC
+Reducer4 9 STLS CMBR WASH SCRM NSVL NY54 HSTN LA03 ORLD
+Map1 1 KSCY
+Reducer7 1 WASH
+Reducer9 9 SNFN SLKC CLEV PHNX PTLD SCRM CMBR NSVL ORLD
+Reducer14 1 WASH
+Map13 1 STLS
+Reducer8 1 NSVL
+Map11 1 CLEV
+Map12 1 SLKC
+Map5 1 NSVL
+Reducer3 1 STTL
+Map6 1 NWOR
+Reducer2 1 KSCY
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 1: BIG_BENCH query11
+7 281 1419
+Map1 1 LA03
+Reducer4 1 HSTN
+Reducer7 5 SNFN NSVL STTL PTLD HSTN
+Map5 1 DNVR
+Map6 1 CLEV
+Reducer3 3 STTL WASH ORLD
+Reducer2 1 SNAN
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 17: BIG_BENCH query4
+5 282 1421
+Map1 1 NWOR
+Reducer4 1 CHCG
+Map5 1 PTLD
+Reducer3 1 CHCG
+Reducer2 1 ORLD
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 4: BIG_BENCH query15
+6 283 1433
+Reducer5 1 WASH
+Reducer4 3 PHLA HSTN STLS
+Map1 1 CLEV
+Map2 2 CHCG WASH
+Map6 1 PHNX
+Reducer3 2 STLS SNAN
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 284 1447
+Map15 1 SLKC
+Map16 1 KSCY
+Reducer5 3 PHLA RLGH HSTN
+Map1 2 NY54 SNAN
+Map10 1 SCRM
+Reducer4 3 SLKC ATLN STTL
+Reducer7 4 CHCG RLGH KSCY NWOR
+Reducer6 3 NSVL RLGH SNDG
+Map13 1 SNFN
+Reducer9 1 HSTN
+Map14 1 SLKC
+Reducer8 1 ATLN
+Map11 1 DLLS
+Map12 1 CHCG
+Reducer3 3 PTLD DLLS HSTN
+Reducer2 1 SNFN
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 5: BIG_BENCH query16
+9 285 1468
+Reducer5 1 ORLD
+Reducer4 4 SNAN PTLD NSVL WASH
+Map1 1 LA03
+Map8 1 CLEV
+Map9 1 SNAN
+Map6 1 STLS
+Reducer3 3 SNDG NWOR DLLS
+Map7 1 HSTN
+Reducer2 3 HSTN PHLA NY54
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 1: BIG_BENCH query11
+7 286 1474
+Map1 1 CLEV
+Reducer4 1 LA03
+Reducer7 5 RLGH CLEV PHLA SNFN ATLN
+Map5 1 SCRM
+Map6 1 DLLS
+Reducer3 3 ORLD STLS SCRM
+Reducer2 1 CLEV
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 12: BIG_BENCH query24
+19 287 1495
+Reducer17 8 PTLD NY54 LA03 SCRM CHCG SLKC NSVL CMBR
+Map18 1 WASH
+Reducer16 7 PHLA SCRM KSCY CLEV NSVL NWOR ORLD
+Reducer15 1 PHNX
+Map19 2 ATLN STTL
+Reducer10 10 STTL CHCG KSCY NY54 CLEV SNDG PHNX WASH NWOR DNVR
+Reducer4 9 CMBR ORLD NSVL ATLN LA03 KSCY NWOR PHNX SLKC
+Map1 1 SNDG
+Reducer7 1 SCRM
+Reducer9 9 PHLA CMBR PHNX CHCG LA03 WASH RLGH SNAN NY54
+Reducer14 1 DNVR
+Map13 1 DNVR
+Reducer8 1 PHLA
+Map11 1 KSCY
+Map12 1 STTL
+Map5 1 DLLS
+Reducer3 1 SLKC
+Map6 1 PHNX
+Reducer2 1 ORLD
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 288 1501
+Reducer5 1 DLLS
+Reducer4 4 PHLA STTL SLKC KSCY
+Map1 1 KSCY
+Map8 1 STTL
+Map9 1 DLLS
+Map6 1 NY54
+Reducer3 3 SNFN SCRM STTL
+Map7 1 CLEV
+Reducer2 3 CHCG WASH PHNX
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 19: BIG_BENCH query7
+11 289 1525
+Reducer5 1 SNDG
+Map1 1 CMBR
+Reducer4 3 SNAN PTLD PHLA
+Map10 1 SCRM
+Reducer6 1 SLKC
+Map8 2 SLKC CMBR
+Map9 1 NSVL
+Map4 1 SNFN
+Reducer3 1 CMBR
+Reducer2 1 SCRM
+Map7 1 STLS
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 12: BIG_BENCH query24
+19 290 1528
+Reducer17 8 SCRM LA03 SNDG STLS RLGH NY54 DNVR ORLD
+Map18 1 SNDG
+Reducer16 7 NSVL PHLA PHNX SNFN CHCG ORLD DNVR
+Reducer15 1 DNVR
+Map19 2 NY54 SNFN
+Reducer10 10 CMBR KSCY LA03 SNAN STLS PHNX ORLD RLGH HSTN SCRM
+Reducer4 9 SNAN SNDG NWOR PHLA RLGH CHCG WASH CMBR ATLN
+Map1 1 SLKC
+Reducer7 1 CMBR
+Reducer9 9 ATLN PHNX STTL SCRM KSCY NSVL CHCG SNFN PHLA
+Reducer14 1 RLGH
+Map13 1 DNVR
+Reducer8 1 STLS
+Map11 1 DNVR
+Map12 1 NY54
+Map5 1 STTL
+Reducer3 1 SLKC
+Map6 1 DLLS
+Reducer2 1 PTLD
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 6: BIG_BENCH query17
+25 291 1534
+Map20 1 NY54
+Map1 2 NWOR ATLN
+Map21 1 NY54
+Map24 1 CLEV
+Map25 1 DLLS
+Map22 1 STTL
+Map23 1 ATLN
+Map8 1 STTL
+Map9 1 SNAN
+Reducer18 1 RLGH
+Reducer17 1 DLLS
+Reducer16 1 PTLD
+Reducer15 1 SNDG
+Reducer19 1 NWOR
+Reducer5 1 CLEV
+Reducer4 1 CLEV
+Map10 1 STTL
+Reducer7 1 SCRM
+Reducer6 1 ORLD
+Map13 1 NSVL
+Map14 2 ATLN PHNX
+Map11 1 NY54
+Map12 1 KSCY
+Reducer3 1 CHCG
+Reducer2 1 PTLD
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 11: BIG_BENCH query22
+7 292 1550
+Map1 1 ATLN
+Reducer4 1 LA03
+Map5 1 RLGH
+Map6 1 SNDG
+Reducer3 1 SNFN
+Map7 1 LA03
+Reducer2 1 WASH
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 11: BIG_BENCH query22
+7 293 1550
+Map1 1 ATLN
+Reducer4 1 SCRM
+Map5 1 CMBR
+Map6 1 NY54
+Reducer3 1 SNFN
+Map7 1 LA03
+Reducer2 1 ORLD
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 11: BIG_BENCH query22
+7 294 1551
+Map1 1 SLKC
+Reducer4 1 LA03
+Map5 1 ATLN
+Map6 1 STLS
+Reducer3 1 LA03
+Map7 1 STLS
+Reducer2 1 PHNX
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 0: BIG_BENCH query10
+2 295 1553
+Map1 1 SNFN
+Reducer2 1 LA03
+1
+Map1 Reducer2 90
+# 15: BIG_BENCH query2
+5 296 1554
+Reducer5 1 CHCG
+Reducer4 1 CLEV
+Map1 1 RLGH
+Reducer3 1 SCRM
+Reducer2 1 NWOR
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 2: BIG_BENCH query12
+9 297 1555
+Reducer5 1 PHNX
+Reducer4 1 CMBR
+Map1 1 PHLA
+Reducer8 2 CLEV SNDG
+Map9 1 DNVR
+Reducer3 1 SNDG
+Map6 1 HSTN
+Reducer2 1 DLLS
+Map7 2 ORLD SNDG
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 6: BIG_BENCH query17
+25 298 1559
+Map20 1 CHCG
+Map1 2 NY54 SCRM
+Map21 1 ATLN
+Map24 1 SCRM
+Map25 1 NSVL
+Map22 1 LA03
+Map23 1 STTL
+Map8 1 SNFN
+Map9 1 CLEV
+Reducer18 1 SNAN
+Reducer17 1 CHCG
+Reducer16 1 NWOR
+Reducer15 1 STLS
+Reducer19 1 HSTN
+Reducer5 1 SCRM
+Reducer4 1 DNVR
+Map10 1 DLLS
+Reducer7 1 STLS
+Reducer6 1 SNDG
+Map13 1 DNVR
+Map14 2 PHNX ATLN
+Map11 1 CMBR
+Map12 1 DLLS
+Reducer3 1 SNAN
+Reducer2 1 NSVL
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 17: BIG_BENCH query4
+5 299 1580
+Map1 1 NWOR
+Reducer4 1 DLLS
+Map5 1 NY54
+Reducer3 1 ATLN
+Reducer2 1 NSVL
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 10: BIG_BENCH query21
+16 300 1580
+Map15 1 CHCG
+Map16 1 KSCY
+Reducer5 3 ORLD STTL SNFN
+Map1 2 NWOR WASH
+Map10 1 SNAN
+Reducer4 3 DNVR WASH SNFN
+Reducer7 4 STTL SCRM PHLA NY54
+Reducer6 3 PTLD NWOR SNAN
+Map13 1 PTLD
+Reducer9 1 CMBR
+Map14 1 PHLA
+Reducer8 1 SNFN
+Map11 1 CMBR
+Map12 1 SCRM
+Reducer3 3 PTLD PHLA SNAN
+Reducer2 1 RLGH
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 9: BIG_BENCH query20
+6 301 1586
+Map1 2 ATLN RLGH
+Reducer4 8 NSVL LA03 NWOR SNAN SNFN SCRM RLGH CHCG
+Reducer6 1 CLEV
+Map5 1 LA03
+Reducer3 8 SLKC CMBR LA03 RLGH NWOR PHNX NSVL SNFN
+Reducer2 11 LA03 ORLD PHLA RLGH ATLN PHNX KSCY DNVR HSTN WASH CHCG
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 6: BIG_BENCH query17
+25 302 1606
+Map20 1 STLS
+Map1 2 HSTN LA03
+Map21 1 KSCY
+Map24 1 SNFN
+Map25 1 STLS
+Map22 1 HSTN
+Map23 1 NWOR
+Map8 1 DLLS
+Map9 1 ATLN
+Reducer18 1 CMBR
+Reducer17 1 KSCY
+Reducer16 1 SNDG
+Reducer15 1 SLKC
+Reducer19 1 SLKC
+Reducer5 1 STTL
+Reducer4 1 HSTN
+Map10 1 WASH
+Reducer7 1 HSTN
+Reducer6 1 STLS
+Map13 1 DLLS
+Map14 2 DNVR CLEV
+Map11 1 KSCY
+Map12 1 SCRM
+Reducer3 1 SCRM
+Reducer2 1 RLGH
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 6: BIG_BENCH query17
+25 303 1607
+Map20 1 ATLN
+Map1 2 STTL SLKC
+Map21 1 NSVL
+Map24 1 DLLS
+Map25 1 SCRM
+Map22 1 NSVL
+Map23 1 SNAN
+Map8 1 SNFN
+Map9 1 ATLN
+Reducer18 1 PTLD
+Reducer17 1 PHLA
+Reducer16 1 PTLD
+Reducer15 1 SNFN
+Reducer19 1 SNDG
+Reducer5 1 PHNX
+Reducer4 1 STTL
+Map10 1 SNAN
+Reducer7 1 DNVR
+Reducer6 1 DNVR
+Map13 1 ORLD
+Map14 2 SNAN ORLD
+Map11 1 RLGH
+Map12 1 HSTN
+Reducer3 1 PHNX
+Reducer2 1 SNAN
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 4: BIG_BENCH query15
+6 304 1615
+Reducer5 1 RLGH
+Reducer4 3 PHLA DNVR ATLN
+Map1 1 RLGH
+Map2 2 STTL PHNX
+Map6 1 NWOR
+Reducer3 2 SCRM ORLD
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 305 1619
+Map15 1 CLEV
+Map16 1 NWOR
+Reducer5 3 PTLD DLLS STTL
+Map1 2 SNFN NSVL
+Map10 1 SNAN
+Reducer4 3 CHCG RLGH NSVL
+Reducer7 4 SNAN SCRM DLLS PTLD
+Reducer6 3 STTL KSCY WASH
+Map13 1 ATLN
+Reducer9 1 SNDG
+Map14 1 CHCG
+Reducer8 1 NY54
+Map11 1 STTL
+Map12 1 STLS
+Reducer3 3 CHCG PTLD DLLS
+Reducer2 1 NSVL
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 4: BIG_BENCH query15
+6 306 1620
+Reducer5 1 SNAN
+Reducer4 3 NSVL RLGH NY54
+Map1 1 WASH
+Map2 2 SNAN SCRM
+Map6 1 PTLD
+Reducer3 2 PHLA DLLS
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 10: BIG_BENCH query21
+16 307 1632
+Map15 1 STTL
+Map16 1 ATLN
+Reducer5 3 CMBR PHNX RLGH
+Map1 2 KSCY STLS
+Map10 1 PHLA
+Reducer4 3 HSTN KSCY STTL
+Reducer7 4 DNVR SLKC CHCG NWOR
+Reducer6 3 NSVL PTLD STLS
+Map13 1 NSVL
+Reducer9 1 NSVL
+Map14 1 PHLA
+Reducer8 1 HSTN
+Map11 1 KSCY
+Map12 1 CMBR
+Reducer3 3 CMBR PTLD KSCY
+Reducer2 1 STTL
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 5: BIG_BENCH query16
+9 308 1634
+Reducer5 1 ORLD
+Reducer4 4 CHCG HSTN SNFN SCRM
+Map1 1 KSCY
+Map8 1 NSVL
+Map9 1 DLLS
+Map6 1 PHNX
+Reducer3 3 PTLD CMBR WASH
+Map7 1 SNAN
+Reducer2 3 STTL RLGH DNVR
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 1: BIG_BENCH query11
+7 309 1677
+Map1 1 PHLA
+Reducer4 1 CMBR
+Reducer7 5 LA03 SNFN ATLN SLKC PHNX
+Map5 1 WASH
+Map6 1 KSCY
+Reducer3 3 STTL ORLD CLEV
+Reducer2 1 HSTN
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 14: BIG_BENCH query27
+2 310 1678
+Map1 1 RLGH
+Reducer2 1 STTL
+1
+Map1 Reducer2 90
+# 11: BIG_BENCH query22
+7 311 1678
+Map1 1 SNDG
+Reducer4 1 HSTN
+Map5 1 DLLS
+Map6 1 STLS
+Reducer3 1 NY54
+Map7 1 HSTN
+Reducer2 1 PTLD
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 6: BIG_BENCH query17
+25 312 1680
+Map20 1 PHLA
+Map1 2 NWOR SCRM
+Map21 1 PHLA
+Map24 1 PTLD
+Map25 1 NSVL
+Map22 1 LA03
+Map23 1 DNVR
+Map8 1 CMBR
+Map9 1 PHNX
+Reducer18 1 RLGH
+Reducer17 1 NSVL
+Reducer16 1 DNVR
+Reducer15 1 PTLD
+Reducer19 1 STLS
+Reducer5 1 SNAN
+Reducer4 1 NWOR
+Map10 1 CLEV
+Reducer7 1 ATLN
+Reducer6 1 STLS
+Map13 1 ATLN
+Map14 2 KSCY SLKC
+Map11 1 PTLD
+Map12 1 KSCY
+Reducer3 1 SNDG
+Reducer2 1 ORLD
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 20: BIG_BENCH query9
+9 313 1680
+Reducer5 1 PHNX
+Reducer4 2 SNDG CHCG
+Map1 2 ORLD NSVL
+Map8 1 CMBR
+Map9 1 ORLD
+Map6 1 CMBR
+Reducer3 1 HSTN
+Map7 1 ATLN
+Reducer2 1 WASH
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 2: BIG_BENCH query12
+9 314 1682
+Reducer5 1 STTL
+Reducer4 1 SLKC
+Map1 1 PHNX
+Reducer8 2 PTLD PHLA
+Map9 1 LA03
+Reducer3 1 PTLD
+Map6 1 SLKC
+Reducer2 1 NWOR
+Map7 2 NSVL SNDG
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 4: BIG_BENCH query15
+6 315 1683
+Reducer5 1 ORLD
+Reducer4 3 DLLS SCRM SLKC
+Map1 1 DLLS
+Map2 2 NSVL WASH
+Map6 1 DNVR
+Reducer3 2 WASH PTLD
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 3: BIG_BENCH query14
+10 316 1687
+Map1 1 PHLA
+Map10 1 CMBR
+Reducer7 1 KSCY
+Map3 1 DNVR
+Map8 1 SNAN
+Map9 1 RLGH
+Map4 1 SNDG
+Map5 1 CMBR
+Map6 1 RLGH
+Reducer2 1 PHNX
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 19: BIG_BENCH query7
+11 317 1688
+Reducer5 1 DLLS
+Map1 1 LA03
+Reducer4 3 STTL PHNX CHCG
+Map10 1 NSVL
+Reducer6 1 PTLD
+Map8 2 NY54 STLS
+Map9 1 DLLS
+Map4 1 CHCG
+Reducer3 1 SCRM
+Reducer2 1 PHLA
+Map7 1 CMBR
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 12: BIG_BENCH query24
+19 318 1688
+Reducer17 8 SNAN DLLS NSVL LA03 CMBR ORLD CLEV SLKC
+Map18 1 PHLA
+Reducer16 7 SCRM NY54 HSTN PHNX LA03 SNDG NSVL
+Reducer15 1 STTL
+Map19 2 NSVL STLS
+Reducer10 10 SCRM PTLD NSVL CHCG NY54 KSCY CMBR WASH PHNX DNVR
+Reducer4 9 ORLD DLLS STLS DNVR CMBR STTL NSVL SNFN HSTN
+Map1 1 ORLD
+Reducer7 1 HSTN
+Reducer9 9 SNFN CLEV WASH SNDG KSCY HSTN NWOR PHNX PHLA
+Reducer14 1 CLEV
+Map13 1 PHNX
+Reducer8 1 DNVR
+Map11 1 DNVR
+Map12 1 ORLD
+Map5 1 PTLD
+Reducer3 1 SNAN
+Map6 1 NY54
+Reducer2 1 PHNX
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 5: BIG_BENCH query16
+9 319 1689
+Reducer5 1 CLEV
+Reducer4 4 DNVR PHLA DLLS ORLD
+Map1 1 SNDG
+Map8 1 PHLA
+Map9 1 SNFN
+Map6 1 PHLA
+Reducer3 3 DNVR STTL NWOR
+Map7 1 CHCG
+Reducer2 3 NSVL DNVR CHCG
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 13: BIG_BENCH query26
+4 320 1690
+Map1 2 SNFN WASH
+Map4 1 SNDG
+Reducer3 4 SLKC SCRM DLLS SNFN
+Reducer2 4 SNAN SCRM PTLD WASH
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 7: BIG_BENCH query19
+13 321 1694
+Reducer5 1 SNFN
+Map1 1 SLKC
+Map10 1 DNVR
+Reducer7 1 SNDG
+Map3 1 CMBR
+Reducer6 1 SNFN
+Reducer9 1 PTLD
+Map13 1 PHLA
+Reducer12 1 STLS
+Map11 1 RLGH
+Map8 1 KSCY
+Map4 1 STLS
+Reducer2 1 KSCY
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 11: BIG_BENCH query22
+7 322 1699
+Map1 1 PHNX
+Reducer4 1 RLGH
+Map5 1 RLGH
+Map6 1 CMBR
+Reducer3 1 HSTN
+Map7 1 CMBR
+Reducer2 1 SLKC
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 19: BIG_BENCH query7
+11 323 1700
+Reducer5 1 ATLN
+Map1 1 KSCY
+Reducer4 3 SNAN SLKC ATLN
+Map10 1 CLEV
+Reducer6 1 SNAN
+Map8 2 NWOR STTL
+Map9 1 SCRM
+Map4 1 DNVR
+Reducer3 1 PHLA
+Reducer2 1 LA03
+Map7 1 CHCG
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 16: BIG_BENCH query3
+7 324 1704
+Reducer5 1 PTLD
+Reducer4 1 ORLD
+Map1 1 NWOR
+Reducer6 1 STLS
+Reducer3 1 ATLN
+Reducer2 1 KSCY
+Map7 1 DNVR
+6
+Reducer5 Reducer6 18
+Reducer4 Reducer5 21
+Map1 Reducer2 19591
+Reducer3 Reducer4 24
+Reducer2 Reducer3 5579
+Map7 Reducer3 10
+# 11: BIG_BENCH query22
+7 325 1709
+Map1 1 SNFN
+Reducer4 1 CLEV
+Map5 1 ORLD
+Map6 1 NSVL
+Reducer3 1 CHCG
+Map7 1 SNDG
+Reducer2 1 ATLN
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 9: BIG_BENCH query20
+6 326 1726
+Map1 2 CLEV DLLS
+Reducer4 8 RLGH LA03 ORLD SNDG SCRM SNFN SLKC PHNX
+Reducer6 1 PTLD
+Map5 1 CMBR
+Reducer3 8 KSCY LA03 PHNX SCRM SLKC ORLD ATLN NSVL
+Reducer2 11 DNVR LA03 RLGH CHCG SLKC STLS ATLN NWOR CMBR KSCY WASH
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 6: BIG_BENCH query17
+25 327 1729
+Map20 1 STLS
+Map1 2 CMBR ORLD
+Map21 1 CLEV
+Map24 1 CMBR
+Map25 1 WASH
+Map22 1 PTLD
+Map23 1 CHCG
+Map8 1 STLS
+Map9 1 WASH
+Reducer18 1 CLEV
+Reducer17 1 STLS
+Reducer16 1 CLEV
+Reducer15 1 WASH
+Reducer19 1 CMBR
+Reducer5 1 SCRM
+Reducer4 1 SLKC
+Map10 1 SLKC
+Reducer7 1 NWOR
+Reducer6 1 NY54
+Map13 1 SNDG
+Map14 2 SLKC CMBR
+Map11 1 SNFN
+Map12 1 SNAN
+Reducer3 1 ATLN
+Reducer2 1 LA03
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 1: BIG_BENCH query11
+7 328 1731
+Map1 1 KSCY
+Reducer4 1 SCRM
+Reducer7 5 SNFN HSTN DNVR PHLA LA03
+Map5 1 STTL
+Map6 1 LA03
+Reducer3 3 ORLD HSTN WASH
+Reducer2 1 CHCG
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 10: BIG_BENCH query21
+16 329 1731
+Map15 1 PHLA
+Map16 1 DLLS
+Reducer5 3 PHLA SNDG ATLN
+Map1 2 SLKC ATLN
+Map10 1 SNDG
+Reducer4 3 ATLN STTL LA03
+Reducer7 4 WASH NSVL SNFN KSCY
+Reducer6 3 NY54 PHNX HSTN
+Map13 1 WASH
+Reducer9 1 PTLD
+Map14 1 LA03
+Reducer8 1 NY54
+Map11 1 RLGH
+Map12 1 LA03
+Reducer3 3 KSCY SNDG SCRM
+Reducer2 1 SLKC
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 4: BIG_BENCH query15
+6 330 1741
+Reducer5 1 NY54
+Reducer4 3 NSVL PTLD WASH
+Map1 1 SNDG
+Map2 2 ATLN PTLD
+Map6 1 PTLD
+Reducer3 2 ORLD CMBR
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 5: BIG_BENCH query16
+9 331 1750
+Reducer5 1 STLS
+Reducer4 4 SNAN NSVL SNDG DLLS
+Map1 1 DLLS
+Map8 1 PHNX
+Map9 1 DNVR
+Map6 1 PHNX
+Reducer3 3 ATLN PHNX NY54
+Map7 1 WASH
+Reducer2 3 NSVL DLLS KSCY
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 18: BIG_BENCH query6
+11 332 1762
+Reducer5 1 DLLS
+Reducer4 2 SNFN ATLN
+Map10 1 PHNX
+Map1 2 DLLS SNDG
+Reducer9 2 ORLD ATLN
+Reducer8 5 PHLA PTLD NWOR DNVR CHCG
+Map11 1 PHLA
+Reducer3 1 SCRM
+Map6 1 HSTN
+Map7 1 CMBR
+Reducer2 4 DNVR SLKC ATLN NY54
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 7: BIG_BENCH query19
+13 333 1767
+Reducer5 1 CMBR
+Map1 1 LA03
+Map10 1 PTLD
+Reducer7 1 NWOR
+Map3 1 SNDG
+Reducer6 1 STTL
+Reducer9 1 DNVR
+Map13 1 DLLS
+Reducer12 1 DLLS
+Map11 1 ATLN
+Map8 1 DNVR
+Map4 1 STTL
+Reducer2 1 CMBR
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 2: BIG_BENCH query12
+9 334 1781
+Reducer5 1 SNAN
+Reducer4 1 WASH
+Map1 1 SNDG
+Reducer8 2 SLKC CLEV
+Map9 1 KSCY
+Reducer3 1 SLKC
+Map6 1 KSCY
+Reducer2 1 RLGH
+Map7 2 RLGH NSVL
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 2: BIG_BENCH query12
+9 335 1783
+Reducer5 1 ATLN
+Reducer4 1 STTL
+Map1 1 KSCY
+Reducer8 2 DLLS NWOR
+Map9 1 RLGH
+Reducer3 1 SCRM
+Map6 1 NY54
+Reducer2 1 PHNX
+Map7 2 ORLD STLS
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 20: BIG_BENCH query9
+9 336 1783
+Reducer5 1 SCRM
+Reducer4 2 SNDG SNFN
+Map1 2 SLKC STLS
+Map8 1 SNFN
+Map9 1 CLEV
+Map6 1 SNAN
+Reducer3 1 DNVR
+Map7 1 PTLD
+Reducer2 1 PHNX
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 2: BIG_BENCH query12
+9 337 1786
+Reducer5 1 CMBR
+Reducer4 1 PTLD
+Map1 1 SNAN
+Reducer8 2 PHNX SNFN
+Map9 1 STLS
+Reducer3 1 HSTN
+Map6 1 CHCG
+Reducer2 1 CLEV
+Map7 2 PHLA SCRM
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 13: BIG_BENCH query26
+4 338 1786
+Map1 2 KSCY DNVR
+Map4 1 CHCG
+Reducer3 4 DLLS NSVL SLKC ATLN
+Reducer2 4 CMBR SNDG PTLD HSTN
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 10: BIG_BENCH query21
+16 339 1799
+Map15 1 HSTN
+Map16 1 LA03
+Reducer5 3 SNDG SLKC NSVL
+Map1 2 CMBR CLEV
+Map10 1 ATLN
+Reducer4 3 NWOR NY54 HSTN
+Reducer7 4 CHCG SNFN NWOR LA03
+Reducer6 3 WASH CMBR HSTN
+Map13 1 SLKC
+Reducer9 1 SLKC
+Map14 1 HSTN
+Reducer8 1 CLEV
+Map11 1 HSTN
+Map12 1 NY54
+Reducer3 3 SCRM SNFN HSTN
+Reducer2 1 NSVL
+15
+Map15 Reducer6 25
+Map16 Reducer7 118
+Reducer5 Reducer6 77
+Map1 Reducer2 1928
+Map10 Reducer2 910
+Reducer4 Reducer5 2197
+Reducer7 Reducer8 470
+Reducer6 Reducer7 448
+Map13 Reducer5 1
+Map14 Reducer6 25
+Reducer8 Reducer9 2
+Map11 Reducer3 3005
+Map12 Reducer4 732
+Reducer3 Reducer4 6562
+Reducer2 Reducer3 4224
+# 14: BIG_BENCH query27
+2 340 1803
+Map1 1 PHLA
+Reducer2 1 STTL
+1
+Map1 Reducer2 90
+# 9: BIG_BENCH query20
+6 341 1809
+Map1 2 WASH PHLA
+Reducer4 8 SLKC NY54 STLS HSTN STTL PTLD SNAN PHNX
+Reducer6 1 RLGH
+Map5 1 PHLA
+Reducer3 8 RLGH LA03 DNVR PTLD ORLD CMBR KSCY NWOR
+Reducer2 11 PHLA SCRM NSVL STTL SLKC ORLD LA03 DLLS NY54 SNAN PTLD
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 18: BIG_BENCH query6
+11 342 1811
+Reducer5 1 ORLD
+Reducer4 2 CLEV SNAN
+Map10 1 NY54
+Map1 2 SCRM ORLD
+Reducer9 2 CHCG NSVL
+Reducer8 5 ATLN SNAN PHLA WASH LA03
+Map11 1 SNAN
+Reducer3 1 CHCG
+Map6 1 KSCY
+Map7 1 ATLN
+Reducer2 4 SNDG LA03 CLEV CMBR
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 7: BIG_BENCH query19
+13 343 1816
+Reducer5 1 CHCG
+Map1 1 CLEV
+Map10 1 DNVR
+Reducer7 1 ORLD
+Map3 1 ATLN
+Reducer6 1 PHNX
+Reducer9 1 STLS
+Map13 1 HSTN
+Reducer12 1 CHCG
+Map11 1 STTL
+Map8 1 RLGH
+Map4 1 PHLA
+Reducer2 1 SNDG
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 14: BIG_BENCH query27
+2 344 1826
+Map1 1 PTLD
+Reducer2 1 LA03
+1
+Map1 Reducer2 90
+# 5: BIG_BENCH query16
+9 345 1833
+Reducer5 1 SNFN
+Reducer4 4 STLS DLLS KSCY NWOR
+Map1 1 PHLA
+Map8 1 DNVR
+Map9 1 SNAN
+Map6 1 SLKC
+Reducer3 3 STTL KSCY SLKC
+Map7 1 WASH
+Reducer2 3 CHCG ATLN WASH
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 0: BIG_BENCH query10
+2 346 1834
+Map1 1 SCRM
+Reducer2 1 KSCY
+1
+Map1 Reducer2 90
+# 14: BIG_BENCH query27
+2 347 1836
+Map1 1 NWOR
+Reducer2 1 HSTN
+1
+Map1 Reducer2 90
+# 11: BIG_BENCH query22
+7 348 1840
+Map1 1 LA03
+Reducer4 1 CHCG
+Map5 1 NSVL
+Map6 1 SNFN
+Reducer3 1 RLGH
+Map7 1 SLKC
+Reducer2 1 ATLN
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 4: BIG_BENCH query15
+6 349 1880
+Reducer5 1 NSVL
+Reducer4 3 PHNX PTLD SNAN
+Map1 1 PHLA
+Map2 2 NWOR PHNX
+Map6 1 SNDG
+Reducer3 2 ATLN DLLS
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 15: BIG_BENCH query2
+5 350 1882
+Reducer5 1 SNDG
+Reducer4 1 DNVR
+Map1 1 PHLA
+Reducer3 1 ATLN
+Reducer2 1 RLGH
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 14: BIG_BENCH query27
+2 351 1884
+Map1 1 CMBR
+Reducer2 1 STLS
+1
+Map1 Reducer2 90
+# 2: BIG_BENCH query12
+9 352 1885
+Reducer5 1 KSCY
+Reducer4 1 RLGH
+Map1 1 HSTN
+Reducer8 2 SLKC RLGH
+Map9 1 STLS
+Reducer3 1 CLEV
+Map6 1 NWOR
+Reducer2 1 NSVL
+Map7 2 NY54 SNDG
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 18: BIG_BENCH query6
+11 353 1886
+Reducer5 1 ORLD
+Reducer4 2 SCRM STLS
+Map10 1 PHLA
+Map1 2 ATLN SNDG
+Reducer9 2 STLS NY54
+Reducer8 5 DLLS WASH STLS SNFN DNVR
+Map11 1 CLEV
+Reducer3 1 SNFN
+Map6 1 KSCY
+Map7 1 RLGH
+Reducer2 4 NWOR SLKC LA03 CHCG
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 14: BIG_BENCH query27
+2 354 1904
+Map1 1 WASH
+Reducer2 1 CLEV
+1
+Map1 Reducer2 90
+# 9: BIG_BENCH query20
+6 355 1911
+Map1 2 DNVR ATLN
+Reducer4 8 PTLD HSTN DLLS LA03 SNFN ORLD SCRM STLS
+Reducer6 1 PHNX
+Map5 1 DLLS
+Reducer3 8 RLGH PHNX DNVR NWOR SNFN PHLA DLLS SNDG
+Reducer2 11 LA03 STTL DLLS HSTN SNDG CLEV NWOR CHCG WASH SCRM SNFN
+5
+Map1 Reducer2 962
+Reducer6 Reducer3 4
+Map5 Reducer6 75
+Reducer3 Reducer4 2993
+Reducer2 Reducer3 662
+# 7: BIG_BENCH query19
+13 356 1913
+Reducer5 1 LA03
+Map1 1 STLS
+Map10 1 DNVR
+Reducer7 1 DNVR
+Map3 1 DLLS
+Reducer6 1 WASH
+Reducer9 1 ATLN
+Map13 1 WASH
+Reducer12 1 SLKC
+Map11 1 WASH
+Map8 1 PTLD
+Map4 1 SNDG
+Reducer2 1 SNAN
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 15: BIG_BENCH query2
+5 357 1926
+Reducer5 1 HSTN
+Reducer4 1 SNDG
+Map1 1 STLS
+Reducer3 1 CMBR
+Reducer2 1 RLGH
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 0: BIG_BENCH query10
+2 358 1929
+Map1 1 ORLD
+Reducer2 1 SCRM
+1
+Map1 Reducer2 90
+# 0: BIG_BENCH query10
+2 359 1939
+Map1 1 PTLD
+Reducer2 1 CMBR
+1
+Map1 Reducer2 90
+# 1: BIG_BENCH query11
+7 360 1943
+Map1 1 PHLA
+Reducer4 1 SCRM
+Reducer7 5 STTL LA03 SNDG NSVL ATLN
+Map5 1 PHLA
+Map6 1 NY54
+Reducer3 3 SCRM CMBR DLLS
+Reducer2 1 ORLD
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 1: BIG_BENCH query11
+7 361 1952
+Map1 1 PHLA
+Reducer4 1 LA03
+Reducer7 5 ATLN SNFN NSVL ORLD STLS
+Map5 1 NSVL
+Map6 1 RLGH
+Reducer3 3 NSVL STLS DNVR
+Reducer2 1 NWOR
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 6: BIG_BENCH query17
+25 362 1972
+Map20 1 CLEV
+Map1 2 NY54 SNDG
+Map21 1 NY54
+Map24 1 PHNX
+Map25 1 PTLD
+Map22 1 NY54
+Map23 1 SLKC
+Map8 1 STLS
+Map9 1 SLKC
+Reducer18 1 NSVL
+Reducer17 1 STTL
+Reducer16 1 RLGH
+Reducer15 1 SCRM
+Reducer19 1 DNVR
+Reducer5 1 NY54
+Reducer4 1 PTLD
+Map10 1 NY54
+Reducer7 1 SCRM
+Reducer6 1 SNAN
+Map13 1 KSCY
+Map14 2 NSVL PHLA
+Map11 1 CLEV
+Map12 1 LA03
+Reducer3 1 CLEV
+Reducer2 1 SLKC
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 2: BIG_BENCH query12
+9 363 1982
+Reducer5 1 CLEV
+Reducer4 1 CHCG
+Map1 1 NSVL
+Reducer8 2 HSTN STTL
+Map9 1 SNFN
+Reducer3 1 NSVL
+Map6 1 CHCG
+Reducer2 1 ATLN
+Map7 2 ORLD SNDG
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 15: BIG_BENCH query2
+5 364 2013
+Reducer5 1 STTL
+Reducer4 1 LA03
+Map1 1 SNAN
+Reducer3 1 NWOR
+Reducer2 1 STLS
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 20: BIG_BENCH query9
+9 365 2021
+Reducer5 1 LA03
+Reducer4 2 HSTN NSVL
+Map1 2 PTLD WASH
+Map8 1 PHNX
+Map9 1 ORLD
+Map6 1 PTLD
+Reducer3 1 SLKC
+Map7 1 KSCY
+Reducer2 1 CLEV
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 8: BIG_BENCH query1
+6 366 2028
+Reducer5 1 NY54
+Reducer4 1 DLLS
+Map1 2 WASH SNDG
+Map6 1 STLS
+Reducer3 1 PTLD
+Reducer2 4 DLLS SNDG SNFN NWOR
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 14: BIG_BENCH query27
+2 367 2030
+Map1 1 STTL
+Reducer2 1 STTL
+1
+Map1 Reducer2 90
+# 11: BIG_BENCH query22
+7 368 2041
+Map1 1 CMBR
+Reducer4 1 STTL
+Map5 1 NY54
+Map6 1 WASH
+Reducer3 1 SNDG
+Map7 1 SNAN
+Reducer2 1 SLKC
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 2: BIG_BENCH query12
+9 369 2043
+Reducer5 1 PHNX
+Reducer4 1 SNFN
+Map1 1 DLLS
+Reducer8 2 ATLN LA03
+Map9 1 CHCG
+Reducer3 1 LA03
+Map6 1 PHLA
+Reducer2 1 NWOR
+Map7 2 SNAN LA03
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 3: BIG_BENCH query14
+10 370 2047
+Map1 1 PHNX
+Map10 1 PHLA
+Reducer7 1 SNAN
+Map3 1 SLKC
+Map8 1 DLLS
+Map9 1 KSCY
+Map4 1 HSTN
+Map5 1 DNVR
+Map6 1 DLLS
+Reducer2 1 SNFN
+9
+Map1 Reducer2 48
+Map10 Map6 32
+Reducer7 Reducer2 1
+Map3 Map1 32
+Map8 Map6 32
+Map9 Map6 32
+Map4 Map1 32
+Map5 Map1 32
+Map6 Reducer7 96
+# 2: BIG_BENCH query12
+9 371 2063
+Reducer5 1 PHNX
+Reducer4 1 CMBR
+Map1 1 DNVR
+Reducer8 2 NSVL NY54
+Map9 1 SCRM
+Reducer3 1 RLGH
+Map6 1 SLKC
+Reducer2 1 CMBR
+Map7 2 PTLD KSCY
+8
+Reducer4 Reducer5 1
+Map1 Reducer2 1015
+Reducer8 Reducer3 113
+Map9 Reducer8 37
+Reducer3 Reducer4 56
+Map6 Reducer2 55
+Reducer2 Reducer3 55
+Map7 Reducer8 115
+# 4: BIG_BENCH query15
+6 372 2065
+Reducer5 1 PTLD
+Reducer4 3 DNVR STLS ORLD
+Map1 1 CMBR
+Map2 2 CHCG KSCY
+Map6 1 RLGH
+Reducer3 2 KSCY PHLA
+5
+Reducer4 Reducer5 275
+Map1 Map2 286
+Map2 Reducer3 191
+Map6 Reducer3 1
+Reducer3 Reducer4 275
+# 20: BIG_BENCH query9
+9 373 2065
+Reducer5 1 PTLD
+Reducer4 2 CHCG WASH
+Map1 2 KSCY SNAN
+Map8 1 PTLD
+Map9 1 NY54
+Map6 1 SNFN
+Reducer3 1 WASH
+Map7 1 SLKC
+Reducer2 1 SNAN
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 7: BIG_BENCH query19
+13 374 2089
+Reducer5 1 DLLS
+Map1 1 LA03
+Map10 1 SNDG
+Reducer7 1 LA03
+Map3 1 SNDG
+Reducer6 1 STTL
+Reducer9 1 RLGH
+Map13 1 DLLS
+Reducer12 1 SNDG
+Map11 1 PHLA
+Map8 1 ATLN
+Map4 1 LA03
+Reducer2 1 SLKC
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 20: BIG_BENCH query9
+9 375 2096
+Reducer5 1 PHNX
+Reducer4 2 SNDG RLGH
+Map1 2 NSVL STTL
+Map8 1 CMBR
+Map9 1 ATLN
+Map6 1 NSVL
+Reducer3 1 DLLS
+Map7 1 SNFN
+Reducer2 1 PTLD
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 11: BIG_BENCH query22
+7 376 2118
+Map1 1 CHCG
+Reducer4 1 STLS
+Map5 1 NSVL
+Map6 1 PHNX
+Reducer3 1 ATLN
+Map7 1 SLKC
+Reducer2 1 PHNX
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 5: BIG_BENCH query16
+9 377 2150
+Reducer5 1 PHNX
+Reducer4 4 PHNX NY54 SNDG ORLD
+Map1 1 ORLD
+Map8 1 SNDG
+Map9 1 SNAN
+Map6 1 ATLN
+Reducer3 3 WASH ORLD STLS
+Map7 1 SNAN
+Reducer2 3 NY54 CLEV PTLD
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 1: BIG_BENCH query11
+7 378 2152
+Map1 1 ATLN
+Reducer4 1 PHNX
+Reducer7 5 DLLS PTLD NY54 PHLA CMBR
+Map5 1 NY54
+Map6 1 ORLD
+Reducer3 3 LA03 RLGH PHLA
+Reducer2 1 DLLS
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 14: BIG_BENCH query27
+2 379 2154
+Map1 1 NWOR
+Reducer2 1 CMBR
+1
+Map1 Reducer2 90
+# 7: BIG_BENCH query19
+13 380 2158
+Reducer5 1 RLGH
+Map1 1 ORLD
+Map10 1 NY54
+Reducer7 1 RLGH
+Map3 1 CLEV
+Reducer6 1 STLS
+Reducer9 1 SCRM
+Map13 1 PHNX
+Reducer12 1 SNAN
+Map11 1 NWOR
+Map8 1 STTL
+Map4 1 WASH
+Reducer2 1 CLEV
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 1: BIG_BENCH query11
+7 381 2173
+Map1 1 STLS
+Reducer4 1 PTLD
+Reducer7 5 DLLS STLS CLEV NY54 SCRM
+Map5 1 PHLA
+Map6 1 CMBR
+Reducer3 3 KSCY CHCG PHNX
+Reducer2 1 PHNX
+6
+Map1 Reducer2 15
+Reducer7 Reducer3 222
+Map5 Map6 144
+Map6 Reducer7 357
+Reducer3 Reducer4 53
+Reducer2 Reducer3 10
+# 5: BIG_BENCH query16
+9 382 2176
+Reducer5 1 DNVR
+Reducer4 4 ORLD RLGH ATLN STTL
+Map1 1 ATLN
+Map8 1 CHCG
+Map9 1 WASH
+Map6 1 WASH
+Reducer3 3 NWOR PTLD SNAN
+Map7 1 DNVR
+Reducer2 3 DLLS STTL CHCG
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 5: BIG_BENCH query16
+9 383 2178
+Reducer5 1 SNFN
+Reducer4 4 HSTN DLLS SNDG ORLD
+Map1 1 NY54
+Map8 1 STLS
+Map9 1 WASH
+Map6 1 HSTN
+Reducer3 3 NWOR SCRM LA03
+Map7 1 CMBR
+Reducer2 3 HSTN ATLN DLLS
+8
+Reducer4 Reducer5 301
+Map1 Reducer2 4506
+Map8 Reducer3 401
+Map9 Reducer3 401
+Map6 Reducer2 4269
+Reducer3 Reducer4 2621
+Map7 Reducer3 401
+Reducer2 Reducer3 5454
+# 11: BIG_BENCH query22
+7 384 2180
+Map1 1 STTL
+Reducer4 1 NWOR
+Map5 1 HSTN
+Map6 1 STTL
+Reducer3 1 PHLA
+Map7 1 SNFN
+Reducer2 1 RLGH
+6
+Map1 Reducer2 2042
+Map5 Reducer2 1782
+Map6 Reducer2 1781
+Reducer3 Reducer4 3
+Map7 Reducer2 1782
+Reducer2 Reducer3 7130
+# 15: BIG_BENCH query2
+5 385 2184
+Reducer5 1 CLEV
+Reducer4 1 HSTN
+Map1 1 HSTN
+Reducer3 1 STTL
+Reducer2 1 DLLS
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 8: BIG_BENCH query1
+6 386 2215
+Reducer5 1 SCRM
+Reducer4 1 STTL
+Map1 2 SNAN CHCG
+Map6 1 SCRM
+Reducer3 1 PHLA
+Reducer2 4 CMBR LA03 WASH NSVL
+5
+Reducer4 Reducer5 116
+Map1 Reducer2 518
+Map6 Reducer2 227
+Reducer3 Reducer4 273
+Reducer2 Reducer3 839
+# 20: BIG_BENCH query9
+9 387 2216
+Reducer5 1 PHLA
+Reducer4 2 STTL ATLN
+Map1 2 PHNX HSTN
+Map8 1 DLLS
+Map9 1 CLEV
+Map6 1 NY54
+Reducer3 1 SNFN
+Map7 1 SNAN
+Reducer2 1 CHCG
+8
+Reducer4 Reducer5 358
+Map1 Reducer2 2357
+Map8 Reducer3 156
+Map9 Reducer4 178
+Map6 Reducer2 860
+Reducer3 Reducer4 412
+Map7 Reducer3 155
+Reducer2 Reducer3 1016
+# 15: BIG_BENCH query2
+5 388 2218
+Reducer5 1 CHCG
+Reducer4 1 KSCY
+Map1 1 CMBR
+Reducer3 1 DNVR
+Reducer2 1 PHLA
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 15: BIG_BENCH query2
+5 389 2222
+Reducer5 1 NWOR
+Reducer4 1 PTLD
+Map1 1 LA03
+Reducer3 1 SCRM
+Reducer2 1 NSVL
+4
+Reducer4 Reducer5 142
+Map1 Reducer2 41071
+Reducer3 Reducer4 5489
+Reducer2 Reducer3 38224
+# 13: BIG_BENCH query26
+4 390 2224
+Map1 2 CHCG SCRM
+Map4 1 KSCY
+Reducer3 4 SLKC HSTN DLLS PHNX
+Reducer2 4 WASH PHNX LA03 CLEV
+3
+Map1 Reducer2 2462
+Map4 Reducer2 530
+Reducer2 Reducer3 1964
+# 12: BIG_BENCH query24
+19 391 2225
+Reducer17 8 DNVR SNFN SNAN CHCG ORLD SLKC NWOR WASH
+Map18 1 NWOR
+Reducer16 7 SNDG ATLN CLEV LA03 CMBR ORLD NSVL
+Reducer15 1 LA03
+Map19 2 SNFN ATLN
+Reducer10 10 SCRM RLGH ORLD PHNX KSCY LA03 CLEV ATLN NY54 STTL
+Reducer4 9 NWOR KSCY CHCG CMBR NY54 DLLS SCRM HSTN SNDG
+Map1 1 ORLD
+Reducer7 1 PTLD
+Reducer9 9 PHNX SNDG HSTN KSCY SNAN PHLA CHCG NWOR ORLD
+Reducer14 1 CMBR
+Map13 1 ORLD
+Reducer8 1 WASH
+Map11 1 PHLA
+Map12 1 DNVR
+Map5 1 KSCY
+Reducer3 1 NSVL
+Map6 1 RLGH
+Reducer2 1 LA03
+18
+Reducer17 Reducer4 229
+Map18 Reducer14 1
+Reducer16 Reducer17 5611
+Reducer15 Reducer16 1815
+Map19 Reducer16 3757
+Reducer10 Reducer4 871
+Map1 Reducer2 1
+Reducer7 Reducer8 1
+Reducer9 Reducer10 2438
+Reducer14 Reducer15 3
+Map13 Reducer14 1
+Reducer8 Reducer9 580
+Map11 Reducer7 1
+Map12 Reducer9 660
+Map5 Reducer2 1
+Reducer3 Reducer4 19
+Map6 Reducer7 1
+Reducer2 Reducer3 1
+# 7: BIG_BENCH query19
+13 392 2226
+Reducer5 1 NWOR
+Map1 1 NSVL
+Map10 1 NWOR
+Reducer7 1 PTLD
+Map3 1 NWOR
+Reducer6 1 NWOR
+Reducer9 1 SNDG
+Map13 1 SLKC
+Reducer12 1 SNAN
+Map11 1 SCRM
+Map8 1 STLS
+Map4 1 HSTN
+Reducer2 1 RLGH
+12
+Reducer5 Reducer6 848
+Map1 Reducer2 1
+Map10 Reducer9 1
+Map3 Reducer2 1
+Reducer6 Reducer7 2557
+Reducer9 Map11 16
+Map13 Reducer6 857
+Reducer12 Reducer6 856
+Map11 Reducer12 41
+Map8 Reducer9 1
+Map4 Reducer5 160
+Reducer2 Map4 160
+# 17: BIG_BENCH query4
+5 393 2231
+Map1 1 NY54
+Reducer4 1 NWOR
+Map5 1 CMBR
+Reducer3 1 NSVL
+Reducer2 1 SNDG
+4
+Map1 Reducer2 10603
+Map5 Map1 3483
+Reducer3 Reducer4 15036
+Reducer2 Reducer3 22157
+# 18: BIG_BENCH query6
+11 394 2245
+Reducer5 1 STTL
+Reducer4 2 RLGH STTL
+Map10 1 KSCY
+Map1 2 WASH RLGH
+Reducer9 2 CLEV SNFN
+Reducer8 5 CMBR STLS SLKC PHLA SNFN
+Map11 1 SLKC
+Reducer3 1 CHCG
+Map6 1 ATLN
+Map7 1 DLLS
+Reducer2 4 CMBR SNDG NWOR LA03
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847
+# 6: BIG_BENCH query17
+25 395 2257
+Map20 1 ORLD
+Map1 2 STTL SNDG
+Map21 1 DLLS
+Map24 1 SLKC
+Map25 1 STTL
+Map22 1 RLGH
+Map23 1 NWOR
+Map8 1 ATLN
+Map9 1 HSTN
+Reducer18 1 HSTN
+Reducer17 1 SNDG
+Reducer16 1 LA03
+Reducer15 1 SNFN
+Reducer19 1 PHLA
+Reducer5 1 CLEV
+Reducer4 1 PHNX
+Map10 1 ORLD
+Reducer7 1 NY54
+Reducer6 1 SLKC
+Map13 1 SNDG
+Map14 2 SLKC ORLD
+Map11 1 DLLS
+Map12 1 CMBR
+Reducer3 1 NSVL
+Reducer2 1 PHLA
+24
+Map20 Reducer15 2180
+Map1 Reducer2 5288
+Map21 Reducer16 52
+Map24 Reducer17 33
+Map25 Reducer18 70
+Map22 Reducer16 52
+Map23 Reducer16 51
+Map8 Reducer2 2454
+Map9 Reducer3 16
+Reducer18 Reducer19 140
+Reducer17 Reducer18 102
+Reducer16 Reducer17 134
+Reducer15 Reducer16 1685
+Reducer19 Reducer6 1
+Reducer5 Reducer6 1
+Reducer4 Reducer5 86
+Map10 Reducer3 15
+Reducer6 Reducer7 1
+Map13 Reducer5 1
+Map14 Reducer15 4740
+Map11 Reducer3 15
+Map12 Reducer4 87
+Reducer3 Reducer4 117
+Reducer2 Reducer3 1855
+# 19: BIG_BENCH query7
+11 396 2258
+Reducer5 1 SNAN
+Map1 1 PHNX
+Reducer4 3 SNDG DNVR PTLD
+Map10 1 DNVR
+Reducer6 1 KSCY
+Map8 2 NY54 DNVR
+Map9 1 CMBR
+Map4 1 NY54
+Reducer3 1 PTLD
+Reducer2 1 NY54
+Map7 1 STTL
+9
+Reducer5 Reducer6 17
+Map1 Reducer2 3
+Reducer4 Reducer5 4604
+Map10 Reducer4 2294
+Map8 Reducer3 199
+Map9 Reducer3 4
+Reducer3 Reducer4 2302
+Reducer2 Reducer3 4
+Map7 Reducer2 2
+# 0: BIG_BENCH query10
+2 397 2263
+Map1 1 NSVL
+Reducer2 1 SLKC
+1
+Map1 Reducer2 90
+# 18: BIG_BENCH query6
+11 398 2285
+Reducer5 1 STTL
+Reducer4 2 SNFN CHCG
+Map10 1 PHLA
+Map1 2 SNAN NWOR
+Reducer9 2 CLEV ORLD
+Reducer8 5 NY54 PHNX NWOR SCRM DNVR
+Map11 1 DNVR
+Reducer3 1 WASH
+Map6 1 NWOR
+Map7 1 SNDG
+Reducer2 4 NY54 PHNX CMBR SCRM
+10
+Reducer4 Reducer5 331
+Map10 Reducer8 629
+Map1 Reducer2 3231
+Reducer9 Reducer4 244
+Reducer8 Reducer9 1418
+Map11 Reducer4 84
+Reducer3 Reducer4 82
+Map6 Reducer2 1617
+Map7 Reducer8 1029
+Reducer2 Reducer3 4847

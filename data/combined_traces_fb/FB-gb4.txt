@@ -1,0 +1,3156 @@
+# JOB-1
+2 1 0
+Map1 1 EU2
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-2
+2 2 10
+Map1 1 EU2
+Reducer1 1 US5
+1
+Map1 Reducer1 48
+# JOB-3
+2 3 13
+Map1 1 EU1
+Reducer1 1 US5
+1
+Map1 Reducer1 4
+# JOB-4
+2 4 15
+Map1 2 US6 EU1
+Reducer1 6 US6 AS2 US5 EU4 US1 EU3
+1
+Map1 Reducer1 83565
+# JOB-5
+2 5 22
+Map1 1 EU3
+Reducer1 3 EU3 EU4 AS2
+1
+Map1 Reducer1 64
+# JOB-6
+2 6 35
+Map1 1 EU4
+Reducer1 2 US1 US3
+1
+Map1 Reducer1 49
+# JOB-7
+2 7 66
+Map1 4 US2 EU1 US6 AS1
+Reducer1 1 EU1
+1
+Map1 Reducer1 146
+# JOB-8
+2 8 70
+Map1 1 US4
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-9
+2 9 70
+Map1 3 EU4 AS1 US2
+Reducer1 3 AS2 US2 EU4
+1
+Map1 Reducer1 4108
+# JOB-10
+2 10 72
+Map1 1 AS1
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-11
+2 11 73
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-12
+2 12 81
+Map1 7 EU1 EU4 US2 US5 US3 AS1 EU2
+Reducer1 7 AS2 EU2 US3 US1 US4 AS1 EU1
+1
+Map1 Reducer1 1027089
+# JOB-13
+2 13 81
+Map1 1 US5
+Reducer1 1 US1
+1
+Map1 Reducer1 14
+# JOB-14
+2 14 83
+Map1 7 AS2 AS1 US1 EU1 US5 US2 US4
+Reducer1 1 US3
+1
+Map1 Reducer1 137
+# JOB-15
+2 15 88
+Map1 1 US4
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-16
+2 16 92
+Map1 6 AS1 AS2 US4 EU4 US1 US2
+Reducer1 3 US6 EU1 AS2
+1
+Map1 Reducer1 5117
+# JOB-17
+2 17 96
+Map1 1 AS1
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-18
+2 18 97
+Map1 1 US1
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-19
+2 19 102
+Map1 1 US4
+Reducer1 1 EU3
+1
+Map1 Reducer1 186
+# JOB-20
+2 20 111
+Map1 1 EU4
+Reducer1 1 EU4
+1
+Map1 Reducer1 7
+# JOB-21
+2 21 112
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-22
+2 22 114
+Map1 1 AS1
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-23
+2 23 120
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-24
+2 24 132
+Map1 1 US4
+Reducer1 1 AS2
+1
+Map1 Reducer1 3
+# JOB-25
+2 25 143
+Map1 1 AS2
+Reducer1 1 EU4
+1
+Map1 Reducer1 42
+# JOB-26
+2 26 150
+Map1 7 US5 AS2 EU1 US6 EU2 US1 EU3
+Reducer1 4 US5 US2 US6 US3
+1
+Map1 Reducer1 10585
+# JOB-27
+2 27 152
+Map1 1 AS2
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-28
+2 28 156
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-29
+2 29 158
+Map1 1 EU4
+Reducer1 1 AS2
+1
+Map1 Reducer1 7
+# JOB-30
+2 30 158
+Map1 1 US4
+Reducer1 1 EU1
+1
+Map1 Reducer1 7
+# JOB-31
+2 31 159
+Map1 1 US4
+Reducer1 1 US4
+1
+Map1 Reducer1 7
+# JOB-32
+2 32 159
+Map1 1 US6
+Reducer1 1 EU3
+1
+Map1 Reducer1 7
+# JOB-33
+2 33 159
+Map1 1 AS2
+Reducer1 1 US3
+1
+Map1 Reducer1 7
+# JOB-34
+2 34 159
+Map1 1 AS1
+Reducer1 1 US2
+1
+Map1 Reducer1 7
+# JOB-35
+2 35 161
+Map1 1 US2
+Reducer1 1 US3
+1
+Map1 Reducer1 7
+# JOB-36
+2 36 163
+Map1 1 US1
+Reducer1 1 EU1
+1
+Map1 Reducer1 7
+# JOB-37
+2 37 163
+Map1 1 AS1
+Reducer1 2 US5 US3
+1
+Map1 Reducer1 184
+# JOB-38
+2 38 169
+Map1 1 US3
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-39
+2 39 199
+Map1 1 US2
+Reducer1 1 EU3
+1
+Map1 Reducer1 375
+# JOB-40
+2 40 199
+Map1 1 EU3
+Reducer1 1 US6
+1
+Map1 Reducer1 350
+# JOB-41
+2 41 200
+Map1 1 US6
+Reducer1 1 US3
+1
+Map1 Reducer1 7
+# JOB-42
+2 42 200
+Map1 1 EU1
+Reducer1 1 US3
+1
+Map1 Reducer1 300
+# JOB-43
+2 43 200
+Map1 1 AS1
+Reducer1 1 AS1
+1
+Map1 Reducer1 7
+# JOB-44
+2 44 200
+Map1 1 US5
+Reducer1 1 EU2
+1
+Map1 Reducer1 7
+# JOB-45
+2 45 200
+Map1 1 EU4
+Reducer1 1 US6
+1
+Map1 Reducer1 300
+# JOB-46
+2 46 201
+Map1 1 US4
+Reducer1 1 EU2
+1
+Map1 Reducer1 7
+# JOB-47
+2 47 202
+Map1 1 US4
+Reducer1 1 EU3
+1
+Map1 Reducer1 300
+# JOB-48
+2 48 203
+Map1 1 US1
+Reducer1 1 EU1
+1
+Map1 Reducer1 7
+# JOB-49
+2 49 203
+Map1 1 EU3
+Reducer1 1 AS1
+1
+Map1 Reducer1 7
+# JOB-50
+2 50 204
+Map1 1 US2
+Reducer1 1 US2
+1
+Map1 Reducer1 360
+# JOB-51
+2 51 207
+Map1 1 EU2
+Reducer1 1 AS2
+1
+Map1 Reducer1 7
+# JOB-52
+2 52 225
+Map1 1 EU2
+Reducer1 1 US3
+1
+Map1 Reducer1 7
+# JOB-53
+2 53 236
+Map1 1 EU3
+Reducer1 1 EU1
+1
+Map1 Reducer1 6
+# JOB-54
+2 54 238
+Map1 1 US6
+Reducer1 1 US4
+1
+Map1 Reducer1 10
+# JOB-55
+2 55 246
+Map1 1 EU1
+Reducer1 1 EU2
+1
+Map1 Reducer1 13
+# JOB-56
+2 56 250
+Map1 1 US2
+Reducer1 6 US4 US5 AS1 AS2 EU3 EU2
+1
+Map1 Reducer1 4152
+# JOB-57
+2 57 256
+Map1 1 US3
+Reducer1 1 US2
+1
+Map1 Reducer1 4
+# JOB-58
+2 58 275
+Map1 1 EU1
+Reducer1 2 EU3 EU1
+1
+Map1 Reducer1 56
+# JOB-59
+2 59 286
+Map1 1 US6
+Reducer1 1 US3
+1
+Map1 Reducer1 92
+# JOB-60
+2 60 299
+Map1 1 US5
+Reducer1 1 US6
+1
+Map1 Reducer1 2
+# JOB-61
+2 61 343
+Map1 1 EU4
+Reducer1 1 EU1
+1
+Map1 Reducer1 14
+# JOB-62
+2 62 344
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 3
+# JOB-63
+2 63 344
+Map1 2 EU2 EU4
+Reducer1 1 EU3
+1
+Map1 Reducer1 27
+# JOB-64
+2 64 344
+Map1 1 EU1
+Reducer1 1 US4
+1
+Map1 Reducer1 13
+# JOB-65
+2 65 345
+Map1 2 EU4 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 26
+# JOB-66
+2 66 345
+Map1 2 AS1 US2
+Reducer1 1 AS1
+1
+Map1 Reducer1 27
+# JOB-67
+2 67 346
+Map1 1 US1
+Reducer1 1 EU3
+1
+Map1 Reducer1 14
+# JOB-68
+2 68 348
+Map1 2 US1 US4
+Reducer1 1 US4
+1
+Map1 Reducer1 2996
+# JOB-69
+2 69 350
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 62
+# JOB-70
+2 70 351
+Map1 1 US3
+Reducer1 1 EU3
+1
+Map1 Reducer1 7
+# JOB-71
+2 71 352
+Map1 2 US2 EU1
+Reducer1 1 US6
+1
+Map1 Reducer1 2916
+# JOB-72
+2 72 355
+Map1 1 EU3
+Reducer1 1 US5
+1
+Map1 Reducer1 14
+# JOB-73
+2 73 358
+Map1 2 US6 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 27
+# JOB-74
+2 74 362
+Map1 1 US6
+Reducer1 3 US2 EU4 US5
+1
+Map1 Reducer1 59
+# JOB-75
+2 75 367
+Map1 3 EU2 US3 US6
+Reducer1 7 AS1 US2 US4 US3 EU1 US5 US6
+1
+Map1 Reducer1 36816
+# JOB-76
+2 76 378
+Map1 1 AS1
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-77
+2 77 379
+Map1 1 AS1
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-78
+2 78 382
+Map1 1 US4
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-79
+2 79 383
+Map1 2 AS2 EU1
+Reducer1 1 EU4
+1
+Map1 Reducer1 27
+# JOB-80
+2 80 385
+Map1 2 EU4 US5
+Reducer1 1 US3
+1
+Map1 Reducer1 308
+# JOB-81
+2 81 394
+Map1 5 EU3 EU1 US1 US6 AS2
+Reducer1 2 US2 US4
+1
+Map1 Reducer1 60075
+# JOB-82
+2 82 398
+Map1 2 US4 EU2
+Reducer1 1 AS2
+1
+Map1 Reducer1 27
+# JOB-83
+2 83 399
+Map1 2 EU2 AS2
+Reducer1 1 US4
+1
+Map1 Reducer1 2900
+# JOB-84
+2 84 400
+Map1 1 US4
+Reducer1 1 AS1
+1
+Map1 Reducer1 152
+# JOB-85
+2 85 401
+Map1 1 EU2
+Reducer1 1 EU4
+1
+Map1 Reducer1 12
+# JOB-86
+2 86 401
+Map1 2 US1 AS1
+Reducer1 1 US2
+1
+Map1 Reducer1 23
+# JOB-87
+2 87 401
+Map1 1 US2
+Reducer1 1 EU3
+1
+Map1 Reducer1 14
+# JOB-88
+2 88 403
+Map1 7 AS2 US6 AS1 EU1 EU2 US1 EU3
+Reducer1 1 US6
+1
+Map1 Reducer1 2058
+# JOB-89
+2 89 404
+Map1 2 US6 EU1
+Reducer1 1 US4
+1
+Map1 Reducer1 435
+# JOB-90
+2 90 409
+Map1 1 AS1
+Reducer1 1 EU4
+1
+Map1 Reducer1 13
+# JOB-91
+2 91 409
+Map1 2 US3 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 3132
+# JOB-92
+2 92 414
+Map1 2 EU1 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 28
+# JOB-93
+2 93 416
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 5
+# JOB-94
+2 94 436
+Map1 1 AS2
+Reducer1 1 US3
+1
+Map1 Reducer1 42
+# JOB-95
+2 95 446
+Map1 1 EU2
+Reducer1 1 EU2
+1
+Map1 Reducer1 7
+# JOB-96
+2 96 463
+Map1 1 US4
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-97
+2 97 465
+Map1 1 US2
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-98
+2 98 466
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-99
+2 99 468
+Map1 1 US1
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-100
+2 100 470
+Map1 1 US4
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-101
+2 101 478
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-102
+2 102 493
+Map1 1 US6
+Reducer1 3 EU4 EU2 US2
+1
+Map1 Reducer1 195
+# JOB-103
+2 103 504
+Map1 1 US1
+Reducer1 1 EU2
+1
+Map1 Reducer1 13
+# JOB-104
+2 104 505
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-105
+2 105 506
+Map1 1 EU3
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-106
+2 106 514
+Map1 1 US3
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-107
+2 107 517
+Map1 1 US1
+Reducer1 1 EU1
+1
+Map1 Reducer1 423
+# JOB-108
+2 108 519
+Map1 1 EU3
+Reducer1 1 EU3
+1
+Map1 Reducer1 136
+# JOB-109
+2 109 524
+Map1 1 AS1
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-110
+2 110 532
+Map1 1 EU3
+Reducer1 1 AS1
+1
+Map1 Reducer1 4
+# JOB-111
+2 111 540
+Map1 1 US5
+Reducer1 1 EU2
+1
+Map1 Reducer1 180
+# JOB-112
+2 112 557
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 583
+# JOB-113
+2 113 571
+Map1 1 US1
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-114
+2 114 620
+Map1 1 US4
+Reducer1 1 US6
+1
+Map1 Reducer1 2000
+# JOB-115
+2 115 623
+Map1 1 US1
+Reducer1 1 EU4
+1
+Map1 Reducer1 10
+# JOB-116
+2 116 623
+Map1 2 EU2 AS2
+Reducer1 1 US6
+1
+Map1 Reducer1 27
+# JOB-117
+2 117 624
+Map1 1 US6
+Reducer1 1 AS1
+1
+Map1 Reducer1 13
+# JOB-118
+2 118 624
+Map1 2 US3 EU4
+Reducer1 1 EU1
+1
+Map1 Reducer1 29
+# JOB-119
+2 119 624
+Map1 1 US1
+Reducer1 1 AS1
+1
+Map1 Reducer1 13
+# JOB-120
+2 120 625
+Map1 2 US5 EU2
+Reducer1 1 AS1
+1
+Map1 Reducer1 28
+# JOB-121
+2 121 625
+Map1 2 US4 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 26
+# JOB-122
+2 122 626
+Map1 1 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 13
+# JOB-123
+2 123 633
+Map1 7 US3 AS1 EU1 EU2 EU3 US2 US6
+Reducer1 4 US1 AS1 US5 EU3
+1
+Map1 Reducer1 13110
+# JOB-124
+2 124 644
+Map1 1 AS2
+Reducer1 1 US2
+1
+Map1 Reducer1 6
+# JOB-125
+2 125 644
+Map1 1 EU1
+Reducer1 1 US6
+1
+Map1 Reducer1 6
+# JOB-126
+2 126 644
+Map1 1 EU4
+Reducer1 1 US4
+1
+Map1 Reducer1 3
+# JOB-127
+2 127 644
+Map1 1 AS2
+Reducer1 1 US4
+1
+Map1 Reducer1 6
+# JOB-128
+2 128 644
+Map1 1 US4
+Reducer1 1 US6
+1
+Map1 Reducer1 3
+# JOB-129
+2 129 645
+Map1 1 US5
+Reducer1 1 US2
+1
+Map1 Reducer1 6
+# JOB-130
+2 130 646
+Map1 1 US5
+Reducer1 1 US1
+1
+Map1 Reducer1 3
+# JOB-131
+2 131 647
+Map1 1 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 6
+# JOB-132
+2 132 647
+Map1 1 AS1
+Reducer1 1 EU1
+1
+Map1 Reducer1 6
+# JOB-133
+2 133 650
+Map1 1 AS1
+Reducer1 1 US2
+1
+Map1 Reducer1 3
+# JOB-134
+2 134 652
+Map1 1 EU4
+Reducer1 1 US2
+1
+Map1 Reducer1 638
+# JOB-135
+2 135 653
+Map1 1 US5
+Reducer1 3 AS1 US1 EU2
+1
+Map1 Reducer1 62
+# JOB-136
+2 136 654
+Map1 1 AS2
+Reducer1 3 US2 AS1 EU4
+1
+Map1 Reducer1 73
+# JOB-137
+2 137 663
+Map1 1 EU2
+Reducer1 1 US6
+1
+Map1 Reducer1 42
+# JOB-138
+2 138 664
+Map1 2 US1 US3
+Reducer1 1 AS2
+1
+Map1 Reducer1 2912
+# JOB-139
+2 139 666
+Map1 2 EU1 EU3
+Reducer1 1 AS1
+1
+Map1 Reducer1 30
+# JOB-140
+2 140 668
+Map1 1 EU1
+Reducer1 6 AS1 AS2 US1 US4 EU4 US3
+1
+Map1 Reducer1 84032
+# JOB-141
+2 141 672
+Map1 5 US5 AS2 US6 US2 US4
+Reducer1 3 US2 US4 AS2
+1
+Map1 Reducer1 4356
+# JOB-142
+2 142 672
+Map1 1 US3
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-143
+2 143 673
+Map1 1 US2
+Reducer1 1 US6
+1
+Map1 Reducer1 13
+# JOB-144
+2 144 678
+Map1 1 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 6
+# JOB-145
+2 145 678
+Map1 1 EU2
+Reducer1 3 US2 US3 US1
+1
+Map1 Reducer1 69
+# JOB-146
+2 146 686
+Map1 1 AS2
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-147
+2 147 688
+Map1 1 EU2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-148
+2 148 688
+Map1 1 US5
+Reducer1 3 US4 US2 EU2
+1
+Map1 Reducer1 290
+# JOB-149
+2 149 689
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-150
+2 150 690
+Map1 1 EU2
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-151
+2 151 692
+Map1 2 EU4 US5
+Reducer1 1 EU3
+1
+Map1 Reducer1 27
+# JOB-152
+2 152 694
+Map1 1 US1
+Reducer1 1 US5
+1
+Map1 Reducer1 13
+# JOB-153
+2 153 696
+Map1 4 US2 EU4 US6 US3
+Reducer1 4 US4 US6 AS1 EU1
+1
+Map1 Reducer1 4420
+# JOB-154
+2 154 696
+Map1 3 US6 US4 EU1
+Reducer1 3 AS1 US6 US2
+1
+Map1 Reducer1 3968
+# JOB-155
+2 155 699
+Map1 3 US6 EU1 AS2
+Reducer1 3 EU3 US6 AS2
+1
+Map1 Reducer1 3900
+# JOB-156
+2 156 699
+Map1 3 AS2 EU2 US2
+Reducer1 3 EU4 US1 EU2
+1
+Map1 Reducer1 3304
+# JOB-157
+2 157 700
+Map1 3 EU4 US3 EU3
+Reducer1 4 US2 EU2 US6 AS2
+1
+Map1 Reducer1 3724
+# JOB-158
+2 158 700
+Map1 4 US3 EU2 US1 AS1
+Reducer1 3 EU1 EU2 US2
+1
+Map1 Reducer1 4095
+# JOB-159
+2 159 700
+Map1 3 AS2 EU2 US5
+Reducer1 4 EU4 US3 EU3 EU1
+1
+Map1 Reducer1 3478
+# JOB-160
+2 160 703
+Map1 2 EU4 AS2
+Reducer1 3 EU3 US6 US4
+1
+Map1 Reducer1 1196
+# JOB-161
+2 161 708
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 104
+# JOB-162
+2 162 709
+Map1 2 US4 US5
+Reducer1 1 US1
+1
+Map1 Reducer1 27
+# JOB-163
+2 163 713
+Map1 7 US6 US2 EU3 EU4 US5 AS1 EU2
+Reducer1 6 US3 EU3 US1 AS2 EU4 US2
+1
+Map1 Reducer1 4999600
+# JOB-164
+2 164 715
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 14
+# JOB-165
+2 165 715
+Map1 2 US1 AS2
+Reducer1 1 US1
+1
+Map1 Reducer1 29
+# JOB-166
+2 166 725
+Map1 1 EU2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-167
+2 167 727
+Map1 2 US1 US3
+Reducer1 1 EU4
+1
+Map1 Reducer1 9889
+# JOB-168
+2 168 729
+Map1 1 AS2
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-169
+2 169 729
+Map1 1 US6
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-170
+2 170 738
+Map1 1 EU1
+Reducer1 1 US3
+1
+Map1 Reducer1 7
+# JOB-171
+2 171 738
+Map1 1 EU4
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-172
+2 172 738
+Map1 1 AS1
+Reducer1 1 EU1
+1
+Map1 Reducer1 14
+# JOB-173
+2 173 739
+Map1 1 US6
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-174
+2 174 739
+Map1 1 US2
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-175
+2 175 743
+Map1 1 US6
+Reducer1 1 EU2
+1
+Map1 Reducer1 5
+# JOB-176
+2 176 762
+Map1 1 AS2
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-177
+2 177 763
+Map1 1 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 3
+# JOB-178
+2 178 789
+Map1 1 US5
+Reducer1 1 EU2
+1
+Map1 Reducer1 14
+# JOB-179
+2 179 792
+Map1 1 AS2
+Reducer1 1 US5
+1
+Map1 Reducer1 15
+# JOB-180
+2 180 797
+Map1 1 US2
+Reducer1 6 US4 US5 EU2 EU4 EU1 AS2
+1
+Map1 Reducer1 12635
+# JOB-181
+2 181 805
+Map1 1 US2
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-182
+2 182 828
+Map1 6 EU1 US3 US6 US4 US5 EU2
+Reducer1 3 US5 US2 EU4
+1
+Map1 Reducer1 5687
+# JOB-183
+2 183 832
+Map1 1 US1
+Reducer1 6 US1 EU3 US2 US5 EU2 AS2
+1
+Map1 Reducer1 11268
+# JOB-184
+2 184 835
+Map1 1 EU3
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-185
+2 185 838
+Map1 1 EU1
+Reducer1 1 AS1
+1
+Map1 Reducer1 50
+# JOB-186
+2 186 854
+Map1 1 AS1
+Reducer1 1 AS2
+1
+Map1 Reducer1 2
+# JOB-187
+2 187 859
+Map1 7 AS1 US2 US3 EU3 US1 EU2 US4
+Reducer1 7 EU1 AS2 EU4 EU2 US6 US1 AS1
+1
+Map1 Reducer1 1618764
+# JOB-188
+2 188 865
+Map1 1 EU1
+Reducer1 1 US5
+1
+Map1 Reducer1 7
+# JOB-189
+2 189 871
+Map1 1 AS2
+Reducer1 2 EU3 EU2
+1
+Map1 Reducer1 59
+# JOB-190
+2 190 882
+Map1 1 EU3
+Reducer1 1 US1
+1
+Map1 Reducer1 7
+# JOB-191
+2 191 882
+Map1 1 AS1
+Reducer1 1 EU4
+1
+Map1 Reducer1 7
+# JOB-192
+2 192 883
+Map1 1 US2
+Reducer1 1 US4
+1
+Map1 Reducer1 7
+# JOB-193
+2 193 884
+Map1 1 US3
+Reducer1 1 US4
+1
+Map1 Reducer1 7
+# JOB-194
+2 194 884
+Map1 1 US4
+Reducer1 1 US6
+1
+Map1 Reducer1 7
+# JOB-195
+2 195 885
+Map1 1 US5
+Reducer1 1 EU4
+1
+Map1 Reducer1 7
+# JOB-196
+2 196 886
+Map1 1 US6
+Reducer1 1 AS2
+1
+Map1 Reducer1 7
+# JOB-197
+2 197 908
+Map1 1 EU2
+Reducer1 1 EU4
+1
+Map1 Reducer1 42
+# JOB-198
+2 198 915
+Map1 7 AS1 US3 US2 US5 AS2 EU2 EU3
+Reducer1 7 US5 EU3 US4 EU4 AS2 US6 AS1
+1
+Map1 Reducer1 1676241
+# JOB-199
+2 199 924
+Map1 1 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-200
+2 200 927
+Map1 1 EU4
+Reducer1 1 EU1
+1
+Map1 Reducer1 4
+# JOB-201
+2 201 928
+Map1 2 US4 US2
+Reducer1 1 EU4
+1
+Map1 Reducer1 6270
+# JOB-202
+2 202 930
+Map1 1 EU4
+Reducer1 1 EU4
+1
+Map1 Reducer1 7
+# JOB-203
+2 203 932
+Map1 1 US4
+Reducer1 1 EU2
+1
+Map1 Reducer1 7
+# JOB-204
+2 204 932
+Map1 1 EU1
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-205
+2 205 936
+Map1 1 EU3
+Reducer1 1 EU3
+1
+Map1 Reducer1 7
+# JOB-206
+2 206 939
+Map1 1 EU2
+Reducer1 1 US2
+1
+Map1 Reducer1 7
+# JOB-207
+2 207 942
+Map1 7 US4 US1 US3 AS2 US2 US6 EU1
+Reducer1 7 US3 AS2 AS1 EU3 EU2 US5 US2
+1
+Map1 Reducer1 1452801
+# JOB-208
+2 208 943
+Map1 1 US4
+Reducer1 1 US5
+1
+Map1 Reducer1 13
+# JOB-209
+2 209 949
+Map1 7 US2 EU2 US6 US4 EU3 AS1 US1
+Reducer1 7 US5 EU4 AS1 US2 EU1 US6 US4
+1
+Map1 Reducer1 1530564
+# JOB-210
+2 210 950
+Map1 1 US4
+Reducer1 1 US2
+1
+Map1 Reducer1 7
+# JOB-211
+2 211 961
+Map1 1 US1
+Reducer1 3 US4 US6 EU1
+1
+Map1 Reducer1 59
+# JOB-212
+2 212 974
+Map1 1 EU4
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-213
+2 213 975
+Map1 1 US2
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-214
+2 214 979
+Map1 1 AS1
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-215
+2 215 981
+Map1 7 EU2 EU1 AS2 EU4 US3 AS1 US1
+Reducer1 7 US6 US3 US1 AS2 US4 EU4 EU2
+1
+Map1 Reducer1 2009343
+# JOB-216
+2 216 982
+Map1 1 US2
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-217
+2 217 982
+Map1 1 US2
+Reducer1 1 EU4
+1
+Map1 Reducer1 7
+# JOB-218
+2 218 985
+Map1 1 EU1
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-219
+2 219 991
+Map1 7 US6 EU1 EU4 US5 AS1 US2 US4
+Reducer1 7 US5 AS1 EU2 EU3 EU1 US4 AS2
+1
+Map1 Reducer1 1302567
+# JOB-220
+2 220 994
+Map1 1 US5
+Reducer1 1 AS2
+1
+Map1 Reducer1 7
+# JOB-221
+2 221 998
+Map1 1 AS1
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-222
+2 222 1006
+Map1 1 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 10
+# JOB-223
+2 223 1019
+Map1 1 AS1
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-224
+2 224 1027
+Map1 1 US1
+Reducer1 3 US3 US4 EU1
+1
+Map1 Reducer1 68
+# JOB-225
+2 225 1030
+Map1 7 AS1 US4 EU2 US2 US5 EU3 EU1
+Reducer1 7 AS1 EU2 EU4 EU3 US5 US1 AS2
+1
+Map1 Reducer1 1557820
+# JOB-226
+2 226 1034
+Map1 1 US3
+Reducer1 2 EU4 EU2
+1
+Map1 Reducer1 69
+# JOB-227
+2 227 1047
+Map1 1 EU2
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-228
+2 228 1051
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 780
+# JOB-229
+2 229 1057
+Map1 1 US2
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-230
+2 230 1064
+Map1 1 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 30
+# JOB-231
+2 231 1064
+Map1 1 US1
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-232
+2 232 1065
+Map1 1 AS1
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-233
+2 233 1065
+Map1 1 EU3
+Reducer1 1 US3
+1
+Map1 Reducer1 3
+# JOB-234
+2 234 1075
+Map1 7 US2 EU1 US5 US6 EU3 EU4 US3
+Reducer1 7 US1 AS2 EU4 EU3 US5 US3 US6
+1
+Map1 Reducer1 19551
+# JOB-235
+2 235 1088
+Map1 1 US3
+Reducer1 1 US5
+1
+Map1 Reducer1 8
+# JOB-236
+2 236 1089
+Map1 1 US1
+Reducer1 1 EU2
+1
+Map1 Reducer1 180
+# JOB-237
+2 237 1097
+Map1 3 AS1 US5 EU1
+Reducer1 1 EU1
+1
+Map1 Reducer1 1160
+# JOB-238
+2 238 1104
+Map1 1 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 18
+# JOB-239
+2 239 1104
+Map1 1 EU4
+Reducer1 1 US4
+1
+Map1 Reducer1 12
+# JOB-240
+2 240 1105
+Map1 1 EU2
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-241
+2 241 1105
+Map1 1 AS1
+Reducer1 3 US5 AS1 EU2
+1
+Map1 Reducer1 149
+# JOB-242
+2 242 1110
+Map1 1 US5
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-243
+2 243 1110
+Map1 1 US5
+Reducer1 1 US3
+1
+Map1 Reducer1 110
+# JOB-244
+2 244 1113
+Map1 1 AS2
+Reducer1 3 EU4 AS2 US3
+1
+Map1 Reducer1 65
+# JOB-245
+2 245 1122
+Map1 1 US4
+Reducer1 6 EU4 US5 AS1 US3 US4 EU1
+1
+Map1 Reducer1 14780
+# JOB-246
+2 246 1123
+Map1 1 US4
+Reducer1 1 EU4
+1
+Map1 Reducer1 13
+# JOB-247
+2 247 1141
+Map1 7 US4 AS2 US1 US6 US2 EU4 US5
+Reducer1 6 US6 US3 AS2 US4 EU3 EU1
+1
+Map1 Reducer1 551425
+# JOB-248
+2 248 1146
+Map1 1 EU4
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-249
+2 249 1154
+Map1 1 US1
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-250
+2 250 1156
+Map1 1 AS1
+Reducer1 1 EU2
+1
+Map1 Reducer1 4
+# JOB-251
+2 251 1157
+Map1 1 EU3
+Reducer1 3 EU3 EU1 AS1
+1
+Map1 Reducer1 88
+# JOB-252
+2 252 1180
+Map1 2 US4 AS1
+Reducer1 1 EU1
+1
+Map1 Reducer1 4608
+# JOB-253
+2 253 1191
+Map1 1 US3
+Reducer1 3 US3 US5 EU1
+1
+Map1 Reducer1 77
+# JOB-254
+2 254 1201
+Map1 1 EU2
+Reducer1 1 US4
+1
+Map1 Reducer1 9800
+# JOB-255
+2 255 1250
+Map1 2 EU2 US6
+Reducer1 1 EU1
+1
+Map1 Reducer1 27
+# JOB-256
+2 256 1252
+Map1 2 US4 EU1
+Reducer1 1 US1
+1
+Map1 Reducer1 28
+# JOB-257
+2 257 1252
+Map1 2 US3 EU2
+Reducer1 1 EU3
+1
+Map1 Reducer1 25
+# JOB-258
+2 258 1254
+Map1 1 EU1
+Reducer1 1 US3
+1
+Map1 Reducer1 15
+# JOB-259
+2 259 1254
+Map1 1 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 13
+# JOB-260
+2 260 1257
+Map1 1 EU1
+Reducer1 1 AS1
+1
+Map1 Reducer1 13
+# JOB-261
+2 261 1258
+Map1 2 US5 EU2
+Reducer1 1 EU3
+1
+Map1 Reducer1 28
+# JOB-262
+2 262 1260
+Map1 1 US4
+Reducer1 1 US3
+1
+Map1 Reducer1 15
+# JOB-263
+2 263 1263
+Map1 1 US2
+Reducer1 2 AS1 US2
+1
+Map1 Reducer1 374
+# JOB-264
+2 264 1275
+Map1 1 US6
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-265
+2 265 1287
+Map1 1 AS2
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-266
+2 266 1303
+Map1 1 US2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-267
+2 267 1333
+Map1 1 AS2
+Reducer1 1 US4
+1
+Map1 Reducer1 2
+# JOB-268
+2 268 1333
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-269
+2 269 1335
+Map1 2 US4 US3
+Reducer1 1 AS2
+1
+Map1 Reducer1 27
+# JOB-270
+2 270 1337
+Map1 1 EU4
+Reducer1 1 US4
+1
+Map1 Reducer1 46
+# JOB-271
+2 271 1345
+Map1 1 EU4
+Reducer1 1 EU1
+1
+Map1 Reducer1 14
+# JOB-272
+2 272 1353
+Map1 2 EU2 EU1
+Reducer1 1 US6
+1
+Map1 Reducer1 25
+# JOB-273
+2 273 1355
+Map1 1 EU2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-274
+2 274 1355
+Map1 2 EU4 EU1
+Reducer1 1 US5
+1
+Map1 Reducer1 28
+# JOB-275
+2 275 1368
+Map1 1 EU3
+Reducer1 1 EU3
+1
+Map1 Reducer1 15
+# JOB-276
+2 276 1380
+Map1 1 US2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-277
+2 277 1386
+Map1 1 US3
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-278
+2 278 1389
+Map1 1 EU4
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-279
+2 279 1395
+Map1 1 US6
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-280
+2 280 1416
+Map1 1 US4
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-281
+2 281 1416
+Map1 1 EU2
+Reducer1 1 US4
+1
+Map1 Reducer1 48
+# JOB-282
+2 282 1419
+Map1 2 AS2 US5
+Reducer1 1 US1
+1
+Map1 Reducer1 27
+# JOB-283
+2 283 1420
+Map1 1 AS2
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-284
+2 284 1432
+Map1 1 US2
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-285
+2 285 1447
+Map1 1 EU4
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-286
+2 286 1468
+Map1 1 US5
+Reducer1 1 EU4
+1
+Map1 Reducer1 13
+# JOB-287
+2 287 1474
+Map1 1 US1
+Reducer1 1 EU3
+1
+Map1 Reducer1 812
+# JOB-288
+2 288 1494
+Map1 1 AS1
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-289
+2 289 1501
+Map1 1 US6
+Reducer1 1 EU1
+1
+Map1 Reducer1 648
+# JOB-290
+2 290 1524
+Map1 1 EU2
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-291
+2 291 1528
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-292
+2 292 1534
+Map1 1 AS1
+Reducer1 2 US1 EU4
+1
+Map1 Reducer1 44
+# JOB-293
+2 293 1549
+Map1 1 US6
+Reducer1 1 US4
+1
+Map1 Reducer1 14
+# JOB-294
+2 294 1550
+Map1 1 AS1
+Reducer1 2 US2 EU3
+1
+Map1 Reducer1 170
+# JOB-295
+2 295 1551
+Map1 1 US1
+Reducer1 6 US5 US1 EU1 AS1 US4 EU4
+1
+Map1 Reducer1 14210
+# JOB-296
+2 296 1553
+Map1 1 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 2
+# JOB-297
+2 297 1553
+Map1 1 EU2
+Reducer1 1 US5
+1
+Map1 Reducer1 10
+# JOB-298
+2 298 1555
+Map1 1 EU3
+Reducer1 1 US4
+1
+Map1 Reducer1 6
+# JOB-299
+2 299 1559
+Map1 7 EU4 US4 US6 AS2 EU2 US1 US2
+Reducer1 7 EU2 EU1 EU3 AS2 US6 US3 US4
+1
+Map1 Reducer1 3442680
+# JOB-300
+2 300 1579
+Map1 1 AS2
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-301
+2 301 1580
+Map1 1 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-302
+2 302 1586
+Map1 1 AS2
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-303
+2 303 1605
+Map1 7 US4 US5 EU4 AS2 US6 US1 EU3
+Reducer1 2 EU2 US3
+1
+Map1 Reducer1 79968
+# JOB-304
+2 304 1607
+Map1 1 EU2
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-305
+2 305 1615
+Map1 1 US1
+Reducer1 1 EU4
+1
+Map1 Reducer1 246
+# JOB-306
+2 306 1619
+Map1 1 EU2
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-307
+2 307 1620
+Map1 1 EU2
+Reducer1 6 AS2 EU4 AS1 EU2 EU1 US6
+1
+Map1 Reducer1 28134
+# JOB-308
+2 308 1631
+Map1 1 EU3
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-309
+2 309 1633
+Map1 1 EU3
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-310
+2 310 1676
+Map1 1 US6
+Reducer1 1 US2
+1
+Map1 Reducer1 15
+# JOB-311
+2 311 1677
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 12
+# JOB-312
+2 312 1678
+Map1 2 US3 EU1
+Reducer1 1 EU3
+1
+Map1 Reducer1 30
+# JOB-313
+2 313 1679
+Map1 2 EU4 EU2
+Reducer1 1 US2
+1
+Map1 Reducer1 27
+# JOB-314
+2 314 1680
+Map1 2 US3 US2
+Reducer1 1 EU3
+1
+Map1 Reducer1 28
+# JOB-315
+2 315 1681
+Map1 1 EU2
+Reducer1 1 EU3
+1
+Map1 Reducer1 14
+# JOB-316
+2 316 1683
+Map1 1 US5
+Reducer1 1 US1
+1
+Map1 Reducer1 14
+# JOB-317
+2 317 1687
+Map1 2 EU3 EU2
+Reducer1 1 US3
+1
+Map1 Reducer1 27
+# JOB-318
+2 318 1688
+Map1 1 EU2
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-319
+2 319 1688
+Map1 1 AS2
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-320
+2 320 1688
+Map1 1 US1
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-321
+2 321 1689
+Map1 1 US4
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-322
+2 322 1694
+Map1 1 AS2
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-323
+2 323 1698
+Map1 1 US3
+Reducer1 2 US1 EU3
+1
+Map1 Reducer1 42
+# JOB-324
+2 324 1699
+Map1 1 EU4
+Reducer1 1 EU3
+1
+Map1 Reducer1 180
+# JOB-325
+2 325 1703
+Map1 1 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 44
+# JOB-326
+2 326 1708
+Map1 1 EU2
+Reducer1 2 US6 EU1
+1
+Map1 Reducer1 176
+# JOB-327
+2 327 1726
+Map1 2 AS2 AS1
+Reducer1 1 AS2
+1
+Map1 Reducer1 25
+# JOB-328
+2 328 1728
+Map1 2 EU3 EU1
+Reducer1 1 US1
+1
+Map1 Reducer1 30
+# JOB-329
+2 329 1730
+Map1 1 AS1
+Reducer1 1 US6
+1
+Map1 Reducer1 13
+# JOB-330
+2 330 1731
+Map1 2 EU4 US3
+Reducer1 1 US5
+1
+Map1 Reducer1 27
+# JOB-331
+2 331 1741
+Map1 1 US5
+Reducer1 1 EU1
+1
+Map1 Reducer1 8
+# JOB-332
+2 332 1749
+Map1 1 US6
+Reducer1 1 US3
+1
+Map1 Reducer1 14
+# JOB-333
+2 333 1762
+Map1 1 AS1
+Reducer1 2 US2 AS1
+1
+Map1 Reducer1 141
+# JOB-334
+2 334 1767
+Map1 7 US4 EU4 US6 EU2 EU3 AS2 AS1
+Reducer1 7 AS2 US6 US5 US1 AS1 US3 US2
+1
+Map1 Reducer1 19698
+# JOB-335
+2 335 1781
+Map1 1 EU1
+Reducer1 1 AS1
+1
+Map1 Reducer1 180
+# JOB-336
+2 336 1782
+Map1 1 US5
+Reducer1 1 EU1
+1
+Map1 Reducer1 13
+# JOB-337
+2 337 1783
+Map1 2 AS1 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 28
+# JOB-338
+2 338 1785
+Map1 1 US2
+Reducer1 1 AS1
+1
+Map1 Reducer1 10344
+# JOB-339
+2 339 1786
+Map1 1 EU1
+Reducer1 1 US1
+1
+Map1 Reducer1 7
+# JOB-340
+2 340 1798
+Map1 1 US6
+Reducer1 2 US4 EU3
+1
+Map1 Reducer1 41
+# JOB-341
+2 341 1803
+Map1 1 AS2
+Reducer1 2 US4 US5
+1
+Map1 Reducer1 30
+# JOB-342
+2 342 1809
+Map1 1 US5
+Reducer1 2 US3 AS1
+1
+Map1 Reducer1 38
+# JOB-343
+2 343 1810
+Map1 1 US6
+Reducer1 2 EU1 US2
+1
+Map1 Reducer1 42
+# JOB-344
+2 344 1816
+Map1 1 US2
+Reducer1 6 US6 US3 US5 EU1 EU4 EU3
+1
+Map1 Reducer1 11895
+# JOB-345
+2 345 1826
+Map1 1 US6
+Reducer1 1 AS2
+1
+Map1 Reducer1 1
+# JOB-346
+2 346 1832
+Map1 1 EU2
+Reducer1 1 US6
+1
+Map1 Reducer1 95
+# JOB-347
+2 347 1833
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 13
+# JOB-348
+2 348 1835
+Map1 1 EU1
+Reducer1 1 AS2
+1
+Map1 Reducer1 44
+# JOB-349
+2 349 1840
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 192
+# JOB-350
+2 350 1879
+Map1 1 US6
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-351
+2 351 1881
+Map1 1 US6
+Reducer1 6 AS2 US2 US6 US4 US3 EU2
+1
+Map1 Reducer1 6348
+# JOB-352
+2 352 1883
+Map1 3 US6 AS1 EU1
+Reducer1 1 US2
+1
+Map1 Reducer1 832
+# JOB-353
+2 353 1884
+Map1 1 AS1
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-354
+2 354 1885
+Map1 1 US1
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-355
+2 355 1904
+Map1 1 US3
+Reducer1 1 AS1
+1
+Map1 Reducer1 14
+# JOB-356
+2 356 1911
+Map1 1 US2
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-357
+2 357 1912
+Map1 1 AS2
+Reducer1 2 AS2 US5
+1
+Map1 Reducer1 208
+# JOB-358
+2 358 1925
+Map1 6 US2 EU3 EU4 EU2 US6 US1
+Reducer1 1 US3
+1
+Map1 Reducer1 110
+# JOB-359
+2 359 1929
+Map1 1 US6
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-360
+2 360 1939
+Map1 1 US4
+Reducer1 2 US5 EU3
+1
+Map1 Reducer1 2251
+# JOB-361
+2 361 1942
+Map1 7 AS2 US3 EU1 EU3 US4 US5 US6
+Reducer1 5 EU3 EU1 US6 US3 US2
+1
+Map1 Reducer1 19176
+# JOB-362
+2 362 1952
+Map1 1 EU3
+Reducer1 1 AS1
+1
+Map1 Reducer1 10
+# JOB-363
+2 363 1972
+Map1 1 AS1
+Reducer1 1 EU1
+1
+Map1 Reducer1 4
+# JOB-364
+2 364 1981
+Map1 1 US5
+Reducer1 1 EU3
+1
+Map1 Reducer1 44
+# JOB-365
+2 365 2013
+Map1 1 US3
+Reducer1 2 US2 EU4
+1
+Map1 Reducer1 33
+# JOB-366
+2 366 2020
+Map1 1 EU1
+Reducer1 1 EU3
+1
+Map1 Reducer1 2
+# JOB-367
+2 367 2028
+Map1 1 US3
+Reducer1 2 AS1 US2
+1
+Map1 Reducer1 47
+# JOB-368
+2 368 2029
+Map1 1 US4
+Reducer1 2 EU2 US5
+1
+Map1 Reducer1 51
+# JOB-369
+2 369 2041
+Map1 1 EU3
+Reducer1 3 US5 EU3 EU4
+1
+Map1 Reducer1 72
+# JOB-370
+2 370 2042
+Map1 1 US2
+Reducer1 2 US6 US2
+1
+Map1 Reducer1 41
+# JOB-371
+2 371 2047
+Map1 1 EU4
+Reducer1 1 US1
+1
+Map1 Reducer1 102
+# JOB-372
+2 372 2063
+Map1 1 EU4
+Reducer1 1 US5
+1
+Map1 Reducer1 4
+# JOB-373
+2 373 2065
+Map1 1 AS2
+Reducer1 2 US5 US3
+1
+Map1 Reducer1 52
+# JOB-374
+2 374 2065
+Map1 4 US2 EU1 US5 AS1
+Reducer1 2 EU2 US6
+1
+Map1 Reducer1 52668
+# JOB-375
+2 375 2088
+Map1 1 EU4
+Reducer1 1 EU4
+1
+Map1 Reducer1 1
+# JOB-376
+2 376 2096
+Map1 6 EU1 EU2 US1 US3 US2 US4
+Reducer1 4 EU4 EU1 US3 US4
+1
+Map1 Reducer1 8540
+# JOB-377
+2 377 2117
+Map1 1 US4
+Reducer1 1 EU1
+1
+Map1 Reducer1 1
+# JOB-378
+2 378 2150
+Map1 3 US2 EU4 US6
+Reducer1 6 US2 US6 EU2 US3 AS1 AS2
+1
+Map1 Reducer1 254474
+# JOB-379
+2 379 2152
+Map1 7 EU1 US4 AS1 US2 US5 EU3 US6
+Reducer1 7 US3 EU3 AS1 AS2 US4 US1 EU4
+1
+Map1 Reducer1 19992
+# JOB-380
+2 380 2154
+Map1 1 US3
+Reducer1 2 US5 EU1
+1
+Map1 Reducer1 61
+# JOB-381
+2 381 2157
+Map1 6 US5 US1 US2 US3 EU3 AS1
+Reducer1 3 AS1 US2 US6
+1
+Map1 Reducer1 5106
+# JOB-382
+2 382 2172
+Map1 1 US3
+Reducer1 1 EU4
+1
+Map1 Reducer1 160
+# JOB-383
+2 383 2176
+Map1 2 US1 US4
+Reducer1 1 US2
+1
+Map1 Reducer1 13473
+# JOB-384
+2 384 2177
+Map1 1 EU2
+Reducer1 2 EU2 US5
+1
+Map1 Reducer1 39
+# JOB-385
+2 385 2179
+Map1 1 US2
+Reducer1 1 US1
+1
+Map1 Reducer1 15
+# JOB-386
+2 386 2184
+Map1 1 US6
+Reducer1 1 AS1
+1
+Map1 Reducer1 38
+# JOB-387
+2 387 2215
+Map1 1 US5
+Reducer1 2 US6 US1
+1
+Map1 Reducer1 674
+# JOB-388
+2 388 2216
+Map1 6 EU4 AS2 EU2 AS1 EU3 US2
+Reducer1 6 US4 EU1 EU3 US1 US6 US3
+1
+Map1 Reducer1 764829
+# JOB-389
+2 389 2218
+Map1 1 EU3
+Reducer1 1 US2
+1
+Map1 Reducer1 20
+# JOB-390
+2 390 2221
+Map1 1 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 10
+# JOB-391
+2 391 2223
+Map1 1 US1
+Reducer1 1 EU3
+1
+Map1 Reducer1 48
+# JOB-392
+2 392 2224
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 44
+# JOB-393
+2 393 2226
+Map1 1 EU1
+Reducer1 2 AS1 EU1
+1
+Map1 Reducer1 44
+# JOB-394
+2 394 2230
+Map1 1 EU1
+Reducer1 2 EU3 EU1
+1
+Map1 Reducer1 43
+# JOB-395
+2 395 2244
+Map1 1 EU3
+Reducer1 1 US4
+1
+Map1 Reducer1 1
+# JOB-396
+2 396 2256
+Map1 1 US5
+Reducer1 6 US3 US6 US4 EU3 US5 AS1
+1
+Map1 Reducer1 5193
+# JOB-397
+2 397 2257
+Map1 1 US6
+Reducer1 1 EU2
+1
+Map1 Reducer1 1
+# JOB-398
+2 398 2263
+Map1 1 US1
+Reducer1 1 EU1
+1
+Map1 Reducer1 79
+# JOB-399
+2 399 2285
+Map1 1 US1
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-400
+2 400 2292
+Map1 7 US1 EU1 AS1 US4 US3 EU3 US5
+Reducer1 5 AS2 US5 EU1 US1 US4
+1
+Map1 Reducer1 23010
+# JOB-401
+2 401 2298
+Map1 1 US1
+Reducer1 3 AS2 EU2 US6
+1
+Map1 Reducer1 1189
+# JOB-402
+2 402 2314
+Map1 2 EU4 US5
+Reducer1 6 AS1 US3 US6 EU2 US2 US1
+1
+Map1 Reducer1 193792
+# JOB-403
+2 403 2315
+Map1 7 EU3 US2 US6 EU2 US5 AS1 US1
+Reducer1 4 EU1 US4 US6 EU4
+1
+Map1 Reducer1 23975
+# JOB-404
+2 404 2327
+Map1 1 EU2
+Reducer1 1 US1
+1
+Map1 Reducer1 29
+# JOB-405
+2 405 2345
+Map1 7 US4 US3 AS2 EU3 EU2 EU4 EU1
+Reducer1 6 AS2 US3 US4 EU2 EU4 EU3
+1
+Map1 Reducer1 1218870
+# JOB-406
+2 406 2355
+Map1 7 US3 EU2 EU1 AS2 AS1 US4 US2
+Reducer1 6 US5 EU4 US6 US4 US1 EU2
+1
+Map1 Reducer1 8501205
+# JOB-407
+2 407 2355
+Map1 1 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 189
+# JOB-408
+2 408 2359
+Map1 2 AS2 US3
+Reducer1 1 EU2
+1
+Map1 Reducer1 448
+# JOB-409
+2 409 2364
+Map1 3 US3 EU4 EU1
+Reducer1 3 EU3 EU1 US5
+1
+Map1 Reducer1 2816
+# JOB-410
+2 410 2371
+Map1 1 EU2
+Reducer1 1 US4
+1
+Map1 Reducer1 11
+# JOB-411
+2 411 2373
+Map1 1 AS1
+Reducer1 3 EU2 US6 US5
+1
+Map1 Reducer1 204
+# JOB-412
+2 412 2377
+Map1 7 AS2 EU4 US6 US3 EU2 AS1 US2
+Reducer1 4 AS2 US5 US4 US2
+1
+Map1 Reducer1 182208
+# JOB-413
+2 413 2387
+Map1 1 US3
+Reducer1 1 EU3
+1
+Map1 Reducer1 24
+# JOB-414
+2 414 2423
+Map1 1 US3
+Reducer1 6 US4 EU1 US1 EU4 US3 EU2
+1
+Map1 Reducer1 7172
+# JOB-415
+2 415 2431
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 6
+# JOB-416
+2 416 2433
+Map1 1 US1
+Reducer1 6 AS2 AS1 US4 EU2 US6 EU1
+1
+Map1 Reducer1 12716
+# JOB-417
+2 417 2435
+Map1 1 AS2
+Reducer1 1 AS1
+1
+Map1 Reducer1 15
+# JOB-418
+2 418 2458
+Map1 7 US6 US1 AS1 EU2 US2 EU3 US4
+Reducer1 3 US6 AS1 EU3
+1
+Map1 Reducer1 23738
+# JOB-419
+2 419 2458
+Map1 1 AS2
+Reducer1 1 EU4
+1
+Map1 Reducer1 94
+# JOB-420
+2 420 2459
+Map1 3 AS1 EU1 US4
+Reducer1 6 EU1 EU2 EU4 EU3 AS1 US5
+1
+Map1 Reducer1 360085
+# JOB-421
+2 421 2460
+Map1 1 US1
+Reducer1 2 US2 US6
+1
+Map1 Reducer1 294
+# JOB-422
+2 422 2463
+Map1 1 AS1
+Reducer1 1 AS1
+1
+Map1 Reducer1 10
+# JOB-423
+2 423 2489
+Map1 1 EU1
+Reducer1 1 AS2
+1
+Map1 Reducer1 294
+# JOB-424
+2 424 2501
+Map1 1 EU4
+Reducer1 1 US3
+1
+Map1 Reducer1 5805
+# JOB-425
+2 425 2502
+Map1 1 EU3
+Reducer1 1 AS1
+1
+Map1 Reducer1 40
+# JOB-426
+2 426 2510
+Map1 1 AS1
+Reducer1 1 US4
+1
+Map1 Reducer1 1935
+# JOB-427
+2 427 2516
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-428
+2 428 2520
+Map1 1 US4
+Reducer1 1 US4
+1
+Map1 Reducer1 4212
+# JOB-429
+2 429 2522
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-430
+2 430 2525
+Map1 1 US2
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-431
+2 431 2539
+Map1 7 EU1 AS2 US2 EU3 EU2 EU4 US1
+Reducer1 4 EU2 US5 EU1 EU4
+1
+Map1 Reducer1 11316
+# JOB-432
+2 432 2548
+Map1 1 AS2
+Reducer1 1 EU3
+1
+Map1 Reducer1 1
+# JOB-433
+2 433 2557
+Map1 1 EU2
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-434
+2 434 2562
+Map1 1 US5
+Reducer1 1 AS1
+1
+Map1 Reducer1 1
+# JOB-435
+2 435 2575
+Map1 1 EU1
+Reducer1 1 AS2
+1
+Map1 Reducer1 50
+# JOB-436
+2 436 2621
+Map1 1 US6
+Reducer1 6 US4 EU4 US1 US6 US2 EU2
+1
+Map1 Reducer1 3316
+# JOB-437
+2 437 2641
+Map1 1 EU2
+Reducer1 6 EU1 EU3 US3 US5 US2 US4
+1
+Map1 Reducer1 26172
+# JOB-438
+2 438 2672
+Map1 1 EU4
+Reducer1 2 US3 AS1
+1
+Map1 Reducer1 40
+# JOB-439
+2 439 2680
+Map1 6 EU3 EU4 US6 AS1 US5 EU2
+Reducer1 6 AS1 US6 EU2 US4 EU1 US1
+1
+Map1 Reducer1 416768
+# JOB-440
+2 440 2693
+Map1 1 US5
+Reducer1 1 AS2
+1
+Map1 Reducer1 28
+# JOB-441
+2 441 2698
+Map1 3 US3 EU4 EU3
+Reducer1 3 AS2 EU4 US5
+1
+Map1 Reducer1 3024
+# JOB-442
+2 442 2701
+Map1 3 AS2 US1 AS1
+Reducer1 4 AS1 US6 US1 EU2
+1
+Map1 Reducer1 3053
+# JOB-443
+2 443 2702
+Map1 3 US3 EU2 AS2
+Reducer1 4 EU2 US5 EU3 AS1
+1
+Map1 Reducer1 4224
+# JOB-444
+2 444 2704
+Map1 1 AS1
+Reducer1 1 US4
+1
+Map1 Reducer1 2
+# JOB-445
+2 445 2707
+Map1 3 US3 AS1 EU2
+Reducer1 4 EU3 US5 EU1 US4
+1
+Map1 Reducer1 4275
+# JOB-446
+2 446 2708
+Map1 3 US1 EU4 US4
+Reducer1 4 EU3 EU4 US1 AS1
+1
+Map1 Reducer1 4284
+# JOB-447
+2 447 2709
+Map1 4 US6 US5 US2 US3
+Reducer1 4 EU2 US4 AS2 US3
+1
+Map1 Reducer1 5396
+# JOB-448
+2 448 2710
+Map1 1 US5
+Reducer1 2 AS1 EU3
+1
+Map1 Reducer1 200
+# JOB-449
+2 449 2711
+Map1 3 AS2 US4 US2
+Reducer1 4 EU3 US1 AS1 US4
+1
+Map1 Reducer1 3478
+# JOB-450
+2 450 2717
+Map1 1 EU1
+Reducer1 1 US4
+1
+Map1 Reducer1 12
+# JOB-451
+2 451 2717
+Map1 1 US3
+Reducer1 3 AS1 US5 EU2
+1
+Map1 Reducer1 110
+# JOB-452
+2 452 2746
+Map1 1 EU3
+Reducer1 1 US5
+1
+Map1 Reducer1 3
+# JOB-453
+2 453 2749
+Map1 1 US5
+Reducer1 1 US6
+1
+Map1 Reducer1 50
+# JOB-454
+2 454 2772
+Map1 1 EU3
+Reducer1 1 US2
+1
+Map1 Reducer1 2
+# JOB-455
+2 455 2772
+Map1 1 EU3
+Reducer1 1 US6
+1
+Map1 Reducer1 3
+# JOB-456
+2 456 2772
+Map1 1 US2
+Reducer1 1 US6
+1
+Map1 Reducer1 2
+# JOB-457
+2 457 2774
+Map1 6 US6 AS1 EU2 US2 US4 EU4
+Reducer1 7 US6 US2 AS2 EU2 US1 AS1 EU4
+1
+Map1 Reducer1 35868
+# JOB-458
+2 458 2783
+Map1 6 US2 US6 EU1 EU2 AS1 US5
+Reducer1 3 US2 AS2 EU4
+1
+Map1 Reducer1 5544
+# JOB-459
+2 459 2786
+Map1 1 AS2
+Reducer1 1 EU2
+1
+Map1 Reducer1 2
+# JOB-460
+2 460 2789
+Map1 1 US6
+Reducer1 1 EU2
+1
+Map1 Reducer1 10
+# JOB-461
+2 461 2790
+Map1 1 AS2
+Reducer1 1 US5
+1
+Map1 Reducer1 180
+# JOB-462
+2 462 2790
+Map1 6 EU2 AS2 US1 US2 US6 US4
+Reducer1 4 EU4 US6 EU3 AS2
+1
+Map1 Reducer1 313632
+# JOB-463
+2 463 2820
+Map1 7 AS1 US4 US2 US6 EU3 EU1 EU4
+Reducer1 2 US2 EU4
+1
+Map1 Reducer1 3350
+# JOB-464
+2 464 2838
+Map1 1 US1
+Reducer1 1 EU2
+1
+Map1 Reducer1 222
+# JOB-465
+2 465 2920
+Map1 2 US5 US2
+Reducer1 1 EU4
+1
+Map1 Reducer1 24679
+# JOB-466
+2 466 2940
+Map1 1 EU2
+Reducer1 1 AS1
+1
+Map1 Reducer1 50
+# JOB-467
+2 467 2947
+Map1 1 US6
+Reducer1 1 EU4
+1
+Map1 Reducer1 42
+# JOB-468
+2 468 2953
+Map1 1 AS2
+Reducer1 1 EU4
+1
+Map1 Reducer1 4
+# JOB-469
+2 469 2953
+Map1 1 US2
+Reducer1 1 US6
+1
+Map1 Reducer1 2
+# JOB-470
+2 470 2963
+Map1 1 EU2
+Reducer1 1 US5
+1
+Map1 Reducer1 1
+# JOB-471
+2 471 3026
+Map1 1 EU2
+Reducer1 1 US2
+1
+Map1 Reducer1 10
+# JOB-472
+2 472 3028
+Map1 1 EU4
+Reducer1 1 AS1
+1
+Map1 Reducer1 10
+# JOB-473
+2 473 3045
+Map1 1 US3
+Reducer1 1 EU1
+1
+Map1 Reducer1 59
+# JOB-474
+2 474 3045
+Map1 1 EU1
+Reducer1 1 EU2
+1
+Map1 Reducer1 276
+# JOB-475
+2 475 3046
+Map1 1 EU1
+Reducer1 1 EU2
+1
+Map1 Reducer1 837
+# JOB-476
+2 476 3046
+Map1 1 EU1
+Reducer1 1 AS2
+1
+Map1 Reducer1 90
+# JOB-477
+2 477 3048
+Map1 1 AS2
+Reducer1 1 US2
+1
+Map1 Reducer1 2
+# JOB-478
+2 478 3048
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 2
+# JOB-479
+2 479 3048
+Map1 1 US5
+Reducer1 1 EU2
+1
+Map1 Reducer1 165
+# JOB-480
+2 480 3048
+Map1 1 US1
+Reducer1 1 US1
+1
+Map1 Reducer1 1180
+# JOB-481
+2 481 3049
+Map1 1 AS1
+Reducer1 1 US5
+1
+Map1 Reducer1 236
+# JOB-482
+2 482 3049
+Map1 1 US6
+Reducer1 1 US2
+1
+Map1 Reducer1 470
+# JOB-483
+2 483 3075
+Map1 7 US3 EU2 EU1 EU3 AS1 US1 US4
+Reducer1 7 EU1 EU3 US5 US4 AS1 EU4 US2
+1
+Map1 Reducer1 19710
+# JOB-484
+2 484 3086
+Map1 7 US6 US1 AS2 US5 EU3 EU1 US3
+Reducer1 7 US1 EU4 EU2 US4 US2 AS1 EU3
+1
+Map1 Reducer1 19272
+# JOB-485
+2 485 3092
+Map1 1 US5
+Reducer1 2 EU2 US1
+1
+Map1 Reducer1 116
+# JOB-486
+2 486 3093
+Map1 1 US1
+Reducer1 1 US2
+1
+Map1 Reducer1 4
+# JOB-487
+2 487 3108
+Map1 7 US1 AS1 US3 AS2 EU3 EU1 US5
+Reducer1 7 AS2 US2 EU2 US5 EU1 EU3 US4
+1
+Map1 Reducer1 955424
+# JOB-488
+2 488 3118
+Map1 1 US3
+Reducer1 1 US5
+1
+Map1 Reducer1 2
+# JOB-489
+2 489 3121
+Map1 3 EU4 US2 AS1
+Reducer1 2 AS1 US2
+1
+Map1 Reducer1 22236
+# JOB-490
+2 490 3141
+Map1 1 US5
+Reducer1 1 EU2
+1
+Map1 Reducer1 7
+# JOB-491
+2 491 3173
+Map1 1 EU2
+Reducer1 1 US1
+1
+Map1 Reducer1 88
+# JOB-492
+2 492 3181
+Map1 1 US1
+Reducer1 1 US5
+1
+Map1 Reducer1 2
+# JOB-493
+2 493 3192
+Map1 1 US3
+Reducer1 1 US2
+1
+Map1 Reducer1 189
+# JOB-494
+2 494 3211
+Map1 7 US5 EU3 US2 EU4 AS2 AS1 EU1
+Reducer1 4 US4 EU2 US6 AS2
+1
+Map1 Reducer1 68474
+# JOB-495
+2 495 3222
+Map1 1 EU3
+Reducer1 1 EU3
+1
+Map1 Reducer1 3
+# JOB-496
+2 496 3230
+Map1 1 US5
+Reducer1 2 US1 EU4
+1
+Map1 Reducer1 832
+# JOB-497
+2 497 3237
+Map1 1 US4
+Reducer1 1 EU4
+1
+Map1 Reducer1 12
+# JOB-498
+2 498 3251
+Map1 1 US4
+Reducer1 7 US2 US5 EU2 US6 EU4 AS1 EU3
+1
+Map1 Reducer1 7540
+# JOB-499
+2 499 3258
+Map1 1 AS1
+Reducer1 1 EU2
+1
+Map1 Reducer1 82
+# JOB-500
+2 500 3267
+Map1 1 US5
+Reducer1 1 US5
+1
+Map1 Reducer1 48
+# JOB-501
+2 501 3292
+Map1 1 EU3
+Reducer1 1 US3
+1
+Map1 Reducer1 10
+# JOB-502
+2 502 3305
+Map1 1 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 1
+# JOB-503
+2 503 3363
+Map1 2 US2 EU2
+Reducer1 1 EU1
+1
+Map1 Reducer1 13320
+# JOB-504
+2 504 3363
+Map1 1 US4
+Reducer1 1 US1
+1
+Map1 Reducer1 2
+# JOB-505
+2 505 3369
+Map1 1 US2
+Reducer1 1 US6
+1
+Map1 Reducer1 2
+# JOB-506
+2 506 3380
+Map1 1 US2
+Reducer1 1 AS2
+1
+Map1 Reducer1 2
+# JOB-507
+2 507 3381
+Map1 1 AS1
+Reducer1 1 US6
+1
+Map1 Reducer1 27
+# JOB-508
+2 508 3383
+Map1 1 US1
+Reducer1 1 EU2
+1
+Map1 Reducer1 30
+# JOB-509
+2 509 3385
+Map1 1 US4
+Reducer1 1 US3
+1
+Map1 Reducer1 11
+# JOB-510
+2 510 3386
+Map1 7 EU3 EU4 EU2 US4 US6 US3 US2
+Reducer1 5 EU3 US1 US5 US3 EU4
+1
+Map1 Reducer1 30956
+# JOB-511
+2 511 3409
+Map1 6 US5 US6 AS1 EU1 EU4 EU2
+Reducer1 2 EU2 EU4
+1
+Map1 Reducer1 3051
+# JOB-512
+2 512 3462
+Map1 1 EU4
+Reducer1 1 US2
+1
+Map1 Reducer1 1
+# JOB-513
+2 513 3486
+Map1 1 AS2
+Reducer1 1 US6
+1
+Map1 Reducer1 5
+# JOB-514
+2 514 3487
+Map1 3 US5 US6 EU1
+Reducer1 1 US5
+1
+Map1 Reducer1 1220
+# JOB-515
+2 515 3488
+Map1 1 AS2
+Reducer1 1 US2
+1
+Map1 Reducer1 128
+# JOB-516
+2 516 3489
+Map1 1 EU4
+Reducer1 1 US5
+1
+Map1 Reducer1 5
+# JOB-517
+2 517 3491
+Map1 1 US3
+Reducer1 1 US6
+1
+Map1 Reducer1 1
+# JOB-518
+2 518 3532
+Map1 1 US3
+Reducer1 1 US1
+1
+Map1 Reducer1 38
+# JOB-519
+2 519 3533
+Map1 3 AS1 US3 AS2
+Reducer1 1 US6
+1
+Map1 Reducer1 2457
+# JOB-520
+2 520 3533
+Map1 1 EU2
+Reducer1 1 EU4
+1
+Map1 Reducer1 5
+# JOB-521
+2 521 3559
+Map1 1 US4
+Reducer1 1 AS2
+1
+Map1 Reducer1 10
+# JOB-522
+2 522 3573
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 159
+# JOB-523
+2 523 3593
+Map1 1 US3
+Reducer1 1 US3
+1
+Map1 Reducer1 1
+# JOB-524
+2 524 3610
+Map1 1 EU4
+Reducer1 1 AS2
+1
+Map1 Reducer1 3
+# JOB-525
+2 525 3627
+Map1 1 US2
+Reducer1 1 EU3
+1
+Map1 Reducer1 32
+# JOB-526
+2 526 3629
+Map1 1 US6
+Reducer1 1 US5
+1
+Map1 Reducer1 10

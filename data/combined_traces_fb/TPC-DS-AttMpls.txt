@@ -1,0 +1,9318 @@
+# 14: TPC-DS query34
+7 0 0
+Map1 4 KSCY DLLS ORLD ATLN
+Reducer7 1 SNAN
+Map3 1 DLLS
+Map4 1 CHCG
+Map5 1 DNVR
+Map6 1 RLGH
+Reducer2 1 STTL
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 25: TPC-DS query55
+5 1 11
+Map1 1 SNFN
+Reducer4 1 CMBR
+Map2 4 DLLS NWOR CHCG ATLN
+Map5 1 RLGH
+Reducer3 1 DLLS
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 24: TPC-DS query54
+16 2 13
+Map17 1 SLKC
+Map15 1 NY54
+Map16 1 DNVR
+Reducer5 3 STLS SNDG CMBR
+Map10 3 SNAN ORLD PHNX
+Reducer4 1 PHLA
+Map1 3 CHCG SLKC ATLN
+Reducer7 1 NSVL
+Reducer6 4 STTL WASH NWOR PHLA
+Map13 1 NWOR
+Reducer9 1 NSVL
+Map14 4 SCRM PHNX DNVR CMBR
+Reducer8 1 DNVR
+Map11 1 ATLN
+Map12 1 NSVL
+Reducer3 2 KSCY NY54
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 40: TPC-DS query95
+15 3 16
+Map15 1 ATLN
+Map10 2 PHNX SNFN
+Map1 3 PTLD NWOR SCRM
+Reducer4 1 CHCG
+Reducer7 5 RLGH STTL SLKC DNVR CHCG
+Map13 1 DLLS
+Reducer8 3 SNFN ATLN NSVL
+Map14 1 LA03
+Map11 3 KSCY CLEV NWOR
+Reducer12 1 NWOR
+Map9 3 ATLN CHCG CLEV
+Map5 3 PTLD DLLS HSTN
+Reducer3 6 WASH RLGH PHLA CHCG KSCY DNVR
+Map6 3 PTLD SNAN WASH
+Reducer2 5 NY54 DLLS RLGH LA03 KSCY
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 20: TPC-DS query46
+12 4 22
+Reducer5 1 STTL
+Map10 1 RLGH
+Map1 4 NWOR SCRM DNVR PTLD
+Reducer4 1 STTL
+Reducer6 1 PHLA
+Map11 1 SLKC
+Map12 1 LA03
+Map8 1 NY54
+Map9 1 NY54
+Reducer3 1 CHCG
+Reducer2 1 LA03
+Map7 1 SNDG
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 1: TPC-DS query15
+8 5 35
+Reducer5 1 NWOR
+Map1 3 DNVR SNDG STTL
+Reducer4 1 CMBR
+Map8 1 SNAN
+Map6 1 SNDG
+Reducer3 3 SNAN CMBR SNDG
+Map7 1 DNVR
+Reducer2 3 NY54 PHNX SCRM
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 29: TPC-DS query65
+10 6 67
+Map10 1 DNVR
+Map1 4 NWOR DLLS ORLD NSVL
+Reducer4 1 PTLD
+Reducer7 1 NWOR
+Map8 1 PHLA
+Map9 1 DNVR
+Map5 1 DLLS
+Map6 4 ORLD DLLS RLGH NSVL
+Reducer3 1 STTL
+Reducer2 1 CLEV
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 36: TPC-DS query79
+8 7 70
+Map1 4 HSTN NWOR SLKC LA03
+Reducer4 1 DNVR
+Map8 1 HSTN
+Map5 1 NY54
+Map6 1 STLS
+Reducer3 1 LA03
+Map7 1 NWOR
+Reducer2 1 ORLD
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 3: TPC-DS query18
+13 8 71
+Reducer5 1 CMBR
+Reducer4 1 CHCG
+Map1 3 SLKC DLLS SNAN
+Map10 1 WASH
+Reducer7 1 STTL
+Reducer6 1 CLEV
+Map13 1 CHCG
+Map11 1 PTLD
+Map12 1 SNDG
+Map8 1 NY54
+Map9 1 NWOR
+Reducer3 1 NWOR
+Reducer2 1 ATLN
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 28: TPC-DS query60
+23 9 72
+Map17 1 STTL
+Map18 3 SNFN SNDG STLS
+Map15 1 PHNX
+Map16 1 CLEV
+Reducer19 1 CHCG
+Reducer5 1 HSTN
+Map21 1 PHNX
+Reducer20 1 LA03
+Map10 1 DLLS
+Map1 4 PHNX CLEV KSCY LA03
+Reducer6 1 HSTN
+Map24 1 PHLA
+Map14 1 CHCG
+Reducer13 1 NY54
+Map11 3 DLLS WASH PHLA
+Reducer12 2 NWOR HSTN
+Map22 1 WASH
+Map23 1 RLGH
+Map8 1 SNAN
+Map9 1 ORLD
+Reducer3 1 STTL
+Map7 1 PHLA
+Reducer2 2 PHNX STTL
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 24: TPC-DS query54
+16 10 74
+Map17 1 PHNX
+Map15 1 SNAN
+Map16 1 PHLA
+Reducer5 3 NSVL LA03 DNVR
+Map10 3 RLGH NSVL SNFN
+Reducer4 1 LA03
+Map1 3 PTLD ORLD LA03
+Reducer7 1 CLEV
+Reducer6 4 CHCG ATLN LA03 ORLD
+Map13 1 NY54
+Reducer9 1 ATLN
+Map14 4 SLKC PTLD STTL SNDG
+Reducer8 1 CHCG
+Map11 1 SCRM
+Map12 1 KSCY
+Reducer3 2 LA03 STTL
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 29: TPC-DS query65
+10 11 82
+Map10 1 STLS
+Map1 4 DLLS WASH PTLD RLGH
+Reducer4 1 PHLA
+Reducer7 1 NSVL
+Map8 1 HSTN
+Map9 1 SNDG
+Map5 1 SLKC
+Map6 4 DNVR LA03 SNDG STTL
+Reducer3 1 NWOR
+Reducer2 1 SNFN
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 36: TPC-DS query79
+8 12 82
+Map1 4 PHLA PTLD CHCG CLEV
+Reducer4 1 NSVL
+Map8 1 STLS
+Map5 1 LA03
+Map6 1 SCRM
+Reducer3 1 HSTN
+Map7 1 NY54
+Reducer2 1 ORLD
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 27: TPC-DS query58
+20 13 84
+Reducer18 2 DLLS LA03
+Map17 3 SCRM CMBR PTLD
+Map15 1 CHCG
+Map16 1 WASH
+Map19 1 STLS
+Reducer5 4 LA03 PTLD SCRM CLEV
+Map20 1 SCRM
+Map1 1 SNDG
+Reducer4 4 ORLD DNVR HSTN NSVL
+Map10 1 SLKC
+Map2 1 RLGH
+Map3 4 NY54 ORLD NWOR PTLD
+Reducer6 1 STTL
+Map13 1 STTL
+Map14 1 RLGH
+Map11 3 PHLA ORLD SNAN
+Reducer12 3 STLS RLGH HSTN
+Map8 1 CMBR
+Map9 1 DLLS
+Map7 1 SCRM
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 2: TPC-DS query17
+12 14 88
+Reducer5 1 DNVR
+Map10 1 STLS
+Map1 4 STLS CHCG KSCY CMBR
+Reducer4 1 STLS
+Map11 1 SNFN
+Map12 1 STLS
+Map8 1 WASH
+Map9 1 SNAN
+Map6 3 PHNX KSCY SNAN
+Reducer3 2 DNVR NY54
+Map7 3 SLKC SCRM CLEV
+Reducer2 1 NWOR
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 40: TPC-DS query95
+15 15 92
+Map15 1 SNAN
+Map10 2 ORLD DLLS
+Map1 3 PTLD PHNX RLGH
+Reducer4 1 SNAN
+Reducer7 5 CLEV DNVR HSTN ATLN PHLA
+Map13 1 PHNX
+Reducer8 3 SCRM LA03 DLLS
+Map14 1 LA03
+Map11 3 KSCY SCRM PHLA
+Reducer12 1 SNFN
+Map9 3 PHLA RLGH ATLN
+Map5 3 HSTN PHNX NWOR
+Reducer3 6 ORLD SLKC NY54 DLLS SNFN KSCY
+Map6 3 SNFN PHLA NWOR
+Reducer2 5 PHNX SNFN CLEV WASH LA03
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 38: TPC-DS query87
+17 16 96
+Map17 1 KSCY
+Map16 1 SNFN
+Reducer15 2 SLKC PTLD
+Reducer10 3 PHNX NY54 ATLN
+Reducer5 1 NWOR
+Reducer4 4 RLGH PHLA LA03 NY54
+Map1 4 DLLS SNDG SNAN NSVL
+Map13 3 CHCG RLGH PHNX
+Reducer14 2 CMBR NWOR
+Reducer9 3 PHLA DLLS HSTN
+Map11 1 SNFN
+Map12 1 WASH
+Map8 3 HSTN CHCG ORLD
+Reducer3 4 KSCY ORLD RLGH CHCG
+Map6 1 HSTN
+Reducer2 4 ORLD SCRM SNAN LA03
+Map7 1 DLLS
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 6: TPC-DS query21
+6 17 97
+Map1 1 STTL
+Map4 1 NWOR
+Map5 1 SLKC
+Reducer3 1 LA03
+Map6 1 DNVR
+Reducer2 1 PHLA
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 19: TPC-DS query45
+10 18 102
+Reducer5 1 STLS
+Map10 1 WASH
+Map1 3 STTL CMBR SNDG
+Reducer4 1 ATLN
+Map8 1 SNAN
+Map9 1 RLGH
+Map6 1 NWOR
+Reducer3 1 SNFN
+Map7 1 NY54
+Reducer2 1 CHCG
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 19: TPC-DS query45
+10 19 112
+Reducer5 1 SNDG
+Map10 1 SNDG
+Map1 3 PTLD KSCY SNDG
+Reducer4 1 LA03
+Map8 1 WASH
+Map9 1 NY54
+Map6 1 CMBR
+Reducer3 1 STTL
+Map7 1 KSCY
+Reducer2 1 PHLA
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 17: TPC-DS query42
+5 20 113
+Map1 1 ORLD
+Reducer4 1 CMBR
+Map2 4 CMBR CLEV WASH NY54
+Map5 1 NWOR
+Reducer3 1 HSTN
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 11: TPC-DS query29
+12 21 115
+Reducer5 1 NSVL
+Map10 1 CMBR
+Map1 4 STTL HSTN ORLD SNDG
+Reducer4 1 STTL
+Map11 1 DLLS
+Map12 1 SNFN
+Map8 1 SNDG
+Map9 1 CHCG
+Map6 3 KSCY CHCG PTLD
+Reducer3 2 STTL ORLD
+Map7 3 SNDG SNAN PTLD
+Reducer2 1 SLKC
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 24: TPC-DS query54
+16 22 120
+Map17 1 SNFN
+Map15 1 NY54
+Map16 1 SNFN
+Reducer5 3 RLGH SNDG SNFN
+Map10 3 SNFN RLGH CMBR
+Reducer4 1 SLKC
+Map1 3 SCRM SNDG PHLA
+Reducer7 1 HSTN
+Reducer6 4 NWOR WASH DLLS SLKC
+Map13 1 NSVL
+Reducer9 1 NWOR
+Map14 4 SCRM SNFN HSTN LA03
+Reducer8 1 PHLA
+Map11 1 NSVL
+Map12 1 STTL
+Reducer3 2 SLKC NY54
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 23: TPC-DS query52
+5 23 132
+Map1 1 PHLA
+Reducer4 1 SNFN
+Map2 4 PHNX ATLN STTL SNFN
+Map5 1 STTL
+Reducer3 1 CLEV
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 9: TPC-DS query26
+7 24 143
+Map1 3 DNVR SCRM DLLS
+Map4 1 NSVL
+Map5 1 PTLD
+Map6 1 NSVL
+Reducer3 1 PHNX
+Map7 1 LA03
+Reducer2 1 STTL
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 6: TPC-DS query21
+6 25 151
+Map1 1 LA03
+Map4 1 HSTN
+Map5 1 STLS
+Reducer3 1 RLGH
+Map6 1 LA03
+Reducer2 1 SLKC
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 25: TPC-DS query55
+5 26 152
+Map1 1 NSVL
+Reducer4 1 SNDG
+Map2 4 DLLS CLEV SNDG DNVR
+Map5 1 STTL
+Reducer3 1 SCRM
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 34: TPC-DS query73
+7 27 157
+Map1 4 NWOR RLGH STTL LA03
+Reducer7 1 STLS
+Map3 1 STLS
+Map4 1 ATLN
+Map5 1 ATLN
+Map6 1 ATLN
+Reducer2 1 WASH
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 33: TPC-DS query71
+10 28 159
+Map1 3 SLKC PHLA NSVL
+Map10 1 ATLN
+Reducer4 1 SNFN
+Map11 1 ATLN
+Map8 4 SCRM KSCY NWOR HSTN
+Map9 1 CLEV
+Map5 1 NSVL
+Map6 3 SNAN PHLA CLEV
+Reducer3 2 SLKC SNFN
+Map7 1 NY54
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 25: TPC-DS query55
+5 29 159
+Map1 1 KSCY
+Reducer4 1 SNDG
+Map2 4 HSTN LA03 KSCY SNAN
+Map5 1 PHLA
+Reducer3 1 STLS
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 4: TPC-DS query19
+10 30 159
+Reducer5 1 KSCY
+Map1 1 PHLA
+Reducer4 1 ATLN
+Map10 1 SNFN
+Map2 4 NY54 KSCY SLKC HSTN
+Reducer6 1 ATLN
+Map8 1 LA03
+Map9 1 ATLN
+Reducer3 1 LA03
+Map7 1 CMBR
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 1: TPC-DS query15
+8 31 159
+Reducer5 1 SNFN
+Map1 3 CLEV NWOR STLS
+Reducer4 1 STTL
+Map8 1 SCRM
+Map6 1 STLS
+Reducer3 3 ORLD SNFN KSCY
+Map7 1 PHLA
+Reducer2 3 CLEV CMBR HSTN
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 2: TPC-DS query17
+12 32 160
+Reducer5 1 STTL
+Map10 1 HSTN
+Map1 4 DLLS NSVL CLEV HSTN
+Reducer4 1 PHLA
+Map11 1 ATLN
+Map12 1 RLGH
+Map8 1 RLGH
+Map9 1 SCRM
+Map6 3 SNAN SLKC SNFN
+Reducer3 2 DNVR SLKC
+Map7 3 KSCY ATLN DNVR
+Reducer2 1 SCRM
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 28: TPC-DS query60
+23 33 160
+Map17 1 SCRM
+Map18 3 SCRM STTL DLLS
+Map15 1 HSTN
+Map16 1 NSVL
+Reducer19 1 CLEV
+Reducer5 1 PHLA
+Map21 1 SCRM
+Reducer20 1 SNFN
+Map10 1 LA03
+Map1 4 CHCG LA03 ORLD SNDG
+Reducer6 1 STTL
+Map24 1 SNAN
+Map14 1 CLEV
+Reducer13 1 SNDG
+Map11 3 NWOR CHCG PHLA
+Reducer12 2 SCRM SNDG
+Map22 1 DNVR
+Map23 1 CLEV
+Map8 1 SCRM
+Map9 1 DNVR
+Reducer3 1 WASH
+Map7 1 SCRM
+Reducer2 2 WASH HSTN
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 16: TPC-DS query40
+8 34 162
+Reducer4 1 LA03
+Map1 3 WASH DNVR CHCG
+Map8 1 SLKC
+Map5 3 LA03 CLEV SCRM
+Map6 1 STLS
+Reducer3 1 PHLA
+Map7 1 ATLN
+Reducer2 2 LA03 DNVR
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 12: TPC-DS query31
+32 35 163
+Reducer29 2 SNFN KSCY
+Map17 1 NWOR
+Map18 3 SNAN STTL KSCY
+Map16 1 SNFN
+Map1 4 SNAN STTL ATLN SNFN
+Reducer20 1 NWOR
+Map21 1 PHLA
+Reducer25 1 DLLS
+Reducer24 2 HSTN PHLA
+Map22 1 SNDG
+Map23 3 ORLD PHNX DNVR
+Map8 4 NSVL LA03 NWOR ORLD
+Map6 1 SNAN
+Map7 1 SNFN
+Map28 3 CMBR PHNX SNFN
+Map26 1 HSTN
+Map27 1 PHNX
+Reducer15 1 CLEV
+Reducer19 2 SNDG SNAN
+Reducer5 1 CLEV
+Map31 1 NWOR
+Reducer10 1 CHCG
+Reducer4 2 NSVL WASH
+Map32 1 SNFN
+Reducer30 1 NWOR
+Map13 4 PTLD NY54 SNFN ATLN
+Reducer9 4 ORLD KSCY RLGH DLLS
+Reducer14 4 DNVR KSCY NY54 SLKC
+Map11 1 DLLS
+Map12 1 ATLN
+Reducer3 1 NWOR
+Reducer2 4 CMBR STTL ORLD HSTN
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 39: TPC-DS query89
+7 36 164
+Reducer5 1 NWOR
+Map1 1 HSTN
+Reducer4 1 NWOR
+Map2 4 CMBR PHNX STLS ATLN
+Map6 1 SNFN
+Reducer3 1 CHCG
+Map7 1 DLLS
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 24: TPC-DS query54
+16 37 169
+Map17 1 DNVR
+Map15 1 ATLN
+Map16 1 LA03
+Reducer5 3 ORLD STLS PHLA
+Map10 3 LA03 STTL PHLA
+Reducer4 1 STTL
+Map1 3 NSVL NWOR ATLN
+Reducer7 1 KSCY
+Reducer6 4 SCRM LA03 NSVL PTLD
+Map13 1 NWOR
+Reducer9 1 KSCY
+Map14 4 NSVL PTLD STLS ORLD
+Reducer8 1 SCRM
+Map11 1 NY54
+Map12 1 PHNX
+Reducer3 2 STLS CLEV
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 28: TPC-DS query60
+23 38 200
+Map17 1 NY54
+Map18 3 NY54 RLGH NSVL
+Map15 1 STTL
+Map16 1 ORLD
+Reducer19 1 SNDG
+Reducer5 1 ATLN
+Map21 1 ATLN
+Reducer20 1 NSVL
+Map10 1 DNVR
+Map1 4 PTLD WASH SCRM CHCG
+Reducer6 1 SLKC
+Map24 1 WASH
+Map14 1 HSTN
+Reducer13 1 LA03
+Map11 3 PTLD PHNX PHLA
+Reducer12 2 DLLS DNVR
+Map22 1 RLGH
+Map23 1 PHLA
+Map8 1 HSTN
+Map9 1 DNVR
+Reducer3 1 CMBR
+Map7 1 WASH
+Reducer2 2 SNDG CMBR
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 25: TPC-DS query55
+5 39 200
+Map1 1 SLKC
+Reducer4 1 SNAN
+Map2 4 ATLN SLKC CHCG DNVR
+Map5 1 CHCG
+Reducer3 1 LA03
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 25: TPC-DS query55
+5 40 200
+Map1 1 CLEV
+Reducer4 1 STTL
+Map2 4 PTLD SNDG LA03 NSVL
+Map5 1 DNVR
+Reducer3 1 SNAN
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 26: TPC-DS query56
+23 41 200
+Map17 1 DLLS
+Map18 3 RLGH CMBR STLS
+Map15 1 WASH
+Map16 1 RLGH
+Reducer19 1 ORLD
+Reducer5 1 ATLN
+Map10 1 PHLA
+Map1 4 RLGH SNFN CHCG STTL
+Reducer20 1 CHCG
+Map21 1 DLLS
+Reducer6 1 PHNX
+Map24 1 HSTN
+Reducer13 1 CHCG
+Map14 1 WASH
+Reducer12 2 NY54 SLKC
+Map11 3 PHLA NWOR NSVL
+Map22 1 NWOR
+Map23 1 STTL
+Map8 1 PHLA
+Map9 1 PHLA
+Reducer3 1 CHCG
+Map7 1 CLEV
+Reducer2 2 NSVL PHLA
+22
+Map17 Reducer12 6
+Map18 Reducer19 3931
+Map15 Reducer12 6
+Map16 Reducer12 6
+Reducer19 Reducer20 19
+Reducer5 Reducer6 1
+Map10 Reducer2 6
+Map1 Reducer2 9505
+Reducer20 Reducer5 1
+Map21 Map18 7844
+Map24 Reducer19 3
+Reducer13 Reducer5 1
+Map14 Map11 14918
+Reducer12 Reducer13 37
+Map11 Reducer12 7477
+Map22 Reducer19 3
+Map23 Reducer19 3
+Map8 Reducer2 7
+Map9 Reducer2 6
+Reducer3 Reducer5 1
+Map7 Map1 16588
+Reducer2 Reducer3 48
+# 17: TPC-DS query42
+5 42 201
+Map1 1 DNVR
+Reducer4 1 NWOR
+Map2 4 NY54 SCRM STLS WASH
+Map5 1 SNFN
+Reducer3 1 SNDG
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 3: TPC-DS query18
+13 43 201
+Reducer5 1 NWOR
+Reducer4 1 SCRM
+Map1 3 PHLA HSTN ORLD
+Map10 1 DLLS
+Reducer7 1 STTL
+Reducer6 1 CHCG
+Map13 1 SNDG
+Map11 1 DLLS
+Map12 1 NSVL
+Map8 1 STTL
+Map9 1 STLS
+Reducer3 1 STTL
+Reducer2 1 DLLS
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 1: TPC-DS query15
+8 44 201
+Reducer5 1 DLLS
+Map1 3 LA03 STLS SLKC
+Reducer4 1 KSCY
+Map8 1 CLEV
+Map6 1 STLS
+Reducer3 3 ATLN NY54 NWOR
+Map7 1 NY54
+Reducer2 3 SNFN STTL PTLD
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 27: TPC-DS query58
+20 45 202
+Reducer18 2 SLKC NSVL
+Map17 3 LA03 CMBR STLS
+Map15 1 LA03
+Map16 1 KSCY
+Map19 1 NY54
+Reducer5 4 PHNX SNAN SCRM SNFN
+Map20 1 ORLD
+Map1 1 DNVR
+Reducer4 4 NSVL DNVR SCRM SLKC
+Map10 1 WASH
+Map2 1 NY54
+Map3 4 SLKC ORLD NSVL KSCY
+Reducer6 1 STTL
+Map13 1 CHCG
+Map14 1 CLEV
+Map11 3 CMBR SNFN DLLS
+Reducer12 3 PTLD CLEV WASH
+Map8 1 SCRM
+Map9 1 CLEV
+Map7 1 DLLS
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 33: TPC-DS query71
+10 46 202
+Map1 3 SNDG NY54 SNFN
+Map10 1 NY54
+Reducer4 1 RLGH
+Map11 1 DLLS
+Map8 4 PHNX CHCG SNFN SNAN
+Map9 1 WASH
+Map5 1 SNAN
+Map6 3 SNAN SNDG NSVL
+Reducer3 2 CMBR CHCG
+Map7 1 STLS
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 36: TPC-DS query79
+8 47 203
+Map1 4 CLEV PTLD RLGH SNDG
+Reducer4 1 ORLD
+Map8 1 SNAN
+Map5 1 HSTN
+Map6 1 DNVR
+Reducer3 1 NSVL
+Map7 1 STTL
+Reducer2 1 DLLS
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 28: TPC-DS query60
+23 48 203
+Map17 1 SCRM
+Map18 3 CMBR SNAN ATLN
+Map15 1 SNFN
+Map16 1 STLS
+Reducer19 1 SNAN
+Reducer5 1 NSVL
+Map21 1 SNDG
+Reducer20 1 STTL
+Map10 1 SNDG
+Map1 4 KSCY NWOR ATLN STLS
+Reducer6 1 SNFN
+Map24 1 RLGH
+Map14 1 WASH
+Reducer13 1 ATLN
+Map11 3 WASH DNVR STTL
+Reducer12 2 SNAN KSCY
+Map22 1 ORLD
+Map23 1 NWOR
+Map8 1 ORLD
+Map9 1 WASH
+Reducer3 1 KSCY
+Map7 1 PHLA
+Reducer2 2 WASH NWOR
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 33: TPC-DS query71
+10 49 205
+Map1 3 DNVR SNFN CMBR
+Map10 1 NY54
+Reducer4 1 PTLD
+Map11 1 CLEV
+Map8 4 RLGH DNVR PHNX ORLD
+Map9 1 STTL
+Map5 1 SNAN
+Map6 3 SNFN CLEV SCRM
+Reducer3 2 NWOR CHCG
+Map7 1 SNAN
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 25: TPC-DS query55
+5 50 207
+Map1 1 ORLD
+Reducer4 1 NWOR
+Map2 4 CLEV NSVL HSTN LA03
+Map5 1 ATLN
+Reducer3 1 DLLS
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 3: TPC-DS query18
+13 51 226
+Reducer5 1 CHCG
+Reducer4 1 RLGH
+Map1 3 SNDG DNVR NWOR
+Map10 1 ATLN
+Reducer7 1 STLS
+Reducer6 1 PHNX
+Map13 1 KSCY
+Map11 1 PHLA
+Map12 1 WASH
+Map8 1 ORLD
+Map9 1 CLEV
+Reducer3 1 STLS
+Reducer2 1 CHCG
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 29: TPC-DS query65
+10 52 237
+Map10 1 DNVR
+Map1 4 KSCY WASH PTLD SNAN
+Reducer4 1 NWOR
+Reducer7 1 RLGH
+Map8 1 SLKC
+Map9 1 RLGH
+Map5 1 CMBR
+Map6 4 RLGH LA03 NY54 DLLS
+Reducer3 1 NWOR
+Reducer2 1 DLLS
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 23: TPC-DS query52
+5 53 239
+Map1 1 CHCG
+Reducer4 1 ATLN
+Map2 4 CLEV STTL PHNX ATLN
+Map5 1 NWOR
+Reducer3 1 DLLS
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 12: TPC-DS query31
+32 54 247
+Reducer29 2 DLLS SCRM
+Map17 1 ATLN
+Map18 3 PHLA RLGH NSVL
+Map16 1 SLKC
+Map1 4 SNAN HSTN LA03 CLEV
+Reducer20 1 PHNX
+Map21 1 STLS
+Reducer25 1 NWOR
+Reducer24 2 NWOR RLGH
+Map22 1 DNVR
+Map23 3 PHNX CLEV HSTN
+Map8 4 PHLA NSVL NY54 SCRM
+Map6 1 RLGH
+Map7 1 NWOR
+Map28 3 SCRM SLKC RLGH
+Map26 1 SNDG
+Map27 1 STTL
+Reducer15 1 CLEV
+Reducer19 2 KSCY WASH
+Reducer5 1 PHLA
+Map31 1 PTLD
+Reducer10 1 SNDG
+Reducer4 2 CLEV PHNX
+Map32 1 HSTN
+Reducer30 1 KSCY
+Map13 4 CLEV STLS SLKC ATLN
+Reducer9 4 STTL WASH KSCY DLLS
+Reducer14 4 PTLD NY54 STLS ORLD
+Map11 1 SNAN
+Map12 1 SNFN
+Reducer3 1 SNFN
+Reducer2 4 STTL RLGH CLEV DLLS
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 6: TPC-DS query21
+6 55 251
+Map1 1 NWOR
+Map4 1 SNAN
+Map5 1 PHNX
+Reducer3 1 STLS
+Map6 1 STLS
+Reducer2 1 CHCG
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 32: TPC-DS query70
+12 56 256
+Reducer5 1 CLEV
+Reducer10 1 KSCY
+Reducer4 6 CHCG ATLN HSTN DNVR NSVL PHLA
+Map1 4 PHLA NWOR HSTN KSCY
+Reducer9 1 SNFN
+Map11 1 STLS
+Map12 1 NSVL
+Map8 4 SLKC NWOR ORLD PHNX
+Reducer3 11 SCRM DNVR CHCG NWOR PHNX LA03 WASH ORLD DLLS KSCY NSVL
+Map6 1 LA03
+Reducer2 4 RLGH NWOR HSTN WASH
+Map7 1 DLLS
+11
+Reducer10 Reducer2 443
+Reducer4 Reducer5 76
+Map1 Reducer2 10850
+Reducer9 Reducer10 6
+Map11 Map8 5212
+Map12 Map8 5212
+Map8 Reducer9 10427
+Reducer3 Reducer4 227
+Map6 Map1 5675
+Reducer2 Reducer3 2364
+Map7 Map1 5675
+# 22: TPC-DS query51
+11 57 276
+Reducer5 1 STLS
+Reducer10 1 STLS
+Reducer4 1 NY54
+Map1 3 SLKC KSCY CHCG
+Reducer6 1 SNAN
+Reducer9 1 DNVR
+Map11 1 NWOR
+Map8 4 STTL PHLA PHNX ORLD
+Reducer3 1 DLLS
+Map7 1 DNVR
+Reducer2 1 HSTN
+10
+Reducer5 Reducer6 61
+Reducer10 Reducer4 87
+Reducer4 Reducer5 141
+Map1 Reducer2 1259
+Reducer9 Reducer10 1478
+Map11 Map8 4595
+Map8 Reducer9 5977
+Reducer3 Reducer4 108
+Map7 Map1 937
+Reducer2 Reducer3 458
+# 31: TPC-DS query68
+12 58 287
+Reducer5 1 ATLN
+Map10 1 SNFN
+Reducer4 1 HSTN
+Map1 4 PHLA HSTN LA03 SNDG
+Reducer6 1 ATLN
+Map11 1 HSTN
+Map12 1 PHNX
+Map8 1 STTL
+Map9 1 CHCG
+Reducer3 1 STTL
+Map7 1 KSCY
+Reducer2 1 PHLA
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 29: TPC-DS query65
+10 59 299
+Map10 1 ORLD
+Map1 4 WASH ORLD STLS NWOR
+Reducer4 1 SNDG
+Reducer7 1 SLKC
+Map8 1 RLGH
+Map9 1 PTLD
+Map5 1 PHNX
+Map6 4 RLGH STTL CLEV SLKC
+Reducer3 1 WASH
+Reducer2 1 NSVL
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 6: TPC-DS query21
+6 60 343
+Map1 1 SLKC
+Map4 1 WASH
+Map5 1 HSTN
+Reducer3 1 SLKC
+Map6 1 RLGH
+Reducer2 1 KSCY
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 14: TPC-DS query34
+7 61 344
+Map1 4 WASH PHNX KSCY STTL
+Reducer7 1 NSVL
+Map3 1 WASH
+Map4 1 SNDG
+Map5 1 SNDG
+Map6 1 CMBR
+Reducer2 1 DLLS
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 28: TPC-DS query60
+23 62 344
+Map17 1 RLGH
+Map18 3 STTL WASH CLEV
+Map15 1 STTL
+Map16 1 CHCG
+Reducer19 1 ATLN
+Reducer5 1 NY54
+Map21 1 SLKC
+Reducer20 1 PHLA
+Map10 1 PTLD
+Map1 4 CLEV SCRM NSVL DNVR
+Reducer6 1 KSCY
+Map24 1 SLKC
+Map14 1 DNVR
+Reducer13 1 STTL
+Map11 3 STLS ORLD CLEV
+Reducer12 2 ORLD STTL
+Map22 1 STLS
+Map23 1 SNDG
+Map8 1 NWOR
+Map9 1 NSVL
+Reducer3 1 KSCY
+Map7 1 ATLN
+Reducer2 2 WASH PHNX
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 11: TPC-DS query29
+12 63 345
+Reducer5 1 NWOR
+Map10 1 DNVR
+Map1 4 DLLS SNFN KSCY SLKC
+Reducer4 1 LA03
+Map11 1 SNFN
+Map12 1 SCRM
+Map8 1 HSTN
+Map9 1 CLEV
+Map6 3 SCRM SNAN SNFN
+Reducer3 2 SLKC PHNX
+Map7 3 NY54 SNAN WASH
+Reducer2 1 NY54
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 24: TPC-DS query54
+16 64 345
+Map17 1 STLS
+Map15 1 CHCG
+Map16 1 SNDG
+Reducer5 3 DLLS WASH PHNX
+Map10 3 SNDG CLEV SLKC
+Reducer4 1 HSTN
+Map1 3 RLGH CHCG HSTN
+Reducer7 1 KSCY
+Reducer6 4 DLLS CMBR RLGH PHLA
+Map13 1 SLKC
+Reducer9 1 LA03
+Map14 4 SLKC SNAN RLGH SNFN
+Reducer8 1 DLLS
+Map11 1 DLLS
+Map12 1 SNDG
+Reducer3 2 HSTN PTLD
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 15: TPC-DS query3
+5 65 345
+Reducer4 1 SNDG
+Map1 1 NWOR
+Map2 4 RLGH PHNX CMBR STLS
+Map5 1 CMBR
+Reducer3 1 CMBR
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 27: TPC-DS query58
+20 66 347
+Reducer18 2 DLLS CHCG
+Map17 3 RLGH DNVR SNDG
+Map15 1 NWOR
+Map16 1 SNFN
+Map19 1 NY54
+Reducer5 4 LA03 RLGH ORLD WASH
+Map20 1 SNAN
+Map1 1 PHLA
+Reducer4 4 NSVL STLS NY54 SNFN
+Map10 1 SCRM
+Map2 1 DLLS
+Map3 4 SCRM CMBR DNVR PHNX
+Reducer6 1 RLGH
+Map13 1 CHCG
+Map14 1 STTL
+Map11 3 STTL HSTN NWOR
+Reducer12 3 NWOR SNDG KSCY
+Map8 1 CMBR
+Map9 1 DNVR
+Map7 1 NY54
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 12: TPC-DS query31
+32 67 348
+Reducer29 2 SCRM NSVL
+Map17 1 PHNX
+Map18 3 ATLN STTL STLS
+Map16 1 CMBR
+Map1 4 NY54 NWOR HSTN DNVR
+Reducer20 1 PHNX
+Map21 1 SLKC
+Reducer25 1 DLLS
+Reducer24 2 SLKC ORLD
+Map22 1 STTL
+Map23 3 DNVR SNDG SNAN
+Map8 4 PTLD NWOR NY54 KSCY
+Map6 1 CMBR
+Map7 1 DLLS
+Map28 3 ATLN LA03 NY54
+Map26 1 KSCY
+Map27 1 DLLS
+Reducer15 1 KSCY
+Reducer19 2 SCRM SLKC
+Reducer5 1 SNFN
+Map31 1 DNVR
+Reducer10 1 LA03
+Reducer4 2 CMBR KSCY
+Map32 1 NWOR
+Reducer30 1 NSVL
+Map13 4 STLS KSCY WASH HSTN
+Reducer9 4 HSTN NSVL SCRM KSCY
+Reducer14 4 ORLD SNAN STTL CHCG
+Map11 1 NWOR
+Map12 1 STTL
+Reducer3 1 DNVR
+Reducer2 4 KSCY NSVL WASH SNFN
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 34: TPC-DS query73
+7 68 351
+Map1 4 PHNX NWOR HSTN DLLS
+Reducer7 1 RLGH
+Map3 1 DNVR
+Map4 1 STLS
+Map5 1 ORLD
+Map6 1 CLEV
+Reducer2 1 ORLD
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 4: TPC-DS query19
+10 69 352
+Reducer5 1 PTLD
+Map1 1 SNAN
+Reducer4 1 NY54
+Map10 1 CLEV
+Map2 4 CMBR CLEV DLLS NWOR
+Reducer6 1 SNDG
+Map8 1 KSCY
+Map9 1 SNDG
+Reducer3 1 SNFN
+Map7 1 PHLA
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 38: TPC-DS query87
+17 70 353
+Map17 1 SNFN
+Map16 1 SNAN
+Reducer15 2 PHLA NWOR
+Reducer10 3 SNFN NY54 SNDG
+Reducer5 1 SLKC
+Reducer4 4 CHCG SNAN STLS WASH
+Map1 4 CHCG HSTN NY54 SNFN
+Map13 3 NSVL SNDG STTL
+Reducer14 2 SNAN NWOR
+Reducer9 3 CMBR STTL RLGH
+Map11 1 WASH
+Map12 1 NY54
+Map8 3 CLEV PHLA STLS
+Reducer3 4 SLKC CMBR DLLS NY54
+Map6 1 STTL
+Reducer2 4 DLLS SNAN KSCY SLKC
+Map7 1 LA03
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 19: TPC-DS query45
+10 71 356
+Reducer5 1 DLLS
+Map10 1 PTLD
+Map1 3 SCRM STLS RLGH
+Reducer4 1 NWOR
+Map8 1 SLKC
+Map9 1 CLEV
+Map6 1 CLEV
+Reducer3 1 CHCG
+Map7 1 CMBR
+Reducer2 1 ORLD
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 34: TPC-DS query73
+7 72 359
+Map1 4 CHCG WASH SNAN PHNX
+Reducer7 1 CHCG
+Map3 1 SNAN
+Map4 1 ORLD
+Map5 1 ATLN
+Map6 1 PHLA
+Reducer2 1 PTLD
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 24: TPC-DS query54
+16 73 362
+Map17 1 NWOR
+Map15 1 PHLA
+Map16 1 KSCY
+Reducer5 3 DLLS SNFN NY54
+Map10 3 SLKC DNVR NWOR
+Reducer4 1 SNAN
+Map1 3 SCRM CMBR SNFN
+Reducer7 1 CLEV
+Reducer6 4 PHLA WASH DNVR CMBR
+Map13 1 CLEV
+Reducer9 1 WASH
+Map14 4 STLS SLKC CHCG SNDG
+Reducer8 1 CMBR
+Map11 1 KSCY
+Map12 1 WASH
+Reducer3 2 RLGH SNFN
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 18: TPC-DS query43
+5 74 367
+Map1 1 CMBR
+Reducer4 1 HSTN
+Map2 4 CMBR SCRM SNFN SNAN
+Map5 1 CLEV
+Reducer3 1 KSCY
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 23: TPC-DS query52
+5 75 379
+Map1 1 SLKC
+Reducer4 1 RLGH
+Map2 4 DLLS PHLA NY54 SNFN
+Map5 1 WASH
+Reducer3 1 SNFN
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 7: TPC-DS query22
+6 76 379
+Map1 1 CLEV
+Map4 1 SNFN
+Map5 1 WASH
+Reducer3 1 ORLD
+Map6 1 PHLA
+Reducer2 1 DNVR
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 24: TPC-DS query54
+16 77 383
+Map17 1 ATLN
+Map15 1 ORLD
+Map16 1 SNAN
+Reducer5 3 SCRM ATLN CMBR
+Map10 3 STLS KSCY HSTN
+Reducer4 1 ORLD
+Map1 3 STLS RLGH CMBR
+Reducer7 1 CLEV
+Reducer6 4 PHNX PHLA CLEV LA03
+Map13 1 SLKC
+Reducer9 1 DLLS
+Map14 4 LA03 DLLS KSCY DNVR
+Reducer8 1 ATLN
+Map11 1 RLGH
+Map12 1 HSTN
+Reducer3 2 CMBR CHCG
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 1: TPC-DS query15
+8 78 384
+Reducer5 1 RLGH
+Map1 3 CHCG ATLN DNVR
+Reducer4 1 SNFN
+Map8 1 PHLA
+Map6 1 NSVL
+Reducer3 3 SLKC SNDG STTL
+Map7 1 NWOR
+Reducer2 3 PHNX CMBR RLGH
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 21: TPC-DS query50
+8 79 385
+Map1 4 HSTN STLS STTL SNFN
+Reducer4 1 SNDG
+Map8 1 NSVL
+Map5 3 DNVR SNFN HSTN
+Reducer3 1 CHCG
+Map6 1 ATLN
+Reducer2 1 CHCG
+Map7 1 CMBR
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 36: TPC-DS query79
+8 80 395
+Map1 4 SNAN PTLD PHNX DNVR
+Reducer4 1 STLS
+Map8 1 DNVR
+Map5 1 SLKC
+Map6 1 SNFN
+Reducer3 1 STLS
+Map7 1 ATLN
+Reducer2 1 NSVL
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 25: TPC-DS query55
+5 81 398
+Map1 1 NY54
+Reducer4 1 NY54
+Map2 4 CLEV ORLD WASH DLLS
+Map5 1 ATLN
+Reducer3 1 SNDG
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 12: TPC-DS query31
+32 82 399
+Reducer29 2 SNDG ORLD
+Map17 1 ATLN
+Map18 3 ATLN CLEV PTLD
+Map16 1 NSVL
+Map1 4 SNAN PTLD SNFN RLGH
+Reducer20 1 PHNX
+Map21 1 PHNX
+Reducer25 1 NSVL
+Reducer24 2 PTLD STTL
+Map22 1 NSVL
+Map23 3 ATLN STLS NWOR
+Map8 4 NWOR PHNX LA03 ORLD
+Map6 1 WASH
+Map7 1 LA03
+Map28 3 CMBR SLKC WASH
+Map26 1 STTL
+Map27 1 STTL
+Reducer15 1 STLS
+Reducer19 2 SNDG LA03
+Reducer5 1 SNAN
+Map31 1 PTLD
+Reducer10 1 NY54
+Reducer4 2 STLS LA03
+Map32 1 SLKC
+Reducer30 1 NSVL
+Map13 4 RLGH STTL HSTN WASH
+Reducer9 4 SNDG NWOR KSCY ATLN
+Reducer14 4 PHLA WASH KSCY DLLS
+Map11 1 DNVR
+Map12 1 DLLS
+Reducer3 1 SNAN
+Reducer2 4 RLGH SNDG NSVL CMBR
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 4: TPC-DS query19
+10 83 401
+Reducer5 1 SCRM
+Map1 1 SNDG
+Reducer4 1 CLEV
+Map10 1 CLEV
+Map2 4 LA03 NWOR SNFN SCRM
+Reducer6 1 RLGH
+Map8 1 HSTN
+Map9 1 PHNX
+Reducer3 1 NWOR
+Map7 1 HSTN
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 25: TPC-DS query55
+5 84 401
+Map1 1 PHNX
+Reducer4 1 LA03
+Map2 4 CLEV SCRM NY54 PTLD
+Map5 1 CMBR
+Reducer3 1 SNAN
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 26: TPC-DS query56
+23 85 401
+Map17 1 SNAN
+Map18 3 SCRM DLLS KSCY
+Map15 1 CHCG
+Map16 1 KSCY
+Reducer19 1 SNDG
+Reducer5 1 KSCY
+Map10 1 SNFN
+Map1 4 STTL DLLS ORLD CHCG
+Reducer20 1 SNFN
+Map21 1 SNAN
+Reducer6 1 SLKC
+Map24 1 PTLD
+Reducer13 1 ATLN
+Map14 1 STLS
+Reducer12 2 CMBR PTLD
+Map11 3 CMBR ORLD PHNX
+Map22 1 PHNX
+Map23 1 DLLS
+Map8 1 PHLA
+Map9 1 STLS
+Reducer3 1 RLGH
+Map7 1 STTL
+Reducer2 2 CMBR ORLD
+22
+Map17 Reducer12 6
+Map18 Reducer19 3931
+Map15 Reducer12 6
+Map16 Reducer12 6
+Reducer19 Reducer20 19
+Reducer5 Reducer6 1
+Map10 Reducer2 6
+Map1 Reducer2 9505
+Reducer20 Reducer5 1
+Map21 Map18 7844
+Map24 Reducer19 3
+Reducer13 Reducer5 1
+Map14 Map11 14918
+Reducer12 Reducer13 37
+Map11 Reducer12 7477
+Map22 Reducer19 3
+Map23 Reducer19 3
+Map8 Reducer2 7
+Map9 Reducer2 6
+Reducer3 Reducer5 1
+Map7 Map1 16588
+Reducer2 Reducer3 48
+# 10: TPC-DS query27
+7 86 401
+Map1 4 NWOR SLKC DNVR ATLN
+Map4 1 SCRM
+Map5 1 NWOR
+Map6 1 HSTN
+Reducer3 1 SCRM
+Map7 1 PHLA
+Reducer2 1 RLGH
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 33: TPC-DS query71
+10 87 404
+Map1 3 SCRM STTL CMBR
+Map10 1 SNFN
+Reducer4 1 SNAN
+Map11 1 CLEV
+Map8 4 STTL CMBR NY54 ATLN
+Map9 1 CMBR
+Map5 1 SNFN
+Map6 3 PHLA PTLD STLS
+Reducer3 2 RLGH CLEV
+Map7 1 CMBR
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 29: TPC-DS query65
+10 88 404
+Map10 1 WASH
+Map1 4 KSCY SNAN CHCG RLGH
+Reducer4 1 DNVR
+Reducer7 1 CMBR
+Map8 1 CMBR
+Map9 1 PHNX
+Map5 1 NWOR
+Map6 4 SNFN SNAN PHLA CHCG
+Reducer3 1 SLKC
+Reducer2 1 NSVL
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 39: TPC-DS query89
+7 89 409
+Reducer5 1 DLLS
+Map1 1 PHLA
+Reducer4 1 SNDG
+Map2 4 RLGH CHCG CLEV KSCY
+Map6 1 KSCY
+Reducer3 1 SNAN
+Map7 1 STTL
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 40: TPC-DS query95
+15 90 410
+Map15 1 STLS
+Map10 2 CMBR CLEV
+Map1 3 WASH CHCG LA03
+Reducer4 1 CMBR
+Reducer7 5 PHNX SLKC CLEV LA03 STLS
+Map13 1 ATLN
+Reducer8 3 SNFN KSCY ORLD
+Map14 1 LA03
+Map11 3 PTLD CMBR SNFN
+Reducer12 1 ORLD
+Map9 3 CHCG ATLN CLEV
+Map5 3 NSVL CHCG SNFN
+Reducer3 6 RLGH CMBR NWOR SLKC LA03 PHNX
+Map6 3 CLEV PTLD SLKC
+Reducer2 5 HSTN ATLN KSCY SNDG NWOR
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 37: TPC-DS query7
+7 91 414
+Map1 4 NY54 SLKC RLGH ATLN
+Map4 1 SLKC
+Map5 1 PHLA
+Map6 1 DNVR
+Reducer3 1 CMBR
+Map7 1 DNVR
+Reducer2 1 SLKC
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 29: TPC-DS query65
+10 92 416
+Map10 1 CHCG
+Map1 4 CMBR RLGH ORLD PHLA
+Reducer4 1 CLEV
+Reducer7 1 SNFN
+Map8 1 PHNX
+Map9 1 SNDG
+Map5 1 STTL
+Map6 4 HSTN CHCG RLGH CMBR
+Reducer3 1 ATLN
+Reducer2 1 SLKC
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 10: TPC-DS query27
+7 93 437
+Map1 4 LA03 RLGH SCRM KSCY
+Map4 1 STTL
+Map5 1 RLGH
+Map6 1 NWOR
+Reducer3 1 KSCY
+Map7 1 STTL
+Reducer2 1 ATLN
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 6: TPC-DS query21
+6 94 446
+Map1 1 NSVL
+Map4 1 SNFN
+Map5 1 HSTN
+Reducer3 1 CLEV
+Map6 1 HSTN
+Reducer2 1 WASH
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 14: TPC-DS query34
+7 95 463
+Map1 4 CMBR SNFN ATLN SNDG
+Reducer7 1 WASH
+Map3 1 SNAN
+Map4 1 NY54
+Map5 1 DLLS
+Map6 1 CMBR
+Reducer2 1 STTL
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 33: TPC-DS query71
+10 96 465
+Map1 3 WASH SNAN CHCG
+Map10 1 ATLN
+Reducer4 1 ATLN
+Map11 1 SNFN
+Map8 4 NY54 ATLN NWOR DNVR
+Map9 1 SNDG
+Map5 1 DNVR
+Map6 3 RLGH STLS SLKC
+Reducer3 2 CMBR ORLD
+Map7 1 SLKC
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 29: TPC-DS query65
+10 97 466
+Map10 1 DNVR
+Map1 4 WASH NY54 SLKC SNAN
+Reducer4 1 HSTN
+Reducer7 1 PHNX
+Map8 1 PTLD
+Map9 1 DLLS
+Map5 1 PHLA
+Map6 4 RLGH NSVL SLKC CMBR
+Reducer3 1 STTL
+Reducer2 1 CLEV
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 23: TPC-DS query52
+5 98 468
+Map1 1 LA03
+Reducer4 1 NWOR
+Map2 4 PHNX KSCY CMBR ORLD
+Map5 1 DNVR
+Reducer3 1 KSCY
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 24: TPC-DS query54
+16 99 471
+Map17 1 NWOR
+Map15 1 NWOR
+Map16 1 CMBR
+Reducer5 3 NY54 SNFN ORLD
+Map10 3 SCRM WASH CMBR
+Reducer4 1 STLS
+Map1 3 SLKC PHLA SNDG
+Reducer7 1 NY54
+Reducer6 4 STTL PHLA STLS NSVL
+Map13 1 SNDG
+Reducer9 1 DNVR
+Map14 4 NSVL SLKC ORLD RLGH
+Reducer8 1 SNFN
+Map11 1 HSTN
+Map12 1 PHLA
+Reducer3 2 PTLD NY54
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 9: TPC-DS query26
+7 100 479
+Map1 3 PTLD CHCG CMBR
+Map4 1 ATLN
+Map5 1 NSVL
+Map6 1 SNFN
+Reducer3 1 STLS
+Map7 1 WASH
+Reducer2 1 HSTN
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 21: TPC-DS query50
+8 101 493
+Map1 4 NY54 NSVL SNFN ORLD
+Reducer4 1 WASH
+Map8 1 NWOR
+Map5 3 PHNX SNAN STTL
+Reducer3 1 LA03
+Map6 1 NSVL
+Reducer2 1 KSCY
+Map7 1 DLLS
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 13: TPC-DS query32
+8 102 505
+Map1 3 PHNX ORLD CHCG
+Reducer6 3 WASH NY54 CHCG
+Map8 1 PHLA
+Map4 1 SCRM
+Map5 3 WASH CHCG DNVR
+Reducer3 1 PHLA
+Reducer2 4 SCRM DNVR CLEV SLKC
+Map7 1 LA03
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 2: TPC-DS query17
+12 103 506
+Reducer5 1 PTLD
+Map10 1 PHLA
+Map1 4 NSVL CHCG SLKC SNFN
+Reducer4 1 DLLS
+Map11 1 STTL
+Map12 1 SNDG
+Map8 1 SNFN
+Map9 1 CLEV
+Map6 3 HSTN SNFN PHLA
+Reducer3 2 SNDG NSVL
+Map7 3 SLKC DNVR LA03
+Reducer2 1 NSVL
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 17: TPC-DS query42
+5 104 507
+Map1 1 RLGH
+Reducer4 1 HSTN
+Map2 4 SCRM ATLN NWOR WASH
+Map5 1 RLGH
+Reducer3 1 ATLN
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 6: TPC-DS query21
+6 105 515
+Map1 1 NSVL
+Map4 1 STLS
+Map5 1 PTLD
+Reducer3 1 SLKC
+Map6 1 ORLD
+Reducer2 1 STLS
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 20: TPC-DS query46
+12 106 517
+Reducer5 1 CLEV
+Map10 1 ATLN
+Map1 4 CHCG SNDG WASH SNFN
+Reducer4 1 NSVL
+Reducer6 1 NY54
+Map11 1 ATLN
+Map12 1 PTLD
+Map8 1 DNVR
+Map9 1 NY54
+Reducer3 1 WASH
+Reducer2 1 NWOR
+Map7 1 NSVL
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 29: TPC-DS query65
+10 107 520
+Map10 1 PTLD
+Map1 4 NSVL DNVR SNAN STLS
+Reducer4 1 SNFN
+Reducer7 1 NWOR
+Map8 1 NY54
+Map9 1 KSCY
+Map5 1 WASH
+Map6 4 CHCG ORLD CMBR ATLN
+Reducer3 1 CLEV
+Reducer2 1 PTLD
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 7: TPC-DS query22
+6 108 525
+Map1 1 CLEV
+Map4 1 SNAN
+Map5 1 SCRM
+Reducer3 1 DNVR
+Map6 1 HSTN
+Reducer2 1 NY54
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 3: TPC-DS query18
+13 109 533
+Reducer5 1 RLGH
+Reducer4 1 HSTN
+Map1 3 ORLD STTL CMBR
+Map10 1 HSTN
+Reducer7 1 HSTN
+Reducer6 1 WASH
+Map13 1 CHCG
+Map11 1 SNFN
+Map12 1 ATLN
+Map8 1 STTL
+Map9 1 NWOR
+Reducer3 1 SCRM
+Reducer2 1 CHCG
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 25: TPC-DS query55
+5 110 540
+Map1 1 DNVR
+Reducer4 1 DLLS
+Map2 4 ATLN LA03 STLS RLGH
+Map5 1 CMBR
+Reducer3 1 PHNX
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 15: TPC-DS query3
+5 111 558
+Reducer4 1 KSCY
+Map1 1 WASH
+Map2 4 CMBR CLEV NWOR ATLN
+Map5 1 WASH
+Reducer3 1 SCRM
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 39: TPC-DS query89
+7 112 572
+Reducer5 1 NSVL
+Map1 1 DNVR
+Reducer4 1 ATLN
+Map2 4 PHLA HSTN CHCG LA03
+Map6 1 ORLD
+Reducer3 1 SLKC
+Map7 1 SCRM
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 29: TPC-DS query65
+10 113 621
+Map10 1 ORLD
+Map1 4 SCRM CMBR SNAN PHNX
+Reducer4 1 NY54
+Reducer7 1 ATLN
+Map8 1 DLLS
+Map9 1 CLEV
+Map5 1 DLLS
+Map6 4 HSTN SNDG CHCG PTLD
+Reducer3 1 KSCY
+Reducer2 1 SCRM
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 2: TPC-DS query17
+12 114 624
+Reducer5 1 STLS
+Map10 1 NSVL
+Map1 4 PHLA DNVR RLGH STLS
+Reducer4 1 SNAN
+Map11 1 LA03
+Map12 1 SNAN
+Map8 1 CMBR
+Map9 1 NY54
+Map6 3 SCRM NSVL NWOR
+Reducer3 2 SNDG RLGH
+Map7 3 DNVR ORLD DLLS
+Reducer2 1 SLKC
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 5: TPC-DS query20
+6 115 624
+Reducer4 1 WASH
+Map1 3 HSTN KSCY WASH
+Map5 1 NWOR
+Reducer3 1 STLS
+Map6 1 CHCG
+Reducer2 1 WASH
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 25: TPC-DS query55
+5 116 624
+Map1 1 STLS
+Reducer4 1 DNVR
+Map2 4 CMBR NSVL CLEV DNVR
+Map5 1 SNFN
+Reducer3 1 STTL
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 14: TPC-DS query34
+7 117 624
+Map1 4 ORLD RLGH NSVL LA03
+Reducer7 1 ATLN
+Map3 1 STLS
+Map4 1 LA03
+Map5 1 PHLA
+Map6 1 NY54
+Reducer2 1 DLLS
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 14: TPC-DS query34
+7 118 625
+Map1 4 WASH HSTN CLEV SLKC
+Reducer7 1 DLLS
+Map3 1 CLEV
+Map4 1 PHLA
+Map5 1 SCRM
+Map6 1 WASH
+Reducer2 1 PHLA
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 7: TPC-DS query22
+6 119 625
+Map1 1 STLS
+Map4 1 SNAN
+Map5 1 CMBR
+Reducer3 1 NSVL
+Map6 1 STLS
+Reducer2 1 CLEV
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 28: TPC-DS query60
+23 120 625
+Map17 1 CHCG
+Map18 3 CHCG SNFN RLGH
+Map15 1 SLKC
+Map16 1 NY54
+Reducer19 1 PHNX
+Reducer5 1 SLKC
+Map21 1 NSVL
+Reducer20 1 DNVR
+Map10 1 DNVR
+Map1 4 NSVL PTLD STTL PHLA
+Reducer6 1 ORLD
+Map24 1 ATLN
+Map14 1 SNDG
+Reducer13 1 SNAN
+Map11 3 SNDG STTL KSCY
+Reducer12 2 CHCG ATLN
+Map22 1 CLEV
+Map23 1 SCRM
+Map8 1 SNAN
+Map9 1 SNDG
+Reducer3 1 SCRM
+Map7 1 DNVR
+Reducer2 2 SLKC STLS
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 18: TPC-DS query43
+5 121 627
+Map1 1 RLGH
+Reducer4 1 SLKC
+Map2 4 WASH SNAN CMBR NWOR
+Map5 1 ORLD
+Reducer3 1 NWOR
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 9: TPC-DS query26
+7 122 633
+Map1 3 RLGH ORLD NSVL
+Map4 1 CMBR
+Map5 1 SCRM
+Map6 1 STLS
+Reducer3 1 SNFN
+Map7 1 STTL
+Reducer2 1 CHCG
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 25: TPC-DS query55
+5 123 644
+Map1 1 NY54
+Reducer4 1 CLEV
+Map2 4 HSTN NWOR PHLA DNVR
+Map5 1 KSCY
+Reducer3 1 PHNX
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 24: TPC-DS query54
+16 124 644
+Map17 1 NWOR
+Map15 1 CLEV
+Map16 1 NY54
+Reducer5 3 SNDG KSCY SLKC
+Map10 3 SCRM DLLS RLGH
+Reducer4 1 CHCG
+Map1 3 WASH LA03 KSCY
+Reducer7 1 ATLN
+Reducer6 4 PHNX PTLD SNAN HSTN
+Map13 1 HSTN
+Reducer9 1 NSVL
+Map14 4 ORLD PHNX SCRM STTL
+Reducer8 1 ORLD
+Map11 1 ATLN
+Map12 1 HSTN
+Reducer3 2 HSTN ATLN
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 40: TPC-DS query95
+15 125 644
+Map15 1 SLKC
+Map10 2 SNDG SNFN
+Map1 3 LA03 PHNX SLKC
+Reducer4 1 LA03
+Reducer7 5 DNVR ATLN ORLD SLKC DLLS
+Map13 1 SNFN
+Reducer8 3 PHNX NY54 CHCG
+Map14 1 STTL
+Map11 3 SNAN HSTN PHLA
+Reducer12 1 SCRM
+Map9 3 DLLS STLS NSVL
+Map5 3 DNVR KSCY NSVL
+Reducer3 6 STLS STTL CHCG RLGH PHNX SCRM
+Map6 3 CLEV SLKC SCRM
+Reducer2 5 HSTN STTL CLEV SCRM STLS
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 30: TPC-DS query67
+7 126 645
+Map1 4 SLKC STLS SNFN SCRM
+Reducer4 1 CMBR
+Map5 1 NSVL
+Map6 1 DNVR
+Reducer3 1 ATLN
+Map7 1 PHLA
+Reducer2 2 ORLD LA03
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 4: TPC-DS query19
+10 127 645
+Reducer5 1 SCRM
+Map1 1 NY54
+Reducer4 1 SCRM
+Map10 1 CLEV
+Map2 4 CMBR SCRM LA03 STLS
+Reducer6 1 LA03
+Map8 1 PTLD
+Map9 1 DNVR
+Reducer3 1 PHNX
+Map7 1 ATLN
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 40: TPC-DS query95
+15 128 645
+Map15 1 CHCG
+Map10 2 CMBR NWOR
+Map1 3 PHLA RLGH PHNX
+Reducer4 1 RLGH
+Reducer7 5 PHNX ATLN NWOR CMBR KSCY
+Map13 1 NWOR
+Reducer8 3 CHCG STTL WASH
+Map14 1 PHNX
+Map11 3 SCRM NSVL DLLS
+Reducer12 1 PHLA
+Map9 3 SCRM CHCG PHNX
+Map5 3 NWOR HSTN PHNX
+Reducer3 6 DLLS PHNX SLKC NY54 CLEV PTLD
+Map6 3 LA03 SNDG STTL
+Reducer2 5 ATLN RLGH DNVR NWOR CHCG
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 40: TPC-DS query95
+15 129 646
+Map15 1 WASH
+Map10 2 NWOR HSTN
+Map1 3 SCRM WASH CMBR
+Reducer4 1 NSVL
+Reducer7 5 DNVR SLKC ATLN ORLD SNAN
+Map13 1 SNDG
+Reducer8 3 HSTN NSVL SLKC
+Map14 1 NY54
+Map11 3 RLGH CHCG LA03
+Reducer12 1 KSCY
+Map9 3 CMBR PHNX LA03
+Map5 3 NY54 SCRM ATLN
+Reducer3 6 PHNX CHCG SNFN LA03 STLS PHLA
+Map6 3 HSTN SLKC PTLD
+Reducer2 5 LA03 NSVL STTL CHCG SNDG
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 14: TPC-DS query34
+7 130 647
+Map1 4 NY54 LA03 NSVL SNDG
+Reducer7 1 DNVR
+Map3 1 NWOR
+Map4 1 SCRM
+Map5 1 PHNX
+Map6 1 NWOR
+Reducer2 1 STTL
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 5: TPC-DS query20
+6 131 648
+Reducer4 1 NWOR
+Map1 3 KSCY PHNX NWOR
+Map5 1 HSTN
+Reducer3 1 PHNX
+Map6 1 DLLS
+Reducer2 1 SNAN
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 9: TPC-DS query26
+7 132 650
+Map1 3 PHLA SNFN CMBR
+Map4 1 SLKC
+Map5 1 CLEV
+Map6 1 NSVL
+Reducer3 1 NSVL
+Map7 1 CHCG
+Reducer2 1 SNFN
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 21: TPC-DS query50
+8 133 653
+Map1 4 NSVL HSTN ORLD SLKC
+Reducer4 1 PTLD
+Map8 1 NY54
+Map5 3 ORLD LA03 NSVL
+Reducer3 1 PTLD
+Map6 1 DNVR
+Reducer2 1 STLS
+Map7 1 NSVL
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 25: TPC-DS query55
+5 134 654
+Map1 1 STLS
+Reducer4 1 ATLN
+Map2 4 RLGH NWOR STTL SNAN
+Map5 1 ATLN
+Reducer3 1 CHCG
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 35: TPC-DS query76
+11 135 655
+Reducer4 1 WASH
+Map10 3 PHNX CHCG LA03
+Map1 4 WASH CHCG SNAN PHNX
+Map11 1 PTLD
+Map12 1 PTLD
+Map8 1 NWOR
+Map9 1 RLGH
+Map5 1 DLLS
+Reducer3 1 PTLD
+Map6 1 RLGH
+Map7 3 STTL HSTN CLEV
+10
+Map10 Reducer3 500
+Map1 Reducer3 766
+Map11 Map10 833
+Map12 Map10 833
+Map8 Map7 540
+Map9 Map7 540
+Map5 Map1 956
+Reducer3 Reducer4 3
+Map6 Map1 956
+Map7 Reducer3 325
+# 19: TPC-DS query45
+10 136 664
+Reducer5 1 RLGH
+Map10 1 PHNX
+Map1 3 PTLD CHCG PHLA
+Reducer4 1 DNVR
+Map8 1 NWOR
+Map9 1 HSTN
+Map6 1 KSCY
+Reducer3 1 NY54
+Map7 1 CLEV
+Reducer2 1 SCRM
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 4: TPC-DS query19
+10 137 664
+Reducer5 1 ATLN
+Map1 1 DLLS
+Reducer4 1 LA03
+Map10 1 DLLS
+Map2 4 LA03 CLEV STTL ORLD
+Reducer6 1 LA03
+Map8 1 CLEV
+Map9 1 RLGH
+Reducer3 1 DLLS
+Map7 1 CMBR
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 14: TPC-DS query34
+7 138 667
+Map1 4 SNFN SLKC CHCG DNVR
+Reducer7 1 KSCY
+Map3 1 STTL
+Map4 1 STTL
+Map5 1 CLEV
+Map6 1 CLEV
+Reducer2 1 NWOR
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 8: TPC-DS query25
+12 139 669
+Reducer5 1 SCRM
+Map1 4 SCRM SNFN DLLS CLEV
+Map10 1 PHNX
+Reducer4 1 PTLD
+Map11 1 SLKC
+Map12 1 STLS
+Map8 1 DNVR
+Map9 1 WASH
+Reducer3 2 DLLS NY54
+Map6 3 WASH SLKC DLLS
+Reducer2 1 CLEV
+Map7 3 SNAN NWOR CMBR
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 7: TPC-DS query22
+6 140 673
+Map1 1 CHCG
+Map4 1 RLGH
+Map5 1 KSCY
+Reducer3 1 ATLN
+Map6 1 RLGH
+Reducer2 1 HSTN
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 24: TPC-DS query54
+16 141 673
+Map17 1 PHLA
+Map15 1 SNFN
+Map16 1 WASH
+Reducer5 3 NWOR ATLN HSTN
+Map10 3 PTLD SNDG HSTN
+Reducer4 1 NSVL
+Map1 3 DNVR SNAN SNFN
+Reducer7 1 NSVL
+Reducer6 4 CHCG SNDG WASH PHNX
+Map13 1 ORLD
+Reducer9 1 NWOR
+Map14 4 SNDG KSCY SNFN CHCG
+Reducer8 1 CMBR
+Map11 1 CLEV
+Map12 1 DNVR
+Reducer3 2 KSCY PHNX
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 38: TPC-DS query87
+17 142 673
+Map17 1 SNDG
+Map16 1 STLS
+Reducer15 2 RLGH NSVL
+Reducer10 3 CMBR ATLN NY54
+Reducer5 1 SNAN
+Reducer4 4 SLKC SNDG NY54 ORLD
+Map1 4 STTL PHNX PTLD STLS
+Map13 3 DNVR RLGH NSVL
+Reducer14 2 PHLA CLEV
+Reducer9 3 SLKC HSTN KSCY
+Map11 1 RLGH
+Map12 1 PHNX
+Map8 3 NY54 ATLN STLS
+Reducer3 4 SNDG NWOR STTL CLEV
+Map6 1 RLGH
+Reducer2 4 SNDG CMBR LA03 NSVL
+Map7 1 PHLA
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 24: TPC-DS query54
+16 143 679
+Map17 1 PHNX
+Map15 1 DNVR
+Map16 1 SLKC
+Reducer5 3 KSCY SNFN PHLA
+Map10 3 DNVR PHNX HSTN
+Reducer4 1 SNAN
+Map1 3 NY54 ORLD WASH
+Reducer7 1 HSTN
+Reducer6 4 NY54 HSTN LA03 STTL
+Map13 1 CHCG
+Reducer9 1 STTL
+Map14 4 NY54 SLKC STTL HSTN
+Reducer8 1 PHNX
+Map11 1 SNDG
+Map12 1 CHCG
+Reducer3 2 CMBR ORLD
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 19: TPC-DS query45
+10 144 679
+Reducer5 1 PTLD
+Map10 1 SNAN
+Map1 3 STTL WASH DNVR
+Reducer4 1 SNDG
+Map8 1 NY54
+Map9 1 SLKC
+Map6 1 SNAN
+Reducer3 1 ATLN
+Map7 1 ATLN
+Reducer2 1 SLKC
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 39: TPC-DS query89
+7 145 687
+Reducer5 1 CMBR
+Map1 1 SLKC
+Reducer4 1 RLGH
+Map2 4 SCRM SNDG ATLN STLS
+Map6 1 CMBR
+Reducer3 1 STTL
+Map7 1 STLS
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 33: TPC-DS query71
+10 146 688
+Map1 3 KSCY ORLD SCRM
+Map10 1 WASH
+Reducer4 1 HSTN
+Map11 1 NY54
+Map8 4 RLGH SCRM LA03 NSVL
+Map9 1 HSTN
+Map5 1 SLKC
+Map6 3 SNDG HSTN DNVR
+Reducer3 2 CMBR ORLD
+Map7 1 CMBR
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 31: TPC-DS query68
+12 147 688
+Reducer5 1 NWOR
+Map10 1 STTL
+Reducer4 1 SNFN
+Map1 4 CMBR LA03 SNAN ORLD
+Reducer6 1 CHCG
+Map11 1 DLLS
+Map12 1 HSTN
+Map8 1 LA03
+Map9 1 PTLD
+Reducer3 1 NY54
+Map7 1 NSVL
+Reducer2 1 SCRM
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 34: TPC-DS query73
+7 148 690
+Map1 4 CLEV NY54 NWOR PHLA
+Reducer7 1 ATLN
+Map3 1 ATLN
+Map4 1 PHLA
+Map5 1 CHCG
+Map6 1 CHCG
+Reducer2 1 SCRM
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 27: TPC-DS query58
+20 149 691
+Reducer18 2 STTL CMBR
+Map17 3 STTL WASH CMBR
+Map15 1 SLKC
+Map16 1 NSVL
+Map19 1 ATLN
+Reducer5 4 WASH ORLD RLGH CMBR
+Map20 1 DLLS
+Map1 1 STLS
+Reducer4 4 RLGH SNAN SNFN NWOR
+Map10 1 KSCY
+Map2 1 SNFN
+Map3 4 SLKC ORLD CHCG NSVL
+Reducer6 1 CLEV
+Map13 1 WASH
+Map14 1 STLS
+Map11 3 NSVL SCRM DLLS
+Reducer12 3 STLS SNAN NWOR
+Map8 1 SNFN
+Map9 1 ATLN
+Map7 1 DLLS
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 34: TPC-DS query73
+7 150 693
+Map1 4 NSVL SLKC CLEV ORLD
+Reducer7 1 RLGH
+Map3 1 PTLD
+Map4 1 STTL
+Map5 1 DLLS
+Map6 1 KSCY
+Reducer2 1 CHCG
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 25: TPC-DS query55
+5 151 694
+Map1 1 ATLN
+Reducer4 1 DNVR
+Map2 4 KSCY DNVR NY54 CHCG
+Map5 1 PHLA
+Reducer3 1 SNDG
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 34: TPC-DS query73
+7 152 696
+Map1 4 SCRM DLLS CHCG STLS
+Reducer7 1 STTL
+Map3 1 DLLS
+Map4 1 CLEV
+Map5 1 NWOR
+Map6 1 HSTN
+Reducer2 1 SLKC
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 5: TPC-DS query20
+6 153 697
+Reducer4 1 LA03
+Map1 3 DNVR CLEV DLLS
+Map5 1 CLEV
+Reducer3 1 SNAN
+Map6 1 SLKC
+Reducer2 1 NSVL
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 15: TPC-DS query3
+5 154 699
+Reducer4 1 SLKC
+Map1 1 PTLD
+Map2 4 ATLN DLLS NY54 WASH
+Map5 1 CHCG
+Reducer3 1 SNDG
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 34: TPC-DS query73
+7 155 699
+Map1 4 RLGH PTLD LA03 SNDG
+Reducer7 1 NWOR
+Map3 1 ORLD
+Map4 1 PTLD
+Map5 1 SNDG
+Map6 1 DNVR
+Reducer2 1 NWOR
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 37: TPC-DS query7
+7 156 700
+Map1 4 SNFN SCRM PTLD WASH
+Map4 1 PTLD
+Map5 1 HSTN
+Map6 1 ATLN
+Reducer3 1 HSTN
+Map7 1 PHLA
+Reducer2 1 PHNX
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 40: TPC-DS query95
+15 157 701
+Map15 1 DLLS
+Map10 2 WASH SLKC
+Map1 3 NY54 PHLA CLEV
+Reducer4 1 DNVR
+Reducer7 5 CHCG PTLD NY54 DLLS KSCY
+Map13 1 SNDG
+Reducer8 3 PTLD SNFN STLS
+Map14 1 SNDG
+Map11 3 SNAN DNVR SNFN
+Reducer12 1 PHLA
+Map9 3 KSCY CHCG STTL
+Map5 3 PHNX NSVL NY54
+Reducer3 6 NSVL DNVR PTLD NWOR SNFN KSCY
+Map6 3 SNDG NY54 RLGH
+Reducer2 5 ATLN SNDG STLS WASH SNAN
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 14: TPC-DS query34
+7 158 701
+Map1 4 SNFN NWOR SCRM PTLD
+Reducer7 1 NWOR
+Map3 1 DLLS
+Map4 1 ORLD
+Map5 1 SNAN
+Map6 1 CHCG
+Reducer2 1 NY54
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 33: TPC-DS query71
+10 159 704
+Map1 3 STLS ATLN LA03
+Map10 1 PHNX
+Reducer4 1 DNVR
+Map11 1 PTLD
+Map8 4 NWOR DNVR KSCY SLKC
+Map9 1 NSVL
+Map5 1 LA03
+Map6 3 SNDG SNFN CHCG
+Reducer3 2 ATLN SNFN
+Map7 1 DNVR
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 24: TPC-DS query54
+16 160 709
+Map17 1 KSCY
+Map15 1 CLEV
+Map16 1 SCRM
+Reducer5 3 PTLD PHNX SNAN
+Map10 3 SCRM NY54 PHNX
+Reducer4 1 CMBR
+Map1 3 PHLA DNVR CHCG
+Reducer7 1 SNAN
+Reducer6 4 ATLN PHLA SNFN PHNX
+Map13 1 PHLA
+Reducer9 1 CHCG
+Map14 4 NWOR WASH RLGH SLKC
+Reducer8 1 CLEV
+Map11 1 DNVR
+Map12 1 NY54
+Reducer3 2 PTLD ORLD
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 18: TPC-DS query43
+5 161 709
+Map1 1 CLEV
+Reducer4 1 SNAN
+Map2 4 PTLD NWOR SNFN ORLD
+Map5 1 WASH
+Reducer3 1 SLKC
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 16: TPC-DS query40
+8 162 713
+Reducer4 1 NY54
+Map1 3 PHNX DLLS NSVL
+Map8 1 SNDG
+Map5 3 STTL CLEV CHCG
+Map6 1 KSCY
+Reducer3 1 LA03
+Map7 1 CMBR
+Reducer2 2 STLS LA03
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 13: TPC-DS query32
+8 163 715
+Map1 3 STLS WASH KSCY
+Reducer6 3 NSVL DNVR ORLD
+Map8 1 SNFN
+Map4 1 KSCY
+Map5 3 WASH CMBR SNAN
+Reducer3 1 KSCY
+Reducer2 4 CMBR WASH SCRM NY54
+Map7 1 DNVR
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 19: TPC-DS query45
+10 164 716
+Reducer5 1 NWOR
+Map10 1 LA03
+Map1 3 PTLD STTL NSVL
+Reducer4 1 DLLS
+Map8 1 STLS
+Map9 1 HSTN
+Map6 1 KSCY
+Reducer3 1 STLS
+Map7 1 ATLN
+Reducer2 1 DNVR
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 9: TPC-DS query26
+7 165 725
+Map1 3 HSTN SNFN WASH
+Map4 1 HSTN
+Map5 1 HSTN
+Map6 1 SCRM
+Reducer3 1 NY54
+Map7 1 SLKC
+Reducer2 1 PHNX
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 31: TPC-DS query68
+12 166 728
+Reducer5 1 CLEV
+Map10 1 STLS
+Reducer4 1 DLLS
+Map1 4 HSTN ATLN LA03 CMBR
+Reducer6 1 CHCG
+Map11 1 STTL
+Map12 1 NY54
+Map8 1 KSCY
+Map9 1 DLLS
+Reducer3 1 STTL
+Map7 1 LA03
+Reducer2 1 SNDG
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 1: TPC-DS query15
+8 167 729
+Reducer5 1 HSTN
+Map1 3 PHLA CMBR KSCY
+Reducer4 1 CLEV
+Map8 1 CMBR
+Map6 1 PHNX
+Reducer3 3 LA03 CHCG PHLA
+Map7 1 PHLA
+Reducer2 3 SNAN PHNX WASH
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 32: TPC-DS query70
+12 168 729
+Reducer5 1 RLGH
+Reducer10 1 PTLD
+Reducer4 6 CHCG RLGH DLLS WASH ORLD SLKC
+Map1 4 PHLA PHNX CLEV CMBR
+Reducer9 1 NWOR
+Map11 1 ORLD
+Map12 1 CMBR
+Map8 4 CLEV CMBR PHNX RLGH
+Reducer3 11 PTLD SLKC NY54 SNFN SNAN KSCY RLGH LA03 WASH NWOR STTL
+Map6 1 PHLA
+Reducer2 4 PHNX STLS NSVL DLLS
+Map7 1 ATLN
+11
+Reducer10 Reducer2 443
+Reducer4 Reducer5 76
+Map1 Reducer2 10850
+Reducer9 Reducer10 6
+Map11 Map8 5212
+Map12 Map8 5212
+Map8 Reducer9 10427
+Reducer3 Reducer4 227
+Map6 Map1 5675
+Reducer2 Reducer3 2364
+Map7 Map1 5675
+# 36: TPC-DS query79
+8 169 739
+Map1 4 PHNX NSVL ORLD STLS
+Reducer4 1 KSCY
+Map8 1 DLLS
+Map5 1 NWOR
+Map6 1 SNFN
+Reducer3 1 PHNX
+Map7 1 WASH
+Reducer2 1 CMBR
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 37: TPC-DS query7
+7 170 739
+Map1 4 NY54 PTLD CMBR HSTN
+Map4 1 SNAN
+Map5 1 PTLD
+Map6 1 SCRM
+Reducer3 1 NWOR
+Map7 1 ATLN
+Reducer2 1 SNAN
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 39: TPC-DS query89
+7 171 739
+Reducer5 1 ORLD
+Map1 1 SNDG
+Reducer4 1 PHNX
+Map2 4 NY54 KSCY CMBR CHCG
+Map6 1 PHLA
+Reducer3 1 NY54
+Map7 1 SNDG
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 18: TPC-DS query43
+5 172 739
+Map1 1 ATLN
+Reducer4 1 ORLD
+Map2 4 CMBR ATLN HSTN NSVL
+Map5 1 CLEV
+Reducer3 1 CMBR
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 0: TPC-DS query12
+6 173 739
+Reducer4 1 ORLD
+Map1 3 SNAN CHCG SNDG
+Map5 1 STTL
+Reducer3 1 SNAN
+Map6 1 SCRM
+Reducer2 1 SNFN
+5
+Map1 Reducer2 793
+Map5 Map1 396
+Reducer3 Reducer4 1
+Map6 Map1 396
+Reducer2 Reducer3 1
+# 15: TPC-DS query3
+5 174 743
+Reducer4 1 DLLS
+Map1 1 CMBR
+Map2 4 STTL PHNX NY54 SLKC
+Map5 1 SLKC
+Reducer3 1 DLLS
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 15: TPC-DS query3
+5 175 763
+Reducer4 1 SNAN
+Map1 1 NWOR
+Map2 4 KSCY CLEV NSVL STTL
+Map5 1 CHCG
+Reducer3 1 ORLD
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 26: TPC-DS query56
+23 176 764
+Map17 1 PHLA
+Map18 3 ORLD STTL NSVL
+Map15 1 SNDG
+Map16 1 PHNX
+Reducer19 1 NSVL
+Reducer5 1 NSVL
+Map10 1 PHNX
+Map1 4 DNVR SNDG NWOR HSTN
+Reducer20 1 DLLS
+Map21 1 PHLA
+Reducer6 1 WASH
+Map24 1 HSTN
+Reducer13 1 ATLN
+Map14 1 PTLD
+Reducer12 2 PHLA CMBR
+Map11 3 PHLA ORLD RLGH
+Map22 1 STTL
+Map23 1 NWOR
+Map8 1 NWOR
+Map9 1 PTLD
+Reducer3 1 RLGH
+Map7 1 SNFN
+Reducer2 2 RLGH WASH
+22
+Map17 Reducer12 6
+Map18 Reducer19 3931
+Map15 Reducer12 6
+Map16 Reducer12 6
+Reducer19 Reducer20 19
+Reducer5 Reducer6 1
+Map10 Reducer2 6
+Map1 Reducer2 9505
+Reducer20 Reducer5 1
+Map21 Map18 7844
+Map24 Reducer19 3
+Reducer13 Reducer5 1
+Map14 Map11 14918
+Reducer12 Reducer13 37
+Map11 Reducer12 7477
+Map22 Reducer19 3
+Map23 Reducer19 3
+Map8 Reducer2 7
+Map9 Reducer2 6
+Reducer3 Reducer5 1
+Map7 Map1 16588
+Reducer2 Reducer3 48
+# 10: TPC-DS query27
+7 177 789
+Map1 4 CMBR PHLA CLEV NY54
+Map4 1 WASH
+Map5 1 RLGH
+Map6 1 WASH
+Reducer3 1 SNDG
+Map7 1 SLKC
+Reducer2 1 DNVR
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 30: TPC-DS query67
+7 178 793
+Map1 4 PHNX NWOR KSCY SCRM
+Reducer4 1 SNAN
+Map5 1 ORLD
+Map6 1 LA03
+Reducer3 1 ORLD
+Map7 1 LA03
+Reducer2 2 ATLN NSVL
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 16: TPC-DS query40
+8 179 798
+Reducer4 1 NSVL
+Map1 3 SNFN CHCG NSVL
+Map8 1 PTLD
+Map5 3 STLS SLKC NY54
+Map6 1 PHLA
+Reducer3 1 NY54
+Map7 1 DLLS
+Reducer2 2 NSVL NWOR
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 5: TPC-DS query20
+6 180 806
+Reducer4 1 ATLN
+Map1 3 WASH NY54 STLS
+Map5 1 RLGH
+Reducer3 1 ORLD
+Map6 1 ORLD
+Reducer2 1 NWOR
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 4: TPC-DS query19
+10 181 829
+Reducer5 1 SCRM
+Map1 1 CLEV
+Reducer4 1 WASH
+Map10 1 ORLD
+Map2 4 RLGH STTL PHNX NWOR
+Reducer6 1 STTL
+Map8 1 SCRM
+Map9 1 DLLS
+Reducer3 1 SNDG
+Map7 1 STTL
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 6: TPC-DS query21
+6 182 833
+Map1 1 ATLN
+Map4 1 LA03
+Map5 1 STLS
+Reducer3 1 NWOR
+Map6 1 NSVL
+Reducer2 1 SCRM
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 24: TPC-DS query54
+16 183 836
+Map17 1 NWOR
+Map15 1 ORLD
+Map16 1 PTLD
+Reducer5 3 CHCG PHLA STLS
+Map10 3 ATLN CLEV SLKC
+Reducer4 1 PHLA
+Map1 3 DLLS SLKC SNDG
+Reducer7 1 ATLN
+Reducer6 4 WASH LA03 SCRM DNVR
+Map13 1 CMBR
+Reducer9 1 STTL
+Map14 4 ORLD DLLS SCRM CLEV
+Reducer8 1 SNFN
+Map11 1 PHNX
+Map12 1 PTLD
+Reducer3 2 CHCG ORLD
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 19: TPC-DS query45
+10 184 838
+Reducer5 1 STLS
+Map10 1 SLKC
+Map1 3 PTLD LA03 SNFN
+Reducer4 1 ATLN
+Map8 1 DNVR
+Map9 1 PHLA
+Map6 1 CMBR
+Reducer3 1 PHNX
+Map7 1 SLKC
+Reducer2 1 CHCG
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 10: TPC-DS query27
+7 185 855
+Map1 4 LA03 NY54 STLS WASH
+Map4 1 PHLA
+Map5 1 PTLD
+Map6 1 NSVL
+Reducer3 1 SLKC
+Map7 1 DLLS
+Reducer2 1 RLGH
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 2: TPC-DS query17
+12 186 860
+Reducer5 1 SNFN
+Map10 1 PHLA
+Map1 4 HSTN RLGH NSVL LA03
+Reducer4 1 KSCY
+Map11 1 KSCY
+Map12 1 NY54
+Map8 1 NWOR
+Map9 1 KSCY
+Map6 3 DNVR ATLN NSVL
+Reducer3 2 DNVR KSCY
+Map7 3 CHCG SLKC PHNX
+Reducer2 1 WASH
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 36: TPC-DS query79
+8 187 865
+Map1 4 HSTN RLGH CHCG STTL
+Reducer4 1 STLS
+Map8 1 SNFN
+Map5 1 PHLA
+Map6 1 RLGH
+Reducer3 1 SNFN
+Map7 1 WASH
+Reducer2 1 ORLD
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 13: TPC-DS query32
+8 188 871
+Map1 3 NWOR NSVL DNVR
+Reducer6 3 LA03 CMBR CHCG
+Map8 1 NSVL
+Map4 1 RLGH
+Map5 3 SLKC LA03 CMBR
+Reducer3 1 RLGH
+Reducer2 4 PTLD CLEV STLS SNFN
+Map7 1 CMBR
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 21: TPC-DS query50
+8 189 882
+Map1 4 STTL PHNX LA03 SNAN
+Reducer4 1 CLEV
+Map8 1 LA03
+Map5 3 CHCG CLEV CMBR
+Reducer3 1 NSVL
+Map6 1 CMBR
+Reducer2 1 SNDG
+Map7 1 WASH
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 21: TPC-DS query50
+8 190 883
+Map1 4 NSVL CLEV NY54 PHLA
+Reducer4 1 PTLD
+Map8 1 SNAN
+Map5 3 SNDG DNVR NSVL
+Reducer3 1 NY54
+Map6 1 DLLS
+Reducer2 1 WASH
+Map7 1 STLS
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 9: TPC-DS query26
+7 191 884
+Map1 3 SNDG SCRM SLKC
+Map4 1 STLS
+Map5 1 RLGH
+Map6 1 PTLD
+Reducer3 1 HSTN
+Map7 1 CLEV
+Reducer2 1 HSTN
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 20: TPC-DS query46
+12 192 884
+Reducer5 1 SNDG
+Map10 1 WASH
+Map1 4 NWOR SLKC KSCY SNAN
+Reducer4 1 STLS
+Reducer6 1 RLGH
+Map11 1 PHNX
+Map12 1 NWOR
+Map8 1 NY54
+Map9 1 NY54
+Reducer3 1 KSCY
+Reducer2 1 STTL
+Map7 1 CLEV
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 14: TPC-DS query34
+7 193 884
+Map1 4 SNFN WASH DNVR NWOR
+Reducer7 1 NSVL
+Map3 1 LA03
+Map4 1 KSCY
+Map5 1 NY54
+Map6 1 DNVR
+Reducer2 1 SNAN
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 20: TPC-DS query46
+12 194 886
+Reducer5 1 SCRM
+Map10 1 DNVR
+Map1 4 WASH PHNX NY54 STLS
+Reducer4 1 PHLA
+Reducer6 1 CMBR
+Map11 1 RLGH
+Map12 1 PTLD
+Map8 1 SNDG
+Map9 1 RLGH
+Reducer3 1 DNVR
+Reducer2 1 RLGH
+Map7 1 STLS
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 23: TPC-DS query52
+5 195 886
+Map1 1 WASH
+Reducer4 1 SNDG
+Map2 4 HSTN ATLN RLGH WASH
+Map5 1 RLGH
+Reducer3 1 SCRM
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 37: TPC-DS query7
+7 196 909
+Map1 4 LA03 STTL RLGH ORLD
+Map4 1 PHNX
+Map5 1 RLGH
+Map6 1 WASH
+Reducer3 1 SNDG
+Map7 1 ATLN
+Reducer2 1 SLKC
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 9: TPC-DS query26
+7 197 915
+Map1 3 WASH LA03 HSTN
+Map4 1 NWOR
+Map5 1 WASH
+Map6 1 CLEV
+Reducer3 1 DNVR
+Map7 1 LA03
+Reducer2 1 SCRM
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 9: TPC-DS query26
+7 198 925
+Map1 3 SNAN CLEV DNVR
+Map4 1 WASH
+Map5 1 STLS
+Map6 1 SCRM
+Reducer3 1 NY54
+Map7 1 HSTN
+Reducer2 1 ORLD
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 36: TPC-DS query79
+8 199 927
+Map1 4 SNAN NY54 CHCG CMBR
+Reducer4 1 CHCG
+Map8 1 SNAN
+Map5 1 RLGH
+Map6 1 PTLD
+Reducer3 1 PHNX
+Map7 1 WASH
+Reducer2 1 RLGH
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 9: TPC-DS query26
+7 200 928
+Map1 3 DLLS PTLD SCRM
+Map4 1 DLLS
+Map5 1 NWOR
+Map6 1 NSVL
+Reducer3 1 NSVL
+Map7 1 WASH
+Reducer2 1 DNVR
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 20: TPC-DS query46
+12 201 930
+Reducer5 1 HSTN
+Map10 1 CLEV
+Map1 4 SLKC NY54 PTLD SCRM
+Reducer4 1 STTL
+Reducer6 1 SNAN
+Map11 1 ATLN
+Map12 1 SNAN
+Map8 1 SLKC
+Map9 1 DLLS
+Reducer3 1 KSCY
+Reducer2 1 NSVL
+Map7 1 CMBR
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 38: TPC-DS query87
+17 202 932
+Map17 1 KSCY
+Map16 1 DNVR
+Reducer15 2 STTL DLLS
+Reducer10 3 STTL SLKC CLEV
+Reducer5 1 NSVL
+Reducer4 4 DLLS PTLD LA03 STLS
+Map1 4 PHNX STLS SCRM DNVR
+Map13 3 PHNX PTLD NY54
+Reducer14 2 NWOR LA03
+Reducer9 3 NY54 WASH NWOR
+Map11 1 DLLS
+Map12 1 STLS
+Map8 3 NWOR SLKC CHCG
+Reducer3 4 RLGH LA03 WASH HSTN
+Map6 1 LA03
+Reducer2 4 STLS NSVL KSCY SNAN
+Map7 1 ATLN
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 7: TPC-DS query22
+6 203 932
+Map1 1 CLEV
+Map4 1 DNVR
+Map5 1 SCRM
+Reducer3 1 PTLD
+Map6 1 RLGH
+Reducer2 1 PHLA
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 18: TPC-DS query43
+5 204 937
+Map1 1 SNDG
+Reducer4 1 SLKC
+Map2 4 KSCY CLEV SLKC DNVR
+Map5 1 STTL
+Reducer3 1 LA03
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 13: TPC-DS query32
+8 205 939
+Map1 3 CHCG ATLN SCRM
+Reducer6 3 ATLN PTLD CHCG
+Map8 1 DLLS
+Map4 1 HSTN
+Map5 3 KSCY STTL NWOR
+Reducer3 1 ATLN
+Reducer2 4 SNAN CLEV SLKC SNDG
+Map7 1 PHNX
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 2: TPC-DS query17
+12 206 943
+Reducer5 1 NSVL
+Map10 1 PHLA
+Map1 4 SCRM DNVR SNAN NSVL
+Reducer4 1 STLS
+Map11 1 WASH
+Map12 1 SLKC
+Map8 1 HSTN
+Map9 1 NSVL
+Map6 3 DLLS LA03 NSVL
+Reducer3 2 SLKC ATLN
+Map7 3 STTL RLGH KSCY
+Reducer2 1 CLEV
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 23: TPC-DS query52
+5 207 944
+Map1 1 DNVR
+Reducer4 1 PTLD
+Map2 4 CMBR ATLN STTL RLGH
+Map5 1 CHCG
+Reducer3 1 NY54
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 0: TPC-DS query12
+6 208 950
+Reducer4 1 DLLS
+Map1 3 NSVL SNAN CMBR
+Map5 1 NSVL
+Reducer3 1 SNFN
+Map6 1 STLS
+Reducer2 1 CMBR
+5
+Map1 Reducer2 793
+Map5 Map1 396
+Reducer3 Reducer4 1
+Map6 Map1 396
+Reducer2 Reducer3 1
+# 12: TPC-DS query31
+32 209 950
+Reducer29 2 SLKC CHCG
+Map17 1 PTLD
+Map18 3 ATLN WASH SCRM
+Map16 1 KSCY
+Map1 4 RLGH SLKC DLLS ORLD
+Reducer20 1 SCRM
+Map21 1 SNFN
+Reducer25 1 PTLD
+Reducer24 2 NSVL CLEV
+Map22 1 SNAN
+Map23 3 SNAN DLLS SNDG
+Map8 4 SNDG LA03 CLEV NSVL
+Map6 1 HSTN
+Map7 1 STLS
+Map28 3 LA03 PHNX KSCY
+Map26 1 ATLN
+Map27 1 SNAN
+Reducer15 1 ORLD
+Reducer19 2 NSVL CLEV
+Reducer5 1 DLLS
+Map31 1 WASH
+Reducer10 1 LA03
+Reducer4 2 CMBR ATLN
+Map32 1 DNVR
+Reducer30 1 NWOR
+Map13 4 NWOR SNDG DNVR PHNX
+Reducer9 4 ORLD SLKC CHCG HSTN
+Reducer14 4 STLS PHNX DNVR NY54
+Map11 1 SNFN
+Map12 1 SLKC
+Reducer3 1 PTLD
+Reducer2 4 SNDG SCRM CMBR ORLD
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 37: TPC-DS query7
+7 210 961
+Map1 4 SNDG PHNX NWOR ATLN
+Map4 1 SNFN
+Map5 1 ATLN
+Map6 1 PHNX
+Reducer3 1 WASH
+Map7 1 HSTN
+Reducer2 1 DNVR
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 8: TPC-DS query25
+12 211 974
+Reducer5 1 SCRM
+Map1 4 PHLA DNVR CHCG SNFN
+Map10 1 WASH
+Reducer4 1 PHLA
+Map11 1 CMBR
+Map12 1 RLGH
+Map8 1 NWOR
+Map9 1 PHLA
+Reducer3 2 SNDG SLKC
+Map6 3 SNDG STTL SLKC
+Reducer2 1 HSTN
+Map7 3 NY54 STTL ORLD
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 24: TPC-DS query54
+16 212 975
+Map17 1 DNVR
+Map15 1 SNFN
+Map16 1 STLS
+Reducer5 3 SCRM PHNX LA03
+Map10 3 PHLA NY54 DLLS
+Reducer4 1 LA03
+Map1 3 PHNX NY54 KSCY
+Reducer7 1 PTLD
+Reducer6 4 DLLS SNDG PTLD LA03
+Map13 1 RLGH
+Reducer9 1 CHCG
+Map14 4 SNDG DLLS ORLD SNFN
+Reducer8 1 PHLA
+Map11 1 PHNX
+Map12 1 LA03
+Reducer3 2 CHCG SNDG
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 11: TPC-DS query29
+12 213 979
+Reducer5 1 CHCG
+Map10 1 PHNX
+Map1 4 CHCG STTL NSVL LA03
+Reducer4 1 SNDG
+Map11 1 SLKC
+Map12 1 CLEV
+Map8 1 STLS
+Map9 1 ATLN
+Map6 3 SNAN STTL CHCG
+Reducer3 2 RLGH PHNX
+Map7 3 SNAN DLLS ORLD
+Reducer2 1 CMBR
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 1: TPC-DS query15
+8 214 981
+Reducer5 1 CMBR
+Map1 3 HSTN SCRM SNFN
+Reducer4 1 SNDG
+Map8 1 DLLS
+Map6 1 SNDG
+Reducer3 3 SCRM SLKC KSCY
+Map7 1 PHNX
+Reducer2 3 NY54 SLKC SNDG
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 38: TPC-DS query87
+17 215 982
+Map17 1 WASH
+Map16 1 SLKC
+Reducer15 2 DLLS RLGH
+Reducer10 3 STTL SCRM NY54
+Reducer5 1 SNFN
+Reducer4 4 STLS ATLN HSTN KSCY
+Map1 4 STTL WASH SLKC SCRM
+Map13 3 DNVR LA03 SLKC
+Reducer14 2 SNDG CLEV
+Reducer9 3 SLKC ATLN KSCY
+Map11 1 DLLS
+Map12 1 SCRM
+Map8 3 PHNX ORLD SNDG
+Reducer3 4 NWOR NSVL ATLN SCRM
+Map6 1 DLLS
+Reducer2 4 SNAN CHCG KSCY ATLN
+Map7 1 CMBR
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 5: TPC-DS query20
+6 216 982
+Reducer4 1 WASH
+Map1 3 DNVR ATLN KSCY
+Map5 1 STTL
+Reducer3 1 KSCY
+Map6 1 SNDG
+Reducer2 1 SNFN
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 33: TPC-DS query71
+10 217 986
+Map1 3 ORLD SLKC KSCY
+Map10 1 PHNX
+Reducer4 1 PHLA
+Map11 1 SNAN
+Map8 4 SLKC CMBR LA03 NY54
+Map9 1 STLS
+Map5 1 CMBR
+Map6 3 ATLN SCRM STTL
+Reducer3 2 CLEV DLLS
+Map7 1 DLLS
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 3: TPC-DS query18
+13 218 991
+Reducer5 1 SLKC
+Reducer4 1 STTL
+Map1 3 CMBR NSVL SNFN
+Map10 1 SNFN
+Reducer7 1 STLS
+Reducer6 1 NY54
+Map13 1 CHCG
+Map11 1 DLLS
+Map12 1 STLS
+Map8 1 SNDG
+Map9 1 STLS
+Reducer3 1 RLGH
+Reducer2 1 RLGH
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 11: TPC-DS query29
+12 219 995
+Reducer5 1 SLKC
+Map10 1 ORLD
+Map1 4 DNVR STTL DLLS SLKC
+Reducer4 1 CMBR
+Map11 1 DLLS
+Map12 1 ATLN
+Map8 1 PHLA
+Map9 1 DNVR
+Map6 3 NSVL NY54 STLS
+Reducer3 2 SNAN PHNX
+Map7 3 STTL SLKC SNDG
+Reducer2 1 SNFN
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 28: TPC-DS query60
+23 220 998
+Map17 1 KSCY
+Map18 3 CHCG STLS SNFN
+Map15 1 NSVL
+Map16 1 PHNX
+Reducer19 1 KSCY
+Reducer5 1 DLLS
+Map21 1 DNVR
+Reducer20 1 NSVL
+Map10 1 RLGH
+Map1 4 LA03 CMBR KSCY NSVL
+Reducer6 1 ORLD
+Map24 1 ORLD
+Map14 1 RLGH
+Reducer13 1 SNAN
+Map11 3 DNVR CMBR DLLS
+Reducer12 2 DNVR NWOR
+Map22 1 STTL
+Map23 1 RLGH
+Map8 1 HSTN
+Map9 1 SCRM
+Reducer3 1 RLGH
+Map7 1 LA03
+Reducer2 2 RLGH CMBR
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 2: TPC-DS query17
+12 221 1007
+Reducer5 1 CHCG
+Map10 1 DNVR
+Map1 4 DLLS ORLD PTLD SCRM
+Reducer4 1 NY54
+Map11 1 CMBR
+Map12 1 ATLN
+Map8 1 PHNX
+Map9 1 STLS
+Map6 3 ATLN SNAN STLS
+Reducer3 2 SLKC SNDG
+Map7 3 CHCG CMBR NSVL
+Reducer2 1 NSVL
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 40: TPC-DS query95
+15 222 1020
+Map15 1 ATLN
+Map10 2 DLLS HSTN
+Map1 3 DLLS STLS CMBR
+Reducer4 1 CMBR
+Reducer7 5 PHLA NWOR CMBR ORLD NSVL
+Map13 1 WASH
+Reducer8 3 CLEV PTLD SNFN
+Map14 1 NWOR
+Map11 3 STLS SLKC KSCY
+Reducer12 1 DNVR
+Map9 3 NY54 SLKC DNVR
+Map5 3 STLS RLGH PTLD
+Reducer3 6 DNVR NY54 ATLN SNFN STLS ORLD
+Map6 3 CMBR STTL HSTN
+Reducer2 5 SCRM WASH LA03 PTLD SNDG
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 30: TPC-DS query67
+7 223 1027
+Map1 4 WASH STTL ORLD DNVR
+Reducer4 1 STLS
+Map5 1 ATLN
+Map6 1 STLS
+Reducer3 1 WASH
+Map7 1 STTL
+Reducer2 2 LA03 STLS
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 8: TPC-DS query25
+12 224 1031
+Reducer5 1 STLS
+Map1 4 SLKC RLGH STTL STLS
+Map10 1 DLLS
+Reducer4 1 NSVL
+Map11 1 PHNX
+Map12 1 PHLA
+Map8 1 CMBR
+Map9 1 WASH
+Reducer3 2 PTLD NWOR
+Map6 3 NSVL SNFN CLEV
+Reducer2 1 CLEV
+Map7 3 SNFN DLLS PHLA
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 13: TPC-DS query32
+8 225 1035
+Map1 3 NWOR DLLS CMBR
+Reducer6 3 ATLN NWOR STLS
+Map8 1 STLS
+Map4 1 ATLN
+Map5 3 CMBR ORLD SLKC
+Reducer3 1 ATLN
+Reducer2 4 WASH NWOR STTL CMBR
+Map7 1 SNFN
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 17: TPC-DS query42
+5 226 1048
+Map1 1 ORLD
+Reducer4 1 SLKC
+Map2 4 LA03 RLGH ORLD CLEV
+Map5 1 SNFN
+Reducer3 1 NSVL
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 26: TPC-DS query56
+23 227 1051
+Map17 1 NY54
+Map18 3 NWOR RLGH ATLN
+Map15 1 STLS
+Map16 1 SLKC
+Reducer19 1 ATLN
+Reducer5 1 SLKC
+Map10 1 SNFN
+Map1 4 PHNX RLGH LA03 PTLD
+Reducer20 1 PTLD
+Map21 1 CLEV
+Reducer6 1 ATLN
+Map24 1 RLGH
+Reducer13 1 STTL
+Map14 1 SNFN
+Reducer12 2 PHLA DNVR
+Map11 3 PHNX SNDG STLS
+Map22 1 CLEV
+Map23 1 STLS
+Map8 1 WASH
+Map9 1 CHCG
+Reducer3 1 STTL
+Map7 1 DLLS
+Reducer2 2 WASH SNDG
+22
+Map17 Reducer12 6
+Map18 Reducer19 3931
+Map15 Reducer12 6
+Map16 Reducer12 6
+Reducer19 Reducer20 19
+Reducer5 Reducer6 1
+Map10 Reducer2 6
+Map1 Reducer2 9505
+Reducer20 Reducer5 1
+Map21 Map18 7844
+Map24 Reducer19 3
+Reducer13 Reducer5 1
+Map14 Map11 14918
+Reducer12 Reducer13 37
+Map11 Reducer12 7477
+Map22 Reducer19 3
+Map23 Reducer19 3
+Map8 Reducer2 7
+Map9 Reducer2 6
+Reducer3 Reducer5 1
+Map7 Map1 16588
+Reducer2 Reducer3 48
+# 35: TPC-DS query76
+11 228 1057
+Reducer4 1 PTLD
+Map10 3 STTL SLKC SNAN
+Map1 4 PHLA CMBR ATLN DLLS
+Map11 1 STLS
+Map12 1 NWOR
+Map8 1 SNAN
+Map9 1 STLS
+Map5 1 HSTN
+Reducer3 1 SNFN
+Map6 1 SNDG
+Map7 3 SNAN DLLS NSVL
+10
+Map10 Reducer3 500
+Map1 Reducer3 766
+Map11 Map10 833
+Map12 Map10 833
+Map8 Map7 540
+Map9 Map7 540
+Map5 Map1 956
+Reducer3 Reducer4 3
+Map6 Map1 956
+Map7 Reducer3 325
+# 23: TPC-DS query52
+5 229 1064
+Map1 1 WASH
+Reducer4 1 CHCG
+Map2 4 STLS LA03 CLEV SLKC
+Map5 1 PHLA
+Reducer3 1 DNVR
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 31: TPC-DS query68
+12 230 1064
+Reducer5 1 NY54
+Map10 1 STLS
+Reducer4 1 RLGH
+Map1 4 STTL KSCY DLLS CMBR
+Reducer6 1 RLGH
+Map11 1 LA03
+Map12 1 SNFN
+Map8 1 STTL
+Map9 1 SNDG
+Reducer3 1 HSTN
+Map7 1 CMBR
+Reducer2 1 CLEV
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 5: TPC-DS query20
+6 231 1065
+Reducer4 1 PTLD
+Map1 3 ATLN HSTN KSCY
+Map5 1 NWOR
+Reducer3 1 RLGH
+Map6 1 ORLD
+Reducer2 1 DNVR
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 12: TPC-DS query31
+32 232 1066
+Reducer29 2 DNVR ORLD
+Map17 1 WASH
+Map18 3 PTLD LA03 HSTN
+Map16 1 WASH
+Map1 4 PHLA ORLD NWOR KSCY
+Reducer20 1 DNVR
+Map21 1 SLKC
+Reducer25 1 KSCY
+Reducer24 2 NY54 STLS
+Map22 1 CMBR
+Map23 3 STTL DLLS NY54
+Map8 4 NY54 NSVL DNVR ATLN
+Map6 1 ORLD
+Map7 1 PHNX
+Map28 3 RLGH SLKC KSCY
+Map26 1 ATLN
+Map27 1 STTL
+Reducer15 1 ATLN
+Reducer19 2 CMBR STTL
+Reducer5 1 NSVL
+Map31 1 SNFN
+Reducer10 1 RLGH
+Reducer4 2 DLLS SNAN
+Map32 1 SNDG
+Reducer30 1 ORLD
+Map13 4 DLLS KSCY CMBR STTL
+Reducer9 4 STTL DNVR SNDG NWOR
+Reducer14 4 SNDG PHLA KSCY SCRM
+Map11 1 HSTN
+Map12 1 ATLN
+Reducer3 1 PTLD
+Reducer2 4 STTL CHCG ORLD PHNX
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 22: TPC-DS query51
+11 233 1075
+Reducer5 1 SCRM
+Reducer10 1 LA03
+Reducer4 1 ORLD
+Map1 3 NWOR SNFN ATLN
+Reducer6 1 PTLD
+Reducer9 1 LA03
+Map11 1 KSCY
+Map8 4 STTL NSVL KSCY RLGH
+Reducer3 1 SNAN
+Map7 1 PHNX
+Reducer2 1 RLGH
+10
+Reducer5 Reducer6 61
+Reducer10 Reducer4 87
+Reducer4 Reducer5 141
+Map1 Reducer2 1259
+Reducer9 Reducer10 1478
+Map11 Map8 4595
+Map8 Reducer9 5977
+Reducer3 Reducer4 108
+Map7 Map1 937
+Reducer2 Reducer3 458
+# 35: TPC-DS query76
+11 234 1089
+Reducer4 1 NY54
+Map10 3 PHNX NSVL PHLA
+Map1 4 DLLS PHNX STTL NWOR
+Map11 1 ATLN
+Map12 1 SLKC
+Map8 1 SNDG
+Map9 1 PHNX
+Map5 1 WASH
+Reducer3 1 HSTN
+Map6 1 SNAN
+Map7 3 STTL HSTN DLLS
+10
+Map10 Reducer3 500
+Map1 Reducer3 766
+Map11 Map10 833
+Map12 Map10 833
+Map8 Map7 540
+Map9 Map7 540
+Map5 Map1 956
+Reducer3 Reducer4 3
+Map6 Map1 956
+Map7 Reducer3 325
+# 36: TPC-DS query79
+8 235 1090
+Map1 4 SLKC WASH NY54 HSTN
+Reducer4 1 STTL
+Map8 1 STTL
+Map5 1 DNVR
+Map6 1 DLLS
+Reducer3 1 DNVR
+Map7 1 ORLD
+Reducer2 1 CMBR
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 5: TPC-DS query20
+6 236 1097
+Reducer4 1 CLEV
+Map1 3 KSCY SNFN ORLD
+Map5 1 SNFN
+Reducer3 1 SNAN
+Map6 1 PTLD
+Reducer2 1 CMBR
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 27: TPC-DS query58
+20 237 1104
+Reducer18 2 SNFN PHLA
+Map17 3 SLKC SNAN NWOR
+Map15 1 KSCY
+Map16 1 PHLA
+Map19 1 NWOR
+Reducer5 4 CMBR ATLN ORLD LA03
+Map20 1 WASH
+Map1 1 CMBR
+Reducer4 4 SCRM PHLA PTLD WASH
+Map10 1 CMBR
+Map2 1 CMBR
+Map3 4 NWOR PTLD SCRM ORLD
+Reducer6 1 DLLS
+Map13 1 SNAN
+Map14 1 DLLS
+Map11 3 RLGH CMBR SNAN
+Reducer12 3 NSVL STTL LA03
+Map8 1 RLGH
+Map9 1 PHNX
+Map7 1 SCRM
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 36: TPC-DS query79
+8 238 1105
+Map1 4 PTLD SLKC PHNX KSCY
+Reducer4 1 SLKC
+Map8 1 SCRM
+Map5 1 CLEV
+Map6 1 HSTN
+Reducer3 1 NWOR
+Map7 1 SCRM
+Reducer2 1 SCRM
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 17: TPC-DS query42
+5 239 1106
+Map1 1 PHLA
+Reducer4 1 DLLS
+Map2 4 PTLD SLKC DLLS SNFN
+Map5 1 NSVL
+Reducer3 1 CLEV
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 19: TPC-DS query45
+10 240 1106
+Reducer5 1 PHLA
+Map10 1 SNAN
+Map1 3 CHCG ATLN PHNX
+Reducer4 1 ATLN
+Map8 1 CHCG
+Map9 1 ATLN
+Map6 1 ATLN
+Reducer3 1 PTLD
+Map7 1 DNVR
+Reducer2 1 NWOR
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 21: TPC-DS query50
+8 241 1110
+Map1 4 STLS WASH DNVR NY54
+Reducer4 1 STLS
+Map8 1 LA03
+Map5 3 STTL ATLN DLLS
+Reducer3 1 CMBR
+Map6 1 ATLN
+Reducer2 1 ORLD
+Map7 1 DLLS
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 28: TPC-DS query60
+23 242 1111
+Map17 1 KSCY
+Map18 3 ORLD WASH STTL
+Map15 1 SCRM
+Map16 1 NY54
+Reducer19 1 DLLS
+Reducer5 1 STTL
+Map21 1 SCRM
+Reducer20 1 SNAN
+Map10 1 CMBR
+Map1 4 STLS WASH NSVL DLLS
+Reducer6 1 PTLD
+Map24 1 HSTN
+Map14 1 NY54
+Reducer13 1 SNAN
+Map11 3 CMBR ORLD NSVL
+Reducer12 2 STTL ORLD
+Map22 1 CLEV
+Map23 1 SLKC
+Map8 1 SLKC
+Map9 1 DNVR
+Reducer3 1 HSTN
+Map7 1 CHCG
+Reducer2 2 PHNX SLKC
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 14: TPC-DS query34
+7 243 1114
+Map1 4 STLS NY54 STTL LA03
+Reducer7 1 SNAN
+Map3 1 SNDG
+Map4 1 LA03
+Map5 1 RLGH
+Map6 1 NSVL
+Reducer2 1 KSCY
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 0: TPC-DS query12
+6 244 1123
+Reducer4 1 DNVR
+Map1 3 SCRM ATLN RLGH
+Map5 1 SLKC
+Reducer3 1 SNAN
+Map6 1 KSCY
+Reducer2 1 CMBR
+5
+Map1 Reducer2 793
+Map5 Map1 396
+Reducer3 Reducer4 1
+Map6 Map1 396
+Reducer2 Reducer3 1
+# 26: TPC-DS query56
+23 245 1123
+Map17 1 LA03
+Map18 3 CLEV SNFN STLS
+Map15 1 SCRM
+Map16 1 CLEV
+Reducer19 1 CMBR
+Reducer5 1 SCRM
+Map10 1 PHLA
+Map1 4 STLS CHCG KSCY DNVR
+Reducer20 1 CMBR
+Map21 1 WASH
+Reducer6 1 SLKC
+Map24 1 CHCG
+Reducer13 1 PTLD
+Map14 1 SNAN
+Reducer12 2 RLGH PHLA
+Map11 3 DLLS SNAN CLEV
+Map22 1 SCRM
+Map23 1 ORLD
+Map8 1 ORLD
+Map9 1 SNFN
+Reducer3 1 SNDG
+Map7 1 DNVR
+Reducer2 2 KSCY ORLD
+22
+Map17 Reducer12 6
+Map18 Reducer19 3931
+Map15 Reducer12 6
+Map16 Reducer12 6
+Reducer19 Reducer20 19
+Reducer5 Reducer6 1
+Map10 Reducer2 6
+Map1 Reducer2 9505
+Reducer20 Reducer5 1
+Map21 Map18 7844
+Map24 Reducer19 3
+Reducer13 Reducer5 1
+Map14 Map11 14918
+Reducer12 Reducer13 37
+Map11 Reducer12 7477
+Map22 Reducer19 3
+Map23 Reducer19 3
+Map8 Reducer2 7
+Map9 Reducer2 6
+Reducer3 Reducer5 1
+Map7 Map1 16588
+Reducer2 Reducer3 48
+# 31: TPC-DS query68
+12 246 1141
+Reducer5 1 CHCG
+Map10 1 SNAN
+Reducer4 1 ATLN
+Map1 4 SNDG ORLD STLS NY54
+Reducer6 1 DNVR
+Map11 1 ATLN
+Map12 1 CMBR
+Map8 1 STLS
+Map9 1 SLKC
+Reducer3 1 ATLN
+Map7 1 SNFN
+Reducer2 1 ORLD
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 19: TPC-DS query45
+10 247 1146
+Reducer5 1 SNFN
+Map10 1 NY54
+Map1 3 PHNX DLLS ATLN
+Reducer4 1 DLLS
+Map8 1 LA03
+Map9 1 ATLN
+Map6 1 NSVL
+Reducer3 1 STLS
+Map7 1 STLS
+Reducer2 1 CLEV
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 32: TPC-DS query70
+12 248 1154
+Reducer5 1 NWOR
+Reducer10 1 CLEV
+Reducer4 6 SNAN STLS CLEV ORLD SNDG PHLA
+Map1 4 NSVL NY54 ATLN SLKC
+Reducer9 1 CMBR
+Map11 1 CMBR
+Map12 1 DNVR
+Map8 4 DNVR NY54 KSCY SNAN
+Reducer3 11 SCRM SNFN SLKC PHNX KSCY PTLD CHCG LA03 RLGH CMBR DLLS
+Map6 1 NY54
+Reducer2 4 STTL SNAN NY54 WASH
+Map7 1 NSVL
+11
+Reducer10 Reducer2 443
+Reducer4 Reducer5 76
+Map1 Reducer2 10850
+Reducer9 Reducer10 6
+Map11 Map8 5212
+Map12 Map8 5212
+Map8 Reducer9 10427
+Reducer3 Reducer4 227
+Map6 Map1 5675
+Reducer2 Reducer3 2364
+Map7 Map1 5675
+# 6: TPC-DS query21
+6 249 1156
+Map1 1 HSTN
+Map4 1 PHNX
+Map5 1 NSVL
+Reducer3 1 RLGH
+Map6 1 SLKC
+Reducer2 1 SCRM
+5
+Map1 Reducer2 143
+Map4 Map1 47
+Map5 Map1 48
+Map6 Map1 47
+Reducer2 Reducer3 3
+# 32: TPC-DS query70
+12 250 1158
+Reducer5 1 SNDG
+Reducer10 1 ATLN
+Reducer4 6 NY54 PTLD HSTN KSCY LA03 SLKC
+Map1 4 PTLD KSCY CMBR ATLN
+Reducer9 1 SCRM
+Map11 1 NSVL
+Map12 1 NSVL
+Map8 4 PTLD WASH SCRM LA03
+Reducer3 11 ATLN SNDG ORLD DNVR SLKC SCRM HSTN NY54 WASH STTL KSCY
+Map6 1 CLEV
+Reducer2 4 KSCY SNAN PTLD NY54
+Map7 1 SNFN
+11
+Reducer10 Reducer2 443
+Reducer4 Reducer5 76
+Map1 Reducer2 10850
+Reducer9 Reducer10 6
+Map11 Map8 5212
+Map12 Map8 5212
+Map8 Reducer9 10427
+Reducer3 Reducer4 227
+Map6 Map1 5675
+Reducer2 Reducer3 2364
+Map7 Map1 5675
+# 27: TPC-DS query58
+20 251 1181
+Reducer18 2 PHNX NSVL
+Map17 3 DLLS PHNX ATLN
+Map15 1 CMBR
+Map16 1 ATLN
+Map19 1 PHNX
+Reducer5 4 NY54 STLS DLLS PHLA
+Map20 1 CMBR
+Map1 1 CLEV
+Reducer4 4 STLS LA03 PHLA SNFN
+Map10 1 CLEV
+Map2 1 SNFN
+Map3 4 SNDG HSTN NWOR SLKC
+Reducer6 1 PHNX
+Map13 1 SNDG
+Map14 1 CMBR
+Map11 3 ORLD SNAN ATLN
+Reducer12 3 CHCG ATLN SNFN
+Map8 1 HSTN
+Map9 1 CMBR
+Map7 1 DLLS
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 40: TPC-DS query95
+15 252 1192
+Map15 1 ORLD
+Map10 2 LA03 ORLD
+Map1 3 CLEV SNFN CMBR
+Reducer4 1 SNDG
+Reducer7 5 DLLS CHCG SLKC ORLD SNDG
+Map13 1 DNVR
+Reducer8 3 SLKC CHCG PTLD
+Map14 1 PHNX
+Map11 3 STLS NY54 CLEV
+Reducer12 1 NY54
+Map9 3 SLKC NWOR RLGH
+Map5 3 SCRM HSTN STLS
+Reducer3 6 SCRM SNFN PHNX SNDG LA03 STTL
+Map6 3 ORLD SLKC NSVL
+Reducer2 5 DLLS NSVL DNVR WASH PHNX
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 38: TPC-DS query87
+17 253 1202
+Map17 1 STTL
+Map16 1 LA03
+Reducer15 2 HSTN PHLA
+Reducer10 3 PHNX PHLA DNVR
+Reducer5 1 PTLD
+Reducer4 4 PHNX DLLS KSCY STLS
+Map1 4 NSVL HSTN NY54 SNFN
+Map13 3 CMBR ORLD RLGH
+Reducer14 2 ORLD KSCY
+Reducer9 3 ORLD KSCY NY54
+Map11 1 RLGH
+Map12 1 STTL
+Map8 3 PTLD ATLN SLKC
+Reducer3 4 NWOR STLS PHNX DLLS
+Map6 1 CHCG
+Reducer2 4 CLEV DNVR ATLN SNAN
+Map7 1 CLEV
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 5: TPC-DS query20
+6 254 1251
+Reducer4 1 SLKC
+Map1 3 RLGH STLS SLKC
+Map5 1 SCRM
+Reducer3 1 NY54
+Map6 1 NWOR
+Reducer2 1 ATLN
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 31: TPC-DS query68
+12 255 1253
+Reducer5 1 STLS
+Map10 1 PHNX
+Reducer4 1 DLLS
+Map1 4 SNAN LA03 KSCY SNFN
+Reducer6 1 ORLD
+Map11 1 SNAN
+Map12 1 WASH
+Map8 1 CLEV
+Map9 1 PHNX
+Reducer3 1 CMBR
+Map7 1 CHCG
+Reducer2 1 STLS
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 20: TPC-DS query46
+12 256 1253
+Reducer5 1 NWOR
+Map10 1 SNDG
+Map1 4 PHNX KSCY WASH STLS
+Reducer4 1 SNDG
+Reducer6 1 PHLA
+Map11 1 SCRM
+Map12 1 KSCY
+Map8 1 CLEV
+Map9 1 PHLA
+Reducer3 1 STLS
+Reducer2 1 SNAN
+Map7 1 DNVR
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 33: TPC-DS query71
+10 257 1254
+Map1 3 LA03 NWOR PHLA
+Map10 1 DLLS
+Reducer4 1 SCRM
+Map11 1 STLS
+Map8 4 SLKC NY54 PHLA WASH
+Map9 1 WASH
+Map5 1 HSTN
+Map6 3 STLS DNVR CMBR
+Reducer3 2 ORLD SCRM
+Map7 1 RLGH
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 27: TPC-DS query58
+20 258 1255
+Reducer18 2 NSVL NWOR
+Map17 3 ATLN SNDG SCRM
+Map15 1 SCRM
+Map16 1 SLKC
+Map19 1 SNAN
+Reducer5 4 ATLN SNAN DLLS NY54
+Map20 1 LA03
+Map1 1 LA03
+Reducer4 4 SNDG ORLD DLLS NY54
+Map10 1 HSTN
+Map2 1 ORLD
+Map3 4 SLKC ORLD STTL SNAN
+Reducer6 1 KSCY
+Map13 1 NY54
+Map14 1 PHNX
+Map11 3 SLKC SNAN CLEV
+Reducer12 3 RLGH SLKC LA03
+Map8 1 SNAN
+Map9 1 CHCG
+Map7 1 PHLA
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 27: TPC-DS query58
+20 259 1257
+Reducer18 2 SLKC RLGH
+Map17 3 HSTN PTLD ATLN
+Map15 1 CHCG
+Map16 1 LA03
+Map19 1 KSCY
+Reducer5 4 CMBR RLGH STLS HSTN
+Map20 1 SNFN
+Map1 1 CLEV
+Reducer4 4 SCRM LA03 SNAN DNVR
+Map10 1 KSCY
+Map2 1 CMBR
+Map3 4 LA03 SNFN ORLD DLLS
+Reducer6 1 SNAN
+Map13 1 SNAN
+Map14 1 SNFN
+Map11 3 STTL CLEV STLS
+Reducer12 3 HSTN NY54 STLS
+Map8 1 SCRM
+Map9 1 ATLN
+Map7 1 PHLA
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 4: TPC-DS query19
+10 260 1259
+Reducer5 1 SNAN
+Map1 1 WASH
+Reducer4 1 HSTN
+Map10 1 STLS
+Map2 4 SCRM SNFN DNVR SLKC
+Reducer6 1 STTL
+Map8 1 NWOR
+Map9 1 SLKC
+Reducer3 1 SNAN
+Map7 1 RLGH
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 16: TPC-DS query40
+8 261 1260
+Reducer4 1 NWOR
+Map1 3 SLKC LA03 PTLD
+Map8 1 NY54
+Map5 3 ORLD KSCY SNFN
+Map6 1 HSTN
+Reducer3 1 SNFN
+Map7 1 LA03
+Reducer2 2 NY54 DNVR
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 16: TPC-DS query40
+8 262 1263
+Reducer4 1 DNVR
+Map1 3 NWOR CHCG PHLA
+Map8 1 SCRM
+Map5 3 ORLD NY54 WASH
+Map6 1 CHCG
+Reducer3 1 DLLS
+Map7 1 PHNX
+Reducer2 2 DNVR ATLN
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 1: TPC-DS query15
+8 263 1275
+Reducer5 1 SNFN
+Map1 3 SCRM NY54 PTLD
+Reducer4 1 DNVR
+Map8 1 STTL
+Map6 1 DNVR
+Reducer3 3 CLEV DNVR WASH
+Map7 1 PHLA
+Reducer2 3 LA03 SCRM WASH
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 7: TPC-DS query22
+6 264 1287
+Map1 1 SLKC
+Map4 1 ATLN
+Map5 1 NY54
+Reducer3 1 LA03
+Map6 1 CLEV
+Reducer2 1 WASH
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 28: TPC-DS query60
+23 265 1303
+Map17 1 PHLA
+Map18 3 HSTN SNAN DLLS
+Map15 1 ORLD
+Map16 1 SNAN
+Reducer19 1 SLKC
+Reducer5 1 NWOR
+Map21 1 DLLS
+Reducer20 1 NY54
+Map10 1 ORLD
+Map1 4 DLLS ORLD RLGH KSCY
+Reducer6 1 SNAN
+Map24 1 STTL
+Map14 1 SCRM
+Reducer13 1 SCRM
+Map11 3 LA03 CLEV ATLN
+Reducer12 2 LA03 SNDG
+Map22 1 NSVL
+Map23 1 CLEV
+Map8 1 DNVR
+Map9 1 KSCY
+Reducer3 1 RLGH
+Map7 1 HSTN
+Reducer2 2 ATLN SNDG
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 36: TPC-DS query79
+8 266 1334
+Map1 4 STTL SNFN SNDG HSTN
+Reducer4 1 RLGH
+Map8 1 SNDG
+Map5 1 NY54
+Map6 1 WASH
+Reducer3 1 SLKC
+Map7 1 SNFN
+Reducer2 1 DNVR
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 20: TPC-DS query46
+12 267 1334
+Reducer5 1 DNVR
+Map10 1 WASH
+Map1 4 KSCY STTL CHCG PHLA
+Reducer4 1 ORLD
+Reducer6 1 WASH
+Map11 1 SCRM
+Map12 1 SNFN
+Map8 1 STTL
+Map9 1 SLKC
+Reducer3 1 DLLS
+Reducer2 1 RLGH
+Map7 1 HSTN
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 21: TPC-DS query50
+8 268 1335
+Map1 4 LA03 CMBR SLKC SCRM
+Reducer4 1 LA03
+Map8 1 WASH
+Map5 3 HSTN STTL NWOR
+Reducer3 1 SNDG
+Map6 1 CHCG
+Reducer2 1 CLEV
+Map7 1 HSTN
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 23: TPC-DS query52
+5 269 1337
+Map1 1 ORLD
+Reducer4 1 HSTN
+Map2 4 CHCG CMBR SNFN NY54
+Map5 1 PTLD
+Reducer3 1 LA03
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 33: TPC-DS query71
+10 270 1346
+Map1 3 RLGH CLEV STLS
+Map10 1 PHNX
+Reducer4 1 SCRM
+Map11 1 SNDG
+Map8 4 SCRM NY54 SNDG SLKC
+Map9 1 DNVR
+Map5 1 CMBR
+Map6 3 SCRM STTL CHCG
+Reducer3 2 DNVR NY54
+Map7 1 DLLS
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 31: TPC-DS query68
+12 271 1354
+Reducer5 1 NY54
+Map10 1 ATLN
+Reducer4 1 CMBR
+Map1 4 DNVR PTLD SNAN PHNX
+Reducer6 1 DNVR
+Map11 1 CHCG
+Map12 1 PTLD
+Map8 1 NSVL
+Map9 1 PTLD
+Reducer3 1 DNVR
+Map7 1 HSTN
+Reducer2 1 HSTN
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 16: TPC-DS query40
+8 272 1356
+Reducer4 1 LA03
+Map1 3 NY54 HSTN DLLS
+Map8 1 KSCY
+Map5 3 DNVR CMBR STTL
+Map6 1 CMBR
+Reducer3 1 SNAN
+Map7 1 SLKC
+Reducer2 2 DNVR SCRM
+7
+Map1 Reducer2 2719
+Map8 Reducer2 551
+Map5 Reducer2 1700
+Map6 Reducer2 550
+Reducer3 Reducer4 2
+Map7 Reducer2 552
+Reducer2 Reducer3 4958
+# 3: TPC-DS query18
+13 273 1356
+Reducer5 1 ATLN
+Reducer4 1 STTL
+Map1 3 PHNX LA03 STLS
+Map10 1 CHCG
+Reducer7 1 WASH
+Reducer6 1 NY54
+Map13 1 SNFN
+Map11 1 PHLA
+Map12 1 ORLD
+Map8 1 SCRM
+Map9 1 DNVR
+Reducer3 1 SLKC
+Reducer2 1 HSTN
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 1: TPC-DS query15
+8 274 1368
+Reducer5 1 CMBR
+Map1 3 PHLA ATLN STTL
+Reducer4 1 CHCG
+Map8 1 ORLD
+Map6 1 ATLN
+Reducer3 3 KSCY STTL PTLD
+Map7 1 STTL
+Reducer2 3 NY54 HSTN CLEV
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 19: TPC-DS query45
+10 275 1381
+Reducer5 1 SLKC
+Map10 1 CHCG
+Map1 3 CMBR SCRM DNVR
+Reducer4 1 SCRM
+Map8 1 ATLN
+Map9 1 NSVL
+Map6 1 PHLA
+Reducer3 1 PTLD
+Map7 1 RLGH
+Reducer2 1 DLLS
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 33: TPC-DS query71
+10 276 1387
+Map1 3 SNFN STLS ORLD
+Map10 1 CHCG
+Reducer4 1 CHCG
+Map11 1 KSCY
+Map8 4 SNDG STTL SNAN ATLN
+Map9 1 LA03
+Map5 1 PHLA
+Map6 3 NSVL WASH NY54
+Reducer3 2 DLLS SNAN
+Map7 1 CMBR
+13
+Map1 Reducer3 1085
+Map10 Map1 1195
+Map10 Map8 2747
+Map10 Map6 2518
+Map11 Map1 1195
+Map11 Map8 2747
+Map11 Map6 2518
+Map8 Reducer3 3310
+Map9 Map8 2747
+Map5 Map1 1195
+Map6 Reducer3 2276
+Reducer3 Reducer4 38
+Map7 Map6 2518
+# 28: TPC-DS query60
+23 277 1390
+Map17 1 NWOR
+Map18 3 KSCY NY54 NSVL
+Map15 1 NWOR
+Map16 1 CHCG
+Reducer19 1 NY54
+Reducer5 1 PTLD
+Map21 1 STTL
+Reducer20 1 PHNX
+Map10 1 RLGH
+Map1 4 SNDG NSVL STTL WASH
+Reducer6 1 ATLN
+Map24 1 RLGH
+Map14 1 DNVR
+Reducer13 1 CMBR
+Map11 3 NY54 DNVR HSTN
+Reducer12 2 KSCY STLS
+Map22 1 PTLD
+Map23 1 DLLS
+Map8 1 HSTN
+Map9 1 PHLA
+Reducer3 1 DNVR
+Map7 1 SNFN
+Reducer2 2 STLS SNAN
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 34: TPC-DS query73
+7 278 1395
+Map1 4 NSVL ATLN KSCY STTL
+Reducer7 1 CHCG
+Map3 1 WASH
+Map4 1 SNFN
+Map5 1 ATLN
+Map6 1 STLS
+Reducer2 1 NSVL
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 1: TPC-DS query15
+8 279 1417
+Reducer5 1 HSTN
+Map1 3 CMBR NSVL SNDG
+Reducer4 1 SNAN
+Map8 1 SNAN
+Map6 1 CLEV
+Reducer3 3 PHNX SCRM HSTN
+Map7 1 ORLD
+Reducer2 3 NY54 RLGH PHLA
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 23: TPC-DS query52
+5 280 1417
+Map1 1 DLLS
+Reducer4 1 HSTN
+Map2 4 DLLS STTL LA03 CMBR
+Map5 1 DNVR
+Reducer3 1 PTLD
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 3: TPC-DS query18
+13 281 1419
+Reducer5 1 PHLA
+Reducer4 1 PHNX
+Map1 3 STTL RLGH NY54
+Map10 1 CLEV
+Reducer7 1 RLGH
+Reducer6 1 WASH
+Map13 1 CHCG
+Map11 1 PTLD
+Map12 1 PTLD
+Map8 1 LA03
+Map9 1 SNDG
+Reducer3 1 STLS
+Reducer2 1 SNAN
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 34: TPC-DS query73
+7 282 1421
+Map1 4 PHLA LA03 HSTN SCRM
+Reducer7 1 SNFN
+Map3 1 DNVR
+Map4 1 CMBR
+Map5 1 SNFN
+Map6 1 ATLN
+Reducer2 1 PTLD
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 9: TPC-DS query26
+7 283 1433
+Map1 3 DNVR SLKC CHCG
+Map4 1 SNFN
+Map5 1 HSTN
+Map6 1 PHLA
+Reducer3 1 PHNX
+Map7 1 NWOR
+Reducer2 1 PHLA
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 19: TPC-DS query45
+10 284 1447
+Reducer5 1 SNAN
+Map10 1 PTLD
+Map1 3 SNFN NWOR HSTN
+Reducer4 1 HSTN
+Map8 1 PHNX
+Map9 1 STTL
+Map6 1 NY54
+Reducer3 1 NSVL
+Map7 1 NWOR
+Reducer2 1 NSVL
+9
+Map10 Reducer3 223
+Map1 Reducer2 1607
+Reducer4 Reducer5 9
+Map8 Reducer3 224
+Map9 Reducer3 223
+Map6 Reducer2 286
+Reducer3 Reducer4 1128
+Map7 Reducer3 226
+Reducer2 Reducer3 450
+# 10: TPC-DS query27
+7 285 1468
+Map1 4 PHNX NY54 STTL SNDG
+Map4 1 PTLD
+Map5 1 RLGH
+Map6 1 ORLD
+Reducer3 1 SCRM
+Map7 1 CMBR
+Reducer2 1 CLEV
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 2: TPC-DS query17
+12 286 1474
+Reducer5 1 SNDG
+Map10 1 SCRM
+Map1 4 LA03 RLGH NWOR SNAN
+Reducer4 1 ORLD
+Map11 1 SNAN
+Map12 1 SNAN
+Map8 1 STTL
+Map9 1 PHLA
+Map6 3 CHCG SLKC STLS
+Reducer3 2 RLGH STTL
+Map7 3 STTL RLGH CHCG
+Reducer2 1 LA03
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 24: TPC-DS query54
+16 287 1495
+Map17 1 LA03
+Map15 1 PTLD
+Map16 1 PHLA
+Reducer5 3 CLEV SNAN ATLN
+Map10 3 SNAN STLS CLEV
+Reducer4 1 NSVL
+Map1 3 ORLD SNFN STLS
+Reducer7 1 SNDG
+Reducer6 4 RLGH HSTN SLKC ORLD
+Map13 1 NY54
+Reducer9 1 NWOR
+Map14 4 CMBR SNFN STLS SLKC
+Reducer8 1 PHNX
+Map11 1 DNVR
+Map12 1 CMBR
+Reducer3 2 PHNX CMBR
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 11: TPC-DS query29
+12 288 1501
+Reducer5 1 CLEV
+Map10 1 STLS
+Map1 4 DLLS CHCG ATLN SNDG
+Reducer4 1 SCRM
+Map11 1 DLLS
+Map12 1 CLEV
+Map8 1 PTLD
+Map9 1 WASH
+Map6 3 STTL SNFN SLKC
+Reducer3 2 RLGH CLEV
+Map7 3 PHNX PHLA SCRM
+Reducer2 1 DLLS
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 37: TPC-DS query7
+7 289 1525
+Map1 4 CMBR ORLD CHCG SNDG
+Map4 1 PHNX
+Map5 1 DNVR
+Map6 1 SNAN
+Reducer3 1 DLLS
+Map7 1 PHNX
+Reducer2 1 SNDG
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 24: TPC-DS query54
+16 290 1528
+Map17 1 LA03
+Map15 1 PTLD
+Map16 1 SNFN
+Reducer5 3 STLS DLLS SNDG
+Map10 3 DNVR SNDG RLGH
+Reducer4 1 WASH
+Map1 3 DLLS RLGH LA03
+Reducer7 1 SNAN
+Reducer6 4 HSTN ORLD CMBR SNFN
+Map13 1 HSTN
+Reducer9 1 SLKC
+Map14 4 LA03 ORLD CHCG STLS
+Reducer8 1 SLKC
+Map11 1 SNAN
+Map12 1 STTL
+Reducer3 2 DNVR DLLS
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 11: TPC-DS query29
+12 291 1534
+Reducer5 1 LA03
+Map10 1 STLS
+Map1 4 SNFN STTL PHNX NWOR
+Reducer4 1 HSTN
+Map11 1 RLGH
+Map12 1 CLEV
+Map8 1 SCRM
+Map9 1 CMBR
+Map6 3 DLLS WASH ATLN
+Reducer3 2 CHCG CLEV
+Map7 3 PTLD RLGH KSCY
+Reducer2 1 STLS
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 21: TPC-DS query50
+8 292 1550
+Map1 4 HSTN DLLS STTL CLEV
+Reducer4 1 CHCG
+Map8 1 STTL
+Map5 3 PHLA DLLS RLGH
+Reducer3 1 CHCG
+Map6 1 CHCG
+Reducer2 1 HSTN
+Map7 1 CMBR
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 23: TPC-DS query52
+5 293 1550
+Map1 1 DNVR
+Reducer4 1 LA03
+Map2 4 CLEV STLS ATLN NSVL
+Map5 1 CMBR
+Reducer3 1 KSCY
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 21: TPC-DS query50
+8 294 1551
+Map1 4 LA03 RLGH SNFN ORLD
+Reducer4 1 STTL
+Map8 1 WASH
+Map5 3 CMBR HSTN PHNX
+Reducer3 1 WASH
+Map6 1 CMBR
+Reducer2 1 ORLD
+Map7 1 CHCG
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 0: TPC-DS query12
+6 295 1553
+Reducer4 1 STLS
+Map1 3 PTLD NY54 NWOR
+Map5 1 STTL
+Reducer3 1 SLKC
+Map6 1 PHLA
+Reducer2 1 SNAN
+5
+Map1 Reducer2 793
+Map5 Map1 396
+Reducer3 Reducer4 1
+Map6 Map1 396
+Reducer2 Reducer3 1
+# 30: TPC-DS query67
+7 296 1554
+Map1 4 CHCG PTLD SNAN DLLS
+Reducer4 1 STTL
+Map5 1 STLS
+Map6 1 SNFN
+Reducer3 1 NSVL
+Map7 1 NY54
+Reducer2 2 LA03 PHNX
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 5: TPC-DS query20
+6 297 1555
+Reducer4 1 SCRM
+Map1 3 LA03 STTL ORLD
+Map5 1 RLGH
+Reducer3 1 NWOR
+Map6 1 PHLA
+Reducer2 1 DNVR
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 13: TPC-DS query32
+8 298 1559
+Map1 3 STLS LA03 ATLN
+Reducer6 3 WASH KSCY STLS
+Map8 1 STTL
+Map4 1 CMBR
+Map5 3 ATLN WASH KSCY
+Reducer3 1 SNAN
+Reducer2 4 ATLN NWOR STTL HSTN
+Map7 1 ATLN
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 35: TPC-DS query76
+11 299 1580
+Reducer4 1 SCRM
+Map10 3 SNAN DLLS LA03
+Map1 4 STLS PHNX CMBR PHLA
+Map11 1 CLEV
+Map12 1 NWOR
+Map8 1 WASH
+Map9 1 LA03
+Map5 1 NWOR
+Reducer3 1 CMBR
+Map6 1 STLS
+Map7 3 PTLD RLGH WASH
+10
+Map10 Reducer3 500
+Map1 Reducer3 766
+Map11 Map10 833
+Map12 Map10 833
+Map8 Map7 540
+Map9 Map7 540
+Map5 Map1 956
+Reducer3 Reducer4 3
+Map6 Map1 956
+Map7 Reducer3 325
+# 20: TPC-DS query46
+12 300 1580
+Reducer5 1 STLS
+Map10 1 RLGH
+Map1 4 STTL ORLD NWOR SNFN
+Reducer4 1 STTL
+Reducer6 1 SNDG
+Map11 1 PHNX
+Map12 1 SNFN
+Map8 1 SCRM
+Map9 1 ATLN
+Reducer3 1 SCRM
+Reducer2 1 CLEV
+Map7 1 STLS
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 17: TPC-DS query42
+5 301 1586
+Map1 1 LA03
+Reducer4 1 SCRM
+Map2 4 DLLS NSVL CHCG WASH
+Map5 1 STTL
+Reducer3 1 ORLD
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 12: TPC-DS query31
+32 302 1606
+Reducer29 2 RLGH NWOR
+Map17 1 KSCY
+Map18 3 PTLD NSVL PHLA
+Map16 1 STTL
+Map1 4 ORLD CHCG NY54 KSCY
+Reducer20 1 KSCY
+Map21 1 PHLA
+Reducer25 1 HSTN
+Reducer24 2 LA03 CMBR
+Map22 1 CMBR
+Map23 3 SNAN PHLA RLGH
+Map8 4 ATLN CHCG HSTN SLKC
+Map6 1 ATLN
+Map7 1 DLLS
+Map28 3 STLS SNDG CLEV
+Map26 1 STTL
+Map27 1 STLS
+Reducer15 1 RLGH
+Reducer19 2 ORLD LA03
+Reducer5 1 PHLA
+Map31 1 PHLA
+Reducer10 1 DNVR
+Reducer4 2 SNAN WASH
+Map32 1 NSVL
+Reducer30 1 CHCG
+Map13 4 ORLD NWOR HSTN RLGH
+Reducer9 4 CMBR NY54 STLS DNVR
+Reducer14 4 SNDG SLKC PHLA STTL
+Map11 1 CMBR
+Map12 1 ATLN
+Reducer3 1 SNAN
+Reducer2 4 DNVR SNDG SCRM LA03
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 12: TPC-DS query31
+32 303 1607
+Reducer29 2 WASH NY54
+Map17 1 ORLD
+Map18 3 SNFN NWOR SLKC
+Map16 1 PTLD
+Map1 4 NSVL DNVR SNFN STTL
+Reducer20 1 NWOR
+Map21 1 CLEV
+Reducer25 1 CHCG
+Reducer24 2 SLKC PTLD
+Map22 1 WASH
+Map23 3 HSTN WASH LA03
+Map8 4 STLS STTL NWOR SNFN
+Map6 1 SNDG
+Map7 1 PTLD
+Map28 3 SLKC SNFN NSVL
+Map26 1 ATLN
+Map27 1 PTLD
+Reducer15 1 ORLD
+Reducer19 2 HSTN CHCG
+Reducer5 1 SNDG
+Map31 1 PTLD
+Reducer10 1 PHLA
+Reducer4 2 PTLD NSVL
+Map32 1 ATLN
+Reducer30 1 SLKC
+Map13 4 PTLD PHNX SNFN RLGH
+Reducer9 4 RLGH PTLD HSTN ORLD
+Reducer14 4 PTLD NSVL CMBR CHCG
+Map11 1 STLS
+Map12 1 SLKC
+Reducer3 1 STLS
+Reducer2 4 RLGH STTL CLEV STLS
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 8: TPC-DS query25
+12 304 1615
+Reducer5 1 CMBR
+Map1 4 STTL NWOR LA03 HSTN
+Map10 1 HSTN
+Reducer4 1 NWOR
+Map11 1 PHNX
+Map12 1 LA03
+Map8 1 STTL
+Map9 1 SNAN
+Reducer3 2 CLEV NSVL
+Map6 3 NSVL ATLN WASH
+Reducer2 1 ORLD
+Map7 3 WASH DNVR CHCG
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 20: TPC-DS query46
+12 305 1619
+Reducer5 1 NSVL
+Map10 1 SNAN
+Map1 4 RLGH ORLD PHNX NY54
+Reducer4 1 RLGH
+Reducer6 1 CLEV
+Map11 1 CHCG
+Map12 1 STLS
+Map8 1 ATLN
+Map9 1 RLGH
+Reducer3 1 STTL
+Reducer2 1 SCRM
+Map7 1 SNDG
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 7: TPC-DS query22
+6 306 1620
+Map1 1 CLEV
+Map4 1 NY54
+Map5 1 NSVL
+Reducer3 1 NSVL
+Map6 1 PTLD
+Reducer2 1 ORLD
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 20: TPC-DS query46
+12 307 1632
+Reducer5 1 PHLA
+Map10 1 PTLD
+Map1 4 SNDG SNFN PHLA NSVL
+Reducer4 1 ATLN
+Reducer6 1 DNVR
+Map11 1 PHLA
+Map12 1 NSVL
+Map8 1 DNVR
+Map9 1 SNAN
+Reducer3 1 CLEV
+Reducer2 1 DNVR
+Map7 1 SNAN
+11
+Reducer5 Reducer6 7
+Map10 Reducer2 6
+Map1 Reducer2 8642
+Reducer4 Reducer5 6
+Map11 Reducer4 12
+Map12 Reducer5 5
+Map8 Map1 3593
+Map9 Map1 3593
+Reducer3 Reducer4 4
+Reducer2 Reducer3 25
+Map7 Map1 3593
+# 10: TPC-DS query27
+7 308 1634
+Map1 4 ATLN RLGH PTLD STTL
+Map4 1 RLGH
+Map5 1 WASH
+Map6 1 NWOR
+Reducer3 1 RLGH
+Map7 1 STTL
+Reducer2 1 CMBR
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 3: TPC-DS query18
+13 309 1677
+Reducer5 1 KSCY
+Reducer4 1 PHLA
+Map1 3 STTL STLS WASH
+Map10 1 HSTN
+Reducer7 1 SNAN
+Reducer6 1 STLS
+Map13 1 RLGH
+Map11 1 STTL
+Map12 1 PHLA
+Map8 1 ATLN
+Map9 1 DLLS
+Reducer3 1 STLS
+Reducer2 1 SNDG
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 28: TPC-DS query60
+23 310 1678
+Map17 1 STLS
+Map18 3 NWOR SNDG PTLD
+Map15 1 SNDG
+Map16 1 KSCY
+Reducer19 1 KSCY
+Reducer5 1 SNDG
+Map21 1 KSCY
+Reducer20 1 DLLS
+Map10 1 WASH
+Map1 4 HSTN SCRM NWOR SLKC
+Reducer6 1 SNAN
+Map24 1 RLGH
+Map14 1 HSTN
+Reducer13 1 CLEV
+Map11 3 NY54 NSVL CLEV
+Reducer12 2 DLLS CMBR
+Map22 1 SLKC
+Map23 1 SLKC
+Map8 1 NSVL
+Map9 1 CHCG
+Reducer3 1 KSCY
+Map7 1 SCRM
+Reducer2 2 STTL RLGH
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 22: TPC-DS query51
+11 311 1678
+Reducer5 1 SNFN
+Reducer10 1 NY54
+Reducer4 1 PTLD
+Map1 3 DLLS LA03 HSTN
+Reducer6 1 PTLD
+Reducer9 1 PTLD
+Map11 1 NWOR
+Map8 4 KSCY RLGH STTL SLKC
+Reducer3 1 SCRM
+Map7 1 PTLD
+Reducer2 1 STTL
+10
+Reducer5 Reducer6 61
+Reducer10 Reducer4 87
+Reducer4 Reducer5 141
+Map1 Reducer2 1259
+Reducer9 Reducer10 1478
+Map11 Map8 4595
+Map8 Reducer9 5977
+Reducer3 Reducer4 108
+Map7 Map1 937
+Reducer2 Reducer3 458
+# 12: TPC-DS query31
+32 312 1680
+Reducer29 2 SLKC SNFN
+Map17 1 LA03
+Map18 3 DLLS CMBR SNAN
+Map16 1 CHCG
+Map1 4 STLS DLLS ORLD NWOR
+Reducer20 1 SCRM
+Map21 1 PTLD
+Reducer25 1 DLLS
+Reducer24 2 STTL SNFN
+Map22 1 NY54
+Map23 3 PHNX SCRM RLGH
+Map8 4 CLEV STLS STTL PHLA
+Map6 1 ATLN
+Map7 1 DLLS
+Map28 3 NSVL CMBR WASH
+Map26 1 DLLS
+Map27 1 STTL
+Reducer15 1 PHLA
+Reducer19 2 STTL STLS
+Reducer5 1 DNVR
+Map31 1 NWOR
+Reducer10 1 SNDG
+Reducer4 2 KSCY SNAN
+Map32 1 RLGH
+Reducer30 1 LA03
+Map13 4 DNVR CLEV CMBR LA03
+Reducer9 4 PTLD SNFN CMBR NY54
+Reducer14 4 CLEV PHLA NWOR SLKC
+Map11 1 NY54
+Map12 1 WASH
+Reducer3 1 WASH
+Reducer2 4 PHNX RLGH ATLN SNDG
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 39: TPC-DS query89
+7 313 1680
+Reducer5 1 SNFN
+Map1 1 WASH
+Reducer4 1 ORLD
+Map2 4 SCRM KSCY STLS CLEV
+Map6 1 CMBR
+Reducer3 1 RLGH
+Map7 1 LA03
+6
+Map1 Map2 582
+Reducer4 Reducer5 1
+Map2 Reducer3 1751
+Map6 Map2 582
+Reducer3 Reducer4 5
+Map7 Map2 583
+# 4: TPC-DS query19
+10 314 1682
+Reducer5 1 ORLD
+Map1 1 NY54
+Reducer4 1 STLS
+Map10 1 CMBR
+Map2 4 PHNX WASH SLKC ORLD
+Reducer6 1 SLKC
+Map8 1 PHLA
+Map9 1 PHLA
+Reducer3 1 STTL
+Map7 1 NWOR
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 8: TPC-DS query25
+12 315 1683
+Reducer5 1 DLLS
+Map1 4 STLS SNDG PHLA ORLD
+Map10 1 PHLA
+Reducer4 1 CLEV
+Map11 1 KSCY
+Map12 1 STTL
+Map8 1 DNVR
+Map9 1 SNFN
+Reducer3 2 HSTN RLGH
+Map6 3 SCRM STTL PHNX
+Reducer2 1 CMBR
+Map7 3 CMBR NY54 NWOR
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 7: TPC-DS query22
+6 316 1687
+Map1 1 ORLD
+Map4 1 DNVR
+Map5 1 PHNX
+Reducer3 1 STLS
+Map6 1 STLS
+Reducer2 1 KSCY
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 38: TPC-DS query87
+17 317 1688
+Map17 1 CLEV
+Map16 1 SNFN
+Reducer15 2 HSTN RLGH
+Reducer10 3 DNVR WASH CMBR
+Reducer5 1 STLS
+Reducer4 4 NSVL SNAN CHCG STLS
+Map1 4 STTL KSCY ORLD SLKC
+Map13 3 CLEV WASH SNAN
+Reducer14 2 ORLD PHNX
+Reducer9 3 ORLD HSTN NSVL
+Map11 1 NWOR
+Map12 1 KSCY
+Map8 3 LA03 NY54 CHCG
+Reducer3 4 CHCG STTL ORLD ATLN
+Map6 1 NSVL
+Reducer2 4 LA03 CMBR SNFN SNAN
+Map7 1 NSVL
+16
+Map17 Reducer14 53
+Map16 Map13 2721
+Reducer15 Reducer4 41
+Reducer10 Reducer4 84
+Reducer4 Reducer5 148
+Map1 Reducer2 1820
+Map13 Reducer14 2193
+Reducer14 Reducer15 242
+Reducer9 Reducer10 464
+Map11 Map8 1659
+Map12 Reducer9 92
+Map8 Reducer9 1514
+Reducer3 Reducer4 127
+Map6 Map1 1455
+Reducer2 Reducer3 959
+Map7 Reducer2 166
+# 24: TPC-DS query54
+16 318 1688
+Map17 1 CHCG
+Map15 1 DLLS
+Map16 1 STTL
+Reducer5 3 STLS RLGH SNDG
+Map10 3 ATLN HSTN ORLD
+Reducer4 1 CHCG
+Map1 3 CLEV LA03 ORLD
+Reducer7 1 PTLD
+Reducer6 4 CLEV DNVR PHLA NWOR
+Map13 1 RLGH
+Reducer9 1 PTLD
+Map14 4 ORLD DLLS PHNX WASH
+Reducer8 1 CHCG
+Map11 1 NWOR
+Map12 1 KSCY
+Reducer3 2 DLLS STTL
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 10: TPC-DS query27
+7 319 1689
+Map1 4 KSCY WASH NWOR ATLN
+Map4 1 CHCG
+Map5 1 CLEV
+Map6 1 CLEV
+Reducer3 1 SCRM
+Map7 1 CMBR
+Reducer2 1 LA03
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 25: TPC-DS query55
+5 320 1690
+Map1 1 CHCG
+Reducer4 1 CHCG
+Map2 4 SNAN NY54 CHCG ORLD
+Map5 1 WASH
+Reducer3 1 NY54
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 14: TPC-DS query34
+7 321 1694
+Map1 4 NSVL PHNX NY54 PTLD
+Reducer7 1 SLKC
+Map3 1 STLS
+Map4 1 PTLD
+Map5 1 STTL
+Map6 1 SLKC
+Reducer2 1 PTLD
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 23: TPC-DS query52
+5 322 1699
+Map1 1 NY54
+Reducer4 1 WASH
+Map2 4 CHCG KSCY SNAN CMBR
+Map5 1 WASH
+Reducer3 1 SCRM
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 37: TPC-DS query7
+7 323 1700
+Map1 4 SNAN DLLS CHCG PHNX
+Map4 1 CLEV
+Map5 1 CHCG
+Map6 1 ORLD
+Reducer3 1 SNAN
+Map7 1 SNAN
+Reducer2 1 PTLD
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 32: TPC-DS query70
+12 324 1704
+Reducer5 1 ATLN
+Reducer10 1 STLS
+Reducer4 6 DLLS SNFN NWOR LA03 DNVR PTLD
+Map1 4 CHCG PHNX ORLD WASH
+Reducer9 1 RLGH
+Map11 1 ATLN
+Map12 1 ORLD
+Map8 4 SCRM PHLA WASH NY54
+Reducer3 11 SNFN CHCG SCRM RLGH CMBR WASH ORLD SNDG NY54 DLLS ATLN
+Map6 1 STTL
+Reducer2 4 CLEV HSTN CHCG SNFN
+Map7 1 NWOR
+11
+Reducer10 Reducer2 443
+Reducer4 Reducer5 76
+Map1 Reducer2 10850
+Reducer9 Reducer10 6
+Map11 Map8 5212
+Map12 Map8 5212
+Map8 Reducer9 10427
+Reducer3 Reducer4 227
+Map6 Map1 5675
+Reducer2 Reducer3 2364
+Map7 Map1 5675
+# 23: TPC-DS query52
+5 325 1709
+Map1 1 NSVL
+Reducer4 1 STLS
+Map2 4 DLLS SNAN PHNX STTL
+Map5 1 CMBR
+Reducer3 1 KSCY
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 18: TPC-DS query43
+5 326 1726
+Map1 1 HSTN
+Reducer4 1 PTLD
+Map2 4 NSVL SLKC NY54 DLLS
+Map5 1 SNAN
+Reducer3 1 LA03
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 11: TPC-DS query29
+12 327 1729
+Reducer5 1 NWOR
+Map10 1 SCRM
+Map1 4 NY54 SNAN CHCG WASH
+Reducer4 1 STTL
+Map11 1 SNFN
+Map12 1 ATLN
+Map8 1 RLGH
+Map9 1 RLGH
+Map6 3 KSCY ORLD WASH
+Reducer3 2 STLS NY54
+Map7 3 DLLS SCRM CMBR
+Reducer2 1 ORLD
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 3: TPC-DS query18
+13 328 1731
+Reducer5 1 CLEV
+Reducer4 1 SLKC
+Map1 3 STLS NSVL WASH
+Map10 1 SNFN
+Reducer7 1 STLS
+Reducer6 1 CHCG
+Map13 1 CMBR
+Map11 1 NWOR
+Map12 1 LA03
+Map8 1 SNFN
+Map9 1 PHLA
+Reducer3 1 STTL
+Reducer2 1 DLLS
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 21: TPC-DS query50
+8 329 1731
+Map1 4 LA03 CMBR DLLS SCRM
+Reducer4 1 SCRM
+Map8 1 NWOR
+Map5 3 SLKC KSCY DNVR
+Reducer3 1 PTLD
+Map6 1 SNAN
+Reducer2 1 STTL
+Map7 1 STTL
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 9: TPC-DS query26
+7 330 1741
+Map1 3 CHCG CMBR SNAN
+Map4 1 DLLS
+Map5 1 CHCG
+Map6 1 PHLA
+Reducer3 1 PHLA
+Map7 1 WASH
+Reducer2 1 ATLN
+6
+Map1 Reducer2 22134
+Map4 Map1 5534
+Map5 Map1 5533
+Map6 Map1 5534
+Map7 Map1 5533
+Reducer2 Reducer3 3
+# 11: TPC-DS query29
+12 331 1750
+Reducer5 1 SCRM
+Map10 1 KSCY
+Map1 4 KSCY STLS SLKC STTL
+Reducer4 1 CMBR
+Map11 1 SNFN
+Map12 1 PHLA
+Map8 1 CMBR
+Map9 1 NY54
+Map6 3 SNAN CHCG RLGH
+Reducer3 2 NSVL RLGH
+Map7 3 PHNX NY54 KSCY
+Reducer2 1 SLKC
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 36: TPC-DS query79
+8 332 1762
+Map1 4 CMBR SNDG ORLD PHNX
+Reducer4 1 SNAN
+Map8 1 SLKC
+Map5 1 LA03
+Map6 1 ATLN
+Reducer3 1 CLEV
+Map7 1 SNAN
+Reducer2 1 WASH
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 13: TPC-DS query32
+8 333 1767
+Map1 3 PHNX HSTN RLGH
+Reducer6 3 SNFN PTLD NWOR
+Map8 1 CHCG
+Map4 1 WASH
+Map5 3 ORLD KSCY RLGH
+Reducer3 1 NY54
+Reducer2 4 ATLN PHNX SNFN RLGH
+Map7 1 CLEV
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 5: TPC-DS query20
+6 334 1781
+Reducer4 1 NSVL
+Map1 3 NSVL ATLN DLLS
+Map5 1 PHLA
+Reducer3 1 ATLN
+Map6 1 NWOR
+Reducer2 1 RLGH
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 5: TPC-DS query20
+6 335 1783
+Reducer4 1 HSTN
+Map1 3 ATLN HSTN STLS
+Map5 1 DLLS
+Reducer3 1 HSTN
+Map6 1 SNDG
+Reducer2 1 ATLN
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 40: TPC-DS query95
+15 336 1783
+Map15 1 WASH
+Map10 2 SNFN STLS
+Map1 3 CHCG NWOR SNDG
+Reducer4 1 CMBR
+Reducer7 5 NWOR ATLN STTL NSVL SCRM
+Map13 1 ORLD
+Reducer8 3 PTLD SNDG SNFN
+Map14 1 ATLN
+Map11 3 HSTN NSVL CLEV
+Reducer12 1 WASH
+Map9 3 HSTN DNVR PHLA
+Map5 3 CLEV LA03 RLGH
+Reducer3 6 STLS ATLN HSTN SCRM PHNX NSVL
+Map6 3 CLEV DNVR KSCY
+Reducer2 5 WASH SLKC LA03 STLS SNDG
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 4: TPC-DS query19
+10 337 1786
+Reducer5 1 NY54
+Map1 1 RLGH
+Reducer4 1 ATLN
+Map10 1 NY54
+Map2 4 RLGH CHCG STTL NY54
+Reducer6 1 NWOR
+Map8 1 PHNX
+Map9 1 SCRM
+Reducer3 1 CLEV
+Map7 1 CLEV
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 25: TPC-DS query55
+5 338 1786
+Map1 1 RLGH
+Reducer4 1 KSCY
+Map2 4 KSCY LA03 CHCG DNVR
+Map5 1 PHLA
+Reducer3 1 DNVR
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 21: TPC-DS query50
+8 339 1799
+Map1 4 CHCG SNFN ATLN RLGH
+Reducer4 1 SNAN
+Map8 1 SCRM
+Map5 3 ATLN WASH NWOR
+Reducer3 1 NY54
+Map6 1 NSVL
+Reducer2 1 CMBR
+Map7 1 PHNX
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 27: TPC-DS query58
+20 340 1803
+Reducer18 2 NSVL NY54
+Map17 3 SCRM CLEV SLKC
+Map15 1 CLEV
+Map16 1 SNDG
+Map19 1 LA03
+Reducer5 4 STLS CHCG SNDG SNFN
+Map20 1 PTLD
+Map1 1 STLS
+Reducer4 4 CMBR DNVR NSVL KSCY
+Map10 1 ATLN
+Map2 1 HSTN
+Map3 4 ATLN DNVR STLS STTL
+Reducer6 1 SNFN
+Map13 1 LA03
+Map14 1 WASH
+Map11 3 NY54 NSVL STTL
+Reducer12 3 NWOR SCRM ORLD
+Map8 1 NWOR
+Map9 1 SNDG
+Map7 1 CLEV
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 18: TPC-DS query43
+5 341 1809
+Map1 1 NWOR
+Reducer4 1 DNVR
+Map2 4 WASH ATLN SNFN SNDG
+Map5 1 ATLN
+Reducer3 1 CHCG
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 36: TPC-DS query79
+8 342 1811
+Map1 4 HSTN ORLD CHCG NY54
+Reducer4 1 CHCG
+Map8 1 ATLN
+Map5 1 CLEV
+Map6 1 PHNX
+Reducer3 1 SNAN
+Map7 1 NSVL
+Reducer2 1 KSCY
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 14: TPC-DS query34
+7 343 1816
+Map1 4 HSTN RLGH STTL PHNX
+Reducer7 1 SNFN
+Map3 1 PHLA
+Map4 1 NWOR
+Map5 1 PHNX
+Map6 1 NY54
+Reducer2 1 HSTN
+6
+Map1 Reducer2 27034
+Map3 Map1 9011
+Map4 Map1 9011
+Map5 Map1 9011
+Map6 Reducer7 297
+Reducer2 Map6 297
+# 28: TPC-DS query60
+23 344 1826
+Map17 1 CMBR
+Map18 3 LA03 NWOR SNAN
+Map15 1 HSTN
+Map16 1 DNVR
+Reducer19 1 SNAN
+Reducer5 1 NSVL
+Map21 1 SNFN
+Reducer20 1 SCRM
+Map10 1 STLS
+Map1 4 CLEV PTLD SCRM PHNX
+Reducer6 1 KSCY
+Map24 1 STTL
+Map14 1 NSVL
+Reducer13 1 SCRM
+Map11 3 SCRM RLGH SLKC
+Reducer12 2 CHCG STLS
+Map22 1 PHLA
+Map23 1 CLEV
+Map8 1 PHLA
+Map9 1 PTLD
+Reducer3 1 CHCG
+Map7 1 STTL
+Reducer2 2 SCRM CLEV
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 11: TPC-DS query29
+12 345 1833
+Reducer5 1 WASH
+Map10 1 PHLA
+Map1 4 PHLA WASH CMBR SNDG
+Reducer4 1 SCRM
+Map11 1 DLLS
+Map12 1 SLKC
+Map8 1 LA03
+Map9 1 NY54
+Map6 3 DNVR SNAN SNFN
+Reducer3 2 LA03 PHNX
+Map7 3 ORLD CHCG LA03
+Reducer2 1 PHLA
+11
+Map10 Reducer3 168
+Map1 Reducer2 4081
+Reducer4 Reducer5 2
+Map11 Reducer3 168
+Map12 Reducer3 168
+Map8 Reducer3 168
+Map9 Reducer3 168
+Map6 Reducer2 1660
+Reducer3 Reducer4 1520
+Map7 Reducer3 1039
+Reducer2 Reducer3 577
+# 1: TPC-DS query15
+8 346 1834
+Reducer5 1 SNDG
+Map1 3 SLKC CLEV ORLD
+Reducer4 1 NY54
+Map8 1 PHLA
+Map6 1 SLKC
+Reducer3 3 KSCY DLLS RLGH
+Map7 1 NWOR
+Reducer2 3 CLEV WASH CMBR
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 28: TPC-DS query60
+23 347 1836
+Map17 1 SNAN
+Map18 3 LA03 ATLN HSTN
+Map15 1 SNDG
+Map16 1 ATLN
+Reducer19 1 NY54
+Reducer5 1 SNDG
+Map21 1 SNFN
+Reducer20 1 STLS
+Map10 1 SLKC
+Map1 4 SNDG LA03 PHNX KSCY
+Reducer6 1 SNAN
+Map24 1 CLEV
+Map14 1 SNFN
+Reducer13 1 ORLD
+Map11 3 DLLS CMBR LA03
+Reducer12 2 SNDG NSVL
+Map22 1 RLGH
+Map23 1 NSVL
+Map8 1 ATLN
+Map9 1 SLKC
+Reducer3 1 RLGH
+Map7 1 KSCY
+Reducer2 2 DLLS ORLD
+22
+Map17 Reducer12 8
+Map18 Reducer19 3689
+Map15 Reducer12 8
+Map16 Reducer12 8
+Reducer19 Reducer20 31
+Reducer5 Reducer6 1
+Map21 Map18 7348
+Reducer20 Reducer5 1
+Map10 Reducer2 12
+Map1 Reducer2 9188
+Map24 Reducer19 5
+Map14 Map11 5392
+Reducer13 Reducer5 1
+Map11 Reducer12 2720
+Reducer12 Reducer13 49
+Map22 Reducer19 5
+Map23 Reducer19 5
+Map8 Reducer2 12
+Map9 Reducer2 12
+Reducer3 Reducer5 1
+Map7 Map1 15996
+Reducer2 Reducer3 85
+# 21: TPC-DS query50
+8 348 1840
+Map1 4 SLKC CHCG CMBR NSVL
+Reducer4 1 SLKC
+Map8 1 DLLS
+Map5 3 PHNX SNFN NY54
+Reducer3 1 SNFN
+Map6 1 STLS
+Reducer2 1 ATLN
+Map7 1 ORLD
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 7: TPC-DS query22
+6 349 1880
+Map1 1 RLGH
+Map4 1 SNDG
+Map5 1 HSTN
+Reducer3 1 CMBR
+Map6 1 KSCY
+Reducer2 1 SNDG
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 29: TPC-DS query65
+10 350 1882
+Map10 1 SCRM
+Map1 4 CLEV ORLD SNDG NY54
+Reducer4 1 PHLA
+Reducer7 1 SNFN
+Map8 1 PHNX
+Map9 1 HSTN
+Map5 1 NSVL
+Map6 4 CMBR NSVL HSTN ATLN
+Reducer3 1 SCRM
+Reducer2 1 PHLA
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 27: TPC-DS query58
+20 351 1884
+Reducer18 2 CMBR CHCG
+Map17 3 ATLN HSTN ORLD
+Map15 1 DLLS
+Map16 1 STTL
+Map19 1 DNVR
+Reducer5 4 ATLN SNDG SLKC PHLA
+Map20 1 ATLN
+Map1 1 CHCG
+Reducer4 4 STTL CLEV WASH PTLD
+Map10 1 LA03
+Map2 1 NWOR
+Map3 4 WASH SCRM DLLS SNAN
+Reducer6 1 SNDG
+Map13 1 DLLS
+Map14 1 ORLD
+Map11 3 WASH NWOR SNAN
+Reducer12 3 PHLA NY54 DNVR
+Map8 1 ATLN
+Map9 1 NWOR
+Map7 1 PHNX
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 5: TPC-DS query20
+6 352 1885
+Reducer4 1 SNFN
+Map1 3 PHLA STTL ORLD
+Map5 1 NSVL
+Reducer3 1 NY54
+Map6 1 CMBR
+Reducer2 1 ORLD
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 36: TPC-DS query79
+8 353 1886
+Map1 4 CHCG PHLA NWOR SLKC
+Reducer4 1 KSCY
+Map8 1 STTL
+Map5 1 STLS
+Map6 1 KSCY
+Reducer3 1 SCRM
+Map7 1 PHLA
+Reducer2 1 NY54
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
+# 27: TPC-DS query58
+20 354 1904
+Reducer18 2 ORLD STLS
+Map17 3 SLKC PHNX CLEV
+Map15 1 SNDG
+Map16 1 CMBR
+Map19 1 ORLD
+Reducer5 4 SLKC LA03 NWOR ORLD
+Map20 1 HSTN
+Map1 1 SLKC
+Reducer4 4 ATLN PHLA PHNX DNVR
+Map10 1 NSVL
+Map2 1 DLLS
+Map3 4 SNDG NY54 LA03 HSTN
+Reducer6 1 LA03
+Map13 1 SNFN
+Map14 1 ORLD
+Map11 3 LA03 DNVR NY54
+Reducer12 3 CLEV SNDG DLLS
+Map8 1 PHLA
+Map9 1 NSVL
+Map7 1 NWOR
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 17: TPC-DS query42
+5 355 1911
+Map1 1 NSVL
+Reducer4 1 ATLN
+Map2 4 SCRM PTLD SNAN SNDG
+Map5 1 SNAN
+Reducer3 1 PTLD
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 15: TPC-DS query3
+5 356 1913
+Reducer4 1 STLS
+Map1 1 NSVL
+Map2 4 NY54 PHLA SNDG CMBR
+Map5 1 SCRM
+Reducer3 1 LA03
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 30: TPC-DS query67
+7 357 1926
+Map1 4 HSTN NSVL ATLN SNAN
+Reducer4 1 KSCY
+Map5 1 PTLD
+Map6 1 NWOR
+Reducer3 1 CMBR
+Map7 1 CMBR
+Reducer2 2 SNAN ORLD
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 0: TPC-DS query12
+6 358 1929
+Reducer4 1 SNAN
+Map1 3 CMBR DNVR KSCY
+Map5 1 SLKC
+Reducer3 1 CHCG
+Map6 1 SNAN
+Reducer2 1 CHCG
+5
+Map1 Reducer2 793
+Map5 Map1 396
+Reducer3 Reducer4 1
+Map6 Map1 396
+Reducer2 Reducer3 1
+# 1: TPC-DS query15
+8 359 1939
+Reducer5 1 RLGH
+Map1 3 PHLA WASH ATLN
+Reducer4 1 NSVL
+Map8 1 SNFN
+Map6 1 STLS
+Reducer3 3 NWOR WASH SLKC
+Map7 1 SNFN
+Reducer2 3 ORLD KSCY NWOR
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 3: TPC-DS query18
+13 360 1943
+Reducer5 1 CMBR
+Reducer4 1 PHNX
+Map1 3 CMBR PTLD DLLS
+Map10 1 PHNX
+Reducer7 1 NY54
+Reducer6 1 DNVR
+Map13 1 PHLA
+Map11 1 RLGH
+Map12 1 CHCG
+Map8 1 NY54
+Map9 1 SNDG
+Reducer3 1 DNVR
+Reducer2 1 SNFN
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 2: TPC-DS query17
+12 361 1952
+Reducer5 1 PTLD
+Map10 1 NY54
+Map1 4 NSVL KSCY ORLD CHCG
+Reducer4 1 ORLD
+Map11 1 NWOR
+Map12 1 PHLA
+Map8 1 NSVL
+Map9 1 PHNX
+Map6 3 HSTN PTLD ATLN
+Reducer3 2 CLEV PTLD
+Map7 3 SNFN SNAN KSCY
+Reducer2 1 STLS
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 12: TPC-DS query31
+32 362 1972
+Reducer29 2 SLKC DNVR
+Map17 1 HSTN
+Map18 3 PTLD NY54 STLS
+Map16 1 CHCG
+Map1 4 NY54 CHCG SNDG SLKC
+Reducer20 1 SLKC
+Map21 1 SCRM
+Reducer25 1 DNVR
+Reducer24 2 NSVL CLEV
+Map22 1 SCRM
+Map23 3 DLLS RLGH LA03
+Map8 4 PHNX NWOR CMBR KSCY
+Map6 1 SCRM
+Map7 1 NSVL
+Map28 3 WASH KSCY CHCG
+Map26 1 PHLA
+Map27 1 STLS
+Reducer15 1 CLEV
+Reducer19 2 HSTN DLLS
+Reducer5 1 STLS
+Map31 1 SNFN
+Reducer10 1 NY54
+Reducer4 2 PHNX SNAN
+Map32 1 PTLD
+Reducer30 1 SNAN
+Map13 4 NWOR RLGH CHCG DLLS
+Reducer9 4 CHCG PHNX SCRM STLS
+Reducer14 4 CMBR SNFN PTLD KSCY
+Map11 1 PHLA
+Map12 1 PHLA
+Reducer3 1 STLS
+Reducer2 4 SNDG CMBR SLKC PHLA
+31
+Reducer29 Reducer30 40
+Map17 Reducer14 19
+Map18 Reducer19 1486
+Map16 Map13 9188
+Map1 Reducer2 7284
+Reducer20 Reducer4 6
+Map21 Map18 1945
+Reducer25 Reducer4 6
+Reducer24 Reducer25 40
+Map22 Reducer19 10
+Map23 Reducer24 1324
+Map8 Reducer9 7844
+Map6 Map1 9011
+Map7 Reducer2 19
+Map28 Reducer29 1324
+Map26 Map23 1729
+Map27 Reducer24 10
+Reducer15 Reducer4 7
+Reducer19 Reducer20 40
+Map31 Map28 1729
+Reducer10 Reducer4 7
+Reducer4 Reducer5 36
+Map32 Reducer29 10
+Reducer30 Reducer4 6
+Map13 Reducer14 7426
+Reducer9 Reducer10 450
+Reducer14 Reducer15 103
+Map11 Map8 9365
+Map12 Reducer9 89
+Reducer3 Reducer4 7
+Reducer2 Reducer3 103
+# 4: TPC-DS query19
+10 363 1982
+Reducer5 1 KSCY
+Map1 1 NWOR
+Reducer4 1 RLGH
+Map10 1 CMBR
+Map2 4 PHLA DNVR CHCG ORLD
+Reducer6 1 PHNX
+Map8 1 WASH
+Map9 1 NSVL
+Reducer3 1 DNVR
+Map7 1 ATLN
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 31: TPC-DS query68
+12 364 2013
+Reducer5 1 STLS
+Map10 1 CHCG
+Reducer4 1 CHCG
+Map1 4 NSVL CMBR NWOR LA03
+Reducer6 1 SNFN
+Map11 1 KSCY
+Map12 1 DNVR
+Map8 1 WASH
+Map9 1 PHNX
+Reducer3 1 CMBR
+Map7 1 SNFN
+Reducer2 1 DNVR
+11
+Reducer5 Reducer6 5
+Map10 Reducer2 2
+Reducer4 Reducer5 19
+Map1 Reducer2 16504
+Map11 Reducer4 22
+Map12 Reducer5 3
+Map8 Map1 6873
+Map9 Map1 6873
+Reducer3 Reducer4 16
+Map7 Map1 6873
+Reducer2 Reducer3 10
+# 40: TPC-DS query95
+15 365 2021
+Map15 1 ORLD
+Map10 2 WASH NY54
+Map1 3 NY54 CMBR ATLN
+Reducer4 1 NWOR
+Reducer7 5 ATLN SNAN SCRM PHLA SNDG
+Map13 1 LA03
+Reducer8 3 PHNX SCRM SNAN
+Map14 1 LA03
+Map11 3 NWOR RLGH ORLD
+Reducer12 1 SNAN
+Map9 3 SNFN PHLA STTL
+Map5 3 SNFN DNVR CMBR
+Reducer3 6 PTLD CHCG STLS DLLS CLEV NWOR
+Map6 3 PHLA KSCY LA03
+Reducer2 5 LA03 KSCY RLGH SNFN DLLS
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 17: TPC-DS query42
+5 366 2028
+Map1 1 STTL
+Reducer4 1 SLKC
+Map2 4 KSCY PHLA STLS NSVL
+Map5 1 CHCG
+Reducer3 1 CLEV
+4
+Map1 Map2 5212
+Map2 Reducer3 10433
+Map5 Map2 5212
+Reducer3 Reducer4 9
+# 29: TPC-DS query65
+10 367 2030
+Map10 1 STLS
+Map1 4 DNVR DLLS NY54 SNAN
+Reducer4 1 ATLN
+Reducer7 1 SNDG
+Map8 1 SCRM
+Map9 1 LA03
+Map5 1 KSCY
+Map6 4 RLGH PHLA NWOR SLKC
+Reducer3 1 KSCY
+Reducer2 1 ORLD
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 22: TPC-DS query51
+11 368 2041
+Reducer5 1 CLEV
+Reducer10 1 PHLA
+Reducer4 1 WASH
+Map1 3 NWOR ORLD CMBR
+Reducer6 1 DNVR
+Reducer9 1 KSCY
+Map11 1 NWOR
+Map8 4 DLLS SNDG STLS DNVR
+Reducer3 1 PHNX
+Map7 1 PTLD
+Reducer2 1 DNVR
+10
+Reducer5 Reducer6 61
+Reducer10 Reducer4 87
+Reducer4 Reducer5 141
+Map1 Reducer2 1259
+Reducer9 Reducer10 1478
+Map11 Map8 4595
+Map8 Reducer9 5977
+Reducer3 Reducer4 108
+Map7 Map1 937
+Reducer2 Reducer3 458
+# 4: TPC-DS query19
+10 369 2043
+Reducer5 1 SNAN
+Map1 1 STTL
+Reducer4 1 DNVR
+Map10 1 NWOR
+Map2 4 NWOR DNVR PTLD PHLA
+Reducer6 1 DLLS
+Map8 1 NY54
+Map9 1 HSTN
+Reducer3 1 KSCY
+Map7 1 STTL
+9
+Reducer5 Reducer6 1
+Map1 Map2 5124
+Reducer4 Reducer5 1
+Map10 Reducer4 1
+Map2 Reducer3 8198
+Map8 Reducer3 1
+Map9 Reducer4 1
+Reducer3 Reducer4 1
+Map7 Map2 5124
+# 7: TPC-DS query22
+6 370 2047
+Map1 1 PHNX
+Map4 1 PHNX
+Map5 1 SCRM
+Reducer3 1 STTL
+Map6 1 NWOR
+Reducer2 1 SCRM
+5
+Map1 Reducer2 448
+Map4 Map1 61
+Map5 Map1 61
+Map6 Map1 61
+Reducer2 Reducer3 267
+# 5: TPC-DS query20
+6 371 2063
+Reducer4 1 SLKC
+Map1 3 NY54 SNDG KSCY
+Map5 1 LA03
+Reducer3 1 STLS
+Map6 1 SNAN
+Reducer2 1 CHCG
+5
+Map1 Reducer2 2402
+Map5 Map1 1200
+Reducer3 Reducer4 1
+Map6 Map1 1200
+Reducer2 Reducer3 3
+# 8: TPC-DS query25
+12 372 2065
+Reducer5 1 CLEV
+Map1 4 DNVR DLLS SNAN NSVL
+Map10 1 CHCG
+Reducer4 1 WASH
+Map11 1 NY54
+Map12 1 HSTN
+Map8 1 WASH
+Map9 1 CHCG
+Reducer3 2 PHLA CLEV
+Map6 3 CLEV DNVR NY54
+Reducer2 1 CLEV
+Map7 3 LA03 SNAN PHNX
+11
+Map1 Reducer2 5426
+Map10 Reducer3 228
+Reducer4 Reducer5 1
+Map11 Reducer3 228
+Map12 Reducer3 228
+Map8 Reducer3 228
+Map9 Reducer3 228
+Reducer3 Reducer4 2057
+Map6 Reducer2 2599
+Reducer2 Reducer3 878
+Map7 Reducer3 1241
+# 40: TPC-DS query95
+15 373 2065
+Map15 1 CLEV
+Map10 2 LA03 NY54
+Map1 3 NWOR KSCY NY54
+Reducer4 1 STLS
+Reducer7 5 DNVR SNFN CHCG NWOR HSTN
+Map13 1 ORLD
+Reducer8 3 DLLS PHNX HSTN
+Map14 1 RLGH
+Map11 3 NY54 ATLN CMBR
+Reducer12 1 LA03
+Map9 3 PTLD CHCG SCRM
+Map5 3 SNAN DLLS PTLD
+Reducer3 6 NWOR CMBR WASH NY54 CLEV STLS
+Map6 3 HSTN WASH ORLD
+Reducer2 5 DLLS PHLA SNFN STLS CLEV
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 15: TPC-DS query3
+5 374 2089
+Reducer4 1 SNFN
+Map1 1 KSCY
+Map2 4 KSCY CHCG HSTN PHNX
+Map5 1 ATLN
+Reducer3 1 HSTN
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 40: TPC-DS query95
+15 375 2096
+Map15 1 HSTN
+Map10 2 CLEV SCRM
+Map1 3 HSTN WASH PHLA
+Reducer4 1 DLLS
+Reducer7 5 CLEV KSCY STTL SLKC PHNX
+Map13 1 SNDG
+Reducer8 3 DNVR SLKC CLEV
+Map14 1 NY54
+Map11 3 SLKC DNVR SCRM
+Reducer12 1 SNFN
+Map9 3 NWOR NY54 KSCY
+Map5 3 SNAN SLKC CLEV
+Reducer3 6 SNDG CHCG SCRM WASH RLGH LA03
+Map6 3 HSTN PHLA STLS
+Reducer2 5 CMBR SNDG SCRM STTL SLKC
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 21: TPC-DS query50
+8 376 2118
+Map1 4 WASH STLS PTLD NSVL
+Reducer4 1 DLLS
+Map8 1 ATLN
+Map5 3 NY54 SNAN ATLN
+Reducer3 1 KSCY
+Map6 1 SNFN
+Reducer2 1 SNDG
+Map7 1 ATLN
+7
+Map1 Reducer2 4364
+Map8 Reducer2 792
+Map5 Reducer2 2490
+Reducer3 Reducer4 1
+Map6 Reducer2 792
+Reducer2 Reducer3 7918
+Map7 Reducer2 791
+# 10: TPC-DS query27
+7 377 2150
+Map1 4 KSCY PHLA HSTN STLS
+Map4 1 NSVL
+Map5 1 NSVL
+Map6 1 NSVL
+Reducer3 1 PHNX
+Map7 1 SNAN
+Reducer2 1 PHLA
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 3: TPC-DS query18
+13 378 2152
+Reducer5 1 WASH
+Reducer4 1 WASH
+Map1 3 DLLS PHLA HSTN
+Map10 1 CMBR
+Reducer7 1 SLKC
+Reducer6 1 NY54
+Map13 1 SLKC
+Map11 1 SNDG
+Map12 1 DLLS
+Map8 1 STTL
+Map9 1 STLS
+Reducer3 1 PTLD
+Reducer2 1 SLKC
+12
+Reducer5 Reducer6 135
+Reducer4 Reducer5 15
+Map1 Reducer2 11521
+Map10 Reducer2 160
+Reducer6 Reducer7 126
+Map13 Reducer5 8
+Map11 Reducer3 16
+Map12 Reducer4 8
+Map8 Map1 18398
+Map9 Reducer2 161
+Reducer3 Reducer4 22
+Reducer2 Reducer3 416
+# 27: TPC-DS query58
+20 379 2154
+Reducer18 2 SNAN PHNX
+Map17 3 LA03 STLS NY54
+Map15 1 SLKC
+Map16 1 LA03
+Map19 1 DNVR
+Reducer5 4 PTLD NSVL SNAN DNVR
+Map20 1 SCRM
+Map1 1 SNFN
+Reducer4 4 SNDG CMBR SCRM KSCY
+Map10 1 NY54
+Map2 1 KSCY
+Map3 4 SNAN HSTN PHLA NSVL
+Reducer6 1 SNFN
+Map13 1 SNFN
+Map14 1 SLKC
+Map11 3 LA03 STTL RLGH
+Reducer12 3 ATLN RLGH PHNX
+Map8 1 SNDG
+Map9 1 SCRM
+Map7 1 CHCG
+19
+Reducer18 Reducer5 16
+Map17 Reducer18 2148
+Map15 Map17 710
+Map16 Map15 1
+Map19 Map17 709
+Reducer5 Reducer6 54
+Map20 Map17 709
+Map1 Map3 1140
+Reducer4 Reducer5 46
+Map10 Map9 1
+Map2 Map1 1
+Map3 Reducer4 3470
+Map13 Map11 1140
+Map14 Map11 1140
+Map11 Reducer12 3441
+Reducer12 Reducer5 24
+Map8 Map3 1140
+Map9 Map11 1140
+Map7 Map3 1140
+# 13: TPC-DS query32
+8 380 2158
+Map1 3 STLS ORLD NWOR
+Reducer6 3 SNDG LA03 PHNX
+Map8 1 DLLS
+Map4 1 LA03
+Map5 3 CMBR SCRM CLEV
+Reducer3 1 STTL
+Reducer2 4 SNAN SNFN NY54 RLGH
+Map7 1 PHLA
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 2: TPC-DS query17
+12 381 2173
+Reducer5 1 SNAN
+Map10 1 SLKC
+Map1 4 SNAN SCRM CMBR PHNX
+Reducer4 1 DLLS
+Map11 1 PHLA
+Map12 1 STTL
+Map8 1 PHLA
+Map9 1 CLEV
+Map6 3 NWOR SNAN ORLD
+Reducer3 2 WASH CMBR
+Map7 3 KSCY WASH ATLN
+Reducer2 1 DNVR
+11
+Map10 Reducer3 383
+Map1 Reducer2 11623
+Reducer4 Reducer5 1
+Map11 Reducer3 383
+Map12 Reducer3 383
+Map8 Reducer3 383
+Map9 Reducer3 383
+Map6 Reducer2 6046
+Reducer3 Reducer4 3448
+Map7 Reducer3 2216
+Reducer2 Reducer3 1936
+# 10: TPC-DS query27
+7 382 2176
+Map1 4 STTL CLEV SNFN ATLN
+Map4 1 ORLD
+Map5 1 STTL
+Map6 1 SCRM
+Reducer3 1 SNDG
+Map7 1 SNDG
+Reducer2 1 SNFN
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 10: TPC-DS query27
+7 383 2178
+Map1 4 SLKC ATLN RLGH NY54
+Map4 1 LA03
+Map5 1 ORLD
+Map6 1 ORLD
+Reducer3 1 HSTN
+Map7 1 PHNX
+Reducer2 1 CHCG
+6
+Map1 Reducer2 30925
+Map4 Map1 7738
+Map5 Map1 7731
+Map6 Map1 7731
+Map7 Map1 7730
+Reducer2 Reducer3 5
+# 23: TPC-DS query52
+5 384 2180
+Map1 1 PTLD
+Reducer4 1 STLS
+Map2 4 PHLA DNVR NSVL PHNX
+Map5 1 DNVR
+Reducer3 1 CHCG
+4
+Map1 Map2 5213
+Map2 Reducer3 10439
+Map5 Map2 5212
+Reducer3 Reducer4 16
+# 29: TPC-DS query65
+10 385 2184
+Map10 1 RLGH
+Map1 4 RLGH CLEV NY54 KSCY
+Reducer4 1 SLKC
+Reducer7 1 SLKC
+Map8 1 WASH
+Map9 1 PHNX
+Map5 1 DNVR
+Map6 4 SNFN WASH PHNX STLS
+Reducer3 1 NWOR
+Reducer2 1 CLEV
+9
+Map10 Reducer2 180
+Map1 Reducer2 3156
+Reducer7 Reducer3 1
+Map8 Map6 7951
+Map9 Map10 10
+Map5 Map1 3056
+Map6 Reducer7 7951
+Reducer3 Reducer4 1
+Reducer2 Reducer3 445
+# 15: TPC-DS query3
+5 386 2215
+Reducer4 1 NSVL
+Map1 1 SNDG
+Map2 4 SNFN SNAN STLS WASH
+Map5 1 PHLA
+Reducer3 1 LA03
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 40: TPC-DS query95
+15 387 2216
+Map15 1 CHCG
+Map10 2 NWOR PTLD
+Map1 3 STTL STLS NSVL
+Reducer4 1 DLLS
+Reducer7 5 STLS WASH CMBR LA03 SNDG
+Map13 1 PTLD
+Reducer8 3 LA03 CHCG SNFN
+Map14 1 SNFN
+Map11 3 DNVR PHLA LA03
+Reducer12 1 STTL
+Map9 3 DNVR NSVL ORLD
+Map5 3 PHNX SNAN WASH
+Reducer3 6 DLLS SLKC LA03 STTL RLGH NY54
+Map6 3 CHCG ORLD DNVR
+Reducer2 5 WASH NY54 CLEV LA03 PTLD
+14
+Map15 Reducer12 78
+Map10 Reducer8 1277
+Map1 Reducer2 796
+Reducer7 Reducer8 5573
+Map13 Reducer12 78
+Reducer8 Reducer3 1487
+Map14 Reducer12 78
+Map11 Reducer12 294
+Reducer12 Reducer3 59
+Map9 Reducer7 2266
+Map5 Reducer2 796
+Reducer3 Reducer4 71
+Map6 Reducer7 2026
+Reducer2 Reducer3 302
+# 30: TPC-DS query67
+7 388 2218
+Map1 4 CHCG SNAN KSCY DLLS
+Reducer4 1 DNVR
+Map5 1 CLEV
+Map6 1 SCRM
+Reducer3 1 CLEV
+Map7 1 SCRM
+Reducer2 2 KSCY SNFN
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 30: TPC-DS query67
+7 389 2222
+Map1 4 NSVL STTL KSCY ORLD
+Reducer4 1 PHLA
+Map5 1 DNVR
+Map6 1 ORLD
+Reducer3 1 DLLS
+Map7 1 SNDG
+Reducer2 2 PTLD KSCY
+6
+Map1 Reducer2 26548
+Map5 Map1 6596
+Map6 Map1 6596
+Reducer3 Reducer4 134
+Map7 Map1 6596
+Reducer2 Reducer3 6893
+# 25: TPC-DS query55
+5 390 2224
+Map1 1 LA03
+Reducer4 1 PHLA
+Map2 4 DNVR HSTN SLKC WASH
+Map5 1 CHCG
+Reducer3 1 NWOR
+4
+Map1 Map2 7483
+Map2 Reducer3 14975
+Map5 Map2 7483
+Reducer3 Reducer4 9
+# 24: TPC-DS query54
+16 391 2225
+Map17 1 ATLN
+Map15 1 ORLD
+Map16 1 SNFN
+Reducer5 3 CHCG SCRM NY54
+Map10 3 NWOR LA03 NSVL
+Reducer4 1 SNFN
+Map1 3 LA03 DLLS KSCY
+Reducer7 1 HSTN
+Reducer6 4 SCRM LA03 DLLS STLS
+Map13 1 NY54
+Reducer9 1 SLKC
+Map14 4 SCRM KSCY ATLN STLS
+Reducer8 1 SNFN
+Map11 1 NY54
+Map12 1 HSTN
+Reducer3 2 ORLD RLGH
+17
+Map17 Reducer6 10
+Map15 Reducer6 11
+Map16 Reducer6 10
+Reducer5 Reducer6 3192
+Map10 Reducer3 480
+Reducer4 Reducer5 1266
+Map1 Reducer3 1794
+Reducer7 Reducer8 1
+Reducer6 Reducer7 64
+Map13 Reducer3 8
+Map14 Reducer5 9398
+Reducer8 Reducer9 1
+Map11 Map10 540
+Map11 Map1 2074
+Map12 Map1 2074
+Map12 Map10 540
+Reducer3 Reducer4 51
+# 15: TPC-DS query3
+5 392 2226
+Reducer4 1 WASH
+Map1 1 HSTN
+Map2 4 NY54 ATLN SLKC NWOR
+Map5 1 DLLS
+Reducer3 1 ATLN
+4
+Map1 Map2 17493
+Map2 Reducer3 34993
+Map5 Map2 17494
+Reducer3 Reducer4 9
+# 34: TPC-DS query73
+7 393 2231
+Map1 4 NY54 HSTN NSVL KSCY
+Reducer7 1 PTLD
+Map3 1 ATLN
+Map4 1 SCRM
+Map5 1 RLGH
+Map6 1 SNAN
+Reducer2 1 CLEV
+6
+Map1 Reducer2 5020
+Map3 Map1 1673
+Map4 Map1 1673
+Map5 Map1 1673
+Map6 Reducer7 135
+Reducer2 Map6 135
+# 35: TPC-DS query76
+11 394 2245
+Reducer4 1 DLLS
+Map10 3 SLKC STTL CLEV
+Map1 4 PTLD DLLS SNFN RLGH
+Map11 1 RLGH
+Map12 1 LA03
+Map8 1 HSTN
+Map9 1 SNAN
+Map5 1 NWOR
+Reducer3 1 DLLS
+Map6 1 NY54
+Map7 3 DLLS CLEV STLS
+10
+Map10 Reducer3 500
+Map1 Reducer3 766
+Map11 Map10 833
+Map12 Map10 833
+Map8 Map7 540
+Map9 Map7 540
+Map5 Map1 956
+Reducer3 Reducer4 3
+Map6 Map1 956
+Map7 Reducer3 325
+# 13: TPC-DS query32
+8 395 2257
+Map1 3 NWOR CLEV PHNX
+Reducer6 3 NY54 PHLA ORLD
+Map8 1 STTL
+Map4 1 PTLD
+Map5 3 ORLD SCRM HSTN
+Reducer3 1 LA03
+Reducer2 4 SNDG NSVL NY54 ATLN
+Map7 1 DNVR
+7
+Map1 Reducer2 830
+Reducer6 Reducer2 50
+Map8 Reducer2 10
+Map4 Map1 1875
+Map5 Reducer6 2017
+Reducer2 Reducer3 73
+Map7 Map5 1973
+# 37: TPC-DS query7
+7 396 2258
+Map1 4 PHLA NY54 PTLD SNDG
+Map4 1 SLKC
+Map5 1 ORLD
+Map6 1 SNFN
+Reducer3 1 NSVL
+Map7 1 NY54
+Reducer2 1 CHCG
+6
+Map1 Reducer2 18816
+Map4 Map1 4698
+Map5 Map1 4698
+Map6 Map1 4697
+Map7 Map1 4697
+Reducer2 Reducer3 25
+# 1: TPC-DS query15
+8 397 2263
+Reducer5 1 DLLS
+Map1 3 SLKC PHLA RLGH
+Reducer4 1 LA03
+Map8 1 ORLD
+Map6 1 PHNX
+Reducer3 3 DLLS ORLD SCRM
+Map7 1 HSTN
+Reducer2 3 STTL CMBR SNFN
+7
+Map1 Reducer2 3593
+Reducer4 Reducer5 1
+Map8 Reducer3 204
+Map6 Reducer2 465
+Reducer3 Reducer4 1024
+Map7 Reducer3 205
+Reducer2 Reducer3 1729
+# 36: TPC-DS query79
+8 398 2285
+Map1 4 ATLN PTLD WASH PHLA
+Reducer4 1 NY54
+Map8 1 CLEV
+Map5 1 STTL
+Map6 1 DLLS
+Reducer3 1 SNAN
+Map7 1 NY54
+Reducer2 1 SCRM
+7
+Map1 Reducer2 5872
+Map8 Reducer3 25
+Map5 Map1 1940
+Map6 Map1 1940
+Reducer3 Reducer4 47
+Map7 Map1 1940
+Reducer2 Reducer3 46
