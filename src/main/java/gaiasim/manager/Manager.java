@@ -56,6 +56,8 @@ public class Manager {
     public HashMap<String, SendingAgentContact> sa_contacts_ = 
         new HashMap<String, SendingAgentContact>();
 
+    public boolean is_baseline_ = false;
+
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
@@ -64,6 +66,7 @@ public class Manager {
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
+            is_baseline_ = true;
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
             scheduler_ = new PoorManScheduler(net_graph_);
@@ -175,7 +178,7 @@ public class Manager {
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
             sa_contacts_.put(sa_id, 
-                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, "1234", message_queue_));
+                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, "1234", message_queue_, is_baseline_));
         }
 
         // TODO: - Receive connection port numbers from sending agents
@@ -205,8 +208,13 @@ public class Manager {
                     Flow f = active_flows_.get(m.flow_id_);
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
-                        System.out.println("    results in reschedule");
-                        reschedule();
+                        if (is_baseline_) {
+                            // TODO: Start the next flow
+                        }
+                        else {
+                            System.out.println("    results in reschedule");
+                            reschedule();
+                        }
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {

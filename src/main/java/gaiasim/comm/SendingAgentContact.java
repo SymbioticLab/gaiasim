@@ -2,7 +2,8 @@ package gaiasim.comm;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.agent.SendingAgent;
+import gaiasim.agent.BaselineSendingAgent;
+import gaiasim.agent.PersistentSendingAgent;
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Flow;
@@ -22,10 +23,13 @@ public class SendingAgentContact {
 
     public NetGraph net_graph_;
 
+    public boolean is_baseline_;
+
     // DEBUG ONLY
     public LinkedBlockingQueue<ControlMessage> to_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
     public LinkedBlockingQueue<ScheduleMessage> from_sa_queue_ = new LinkedBlockingQueue<ScheduleMessage>();
-    public SendingAgent sa_;
+    public PersistentSendingAgent sa_;
+    public BaselineSendingAgent bsa_;
 
     private class SendingAgentListener implements Runnable {
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
@@ -55,14 +59,21 @@ public class SendingAgentContact {
     public Thread listen_sa_thread_;
 
     public SendingAgentContact(String id, NetGraph net_graph, String sa_ip, String sa_port, 
-                               LinkedBlockingQueue<ScheduleMessage> schedule_queue) {
+                               LinkedBlockingQueue<ScheduleMessage> schedule_queue,
+                               boolean is_baseline) {
         id_ = id;
         net_graph_ = net_graph;
         schedule_queue_ = schedule_queue;
+        is_baseline_ = is_baseline;
 
         // TODO: Open connection with sending agent and
         //       get the port numbers that it plans to use
-        sa_ = new SendingAgent(id_, net_graph, to_sa_queue_, from_sa_queue_);
+        if (is_baseline) {
+            bsa_ = new BaselineSendingAgent(id_, to_sa_queue_, from_sa_queue_);
+        }
+        else {
+            sa_ = new PersistentSendingAgent(id_, net_graph, to_sa_queue_, from_sa_queue_);
+        }
         
         // Start thread to listen for messages from the
         // sending agent and add them to the queue.
@@ -85,16 +96,19 @@ public class SendingAgentContact {
         try {
             to_sa_queue_.put(c);
 
-            // Send information about each subflow of the flow
-            for (Pathway p : f.paths_) {
-                ControlMessage sub_c = new ControlMessage();
-                sub_c.type_ = ControlMessage.Type.SUBFLOW_INFO;
-                sub_c.flow_id_ = f.id_;
-                sub_c.ra_id_ = p.dst();
-                sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
-                sub_c.field1_ = p.bandwidth_;
+            // Only send subflow info if running baseline
+            if (!is_baseline_) {
+                // Send information about each subflow of the flow
+                for (Pathway p : f.paths_) {
+                    ControlMessage sub_c = new ControlMessage();
+                    sub_c.type_ = ControlMessage.Type.SUBFLOW_INFO;
+                    sub_c.flow_id_ = f.id_;
+                    sub_c.ra_id_ = p.dst();
+                    sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
+                    sub_c.field1_ = p.bandwidth_;
 
-                to_sa_queue_.put(sub_c);
+                    to_sa_queue_.put(sub_c);
+                }
             }
         }
         catch (InterruptedException e) {

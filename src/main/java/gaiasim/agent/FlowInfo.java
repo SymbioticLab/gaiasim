@@ -20,7 +20,7 @@ public class FlowInfo {
     public double volume_;
     public double transmitted_;
     public int num_subflows_;
-    public SendingAgent.Data sa_;
+    public PersistentSendingAgent.Data sa_;
     public ArrayList<PendingSubscription> pending_subscriptions_ = 
         new ArrayList<PendingSubscription>();
     public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
@@ -36,7 +36,7 @@ public class FlowInfo {
     // is set to false, it is safe to send a FIN.
     public volatile boolean update_pending_ = false;
 
-    public FlowInfo(String id, int num_subflows, double volume, SendingAgent.Data sa) {
+    public FlowInfo(String id, int num_subflows, double volume, PersistentSendingAgent.Data sa) {
         id_ = id;
         volume_ = volume;
         num_subflows_ = num_subflows;
