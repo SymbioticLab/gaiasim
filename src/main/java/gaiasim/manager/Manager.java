@@ -192,7 +192,6 @@ public class Manager {
         try {
             while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
-                System.out.println("dispatched=" + num_dispatched_jobs_ + " total=" + total_num_jobs);
                 ScheduleMessage m = message_queue_.take(); 
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
@@ -227,7 +226,9 @@ public class Manager {
             SendingAgentContact sac = sa_contacts_.get(k);
             sac.terminate();
         }
+
         System.out.println("DONE");
+        print_statistics("/job.csv", "/cct.csv");
     }
 
     public void reschedule() throws Exception {
@@ -242,14 +243,12 @@ public class Manager {
       
         // Wait until we've received either a FLOW_COMPLETION or
         // FLOW_STATUS_RESPONSE for every active flow
-        System.out.println("Need flow responses from " + active_flows_.size());
         while (!active_flows_.isEmpty()) {
             try {
                 // Block until we have a message to receive
                 ScheduleMessage m = message_queue_.take();
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
-                    System.out.println("Registering JOB_INSERTION for " + m.job_id_);
                     Job j = jobs_.get(m.job_id_);
                     start_job(j);
                 }
@@ -259,8 +258,8 @@ public class Manager {
                     handle_finished_flow(f, System.currentTimeMillis());
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                    System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_);
                     Flow f = active_flows_.get(m.flow_id_);
+                    System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
                     f.transmitted_ = m.transmitted_;
                     f.updated_ = true;
                     active_flows_.remove(m.flow_id_);
@@ -279,7 +278,6 @@ public class Manager {
 
         // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
         for (String flow_id : active_flows_.keySet()) {
-            System.out.println("Starting " + flow_id);
             Flow f = active_flows_.get(flow_id);
 
             // The ID of the sending agent from which this flow will

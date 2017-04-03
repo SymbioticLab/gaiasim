@@ -113,10 +113,7 @@ public class FlowInfo {
             if (!update_pending_ && subscriptions_.isEmpty()) {
                 sa_.finish_flow(id_);
             }
-            else {
-                System.out.println(id_ + " subflow finished, but not sending FIN. update_pending_=" + update_pending_ + " subs.size()=" + subscriptions_.size());
-            }
-
+            
             return true;
         }
 
@@ -128,10 +125,6 @@ public class FlowInfo {
             if (!update_pending_ && subscriptions_.isEmpty()) {
                 sa_.finish_flow(id_);
             }
-            else {
-                System.out.println(id_ + " subflow finished, but not sending FIN. update_pending_=" + update_pending_ + " subs.size()=" + subscriptions_.size());
-            }
-
             
             return true;
         } // transmitted_ >= volume_
@@ -151,5 +144,4 @@ public class FlowInfo {
 
         update_pending_ = false;
     }
-
 }

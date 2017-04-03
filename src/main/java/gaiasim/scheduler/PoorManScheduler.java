@@ -299,7 +299,6 @@ public class PoorManScheduler extends Scheduler {
                 }
 
                 if (f.start_timestamp_ == -1) {
-                    System.out.println("Setting start_timestamp to " + timestamp);
                     f.start_timestamp_ = timestamp;
                 }
 
