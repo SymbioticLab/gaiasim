@@ -122,6 +122,13 @@ public class SendingAgentContact {
     }
 
     public void terminate() {
-        listen_sa_thread_.interrupt(); 
+        listen_sa_thread_.interrupt();
+
+        try {
+            to_sa_queue_.put(new ControlMessage(ControlMessage.Type.TERMINATE));
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

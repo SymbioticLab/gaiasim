@@ -20,4 +20,9 @@ public class ControlMessage implements Serializable {
                              //     of this flow. Only used for SUBFLOW_INFO.
     public int field0_;      // Either number of subflows or path_id
     public double field1_;   // Either flow volume or subflow rate
+
+    public ControlMessage() {}
+    public ControlMessage(Type t) {
+        type_ = t;
+    }
 }

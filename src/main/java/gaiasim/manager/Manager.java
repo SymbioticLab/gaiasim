@@ -221,6 +221,12 @@ public class Manager {
             e.printStackTrace();
             System.exit(1);
         }
+
+        // Terminate all SendingAgents
+        for (String k : sa_contacts_.keySet()) {
+            SendingAgentContact sac = sa_contacts_.get(k);
+            sac.terminate();
+        }
         System.out.println("DONE");
     }
 

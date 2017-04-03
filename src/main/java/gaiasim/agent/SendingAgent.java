@@ -57,7 +57,8 @@ public class SendingAgent {
                         //       - Retrieve the socket's port (getsockopt) and send
                         //            <dst, i, port_no> back to controller
 
-                        Connection conn = new Connection(trace_id_ + "-" + Constants.node_id_to_trace_id.get(dst) + "." + Integer.toString(i));
+                        String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(dst) + "." + Integer.toString(i);
+                        Connection conn = new Connection(conn_id);
                         conns[i] = conn;
                         connections_.put(conn.data_.id_, conn);
                     }
@@ -140,6 +141,15 @@ public class SendingAgent {
                     else if (c.type_ == ControlMessage.Type.FLOW_STATUS_REQUEST) {
                         System.out.println(data_.trace_id_ + " FLOW_STATUS_REQUEST");
                         data_.get_status();
+                    }
+                    else if (c.type_ == ControlMessage.Type.TERMINATE) {
+                        for (String k : data_.connections_.keySet()) {
+                            Connection conn = data_.connections_.get(k);
+                            conn.terminate();
+                        }
+
+                        // TODO: Close socket
+                        return;
                     }
                     else {
                         System.out.println(data_.trace_id_ + " received an unexpected ControlMessage");
