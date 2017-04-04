@@ -95,41 +95,39 @@ public class FlowInfo {
     // upon calling this function and finding a flow complete. Yes, this
     // this means that some extra data might be transmitted, but this
     // should only be a small amount.
-    public synchronized boolean transmit(double transmitted, String conn_id) {
+    public synchronized void transmit(double transmitted, String conn_id) {
 
         // If the flow is already done, remove our this connection from the flow.
         // NOTE: Could have just incremented transmitted_ and checked against
         //       volume_, but doing so could cause overflow in the case where
         //       where more than one connection is adding its transmitted amount.
         if (done_) {
+            Connection c = subscriptions_.get(conn_id);
+            c.data_.unsubscribe(this);
             subscriptions_.remove(conn_id);
-
-            // We know that all connections have recognized this flow as complete
-            // once the subscriptions are empty. At that point we may remove the flow.
-            // TODO: Consider sending the FIN message after the first conneciton
-            //       recognizes completion, and simply delay flow deletion. We want
-            //       the FIN to reach the controller as fast as possible, but to
-            //       delay deletion until it is safe to do so.
-            if (!update_pending_ && subscriptions_.isEmpty()) {
-                sa_.finish_flow(id_);
-            }
-            
-            return true;
+            return;
         }
 
         transmitted_ += transmitted;
+        
+        // Check if we're the first connection to reconginze this flow as completed.
+        // We know that we are because done_ set within this function and this
+        // is a synchronized function. If some other connection completed the flow
+        // before we did, then it would have set done_ to true before we had called
+        // this function, and we would've hit the if(done_) condition at the
+        // beginning of this function.
         if (transmitted_ >= volume_) {
             done_ = true;
+
+            Connection c = subscriptions_.get(conn_id);
+            c.data_.unsubscribe(this);
             subscriptions_.remove(conn_id);
 
-            if (!update_pending_ && subscriptions_.isEmpty()) {
+            if (!update_pending_) {
                 sa_.finish_flow(id_);
             }
             
-            return true;
         } // transmitted_ >= volume_
-
-        return false;
     }
 
     public synchronized void update_flow(int num_subflows, double volume) {
@@ -137,11 +135,19 @@ public class FlowInfo {
         num_subflows_ = num_subflows;
         for (String k : subscriptions_.keySet()) {
             Connection c = subscriptions_.get(k);
-            c.data_.unsubscribe(id_);    
+            c.data_.unsubscribe(this);    
         }
         subscriptions_.clear();
         pending_subscriptions_.clear();
 
         update_pending_ = false;
+
+        // If num_subflows is being set to 0, then the controller has scheduled
+        // this flow not to run currently. However, while the controller was
+        // making its scheduling decision, we may have completed the flow. If
+        // this is the case, send a FIN back to the controller for this flow.
+        if (num_subflows_ == 0 && done_) {
+            sa_.finish_flow(id_);
+        }
     }
 }
