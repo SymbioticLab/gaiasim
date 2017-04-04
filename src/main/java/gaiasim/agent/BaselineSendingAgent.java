@@ -61,9 +61,16 @@ public class BaselineSendingAgent {
 
         public void run() {
             // TODO: Create socket to ra_ip
+            Random rnd = new Random(System.currentTimeMillis());
 
             while (flow_.transmitted_ < flow_.volume_) {
-                flow_.transmitted_ += 1024;
+                try {
+                    Thread.sleep(rnd.nextInt(1000));
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                flow_.transmitted_ += 1024; 
             }
 
             // TODO: Close socket

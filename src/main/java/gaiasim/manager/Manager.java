@@ -116,6 +116,7 @@ public class Manager {
     // to be completed.
     public boolean handle_finished_flow(Flow f, long cur_time) throws java.io.IOException {
         active_flows_.remove(f.id_);
+        f.transmitted_ = f.volume_;
         f.done_ = true;
         f.end_timestamp_ = cur_time;
         scheduler_.finish_flow(f);
@@ -240,12 +241,13 @@ public class Manager {
         if (!is_baseline_ && !active_flows_.isEmpty()) {
             for (String sa_id : sa_contacts_.keySet()) {
                 SendingAgentContact sac = sa_contacts_.get(sa_id);
-                sac.sendStatusRequest();
+                sac.send_status_request();
             }
         }
       
         // Wait until we've received either a FLOW_COMPLETION or
         // FLOW_STATUS_RESPONSE for every active flow
+        ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
         while (!active_flows_.isEmpty()) {
             try {
                 // Block until we have a message to receive
@@ -265,6 +267,7 @@ public class Manager {
                     System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
                     f.transmitted_ = m.transmitted_;
                     f.updated_ = true;
+                    preempted_flows.add(f);
                     active_flows_.remove(m.flow_id_);
                 }
             }
@@ -278,18 +281,18 @@ public class Manager {
         // Reschedule the current flows
         update_and_schedule_flows(System.currentTimeMillis());
 
+        for (Flow f : preempted_flows) {
+            if (!active_flows_.containsKey(f.id_)) {
+                active_flows_.put(f.id_, f);
+            }
+        }
+
         // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
         for (String flow_id : active_flows_.keySet()) {
             Flow f = active_flows_.get(flow_id);
 
-            // The ID of the sending agent from which this flow will
-            // be sent is the first sending agent id in the flow's path.
-            // Flows can have multiple paths, but the starting and ending
-            // points of all paths will be the same, so we can just look
-            // at the first path.
             if (!f.started_sending_) {
-                String sa_id = f.paths_.get(0).src();
-                sa_contacts_.get(sa_id).startFlow(f);
+                sa_contacts_.get(f.src_loc_).start_flow(f);
 
                 // Only update started_sending_ if we're running baseline
                 f.started_sending_ = is_baseline_;

@@ -38,10 +38,12 @@ public class MMCFOptimizer {
         System.out.println("Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
             Flow f = coflow.flows_.get(k);
-            System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_);
-            int int_id = coflow.flows_.get(k).int_id_;
-            flow_int_id_list.add(int_id);
-            flow_int_id_to_id.put(int_id, k);
+            if (f.remaining_volume() > 0.0) {
+                System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_ + " -> " + f.remaining_volume());
+                int int_id = coflow.flows_.get(k).int_id_;
+                flow_int_id_list.add(int_id);
+                flow_int_id_to_id.put(int_id, k);
+            }
         }
         Collections.sort(flow_int_id_list);
 

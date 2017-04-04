@@ -83,7 +83,7 @@ public class SendingAgentContact {
 
     // Sends a FLOW_START or FLOW_UPDATE  message to the sending agent along
     // with information about the paths and rates used by the flow.
-    public void startFlow(Flow f) {
+    public void start_flow(Flow f) {
         String start_or_update = f.updated_ ? "UPDATING" : "STARTING";
         System.out.println(start_or_update + " flow " + f.id_ + " at " + Constants.node_id_to_trace_id.get(id_));
 
@@ -120,7 +120,7 @@ public class SendingAgentContact {
 
     // Sends a message to the sending agent requesting an
     // update on the status of all active flows
-    public void sendStatusRequest() {
+    public void send_status_request() {
         System.out.println("STATUS_REQUEST at " + id_);
         
         ControlMessage c = new ControlMessage();
