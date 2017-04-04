@@ -208,13 +208,8 @@ public class Manager {
                     Flow f = active_flows_.get(m.flow_id_);
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
-                        if (is_baseline_) {
-                            // TODO: Start the next flow
-                        }
-                        else {
-                            System.out.println("    results in reschedule");
-                            reschedule();
-                        }
+                        System.out.println("    results in reschedule");
+                        reschedule();
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
@@ -242,7 +237,7 @@ public class Manager {
     public void reschedule() throws Exception {
 
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
-        if (!active_flows_.isEmpty()) {
+        if (!is_baseline_ && !active_flows_.isEmpty()) {
             for (String sa_id : sa_contacts_.keySet()) {
                 SendingAgentContact sac = sa_contacts_.get(sa_id);
                 sac.sendStatusRequest();
@@ -271,7 +266,6 @@ public class Manager {
                     f.transmitted_ = m.transmitted_;
                     f.updated_ = true;
                     active_flows_.remove(m.flow_id_);
-                    System.out.println("active_flows_.size() = " + active_flows_.size());
                 }
             }
             catch (InterruptedException e) {
@@ -293,8 +287,13 @@ public class Manager {
             // Flows can have multiple paths, but the starting and ending
             // points of all paths will be the same, so we can just look
             // at the first path.
-            String sa_id = f.paths_.get(0).src();
-            sa_contacts_.get(sa_id).startFlow(f);
+            if (!f.started_sending_) {
+                String sa_id = f.paths_.get(0).src();
+                sa_contacts_.get(sa_id).startFlow(f);
+
+                // Only update started_sending_ if we're running baseline
+                f.started_sending_ = is_baseline_;
+            }
         }
 
     }

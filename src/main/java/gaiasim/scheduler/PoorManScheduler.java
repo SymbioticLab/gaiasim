@@ -39,6 +39,11 @@ public class PoorManScheduler extends Scheduler {
     }
 
     public void make_paths(Flow f, ArrayList<Link> link_vals) {
+        // TODO: Consider just choosing the shortest path (measured by hops)
+        //       from src to dst if the flow has volume below some threshold.
+        //       See if not accounting for bw consumption on a certain link
+        //       makes any affect.
+
         // This portion is similar to Flow::find_pathway_with_link_allocation in Sim
         ArrayList<Pathway> potential_paths = new ArrayList<Pathway>();
         ArrayList<Pathway> completed_paths = new ArrayList<Pathway>();

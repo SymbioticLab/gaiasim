@@ -18,6 +18,8 @@ public class Flow {
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
     public boolean updated_ = false; // whether the flow has had its allocation updated
+    public boolean started_sending_ = false; // whether the flow has started to be sent
+                                             // by a sending agent (only used by baseline)
 
     public Flow(String id, int int_id, String coflow_id, String src_loc, String dst_loc, double volume) {
         id_ = id;
