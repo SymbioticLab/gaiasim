@@ -21,10 +21,13 @@ public class FlowInfo {
     public double transmitted_;
     public int num_subflows_;
     public PersistentSendingAgent.Data sa_;
-    public ArrayList<PendingSubscription> pending_subscriptions_ = 
-        new ArrayList<PendingSubscription>();
+    public HashMap<String, PendingSubscription> pending_subscriptions_ = 
+        new HashMap<String, PendingSubscription>();
     public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
     public volatile boolean done_ = false;
+
+    // If true, the flow has not just performed a mass unsubscribe.
+    public volatile boolean subbed_ = false;
 
     // Flag to check to determine whether we should send a FIN
     // for this flow immediatly upon completion. If the flow's
@@ -35,6 +38,11 @@ public class FlowInfo {
     // update for the flow to send the FIN message. If the flag
     // is set to false, it is safe to send a FIN.
     public volatile boolean update_pending_ = false;
+
+    // Timestamp of the latest update that happened to this flow.
+    // (Un)subscriptions can only be committed if their timestamp
+    // matches that of the flow.
+    public volatile long update_ts_ = 0;
 
     public FlowInfo(String id, int num_subflows, double volume, PersistentSendingAgent.Data sa) {
         id_ = id;
@@ -53,7 +61,8 @@ public class FlowInfo {
     // about an earlier-starting subflow completing a small flow before
     // all other subflows have been added.
     public synchronized void add_subflow(Connection c, double rate) {
-        if (pending_subscriptions_.size() + 1 == num_subflows_) {
+        pending_subscriptions_.put(c.data_.id_, new PendingSubscription(c, rate));
+        if (pending_subscriptions_.size()/* + 1*/ == num_subflows_) {
 
             // If the flow was finished while we were waiting for
             // an update, we should now send the FIN message for this flow.
@@ -66,21 +75,38 @@ public class FlowInfo {
                 sa_.finish_flow(id_); 
             }
             else {
-                c.data_.subscribe(this, rate);
-                subscriptions_.put(c.data_.id_, c);
-
-                for (PendingSubscription s : pending_subscriptions_) {
-                    s.conn_.data_.subscribe(this, s.rate_);
-                    subscriptions_.put(s.conn_.data_.id_, s.conn_);
+                for (String k : pending_subscriptions_.keySet()) {
+                    PendingSubscription s = pending_subscriptions_.get(k);
+                    s.conn_.data_.subscribe(this, s.rate_, update_ts_);
                 }
-
-                pending_subscriptions_.clear();
             }
-        }
-        else {
-            pending_subscriptions_.add(new PendingSubscription(c, rate));
-        }
 
+            update_pending_ = false;
+        }
+    }
+
+    // Returns true if the Connection was able to commit this FlowInfo's
+    // subscription, false otherwise.
+    public synchronized boolean commit_subscription(String conn_id, long ts) {
+        if (done_ || ts != update_ts_) {
+            return false;
+        }
+        
+        subscriptions_.put(conn_id, pending_subscriptions_.get(conn_id).conn_);
+        pending_subscriptions_.remove(conn_id);
+        return true;
+    }
+
+    // Returns true if the Connection was able to commit this FlowInfo's
+    // unsubscription, false otherwise.
+    public synchronized boolean commit_unsubscription(String conn_id, long ts) {
+        // NOTE: Potentially need to be careful about overflow here
+        if (done_ || ts != update_ts_ - 1) {
+            return false;
+        }
+        
+        subscriptions_.remove(conn_id);
+        return true;
     }
 
     public synchronized void set_update_pending(boolean val) {
@@ -95,17 +121,15 @@ public class FlowInfo {
     // upon calling this function and finding a flow complete. Yes, this
     // this means that some extra data might be transmitted, but this
     // should only be a small amount.
-    public synchronized void transmit(double transmitted, String conn_id) {
+    public synchronized boolean transmit(double transmitted, String conn_id) {
 
         // If the flow is already done, remove our this connection from the flow.
         // NOTE: Could have just incremented transmitted_ and checked against
         //       volume_, but doing so could cause overflow in the case where
         //       where more than one connection is adding its transmitted amount.
         if (done_) {
-            Connection c = subscriptions_.get(conn_id);
-            c.data_.unsubscribe(this);
             subscriptions_.remove(conn_id);
-            return;
+            return true;
         }
 
         transmitted_ += transmitted;
@@ -118,29 +142,31 @@ public class FlowInfo {
         // beginning of this function.
         if (transmitted_ >= volume_) {
             done_ = true;
-
-            Connection c = subscriptions_.get(conn_id);
-            c.data_.unsubscribe(this);
             subscriptions_.remove(conn_id);
 
             if (!update_pending_) {
                 sa_.finish_flow(id_);
             }
             
+            return true;
         } // transmitted_ >= volume_
+
+        return false;
     }
 
     public synchronized void update_flow(int num_subflows, double volume) {
         volume_ = volume;
         num_subflows_ = num_subflows;
-        for (String k : subscriptions_.keySet()) {
-            Connection c = subscriptions_.get(k);
-            c.data_.unsubscribe(this);    
-        }
-        subscriptions_.clear();
-        pending_subscriptions_.clear();
 
-        update_pending_ = false;
+        if (!done_) {
+            for (String k : subscriptions_.keySet()) {
+                Connection c = subscriptions_.get(k);
+                c.data_.unsubscribe(this, update_ts_);    
+            }
+           
+            update_ts_++;
+    
+        }
 
         // If num_subflows is being set to 0, then the controller has scheduled
         // this flow not to run currently. However, while the controller was
@@ -148,6 +174,9 @@ public class FlowInfo {
         // this is the case, send a FIN back to the controller for this flow.
         if (num_subflows_ == 0 && done_) {
             sa_.finish_flow(id_);
+            update_pending_ = false;
         }
+
+        pending_subscriptions_.clear();
     }
 }

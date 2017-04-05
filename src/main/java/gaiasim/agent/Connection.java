@@ -30,6 +30,7 @@ public class Connection {
         public MsgType type_;
         public FlowInfo flow_info_;
         public double rate_ = 0.0; // Only used for SUBSCRIBE
+        public long ts_ = 0; // Only used for (UN)SUBSCRIBE
 
         // TERMINATE
         public SubscriptionMessage(MsgType type) {
@@ -37,16 +38,18 @@ public class Connection {
         }
 
         // UNSUBSCRIBE
-        public SubscriptionMessage(MsgType type, FlowInfo f) {
+        public SubscriptionMessage(MsgType type, FlowInfo f, long ts) {
             type_ = type;
             flow_info_ = f;
+            ts_ = ts;
         }
 
         // SUBSCRIBE
-        public SubscriptionMessage(MsgType type, FlowInfo f, double rate) {
+        public SubscriptionMessage(MsgType type, FlowInfo f, double rate, long ts) {
             type_ = type;
             flow_info_ = f;
             rate_ = rate;
+            ts_ = ts;
         }
     }
 
@@ -75,7 +78,7 @@ public class Connection {
         public synchronized void distribute_transmitted(double transmitted) {
             if (transmitted > 0.0) {
 
-                //ArrayList<Subscription> to_remove = new ArrayList<Subscription>();
+                ArrayList<Subscription> to_remove = new ArrayList<Subscription>();
                 FlowInfo f;
                 double flow_rate;
                 for (String k : subscribers_.keySet()) {
@@ -83,14 +86,27 @@ public class Connection {
                     f = s.flow_info_;
                     flow_rate = s.rate_;
 
-                    f.transmit(transmitted * flow_rate / rate_, id_);
+                    boolean done = f.transmit(transmitted * flow_rate / rate_, id_);
+                    if (done) {
+                        to_remove.add(s);
+                    }
+                }
+
+                for (Subscription s : to_remove) {
+                    rate_ -= s.rate_;
+                    subscribers_.remove(s.flow_info_.id_);
+                }
+
+                // Ensure we don't get rounding errors
+                if (subscribers_.isEmpty()) {
+                    rate_ = 0.0;
                 }
             }
         }
 
-        public synchronized void subscribe(FlowInfo f, double rate) {
+        public synchronized void subscribe(FlowInfo f, double rate, long update_ts) {
             SubscriptionMessage m = new SubscriptionMessage(MsgType.SUBSCRIBE, 
-                                                            f, rate);
+                                                            f, rate, update_ts);
             try {
                 subscription_queue_.put(m);
             }
@@ -100,8 +116,8 @@ public class Connection {
             }
         }
 
-        public synchronized void unsubscribe(FlowInfo f) {
-            SubscriptionMessage m = new SubscriptionMessage(MsgType.UNSUBSCRIBE, f);
+        public synchronized void unsubscribe(FlowInfo f, long update_ts) {
+            SubscriptionMessage m = new SubscriptionMessage(MsgType.UNSUBSCRIBE, f, update_ts);
             
             try {
                 subscription_queue_.put(m);
@@ -145,20 +161,25 @@ public class Connection {
 
                 // m will be null only if poll() returned that we have no
                 // messages. If m is not null, process the message.
-                if (m != null) {
+                while (m != null) {
                     if (m.type_ == MsgType.SUBSCRIBE) {
-                        data_.rate_ += m.rate_;
-                        data_.subscribers_.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
+                        if (m.flow_info_.commit_subscription(data_.id_, m.ts_)) {
+                            System.out.println("Subscribing flow " + m.flow_info_.id_ + " to " + data_.id_);
+                            data_.rate_ += m.rate_;
+                            data_.subscribers_.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
+                        }
                     }
                     else if (m.type_ == MsgType.UNSUBSCRIBE) {
-                        System.out.println("Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
-                        Subscription s = data_.subscribers_.get(m.flow_info_.id_);
-                        data_.rate_ -= s.rate_;
-                        data_.subscribers_.remove(m.flow_info_.id_);
-                        
-                        // Ensure there aren't any rounding errors
-                        if (data_.subscribers_.isEmpty()) {
-                            data_.rate_ = 0.0;
+                        if (m.flow_info_.commit_unsubscription(data_.id_, m.ts_)) {
+                            System.out.println("Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
+                            Subscription s = data_.subscribers_.get(m.flow_info_.id_);
+                            data_.rate_ -= s.rate_;
+                            data_.subscribers_.remove(m.flow_info_.id_);
+                            
+                            // Ensure there aren't any rounding errors
+                            if (data_.subscribers_.isEmpty()) {
+                                data_.rate_ = 0.0;
+                            }
                         }
                     }
                     else {
@@ -167,6 +188,8 @@ public class Connection {
                         // TODO: Close socket
                         return;
                     }
+
+                    m = data_.subscription_queue_.poll();
                 }
 
                 // If we have some subscribers (rate > 0), then transmit on
@@ -178,6 +201,7 @@ public class Connection {
                     catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    System.out.println(data_.id_ + " transmitting with " + data_.subscribers_.size() + " and rate " + data_.rate_);
                     data_.distribute_transmitted(data_.rate_); 
                 }
             } // while (true)

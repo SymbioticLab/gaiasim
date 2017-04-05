@@ -347,6 +347,7 @@ public class Manager {
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
                         System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+                        completed_jobs_.addElement(j);
                     }
                     else {
                         active_jobs_.put(j.id_, j);
@@ -413,6 +414,7 @@ public class Manager {
         if (j.done()) {
             j.end_timestamp_ = j.start_timestamp_;
             System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+            completed_jobs_.addElement(j);
         }
         else {
             active_jobs_.put(j.id_, j);

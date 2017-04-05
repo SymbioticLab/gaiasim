@@ -113,10 +113,6 @@ public class PersistentSendingAgent {
                 // TODO: Close socket
                 return;
             }
-            remove_flow(flow_id);
-        }
-
-        public synchronized void remove_flow(String flow_id) {
             flows_.remove(flow_id);
         }
 
@@ -134,6 +130,10 @@ public class PersistentSendingAgent {
                 while (true) {
                     ControlMessage c = data_.from_sac_queue_.take();
 
+                    // TODO: Consider turning the functionality for FLOW_UPDATE and
+                    //       SUBFLOW_INFO into their own synchronized functions to
+                    //       avoid potential problems with a flow being finished in
+                    //       the middle of while we're calling one of these.
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
                         assert(!data_.flows_.containsKey(c.flow_id_));
