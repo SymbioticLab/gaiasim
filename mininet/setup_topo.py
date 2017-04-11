@@ -27,7 +27,7 @@ def main():
     ng = NetGraph(gmlfilename=args.gml)
 
     net = Mininet(topo=None, build=False, link=TCLink)
-    c0 = net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
+    c0 = net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6653)
 
     ctrl = ng.mininet_init_topo(net)
     

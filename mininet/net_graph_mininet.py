@@ -107,7 +107,7 @@ class NetGraph(object):
             bandwidth = self.link_dict.get(start_node_id=n1, 
                                            end_node_id=n2).bandwidth
 
-            print "Adding " + n1 + "-" + n2 + " link"
+            print "Adding " + n1 + "-" + n2 + " link with bw = " + str(bandwidth)
             # TODO(jack): Determine metric for setting link delay
             net.addLink(switch_name_to_id[n1],
                         switch_name_to_id[n2], bw=int(bandwidth))
