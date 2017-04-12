@@ -32,6 +32,7 @@ public class NetGraph {
     // dst node, resulting in a list of all paths used between
     // the src and dst node.
     public HashMap<String, HashMap<String, ArrayList<Pathway>>> apap_;
+    public int total_num_paths_ = 0;
 
     // Max bandwidth of each link
     public Double[][] link_bw_;
@@ -82,6 +83,7 @@ public class NetGraph {
                     apsp_[src][dst] = info.getShortestPathTo(n_.toString());
 
                     ArrayList<Pathway> paths = make_paths(n, n_);
+                    total_num_paths_ += paths.size();
                     apap_.get(n.toString()).put(n_.toString(), paths);
                     Pathway max_bw_path = new Pathway();
                     for (Pathway p : paths) {

@@ -12,6 +12,7 @@ public class SendTest {
 
         try {
             Socket sd = new Socket("127.0.0.1", server_port);
+            System.out.println("Connected on port " + sd.getLocalPort());
             /*PrintWriter out = new PrintWriter(sd.getOutputStream(), true);
             for (int i = 0; i < 10; i++) {
                 Thread.sleep(1000);

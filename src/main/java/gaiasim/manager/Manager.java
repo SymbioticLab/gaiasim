@@ -11,6 +11,7 @@ import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.SendingAgentContact;
+import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
@@ -176,14 +177,29 @@ public class Manager {
     }
 
     public void emulate() throws Exception {
+        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements = 
+            new LinkedBlockingQueue<PortAnnouncementMessage>();
+
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
             sa_contacts_.put(sa_id, 
-                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, "1234", message_queue_, is_baseline_));
+                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, 23330, 
+                                                     message_queue_, port_announcements, is_baseline_));
         }
-
-        // TODO: - Receive connection port numbers from sending agents
-        //       - Set up forwarding rules for specified paths
+        
+        int num_ports_recv = 0;
+        while (num_ports_recv < net_graph_.total_num_paths_) {
+            try {
+                PortAnnouncementMessage m = port_announcements.take();
+                // TODO: Set up forwarding rule based on this path
+                System.out.println("Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">");
+                num_ports_recv++;
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
 
         num_dispatched_jobs_ = 0;
         int total_num_jobs = jobs_.size();
@@ -288,6 +304,8 @@ public class Manager {
         }
 
         // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
+        // TODO: Consider parallelizing this so that messages intended
+        //       for different SAs don't block on each other.
         for (String flow_id : active_flows_.keySet()) {
             Flow f = active_flows_.get(flow_id);
 

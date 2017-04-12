@@ -122,8 +122,7 @@ public class BaselineSendingAgent {
 
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-                        // TODO: Create thread to start flow
-                        //(new Thread(new Sender(data_, c.flow_id_, c.field1_, "JACK DO THIS", data_.to_sac_queue_))).start();
+                        (new Thread(new Sender(data_, c.flow_id_, c.field1_, "10.0.0." + c.ra_id_))).start();
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                         System.out.println("ERROR: Received FLOW_UPDATE for baseline scheduler");

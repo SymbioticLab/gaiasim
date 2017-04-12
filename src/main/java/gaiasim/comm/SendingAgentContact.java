@@ -1,9 +1,13 @@
 package gaiasim.comm;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.agent.PersistentSendingAgent;
 import gaiasim.comm.ControlMessage;
+import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
@@ -24,55 +28,91 @@ public class SendingAgentContact {
 
     public boolean is_baseline_;
 
-    // DEBUG ONLY
-    public LinkedBlockingQueue<ControlMessage> to_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
-    public LinkedBlockingQueue<ScheduleMessage> from_sa_queue_ = new LinkedBlockingQueue<ScheduleMessage>();
-    public PersistentSendingAgent sa_;
+    public Socket sd_;
+    public ObjectOutputStream os_;
 
     private class SendingAgentListener implements Runnable {
+        public Socket sd_; // Connection to SendingAgent
+        public ObjectInputStream is_;
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
-        // TODO: Replace this with a socket
-        public LinkedBlockingQueue<ScheduleMessage> from_sa_queue_;
+        public LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue_;
+        public int num_port_announcements_;
         
-        public SendingAgentListener(LinkedBlockingQueue<ScheduleMessage> schedule_queue, 
-                                    LinkedBlockingQueue<ScheduleMessage> from_sa_queue) {
+        public SendingAgentListener(Socket sd,
+                                    LinkedBlockingQueue<ScheduleMessage> schedule_queue,
+                                    LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue,
+                                    int num_port_announcements) {
+            sd_ = sd;
             schedule_queue_ = schedule_queue;
-            from_sa_queue_ = from_sa_queue;
+            port_announce_queue_ = port_announce_queue;
+            num_port_announcements_ = num_port_announcements;
+
+            try {
+                is_ = new ObjectInputStream(sd_.getInputStream());
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
         }
-         
+        
+        // Receive messages from the SendingAgent (via socket) and relay them to the
+        // controller (via queues). First receive all PortAnnouncements needed by
+        // the controller to set up routes for this SendingAgent's paths. Then
+        // receive update messages from the SendingaAgents
         public void run() {
-            while (true) {
-                try {
-                    ScheduleMessage s = from_sa_queue_.take();
+            int num_ports_recv = 0;
+            try {
+                while (num_ports_recv < num_port_announcements_) {
+                    PortAnnouncementMessage m = (PortAnnouncementMessage) is_.readObject();
+                    port_announce_queue_.put(m);
+                }
+                while (true) {
+                    ScheduleMessage s = (ScheduleMessage) is_.readObject();
                     schedule_queue_.put(s);
                 }
-                catch (InterruptedException e) {
-                    // TODO: Close socket with SA
-                    return;
-                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                // TODO: Close socket
+                System.exit(1);
             }
         }
     }
 
     public Thread listen_sa_thread_;
 
-    public SendingAgentContact(String id, NetGraph net_graph, String sa_ip, String sa_port, 
+    public SendingAgentContact(String id, NetGraph net_graph, String sa_ip, int sa_port, 
                                LinkedBlockingQueue<ScheduleMessage> schedule_queue,
+                               LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue,
                                boolean is_baseline) {
         id_ = id;
         net_graph_ = net_graph;
         schedule_queue_ = schedule_queue;
         is_baseline_ = is_baseline;
 
-        // TODO: Open connection with sending agent and
-        //       get the port numbers that it plans to use
-        if (!is_baseline) {
-            sa_ = new PersistentSendingAgent(id_, net_graph, to_sa_queue_, from_sa_queue_);
+        // Determine the number of port announcements that should be
+        // received from the SendingAgent.
+        int num_port_announcements = 0;
+        for (String ra_id : net_graph_.apap_.get(id_).keySet()) {
+            num_port_announcements += net_graph_.apap_.get(id_).get(ra_id).size();
+        }
+
+        // Open connection with sending agent and
+        // get the port numbers that it plans to use
+        try {
+            sd_ = new Socket(sa_ip, sa_port);
+            os_ = new ObjectOutputStream(sd_.getOutputStream());
+        }
+        catch (java.io.IOException e) {
+            e.printStackTrace();
+            System.exit(1);
         }
         
         // Start thread to listen for messages from the
         // sending agent and add them to the queue.
-        listen_sa_thread_ = new Thread(new SendingAgentListener(schedule_queue_, from_sa_queue_));
+        listen_sa_thread_ = new Thread(new SendingAgentListener(sd_, schedule_queue_, port_announce_queue, 
+                                                                num_port_announcements));
         listen_sa_thread_.start();
     }
 
@@ -89,7 +129,7 @@ public class SendingAgentContact {
         c.field1_ = f.remaining_volume();
         
         try {
-            to_sa_queue_.put(c);
+            os_.writeObject(c);
 
             // Only send subflow info if running baseline
             if (!is_baseline_) {
@@ -102,11 +142,11 @@ public class SendingAgentContact {
                     sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
                     sub_c.field1_ = p.bandwidth_;
 
-                    to_sa_queue_.put(sub_c);
+                    os_.writeObject(sub_c);
                 }
             }
         }
-        catch (InterruptedException e) {
+        catch (java.io.IOException e) {
             // TODO: Close socket
             e.printStackTrace();
             System.exit(1);
@@ -122,10 +162,11 @@ public class SendingAgentContact {
         c.type_ = ControlMessage.Type.FLOW_STATUS_REQUEST;
 
         try {
-            to_sa_queue_.put(c);   
+            os_.writeObject(c);
         }
-        catch (InterruptedException e) {
+        catch (java.io.IOException e) {
             // TODO: Close socket
+            e.printStackTrace();
             System.exit(1);
         }
     }
@@ -134,9 +175,10 @@ public class SendingAgentContact {
         listen_sa_thread_.interrupt();
 
         try {
-            to_sa_queue_.put(new ControlMessage(ControlMessage.Type.TERMINATE));
+            os_.writeObject(new ControlMessage(ControlMessage.Type.TERMINATE));
+            sd_.close();
         }
-        catch (InterruptedException e) {
+        catch (java.io.IOException e) {
             e.printStackTrace();
         }
     }

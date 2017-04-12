@@ -1,11 +1,15 @@
 package gaiasim.agent;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.HashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.agent.Connection;
 import gaiasim.agent.FlowInfo;
 import gaiasim.comm.ControlMessage;
+import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
@@ -51,39 +55,57 @@ public class PersistentSendingAgent {
         // Flows that are currently being sent by this SendingAgent
         public HashMap<String, FlowInfo> flows_ = new HashMap<String, FlowInfo>();
 
-        // DEBUG ONLY
-        public LinkedBlockingQueue<ScheduleMessage> to_sac_queue_;
-        public LinkedBlockingQueue<ControlMessage> from_sac_queue_;
+        public Socket sd_;
+        public ObjectOutputStream os_;
+        public ObjectInputStream is_;
 
-        public Data(String id, NetGraph net_graph, 
-                    LinkedBlockingQueue<ControlMessage> from_sac_queue,
-                    LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
+        public Data(String id, NetGraph net_graph, Socket sd) {
             id_ = id;
+
+            try {
+                sd_ = sd;
+                os_ = new ObjectOutputStream(sd.getOutputStream());
+                is_ = new ObjectInputStream(sd.getInputStream());
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+
             trace_id_ = Constants.node_id_to_trace_id.get(id);
-            from_sac_queue_ = from_sac_queue;
-            to_sac_queue_ = to_sac_queue;
 
-            for (String dst : net_graph.nodes_) {
+            for (String ra_id : net_graph.nodes_) {
 
-                if (!id_.equals(dst)) {
+                if (!id_.equals(ra_id)) {
 
-                    Connection[] conns = new Connection[net_graph.apap_.get(id_).get(dst).size()];
+                    Connection[] conns = new Connection[net_graph.apap_.get(id_).get(ra_id).size()];
                     for (int i = 0; i < conns.length; i++) {
-                        // TODO: - Create socket to dst and pass the socket to the new Connection
-                        //       - Retrieve the socket's port (getsockopt) and send
-                        //            <dst, i, port_no> back to controller
+                        // ID of connection is SA_id-RA_id.path_id
+                        String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(ra_id) + "." + Integer.toString(i);
 
-                        String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(dst) + "." + Integer.toString(i);
-                        Connection conn = new Connection(conn_id);
-                        conns[i] = conn;
-                        connections_.put(conn.data_.id_, conn);
+                        try {
+                            // Create the socket that the Connection object will use
+                            Socket conn_sd = new Socket("10.0.0." + ra_id, 33330);
+                            int port = sd.getLocalPort();
+                            Connection conn = new Connection(conn_id, conn_sd);
+                            conns[i] = conn;
+                            connections_.put(conn.data_.id_, conn);
+
+                            // Inform the controller of the port number selected
+                            writeMessage(new PortAnnouncementMessage(id_, ra_id, i, port));
+                        }
+                        catch (java.io.IOException e) {
+                            // TODO: Close socket
+                            e.printStackTrace();
+                            System.exit(1);
+                        }
                     }
 
-                    connection_pools_.put(dst, conns);
+                    connection_pools_.put(ra_id, conns);
 
-                } // if id_ != dst
+                } // if id_ != ra_id
 
-            } // for dst in nodes
+            } // for ra_id in nodes
         }
 
         public synchronized void get_status() {
@@ -94,10 +116,11 @@ public class PersistentSendingAgent {
                     System.out.println("Sending STATUS_RESPONSE for " + f.id_ + " transmitted " + f.transmitted_ + " / " + f.volume_ + " and done=" + f.done_);
                     ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
                                                             f.id_, f.transmitted_);
-                    to_sac_queue_.put(s);
+                    writeMessage(s);
                 }
             }
-            catch (InterruptedException e) {
+            catch (java.io.IOException e) {
+                e.printStackTrace();
                 // TODO: Close socket
                 return;
             }
@@ -107,14 +130,23 @@ public class PersistentSendingAgent {
             ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_id);
 
             try {
-                to_sac_queue_.put(s);
+                writeMessage(s);
             }
-            catch (InterruptedException e) {
+            catch (java.io.IOException e) {
+                e.printStackTrace();
                 // TODO: Close socket
                 return;
             }
             flows_.remove(flow_id);
         }
+
+        public synchronized void writeMessage(PortAnnouncementMessage m) throws java.io.IOException {
+            os_.writeObject(m);
+        }
+
+        public synchronized void writeMessage(ScheduleMessage m) throws java.io.IOException {
+            os_.writeObject(m);
+        } 
 
     } // class Data
 
@@ -128,7 +160,7 @@ public class PersistentSendingAgent {
         public void run() {
             try {
                 while (true) {
-                    ControlMessage c = data_.from_sac_queue_.take();
+                    ControlMessage c = (ControlMessage) data_.is_.readObject();
 
                     // TODO: Consider turning the functionality for FLOW_UPDATE and
                     //       SUBFLOW_INFO into their own synchronized functions to
@@ -173,7 +205,13 @@ public class PersistentSendingAgent {
                     }
                 }
             }
-            catch (InterruptedException e) {
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                // TODO: Close socket
+                return;
+            }
+            catch (java.lang.ClassNotFoundException e) {
+                e.printStackTrace();
                 // TODO: Close socket
                 return;
             }
@@ -183,10 +221,8 @@ public class PersistentSendingAgent {
     public Data data_;
     public Thread listen_ctrl_thread_;
 
-    public PersistentSendingAgent(String id, NetGraph net_graph, 
-                                  LinkedBlockingQueue<ControlMessage> from_sac_queue,
-                                  LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
-        data_ = new Data(id, net_graph, from_sac_queue, to_sac_queue);
+    public PersistentSendingAgent(String id, NetGraph net_graph, Socket client_sd) {
+        data_ = new Data(id, net_graph, client_sd);
 
         listen_ctrl_thread_ = new Thread(new Listener(data_));
         listen_ctrl_thread_.start();

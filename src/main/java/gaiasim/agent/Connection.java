@@ -1,8 +1,9 @@
 package gaiasim.agent;
 
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.agent.FlowInfo;
@@ -71,8 +72,21 @@ public class Connection {
         // Current total rate requested by subscribers
         public double rate_ = 0.0;
 
-        public ConnectionData(String id) {
+        public Socket sd_;
+        public OutputStream os_;
+
+        public ConnectionData(String id, Socket sd) {
             id_ = id;
+            sd_ = sd;
+
+            try {
+                os_ = sd_.getOutputStream();
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+
         }
 
         public synchronized void distribute_transmitted(double transmitted) {
@@ -132,13 +146,15 @@ public class Connection {
 
     private class Sender implements Runnable {
         public ConnectionData data_;
+        public int buffer_size_ = 1024*1024;
+        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
+        public byte[] buffer_ = new byte[buffer_size_];
 
         public Sender(ConnectionData data) {
             data_ = data;
         }
 
         public void run() {
-            Random rnd = new Random(System.currentTimeMillis());
             while (true) {
                 SubscriptionMessage m = null;
 
@@ -184,8 +200,13 @@ public class Connection {
                     }
                     else {
                         // TERMINATE
-
-                        // TODO: Close socket
+                        try {
+                            data_.sd_.close();
+                        }
+                        catch (java.io.IOException e) {
+                            e.printStackTrace();
+                            System.exit(1);
+                        }
                         return;
                     }
 
@@ -195,14 +216,15 @@ public class Connection {
                 // If we have some subscribers (rate > 0), then transmit on
                 // behalf of the subscribers.
                 if (data_.rate_ > 0.0) {
-                    try {
-                        Thread.sleep(rnd.nextInt(1000));
-                    }
-                    catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     System.out.println(data_.id_ + " transmitting with " + data_.subscribers_.size() + " and rate " + data_.rate_);
-                    data_.distribute_transmitted(data_.rate_); 
+                    try {
+                        data_.os_.write(buffer_);
+                        data_.distribute_transmitted(buffer_size_megabits_); 
+                    }
+                    catch (java.io.IOException e) {
+                        e.printStackTrace();
+                        System.exit(1);
+                    }
                 }
             } // while (true)
         } // run()
@@ -211,8 +233,8 @@ public class Connection {
     public ConnectionData data_;
     public Thread sending_thread_;
 
-    public Connection(String id) {
-        data_ = new ConnectionData(id);
+    public Connection(String id, Socket sd) {
+        data_ = new ConnectionData(id, sd);
         
         sending_thread_ = new Thread(new Sender(data_));
         sending_thread_.start();
