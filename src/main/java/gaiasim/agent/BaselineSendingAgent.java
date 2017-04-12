@@ -1,6 +1,9 @@
 package gaiasim.agent;
 
-import java.util.Random;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.ControlMessage;
@@ -18,19 +21,27 @@ public class BaselineSendingAgent {
     public class Data {
         public String id_;
         public String trace_id_;
+        public Socket sd_;
+        public ObjectOutputStream os_;
+        public ObjectInputStream is_;
 
-        // DEBUG ONLY
-        public LinkedBlockingQueue<ScheduleMessage> to_sac_queue_;
-        public LinkedBlockingQueue<ControlMessage> from_sac_queue_;
- 
-        public Data(String id, 
-                    LinkedBlockingQueue<ControlMessage> from_sac_queue,   
-                    LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
+        public Data(String id, Socket sd) {
             id_ = id;
             trace_id_ = Constants.node_id_to_trace_id.get(id);
 
-            to_sac_queue_ = to_sac_queue;
-            from_sac_queue_ = from_sac_queue;
+            try {
+                sd_ = sd;
+                os_ = new ObjectOutputStream(sd.getOutputStream());
+                is_ = new ObjectInputStream(sd.getInputStream());
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
+
+        public synchronized void writeMessage(ScheduleMessage m) throws java.io.IOException {
+            os_.writeObject(m);
         }
     }
 
@@ -47,38 +58,49 @@ public class BaselineSendingAgent {
     }
 
     public class Sender implements Runnable {
+        public Data data_;
         public LightFlow flow_;
         public String ra_ip_; // IP address of receiving agent
+        public Socket sd_;
+        public OutputStream os_;
+        public int buffer_size_ = 1024*1024;
+        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
+        public byte[] buffer_ = new byte[buffer_size_];
 
-        // DEBUG ONLY
-        public LinkedBlockingQueue<ScheduleMessage> to_sac_queue_;
-
-        public Sender(String flow_id, double volume, String ra_ip, LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
+        public Sender(Data data, String flow_id, double volume, String ra_ip) {
+            data_ = data;
             flow_ = new LightFlow(flow_id, volume);
             ra_ip_ = ra_ip;
-            to_sac_queue_ = to_sac_queue;
+
+            try {
+                sd_ = new Socket(ra_ip, 33330);
+                os_ = sd_.getOutputStream();
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
         }
 
         public void run() {
-            // TODO: Create socket to ra_ip
-            Random rnd = new Random(System.currentTimeMillis());
-
             while (flow_.transmitted_ < flow_.volume_) {
                 try {
-                    Thread.sleep(rnd.nextInt(1000));
+                    os_.write(buffer_);
                 }
-                catch (InterruptedException e) {
+                catch (java.io.IOException e) {
                     e.printStackTrace();
+                    System.exit(1);
                 }
-                flow_.transmitted_ += 1024; 
-            }
 
-            // TODO: Close socket
+                // We track how much we've sent in terms of megabits
+                flow_.transmitted_ += (buffer_size_megabits_); 
+            }
 
             try {
-                to_sac_queue_.put(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
+                data_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
+                sd_.close();
             }
-            catch (InterruptedException e) {
+            catch (java.io.IOException e) {
                 e.printStackTrace();
             }
         }
@@ -96,12 +118,12 @@ public class BaselineSendingAgent {
         public void run() {
             try {
                 while (true) {
-                    ControlMessage c = data_.from_sac_queue_.take();
+                    ControlMessage c = (ControlMessage) data_.is_.readObject();
 
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
                         // TODO: Create thread to start flow
-                        (new Thread(new Sender(c.flow_id_, c.field1_, "JACK DO THIS", data_.to_sac_queue_))).start();
+                        //(new Thread(new Sender(data_, c.flow_id_, c.field1_, "JACK DO THIS", data_.to_sac_queue_))).start();
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                         System.out.println("ERROR: Received FLOW_UPDATE for baseline scheduler");
@@ -125,7 +147,11 @@ public class BaselineSendingAgent {
                     }
                 }
             }
-            catch (InterruptedException e) {
+            catch (java.io.IOException e) {
+                // TODO: Close socket
+                return;
+            }
+            catch (java.lang.ClassNotFoundException e) {
                 // TODO: Close socket
                 return;
             }
@@ -136,12 +162,9 @@ public class BaselineSendingAgent {
     public Data data_;
     public Thread listener_;
 
-    public BaselineSendingAgent(String id, 
-            LinkedBlockingQueue<ControlMessage> from_sac_queue,   
-            LinkedBlockingQueue<ScheduleMessage> to_sac_queue) {
+    public BaselineSendingAgent(String id, Socket client_sd) {
 
-        data_ = new Data(id, from_sac_queue, to_sac_queue);
-    
+        data_ = new Data(id, client_sd);
         listener_ = new Thread(new Listener(data_));
         listener_.start();
     }

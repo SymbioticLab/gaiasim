@@ -1,6 +1,8 @@
 package gaiasim.comm;
 
-public class ScheduleMessage {
+import java.io.Serializable;
+
+public class ScheduleMessage implements Serializable {
     public enum Type {
         JOB_INSERTION,
         FLOW_COMPLETION,

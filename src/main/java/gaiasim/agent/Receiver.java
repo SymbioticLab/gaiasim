@@ -1,15 +1,20 @@
 package gaiasim.agent;
 
+import java.io.ObjectInputStream;
 import java.io.InputStream;
 import java.net.Socket;
+
+import gaiasim.comm.ControlMessage;
 
 public class Receiver implements Runnable {
     public Socket sd_;
     public InputStream in_;
+    public ObjectInputStream oin_;
 
     public Receiver(Socket client_sd) throws java.io.IOException {
         sd_ = client_sd;
         in_ = client_sd.getInputStream();
+        oin_ = new ObjectInputStream(client_sd.getInputStream());
     }
 
     public void run() {
@@ -17,14 +22,20 @@ public class Receiver implements Runnable {
         int num_recv;
         while (true) {
             try {
-                num_recv = in_.read(buffer);
+                ControlMessage c = (ControlMessage) oin_.readObject();
+                System.out.println(c.type_);
+                /*num_recv = in_.read(buffer);
                 if (num_recv < 0) {
                     break;
                 }
                 System.out.println("Received " + num_recv);
-                System.out.println(buffer);
+                System.out.println(buffer);*/
             }
             catch (java.io.IOException e) {
+                break;
+            }
+            catch (java.lang.ClassNotFoundException e) {
+                e.printStackTrace();
                 break;
             }
         }

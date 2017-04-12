@@ -1,7 +1,10 @@
 package gaiasim.agent;
 
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+
+import gaiasim.comm.ControlMessage;
 
 public class SendTest {
     public static void main(String[] args) {
@@ -9,10 +12,15 @@ public class SendTest {
 
         try {
             Socket sd = new Socket("127.0.0.1", server_port);
-            PrintWriter out = new PrintWriter(sd.getOutputStream(), true);
+            /*PrintWriter out = new PrintWriter(sd.getOutputStream(), true);
             for (int i = 0; i < 10; i++) {
                 Thread.sleep(1000);
                 out.println("test");
+            }*/
+            ObjectOutputStream os = new ObjectOutputStream(sd.getOutputStream());
+            for (int i = 0; i < 10; i++) {
+                Thread.sleep(1000);
+                os.writeObject(new ControlMessage(ControlMessage.Type.TERMINATE));
             }
             sd.close();
         }

@@ -1,5 +1,8 @@
 package gaiasim.agent;
 
+import java.net.ServerSocket;
+import java.net.Socket;
+
 import gaiasim.agent.BaselineSendingAgent;
 import gaiasim.agent.PersistentSendingAgent;
 import gaiasim.network.NetGraph;
@@ -17,13 +20,23 @@ public class SendingAgent {
 
         String id = args[1];
         String use_persistent = args[2];
-        if (use_persistent.equals("0")) {
-            //BaselineSendingAgent b = new BaselineSendingAgent(id);
+
+        try {
+            ServerSocket sd = new ServerSocket(23330);
+            Socket client_sd = sd.accept();
+
+            if (use_persistent.equals("0")) {
+                BaselineSendingAgent b = new BaselineSendingAgent(id, client_sd);
+            }
+            else {
+                String gml_file = args[3];
+                NetGraph net_graph = new NetGraph(gml_file);
+                //PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph);
+            }
         }
-        else {
-            String gml_file = args[3];
-            NetGraph net_graph = new NetGraph(gml_file);
-            //PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph);
+        catch (java.io.IOException e) {
+            e.printStackTrace();
+            System.exit(1);
         }
     }
 }

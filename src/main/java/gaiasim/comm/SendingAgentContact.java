@@ -2,7 +2,6 @@ package gaiasim.comm;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.agent.BaselineSendingAgent;
 import gaiasim.agent.PersistentSendingAgent;
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
@@ -29,7 +28,6 @@ public class SendingAgentContact {
     public LinkedBlockingQueue<ControlMessage> to_sa_queue_ = new LinkedBlockingQueue<ControlMessage>();
     public LinkedBlockingQueue<ScheduleMessage> from_sa_queue_ = new LinkedBlockingQueue<ScheduleMessage>();
     public PersistentSendingAgent sa_;
-    public BaselineSendingAgent bsa_;
 
     private class SendingAgentListener implements Runnable {
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
@@ -68,10 +66,7 @@ public class SendingAgentContact {
 
         // TODO: Open connection with sending agent and
         //       get the port numbers that it plans to use
-        if (is_baseline) {
-            bsa_ = new BaselineSendingAgent(id_, to_sa_queue_, from_sa_queue_);
-        }
-        else {
+        if (!is_baseline) {
             sa_ = new PersistentSendingAgent(id_, net_graph, to_sa_queue_, from_sa_queue_);
         }
         
