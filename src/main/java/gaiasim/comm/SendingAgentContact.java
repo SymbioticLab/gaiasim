@@ -66,6 +66,8 @@ public class SendingAgentContact {
                 while (num_ports_recv < num_port_announcements_) {
                     PortAnnouncementMessage m = (PortAnnouncementMessage) is_.readObject();
                     port_announce_queue_.put(m);
+                    num_ports_recv++;
+                    System.out.println(id_ + " received " + num_ports_recv + " / " + num_port_announcements_);
                 }
                 while (true) {
                     ScheduleMessage s = (ScheduleMessage) is_.readObject();
@@ -97,6 +99,7 @@ public class SendingAgentContact {
         for (String ra_id : net_graph_.apap_.get(id_).keySet()) {
             num_port_announcements += net_graph_.apap_.get(id_).get(ra_id).size();
         }
+        System.out.println(id_ + " needs " + num_port_announcements);
 
         // Open connection with sending agent and
         // get the port numbers that it plans to use

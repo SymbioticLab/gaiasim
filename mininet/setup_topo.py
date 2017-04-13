@@ -49,7 +49,7 @@ def main():
         else:
             cmd_str += ' 1 ' + args.gml + ' &'
         print cmd_str 
-        #host.cmd(cmd_str)
+        host.cmd(cmd_str)
         
     # Start the simulator
     out_file = '~/Sim/out_' + args.scheduler

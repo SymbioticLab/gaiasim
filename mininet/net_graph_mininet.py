@@ -28,8 +28,7 @@ class NetGraph(object):
        
         # Set up map for link interfaces on each switch
         # and host IP mappings
-
-        ip_suffix = 2 # Start at suffix 2 because controller gets 1
+        ip_suffix = 1
         max_interface_numbers = {}
         for key in self.nodes:
             self.interfaces[key] = {}
@@ -77,12 +76,12 @@ class NetGraph(object):
         switch_name_to_id = {}
         
         # Create controller node and switch
-        ip_block = '10.0.0.' + str(ip_suffix)
+        ctrl_ip_suffix = len(self.nodes) + 1
+        ip_block = '10.0.0.' + str(ctrl_ip_suffix)
         ctrl = net.addHost('CTRL', ip=ip_block)
-        switch_id = "s" + str(ip_suffix)
+        switch_id = "s" + str(ctrl_ip_suffix)
         ctrl_switch = net.addSwitch(switch_id, protocols=['OpenFlow13'], cls=OVSSwitch)
         net.addLink('CTRL', switch_id, bw=9999)
-        ip_suffix += 1
 
         for key in sorted(self.nodes):
             # For now, only fill up first octet

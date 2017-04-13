@@ -86,7 +86,7 @@ public class PersistentSendingAgent {
                         try {
                             // Create the socket that the Connection object will use
                             Socket conn_sd = new Socket("10.0.0." + ra_id, 33330);
-                            int port = sd.getLocalPort();
+                            int port = conn_sd.getLocalPort();
                             Connection conn = new Connection(conn_id, conn_sd);
                             conns[i] = conn;
                             connections_.put(conn.data_.id_, conn);

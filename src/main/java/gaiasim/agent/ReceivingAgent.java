@@ -23,10 +23,5 @@ public class ReceivingAgent {
             e.printStackTrace();
             System.exit(1);
         }
-
-/*        while (true) {
-            // Accept connections and start a new thread
-            // to receive incoming data
-        }*/
     }
 }
