@@ -21,8 +21,6 @@ public class Receiver implements Runnable {
                 if (num_recv < 0) {
                     break;
                 }
-                System.out.println("Received " + num_recv);
-                System.out.println(buffer);
             }
             catch (java.io.IOException e) {
                 break;

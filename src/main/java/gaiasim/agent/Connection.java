@@ -216,7 +216,6 @@ public class Connection {
                 // If we have some subscribers (rate > 0), then transmit on
                 // behalf of the subscribers.
                 if (data_.rate_ > 0.0) {
-                    System.out.println(data_.id_ + " transmitting with " + data_.subscribers_.size() + " and rate " + data_.rate_);
                     try {
                         data_.os_.write(buffer_);
                         data_.distribute_transmitted(buffer_size_megabits_); 

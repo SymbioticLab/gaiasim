@@ -133,7 +133,6 @@ public class FlowInfo {
         }
 
         transmitted_ += transmitted;
-        
         // Check if we're the first connection to reconginze this flow as completed.
         // We know that we are because done_ set within this function and this
         // is a synchronized function. If some other connection completed the flow
