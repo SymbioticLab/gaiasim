@@ -41,14 +41,13 @@ def main():
     
     # Start the sending agents
     for key, host in ng.mininet_hosts.iteritems():
-        print "Starting sending agent " + host.name
         host_id = ng.mininet_host_ips[key].split('.')[-1]
+        print "Starting sending agent " + host.name + " id " + str(host_id)
         cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
         if baseline:
             cmd_str += ' 0 &'
         else:
             cmd_str += ' 1 ' + args.gml + ' &'
-        print cmd_str 
         host.cmd(cmd_str)
         
     # Start the simulator
