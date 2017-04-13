@@ -20,9 +20,9 @@ def main():
     setup_argparse(p)
     args = p.parse_args()
     
-    baseline_str = '0'
+    baseline = False
     if args.scheduler == "baseline":
-        baseline_str = '1'
+        baseline = True
 
     ng = NetGraph(gmlfilename=args.gml)
 
@@ -33,34 +33,23 @@ def main():
     
     net.start()
 
-    # Start the default controller
-    """ctrl.cmd('export PYTHONPATH=$PYTHONPATH:~/Sim; ~/pox/pox.py l3_learning_ignore openflow.discovery --eat-early-packets openflow.spanning_tree --no-flood --hold-down openflow.of_01 --port=6633 > /dev/null 2>&1 &')"""
-
-    # Wait for all switches to be connected to the default controller
-    """net.waitConnected()
-
-    for i in range(2):
-        print "Iteration " + str(i+1)
-        for key, host in ng.mininet_hosts.iteritems():
-            ping_str = "Pinging from " + host.name
-
-            result_str = host.cmd('ping 10.0.0.1 -c1')
-            if "Host Unreachable" in result_str:
-                ping_str += ": FAIL"
-            else:
-                ping_str += ": PASS"
-            print ping_str"""
-
     # Start the receiving agents
     for key, host in ng.mininet_hosts.iteritems():
         print "Starting receiving agent " + host.name
-        host.cmd('python ~/Sim/src/emulation/receiver.py > /dev/null 2>&1 &')
+        host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
 
     
     # Start the sending agents
     for key, host in ng.mininet_hosts.iteritems():
         print "Starting sending agent " + host.name
-        host.cmd('python ~/Sim/start_sending_agent.py ' + host.name + ' ' + args.gml + ' ' + baseline_str + ' > /dev/null 2>&1 &')
+        host_id = ng.mininet_host_ips[key].split('.')[-1]
+        cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
+        if baseline:
+            cmd_str += ' 0 &'
+        else:
+            cmd_str += ' 1 ' + args.gml + ' &'
+        print cmd_str 
+        #host.cmd(cmd_str)
         
     # Start the simulator
     out_file = '~/Sim/out_' + args.scheduler

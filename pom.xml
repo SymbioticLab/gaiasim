@@ -43,7 +43,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>src.main.java.gaiasim.agent.SendTest</mainClass>
+                                    <mainClass>src.main.java.gaiasim.agent.SendingAgent</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

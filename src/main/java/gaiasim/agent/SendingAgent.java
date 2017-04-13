@@ -9,7 +9,7 @@ import gaiasim.network.NetGraph;
 
 public class SendingAgent {
     public static void main(String[] args) throws java.io.IOException {
-        if (args.length > 4) {
+        if (args.length > 3) {
             System.out.println("ERROR: Incorrect number of command line arguments");
             System.out.println("  Usage: java -cp target/<jar-name> gaiasim.agent.SendingAgent <sa_id> <use_persistent_conn> <path_to_gml_file>");
             System.out.println("    sa_id: id of sending agent");
@@ -18,8 +18,8 @@ public class SendingAgent {
             System.exit(1);
         }
 
-        String id = args[1];
-        String use_persistent = args[2];
+        String id = args[0];
+        String use_persistent = args[1];
 
         try {
             ServerSocket sd = new ServerSocket(23330);
@@ -29,9 +29,9 @@ public class SendingAgent {
                 BaselineSendingAgent b = new BaselineSendingAgent(id, client_sd);
             }
             else {
-                String gml_file = args[3];
+                String gml_file = args[2];
                 NetGraph net_graph = new NetGraph(gml_file);
-                //PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph);
+                PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, client_sd);
             }
         }
         catch (java.io.IOException e) {
