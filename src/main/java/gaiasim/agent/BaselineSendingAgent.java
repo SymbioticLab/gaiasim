@@ -20,14 +20,12 @@ public class BaselineSendingAgent {
     
     public class Data {
         public String id_;
-        public String trace_id_;
         public Socket sd_;
         public ObjectOutputStream os_;
         public ObjectInputStream is_;
 
         public Data(String id, Socket sd) {
             id_ = id;
-            trace_id_ = Constants.node_id_to_trace_id.get(id);
 
             try {
                 sd_ = sd;
@@ -121,7 +119,7 @@ public class BaselineSendingAgent {
                     ControlMessage c = (ControlMessage) data_.is_.readObject();
 
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
-                        System.out.println(data_.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        System.out.println(data_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
                         (new Thread(new Sender(data_, c.flow_id_, c.field1_, "10.0.0." + c.ra_id_))).start();
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
@@ -141,7 +139,7 @@ public class BaselineSendingAgent {
                         return;
                     }
                     else {
-                        System.out.println(data_.trace_id_ + " received an unexpected ControlMessage");
+                        System.out.println(data_.id_ + " received an unexpected ControlMessage");
                         System.exit(1);
                     }
                 }

@@ -32,25 +32,31 @@ public class SendingAgentContact {
     public ObjectOutputStream os_;
 
     private class SendingAgentListener implements Runnable {
+        public String id_;
         public Socket sd_; // Connection to SendingAgent
         public ObjectInputStream is_;
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
         public LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue_;
         public int num_port_announcements_;
+        public boolean is_baseline_;
         
-        public SendingAgentListener(Socket sd,
+        public SendingAgentListener(String id, Socket sd,
                                     LinkedBlockingQueue<ScheduleMessage> schedule_queue,
                                     LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue,
-                                    int num_port_announcements) {
+                                    int num_port_announcements,
+                                    boolean is_baseline) {
+            id_ = id;
             sd_ = sd;
             schedule_queue_ = schedule_queue;
             port_announce_queue_ = port_announce_queue;
             num_port_announcements_ = num_port_announcements;
+            is_baseline_ = is_baseline;
 
             try {
                 is_ = new ObjectInputStream(sd_.getInputStream());
             }
-            catch (java.io.IOException e) {
+            catch (Exception e) {
+                System.out.println("Exception at " + id_);
                 e.printStackTrace();
                 System.exit(1);
             }
@@ -61,18 +67,35 @@ public class SendingAgentContact {
         // the controller to set up routes for this SendingAgent's paths. Then
         // receive update messages from the SendingaAgents
         public void run() {
-            int num_ports_recv = 0;
             try {
-                while (num_ports_recv < num_port_announcements_) {
-                    PortAnnouncementMessage m = (PortAnnouncementMessage) is_.readObject();
-                    port_announce_queue_.put(m);
-                    num_ports_recv++;
-                    System.out.println(id_ + " received " + num_ports_recv + " / " + num_port_announcements_);
+                if (!is_baseline_) {
+                    int num_ports_recv = 0;
+                    while (num_ports_recv < num_port_announcements_) {
+                        PortAnnouncementMessage m = (PortAnnouncementMessage) is_.readObject();
+                        port_announce_queue_.put(m);
+                        num_ports_recv++;
+                        System.out.println(id_ + " received " + num_ports_recv + " / " + num_port_announcements_);
+                    }
                 }
                 while (true) {
                     ScheduleMessage s = (ScheduleMessage) is_.readObject();
                     schedule_queue_.put(s);
                 }
+            }
+            catch (java.net.SocketException e) {
+                // If the exception is because we closed the socket, we're all good.
+                // Otherwise, probably some error.
+                if (e.getMessage().contains("Socket closed")) {
+                    System.out.println(id_ + " connection to SA closed and interrupted=" + Thread.interrupted());
+                    return;
+                }
+
+                e.printStackTrace();
+                System.exit(1);
+            }
+            catch (java.io.EOFException e) {
+                System.out.println(id_ + " connection to SA closed and interrupted=" + Thread.interrupted());
+                return;
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -99,13 +122,13 @@ public class SendingAgentContact {
         for (String ra_id : net_graph_.apap_.get(id_).keySet()) {
             num_port_announcements += net_graph_.apap_.get(id_).get(ra_id).size();
         }
-        System.out.println(id_ + " needs " + num_port_announcements);
 
         // Open connection with sending agent and
         // get the port numbers that it plans to use
         try {
             sd_ = new Socket(sa_ip, sa_port);
             os_ = new ObjectOutputStream(sd_.getOutputStream());
+            System.out.println(id_ + " connected to SA");
         }
         catch (java.io.IOException e) {
             e.printStackTrace();
@@ -114,8 +137,8 @@ public class SendingAgentContact {
         
         // Start thread to listen for messages from the
         // sending agent and add them to the queue.
-        listen_sa_thread_ = new Thread(new SendingAgentListener(sd_, schedule_queue_, port_announce_queue, 
-                                                                num_port_announcements));
+        listen_sa_thread_ = new Thread(new SendingAgentListener(id_, sd_, schedule_queue_, port_announce_queue, 
+                                                                num_port_announcements, is_baseline));
         listen_sa_thread_.start();
     }
 
@@ -130,6 +153,7 @@ public class SendingAgentContact {
         c.flow_id_ = f.id_;
         c.field0_ = f.paths_.size();
         c.field1_ = f.remaining_volume();
+        c.ra_id_ = f.paths_.get(0).dst();
         
         try {
             os_.writeObject(c);
