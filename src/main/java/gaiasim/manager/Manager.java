@@ -12,6 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.SendingAgentContact;
 import gaiasim.comm.PortAnnouncementMessage;
+import gaiasim.comm.PortAnnouncementRelay;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
@@ -190,7 +191,9 @@ public class Manager {
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
-            int num_ports_recv = 0;
+            PortAnnouncementRelay relay = new PortAnnouncementRelay(net_graph_, port_announcements);
+            relay.relay_ports();
+            /*int num_ports_recv = 0;
             while (num_ports_recv < net_graph_.total_num_paths_) {
                 try {
                     PortAnnouncementMessage m = port_announcements.take();
@@ -202,7 +205,7 @@ public class Manager {
                     e.printStackTrace();
                     System.exit(1);
                 }
-            }
+            }*/
         }
 
         num_dispatched_jobs_ = 0;
