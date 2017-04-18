@@ -8,7 +8,7 @@ class NetGraph(object):
     def __init__(self, linkData=None, nodesData=None, gmlfilename=None, defaultbandwidth=1000):
         # links: {node : {neighbor : {"bandwith" : bw, "status" : "free/busy", "available" : time}}}
         self.links = {}
-        self.nodes = []
+        self.nodes = [] # Node name (e.g., HK, BA, LA)
         self.node_label_by_id = {}
         self.node_id_by_label = {}
         self.link_dict = LinkDict()
@@ -48,22 +48,25 @@ class NetGraph(object):
 
         # Populate interface map so that we can later query it when setting
         # up Openflow rules
-        for n1, n2 in self.link_dict.get_dict():
-            next_if1 = max_interface_numbers[n1] + 1
-            max_interface_numbers[n1] += 1
+        for src in range(1, len(self.nodes) + 1):
+            src_str = self.node_label_by_id[src]
+            for dst in range(src + 1, len(self.nodes) + 1):
+                dst_str = self.node_label_by_id[dst]
 
-            # This assumes that there's only one direct link between
-            # each switch.
-            assert(n2 not in self.interfaces[n1])
-            self.interfaces[n1][n2] = next_if1
+                # Don't add interface between own node or between nodes
+                # that are not connected by some link.
+                if self.link_dict.get(src_str, dst_str) != None:
 
-            next_if2 = max_interface_numbers[n2] + 1
-            max_interface_numbers[n2] += 1
+                    # This assumes that there's only one direct link between
+                    # each switch.
+                    if dst_str not in self.interfaces[src_str]:
+                        next_if = max_interface_numbers[src_str] + 1
+                        max_interface_numbers[src_str] = next_if
+                        self.interfaces[src_str][dst_str] = next_if
 
-            # This assumes that there's only one direct link between
-            # each switch.
-            assert(n1 not in self.interfaces[n2])
-            self.interfaces[n2][n1] = next_if2
+                        next_if = max_interface_numbers[dst_str] + 1
+                        max_interface_numbers[dst_str] = next_if
+                        self.interfaces[dst_str][src_str] = next_if
 
         # Add the interface connecting switches to the controller switch
         self.interfaces['CTRL'] = {}
@@ -105,14 +108,18 @@ class NetGraph(object):
             net.addLink(key, switch_id, bw=9999)
 
         # Connect switches based on topology links
-        for n1, n2 in self.link_dict.get_dict():
-            bandwidth = self.link_dict.get(start_node_id=n1, 
-                                           end_node_id=n2).bandwidth
+        for src in range(1, len(self.nodes) + 1):
+            src_str = self.node_label_by_id[src]
 
-            print "Adding " + n1 + "-" + n2 + " link with bw = " + str(bandwidth)
-            # TODO(jack): Determine metric for setting link delay
-            net.addLink(switch_name_to_id[n1],
-                        switch_name_to_id[n2], bw=int(bandwidth))
+            for dst in range(src + 1, len(self.nodes) + 1):
+                dst_str = self.node_label_by_id[dst]
+                if self.link_dict.get(src_str, dst_str) != None:
+                    bandwidth = self.link_dict.get(start_node_id=src_str, 
+                                       end_node_id=dst_str).bandwidth
+                    print "Adding " + src_str + "-" + dst_str + " link with bw = " + str(bandwidth)
+                    # TODO(jack): Determine metric for setting link delay
+                    net.addLink(switch_name_to_id[src_str],
+                                switch_name_to_id[dst_str], bw=int(bandwidth))
 
         # Connect the controller to all switches
         # TODO: Figure out a more realistic connectivity

@@ -32,6 +32,10 @@ public class NetGraph {
     // dst node, resulting in a list of all paths used between
     // the src and dst node.
     public HashMap<String, HashMap<String, ArrayList<Pathway>>> apap_;
+
+    // Interface between each switch
+    public HashMap<String, HashMap<String, String>> interfaces_;
+
     public int total_num_paths_ = 0;
 
     // Max bandwidth of each link
@@ -47,18 +51,48 @@ public class NetGraph {
         fs.removeSink(graph_);
 
         Constants.node_id_to_trace_id = new HashMap<String, String>();
+        interfaces_ = new HashMap<String, HashMap<String, String>>();
+        HashMap<String, Integer> max_interface_numbers = new HashMap<String, Integer>();
         for (Node n:graph_) {
             nodes_.add(n.toString());
             trace_id_to_node_id_.put(n.getLabel("ui.label").toString(), n.toString());
             Constants.node_id_to_trace_id.put(n.toString(), n.getLabel("ui.label").toString());
+
+            // Set up the interface table and assign the interface between this node
+            // and itself (actually the interface between this node's switch and its host)
+            // to be 1.
+            interfaces_.put(n.toString(), new HashMap<String, String>());
+            interfaces_.get(n.toString()).put(n.toString(), "1");
+            max_interface_numbers.put(n.toString(), 1);
         }
 
         link_bw_ = new Double[nodes_.size() + 1][nodes_.size() + 1];
         for (Edge e : graph_.getEachEdge()) {
-            int src = Integer.parseInt(e.getNode0().toString());
-            int dst = Integer.parseInt(e.getNode1().toString());
+            String src_str = e.getNode0().toString();
+            String dst_str = e.getNode1().toString();
+            int src = Integer.parseInt(src_str);
+            int dst = Integer.parseInt(dst_str);
             link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString());
             link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString());
+        }
+
+
+        // Set up interface table
+        Edge e = null;
+        for (int i = 0; i < nodes_.size(); i++) {
+            String src = nodes_.get(i);
+            for (int j = i + 1; j < nodes_.size(); j++) {
+                String dst = nodes_.get(j);
+                if ((e = graph_.getNode(src).getEdgeFrom(dst)) != null) {
+                    int src_if = max_interface_numbers.get(src) + 1;
+                    max_interface_numbers.put(src, src_if);
+                    interfaces_.get(src).put(dst, Integer.toString(src_if));
+
+                    int dst_if = max_interface_numbers.get(dst) + 1;
+                    max_interface_numbers.put(dst, dst_if);
+                    interfaces_.get(dst).put(src, Integer.toString(dst_if));
+                }
+            }
         }
         
         APSP apsp = new APSP();
@@ -94,7 +128,7 @@ public class NetGraph {
                     }
                     
                     apmb_[src][dst] = max_bw_path;
-                } 
+                }
 
             } // for n_
 

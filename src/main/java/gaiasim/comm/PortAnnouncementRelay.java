@@ -8,6 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.network.NetGraph;
+import gaiasim.network.Pathway;
 
 // Relays PortAnnouncementMessages from SendingAgents
 // to the OpenFlow controller that will create FlowMods
@@ -59,16 +60,78 @@ public class PortAnnouncementRelay {
             bw.write(Integer.toString(net_graph_.total_num_paths_) + '\n');
             bw.flush();
 
+            int msg_id = 0;
             // As we receive port announcements, send the information needed
             // by the OF controller to set FlowMods for the paths.
             while (num_ports_recv < net_graph_.total_num_paths_) {
                 PortAnnouncementMessage m = port_announcements_.take();
                 announcement = "Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">";
+
                 // TODO: Set up forwarding rule based on this path
-                num_ports_recv++;
-                bw.write(announcement + '\n');
+                Pathway p = net_graph_.apap_.get(m.sa_id_).get(m.ra_id_).get(m.path_id_);
+                int num_messages = p.node_list_.size() * 2;
+
+                // Metadata is of form:
+                //      msg_id num_rules src_id dst_id src_port dst_port
+                //      
+                // msg_id:      used to keep track of how many rules the OF controller will set
+                // num_rules:   how many rules will be set for this msg_id
+                // src_id:      id of path source
+                // dst_id:      id of path destination
+                // src_port:    port number used by sending agent
+                // dst_port:    port number used by receiving agent (should be 33330)
+                String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + p.src() + ' ' + p.dst() + ' ' + Integer.toString(m.port_no_) + " 33330\n";
+                System.out.println(metadata);
+                bw.write(metadata);
+
+                // Individual messages are of form:
+                //      msg_id dpid out_port fwd_or_rev
+                // 
+                // dpid:        id of switch to be programmed
+                // out_port:    interface through which packets should be forwarded
+                // fwd_or_rev:  0 means this rule is for the forward direction,
+                //              1 means for the reverse direction
+                //              If on reverse direction, src_{id, port} should be
+                //              switched with dst_{ip, port}.
+                String src, dst, out_port;
+                String message;
+                // Set the forward path
+                for (int i = 0; i < p.node_list_.size(); i++) {
+                    src = p.node_list_.get(i);
+
+                    if (i < p.node_list_.size() - 1) {
+                        dst = p.node_list_.get(i+1);
+                    }
+                    else {
+                        dst = src;
+                    }
+                   
+                    out_port = net_graph_.interfaces_.get(src).get(dst);
+                    message = Integer.toString(msg_id) + ' ' + src + ' ' + out_port + " 0\n";
+                    System.out.println("    " + message);
+                    bw.write(message);
+                }
+
+                // Set the reverse path
+                for (int i = p.node_list_.size() - 1; i >= 0; i--) {
+                    src = p.node_list_.get(i);
+
+                    if (i > 0) {
+                        dst = p.node_list_.get(i-1);
+                    }
+                    else {
+                        dst = src;
+                    }
+
+                    out_port = net_graph_.interfaces_.get(src).get(dst);
+                    message = Integer.toString(msg_id) + ' ' + src + ' ' + out_port + " 1\n";
+                    System.out.println("    " + message);
+                    bw.write(message);
+                }
                 bw.flush();
-                System.out.println(announcement);
+
+                msg_id++;
+                num_ports_recv++;
             }
             bw.close();
 
