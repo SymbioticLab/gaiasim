@@ -47,16 +47,6 @@ public class PortAnnouncementRelay {
 
             // Send the number of port announcements that will be
             // sent to the OF controller.
-            // TODO: Currently we tell the OF controller that it will only
-            //       receive total_num_paths messages. However, each path
-            //       will require more than one FlowMod to be installed,
-            //       so we'll actually send more than total_num_paths messages.
-            //       The actual number will be closer to the sum of the
-            //       number of hops in each path we're announcing. Need to
-            //       figure out a way around this (maybe send a metadata with
-            //       a path_id before each hop announcement. Something like
-            //       <path_id, num_hops>. There will be a total of total_num_paths_
-            //       such metadata announcements).
             bw.write(Integer.toString(net_graph_.total_num_paths_) + '\n');
             bw.flush();
 
@@ -67,7 +57,6 @@ public class PortAnnouncementRelay {
                 PortAnnouncementMessage m = port_announcements_.take();
                 announcement = "Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">";
 
-                // TODO: Set up forwarding rule based on this path
                 Pathway p = net_graph_.apap_.get(m.sa_id_).get(m.ra_id_).get(m.path_id_);
                 int num_messages = p.node_list_.size() * 2;
 
@@ -95,6 +84,7 @@ public class PortAnnouncementRelay {
                 //              switched with dst_{ip, port}.
                 String src, dst, out_port;
                 String message;
+
                 // Set the forward path
                 for (int i = 0; i < p.node_list_.size(); i++) {
                     src = p.node_list_.get(i);
