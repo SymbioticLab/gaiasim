@@ -1,4 +1,9 @@
-Python scripts used to set up a topology in Mininet
+Scripts used to set up a topology in Mininet
+
+To install emulation prerequisites on a machine, run:
+```
+sudo ./install.sh
+```
 
 A topology may be set up as follows:
 ```
