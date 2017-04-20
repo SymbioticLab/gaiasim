@@ -29,7 +29,6 @@ sudo apt-get install -y oracle-java8-installer
 sudo apt-get install -y build-essential ant maven python-dev
 cd ~
 git clone https://github.com/jackkosaian/floodlight.git
-git clone git://github.com/floodlight/floodlight.git
 cd floodlight
 git submodule init
 git submodule update
