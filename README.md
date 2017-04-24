@@ -3,14 +3,24 @@ This repository contains the source code for the simulation and emulation of of 
 
 ## Table of Contents
 1. [Quick Start](#quick-start)
+
 2. [Controller](#controller)
+
 	2.1 [Jobs](#jobs)
+	
 	2.2 [Scheduling](#scheduling)
-		2.2.1 [Baseline](#baseline)
-		2.2.2[Coflow](#coflow)
+	
 3. [Simulation](#simulation)
+
 4. [Emulation](#emulation)
+
 	4.1 [Emulated Topology](#emulated-topology)
+
+	4.2 [Architecture](#architecture)
+	
+	4.3 [Example](#example)
+	
+	4.4 [Common Problems in Emulation](#common-problems-in-emulation)
 
 ## Quick Start
 
@@ -141,11 +151,23 @@ On initialization, the GAIA Controller establishes TCP connections to each of th
 
 When using the baseline scheduler (`-s baseline`), the Controller simply tells a SendingAgent which ReceivingAgent a flow is to be sent to, and how much data is to be sent. The SendingAgent will then open a TCP connection with the specified ReceivingAgent and send data until reaching the amount specified by the Controller. When the flow has finished sending all of its data, the TCP connection with the ReceivingAgent is terminated and the SendingAgent sends a message back to the Controller indicating that the flow has finished.
 
+The module used to run the baseline SendingAgent is src/main/java/gaiasim/agent/BaselineSendingAgent.java
+
 ##### Coflow
 
 Communication between the Controller and SendingAgents is much more nuanced when using coflow scheduling (`-s recursive-remain-flow`). When the Controller wishes for a SendingAgent to send a flow, it must tell the SendingAgent not only the ReceivingAgent to which the flow will be sent and the amount of data in the flow, but also the paths on which the flow will be sent and the bandwidth allocated for the flow on each path.
 
-Rather than starting a new TCP connection for each flow being sent by a SendingAgent, a SendingAgent will maintain persistent connections between it and a ReceivingAgent. Currently, the SendingAgent will maintain one persistent connection per path available between it and a ReceivingAgent. Thus, if there are two paths between nodes A and B, A will maintain two persistent connections with B. In the future, one could have two pools of persistenc connections in this scenario.
+Rather than starting a new TCP connection for each flow being sent by a SendingAgent, a SendingAgent will maintain persistent connections between it and a ReceivingAgent. Currently, the SendingAgent will maintain one persistent connection per path available between it and a ReceivingAgent. Thus, if there are two paths between nodes A and B, A will maintain two persistent connections with B. In the future, one could have two pools of persistent connections in this scenario.
+
+In order for the Controller's scheduling decisions to actually be enforced, we need to ensure that packetes for flows actually traverse their assigned paths. We leverage a custom module from the Floodlight SDN controller to acheive this (found at https://github.com/jackkosaian/floodlight). On initialization, each SendingAgent establishes its persistent connections to ReceivingAgents and reports back to the GAIA Controller the port numbers used by these connections. The GAIA Controller then relays this information to the Floodlight Controller so that it can install OpenFlow forwarding rules on switches in the topology. Installed rules will match on <sending_agent_ip, sending_agent_port, receiving_agent_ip, receiving_agent_port> and will output packets through the interface that leads to the next hop in the designated path. After rules are installed for a certain persistent connection of a SendingAgent, all packets sent on that connection will traverse the path set up by the Floodlight controller.
+
+At any given time, multiple flows may be allocated by the Controller to be sent along a certain path. For example, the Controller might schedule flows A and B on path X (4 Gbps max) with allocated bandwidths of 1 Gbps and 3 Gbps, respectively. Since these flows are to take the same path, they should both be sent using the persistent connection that represents path X. Rather than having both flows attempt to concurrently send through the socket for path X and rate limiting themselves, we have the SendingAgent send a buffer of data through the socket, and then attribute the amount of data sent based on the bandwidth allocations given to each flow. In our example, if the SendingAgent sends 8 MB of data, then flow A will be considered to have advanced by 8 * (1 / 4) = 2 MB, and flow B will be considered to have advanced by 8 * (3 / 4) = 6 MB. Once a flow has completed, the SendingAgent will send a message to the Controller.
+
+Recall that the coflow scheduler reschedules all running flows whenever a coflow is available to begin or completes. When it performs this rescheduling, the scheduler needs to know how much progress has been made on active flows. To do so, the Controller sends a status request message to each SendingAgent. Each SendingAgent will send back messages for all flows that it is currently managing containing information about the amount that has been transmitted. After receiving all status response messages from SendingAgents, the Controller will reschedule active flows and send updates to SendingAgents with the new paths and allocations for flows.
+
+It can take a large amount of time for the Controller to reschedule flows, as it makes many calls to glpk to solve the LP. To reduce the impact of this time spent rescheduling, SendingAgents continue to send data for active flows while the Controller is calculating new flow allocations. This means that the update messages sent by the Controller to a SendingAgent after rescheduling a flow might be a bit inconsistent with the status of the flow as seen by the SendingAgent. In some cases, the SendingAgent may even have finished sending the flow by the time it receives an update message from the Controller. In such cases, the SendingAgent simply sends back a message to the Controller saying that the flow has finished -- from the Controller's perspective, this appears as though the flow finished after the update.
+
+The module used to run the coflow SendingAgent is src/main/java/gaiasim/agent/PersistentSendingAgent.java. Note that the SendingAgent has no knowledge of coflows -- that is left to the GAIA Controller.
 
 ### Example
 
