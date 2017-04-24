@@ -3,8 +3,11 @@ This repository contains the source code for the simulation and emulation of of 
 
 ## Table of Contents
 1. [Quick Start](#quickstart)
-2. [Controller](#ctrl)
-	a. [Jobs](#jobs)
+2. [Controller](#controller)
+	2.1 [Jobs](#jobs)
+	2.2 [Scheduling](#scheduling)
+		2.2.1 [Baseline](#baseline)
+		2.2.2[Coflow](#coflow)
 
 ## Quick Start
 
@@ -75,3 +78,22 @@ Because there are 4 stages, the next 4 lines contain descriptions about the stag
 After the 4 lines for the 4 stages, the line containing "3" tells us that there are 3 shuffles between these stages. The next 3 lines will describe these shuffles. For example, the line "Reducer2 Reducer3 1227" tells us that 1227 MB are to be shuffled between stage Reducer2 and Reducer3. A flow will be created between each pair of tasks between the two stages. For example, if a source stage has M tasks and a destination stage has N tasks, then the shuffle will contain M*N flows with shuffle volume being distributed evenly among these flows. In this example line, there will be two flows: NY-HK and NY-NY and each flow will be responsible for sending 1227 / 2 = 613.5 MB. Note that for the second flow, the two tasks are in the same location. If this takes place, the flow is ignored in scheduling as no volume actually needs to be transferred over the WAN.
 
 The module responsible for parsing trace files may be found in src/main/java/gaiasim/spark/DAGReader.java. It reads a trace file and constructs the DAGs for each job, including stage dependencies and flows in each shuffle. Trace files are processed in entirety before the Controller begins scheduling flows.
+
+### Scheduling
+Flows are available to be scheduled when all tasks in their source stage have completed. Since GAIA operates over a WAN, tasks are expected to take insignificant amounts of time compared to shuffles, and thus we model stages as completing instantaneously in simulation and emulation. Thus, flows with source stage N can begin once all flows with destination stage N have completed. The Controller schedules flows differently depending on the scheduler being used (`-s { baseline, recursive-remain-flow }`).
+
+#### Baseline
+The baseline scheduler (enabled using `-s baseline`) uses minimal information about the WAN topology and other concurrent flows when scheduling flows. When a flow is available to begin, the baseline scheduler will start it. In simulation, we allow the flow to take the path that has the highest maximum bandwidth.
+
+The module responsible for scheduling in the `baseline` mode is src/main/java/gaiasim/scheduler/BaselineScheduler.java.
+
+#### Coflow
+The coflow scheduler (enabled using `-s recursive-remain-flow`) extensively considers the WAN topology and concurrently running flows when scheduling flows. It attempts to schedule flows so as to minimize coflow-completion-time (shuffle completion time) and considers multiple paths between the source and destination of a flow. 
+
+The scheduler reschedules all running flows whenever a new coflow is available to be scheduled or when a coflow has completed (generally a coflow completing will lead to a new coflow being available). The scheduler attempts to schedlule all flows in a coflow at the same time. If there is not sufficient bandwidth remaining for an entire coflow to be scheduled, individual flows of coflows will be scheduled to occupy remaining bandwidth.
+
+Coflows are allocated bandwidth on the WAN in order of increasing expected coflow completion time. In order to determine expected coflow completion time, the scheduler solves a linear program (LP) involving the maximum bandwidth available on each link in the topology. Each active coflow is run through the LP using maximum link bandwidths to determine the coflow's expected completion times if the coflow were the only coflow running on the WAN. Coflows are then sorted in increasing order of expected completion time and then allocated until there is insufficient bandwidth remaining.
+
+Allocating a coflow on the WAN involves determining the paths and bandwidths that will be taken by each of the flows in the coflow. Flows can be split to take multiple paths. As flows are allocated paths and bandwidths on the WAN, we reduce the bandwidth available on topology links involved in the allocation. Subsequent coflows that are to be allocated during this round of scheduling will once again solve the LP described above, but with a topology that reflects the reduced link bandwidths.
+
+The module responsible for scheduling in the `recursive-remain-flow` mode is src/main/java/gaiasim/scheduler/PoorManScheduler.java (named continued from the previous version of the simulator) and the module that sets up and solves the LP is src/main/java/gaiasim/mmcf/MMCFOptimizer.java. Solving the LP requires that the system has glpk installed.
