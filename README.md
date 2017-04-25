@@ -132,7 +132,7 @@ where the `-g` and `-s` flags are consistent with those in earlier commands.
 
 This script creates a Mininet host for each node in the topology and adds a Controller host (named "CTRL") to the topology. Each created host is also given its own switch. Switches assigned to certain hosts are then linked together according to the edges specified in by the gml file.
 
-NOTE: The default Mininet installation does not support large link bandwidths. To support large link bandwidths (e.g., 10 Gpbs), one should use the custom Mininet repo found here: https://github.com/jackkosaian/mininet. If you use the setup script mininet/install.sh, this should already be handled for you.
+NOTE: The default Mininet installation does not support large link bandwidths. To support link bandwidths greater than 1 Gbps, one should use the custom Mininet repo found here: https://github.com/jackkosaian/mininet. If you use the setup script mininet/install.sh, this should already be handled for you.
 
 #### Current Limitations
 Currently, the Controller has a direct connection to all hosts, which is unrealistic.
@@ -171,5 +171,38 @@ The module used to run the coflow SendingAgent is src/main/java/gaiasim/agent/Pe
 
 ### Example
 
+Start up a our custom floodlight controller in one terminal as follows:
+
+```
+cd ~/floodlight
+java -jar target/floodlight.jar
+```
+
+In another terminal (or screen session) run the following:
+
+```
+cd ~/gaiasim
+sudo python mininet/setup_topo.py -g data/swan.gml -s recursive-remain-flow
+```
+
+This should start up a Mininet prompt. Test connectivity by running the following:
+
+```
+mininet> pingall
+```
+
+This should result in all hosts being able to contact one another. If not, try restarting the process.
+
+Once Mininet is up and running, start the GAIA Controller by doing the following:
+
+```
+mininet> CTRL java -cp target/gaia_ctrl-jar-with-dependencies.jar gaiasim.GaiaSim -g data/swan.gml -j data/simple_jobs/simple_trace-swan.txt -s recursive-remain-flow
+```
+
+This should run to completion and output values regarding JCT and CCT to /tmp/job.csv and /tmp/cct.csv, respectively.
 
 ### Common Problems in Emulation
+
+Mininet requires a large amount of memory to support a large number of hosts and a large amount of total topology bandwidth. If you find yourself continuously having problems getting `pingall` to work correctly or are unable to drive the expected amount of bandwidth between two nodes (by using `iperf`), consider running on a machine with more memory.
+
+If emulation crashes and takes you out of the Mininet shell (you can tell whether you're in the Mininet shell by the prompt being `mininet>`), Mininet likely did not exit properly, and may need to be cleaned up before starting again. To do this, run `sudo mn -c` before trying to start the topology again.
