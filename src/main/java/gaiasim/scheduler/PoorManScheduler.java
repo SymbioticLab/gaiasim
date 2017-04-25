@@ -176,8 +176,8 @@ public class PoorManScheduler extends Scheduler {
 
     public double remaining_bw() {
         double remaining_bw = 0.0;
-        for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {
-            for (int j = 0; j < net_graph_.nodes_.size() + 1; j++) {
+        for (int i = 0; i < net_graph_.nodes_.size(); i++) {
+            for (int j = 0; j < net_graph_.nodes_.size(); j++) {
                 if (links_[i][j] != null) {
                     remaining_bw += links_[i][j].remaining_bw();
                 }

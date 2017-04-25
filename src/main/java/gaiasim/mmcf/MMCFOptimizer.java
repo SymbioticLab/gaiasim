@@ -28,7 +28,7 @@ public class MMCFOptimizer {
         dat_string.append("data;\n\n");
 
         dat_string.append("set N:=");
-        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
+        for (int i = 0; i < net_graph.nodes_.size(); i++) {
             dat_string.append(" " + i);
         }
         dat_string.append(";\n");
@@ -54,13 +54,13 @@ public class MMCFOptimizer {
         dat_string.append(";\n\n");
         
         dat_string.append("param b:\n");
-        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
+        for (int i = 0; i < net_graph.nodes_.size(); i++) {
             dat_string.append(i + " " );
         }
         dat_string.append(":=\n");
-        for (int i = 1; i <= net_graph.nodes_.size(); i++) {
+        for (int i = 0; i < net_graph.nodes_.size(); i++) {
             dat_string.append(i + " ");
-            for (int j = 1; j <= net_graph.nodes_.size(); j++) {
+            for (int j = 0; j < net_graph.nodes_.size(); j++) {
                 if (i == j || links[i][j] == null) {
                     dat_string.append(" 0.000");
                 }

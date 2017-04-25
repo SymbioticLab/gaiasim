@@ -66,7 +66,7 @@ public class NetGraph {
             max_interface_numbers.put(n.toString(), 1);
         }
 
-        link_bw_ = new Double[nodes_.size() + 1][nodes_.size() + 1];
+        link_bw_ = new Double[nodes_.size()][nodes_.size()];
         for (Edge e : graph_.getEachEdge()) {
             String src_str = e.getNode0().toString();
             String dst_str = e.getNode1().toString();
@@ -102,8 +102,8 @@ public class NetGraph {
        
         // Since we'll be indexing this array by nodeID, and nodeID's start
         // at 1, we need num_nodes+1 entries in the array.
-        apsp_ = new Path[nodes_.size() + 1][nodes_.size() + 1];
-        apmb_ = new Pathway[nodes_.size() + 1][nodes_.size() + 1];
+        apsp_ = new Path[nodes_.size()][nodes_.size()];
+        apmb_ = new Pathway[nodes_.size()][nodes_.size()];
         apap_ = new HashMap<String, HashMap<String, ArrayList<Pathway>>>();
 
         for (Node n : graph_) {

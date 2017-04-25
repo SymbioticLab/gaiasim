@@ -18,7 +18,7 @@ public abstract class Scheduler {
     public Scheduler(NetGraph net_graph) {
         net_graph_ = net_graph;
 
-        links_ = new SubscribedLink[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
+        links_ = new SubscribedLink[net_graph_.nodes_.size()][net_graph_.nodes_.size()];
         for (Edge e : net_graph_.graph_.getEachEdge()) {
             int src = Integer.parseInt(e.getNode0().toString());
             int dst = Integer.parseInt(e.getNode1().toString());
@@ -32,8 +32,8 @@ public abstract class Scheduler {
     public abstract void progress_flow(Flow f);
 
     public void reset_links() {
-        for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {
-            for (int j = 0; j < net_graph_.nodes_.size() + 1; j++) {
+        for (int i = 0; i < net_graph_.nodes_.size(); i++) {
+            for (int j = 0; j < net_graph_.nodes_.size(); j++) {
                 if (links_[i][j] != null) {
                     links_[i][j].subscribers_.clear();
                 }

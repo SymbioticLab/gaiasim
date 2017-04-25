@@ -62,7 +62,7 @@ public class FlowInfo {
     // all other subflows have been added.
     public synchronized void add_subflow(Connection c, double rate) {
         pending_subscriptions_.put(c.data_.id_, new PendingSubscription(c, rate));
-        if (pending_subscriptions_.size()/* + 1*/ == num_subflows_) {
+        if (pending_subscriptions_.size() == num_subflows_) {
 
             // If the flow was finished while we were waiting for
             // an update, we should now send the FIN message for this flow.

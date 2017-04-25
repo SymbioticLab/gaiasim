@@ -56,7 +56,6 @@ public class SendingAgentContact {
                 is_ = new ObjectInputStream(sd_.getInputStream());
             }
             catch (Exception e) {
-                System.out.println("Exception at " + id_);
                 e.printStackTrace();
                 System.exit(1);
             }
@@ -122,6 +121,7 @@ public class SendingAgentContact {
         for (String ra_id : net_graph_.apap_.get(id_).keySet()) {
             num_port_announcements += net_graph_.apap_.get(id_).get(ra_id).size();
         }
+        System.out.println("SA " + id_ + " should receive " + num_port_announcements);
 
         // Open connection with sending agent and
         // get the port numbers that it plans to use
@@ -131,6 +131,7 @@ public class SendingAgentContact {
             System.out.println(id_ + " connected to SA");
         }
         catch (java.io.IOException e) {
+            System.out.println("ERROR tryign to connect ot " + sa_ip);
             e.printStackTrace();
             System.exit(1);
         }

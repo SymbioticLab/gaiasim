@@ -184,7 +184,7 @@ public class Manager {
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
             sa_contacts_.put(sa_id, 
-                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + sa_id, 23330, 
+                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330, 
                                                      message_queue_, port_announcements, is_baseline_));
         }
       
@@ -193,19 +193,6 @@ public class Manager {
         if (!is_baseline_) {
             PortAnnouncementRelay relay = new PortAnnouncementRelay(net_graph_, port_announcements);
             relay.relay_ports();
-            /*int num_ports_recv = 0;
-            while (num_ports_recv < net_graph_.total_num_paths_) {
-                try {
-                    PortAnnouncementMessage m = port_announcements.take();
-                    // TODO: Set up forwarding rule based on this path
-                    System.out.println("Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">");
-                    num_ports_recv++;
-                }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                    System.exit(1);
-                }
-            }*/
         }
 
         num_dispatched_jobs_ = 0;

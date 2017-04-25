@@ -38,7 +38,7 @@ class NetGraph(object):
         for id, data in self.G.nodes(data=True):
             key = self.node_label_by_id[id]
             self.interfaces[key] = {}
-            self.mininet_host_ips[key] = '10.0.0.' + str(id)
+            self.mininet_host_ips[key] = '10.0.0.' + str(id + 1)
 
             # Each switch has port 1 connected to their dedicated switch
             self.interfaces[key][key] = 1
@@ -48,9 +48,9 @@ class NetGraph(object):
 
         # Populate interface map so that we can later query it when setting
         # up Openflow rules
-        for src in range(1, len(self.nodes) + 1):
+        for src in range(len(self.nodes)):
             src_str = self.node_label_by_id[src]
-            for dst in range(src + 1, len(self.nodes) + 1):
+            for dst in range(src, len(self.nodes)):
                 dst_str = self.node_label_by_id[dst]
 
                 # Don't add interface between own node or between nodes
@@ -99,7 +99,7 @@ class NetGraph(object):
             h = net.addHost(key, ip=ip_block)
             self.mininet_hosts[key] = h
             
-            switch_id = "s" + str(id)
+            switch_id = "s" + str(id + 1)
             s = net.addSwitch(switch_id, protocols=['OpenFlow13'], cls=OVSSwitch)
             self.mininet_host_switches[key] = s
             switch_name_to_id[key] = switch_id
@@ -108,10 +108,10 @@ class NetGraph(object):
             net.addLink(key, switch_id, bw=9999)
 
         # Connect switches based on topology links
-        for src in range(1, len(self.nodes) + 1):
+        for src in range(len(self.nodes)):
             src_str = self.node_label_by_id[src]
 
-            for dst in range(src + 1, len(self.nodes) + 1):
+            for dst in range(src, len(self.nodes)):
                 dst_str = self.node_label_by_id[dst]
                 if self.link_dict.get(src_str, dst_str) != None:
                     bandwidth = self.link_dict.get(start_node_id=src_str, 
