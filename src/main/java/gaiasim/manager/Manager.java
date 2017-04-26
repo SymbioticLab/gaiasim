@@ -384,7 +384,10 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     scheduler_.progress_flow(f);
-                    if (f.transmitted_ >= f.volume_) {
+
+                    // If there's less than one bit remaining of the flow, consider it fully
+                    // transmitted.
+                    if ((f.volume_ - f.transmitted_) < 1/*f.transmitted_ >= f.volume_*/) {
                         finished.add(f);
                     }
                 }

@@ -266,8 +266,12 @@ public class PoorManScheduler extends Scheduler {
 
             boolean all_flows_scheduled = true;
             for (String k : c.flows_.keySet()) {
-                int id = c.flows_.get(k).int_id_;
-                all_flows_scheduled = all_flows_scheduled && (mmcf_out.flow_link_bw_map_.get(id) != null);
+                Flow f = c.flows_.get(k);
+                if (!f.done_) {
+                    if (mmcf_out.flow_link_bw_map_.get(f.int_id_) == null) {
+                        all_flows_scheduled = false;
+                    }
+                }
             }
 
             if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
