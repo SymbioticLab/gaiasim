@@ -20,9 +20,13 @@ def main():
     setup_argparse(p)
     args = p.parse_args()
     
-    baseline = False
+    #baseline = False
     if args.scheduler == "baseline":
         baseline = True
+        print "Using baseline topology."
+    else:
+        baseline = False
+        print "Using coflow topology."
 
     ng = NetGraph(gmlfilename=args.gml)
 

@@ -4,6 +4,7 @@ import gaiasim.network.Pathway;
 
 import java.util.ArrayList;
 
+// This is actually a FlowGroup, owned by a CoFlow.
 public class Flow {
     public String id_;
     public int int_id_;
