@@ -1,14 +1,14 @@
-# paper example job 1
+# paper example job 1 (location tagged by jimmy)
 2 0 0
-Map1 1
-Reducer1 1
+Map1 1 n3
+Reducer1 1 n2
 1
 Map1 Reducer1 5
-# paper example job 2
+# paper example job 2 (location tagged by jimmy)
 3 1 0
-Map2 1
-Map3 1
-Reducer2 1
+Map2 1 n1
+Map3 1 n3
+Reducer2 1 n4
 2
 Map2 Reducer2 5
 Map3 Reducer2 5
