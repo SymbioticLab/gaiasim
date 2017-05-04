@@ -124,7 +124,7 @@ class NetGraph(object):
         # Connect the controller to all switches
         # TODO: Figure out a more realistic connectivity
         for host, switch in sorted(self.mininet_host_switches.items()):
-            print "Adding CTRL-" + host + " link"
+            print "Adding CTRL-" + host + " link with 9999 bw"
             net.addLink(ctrl_switch, switch, bw=9999)
 
         return ctrl

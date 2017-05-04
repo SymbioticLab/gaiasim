@@ -247,6 +247,7 @@ public class Manager {
     }
 
     public void reschedule() throws Exception {
+        System.out.println("Manager: entered reschedule()");
 
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
         if (!is_baseline_ && !active_flows_.isEmpty()) {
@@ -255,7 +256,8 @@ public class Manager {
                 sac.send_status_request();
             }
         }
-      
+
+        // FIXME(jimmy): blocks here, can't dispatch job in parallel.
         // Wait until we've received either a FLOW_COMPLETION or
         // FLOW_STATUS_RESPONSE for every active flow
         ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
@@ -452,7 +454,7 @@ public class Manager {
                     handle_finished_coflow(c, current_time);
                 }
                 else {
-                    System.out.println("Manager: Adding coflow " + c.id_);
+                    System.out.println("Manager/update_and_schedule_flows: Adding coflow " + c.id_);
                     active_coflows_.put(c.id_, c);
                 }
             }

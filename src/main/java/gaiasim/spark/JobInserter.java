@@ -21,7 +21,7 @@ public class JobInserter implements Runnable {
         long cur_time = 0;
         for (Job j : jobs_by_time_) {
             time_sleep = j.start_time_ - cur_time;
-            System.out.println("Waiting " + time_sleep);
+            System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + j.id_);
             start = System.currentTimeMillis();
             while (time_sleep > 0) {
                 try {
@@ -38,7 +38,7 @@ public class JobInserter implements Runnable {
 
             try {
                 insert_queue_.put(new ScheduleMessage(ScheduleMessage.Type.JOB_INSERTION, j.id_));
-                System.out.println("Inserted " + j.id_);
+                System.out.println("JobInserter: Inserted job " + j.id_);
             }
             catch (InterruptedException e) {
                 // We shouldn't ever get this
