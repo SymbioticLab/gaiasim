@@ -8,7 +8,7 @@ sudo apt-get install -y git vim-nox python-setuptools python-all-dev flex bison 
 
 # Install Mininet
 cd ~
-git clone https://github.com/jackkosaian/mininet.git
+git clone https://github.com/jimmyyou/mininet.git
 cd mininet
 ./util/install.sh -fnv
 
