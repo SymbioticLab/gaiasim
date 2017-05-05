@@ -430,7 +430,7 @@ public class Manager {
         // in that coflow are colocated, then there's nothing for us to do. This could cause
         // the job to be marked as done.
         if (j.done()) { // Testing if the job is done instantly.
-            j.end_timestamp_ = j.start_timestamp_; 
+            j.end_timestamp_ = j.start_timestamp_;
             System.out.println("Manager/start_job: Job " + j.id_ + " done. (done instantly) Took " + (j.end_timestamp_ - j.start_timestamp_));
             completed_jobs_.addElement(j);
         }

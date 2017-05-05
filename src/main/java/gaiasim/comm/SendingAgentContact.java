@@ -33,7 +33,7 @@ public class SendingAgentContact {
 
     private class SendingAgentListener implements Runnable {
         public String id_;
-        public Socket sd_; // Connection to SendingAgent
+        public Socket sd_; // PersistentConnection to SendingAgent
         public ObjectInputStream is_;
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
         public LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue_;
@@ -130,7 +130,7 @@ public class SendingAgentContact {
             os_ = new ObjectOutputStream(sd_.getOutputStream());
             System.out.println(id_ + " connected to SA");
         }
-        catch (java.io.IOException e) { // TODO: figuring out, (Connection refused) if restart the experiment after finishing the last one.
+        catch (java.io.IOException e) { // TODO: figuring out, (PersistentConnection refused) if restart the experiment after finishing the last one.
             System.out.println("ERROR trying to connect to " + sa_ip);
             e.printStackTrace();
             System.exit(1);

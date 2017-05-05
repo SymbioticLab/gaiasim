@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import gaiasim.agent.FlowInfo;
 
 // Wrapper around a socket between a SA-RA pair.
-public class Connection {
+public class PersistentConnection {
 
     public class Subscription {
         public FlowInfo flow_info_;
@@ -57,9 +57,9 @@ public class Connection {
     public class ConnectionData {
         public String id_;
 
-        // Queue on which SendingAgent places updates for this Connection. Updates
-        // may inform the Connection of a new subscribing flow, an unsubscribing
-        // flow, or that the Connection should terminate.
+        // Queue on which SendingAgent places updates for this PersistentConnection. Updates
+        // may inform the PersistentConnection of a new subscribing flow, an unsubscribing
+        // flow, or that the PersistentConnection should terminate.
         public LinkedBlockingQueue<SubscriptionMessage> subscription_queue_ = 
             new LinkedBlockingQueue<SubscriptionMessage>();
 
@@ -232,7 +232,7 @@ public class Connection {
     public ConnectionData data_;
     public Thread sending_thread_;
 
-    public Connection(String id, Socket sd) {
+    public PersistentConnection(String id, Socket sd) {
         data_ = new ConnectionData(id, sd);
         
         sending_thread_ = new Thread(new Sender(data_));
