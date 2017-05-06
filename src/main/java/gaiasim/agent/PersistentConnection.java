@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.agent.FlowInfo;
-
 // Wrapper around a socket between a SA-RA pair.
+// Data is persistently sent through this socket.
+
 public class PersistentConnection {
 
     public class Subscription {
@@ -63,7 +63,7 @@ public class PersistentConnection {
         public LinkedBlockingQueue<SubscriptionMessage> subscription_queue_ = 
             new LinkedBlockingQueue<SubscriptionMessage>();
 
-        // The following two variables should probably be volatile,
+        // TODO: The following two variables should probably be volatile,
         // but a small lack of visibility between two threads likely
         // won't cause enough damage to merit the perfomance loss
         // caused by making these frequently-accessed objects voltile.
@@ -72,15 +72,15 @@ public class PersistentConnection {
         // Current total rate requested by subscribers
         public double rate_ = 0.0;
 
-        public Socket sd_;
-        public OutputStream os_;
+        public Socket dataSocket;
+        public OutputStream dataOutputStream;
 
         public ConnectionData(String id, Socket sd) {
             id_ = id;
-            sd_ = sd;
+            dataSocket = sd;
 
             try {
-                os_ = sd_.getOutputStream();
+                dataOutputStream = dataSocket.getOutputStream();
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -89,6 +89,7 @@ public class PersistentConnection {
 
         }
 
+        // TODO: what is this for?
         public synchronized void distribute_transmitted(double transmitted) {
             if (transmitted > 0.0) {
 
@@ -144,17 +145,18 @@ public class PersistentConnection {
 
     }
 
-    private class Sender implements Runnable {
+    private class SenderThread implements Runnable {
         public ConnectionData data_;
         public int buffer_size_ = 1024*1024;
         public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
         public byte[] buffer_ = new byte[buffer_size_];
 
-        public Sender(ConnectionData data) {
+        public SenderThread(ConnectionData data) {
             data_ = data;
         }
 
         public void run() {
+            // nested while loop
             while (true) {
                 SubscriptionMessage m = null;
 
@@ -201,7 +203,7 @@ public class PersistentConnection {
                     else {
                         // TERMINATE
                         try {
-                            data_.sd_.close();
+                            data_.dataSocket.close();
                         }
                         catch (java.io.IOException e) {
                             e.printStackTrace();
@@ -217,7 +219,11 @@ public class PersistentConnection {
                 // behalf of the subscribers.
                 if (data_.rate_ > 0.0) {
                     try {
-                        data_.os_.write(buffer_);
+                        // try to fill the outgoing buffer as fast as possible
+                        // until all the outgoing data are "sent".
+                        data_.dataOutputStream.write(buffer_);
+                        // This is not efficient according to the implementation of OutputStream.write()
+                        // This is supposed to be blocking, a.k.a., safe (no buffer overflow)
                         data_.distribute_transmitted(buffer_size_megabits_); 
                     }
                     catch (java.io.IOException e) {
@@ -227,7 +233,7 @@ public class PersistentConnection {
                 }
             } // while (true)
         } // run()
-    } // class Sender
+    } // class SenderThread
 
     public ConnectionData data_;
     public Thread sending_thread_;
@@ -235,7 +241,7 @@ public class PersistentConnection {
     public PersistentConnection(String id, Socket sd) {
         data_ = new ConnectionData(id, sd);
         
-        sending_thread_ = new Thread(new Sender(data_));
+        sending_thread_ = new Thread(new SenderThread(data_));
         sending_thread_.start();
     } 
 
