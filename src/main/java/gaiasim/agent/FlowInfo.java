@@ -1,17 +1,13 @@
 package gaiasim.agent;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import gaiasim.agent.Connection;
-import gaiasim.agent.SendingAgent;
 
 // Information about a flow as tracked by a sending agent.
 public class FlowInfo {
     public class PendingSubscription {
-        public Connection conn_;
+        public PersistentConnection conn_;
         public double rate_;
-        public PendingSubscription(Connection conn, double rate) {
+        public PendingSubscription(PersistentConnection conn, double rate) {
             conn_ = conn;
             rate_ = rate;
         }
@@ -20,10 +16,10 @@ public class FlowInfo {
     public double volume_;
     public double transmitted_;
     public int num_subflows_;
-    public PersistentSendingAgent.Data sa_;
+    public PersistentSendingAgent.DataBroker sa_;
     public HashMap<String, PendingSubscription> pending_subscriptions_ = 
         new HashMap<String, PendingSubscription>();
-    public HashMap<String, Connection> subscriptions_ = new HashMap<String, Connection>();
+    public HashMap<String, PersistentConnection> subscriptions_ = new HashMap<String, PersistentConnection>();
     public volatile boolean done_ = false;
 
     // If true, the flow has not just performed a mass unsubscribe.
@@ -44,7 +40,7 @@ public class FlowInfo {
     // matches that of the flow.
     public volatile long update_ts_ = 0;
 
-    public FlowInfo(String id, int num_subflows, double volume, PersistentSendingAgent.Data sa) {
+    public FlowInfo(String id, int num_subflows, double volume, PersistentSendingAgent.DataBroker sa) {
         id_ = id;
         volume_ = volume;
         num_subflows_ = num_subflows;
@@ -60,7 +56,7 @@ public class FlowInfo {
     // will start at roughly the same time, so we don't have to worry
     // about an earlier-starting subflow completing a small flow before
     // all other subflows have been added.
-    public synchronized void add_subflow(Connection c, double rate) {
+    public synchronized void add_subflow(PersistentConnection c, double rate) {
         pending_subscriptions_.put(c.data_.id_, new PendingSubscription(c, rate));
         if (pending_subscriptions_.size() == num_subflows_) {
 
@@ -85,7 +81,7 @@ public class FlowInfo {
         }
     }
 
-    // Returns true if the Connection was able to commit this FlowInfo's
+    // Returns true if the PersistentConnection was able to commit this FlowInfo's
     // subscription, false otherwise.
     public synchronized boolean commit_subscription(String conn_id, long ts) {
         if (done_ || ts != update_ts_) {
@@ -97,7 +93,7 @@ public class FlowInfo {
         return true;
     }
 
-    // Returns true if the Connection was able to commit this FlowInfo's
+    // Returns true if the PersistentConnection was able to commit this FlowInfo's
     // unsubscription, false otherwise.
     public synchronized boolean commit_unsubscription(String conn_id, long ts) {
         // NOTE: Potentially need to be careful about overflow here
@@ -114,10 +110,10 @@ public class FlowInfo {
     }
 
     // Returns true if the flow is done and false otherwise.
-    // After transmitting some amount on behalf of a flow, a Connection
+    // After transmitting some amount on behalf of a flow, a PersistentConnection
     // will call this function to update the amount of flow transmitted.
     // To avoid deadlocks and races, a completed flow will not unsubscribe
-    // itself. Rather, each Connection will remove the flow's subscription
+    // itself. Rather, each PersistentConnection will remove the flow's subscription
     // upon calling this function and finding a flow complete. Yes, this
     // this means that some extra data might be transmitted, but this
     // should only be a small amount.
@@ -159,7 +155,7 @@ public class FlowInfo {
 
         if (!done_) {
             for (String k : subscriptions_.keySet()) {
-                Connection c = subscriptions_.get(k);
+                PersistentConnection c = subscriptions_.get(k);
                 c.data_.unsubscribe(this, update_ts_);    
             }
            
