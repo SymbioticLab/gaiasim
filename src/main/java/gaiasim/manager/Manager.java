@@ -211,16 +211,38 @@ public class Manager {
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
                     Job j = jobs_.get(m.job_id_);
                     start_job(j);
-                    reschedule();
+
+                    if (is_baseline_) {
+                        add_next_flows_for_job(j, System.currentTimeMillis());
+                    }
+                    else {
+                        reschedule();
+                    }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                     System.out.println("Received FIN for " + m.flow_id_);
                     
                     Flow f = active_flows_.get(m.flow_id_);
+                    long current_time = System.currentTimeMillis();
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
                         System.out.println("    results in reschedule");
-                        reschedule();
+                        if (is_baseline_) {
+
+                            // There is a chance that completing this coflow finished the
+                            // job. If this is the case, the call to handle_finished_flow will
+                            // have removed the job from active_jobs_ and thus j will be null.
+                            // Therefore, if j is null, we know that the job must be done and
+                            // that there are no more flows to add. There's probably a better
+                            // way to check for this.
+                            Job j = active_jobs_.get(Constants.get_job_id(f.id_));
+                            if (j != null) {
+                                add_next_flows_for_job(j, current_time);
+                            }
+                        }
+                        else {
+                            reschedule();
+                        }
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
@@ -245,46 +267,80 @@ public class Manager {
         print_statistics("/job.csv", "/cct.csv");
     }
 
+    // Used by baseline scheduler to start the next flows of a job
+    public void add_next_flows_for_job(Job j, long current_time) throws Exception {
+        ArrayList<Coflow> coflows = j.get_running_coflows();
+        HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
+        for (Coflow c : coflows) {
+            if (c.done()) {
+                c.start_timestamp_ = current_time;
+                handle_finished_coflow(c, current_time);
+            }
+            else {
+                System.out.println("Adding coflow " + c.id_);
+                active_coflows_.put(c.id_, c);
+                coflow_map.put(c.id_, c);
+            }
+        }
+ 
+        HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(coflow_map, current_time);
+        active_flows_.putAll(scheduled_flows);
+        for (String flow_id : scheduled_flows.keySet()) {
+            Flow f = scheduled_flows.get(flow_id);
+
+            if (!f.started_sending_) {
+                sa_contacts_.get(f.src_loc_).start_flow(f);
+
+                // Only update started_sending_ if we're running baseline
+                f.started_sending_ = is_baseline_;
+            }
+        }
+
+    }
+
+    // Used by coflow scheduler to preempt running flows and reschedule
+    // running flows.
     public void reschedule() throws Exception {
 
+        ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
+
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
-        if (!is_baseline_ && !active_flows_.isEmpty()) {
+        if (!active_flows_.isEmpty()) {
             for (String sa_id : sa_contacts_.keySet()) {
                 SendingAgentContact sac = sa_contacts_.get(sa_id);
                 sac.send_status_request();
             }
-        }
       
-        // Wait until we've received either a FLOW_COMPLETION or
-        // FLOW_STATUS_RESPONSE for every active flow
-        ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
-        while (!active_flows_.isEmpty()) {
-            try {
-                // Block until we have a message to receive
-                ScheduleMessage m = message_queue_.take();
+            // Wait until we've received either a FLOW_COMPLETION or
+            // FLOW_STATUS_RESPONSE for every active flow
+            while (!active_flows_.isEmpty()) {
+                try {
+                    // Block until we have a message to receive
+                    ScheduleMessage m = message_queue_.take();
 
-                if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
-                    Job j = jobs_.get(m.job_id_);
-                    start_job(j);
+                    if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
+                        Job j = jobs_.get(m.job_id_);
+                        start_job(j);
+                    }
+                    else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
+                        System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
+                        Flow f = active_flows_.get(m.flow_id_);
+                        handle_finished_flow(f, System.currentTimeMillis());
+                    }
+                    else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
+                        Flow f = active_flows_.get(m.flow_id_);
+                        System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
+                        f.transmitted_ = m.transmitted_;
+                        f.updated_ = true;
+                        preempted_flows.add(f);
+                        active_flows_.remove(m.flow_id_);
+                    }
                 }
-                else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
-                    System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
-                    Flow f = active_flows_.get(m.flow_id_);
-                    handle_finished_flow(f, System.currentTimeMillis());
+                catch (InterruptedException e) {
+                    // This shouldn't happen. Fail if it does.
+                    e.printStackTrace();
+                    System.exit(1);
                 }
-                else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                    Flow f = active_flows_.get(m.flow_id_);
-                    System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
-                    f.transmitted_ = m.transmitted_;
-                    f.updated_ = true;
-                    preempted_flows.add(f);
-                    active_flows_.remove(m.flow_id_);
-                }
-            }
-            catch (InterruptedException e) {
-                // This shouldn't happen. Fail if it does.
-                e.printStackTrace();
-                System.exit(1);
             }
         }
 
