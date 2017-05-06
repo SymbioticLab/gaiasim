@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.SendingAgentContact;
 import gaiasim.comm.PortAnnouncementMessage;
-import gaiasim.comm.PortAnnouncementRelay;
+import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
@@ -106,7 +106,7 @@ public class Manager {
 
         if (owning_job.done()) {
             owning_job.end_timestamp_ = cur_time;
-            System.out.println("Job " + owning_job.id_ + " done. Took "
+            System.out.println("Manager/handle_FIN_coflow: Job " + owning_job.id_ + " done. Took "
                     + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
             active_jobs_.remove(owning_job.id_);
             completed_jobs_.addElement(owning_job);
@@ -191,8 +191,8 @@ public class Manager {
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
-            PortAnnouncementRelay relay = new PortAnnouncementRelay(net_graph_, port_announcements);
-            relay.relay_ports();
+            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
+            relay.relay_ports(); // seems not working. FIXME(jimmy)
         }
 
         num_dispatched_jobs_ = 0;
@@ -206,9 +206,10 @@ public class Manager {
         try {
             while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
-                ScheduleMessage m = message_queue_.take(); 
+                ScheduleMessage m = message_queue_.take(); // JobInserter inserts messages by time. (emulating online job coming)
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
+                    System.out.println("Manager: Job " + m.job_id_ + " comes, now rescheduling");
                     Job j = jobs_.get(m.job_id_);
                     start_job(j);
 
@@ -220,13 +221,13 @@ public class Manager {
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
-                    System.out.println("Received FIN for " + m.flow_id_);
+                    System.out.println("Received FLOW_COMPLETION for Flow " + m.flow_id_);
                     
                     Flow f = active_flows_.get(m.flow_id_);
                     long current_time = System.currentTimeMillis();
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
-                        System.out.println("    results in reschedule");
+                        System.out.println(" Some Coflow finished, results in reschedule");
                         if (is_baseline_) {
 
                             // There is a chance that completing this coflow finished the
@@ -301,6 +302,7 @@ public class Manager {
     // Used by coflow scheduler to preempt running flows and reschedule
     // running flows.
     public void reschedule() throws Exception {
+        System.out.println("Manager: entered reschedule()");
 
         ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
 
@@ -414,7 +416,7 @@ public class Manager {
                     // the job to be marked as done.
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
-                        System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+                        System.out.println("Manger/simulate: Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
                         completed_jobs_.addElement(j);
                     }
                     else {
@@ -482,9 +484,9 @@ public class Manager {
         // The next coflow in the job may be the last coflow in the job. If the stages involved
         // in that coflow are colocated, then there's nothing for us to do. This could cause
         // the job to be marked as done.
-        if (j.done()) {
-            j.end_timestamp_ = j.start_timestamp_;
-            System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
+        if (j.done()) { // Testing if the job is done instantly.
+            j.end_timestamp_ = j.start_timestamp_; // FIXME(jimmy) not making sense!
+            System.out.println("Manager/start_job: Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
             completed_jobs_.addElement(j);
         }
         else {
@@ -507,7 +509,7 @@ public class Manager {
                     handle_finished_coflow(c, current_time);
                 }
                 else {
-                    System.out.println("Adding coflow " + c.id_);
+                    System.out.println("Manager/update_and_schedule_flows: Adding coflow " + c.id_);
                     active_coflows_.put(c.id_, c);
                 }
             }

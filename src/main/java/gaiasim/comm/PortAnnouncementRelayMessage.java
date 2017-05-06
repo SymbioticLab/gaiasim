@@ -13,13 +13,13 @@ import gaiasim.network.Pathway;
 // Relays PortAnnouncementMessages from SendingAgents
 // to the OpenFlow controller that will create FlowMods
 // to set up paths.
-public class PortAnnouncementRelay {
+public class PortAnnouncementRelayMessage {
 
     public NetGraph net_graph_;
     public LinkedBlockingQueue<PortAnnouncementMessage> port_announcements_;
     
-    public PortAnnouncementRelay(NetGraph net_graph,
-                                 LinkedBlockingQueue<PortAnnouncementMessage> port_announcements) {
+    public PortAnnouncementRelayMessage(NetGraph net_graph,
+                                        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements) {
         net_graph_ = net_graph;
         port_announcements_ = port_announcements;
     }
