@@ -70,7 +70,7 @@ public class PortAnnouncementRelayMessage {
                 // src_port:    port number used by sending agent
                 // dst_port:    port number used by receiving agent (should be 33330)
                 String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + p.src() + ' ' + p.dst() + ' ' + Integer.toString(m.port_no_) + " 33330\n";
-                System.out.println(metadata);
+                System.out.println("sending metadata: " + metadata + "for path: " + p.toString());
                 bw.write(metadata);
 
                 // Individual messages are of form:

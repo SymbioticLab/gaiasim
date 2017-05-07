@@ -54,7 +54,7 @@ public class PersistentConnection {
         }
     }
 
-    public class ConnectionData {
+    public class ConnectionDataBroker {
         public String id_;
 
         // Queue on which SendingAgent places updates for this PersistentConnection. Updates
@@ -75,7 +75,7 @@ public class PersistentConnection {
         public Socket dataSocket;
         public OutputStream dataOutputStream;
 
-        public ConnectionData(String id, Socket sd) {
+        public ConnectionDataBroker(String id, Socket sd) {
             id_ = id;
             dataSocket = sd;
 
@@ -146,12 +146,12 @@ public class PersistentConnection {
     }
 
     private class SenderThread implements Runnable {
-        public ConnectionData data_;
+        public ConnectionDataBroker data_;
         public int buffer_size_ = 1024*1024;
         public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
         public byte[] buffer_ = new byte[buffer_size_];
 
-        public SenderThread(ConnectionData data) {
+        public SenderThread(ConnectionDataBroker data) {
             data_ = data;
         }
 
@@ -235,11 +235,11 @@ public class PersistentConnection {
         } // run()
     } // class SenderThread
 
-    public ConnectionData data_;
+    public ConnectionDataBroker data_;
     public Thread sending_thread_;
 
     public PersistentConnection(String id, Socket sd) {
-        data_ = new ConnectionData(id, sd);
+        data_ = new ConnectionDataBroker(id, sd);
         
         sending_thread_ = new Thread(new SenderThread(data_));
         sending_thread_.start();
