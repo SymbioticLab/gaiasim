@@ -7,6 +7,8 @@ import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.util.Constants;
 import gaiasim.util.ThrottledOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Acts on behalf of the controller to start transfers
 // from one node to another. Does not keep any persistent
@@ -15,6 +17,8 @@ import gaiasim.util.ThrottledOutputStream;
 // routing strategy. Once started, flows are not preempted
 // by the controller.
 public class BaselineSendingAgent {
+
+    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
     
     public class DataBroker {
         public String id_;
@@ -59,8 +63,8 @@ public class BaselineSendingAgent {
         public String ra_ip_; // IP address of receiving agent
         public Socket sd_;
 //        public OutputStream os_;
-        private DataOutputStream dos; // FIXME(jimmy): not throttling this for now.
-//        private BufferedOutputStream bos; // try this,  maybe higher performance.
+//        private DataOutputStream dos; // some people say you should never use this
+        private BufferedOutputStream bos; // FIXME(jimmy): not throttling this for now.
 //        private ThrottledOutputStream tos;
 
         public int buffer_size_ = 1024*1024;
@@ -74,11 +78,11 @@ public class BaselineSendingAgent {
 
             try {
                 sd_ = new Socket(ra_ip, 33330);
-                dos = new DataOutputStream(new BufferedOutputStream(sd_.getOutputStream()));
+//                dos = new DataOutputStream(new BufferedOutputStream(sd_.getOutputStream()));
 //                tos = new ThrottledOutputStream(sd_.getOutputStream(), Constants.DEFAULT_OUTPUTSTREAM_RATE);
 //                os_ = sd_.getOutputStream();
 //                dos = new DataOutputStream(os_);
-//                bos = new BufferedOutputStream(dos);
+                bos = new BufferedOutputStream(sd_.getOutputStream());
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -91,11 +95,8 @@ public class BaselineSendingAgent {
                 try {
 //                    os_.write(buffer_);
 //                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
-//                    tos.write(buffer_);
-//                    os_.write(buffer_);
-                    dos.write(buffer_);
-                    dos.flush(); // it is important to flush
-//                    bos.write(buffer_);
+                    bos.write(buffer_);
+                    bos.flush(); // it is important to flush
                     System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                 }
                 catch (java.io.IOException e) {
