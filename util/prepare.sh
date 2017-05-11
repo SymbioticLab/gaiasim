@@ -3,6 +3,8 @@
 # This script is used to download and build codes
 # to perform  emulation.
 
+sudo apt install nload bwm-ng
+
 cd ~
 git clone https://github.com/jackkosaian/floodlight.git
 cd floodlight
