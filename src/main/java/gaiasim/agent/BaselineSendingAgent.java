@@ -90,12 +90,13 @@ public class BaselineSendingAgent {
             while (flow_.transmitted_ < flow_.volume_) {
                 try {
 //                    os_.write(buffer_);
-                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
+//                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
 //                    tos.write(buffer_);
 //                    os_.write(buffer_);
                     dos.write(buffer_);
+                    dos.flush(); // it is important to flush
 //                    bos.write(buffer_);
-                    System.out.println("BaselineSA: Finished Writing 1MB @ " + System.currentTimeMillis());
+                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
