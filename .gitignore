@@ -1,5 +1,6 @@
 *.class
 *.pyc
 *.swp
+.idea/
 target
 results

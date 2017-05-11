@@ -10,7 +10,7 @@
     <name>gaiasim</name>
 
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>  
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -117,6 +117,16 @@
             <artifactId>guava-rate-limiter</artifactId>
             <version>19.0</version>
             <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
         </dependency>
     </dependencies>
 </project>
