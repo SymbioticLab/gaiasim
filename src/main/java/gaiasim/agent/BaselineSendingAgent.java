@@ -1,9 +1,6 @@
 package gaiasim.agent;
 
-import java.io.DataOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 import gaiasim.comm.ControlMessage;
@@ -62,7 +59,8 @@ public class BaselineSendingAgent {
         public String ra_ip_; // IP address of receiving agent
         public Socket sd_;
         public OutputStream os_; // FIXME(jimmy): not throttling this for now.
-        private DataOutputStream dos; // try this, maybe higher performance.
+        private DataOutputStream dos;
+        private BufferedOutputStream bos; // try this, maybe higher performance.
 //        private ThrottledOutputStream tos;
 
         public int buffer_size_ = 1024*1024;
@@ -79,6 +77,7 @@ public class BaselineSendingAgent {
 //                tos = new ThrottledOutputStream(sd_.getOutputStream(), Constants.DEFAULT_OUTPUTSTREAM_RATE);
                 os_ = sd_.getOutputStream();
                 dos = new DataOutputStream(os_);
+                bos = new BufferedOutputStream(dos);
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -93,7 +92,8 @@ public class BaselineSendingAgent {
                     System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
 //                    tos.write(buffer_);
 //                    os_.write(buffer_);
-                    dos.write(buffer_);
+//                    dos.write(buffer_);
+                    bos.write(buffer_);
                     System.out.println("BaselineSA: Finished Writing 1MB @ " + System.currentTimeMillis());
                 }
                 catch (java.io.IOException e) {
