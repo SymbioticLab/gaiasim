@@ -21,6 +21,8 @@ public class Constants {
     // one second.
     public static final int EPOCH_MILLI = MILLI_IN_SECOND / 100;
 
+    public static final int DEFAULT_OUTPUTSTREAM_RATE = 100000;
+
     public static HashMap<String, String> node_id_to_trace_id;
 
     // Return the id of the job owning the Stage, Coflow, or Flow

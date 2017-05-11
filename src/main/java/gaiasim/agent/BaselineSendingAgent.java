@@ -4,11 +4,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.util.Constants;
+import gaiasim.util.ThrottledOutputStream;
 
 // Acts on behalf of the controller to start transfers
 // from one node to another. Does not keep any persistent
@@ -18,13 +18,13 @@ import gaiasim.util.Constants;
 // by the controller.
 public class BaselineSendingAgent {
     
-    public class Data {
+    public class DataBroker {
         public String id_;
         public Socket sd_;
         public ObjectOutputStream os_;
         public ObjectInputStream is_;
 
-        public Data(String id, Socket sd) {
+        public DataBroker(String id, Socket sd) {
             id_ = id;
 
             try {
@@ -56,22 +56,25 @@ public class BaselineSendingAgent {
     }
 
     public class Sender implements Runnable {
-        public Data data_;
+        public DataBroker data_Broker_;
         public LightFlow flow_;
         public String ra_ip_; // IP address of receiving agent
         public Socket sd_;
-        public OutputStream os_;
+        public OutputStream os_; // FIXME(jimmy): not throttling this for now.
+//        private ThrottledOutputStream tos;
+
         public int buffer_size_ = 1024*1024;
         public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
         public byte[] buffer_ = new byte[buffer_size_];
 
-        public Sender(Data data, String flow_id, double volume, String ra_ip) {
-            data_ = data;
+        public Sender(DataBroker dataBroker, String flow_id, double volume, String ra_ip) {
+            data_Broker_ = dataBroker;
             flow_ = new LightFlow(flow_id, volume);
             ra_ip_ = ra_ip;
 
             try {
                 sd_ = new Socket(ra_ip, 33330);
+//                tos = new ThrottledOutputStream(sd_.getOutputStream(), Constants.DEFAULT_OUTPUTSTREAM_RATE);
                 os_ = sd_.getOutputStream();
             }
             catch (java.io.IOException e) {
@@ -83,7 +86,11 @@ public class BaselineSendingAgent {
         public void run() {
             while (flow_.transmitted_ < flow_.volume_) {
                 try {
+//                    os_.write(buffer_);
+                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
+//                    tos.write(buffer_);
                     os_.write(buffer_);
+                    System.out.println("BaselineSA: Finished Writing 1MB @ " + System.currentTimeMillis());
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
@@ -91,12 +98,14 @@ public class BaselineSendingAgent {
                 }
 
                 // We track how much we've sent in terms of megabits
-                flow_.transmitted_ += (buffer_size_megabits_); 
+                flow_.transmitted_ += (buffer_size_megabits_);
+                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
             }
 
             try {
-                data_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
-                sd_.close();
+                data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
+                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Not closing socket..");
+//                sd_.close();
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -107,20 +116,20 @@ public class BaselineSendingAgent {
     // Listens for messages from the controller and dispatches threads
     // to send flows.
     public class Listener implements Runnable {
-        public Data data_;
+        public DataBroker data_Broker_;
         
-        public Listener(Data d) {
-            data_ = d;
+        public Listener(DataBroker d) {
+            data_Broker_ = d;
         }
 
         public void run() {
             try {
                 while (true) {
-                    ControlMessage c = (ControlMessage) data_.is_.readObject();
+                    ControlMessage c = (ControlMessage) data_Broker_.is_.readObject();
 
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
-                        System.out.println(data_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-                        (new Thread(new Sender(data_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
+                        System.out.println(data_Broker_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                         System.out.println("ERROR: Received FLOW_UPDATE for baseline scheduler");
@@ -139,7 +148,7 @@ public class BaselineSendingAgent {
                         return;
                     }
                     else {
-                        System.out.println(data_.id_ + " received an unexpected ControlMessage");
+                        System.out.println(data_Broker_.id_ + " received an unexpected ControlMessage");
                         System.exit(1);
                     }
                 }
@@ -156,13 +165,13 @@ public class BaselineSendingAgent {
         }
     }
 
-    public Data data_;
+    public DataBroker data_Broker_;
     public Thread listener_;
 
     public BaselineSendingAgent(String id, Socket client_sd) {
 
-        data_ = new Data(id, client_sd);
-        listener_ = new Thread(new Listener(data_));
+        data_Broker_ = new DataBroker(id, client_sd);
+        listener_ = new Thread(new Listener(data_Broker_));
         listener_.start();
     }
 

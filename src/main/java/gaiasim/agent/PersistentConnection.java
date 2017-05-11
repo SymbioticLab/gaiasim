@@ -1,13 +1,20 @@
 package gaiasim.agent;
 
+import gaiasim.util.Constants;
+import gaiasim.util.ThrottledOutputStream;
+
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
+// This class is NOT used in baseline.
 // Wrapper around a socket between a SA-RA pair.
-// Data is persistently sent through this socket.
+// DataBroker is persistently sent through this socket.
 
 public class PersistentConnection {
 
@@ -70,17 +77,24 @@ public class PersistentConnection {
         public HashMap<String, Subscription> subscribers_ = new HashMap<String, Subscription>();
         
         // Current total rate requested by subscribers
-        public double rate_ = 0.0;
+        public double rate_ = 0.0; // TODO(jimmy): track the rate_.
 
         public Socket dataSocket;
-        public OutputStream dataOutputStream;
+
+//        public OutputStream dataOutputStream;  // deprecated
+        private ThrottledOutputStream tos; // TODO: (wrap a buffered writer around this!)
+        private DataOutputStream dos;
+//        private BufferedWriter bw;
 
         public ConnectionDataBroker(String id, Socket sd) {
             id_ = id;
             dataSocket = sd;
 
             try {
-                dataOutputStream = dataSocket.getOutputStream();
+                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100
+                dos = new DataOutputStream(tos);
+//                bw = new BufferedWriter( new OutputStreamWriter(tos));
+//                dataOutputStream = dataSocket.getOutputStream();
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
@@ -89,7 +103,7 @@ public class PersistentConnection {
 
         }
 
-        // TODO: what is this for?
+
         public synchronized void distribute_transmitted(double transmitted) {
             if (transmitted > 0.0) {
 
@@ -182,14 +196,14 @@ public class PersistentConnection {
                 while (m != null) {
                     if (m.type_ == MsgType.SUBSCRIBE) {
                         if (m.flow_info_.commit_subscription(data_.id_, m.ts_)) {
-                            System.out.println("Subscribing flow " + m.flow_info_.id_ + " to " + data_.id_);
+                            System.out.println("PersistentConn: Subscribing flow " + m.flow_info_.id_ + " to " + data_.id_);
                             data_.rate_ += m.rate_;
                             data_.subscribers_.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
                         }
                     }
                     else if (m.type_ == MsgType.UNSUBSCRIBE) {
                         if (m.flow_info_.commit_unsubscription(data_.id_, m.ts_)) {
-                            System.out.println("Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
+                            System.out.println("PersistentConn: Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
                             Subscription s = data_.subscribers_.get(m.flow_info_.id_);
                             data_.rate_ -= s.rate_;
                             data_.subscribers_.remove(m.flow_info_.id_);
@@ -221,7 +235,16 @@ public class PersistentConnection {
                     try {
                         // try to fill the outgoing buffer as fast as possible
                         // until all the outgoing data are "sent".
-                        data_.dataOutputStream.write(buffer_);
+
+                        // TODO: get the thorttling right. the unit conversion
+                        data_.tos.setRate(data_.rate_ * 1000 * 125);
+
+                        // TODO(jimmy): use a throttled writer and block here.
+//                        data_Broker_.dataOutputStream.write(buffer_);
+//                        data_Broker_.dos.write(buffer_);
+                        System.out.println("PersistentConn: Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
+                        data_.tos.write(buffer_);
+                        System.out.println("PersistentConn: Finished Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
                         // This is not efficient according to the implementation of OutputStream.write()
                         // This is supposed to be blocking, a.k.a., safe (no buffer overflow)
                         data_.distribute_transmitted(buffer_size_megabits_); 
