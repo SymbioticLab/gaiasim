@@ -5,11 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.agent.PersistentSendingAgent;
-import gaiasim.comm.ControlMessage;
-import gaiasim.comm.PortAnnouncementMessage;
-import gaiasim.comm.ScheduleMessage;
-import gaiasim.network.Flow;
+import gaiasim.network.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.util.Constants;
@@ -145,7 +141,7 @@ public class SendingAgentContact {
 
     // Sends a FLOW_START or FLOW_UPDATE  message to the sending agent along
     // with information about the paths and rates used by the flow.
-    public void start_flow(Flow f) {
+    public void start_flow(FlowGroup f) {
         String start_or_update = f.updated_ ? "UPDATING" : "STARTING";
         System.out.println(start_or_update + " flow " + f.id_ + " at " + Constants.node_id_to_trace_id.get(id_));
 
@@ -168,7 +164,7 @@ public class SendingAgentContact {
                     sub_c.flow_id_ = f.id_;
                     sub_c.ra_id_ = p.dst();
                     sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
-                    sub_c.field1_ = p.bandwidth_;
+                    sub_c.field1_ = p.getBandwidth();
 
                     os_.writeObject(sub_c);
                 }

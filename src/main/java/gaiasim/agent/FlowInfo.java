@@ -120,7 +120,7 @@ public class FlowInfo {
     public synchronized boolean transmit(double transmitted, String conn_id) {
 
         // If the flow is already done, remove our this connection from the flow.
-        // NOTE: Could have just incremented transmitted_ and checked against
+        // NOTE: Could have just incremented transmitted_volume and checked against
         //       volume_, but doing so could cause overflow in the case where
         //       where more than one connection is adding its transmitted amount.
         if (done_) {
@@ -144,7 +144,7 @@ public class FlowInfo {
             }
             
             return true;
-        } // transmitted_ >= volume_
+        } // transmitted_volume >= volume_
 
         return false;
     }

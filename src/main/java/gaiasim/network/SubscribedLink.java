@@ -2,9 +2,6 @@ package gaiasim.network;
 
 import java.util.ArrayList;
 
-import gaiasim.network.Link;
-import gaiasim.network.Pathway;
-
 // A SubscribedLink has a number of flows currently using it
 public class SubscribedLink extends Link {
 
@@ -25,7 +22,7 @@ public class SubscribedLink extends Link {
     public double remaining_bw() {
         double remaining_bw = max_bw_;
         for (Pathway p : subscribers_) {
-            remaining_bw -= p.bandwidth_;
+            remaining_bw -= p.getBandwidth();
         }
 
         return remaining_bw;

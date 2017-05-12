@@ -10,7 +10,16 @@ import gaiasim.util.Constants;
 
 public class Pathway {
     public ArrayList<String> node_list_ = new ArrayList<String>();
-    public double bandwidth_ = 0.0;
+
+    public double getBandwidth() {
+        return bandwidth;
+    }
+
+    public void setBandwidth(double bandwidth) {
+        this.bandwidth = bandwidth;
+    }
+
+    private double bandwidth = 0.0;
 
     public Pathway() {}
 
@@ -22,7 +31,7 @@ public class Pathway {
     }
 
     public Pathway(Pathway p) {
-        bandwidth_ = p.bandwidth_;
+        bandwidth = p.bandwidth;
         node_list_ = new ArrayList<String>(p.node_list_);
     }
 
@@ -42,7 +51,7 @@ public class Pathway {
         for (String s : node_list_) {
             str.append(Constants.node_id_to_trace_id.get(s) + ", ");
         }
-        str.append("] " + bandwidth_);
+        str.append("] " + bandwidth);
         return str.toString();
     }
 

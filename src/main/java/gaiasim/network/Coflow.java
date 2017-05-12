@@ -3,8 +3,6 @@ package gaiasim.network;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import gaiasim.network.Flow;
-
 // A coflow represents a shuffle within a job. It is an edge within a DAG.
 public class Coflow {
     // TODO(jack): Once finished translating from original simulator, switch
@@ -13,7 +11,7 @@ public class Coflow {
     // dependents of this stage.
     
     public String id_;
-    public HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    public HashMap<String, FlowGroup> flows_ = new HashMap<String, FlowGroup>();
     public double volume_ = 0.0;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
@@ -64,7 +62,7 @@ public class Coflow {
                     // transmission is needed, so we don't create a flow.
                     if (src_loc != dst_loc) {
                         String flow_id = flow_id_prefix + flow_id_suffix;
-                        flows_.put(flow_id, new Flow(flow_id, flow_id_suffix, id_, src_loc, dst_loc, volume_per_flow));
+                        flows_.put(flow_id, new FlowGroup(flow_id, flow_id_suffix, id_, src_loc, dst_loc, volume_per_flow));
                         System.out.println("CoFlow: created flow id: " + flow_id + " owned by coflow id: " + id_ + " with volume " + volume_per_flow);
                         volume_ += volume_per_flow;
                         flow_id_suffix++;
@@ -87,7 +85,7 @@ public class Coflow {
         // TODO: what if there are no flows. creating a new function.
         start_timestamp_  = Long.MAX_VALUE;
         for (String k : flows_.keySet()) {
-            Flow f = flows_.get(k);
+            FlowGroup f = flows_.get(k);
             if (f.start_timestamp_ < start_timestamp_) {
                 start_timestamp_ = f.start_timestamp_;
             }

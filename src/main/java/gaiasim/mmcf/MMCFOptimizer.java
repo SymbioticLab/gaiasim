@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
-import gaiasim.network.Flow;
+import gaiasim.network.FlowGroup;
 import gaiasim.network.Link;
 import gaiasim.network.NetGraph;
 import gaiasim.network.SubscribedLink;
@@ -37,7 +37,7 @@ public class MMCFOptimizer {
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
         System.out.println("Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
-            Flow f = coflow.flows_.get(k);
+            FlowGroup f = coflow.flows_.get(k);
             if (f.remaining_volume() > 0.0) {
                 System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_ + " -> " + f.remaining_volume());
                 int int_id = coflow.flows_.get(k).int_id_;

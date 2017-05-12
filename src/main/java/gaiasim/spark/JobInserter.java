@@ -4,7 +4,6 @@ import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.ScheduleMessage;
-import gaiasim.spark.Job;
 
 public class JobInserter implements Runnable {
     public Vector<Job> jobs_by_time_;
@@ -20,7 +19,7 @@ public class JobInserter implements Runnable {
         long time_sleep, start, end;
         long cur_time = 0;
         for (Job j : jobs_by_time_) {
-            time_sleep = j.start_time_ - cur_time;
+            time_sleep = j.arrivalTime - cur_time;
             System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + j.id_);
             start = System.currentTimeMillis();
             while (time_sleep > 0) {
@@ -34,7 +33,7 @@ public class JobInserter implements Runnable {
                 }
             } // while time_sleep > 0
             
-            cur_time = j.start_time_;
+            cur_time = j.arrivalTime;
 
             try {
                 insert_queue_.put(new ScheduleMessage(ScheduleMessage.Type.JOB_INSERTION, j.id_));

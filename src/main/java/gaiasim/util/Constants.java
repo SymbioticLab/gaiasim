@@ -27,16 +27,16 @@ public class Constants {
 
     public static HashMap<String, String> node_id_to_trace_id;
 
-    // Return the id of the job owning the Stage, Coflow, or Flow
+    // Return the id of the job owning the Stage, Coflow, or FlowGroup
     // identified by id.
     public static String get_job_id(String id) {
-        // Stage, Coflow, and Flow ids begin in the form <job_id>:
+        // Stage, Coflow, and FlowGroup ids begin in the form <job_id>:
         return id.split(":")[0];
     }
 
     // Return the id of the coflow owining this flow
     public static String get_coflow_id(String id) {
-        // Flow ids are of the form <job_id>:<coflow_id>:<flow_id>
+        // FlowGroup ids are of the form <job_id>:<coflow_id>:<flow_id>
         String[] splits = id.split(":");
         return splits[0] + ":" + splits[1];
     }

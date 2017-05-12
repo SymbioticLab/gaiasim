@@ -9,10 +9,10 @@ import gaiasim.network.Coflow;
 public class Job {
 
     public String id_; 
-    public long start_time_;
+    public long arrivalTime;
     public HashMap<String, Coflow> coflows_ = new HashMap<String, Coflow>();
-    public ArrayList<Coflow> start_coflows_ = new ArrayList<Coflow>();
-    public ArrayList<Coflow> end_coflows_ = new ArrayList<Coflow>();
+    public ArrayList<Coflow> root_coflows = new ArrayList<Coflow>();
+    public ArrayList<Coflow> leaf_coflows = new ArrayList<Coflow>();
     public boolean started_ = false;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
@@ -26,18 +26,18 @@ public class Job {
     public Job(String id, long start_time, HashMap<String, Coflow> coflows) {
         id_ = id;
         coflows_ = coflows;
-        start_time_ = start_time;
+        arrivalTime = start_time;
 
         // Determine the end coflows of the DAG (those without any parents).
         // Determine the start coflows of the DAG (those without children).
         for (String key : coflows_.keySet()) {
             Coflow c = coflows_.get(key);
             if (c.parent_coflows_.size() == 0) {
-                end_coflows_.add(c);
+                leaf_coflows.add(c);
             }
 
             if (c.child_coflows_.size() == 0) {
-                start_coflows_.add(c);
+                root_coflows.add(c);
             }
             else {
                 // Flows are created by depedent coflows. Since
@@ -91,7 +91,7 @@ public class Job {
 
     // Start all of the first coflows of the job
     public void start() {
-        for (Coflow c : start_coflows_) {
+        for (Coflow c : root_coflows) {
             c.done_ = true; 
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
@@ -109,7 +109,7 @@ public class Job {
                 }
             } // for parent_coflows_
 
-        } // for start_coflows_
+        } // for root_coflows
         started_ = true;
     }
 }

@@ -15,7 +15,7 @@ import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow;
-import gaiasim.network.Flow;
+import gaiasim.network.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.PoorManScheduler;
@@ -49,7 +49,7 @@ public class Manager {
     // Jobs and Coflows that are currently being worked on 
     public HashMap<String, Job> active_jobs_ = new HashMap<String, Job>();
     public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
-    public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
+    public HashMap<String, FlowGroup> active_flows_ = new HashMap<String, FlowGroup>();
 
     public LinkedBlockingQueue<ScheduleMessage> message_queue_ =
         new LinkedBlockingQueue<ScheduleMessage>();
@@ -60,7 +60,7 @@ public class Manager {
 
     public boolean is_baseline_ = false;
 
-    public Manager(String gml_file, String trace_file, 
+    public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
@@ -85,8 +85,8 @@ public class Manager {
         }
         Collections.sort(jobs_by_time_, new Comparator<Job>() {
             public int compare(Job o1, Job o2) {
-                if (o1.start_time_ == o2.start_time_) return 0;
-                return o1.start_time_ < o2.start_time_ ? -1 : 1;
+                if (o1.arrivalTime == o2.arrivalTime) return 0;
+                return o1.arrivalTime < o2.arrivalTime ? -1 : 1;
             }
         });
     }
@@ -115,13 +115,13 @@ public class Manager {
 
     // Returns true if the completion of this flow caused a coflow
     // to be completed.
-    public boolean handle_finished_flow(Flow f, long cur_time) throws java.io.IOException {
+    public boolean handle_finished_flow(FlowGroup f, long cur_time) throws java.io.IOException {
         active_flows_.remove(f.id_);
-        f.transmitted_ = f.volume_;
+        f.transmitted_volume = f.volume_;
         f.done_ = true;
         f.end_timestamp_ = cur_time;
         scheduler_.finish_flow(f);
-        System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
+        System.out.println("FlowGroup " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
 
         // After completing a flow, an owning coflow may have been completed
         Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
@@ -220,9 +220,9 @@ public class Manager {
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
-                    System.out.println("Received FLOW_COMPLETION for Flow " + m.flow_id_);
+                    System.out.println("Received FLOW_COMPLETION for FlowGroup " + m.flow_id_);
                     
-                    Flow f = active_flows_.get(m.flow_id_);
+                    FlowGroup f = active_flows_.get(m.flow_id_);
                     long current_time = System.currentTimeMillis();
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
                     if (coflow_finished) {
@@ -263,6 +263,7 @@ public class Manager {
             sac.terminate();
         }
 
+        // Not reaching this step.
         System.out.println("DONE");
         print_statistics("/job.csv", "/cct.csv");
     }
@@ -283,10 +284,10 @@ public class Manager {
             }
         }
  
-        HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(coflow_map, current_time);
+        HashMap<String, FlowGroup> scheduled_flows = scheduler_.schedule_flows(coflow_map, current_time);
         active_flows_.putAll(scheduled_flows);
         for (String flow_id : scheduled_flows.keySet()) {
-            Flow f = scheduled_flows.get(flow_id);
+            FlowGroup f = scheduled_flows.get(flow_id);
 
             if (!f.started_sending_) {
                 sa_contacts_.get(f.src_loc_).start_flow(f);
@@ -303,7 +304,7 @@ public class Manager {
     public void reschedule() throws Exception {
         System.out.println("Manager: entered reschedule()");
 
-        ArrayList<Flow> preempted_flows = new ArrayList<Flow>();
+        ArrayList<FlowGroup> preempted_flowGroups = new ArrayList<FlowGroup>();
 
         // Send FLOW_STATUS_REQUEST to all SA_Contacts
         if (!active_flows_.isEmpty()) {
@@ -325,15 +326,15 @@ public class Manager {
                     }
                     else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                         System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
-                        Flow f = active_flows_.get(m.flow_id_);
+                        FlowGroup f = active_flows_.get(m.flow_id_);
                         handle_finished_flow(f, System.currentTimeMillis());
                     }
                     else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                        Flow f = active_flows_.get(m.flow_id_);
+                        FlowGroup f = active_flows_.get(m.flow_id_);
                         System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
-                        f.transmitted_ = m.transmitted_;
+                        f.transmitted_volume = m.transmitted_;
                         f.updated_ = true;
-                        preempted_flows.add(f);
+                        preempted_flowGroups.add(f);
                         active_flows_.remove(m.flow_id_);
                     }
                 }
@@ -348,7 +349,7 @@ public class Manager {
         // Reschedule the current flows
         update_and_schedule_flows(System.currentTimeMillis());
 
-        for (Flow f : preempted_flows) {
+        for (FlowGroup f : preempted_flowGroups) {
             if (!active_flows_.containsKey(f.id_)) {
                 active_flows_.put(f.id_, f);
             }
@@ -358,7 +359,7 @@ public class Manager {
         // TODO: Consider parallelizing this so that messages intended
         //       for different SAs don't block on each other.
         for (String flow_id : active_flows_.keySet()) {
-            Flow f = active_flows_.get(flow_id);
+            FlowGroup f = active_flows_.get(flow_id);
 
             if (!f.started_sending_) {
                 sa_contacts_.get(f.src_loc_).start_flow(f);
@@ -389,7 +390,7 @@ public class Manager {
 
                 // If the next job to start won't start during this epoch, no
                 // further jobs should be considered.
-                if (j.start_time_ >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
+                if (j.arrivalTime >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
 
                     // TODO(jack): Add method which may be called here.
                     // Perhaps we want the emulator to simply sleep while waiting.
@@ -430,7 +431,7 @@ public class Manager {
             coflow_finished = false;
             
             // List to keep track of flow keys that have finished
-            ArrayList<Flow> finished = new ArrayList<Flow>();
+            ArrayList<FlowGroup> finished = new ArrayList<FlowGroup>();
 
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
@@ -438,19 +439,19 @@ public class Manager {
                     ts += Constants.SIMULATION_TIMESTEP_MILLI) {
                 
                 for (String k : active_flows_.keySet()) {
-                    Flow f = active_flows_.get(k);
+                    FlowGroup f = active_flows_.get(k);
 
                     scheduler_.progress_flow(f);
 
                     // If there's less than one bit remaining of the flow, consider it fully
                     // transmitted.
-                    if ((f.volume_ - f.transmitted_) < 1/*f.transmitted_ >= f.volume_*/) {
+                    if ((f.volume_ - f.transmitted_volume) < 1/*f.transmitted_volume >= f.volume_*/) {
                         finished.add(f);
                     }
                 }
 
                 // Handle flows which have completed
-                for (Flow f : finished) {
+                for (FlowGroup f : finished) {
                     boolean caused_coflow_finish = handle_finished_flow(f, CURRENT_TIME_ + ts);
                     coflow_finished = coflow_finished || caused_coflow_finish;
                 } // for finished
@@ -516,7 +517,7 @@ public class Manager {
 
         // Update our set of flows
         active_flows_.clear();
-        HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(active_coflows_, current_time);
+        HashMap<String, FlowGroup> scheduled_flows = scheduler_.schedule_flows(active_coflows_, current_time);
         active_flows_.putAll(scheduled_flows);
     }
 }

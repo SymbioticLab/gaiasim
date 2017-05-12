@@ -8,12 +8,10 @@ import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceFactory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import gaiasim.util.Constants;
-import gaiasim.network.Link;
 
 public class NetGraph {
     public Graph graph_;
@@ -122,7 +120,7 @@ public class NetGraph {
                     Pathway max_bw_path = new Pathway();
                     for (Pathway p : paths) {
                         assign_bw(p);
-                        if (p.bandwidth_ > max_bw_path.bandwidth_) {
+                        if (p.getBandwidth() > max_bw_path.getBandwidth()) {
                             max_bw_path = p;
                         }
                     }
@@ -149,7 +147,8 @@ public class NetGraph {
             }
         }
 
-        p.bandwidth_ = min_bw;
+//        p.bandwidth = min_bw;
+        p.setBandwidth( min_bw);
     }
 
     // Returns the id of the path with matching node_list to p

@@ -3,7 +3,7 @@ package gaiasim.scheduler;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
-import gaiasim.network.Flow;
+import gaiasim.network.FlowGroup;
 import gaiasim.network.SubscribedLink;
 import gaiasim.network.NetGraph;
 
@@ -27,9 +27,9 @@ public abstract class Scheduler {
         }
     }
     
-    public abstract void finish_flow(Flow f);
+    public abstract void finish_flow(FlowGroup f);
 
-    public abstract void progress_flow(Flow f);
+    public abstract void progress_flow(FlowGroup f);
 
     public void reset_links() {
         for (int i = 0; i < net_graph_.nodes_.size(); i++) {
@@ -41,8 +41,8 @@ public abstract class Scheduler {
         }
     }
 
-    public abstract HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
-                                                         long timestamp) throws Exception;
+    public abstract HashMap<String, FlowGroup> schedule_flows(HashMap<String, Coflow> coflows,
+                                                              long timestamp) throws Exception;
 
-    public abstract void update_flows(HashMap<String, Flow> flows);
+    public abstract void update_flows(HashMap<String, FlowGroup> flows);
 }
