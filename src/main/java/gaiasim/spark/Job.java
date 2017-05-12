@@ -92,7 +92,7 @@ public class Job {
     // Start all of the first coflows of the job
     public void start() {
         for (Coflow c : root_coflows) {
-            c.done_ = true; 
+            c.done = true;
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
             for (Coflow parent : c.parent_coflows_) {

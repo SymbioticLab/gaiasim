@@ -18,7 +18,7 @@ public class BaselineScheduler extends Scheduler {
     }
     
     public void finish_flow(FlowGroup f) {
-        ArrayList<String> nodes = f.paths_.get(0).node_list_;
+        ArrayList<String> nodes = f.paths_.get(0).node_list;
         for (int i = 0; i < nodes.size()- 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
             int dst = Integer.parseInt(nodes.get(i+1));
@@ -50,9 +50,9 @@ public class BaselineScheduler extends Scheduler {
                 f.paths_.clear();
                 f.paths_.add(p);
               
-                for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                    int src = Integer.parseInt(p.node_list_.get(i));
-                    int dst = Integer.parseInt(p.node_list_.get(i+1));
+                for (int i = 0; i < p.node_list.size() - 1; i++) {
+                    int src = Integer.parseInt(p.node_list.get(i));
+                    int dst = Integer.parseInt(p.node_list.get(i+1));
                     links_[src][dst].subscribers_.addAll(f.paths_);
                 }
 
@@ -69,7 +69,7 @@ public class BaselineScheduler extends Scheduler {
 
             double min_bw = Double.MAX_VALUE;
 
-            ArrayList<String> nodes = f.paths_.get(0).node_list_;
+            ArrayList<String> nodes = f.paths_.get(0).node_list;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
                 int dst = Integer.parseInt(nodes.get(i+1));
@@ -96,7 +96,7 @@ public class BaselineScheduler extends Scheduler {
 
             double min_bw = Double.MAX_VALUE;
 
-            ArrayList<String> nodes = f.paths_.get(0).node_list_;
+            ArrayList<String> nodes = f.paths_.get(0).node_list;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
                 int dst = Integer.parseInt(nodes.get(i+1));

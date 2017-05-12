@@ -15,7 +15,7 @@ public class Coflow {
     public double volume_ = 0.0;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
-    public boolean done_ = false;
+    public boolean done = false;
 
     // The location of coflow-initiating tasks. For example, these would be
     // the locations of map tasks in a map-reduce shuffle.
@@ -99,13 +99,13 @@ public class Coflow {
 
     // Return whether owned Flows are done
     public boolean done() {
-        if (!done_) {
+        if (!done) {
             for (String k : flows_.keySet()) {
                 if (!flows_.get(k).done_) {
                     return false;
                 }
             }
-            done_ = true;
+            done = true;
         }
         return true;
     }
@@ -114,7 +114,7 @@ public class Coflow {
     // only if all of the Coflows on which it depends have completed.
     public boolean ready() {
         for (Coflow s : child_coflows_) {
-            if (!s.done_) {
+            if (!s.done) {
                 return false;
             }
         }

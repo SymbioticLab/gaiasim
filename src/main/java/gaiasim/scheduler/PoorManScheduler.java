@@ -23,9 +23,9 @@ public class PoorManScheduler extends Scheduler {
     
     public void finish_flow(FlowGroup f) {
         for (Pathway p : f.paths_) {
-            for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                int src = Integer.parseInt(p.node_list_.get(i));
-                int dst = Integer.parseInt(p.node_list_.get(i+1));
+            for (int i = 0; i < p.node_list.size() - 1; i++) {
+                int src = Integer.parseInt(p.node_list.get(i));
+                int dst = Integer.parseInt(p.node_list.get(i+1));
                 links_[src][dst].subscribers_.remove(p);
             }
         }
@@ -47,8 +47,8 @@ public class PoorManScheduler extends Scheduler {
         for (Link l : link_vals) {
             if (l.src_loc_.equals(f.src_loc_)) {
                 Pathway p = new Pathway();
-                p.node_list_.add(l.src_loc_);
-                p.node_list_.add(l.dst_loc_);
+                p.node_list.add(l.src_loc_);
+                p.node_list.add(l.dst_loc_);
 //                p.bandwidth = l.cur_bw_;
                 p.setBandwidth( l.cur_bw_);
 
@@ -90,7 +90,7 @@ public class PoorManScheduler extends Scheduler {
                     // Does the bandwidth available on this link directly match the bandwidth
                     // of this pathway?
                     if (Math.round(Math.abs(p.getBandwidth() - l.cur_bw_) * 100.0) / 100.0 < 0.01) {
-                        p.node_list_.add(l.dst_loc_);
+                        p.node_list.add(l.dst_loc_);
                         link_added = true;
 
                         // Check if path is now complete
@@ -110,11 +110,11 @@ public class PoorManScheduler extends Scheduler {
                         Pathway new_p = new Pathway();
 //                        new_p.bandwidth = p.getBandwidth() - l.cur_bw_;
                         new_p.setBandwidth( p.getBandwidth() - l.cur_bw_) ;
-                        new_p.node_list_ = (ArrayList<String>)p.node_list_.clone();
+                        new_p.node_list = (ArrayList<String>)p.node_list.clone();
                         potential_paths.add(new_p);
 //                        p.bandwidth = l.cur_bw_;
                         p.setBandwidth( l.cur_bw_ );
-                        p.node_list_.add(l.dst_loc_);
+                        p.node_list.add(l.dst_loc_);
                         link_added = true;
 
                         // Check if path is now complete
@@ -131,7 +131,7 @@ public class PoorManScheduler extends Scheduler {
                     // Only reduce the link's bandwidth by the amount that could be used by the path.
                     else if (Math.round((p.getBandwidth() - l.cur_bw_) * 100.0) / 100.0 <= -0.01) {
                         l.cur_bw_ = l.cur_bw_ - p.getBandwidth();
-                        p.node_list_.add(l.dst_loc_);
+                        p.node_list.add(l.dst_loc_);
                         link_added = true;
                         // Check if path is now complete
                         if (l.dst_loc_.equals(f.dst_loc_)) {
@@ -206,10 +206,10 @@ public class PoorManScheduler extends Scheduler {
             Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
 
             double min_bw = Double.MAX_VALUE;
-            SubscribedLink[] path_links = new SubscribedLink[p.node_list_.size() - 1];
-            for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                int lsrc = Integer.parseInt(p.node_list_.get(i));
-                int ldst = Integer.parseInt(p.node_list_.get(i+1));
+            SubscribedLink[] path_links = new SubscribedLink[p.node_list.size() - 1];
+            for (int i = 0; i < p.node_list.size() - 1; i++) {
+                int lsrc = Integer.parseInt(p.node_list.get(i));
+                int ldst = Integer.parseInt(p.node_list.get(i+1));
                 SubscribedLink l = links_[lsrc][ldst];
 
                 double bw = l.remaining_bw();
@@ -291,9 +291,9 @@ public class PoorManScheduler extends Scheduler {
                 
                 // Subscribe the flow's paths to the links it uses
                 for (Pathway p : f.paths_) {
-                    for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                        int src = Integer.parseInt(p.node_list_.get(i));
-                        int dst = Integer.parseInt(p.node_list_.get(i+1));
+                    for (int i = 0; i < p.node_list.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list.get(i));
+                        int dst = Integer.parseInt(p.node_list.get(i+1));
                         links_[src][dst].subscribers_.add(p);
                     }
                 }

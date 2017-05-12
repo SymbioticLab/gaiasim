@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.comm.PortAnnouncementMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 
@@ -58,7 +57,7 @@ public class PortAnnouncementRelayMessage {
                 announcement = "Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">";
 
                 Pathway p = net_graph_.apap_.get(m.sa_id_).get(m.ra_id_).get(m.path_id_);
-                int num_messages = p.node_list_.size() * 2;
+                int num_messages = p.node_list.size() * 2;
 
                 // Metadata is of form:
                 //      msg_id num_rules src_id dst_id src_port dst_port
@@ -86,11 +85,11 @@ public class PortAnnouncementRelayMessage {
                 String message;
 
                 // Set the forward path
-                for (int i = 0; i < p.node_list_.size(); i++) {
-                    src = p.node_list_.get(i);
+                for (int i = 0; i < p.node_list.size(); i++) {
+                    src = p.node_list.get(i);
 
-                    if (i < p.node_list_.size() - 1) {
-                        dst = p.node_list_.get(i+1);
+                    if (i < p.node_list.size() - 1) {
+                        dst = p.node_list.get(i+1);
                     }
                     else {
                         dst = src;
@@ -103,11 +102,11 @@ public class PortAnnouncementRelayMessage {
                 }
 
                 // Set the reverse path
-                for (int i = p.node_list_.size() - 1; i >= 0; i--) {
-                    src = p.node_list_.get(i);
+                for (int i = p.node_list.size() - 1; i >= 0; i--) {
+                    src = p.node_list.get(i);
 
                     if (i > 0) {
-                        dst = p.node_list_.get(i-1);
+                        dst = p.node_list.get(i-1);
                     }
                     else {
                         dst = src;

@@ -95,7 +95,7 @@ public class Manager {
         c.determine_start_time();  // FIXME: it must be that sometime start_time = Long.max
         c.end_timestamp_ = cur_time;
         System.out.println("Coflow " + c.id_ + " done. Took " + (c.end_timestamp_ - c.start_timestamp_));
-        c.done_ = true;
+        c.done = true;
 
         completed_coflows_.add(c);
         

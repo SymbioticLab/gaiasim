@@ -130,10 +130,10 @@ public class FlowInfo {
 
         transmitted_ += transmitted;
         // Check if we're the first connection to reconginze this flow as completed.
-        // We know that we are because done_ set within this function and this
+        // We know that we are because done set within this function and this
         // is a synchronized function. If some other connection completed the flow
-        // before we did, then it would have set done_ to true before we had called
-        // this function, and we would've hit the if(done_) condition at the
+        // before we did, then it would have set done to true before we had called
+        // this function, and we would've hit the if(done) condition at the
         // beginning of this function.
         if (transmitted_ >= volume_) {
             done_ = true;

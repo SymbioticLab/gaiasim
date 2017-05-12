@@ -137,9 +137,9 @@ public class NetGraph {
     // on the pathway.
     private void assign_bw(Pathway p) {
         double min_bw = Double.MAX_VALUE;
-        for (int i = 0; i < p.node_list_.size() - 1; i++) {
-            int src = Integer.parseInt(p.node_list_.get(i));
-            int dst = Integer.parseInt(p.node_list_.get(i+1));
+        for (int i = 0; i < p.node_list.size() - 1; i++) {
+            int src = Integer.parseInt(p.node_list.get(i));
+            int dst = Integer.parseInt(p.node_list.get(i+1));
             double bw = link_bw_[src][dst];
 
             if (bw < min_bw) {
@@ -167,7 +167,7 @@ public class NetGraph {
     private ArrayList<Pathway> make_paths(Node src, Node dst) {
         ArrayList<Pathway> pathways = new ArrayList<Pathway>();
         Pathway p = new Pathway();
-        p.node_list_.add(src.toString());
+        p.node_list.add(src.toString());
         make_paths_helper(src, dst.toString(), p, pathways);
         return pathways;
     }
@@ -178,8 +178,8 @@ public class NetGraph {
         while (neighbor_it.hasNext()) {
             Node n = neighbor_it.next();
             String n_str = n.toString();
-            if (!cur_path.node_list_.contains(n_str)) {
-                cur_path.node_list_.add(n_str);
+            if (!cur_path.node_list.contains(n_str)) {
+                cur_path.node_list.add(n_str);
                 if (dst.equals(n_str)) {
                     pathways.add(new Pathway(cur_path));
                 }
@@ -187,7 +187,7 @@ public class NetGraph {
                     make_paths_helper(n, dst, cur_path, pathways);
                 }
                 
-                cur_path.node_list_.remove(n_str);
+                cur_path.node_list.remove(n_str);
 
             } // if neighbor not in path
 
