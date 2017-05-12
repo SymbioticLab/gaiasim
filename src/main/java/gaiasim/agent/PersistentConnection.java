@@ -3,10 +3,7 @@ package gaiasim.agent;
 import gaiasim.util.Constants;
 import gaiasim.util.ThrottledOutputStream;
 
-import java.io.BufferedWriter;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,8 +79,9 @@ public class PersistentConnection {
         public Socket dataSocket;
 
 //        public OutputStream dataOutputStream;  // deprecated
-        private ThrottledOutputStream tos; // TODO: (wrap a buffered writer around this!)
-        private DataOutputStream dos;
+        private ThrottledOutputStream tos;
+        private BufferedOutputStream bos;
+//        private DataOutputStream dos;
 //        private BufferedWriter bw;
 
         public ConnectionDataBroker(String id, Socket sd) {
@@ -91,8 +89,9 @@ public class PersistentConnection {
             dataSocket = sd;
 
             try {
-                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100
-                dos = new DataOutputStream(tos);
+                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100kByte/s
+                bos = new BufferedOutputStream(tos);
+//                dos = new DataOutputStream(tos);
 //                bw = new BufferedWriter( new OutputStreamWriter(tos));
 //                dataOutputStream = dataSocket.getOutputStream();
             }
@@ -161,8 +160,9 @@ public class PersistentConnection {
 
     private class SenderThread implements Runnable {
         public ConnectionDataBroker data_;
-        public int buffer_size_ = 1024*1024;
-        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
+//        public int buffer_size_ = 1024*1024;
+        public int buffer_size_ = Constants.BUFFER_SIZE;
+        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8; // to change to kbit.
         public byte[] buffer_ = new byte[buffer_size_];
 
         public SenderThread(ConnectionDataBroker data) {
@@ -237,14 +237,17 @@ public class PersistentConnection {
                         // until all the outgoing data are "sent".
 
                         // TODO: get the thorttling right. the unit conversion
-                        data_.tos.setRate(data_.rate_ * 1000 * 125);
+                        data_.tos.setRate(data_.rate_ * 1000 * 125); // rate_ is MBit/s
 
                         // TODO(jimmy): use a throttled writer and block here.
 //                        data_Broker.dataOutputStream.write(buffer_);
 //                        data_Broker.dos.write(buffer_);
-                        System.out.println("PersistentConn: Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
-                        data_.tos.write(buffer_);
-                        System.out.println("PersistentConn: Finished Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
+                        System.out.println("PersistentConn: Writing 1MB w/ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
+//                        data_.tos.write(buffer_);
+                        data_.bos.write(buffer_);
+                        data_.bos.flush();
+
+                        System.out.println("PersistentConn: Flushed Writing 1MB w/ rate: " + data_.rate_ + " Mbit/s  @ " + System.currentTimeMillis());
                         // This is not efficient according to the implementation of OutputStream.write()
                         // This is supposed to be blocking, a.k.a., safe (no buffer overflow)
                         data_.distribute_transmitted(buffer_size_megabits_); 

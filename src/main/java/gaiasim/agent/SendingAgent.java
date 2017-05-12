@@ -30,27 +30,34 @@ public class SendingAgent {
 
         System.setProperty("org.slf4j.simpleLogger.logFile" , "System.out"); // redirecting to stdout.
 
-        while(true) {
 
-            try {
-                Socket socketToCTRL = listener.accept();
-                //TODO: need to make *Agent() blocking. so we only serve one CTRL at a time.
 
-                if (use_persistent.equals("0")) {
+
+
+        try {
+
+            if (use_persistent.equals("0")) {
+                while (true) {
+                    Socket socketToCTRL = listener.accept(); //TODO: need to make *Agent() blocking. so we only serve one CTRL at a time.
                     logger.info("SA: Starting Baseline.");
                     BaselineSendingAgent b = new BaselineSendingAgent(id, socketToCTRL);
-                } else {
-                    String gml_file = args[2];
-                    NetGraph net_graph = new NetGraph(gml_file);
+                }
+            } else {
+                String gml_file = args[2];
+                NetGraph net_graph = new NetGraph(gml_file);
+                while (true) {
+                    Socket socketToCTRL = listener.accept();
                     logger.info("SA: Starting RRF.");
                     PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
                 }
-            } catch (java.io.IOException e) {
-                e.printStackTrace();
-                System.exit(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
     }
 }

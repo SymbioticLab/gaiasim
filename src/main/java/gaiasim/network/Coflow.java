@@ -84,6 +84,7 @@ public class Coflow {
     // Sets the coflow's start time to be that of the earliest starting flow.
     // Assumes all flows are done.
     public void determine_start_time() {
+        // TODO: what if there are no flows. creating a new function.
         start_timestamp_  = Long.MAX_VALUE;
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
@@ -91,6 +92,11 @@ public class Coflow {
                 start_timestamp_ = f.start_timestamp_;
             }
         }
+    }
+
+    // TODO: recapsuling the CoFlow Class and provide the proper interface.
+    public long getCoFlowStartTime() {
+        return 0;
     }
 
     // Return whether owned Flows are done

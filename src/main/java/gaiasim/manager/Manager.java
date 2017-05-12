@@ -92,10 +92,9 @@ public class Manager {
     }
  
     public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
-        c.determine_start_time();
+        c.determine_start_time();  // FIXME: it must be that sometime start_time = Long.max
         c.end_timestamp_ = cur_time;
-        System.out.println("Coflow " + c.id_ + " done. Took " 
-                + (c.end_timestamp_ - c.start_timestamp_));
+        System.out.println("Coflow " + c.id_ + " done. Took " + (c.end_timestamp_ - c.start_timestamp_));
         c.done_ = true;
 
         completed_coflows_.add(c);
