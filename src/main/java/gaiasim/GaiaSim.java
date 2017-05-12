@@ -11,9 +11,13 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
+
+    private static final Logger logger = LoggerFactory.getLogger(GaiaSim.class);
 
     public static HashMap<String, String> parse_cli(String[] args) 
                                                     throws org.apache.commons.cli.ParseException {
@@ -80,6 +84,8 @@ public class GaiaSim {
         try {
             Process p = Runtime.getRuntime().exec("cp models/MinCCT.mod /tmp/MinCCT.mod");
             p.waitFor();
+
+            logger.info("GAIA: finished copying the model..");
 
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
                                     args_map.get("scheduler"), args_map.get("outdir"));

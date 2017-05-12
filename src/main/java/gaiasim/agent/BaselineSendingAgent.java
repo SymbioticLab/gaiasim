@@ -5,8 +5,6 @@ import java.net.Socket;
 
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
-import gaiasim.util.Constants;
-import gaiasim.util.ThrottledOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -131,11 +129,12 @@ public class BaselineSendingAgent {
 
         public void run() {
             try {
-                while (true) {
+                while (true) { // when to jump out of the loop?
                     ControlMessage c = (ControlMessage) data_Broker_.is_.readObject();
 
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_Broker_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+
                         (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
@@ -151,6 +150,7 @@ public class BaselineSendingAgent {
                         System.exit(1);
                     }
                     else if (c.type_ == ControlMessage.Type.TERMINATE) {
+                        System.out.println("BSA: Received TERMINATE.");
                         // TODO: Close socket
                         return;
                     }
@@ -172,14 +172,18 @@ public class BaselineSendingAgent {
         }
     }
 
-    public DataBroker data_Broker_;
+    public DataBroker data_Broker;
     public Thread listener_;
 
-    public BaselineSendingAgent(String id, Socket client_sd) {
+    public BaselineSendingAgent(String id, Socket client_sd) throws InterruptedException {
 
-        data_Broker_ = new DataBroker(id, client_sd);
-        listener_ = new Thread(new Listener(data_Broker_));
-        listener_.start();
+        data_Broker = new DataBroker(id, client_sd);
+//        listener_ = new Thread(new Listener(data_Broker));
+//        listener_.start();
+//        listener_.join(); // waiting for it to die.
+
+        Listener listener = new Listener(data_Broker);
+        listener.run(); // equivalent to above.
     }
 
 

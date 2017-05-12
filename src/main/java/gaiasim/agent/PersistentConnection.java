@@ -240,8 +240,8 @@ public class PersistentConnection {
                         data_.tos.setRate(data_.rate_ * 1000 * 125);
 
                         // TODO(jimmy): use a throttled writer and block here.
-//                        data_Broker_.dataOutputStream.write(buffer_);
-//                        data_Broker_.dos.write(buffer_);
+//                        data_Broker.dataOutputStream.write(buffer_);
+//                        data_Broker.dos.write(buffer_);
                         System.out.println("PersistentConn: Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
                         data_.tos.write(buffer_);
                         System.out.println("PersistentConn: Finished Writing 1MB @ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());

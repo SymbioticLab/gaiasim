@@ -6,8 +6,14 @@ import java.net.Socket;
 import gaiasim.agent.BaselineSendingAgent;
 import gaiasim.agent.PersistentSendingAgent;
 import gaiasim.network.NetGraph;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SendingAgent {
+
+    private final static Logger logger = LoggerFactory.getLogger(SendingAgent.class);
+//    private final static Logger logger = LoggerFactory.getLogger(SendingAgent.class);
+
     public static void main(String[] args) throws java.io.IOException {
         if (args.length > 3) {
             System.out.println("ERROR: Incorrect number of command line arguments");
@@ -20,23 +26,31 @@ public class SendingAgent {
 
         String id = args[0];
         String use_persistent = args[1];
+        ServerSocket listener = new ServerSocket(23330);  // always listening
 
-        try {
-            ServerSocket sd = new ServerSocket(23330);
-            Socket client_sd = sd.accept();
+        System.setProperty("org.slf4j.simpleLogger.logFile" , "System.out"); // redirecting to stdout.
 
-            if (use_persistent.equals("0")) {
-                BaselineSendingAgent b = new BaselineSendingAgent(id, client_sd);
+        while(true) {
+
+            try {
+                Socket socketToCTRL = listener.accept();
+                //TODO: need to make *Agent() blocking. so we only serve one CTRL at a time.
+
+                if (use_persistent.equals("0")) {
+                    logger.info("SA: Starting Baseline.");
+                    BaselineSendingAgent b = new BaselineSendingAgent(id, socketToCTRL);
+                } else {
+                    String gml_file = args[2];
+                    NetGraph net_graph = new NetGraph(gml_file);
+                    logger.info("SA: Starting RRF.");
+                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
+                }
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            else {
-                String gml_file = args[2];
-                NetGraph net_graph = new NetGraph(gml_file);
-                PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, client_sd);
-            }
-        }
-        catch (java.io.IOException e) {
-            e.printStackTrace();
-            System.exit(1);
         }
     }
 }

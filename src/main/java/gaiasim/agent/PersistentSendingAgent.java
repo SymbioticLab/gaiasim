@@ -188,6 +188,7 @@ public class PersistentSendingAgent {
                         dataBroker.get_status();
                     }
                     else if (c.type_ == ControlMessage.Type.TERMINATE) {
+                        System.out.println("PSA: Received TERMINATE.");
                         for (String k : dataBroker.connections_.keySet()) {
                             PersistentConnection conn = dataBroker.connections_.get(k);
                             conn.terminate();
@@ -221,7 +222,10 @@ public class PersistentSendingAgent {
     public PersistentSendingAgent(String id, NetGraph net_graph, Socket client_sd) {
         dataBroker = new DataBroker(id, net_graph, client_sd);
 
-        listen_ctrl_thread_ = new Thread(new Listener(dataBroker));
-        listen_ctrl_thread_.start();
+//        listen_ctrl_thread_ = new Thread(new Listener(dataBroker));
+//        listen_ctrl_thread_.start();
+
+        Listener listener = new Listener(dataBroker);
+        listener.run();
     }
 }
