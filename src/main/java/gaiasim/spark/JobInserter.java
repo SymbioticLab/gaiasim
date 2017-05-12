@@ -19,8 +19,8 @@ public class JobInserter implements Runnable {
         long time_sleep, start, end;
         long cur_time = 0;
         for (Job j : jobs_by_time_) {
-            time_sleep = j.arrivalTime - cur_time;
-            System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + j.id_);
+            time_sleep = j.getArrivalTime() - cur_time;
+            System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + j.getId());
             start = System.currentTimeMillis();
             while (time_sleep > 0) {
                 try {
@@ -33,11 +33,11 @@ public class JobInserter implements Runnable {
                 }
             } // while time_sleep > 0
             
-            cur_time = j.arrivalTime;
+            cur_time = j.getArrivalTime();
 
             try {
-                insert_queue_.put(new ScheduleMessage(ScheduleMessage.Type.JOB_INSERTION, j.id_));
-                System.out.println("JobInserter: Inserted job " + j.id_);
+                insert_queue_.put(new ScheduleMessage(ScheduleMessage.Type.JOB_INSERTION, j.getId()));
+                System.out.println("JobInserter: Inserted job " + j.getId());
             }
             catch (InterruptedException e) {
                 // We shouldn't ever get this

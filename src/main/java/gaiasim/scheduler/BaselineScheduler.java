@@ -18,16 +18,16 @@ public class BaselineScheduler extends Scheduler {
     }
     
     public void finish_flow(FlowGroup f) {
-        ArrayList<String> nodes = f.paths_.get(0).node_list;
+        ArrayList<String> nodes = f.paths.get(0).node_list;
         for (int i = 0; i < nodes.size()- 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
             int dst = Integer.parseInt(nodes.get(i+1));
-            links_[src][dst].subscribers_.remove(f.paths_.get(0));
+            links_[src][dst].subscribers_.remove(f.paths.get(0));
         }
     }
 
     public void progress_flow(FlowGroup f) {
-        f.transmitted_volume += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
+        f.setTransmitted_volume(f.getTransmitted_volume() + f.getRate() * Constants.SIMULATION_TIMESTEP_SEC);
     }
 
     public HashMap<String, FlowGroup> schedule_flows(HashMap<String, Coflow> coflows,
@@ -38,29 +38,29 @@ public class BaselineScheduler extends Scheduler {
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
 
-            for (String k_ : c.flows_.keySet()) {
-                FlowGroup f = c.flows_.get(k_);
-                if (f.done_) {
+            for (String k_ : c.flows.keySet()) {
+                FlowGroup f = c.flows.get(k_);
+                if (f.isDone()) {
                     continue;
                 }
                 
                 //Path gp = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
                 //Pathway p = new Pathway(gp);
-                Pathway p = net_graph_.apmb_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
-                f.paths_.clear();
-                f.paths_.add(p);
+                Pathway p = net_graph_.apmb_[Integer.parseInt(f.getSrc_loc())][Integer.parseInt(f.getDst_loc())];
+                f.paths.clear();
+                f.paths.add(p);
               
                 for (int i = 0; i < p.node_list.size() - 1; i++) {
                     int src = Integer.parseInt(p.node_list.get(i));
                     int dst = Integer.parseInt(p.node_list.get(i+1));
-                    links_[src][dst].subscribers_.addAll(f.paths_);
+                    links_[src][dst].subscribers_.addAll(f.paths);
                 }
 
-                if (f.start_timestamp_ == -1) {
-                    f.start_timestamp_ = timestamp;
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
                 }
 
-                flows_.put(f.id_, f);
+                flows_.put(f.getId(), f);
             }
         }
         
@@ -69,7 +69,7 @@ public class BaselineScheduler extends Scheduler {
 
             double min_bw = Double.MAX_VALUE;
 
-            ArrayList<String> nodes = f.paths_.get(0).node_list;
+            ArrayList<String> nodes = f.paths.get(0).node_list;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
                 int dst = Integer.parseInt(nodes.get(i+1));
@@ -79,11 +79,10 @@ public class BaselineScheduler extends Scheduler {
                     min_bw = link_bw;
                 }
             }
-
-            f.rate_ = min_bw;
+            f.setRate(min_bw);
 //            f.paths_.get(0).bandwidth = min_bw;
-            f.paths_.get(0).setBandwidth( min_bw);
-            System.out.println("FlowGroup " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_volume) + " on path " + f.paths_.get(0));
+            f.paths.get(0).setBandwidth( min_bw);
+            System.out.println("FlowGroup " + f.getId() + " has rate " + f.getRate() + " and remaining volume " + (f.getVolume() - f.getTransmitted_volume()) + " on path " + f.paths.get(0));
         }
 
         return flows_;
@@ -96,7 +95,7 @@ public class BaselineScheduler extends Scheduler {
 
             double min_bw = Double.MAX_VALUE;
 
-            ArrayList<String> nodes = f.paths_.get(0).node_list;
+            ArrayList<String> nodes = f.paths.get(0).node_list;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
                 int dst = Integer.parseInt(nodes.get(i+1));
@@ -106,9 +105,8 @@ public class BaselineScheduler extends Scheduler {
                     min_bw = link_bw;
                 }
             }
-
-            f.rate_ = min_bw;
-            System.out.println("FlowGroup " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_volume) + " on path " + f.paths_.get(0));
+            f.setRate(min_bw);
+            System.out.println("FlowGroup " + f.getId() + " has rate " + f.getRate() + " and remaining volume " + (f.getVolume() - f.getTransmitted_volume()) + " on path " + f.paths.get(0));
         }
     }
 }

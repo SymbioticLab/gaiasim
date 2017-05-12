@@ -85,29 +85,29 @@ public class Manager {
         }
         Collections.sort(jobs_by_time_, new Comparator<Job>() {
             public int compare(Job o1, Job o2) {
-                if (o1.arrivalTime == o2.arrivalTime) return 0;
-                return o1.arrivalTime < o2.arrivalTime ? -1 : 1;
+                if (o1.getArrivalTime() == o2.getArrivalTime()) return 0;
+                return o1.getArrivalTime() < o2.getArrivalTime() ? -1 : 1;
             }
         });
     }
  
     public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
         c.determine_start_time();  // FIXME: it must be that sometime start_time = Long.max
-        c.end_timestamp_ = cur_time;
-        System.out.println("Coflow " + c.id_ + " done. Took " + (c.end_timestamp_ - c.start_timestamp_));
-        c.done = true;
+        c.setEnd_timestamp(cur_time);
+        System.out.println("Coflow " + c.getId() + " done. Took " + (c.getEnd_timestamp() - c.getStart_timestamp()));
+        c.setDone(true);
 
         completed_coflows_.add(c);
         
         // After completing a coflow, an owning job may have been completed
-        Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
-        owning_job.finish_coflow(c.id_);
+        Job owning_job = active_jobs_.get(Constants.get_job_id(c.getId()));
+        owning_job.finish_coflow(c.getId());
 
         if (owning_job.done()) {
-            owning_job.end_timestamp_ = cur_time;
-            System.out.println("Manager/handle_FIN_coflow: Job " + owning_job.id_ + " done. Took "
-                    + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
-            active_jobs_.remove(owning_job.id_);
+            owning_job.setEnd_timestamp(cur_time);
+            System.out.println("Manager/handle_FIN_coflow: Job " + owning_job.getId() + " done. Took "
+                    + (owning_job.getEnd_timestamp() - owning_job.getStart_timestamp()));
+            active_jobs_.remove(owning_job.getId());
             completed_jobs_.addElement(owning_job);
             print_statistics("/tmp_job.csv", "/tmp_cct.csv");
         }
@@ -116,15 +116,15 @@ public class Manager {
     // Returns true if the completion of this flow caused a coflow
     // to be completed.
     public boolean handle_finished_flow(FlowGroup f, long cur_time) throws java.io.IOException {
-        active_flows_.remove(f.id_);
-        f.transmitted_volume = f.volume_;
-        f.done_ = true;
-        f.end_timestamp_ = cur_time;
+        active_flows_.remove(f.getId());
+        f.setTransmitted_volume(f.getVolume());
+        f.setDone(true);
+        f.setEnd_timestamp(cur_time);
         scheduler_.finish_flow(f);
-        System.out.println("FlowGroup " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
+        System.out.println("FlowGroup " + f.getId() + " done. Took "+ (f.getEnd_timestamp() - f.getStart_timestamp()));
 
         // After completing a flow, an owning coflow may have been completed
-        Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
+        Coflow owning_coflow = active_coflows_.get(f.getCoflow_id());
         if (owning_coflow.done()) {
             handle_finished_coflow(owning_coflow, cur_time); 
             return true;
@@ -143,10 +143,10 @@ public class Manager {
         record[3] = "JobCompletionTime";
         writer.writeNext(record);
         for (Job j : completed_jobs_) {
-            record[0] = j.id_;
-            record[1] = Double.toString(j.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
-            record[2] = Double.toString(j.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
-            record[3] = Double.toString((j.end_timestamp_ - j.start_timestamp_) / Constants.MILLI_IN_SECOND_D);
+            record[0] = j.getId();
+            record[1] = Double.toString(j.getStart_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(j.getEnd_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((j.getEnd_timestamp() - j.getStart_timestamp()) / Constants.MILLI_IN_SECOND_D);
             writer.writeNext(record);
         }
         writer.close();
@@ -161,16 +161,16 @@ public class Manager {
 
         Collections.sort(completed_coflows_, new Comparator<Coflow>() {
             public int compare(Coflow o1, Coflow o2) {
-                if (o1.start_timestamp_ == o2.start_timestamp_) return 0;
-                return o1.start_timestamp_ < o2.start_timestamp_ ? -1 : 1;
+                if (o1.getStart_timestamp() == o2.getStart_timestamp()) return 0;
+                return o1.getStart_timestamp() < o2.getStart_timestamp() ? -1 : 1;
             }
         });
 
         for (Coflow c : completed_coflows_) {
-            record[0] = c.id_;
-            record[1] = Double.toString(c.start_timestamp_ / Constants.MILLI_IN_SECOND_D);
-            record[2] = Double.toString(c.end_timestamp_ / Constants.MILLI_IN_SECOND_D);
-            record[3] = Double.toString((c.end_timestamp_ - c.start_timestamp_) / Constants.MILLI_IN_SECOND_D);
+            record[0] = c.getId();
+            record[1] = Double.toString(c.getStart_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(c.getEnd_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((c.getEnd_timestamp() - c.getStart_timestamp()) / Constants.MILLI_IN_SECOND_D);
             c_writer.writeNext(record);
         }
         c_writer.close();
@@ -235,7 +235,7 @@ public class Manager {
                             // Therefore, if j is null, we know that the job must be done and
                             // that there are no more flows to add. There's probably a better
                             // way to check for this.
-                            Job j = active_jobs_.get(Constants.get_job_id(f.id_));
+                            Job j = active_jobs_.get(Constants.get_job_id(f.getId()));
                             if (j != null) {
                                 add_next_flows_for_job(j, current_time);
                             }
@@ -274,13 +274,13 @@ public class Manager {
         HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
         for (Coflow c : coflows) {
             if (c.done()) {
-                c.start_timestamp_ = current_time;
+                c.setStart_timestamp(current_time);
                 handle_finished_coflow(c, current_time);
             }
             else {
-                System.out.println("Adding coflow " + c.id_);
-                active_coflows_.put(c.id_, c);
-                coflow_map.put(c.id_, c);
+                System.out.println("Adding coflow " + c.getId());
+                active_coflows_.put(c.getId(), c);
+                coflow_map.put(c.getId(), c);
             }
         }
  
@@ -289,11 +289,11 @@ public class Manager {
         for (String flow_id : scheduled_flows.keySet()) {
             FlowGroup f = scheduled_flows.get(flow_id);
 
-            if (!f.started_sending_) {
-                sa_contacts_.get(f.src_loc_).start_flow(f);
+            if (!f.isStarted_sending()) {
+                sa_contacts_.get(f.getSrc_loc()).start_flow(f);
 
-                // Only update started_sending_ if we're running baseline
-                f.started_sending_ = is_baseline_;
+                // Only update started_sending if we're running baseline
+                f.setStarted_sending(is_baseline_);
             }
         }
 
@@ -331,9 +331,9 @@ public class Manager {
                     }
                     else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
                         FlowGroup f = active_flows_.get(m.flow_id_);
-                        System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
-                        f.transmitted_volume = m.transmitted_;
-                        f.updated_ = true;
+                        System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.getVolume());
+                        f.setTransmitted_volume(m.transmitted_);
+                        f.setUpdated(true);
                         preempted_flowGroups.add(f);
                         active_flows_.remove(m.flow_id_);
                     }
@@ -350,8 +350,8 @@ public class Manager {
         update_and_schedule_flows(System.currentTimeMillis());
 
         for (FlowGroup f : preempted_flowGroups) {
-            if (!active_flows_.containsKey(f.id_)) {
-                active_flows_.put(f.id_, f);
+            if (!active_flows_.containsKey(f.getId())) {
+                active_flows_.put(f.getId(), f);
             }
         }
 
@@ -361,11 +361,11 @@ public class Manager {
         for (String flow_id : active_flows_.keySet()) {
             FlowGroup f = active_flows_.get(flow_id);
 
-            if (!f.started_sending_) {
-                sa_contacts_.get(f.src_loc_).start_flow(f);
+            if (!f.isStarted_sending()) {
+                sa_contacts_.get(f.getSrc_loc()).start_flow(f);
 
-                // Only update started_sending_ if we're running baseline
-                f.started_sending_ = is_baseline_;
+                // Only update started_sending if we're running baseline
+                f.setStarted_sending(is_baseline_);
             }
         }
 
@@ -390,7 +390,7 @@ public class Manager {
 
                 // If the next job to start won't start during this epoch, no
                 // further jobs should be considered.
-                if (j.arrivalTime >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
+                if (j.getArrivalTime() >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
 
                     // TODO(jack): Add method which may be called here.
                     // Perhaps we want the emulator to simply sleep while waiting.
@@ -406,8 +406,8 @@ public class Manager {
                 for (Job j : ready_jobs) {
                     // Start arriving jobs
                     // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
-                    if (!j.started_) {
-                        j.start_timestamp_ = CURRENT_TIME_;
+                    if (!j.isStarted()) {
+                        j.setStart_timestamp(CURRENT_TIME_);
                         j.start();
                     }
 
@@ -415,12 +415,12 @@ public class Manager {
                     // in that coflow are colocated, then there's nothing for us to do. This could cause
                     // the job to be marked as done.
                     if (j.done()) {
-                        j.end_timestamp_ = CURRENT_TIME_;
-                        System.out.println("Manger/simulate: Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
+                        j.setEnd_timestamp(CURRENT_TIME_);
+                        System.out.println("Manger/simulate: Job " + j.getId() + " done. Took " + (j.getEnd_timestamp() - j.getStart_timestamp()));
                         completed_jobs_.addElement(j);
                     }
                     else {
-                        active_jobs_.put(j.id_, j);
+                        active_jobs_.put(j.getId(), j);
                     }
                 }
 
@@ -445,7 +445,7 @@ public class Manager {
 
                     // If there's less than one bit remaining of the flow, consider it fully
                     // transmitted.
-                    if ((f.volume_ - f.transmitted_volume) < 1/*f.transmitted_volume >= f.volume_*/) {
+                    if ((f.getVolume() - f.getTransmitted_volume()) < 1/*f.transmitted_volume >= f.volume*/) {
                         finished.add(f);
                     }
                 }
@@ -478,19 +478,19 @@ public class Manager {
     public void start_job(Job j) {
         // Start arriving job
         // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
-        j.start_timestamp_ = System.currentTimeMillis();
+        j.setStart_timestamp(System.currentTimeMillis());
         j.start();
 
         // The next coflow in the job may be the last coflow in the job. If the stages involved
         // in that coflow are colocated, then there's nothing for us to do. This could cause
         // the job to be marked as done.
         if (j.done()) { // Testing if the job is done instantly.
-            j.end_timestamp_ = j.start_timestamp_;
-            System.out.println("Manager/start_job: Job " + j.id_ + " done. (done instantly) Took " + (j.end_timestamp_ - j.start_timestamp_));
+            j.setEnd_timestamp(j.getStart_timestamp());
+            System.out.println("Manager/start_job: Job " + j.getId() + " done. (done instantly) Took " + (j.getEnd_timestamp() - j.getStart_timestamp()));
             completed_jobs_.addElement(j);
         }
         else {
-            active_jobs_.put(j.id_, j);
+            active_jobs_.put(j.getId(), j);
         }
 
         num_dispatched_jobs_++;
@@ -505,12 +505,12 @@ public class Manager {
             ArrayList<Coflow> coflows = j.get_running_coflows();
             for (Coflow c : coflows) {
                 if (c.done()) {
-                    c.start_timestamp_ = current_time;
+                    c.setStart_timestamp(current_time);
                     handle_finished_coflow(c, current_time);
                 }
                 else {
-                    System.out.println("Manager/update_and_schedule_flows: Adding coflow " + c.id_);
-                    active_coflows_.put(c.id_, c);
+                    System.out.println("Manager/update_and_schedule_flows: Adding coflow " + c.getId());
+                    active_coflows_.put(c.getId(), c);
                 }
             }
         }

@@ -35,12 +35,12 @@ public class MMCFOptimizer {
 
         ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
-        System.out.println("Coflow " + coflow.id_ + " has flows: ");
-        for (String k : coflow.flows_.keySet()) {
-            FlowGroup f = coflow.flows_.get(k);
+        System.out.println("Coflow " + coflow.getId() + " has flows: ");
+        for (String k : coflow.flows.keySet()) {
+            FlowGroup f = coflow.flows.get(k);
             if (f.remaining_volume() > 0.0) {
-                System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_ + " -> " + f.remaining_volume());
-                int int_id = coflow.flows_.get(k).int_id_;
+                System.out.println("  " + k + ": " + f.getSrc_loc() + "-" + f.getDst_loc() + " -> " + f.remaining_volume());
+                int int_id = coflow.flows.get(k).getInt_id();
                 flow_int_id_list.add(int_id);
                 flow_int_id_to_id.put(int_id, k);
             }
@@ -75,27 +75,27 @@ public class MMCFOptimizer {
         dat_string.append("param fs:=\n");
         for (int fid : flow_int_id_list) {
             String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(" f" + fid + " " + coflow.flows_.get(flow_id).src_loc_ + "\n");
+            dat_string.append(" f" + fid + " " + coflow.flows.get(flow_id).getSrc_loc() + "\n");
         }
         dat_string.append(";\n\n");
 
         dat_string.append("param fe:=\n");
         for (int fid : flow_int_id_list) {
             String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(" f" + fid + " " + coflow.flows_.get(flow_id).dst_loc_ + "\n");
+            dat_string.append(" f" + fid + " " + coflow.flows.get(flow_id).getDst_loc() + "\n");
         }
         dat_string.append(";\n\n");
 
         dat_string.append("param fv:=\n");
         for (int fid : flow_int_id_list) {
             String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(String.format(" f%d %.3f\n", fid, coflow.flows_.get(flow_id).remaining_volume()));
+            dat_string.append(String.format(" f%d %.3f\n", fid, coflow.flows.get(flow_id).remaining_volume()));
         }
         dat_string.append(";\n\n");
 
         dat_string.append("end;\n");
 
-        String dat_file_name = path_root + "/" + coflow.id_ + ".dat";
+        String dat_file_name = path_root + "/" + coflow.getId() + ".dat";
 
         try {
             PrintWriter writer = new PrintWriter(dat_file_name, "UTF-8");
@@ -108,7 +108,7 @@ public class MMCFOptimizer {
         }
 
         // Solve the LP
-        String out_file_name = path_root + "/" + coflow.id_ + ".out";
+        String out_file_name = path_root + "/" + coflow.getId() + ".out";
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
 
         try {

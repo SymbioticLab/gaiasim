@@ -100,7 +100,7 @@ public class PersistentSendingAgent {
 
                     connection_pools_.put(ra_id, conns);
 
-                } // if id_ != ra_id
+                } // if id != ra_id
 
             } // for ra_id in nodes
         }

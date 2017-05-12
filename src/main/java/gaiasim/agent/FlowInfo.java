@@ -121,7 +121,7 @@ public class FlowInfo {
 
         // If the flow is already done, remove our this connection from the flow.
         // NOTE: Could have just incremented transmitted_volume and checked against
-        //       volume_, but doing so could cause overflow in the case where
+        //       volume, but doing so could cause overflow in the case where
         //       where more than one connection is adding its transmitted amount.
         if (done_) {
             subscriptions_.remove(conn_id);
@@ -144,7 +144,7 @@ public class FlowInfo {
             }
             
             return true;
-        } // transmitted_volume >= volume_
+        } // transmitted_volume >= volume
 
         return false;
     }

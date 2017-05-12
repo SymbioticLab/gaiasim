@@ -22,7 +22,7 @@ public class PoorManScheduler extends Scheduler {
     }
     
     public void finish_flow(FlowGroup f) {
-        for (Pathway p : f.paths_) {
+        for (Pathway p : f.paths) {
             for (int i = 0; i < p.node_list.size() - 1; i++) {
                 int src = Integer.parseInt(p.node_list.get(i));
                 int dst = Integer.parseInt(p.node_list.get(i+1));
@@ -45,14 +45,14 @@ public class PoorManScheduler extends Scheduler {
         // availible and start paths from them.
         ArrayList<Link> links_to_remove = new ArrayList<Link>();
         for (Link l : link_vals) {
-            if (l.src_loc_.equals(f.src_loc_)) {
+            if (l.src_loc_.equals(f.getSrc_loc())) {
                 Pathway p = new Pathway();
                 p.node_list.add(l.src_loc_);
                 p.node_list.add(l.dst_loc_);
 //                p.bandwidth = l.cur_bw_;
                 p.setBandwidth( l.cur_bw_);
 
-                if (l.dst_loc_.equals(f.dst_loc_)) {
+                if (l.dst_loc_.equals(f.getDst_loc())) {
                     completed_paths.add(p);
                 }
                 else {
@@ -94,7 +94,7 @@ public class PoorManScheduler extends Scheduler {
                         link_added = true;
 
                         // Check if path is now complete
-                        if (l.dst_loc_.equals(f.dst_loc_)) {
+                        if (l.dst_loc_.equals(f.getDst_loc())) {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
@@ -118,7 +118,7 @@ public class PoorManScheduler extends Scheduler {
                         link_added = true;
 
                         // Check if path is now complete
-                        if (l.dst_loc_.equals(f.dst_loc_)) {
+                        if (l.dst_loc_.equals(f.getDst_loc())) {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
@@ -134,7 +134,7 @@ public class PoorManScheduler extends Scheduler {
                         p.node_list.add(l.dst_loc_);
                         link_added = true;
                         // Check if path is now complete
-                        if (l.dst_loc_.equals(f.dst_loc_)) {
+                        if (l.dst_loc_.equals(f.getDst_loc())) {
                             paths_to_remove.add(p);
                             completed_paths.add(p);
                         }
@@ -160,13 +160,13 @@ public class PoorManScheduler extends Scheduler {
                 break;
             }
         } // while link_vals
-        f.paths_.clear();
-        f.paths_ = completed_paths;
+        f.paths.clear();
+        f.paths = completed_paths;
     }
 
     public void progress_flow(FlowGroup f) {
-        for (Pathway p : f.paths_) {
-            f.transmitted_volume += p.getBandwidth() * Constants.SIMULATION_TIMESTEP_SEC;
+        for (Pathway p : f.paths) {
+            f.setTransmitted_volume(f.getTransmitted_volume() + p.getBandwidth() * Constants.SIMULATION_TIMESTEP_SEC);
         }
     }
 
@@ -186,23 +186,23 @@ public class PoorManScheduler extends Scheduler {
     public void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         ArrayList<FlowGroup> unscheduled_flowGroups = new ArrayList<FlowGroup>();
         for (Coflow c : unscheduled_coflows) {
-            for (String k : c.flows_.keySet()) {
-                FlowGroup f = c.flows_.get(k);
+            for (String k : c.flows.keySet()) {
+                FlowGroup f = c.flows.get(k);
                 if (f.remaining_volume() > 0) {
-                    unscheduled_flowGroups.add(c.flows_.get(k));
+                    unscheduled_flowGroups.add(c.flows.get(k));
                 }
             }
         }
         Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup>() {
             public int compare(FlowGroup o1, FlowGroup o2) {
-                if (o1.volume_ == o2.volume_) return 0;
-                return o1.volume_ < o2.volume_ ? -1 : 1;
+                if (o1.getVolume() == o2.getVolume()) return 0;
+                return o1.getVolume() < o2.getVolume() ? -1 : 1;
             }
         });
 
         for (FlowGroup f : unscheduled_flowGroups) {
-            int src = Integer.parseInt(f.src_loc_);
-            int dst = Integer.parseInt(f.dst_loc_);
+            int src = Integer.parseInt(f.getSrc_loc());
+            int dst = Integer.parseInt(f.getDst_loc());
             Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
 
             double min_bw = Double.MAX_VALUE;
@@ -226,19 +226,19 @@ public class PoorManScheduler extends Scheduler {
                 for (SubscribedLink l : path_links) {
                     l.subscribers_.add(p);
                 }
-                f.paths_.clear();
-                f.paths_.add(p);
+                f.paths.clear();
+                f.paths.add(p);
 
-                System.out.println("Adding separate flow " + f.id_ + " remaining = " + f.remaining_volume());
+                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
-                for (Pathway path : f.paths_) {
+                for (Pathway path : f.paths) {
                     System.out.println("    " + path.toString());
                 }
 
-                if (f.start_timestamp_ == -1) {
-                    f.start_timestamp_ = timestamp;
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
                 }
-                flows_.put(f.id_, f);
+                flows_.put(f.getId(), f);
             }
         }
     }
@@ -257,15 +257,15 @@ public class PoorManScheduler extends Scheduler {
                 continue;
             }
 
-            System.out.println("Coflow " + c.id_ + " expected to complete in " + e.getValue());
+            System.out.println("Coflow " + c.getId() + " expected to complete in " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
 
             boolean all_flows_scheduled = true;
-            for (String k : c.flows_.keySet()) {
-                FlowGroup f = c.flows_.get(k);
-                if (!f.done_) {
-                    if (mmcf_out.flow_link_bw_map_.get(f.int_id_) == null) {
+            for (String k : c.flows.keySet()) {
+                FlowGroup f = c.flows.get(k);
+                if (!f.isDone()) {
+                    if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
                         all_flows_scheduled = false;
                     }
                 }
@@ -277,20 +277,20 @@ public class PoorManScheduler extends Scheduler {
             }
             
             // This portion is similar to CoFlow::make() in Sim
-            for (String k : c.flows_.keySet()) {
-                FlowGroup f = c.flows_.get(k);
-                if (f.done_) {
+            for (String k : c.flows.keySet()) {
+                FlowGroup f = c.flows.get(k);
+                if (f.isDone()) {
                     continue;
                 }
 
-                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.getInt_id());
                 assert(link_vals != null);
 
                 // This portion is similar to FlowGroup::make() in Sim
                 make_paths(f, link_vals);
                 
                 // Subscribe the flow's paths to the links it uses
-                for (Pathway p : f.paths_) {
+                for (Pathway p : f.paths) {
                     for (int i = 0; i < p.node_list.size() - 1; i++) {
                         int src = Integer.parseInt(p.node_list.get(i));
                         int dst = Integer.parseInt(p.node_list.get(i+1));
@@ -298,17 +298,17 @@ public class PoorManScheduler extends Scheduler {
                     }
                 }
                 
-                System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
+                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
-                for (Pathway p : f.paths_) {
+                for (Pathway p : f.paths) {
                     System.out.println("    " + p.toString());
                 }
 
-                if (f.start_timestamp_ == -1) {
-                    f.start_timestamp_ = timestamp;
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
                 }
 
-                flows_.put(f.id_, f);
+                flows_.put(f.getId(), f);
             }
         }
 

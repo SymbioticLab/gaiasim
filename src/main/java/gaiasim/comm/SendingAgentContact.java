@@ -142,15 +142,15 @@ public class SendingAgentContact {
     // Sends a FLOW_START or FLOW_UPDATE  message to the sending agent along
     // with information about the paths and rates used by the flow.
     public void start_flow(FlowGroup f) {
-        String start_or_update = f.updated_ ? "UPDATING" : "STARTING";
-        System.out.println(start_or_update + " flow " + f.id_ + " at " + Constants.node_id_to_trace_id.get(id_));
+        String start_or_update = f.isUpdated() ? "UPDATING" : "STARTING";
+        System.out.println(start_or_update + " flow " + f.getId() + " at " + Constants.node_id_to_trace_id.get(id_));
 
         ControlMessage c = new ControlMessage();
-        c.type_ = f.updated_ ? ControlMessage.Type.FLOW_UPDATE : ControlMessage.Type.FLOW_START;
-        c.flow_id_ = f.id_;
-        c.field0_ = f.paths_.size();
+        c.type_ = f.isUpdated() ? ControlMessage.Type.FLOW_UPDATE : ControlMessage.Type.FLOW_START;
+        c.flow_id_ = f.getId();
+        c.field0_ = f.paths.size();
         c.field1_ = f.remaining_volume();
-        c.ra_id_ = f.paths_.get(0).dst();
+        c.ra_id_ = f.paths.get(0).dst();
         
         try {
             os_.writeObject(c);
@@ -158,10 +158,10 @@ public class SendingAgentContact {
             // Only send subflow info if running baseline
             if (!is_baseline_) {
                 // Send information about each subflow of the flow
-                for (Pathway p : f.paths_) {
+                for (Pathway p : f.paths) {
                     ControlMessage sub_c = new ControlMessage();
                     sub_c.type_ = ControlMessage.Type.SUBFLOW_INFO;
-                    sub_c.flow_id_ = f.id_;
+                    sub_c.flow_id_ = f.getId();
                     sub_c.ra_id_ = p.dst();
                     sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
                     sub_c.field1_ = p.getBandwidth();

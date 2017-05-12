@@ -8,35 +8,35 @@ import gaiasim.network.Coflow;
 // A job within a trace
 public class Job {
 
-    public String id_; 
-    public long arrivalTime;
-    public HashMap<String, Coflow> coflows_ = new HashMap<String, Coflow>();
+    private String id;
+    private long arrivalTime;
+    public HashMap<String, Coflow> coflows = new HashMap<String, Coflow>();
     public ArrayList<Coflow> root_coflows = new ArrayList<Coflow>();
     public ArrayList<Coflow> leaf_coflows = new ArrayList<Coflow>();
-    public boolean started_ = false;
-    public long start_timestamp_ = -1;
-    public long end_timestamp_ = -1;
+    private boolean started = false;
+    private long start_timestamp = -1;
+    private long end_timestamp = -1;
 
     // Coflows that are currently running
-    public ArrayList<Coflow> running_coflows_ = new ArrayList<Coflow>();
+    public ArrayList<Coflow> running_coflows = new ArrayList<Coflow>();
 
     // Coflows taht are ready to begin but have not begun yet
-    public ArrayList<Coflow> ready_coflows_ = new ArrayList<Coflow>();
+    public ArrayList<Coflow> ready_coflows = new ArrayList<Coflow>();
 
     public Job(String id, long start_time, HashMap<String, Coflow> coflows) {
-        id_ = id;
-        coflows_ = coflows;
+        this.id = id;
+        this.coflows = coflows;
         arrivalTime = start_time;
 
         // Determine the end coflows of the DAG (those without any parents).
         // Determine the start coflows of the DAG (those without children).
-        for (String key : coflows_.keySet()) {
-            Coflow c = coflows_.get(key);
-            if (c.parent_coflows_.size() == 0) {
+        for (String key : this.coflows.keySet()) {
+            Coflow c = this.coflows.get(key);
+            if (c.parent_coflows.size() == 0) {
                 leaf_coflows.add(c);
             }
 
-            if (c.child_coflows_.size() == 0) {
+            if (c.child_coflows.size() == 0) {
                 root_coflows.add(c);
             }
             else {
@@ -50,9 +50,9 @@ public class Job {
 
     // A job is considered done if all of its coflows are done
     public boolean done() {
-        for (String k : coflows_.keySet()) {
-            Coflow c = coflows_.get(k);
-            if (!(c.done() || c.flows_.isEmpty())) {
+        for (String k : coflows.keySet()) {
+            Coflow c = coflows.get(k);
+            if (!(c.done() || c.flows.isEmpty())) {
                 return false;
             }
         }
@@ -61,55 +61,97 @@ public class Job {
     }
 
     // Remove s all of the parent Coflows depending on it. If any parent
-    // Coflows are now ready to run, add them to ready_coflows_.
+    // Coflows are now ready to run, add them to ready_coflows.
     public void finish_coflow(String full_coflow_id) {
         // A coflow's id is of the form <job_id>:<coflow_id> whereas
         // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
         String coflow_id = full_coflow_id.split(":")[1];
-        Coflow c = coflows_.get(coflow_id);
-        running_coflows_.remove(c);
+        Coflow c = coflows.get(coflow_id);
+        running_coflows.remove(c);
 
-        for (Coflow parent : c.parent_coflows_) {
+        for (Coflow parent : c.parent_coflows) {
             if (parent.ready()) {
-                ready_coflows_.add(parent);
+                ready_coflows.add(parent);
             }
 
-        } // for parent_coflows_
+        } // for parent_coflows
 
     }
 
     // Transition all ready coflows to running and return a list of all
     // coflows that are currently running for this job.
     public ArrayList<Coflow> get_running_coflows() {
-        running_coflows_.addAll(ready_coflows_);
-        ready_coflows_.clear();
+        running_coflows.addAll(ready_coflows);
+        ready_coflows.clear();
        
         // Return a clone of the list so that the calling function
         // can call finish_coflow while iterating over this list.
-        return (ArrayList<Coflow>)running_coflows_.clone();
+        return (ArrayList<Coflow>) running_coflows.clone();
     }
 
     // Start all of the first coflows of the job
     public void start() {
         for (Coflow c : root_coflows) {
-            c.done = true;
+            c.setDone(true);
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
-            for (Coflow parent : c.parent_coflows_) {
-                if (!ready_coflows_.contains(parent)) {
+            for (Coflow parent : c.parent_coflows) {
+                if (!ready_coflows.contains(parent)) {
                     if (parent.done()) {
                         // Hack to avoid error in finish_coflow
-                        running_coflows_.add(parent);
-                        finish_coflow(parent.id_);
+                        running_coflows.add(parent);
+                        finish_coflow(parent.getId());
                     }
                     // Add coflows which can be scheduled as a whole
                     else if (parent.ready()) {
-                        ready_coflows_.add(parent);
+                        ready_coflows.add(parent);
                     }
                 }
-            } // for parent_coflows_
+            } // for parent_coflows
 
         } // for root_coflows
-        started_ = true;
+        started = true;
     }
+
+    ///// getters and setters /////
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public long getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(long arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    public long getStart_timestamp() {
+        return start_timestamp;
+    }
+
+    public void setStart_timestamp(long start_timestamp) {
+        this.start_timestamp = start_timestamp;
+    }
+
+    public long getEnd_timestamp() {
+        return end_timestamp;
+    }
+
+    public void setEnd_timestamp(long end_timestamp) {
+        this.end_timestamp = end_timestamp;
+    }
+
 }

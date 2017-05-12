@@ -2,7 +2,6 @@ package gaiasim.spark;
 
 import gaiasim.network.Coflow;
 import gaiasim.network.NetGraph;
-import gaiasim.spark.Job;
 import gaiasim.util.Constants;
 
 import java.io.BufferedReader;
@@ -83,10 +82,10 @@ public class DAGReader {
 
                 Coflow child = coflow_map.get(src_task);
                 Coflow parent = coflow_map.get(dst_task);
-                child.parent_coflows_.add(parent);
-                parent.child_coflows_.add(child);
-                child.volume_for_parent_.put(parent.id_, (double)data_size);
-                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.id_);
+                child.parent_coflows.add(parent);
+                parent.child_coflows.add(child);
+                child.volume_for_parent.put(parent.getId(), (double)data_size);
+                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.getId());
             }
  
             jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));
