@@ -4,6 +4,7 @@
 # to perform  emulation.
 
 sudo apt install nload bwm-ng
+sudo pip install networkx
 
 cd ~
 git clone https://github.com/jackkosaian/floodlight.git
