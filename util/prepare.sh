@@ -3,8 +3,10 @@
 # This script is used to download and build codes
 # to perform  emulation.
 
-sudo apt install nload bwm-ng
+sudo apt install -y nload bwm-ng htop pv
 sudo pip install networkx
+
+sudo mount -t tmpfs tmpfs /tmp
 
 cd ~
 git clone https://github.com/jackkosaian/floodlight.git
