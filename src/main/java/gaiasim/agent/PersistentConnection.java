@@ -237,7 +237,7 @@ public class PersistentConnection {
                         // until all the outgoing data are "sent".
 
                         // TODO: get the thorttling right. the unit conversion
-                        data_.tos.setRate(data_.rate_ * 1000 * 125); // rate_ is MBit/s
+                        data_.tos.setRate(data_.rate_ * 1024 * 1024 / 8); // rate_ is MiBit/s
 
                         // TODO(jimmy): use a throttled writer and block here.
 //                        data_Broker.dataOutputStream.write(buffer_);
