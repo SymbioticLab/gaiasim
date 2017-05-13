@@ -263,7 +263,7 @@ public class Manager {
             sac.terminate();
         }
 
-        // Not reaching this step.
+        // TODO: Not reaching this step.
         System.out.println("DONE");
         print_statistics("/job.csv", "/cct.csv");
     }

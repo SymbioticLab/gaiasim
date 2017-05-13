@@ -11,6 +11,30 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 
+
+// Currently DAGReader maps coflow to stages (n+1),
+// but actually should map to shuffles (n), which saves an empty coflow.
+
+// Target PseudoCode:
+// For each job{
+//        Create HashMap h1 <stage,List_of_Locations>
+//        Create HashMap h2 <End_Stage,CoFlow>
+//        Read metadata < 3 1 0 >
+//        For each stage (3 stages){
+//        Read stage < Map2 1 n1>
+//        Store HashMap h1 <stage,List_of_Locations>
+//        }
+//        Read number of shuffles <2>
+//        For each shuffle (2 shuffles){
+//        Read shuffle <Map2 Reducer2 5>
+//        Check if (the End_Stage (Reducer2) is already in h2.) {
+//        If so, add shuffle to the Coflow h2.get(Reducer2)
+//        If not, add Coflow <Map2 Reducer2 5> to h2
+//        }
+//        }
+//        }
+
+
 public class DAGReader {
 
     public static HashMap<String, Job> read_trace(String filepath, NetGraph net_graph) throws java.io.IOException {
@@ -24,9 +48,9 @@ public class DAGReader {
         FileReader fr = new FileReader(filepath);
         BufferedReader br = new BufferedReader(fr);
 
-        String line; 
+        String line;
         while ((line = br.readLine()) != null) {
-           
+
             // Ignore comments
             if (line.charAt(0) == '#') {
                 line = br.readLine();
@@ -40,14 +64,16 @@ public class DAGReader {
 
             HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
             // Get stage metadata
+            // Previously we create a coflow per stage.
+            // Now we only store the location tag of stages (temporarily), and refer to them later.
             for (int i = 0; i < num_coflows; i++) {
                 line = br.readLine();
                 splits = line.split(" ");
                 String stage_id = splits[0];
                 int num_tasks = Integer.parseInt(splits[1]);
-               
+
                 String[] task_locs = new String[num_tasks];
-                
+
                 // If the case came with trace with information about
                 // task placement, use that. Otherwise choose random
                 // nodes.
@@ -77,7 +103,7 @@ public class DAGReader {
                 String dst_task = splits[1];
 
                 // TODO(jack): Consider making this a long
-                int data_size = Integer.parseInt(splits[2]); 
+                int data_size = Integer.parseInt(splits[2]);
                 data_size = Math.max(1, data_size) * 8; // * 8 to convert to megabits
 
                 Coflow child = coflow_map.get(src_task);
@@ -87,7 +113,7 @@ public class DAGReader {
                 child.volume_for_parent.put(parent.getId(), (double)data_size);
                 System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.getId());
             }
- 
+
             jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));
         }
 
