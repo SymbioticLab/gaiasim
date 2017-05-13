@@ -372,8 +372,12 @@ public class Manager {
     }
 
     public void simulate() throws Exception {
-        int num_dispatched_jobs_ = 0;
+        int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
+
+        long lastPrintedTime = -1;
+        int lastPrintedRunning = -1;
+        int lastPrintedStarted = -1;
 
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
 
@@ -381,12 +385,12 @@ public class Manager {
         boolean coflow_finished = false;
 
         for (CURRENT_TIME_ = 0; 
-                (num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty();
+                (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
             // Add any jobs which should be added during this epoch
-            for (; num_dispatched_jobs_ < total_num_jobs; num_dispatched_jobs_++) {
-                Job j = jobs_by_time_.get(num_dispatched_jobs_);
+            for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
+                Job j = jobs_by_time_.get(num_dispatched_jobs);
 
                 // If the next job to start won't start during this epoch, no
                 // further jobs should be considered.
@@ -466,11 +470,20 @@ public class Manager {
 
             } // for EPOCH_MILLI
 
-            System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
-                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
+            //Print only when big thing happens
+            if( (active_jobs_.size()!=lastPrintedRunning)  ||  (num_dispatched_jobs != lastPrintedStarted)  || (lastPrintedTime + 1000 <= CURRENT_TIME_ + Constants.EPOCH_MILLI) ) {
+                lastPrintedRunning = active_jobs_.size();
+                lastPrintedStarted = num_dispatched_jobs;
+                lastPrintedTime = CURRENT_TIME_ + Constants.EPOCH_MILLI;
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
+            }
+
+//            System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
 
         } // while stuff to do
 
+        System.out.println("SIMULATION DONE");
         // Save output statistics
         print_statistics("/job.csv", "/cct.csv");
     }
