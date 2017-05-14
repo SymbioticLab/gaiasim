@@ -93,7 +93,7 @@ public class PersistentConnection {
 
 
             try {
-                bos = new BufferedOutputStream(dataSocket.getOutputStream() , 32768000 ); // TODO: change to buffer_size?
+                bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
 
 //                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100kByte/s
 //                bos = new BufferedOutputStream(tos);
@@ -168,9 +168,9 @@ public class PersistentConnection {
         private final RateLimiter rateLimiter;
         public ConnectionDataBroker data_;
 //        public int buffer_size_ = 1024*1024;
-        public int buffer_size_ = Constants.BUFFER_SIZE; // currently 1MB buffer
-        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
-        public byte[] buffer_ = new byte[buffer_size_];
+//        public int buffer_size_ = Constants.BUFFER_SIZE; // currently 1MB buffer
+//        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
+//        public byte[] buffer_ = new byte[buffer_size_];
 
         private byte[] data_block = new byte[Constants.BLOCK_SIZE_MB * 1024 * 1024]; // 32MB for now.
 
@@ -270,7 +270,7 @@ public class PersistentConnection {
                         // distribute transmitted...
                         double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                        data_.distribute_transmitted(4 * tx_ed); // FIXME: cheating here!
+                        data_.distribute_transmitted(1.5 * tx_ed); // FIXME: cheating here!
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                     }

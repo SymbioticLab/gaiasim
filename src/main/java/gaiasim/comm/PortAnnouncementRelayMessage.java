@@ -98,7 +98,7 @@ public class PortAnnouncementRelayMessage {
                    
                     out_port = net_graph_.interfaces_.get(src).get(dst);
                     message = Integer.toString(msg_id) + ' ' + (Integer.parseInt(src) + 1) + ' ' + out_port + " 0\n";
-                    System.out.println("    " + message);
+//                    System.out.print("    " + message);
                     bw.write(message);
                 }
 
@@ -115,7 +115,7 @@ public class PortAnnouncementRelayMessage {
 
                     out_port = net_graph_.interfaces_.get(src).get(dst);
                     message = Integer.toString(msg_id) + ' ' + (Integer.parseInt(src) + 1) + ' ' + out_port + " 1\n";
-                    System.out.println("    " + message);
+//                    System.out.print("    " + message);
                     bw.write(message);
                 }
                 bw.flush();
