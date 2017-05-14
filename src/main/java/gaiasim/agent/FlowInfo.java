@@ -117,7 +117,7 @@ public class FlowInfo {
     // upon calling this function and finding a flow complete. Yes, this
     // this means that some extra data might be transmitted, but this
     // should only be a small amount.
-    public synchronized boolean transmit(double transmitted, String conn_id) {
+    public synchronized boolean transmit(double transmitted_MBit, String conn_id) {
 
         // If the flow is already done, remove our this connection from the flow.
         // NOTE: Could have just incremented transmitted_ and checked against
@@ -128,7 +128,7 @@ public class FlowInfo {
             return true;
         }
 
-        transmitted_ += transmitted;
+        transmitted_ += transmitted_MBit;
         // Check if we're the first connection to reconginze this flow as completed.
         // We know that we are because done_ set within this function and this
         // is a synchronized function. If some other connection completed the flow

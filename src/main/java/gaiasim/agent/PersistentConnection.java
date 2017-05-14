@@ -74,7 +74,7 @@ public class PersistentConnection {
         public HashMap<String, Subscription> subscribers_ = new HashMap<String, Subscription>();
         
         // Current total rate requested by subscribers
-        public double rate_ = 0.0; // TODO(jimmy): track the rate_.
+        public double total_rate = 0.0; // TODO(jimmy): track the total_rate.
 
         public Socket dataSocket;
 
@@ -120,20 +120,20 @@ public class PersistentConnection {
                     f = s.flow_info_;
                     flow_rate = s.rate_;
 
-                    boolean done = f.transmit(transmitted_MBit * flow_rate / rate_, id_);
+                    boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate, id_);
                     if (done) {
                         to_remove.add(s);
                     }
                 }
 
                 for (Subscription s : to_remove) {
-                    rate_ -= s.rate_;
+                    total_rate -= s.rate_;
                     subscribers_.remove(s.flow_info_.id_);
                 }
 
                 // Ensure we don't get rounding errors
                 if (subscribers_.isEmpty()) {
-                    rate_ = 0.0;
+                    total_rate = 0.0;
                 }
             }
         }
@@ -175,7 +175,7 @@ public class PersistentConnection {
         private byte[] data_block = new byte[Constants.BLOCK_SIZE_MB * 1024 * 1024]; // 32MB for now.
 
         public SenderThread(ConnectionDataBroker data) {
-            rateLimiter = RateLimiter.create(100.0);
+            rateLimiter = RateLimiter.create(Constants.DEFAULT_TOKEN_RATE);
             data_ = data;
         }
 
@@ -188,7 +188,7 @@ public class PersistentConnection {
                 // then data_block until we get some subscription message (take()).
                 // Otherwise, check if there's a subscription message, but
                 // don't data_block if there isn't one (poll()).
-                if (data_.rate_ <= 0.0) {
+                if (data_.total_rate <= 0.0) {
                     try {
                         m = data_.subscription_queue_.take();
                     }
@@ -207,7 +207,7 @@ public class PersistentConnection {
                     if (m.type_ == MsgType.SUBSCRIBE) {
                         if (m.flow_info_.commit_subscription(data_.id_, m.ts_)) {
                             System.out.println("PersistentConn: Subscribing flow " + m.flow_info_.id_ + " to " + data_.id_);
-                            data_.rate_ += m.rate_;
+                            data_.total_rate += m.rate_;
                             data_.subscribers_.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
                         }
                     }
@@ -215,12 +215,12 @@ public class PersistentConnection {
                         if (m.flow_info_.commit_unsubscription(data_.id_, m.ts_)) {
                             System.out.println("PersistentConn: Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
                             Subscription s = data_.subscribers_.get(m.flow_info_.id_);
-                            data_.rate_ -= s.rate_;
+                            data_.total_rate -= s.rate_;
                             data_.subscribers_.remove(m.flow_info_.id_);
                             
                             // Ensure there aren't any rounding errors
                             if (data_.subscribers_.isEmpty()) {
-                                data_.rate_ = 0.0;
+                                data_.total_rate = 0.0;
                             }
                         }
                     }
@@ -241,21 +241,21 @@ public class PersistentConnection {
 
                 // If we have some subscribers (rate > 0), then transmit on
                 // behalf of the subscribers.
-                if (data_.rate_ > 0.0) {
+                if (data_.total_rate > 0.0) {
                     try {
                         // rate is MBit/s, converting to Block/s
 
                         int data_length;
 
                         // check if 100 permits/s is enough (3200MByte/s enough?)
-                        if( data_.rate_ < Constants.BLOCK_SIZE_MB * 800  ){
+                        if( data_.total_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
                             // no need to change rate , calculate the length
-                            rateLimiter.setRate(100.0);
-                            data_length = (int) (data_.rate_ / 100 * 1024 * 1024 / 8);
+                            rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
+                            data_length = (int) (data_.total_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
                         }
                         else {
                             data_length = Constants.BLOCK_SIZE_MB;
-                            rateLimiter.setRate(data_.rate_ / 8 / Constants.BLOCK_SIZE_MB);
+                            rateLimiter.setRate(data_.total_rate / 8 / Constants.BLOCK_SIZE_MB);
                         }
 
                         // aquire one permit per flush.
@@ -264,11 +264,14 @@ public class PersistentConnection {
                         data_.bos.write(data_block , 0, data_length);
                         data_.bos.flush();
 
-//                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.rate_ + " Mbit/s  @ " + System.currentTimeMillis());
+                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                         // distribute transmitted...
+                        double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                        data_.distribute_transmitted(data_length * 8 / 1024 / 1024);
+                        data_.distribute_transmitted(tx_ed);
+//                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
+//                        data_.distribute_transmitted(buffer_size_megabits_);
                     }
                     catch (java.io.IOException e) {
                         e.printStackTrace();
