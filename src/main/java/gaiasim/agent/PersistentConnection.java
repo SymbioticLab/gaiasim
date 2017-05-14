@@ -245,19 +245,19 @@ public class PersistentConnection {
                     try {
                         // rate is MBit/s, converting to Block/s
 
-                        data_.total_rate = data_.total_rate / 2; // FIXME: also cheat here.
+                        double cur_rate = data_.total_rate / 2; // FIXME: also cheat here.
 
                         int data_length;
 
                         // check if 100 permits/s is enough (3200MByte/s enough?)
-                        if( data_.total_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
+                        if( cur_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
                             // no need to change rate , calculate the length
                             rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
-                            data_length = (int) (data_.total_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
+                            data_length = (int) (cur_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
                         }
                         else {
                             data_length = Constants.BLOCK_SIZE_MB;
-                            rateLimiter.setRate(data_.total_rate / 8 / Constants.BLOCK_SIZE_MB);
+                            rateLimiter.setRate(cur_rate / 8 / Constants.BLOCK_SIZE_MB);
                         }
 
                         // aquire one permit per flush.
