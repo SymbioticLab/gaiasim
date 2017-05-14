@@ -25,6 +25,9 @@ public class Constants {
 
     public static final int BUFFER_SIZE = 1024 * 1024;
 
+    // Block is the maximum size of transmission. (32MB for GB/s level trasmission)
+    public static final int BLOCK_SIZE_MB = 32;
+
     public static HashMap<String, String> node_id_to_trace_id;
 
     // Return the id of the job owning the Stage, Coflow, or Flow
