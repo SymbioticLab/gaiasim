@@ -3,23 +3,27 @@ package gaiasim.network;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// A coflow represents a shuffle within a job. It is an edge within a DAG.
+// A coflow represents a (set of) shuffles within a job. It is one or more edges within a DAG.
+// It is defined as a set of shuffles with a common destination stage.
+// We use the destination stage as an anchor(key) for this coflow.
 public class Coflow {
-    // TODO(jack): Once finished translating from original simulator, switch
-    // naming of parent and child. It makes more sense to me to have this
-    // stage be a dependent of its parent and to have child stages be
-    // dependents of this stage.
-    
+
     private String id;
+    private String job_id;
+    private String dst_stage;
     public HashMap<String, FlowGroup> flows = new HashMap<String, FlowGroup>();
-    private double volume = 0.0;
+
+    private double volume = 0.0; // FIXME(jimmy): volume is not enough for a Coflow.
+
+    // TODO use intermediate data of Shuffles, to derive ultimately FlowGroups.
+
     private long start_timestamp = -1;
     private long end_timestamp = -1;
     private boolean done = false;
 
-    // The location of coflow-initiating tasks. For example, these would be
-    // the locations of map tasks in a map-reduce shuffle.
-    public String[] task_locs;
+    // The location of coflow-ending tasks. For example, these would be
+    // the locations of Reduce tasks in a map-reduce shuffle.
+    private String[] dst_locs;
 
     // Coflows that this coflow depends on (must complete before this
     // coflow starts).
@@ -32,11 +36,29 @@ public class Coflow {
     // The volume to be shuffled to parent coflow, keyed by parent coflow id
     public HashMap<String, Double> volume_for_parent = new HashMap<String, Double>();
 
-    public Coflow(String id, String[] task_locs) {
-        this.id = id;
-        this.task_locs = task_locs;
+//    public Coflow(String id, String[] dst_locs) {
+//        this.id = id;
+//        this.dst_locs = dst_locs;
+//    }
+//
+//    public Coflow(String id){
+//        this.id = id;
+//    }
+
+    public Coflow(String job_id , String dst_stage , String [] dst_locs){
+        this.id = job_id + ':' + dst_stage;
+        this.job_id = job_id;
+        this.dst_stage = dst_stage;
+        this.dst_locs = dst_locs;
     }
 
+    // When adding a shuffle to a coflow, we record the size, src_stage, src_task_locs[].
+    // we can't yet write the dependency.
+    public void addShuffle(int shuffle_size){
+
+    }
+
+    // called when eventually creating the job.
     public void create_flows() {
         volume = 0.0;
 
@@ -52,11 +74,11 @@ public class Coflow {
             // task set and the child's task set and that these transfers
             // are all of the same size. Note that flows go from
             // child_task -> our_task.
-            int num_flows = task_locs.length * child.task_locs.length;
+            int num_flows = dst_locs.length * child.dst_locs.length;
             double volume_per_flow = child.volume_for_parent.get(id) / (double)num_flows;
-            for (String src_loc : child.task_locs) {
+            for (String src_loc : child.dst_locs) {
 
-                for (String dst_loc : task_locs) {
+                for (String dst_loc : dst_locs) {
 
                     // If the src and dst locations are the same, no network
                     // transmission is needed, so we don't create a flow.
@@ -71,9 +93,9 @@ public class Coflow {
                         System.out.println("Skipping because src and dst are same " + src_loc + " " + dst_loc + " " + child.id + "->" + id);
                     }
 
-                } // task_locs
+                } // dst_locs
 
-            } // for child.task_locs
+            } // for child.dst_locs
 
         } // for child_coflows
 

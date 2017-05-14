@@ -191,7 +191,7 @@ public class Manager {
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
             PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
-            relay.relay_ports(); // seems not working. FIXME(jimmy)
+            relay.relay_ports();
         }
 
         num_dispatched_jobs_ = 0;
@@ -205,12 +205,12 @@ public class Manager {
         try {
             while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
-                ScheduleMessage m = message_queue_.take(); // JobInserter inserts messages by time. (emulating online job coming)
+                ScheduleMessage m = message_queue_.take();
 
                 if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
                     System.out.println("Manager: Job " + m.job_id_ + " comes, now rescheduling");
                     Job j = jobs_.get(m.job_id_);
-                    start_job(j);
+                    start_job(j); // means mark the start time of the job and put it into the active job list.
 
                     if (is_baseline_) {
                         add_next_flows_for_job(j, System.currentTimeMillis());
