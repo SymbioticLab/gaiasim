@@ -245,6 +245,8 @@ public class PersistentConnection {
                     try {
                         // rate is MBit/s, converting to Block/s
 
+                        data_.total_rate = data_.total_rate / 2; // FIXME: also cheat here.
+
                         int data_length;
 
                         // check if 100 permits/s is enough (3200MByte/s enough?)
@@ -270,7 +272,7 @@ public class PersistentConnection {
                         // distribute transmitted...
                         double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                        data_.distribute_transmitted(1.5 * tx_ed); // FIXME: cheating here!
+                        data_.distribute_transmitted(3 * tx_ed); // FIXME: cheat here!
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                     }
