@@ -35,7 +35,7 @@ public class MMCFOptimizer {
 
         ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
-        System.out.println("Coflow " + coflow.id_ + " has flows: ");
+        System.out.println("Optimizer: Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
             Flow f = coflow.flows_.get(k);
             if (f.remaining_volume() > 0.0) {
@@ -112,8 +112,12 @@ public class MMCFOptimizer {
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
 
         try {
+            long delta = System.currentTimeMillis();
             Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
+
+            delta = System.currentTimeMillis() - delta;
+            System.out.println("Optimizer: LP FIN in " + delta);
         }
         catch (Exception e) {
             e.printStackTrace();
