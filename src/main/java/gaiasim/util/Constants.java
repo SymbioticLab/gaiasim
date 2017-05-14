@@ -21,9 +21,14 @@ public class Constants {
     // one second.
     public static final int EPOCH_MILLI = MILLI_IN_SECOND / 100;
 
-    public static final int DEFAULT_OUTPUTSTREAM_RATE = 100000;
+//    public static final int DEFAULT_OUTPUTSTREAM_RATE = 100000;
 
-    public static final int BUFFER_SIZE = 1024 * 1024;
+    public static final int BUFFER_SIZE = 64 * 1024 * 1024;
+
+    // Block is the maximum size of transmission. (64MB for GB/s level trasmission)
+    public static final int BLOCK_SIZE_MB = 64;
+
+    public static final int DEFAULT_TOKEN_RATE = 40;
 
     public static HashMap<String, String> node_id_to_trace_id;
 

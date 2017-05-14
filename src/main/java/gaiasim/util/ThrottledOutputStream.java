@@ -6,6 +6,9 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+// previously used the guava Rate Limiter, but has an inherent bottleneck..
+// implementing a custom rate limiter.
+
 public final class ThrottledOutputStream extends FilterOutputStream {
 
     private final RateLimiter rateLimiter;

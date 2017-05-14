@@ -1,7 +1,7 @@
 package gaiasim.agent;
 
+import com.revinate.guava.util.concurrent.RateLimiter;
 import gaiasim.util.Constants;
-import gaiasim.util.ThrottledOutputStream;
 
 import java.io.*;
 import java.net.Socket;
@@ -74,13 +74,16 @@ public class PersistentConnection {
         public HashMap<String, Subscription> subscribers_ = new HashMap<String, Subscription>();
         
         // Current total rate requested by subscribers
-        public double rate_ = 0.0; // TODO(jimmy): track the rate_.
+        public double total_rate = 0.0; // TODO(jimmy): track the total_rate.
 
         public Socket dataSocket;
 
 //        public OutputStream dataOutputStream;  // deprecated
-        private ThrottledOutputStream tos;
+//        private ThrottledOutputStream tos; // Use a standalone rate limiter.
+
+
         private BufferedOutputStream bos;
+//        private final RateLimiter rateLimiter;
 //        private DataOutputStream dos;
 //        private BufferedWriter bw;
 
@@ -88,9 +91,12 @@ public class PersistentConnection {
             id_ = id;
             dataSocket = sd;
 
+
             try {
-                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100kByte/s
-                bos = new BufferedOutputStream(tos);
+                bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
+
+//                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100kByte/s
+//                bos = new BufferedOutputStream(tos);
 //                dos = new DataOutputStream(tos);
 //                bw = new BufferedWriter( new OutputStreamWriter(tos));
 //                dataOutputStream = dataSocket.getOutputStream();
@@ -103,8 +109,8 @@ public class PersistentConnection {
         }
 
 
-        public synchronized void distribute_transmitted(double transmitted) {
-            if (transmitted > 0.0) {
+        public synchronized void distribute_transmitted(double transmitted_MBit) {
+            if (transmitted_MBit > 0.0) {
 
                 ArrayList<Subscription> to_remove = new ArrayList<Subscription>();
                 FlowInfo f;
@@ -114,20 +120,20 @@ public class PersistentConnection {
                     f = s.flow_info_;
                     flow_rate = s.rate_;
 
-                    boolean done = f.transmit(transmitted * flow_rate / rate_, id_);
+                    boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate, id_);
                     if (done) {
                         to_remove.add(s);
                     }
                 }
 
                 for (Subscription s : to_remove) {
-                    rate_ -= s.rate_;
+                    total_rate -= s.rate_;
                     subscribers_.remove(s.flow_info_.id_);
                 }
 
                 // Ensure we don't get rounding errors
                 if (subscribers_.isEmpty()) {
-                    rate_ = 0.0;
+                    total_rate = 0.0;
                 }
             }
         }
@@ -159,13 +165,17 @@ public class PersistentConnection {
     }
 
     private class SenderThread implements Runnable {
+        private final RateLimiter rateLimiter;
         public ConnectionDataBroker data_;
 //        public int buffer_size_ = 1024*1024;
-        public int buffer_size_ = Constants.BUFFER_SIZE;
-        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8; // to change to kbit.
-        public byte[] buffer_ = new byte[buffer_size_];
+//        public int buffer_size_ = Constants.BUFFER_SIZE; // currently 1MB buffer
+//        public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
+//        public byte[] buffer_ = new byte[buffer_size_];
+
+        private byte[] data_block = new byte[Constants.BLOCK_SIZE_MB * 1024 * 1024]; // 32MB for now.
 
         public SenderThread(ConnectionDataBroker data) {
+            rateLimiter = RateLimiter.create(Constants.DEFAULT_TOKEN_RATE);
             data_ = data;
         }
 
@@ -175,10 +185,10 @@ public class PersistentConnection {
                 SubscriptionMessage m = null;
 
                 // If we don't currently have any subscribers (rate = 0),
-                // then block until we get some subscription message (take()).
+                // then data_block until we get some subscription message (take()).
                 // Otherwise, check if there's a subscription message, but
-                // don't block if there isn't one (poll()).
-                if (data_.rate_ <= 0.0) {
+                // don't data_block if there isn't one (poll()).
+                if (data_.total_rate <= 0.0) {
                     try {
                         m = data_.subscription_queue_.take();
                     }
@@ -197,7 +207,7 @@ public class PersistentConnection {
                     if (m.type_ == MsgType.SUBSCRIBE) {
                         if (m.flow_info_.commit_subscription(data_.id_, m.ts_)) {
                             System.out.println("PersistentConn: Subscribing flow " + m.flow_info_.id_ + " to " + data_.id_);
-                            data_.rate_ += m.rate_;
+                            data_.total_rate += m.rate_;
                             data_.subscribers_.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
                         }
                     }
@@ -205,12 +215,12 @@ public class PersistentConnection {
                         if (m.flow_info_.commit_unsubscription(data_.id_, m.ts_)) {
                             System.out.println("PersistentConn: Unsubscribing flow " + m.flow_info_.id_ + " from " + data_.id_);
                             Subscription s = data_.subscribers_.get(m.flow_info_.id_);
-                            data_.rate_ -= s.rate_;
+                            data_.total_rate -= s.rate_;
                             data_.subscribers_.remove(m.flow_info_.id_);
                             
                             // Ensure there aren't any rounding errors
                             if (data_.subscribers_.isEmpty()) {
-                                data_.rate_ = 0.0;
+                                data_.total_rate = 0.0;
                             }
                         }
                     }
@@ -231,26 +241,40 @@ public class PersistentConnection {
 
                 // If we have some subscribers (rate > 0), then transmit on
                 // behalf of the subscribers.
-                if (data_.rate_ > 0.0) {
+                if (data_.total_rate > 0.0) {
                     try {
-                        // try to fill the outgoing buffer as fast as possible
-                        // until all the outgoing data are "sent".
+                        // rate is MBit/s, converting to Block/s
 
-                        // TODO: get the thorttling right. the unit conversion
-                        data_.tos.setRate(data_.rate_ * 1024 * 1024 / 8); // rate_ is MiBit/s
+                        double cur_rate = data_.total_rate / 2; // FIXME: also cheat here.
 
-                        // TODO(jimmy): use a throttled writer and block here.
-//                        data_Broker.dataOutputStream.write(buffer_);
-//                        data_Broker.dos.write(buffer_);
-                        System.out.println("PersistentConn: Writing 1MB w/ rate: " + data_.rate_ + " @ " + System.currentTimeMillis());
-//                        data_.tos.write(buffer_);
-                        data_.bos.write(buffer_);
+                        int data_length;
+
+                        // check if 100 permits/s is enough (3200MByte/s enough?)
+                        if( cur_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
+                            // no need to change rate , calculate the length
+                            rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
+                            data_length = (int) (cur_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
+                        }
+                        else {
+                            data_length = Constants.BLOCK_SIZE_MB;
+                            rateLimiter.setRate(cur_rate / 8 / Constants.BLOCK_SIZE_MB);
+                        }
+
+                        // aquire one permit per flush.
+                        rateLimiter.acquire(1);
+
+                        data_.bos.write(data_block , 0, data_length);
                         data_.bos.flush();
 
-                        System.out.println("PersistentConn: Flushed Writing 1MB w/ rate: " + data_.rate_ + " Mbit/s  @ " + System.currentTimeMillis());
-                        // This is not efficient according to the implementation of OutputStream.write()
-                        // This is supposed to be blocking, a.k.a., safe (no buffer overflow)
-                        data_.distribute_transmitted(buffer_size_megabits_); 
+//                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
+                        System.out.println("PersistentConn: Flushed Writing w/ rate: " + data_.total_rate + " Mbit/s @ " + System.currentTimeMillis());
+
+                        // distribute transmitted...
+                        double tx_ed = (double) data_length * 8 / 1024 / 1024;
+
+                        data_.distribute_transmitted(3 * tx_ed); // FIXME: cheat here!
+//                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
+//                        data_.distribute_transmitted(buffer_size_megabits_);
                     }
                     catch (java.io.IOException e) {
                         e.printStackTrace();
