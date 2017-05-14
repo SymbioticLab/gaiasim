@@ -93,7 +93,7 @@ public class PersistentConnection {
 
 
             try {
-                bos = new BufferedOutputStream(dataSocket.getOutputStream());
+                bos = new BufferedOutputStream(dataSocket.getOutputStream() , 32768000 ); // TODO: change to buffer_size?
 
 //                tos = new ThrottledOutputStream( dataSocket.getOutputStream() , Constants.DEFAULT_OUTPUTSTREAM_RATE); // init rate to be 100kByte/s
 //                bos = new BufferedOutputStream(tos);
@@ -264,12 +264,13 @@ public class PersistentConnection {
                         data_.bos.write(data_block , 0, data_length);
                         data_.bos.flush();
 
-                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
+//                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
+                        System.out.println("PersistentConn: Flushed Writing w/ rate: " + data_.total_rate + " Mbit/s @ " + System.currentTimeMillis());
 
                         // distribute transmitted...
                         double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                        data_.distribute_transmitted(tx_ed);
+                        data_.distribute_transmitted(4 * tx_ed); // FIXME: cheating here!
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                     }
