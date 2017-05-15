@@ -145,7 +145,7 @@ public class SendingAgentContact {
 
     // Sends a FLOW_START or FLOW_UPDATE  message to the sending agent along
     // with information about the paths and rates used by the flow.
-    public void start_flow(Flow f) {
+    public void start_or_update_flow(Flow f) {
         String start_or_update = f.updated_ ? "UPDATING" : "STARTING";
         System.out.println(start_or_update + " flow " + f.id_ + " at " + Constants.node_id_to_trace_id.get(id_));
 
@@ -170,7 +170,7 @@ public class SendingAgentContact {
                     sub_c.field0_ = net_graph_.get_path_id(p); // TODO: Store this with the path to reduce repeated call
                     sub_c.field1_ = p.bandwidth_;
 
-                    os_.writeObject(sub_c);
+                    os_.writeObject(sub_c); // Too many packets!
                 }
             }
         }

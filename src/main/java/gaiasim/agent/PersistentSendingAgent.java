@@ -105,6 +105,7 @@ public class PersistentSendingAgent {
             } // for ra_id in nodes
         }
 
+        // even when there is no flow, still need to send status...
         public synchronized void get_status() {
             try {
                 for (String k : flows_.keySet()) {
@@ -114,6 +115,9 @@ public class PersistentSendingAgent {
                     ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE,
                                                             f.id_, f.transmitted_);
                     writeMessage(s);
+                }
+                if(flows_.isEmpty()){
+                    writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE, null ,0 ));
                 }
             }
             catch (java.io.IOException e) {

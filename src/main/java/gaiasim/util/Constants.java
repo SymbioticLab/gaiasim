@@ -30,6 +30,8 @@ public class Constants {
 
     public static final int DEFAULT_TOKEN_RATE = 40;
 
+    public static final int CHEATING_FACTOR = 2;
+
     public static HashMap<String, String> node_id_to_trace_id;
 
     // Return the id of the job owning the Stage, Coflow, or Flow
