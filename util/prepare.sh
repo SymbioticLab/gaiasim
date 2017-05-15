@@ -4,18 +4,13 @@
 # to perform  emulation.
 
 sudo apt install -y nload bwm-ng htop pv
+export LC_ALL=en_US.UTF-8
 sudo pip install networkx
 
+echo "mounting /tmp as tmpfs..."
 sudo mount -t tmpfs tmpfs /tmp
 
-cd ~
-git clone https://github.com/jackkosaian/floodlight.git
-cd floodlight
-git submodule init
-git submodule update
-ant 
-sudo mkdir /var/lib/floodlight
-sudo chmod 777 /var/lib/floodlight
+rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/new
 
 echo "Floodlight ready for use, now compiling gaiasim..."
 
