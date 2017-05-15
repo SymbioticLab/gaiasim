@@ -137,6 +137,7 @@ public class MMCFOptimizer {
             if (line.contains("Objective")) {
                 double alpha = Double.parseDouble(line.split("\\s+")[3]);
                 if (alpha < 0.00001) {
+                    // TODO: what to do?
                     System.out.println("Given coflow cannot be allocated on current network");
                     mmcf_out.completion_time_ = -1.0;
                     return mmcf_out;

@@ -272,7 +272,7 @@ public class PersistentConnection {
                         // distribute transmitted...
                         double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                        data_.distribute_transmitted(Constants.CHEATING_FACTOR * tx_ed); // FIXME: cheat here!
+                        data_.distribute_transmitted(Constants.CHEATING_FACTOR2 * tx_ed); // FIXME: cheat here!
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                     }

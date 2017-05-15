@@ -12,3 +12,11 @@ Reducer2 1 n4
 2
 Map2 Reducer2 5
 Map3 Reducer2 5
+# new job after 10 seconds
+3 2 10
+Map2 1 n1
+Map3 1 n3
+Reducer2 1 n4
+2
+Map2 Reducer2 5
+Map3 Reducer2 5

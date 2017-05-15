@@ -319,7 +319,7 @@ public class Manager {
     // non-blocking handler of status response, only for coflow
     private void onStatusResponse(ScheduleMessage m) {
 
-        if(m.flow_id_ != null) {
+        if(   m.transmitted_ > -4  &&  m.flow_id_ != null ) {
 //        if(!active_flows_.isEmpty()) {
             Flow f = active_flows_.get(m.flow_id_);
 //        System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
@@ -435,19 +435,12 @@ public class Manager {
             // maybe queueing them up.
         }
 
-        // this is previous implementation
-//        if (is_baseline_) {
-//            add_next_flows_for_job(j, System.currentTimeMillis());
-//        }
-//        else {
-//            reschedule();
-//        }
     }
 
     private boolean canPreSchedule() {
         // first check the timing, last schedule happens 1s away?
         long cur_time = System.currentTimeMillis();
-        if(cur_time - lastScheduledAt < 800){ // padding for some overhead, so we don't miss job coming in the next second.
+        if(cur_time - lastScheduledAt < Constants.SCHEDULE_MIN_INTERVAL_MS){ // padding for some overhead, so we don't miss job coming in the next second.
             return false;
         }
 

@@ -31,6 +31,9 @@ public class Constants {
     public static final int DEFAULT_TOKEN_RATE = 40;
 
     public static final int CHEATING_FACTOR = 2;
+    public static final double CHEATING_FACTOR2 = 3;
+
+    public static final int SCHEDULE_MIN_INTERVAL_MS = 500;
 
     public static HashMap<String, String> node_id_to_trace_id;
 

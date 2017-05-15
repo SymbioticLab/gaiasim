@@ -117,7 +117,7 @@ public class PersistentSendingAgent {
                     writeMessage(s);
                 }
                 if(flows_.isEmpty()){
-                    writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE, null ,0 ));
+                    writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_STATUS_RESPONSE, null ,-5 ));
                 }
             }
             catch (java.io.IOException e) {
@@ -131,6 +131,7 @@ public class PersistentSendingAgent {
             ScheduleMessage s = new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_id);
 
             try {
+                System.out.println("Sending FLOW_FIN");
                 writeMessage(s);
             }
             catch (java.io.IOException e) {
