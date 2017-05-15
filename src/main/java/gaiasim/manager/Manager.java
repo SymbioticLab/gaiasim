@@ -59,12 +59,15 @@ public class Manager {
         new HashMap<String, SendingAgentContact>();
 
     public boolean is_baseline_ = false;
+    private long lastScheduledAt;
 
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
         jobs_ = DAGReader.read_trace(trace_file, net_graph_);
+
+        lastScheduledAt = System.currentTimeMillis();
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -191,71 +194,120 @@ public class Manager {
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
             PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
-            relay.relay_ports(); // seems not working. FIXME(jimmy)
+            relay.relay_ports();
         }
 
         num_dispatched_jobs_ = 0;
         int total_num_jobs = jobs_.size();
 
+        long emulation_start_time = System.currentTimeMillis();
+
         // Start inserting jobs
         Thread job_inserter = new Thread(new JobInserter(jobs_by_time_, message_queue_));
         job_inserter.start();
 
-        // Handle job insertions and flow updates
-        try {
+        // TODO: new event loop. now we only test coflow.
+        if(!is_baseline_) {
+
+            System.out.println("Coflow scheduling, enter new event loop!");
+
+
             while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
-                ScheduleMessage m = message_queue_.take(); // JobInserter inserts messages by time. (emulating online job coming)
+                ScheduleMessage m = message_queue_.take(); // maybe use poll with timeout 1second? no! we don't know how long!
 
-                if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
-                    System.out.println("Manager: Job " + m.job_id_ + " comes, now rescheduling");
-                    Job j = jobs_.get(m.job_id_);
-                    start_job(j);
+                switch (m.type_) {
+                    case JOB_INSERTION:
+                        System.out.println("Manager: Job coming: " + m.jobs);
 
-                    if (is_baseline_) {
-                        add_next_flows_for_job(j, System.currentTimeMillis());
-                    }
-                    else {
-                        reschedule();
-                    }
-                }
-                else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
-                    System.out.println("Received FLOW_COMPLETION for Flow " + m.flow_id_);
-                    
-                    Flow f = active_flows_.get(m.flow_id_);
-                    long current_time = System.currentTimeMillis();
-                    boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
-                    if (coflow_finished) {
-                        System.out.println(" Some Coflow finished, results in reschedule");
-                        if (is_baseline_) {
+                        onJobInsertion(m);
 
-                            // There is a chance that completing this coflow finished the
-                            // job. If this is the case, the call to handle_finished_flow will
-                            // have removed the job from active_jobs_ and thus j will be null.
-                            // Therefore, if j is null, we know that the job must be done and
-                            // that there are no more flows to add. There's probably a better
-                            // way to check for this.
-                            Job j = active_jobs_.get(Constants.get_job_id(f.id_));
-                            if (j != null) {
-                                add_next_flows_for_job(j, current_time);
-                            }
-                        }
-                        else {
-                            reschedule();
-                        }
-                    }
-                }
-                else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
-                    System.err.println("ERROR: Received a flow status response for " + m.flow_id_ + " while controller was not expecting flow status responses");
-                    System.exit(1);
+                        break;
+
+                    case FLOW_COMPLETION:
+                        System.out.println("Manager: Received FLOW_COMPLETION " + m.flow_id_);
+
+                        onFlowCompletion(m);
+
+
+                        break;
+
+
+                    case FLOW_STATUS_RESPONSE:
+//                        System.out.println("Manager: Received STATUS " + m.flow_id_);
+
+                        onStatusResponse(m);
+
+
+                        break;
+
+
                 }
             }
         }
-        catch (InterruptedException e) {
-            // This shouldn't happen. Fail if it does.
-            e.printStackTrace();
-            System.exit(1);
+        else { // Old event loop. (for baseline only)
+            // Handle job insertions and flow updates
+            try {
+                while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
+                    // Block until we have a message to receive
+                    ScheduleMessage m = message_queue_.take(); // JobInserter inserts messages by time. (emulating online job coming)
+
+                    if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
+                        System.out.println("Manager: Job coming: " + m.jobs);
+                        addBatchJobs(m);
+//                        System.out.println("Manager: Job " + m.job_id_ + " comes, now rescheduling");
+//                        Job j = jobs_.get(m.job_id_);
+//                        start_job(j);
+
+                        if (is_baseline_) {
+                            for(String job_id : m.jobs){
+                                // for each job
+                                Job j = jobs_.get(job_id);
+
+                                // TODO: check safety here.
+                                add_next_flows_for_job(j, System.currentTimeMillis());
+                            }
+
+                        } else {
+                            reschedule();
+                        }
+                    } else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
+                        System.out.println("Received FLOW_COMPLETION for Flow " + m.flow_id_);
+
+                        Flow f = active_flows_.get(m.flow_id_);
+                        long current_time = System.currentTimeMillis();
+                        boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
+                        if (coflow_finished) {
+                            System.out.println(" Some Coflow finished, results in reschedule");
+                            if (is_baseline_) {
+
+                                // There is a chance that completing this coflow finished the
+                                // job. If this is the case, the call to handle_finished_flow will
+                                // have removed the job from active_jobs_ and thus j will be null.
+                                // Therefore, if j is null, we know that the job must be done and
+                                // that there are no more flows to add. There's probably a better
+                                // way to check for this.
+                                Job j = active_jobs_.get(Constants.get_job_id(f.id_));
+                                if (j != null) {
+                                    add_next_flows_for_job(j, current_time);
+                                }
+                            } else {
+                                reschedule();
+                            }
+                        }
+                    } else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
+                        System.err.println("ERROR: Received a flow status response for " + m.flow_id_ + " while controller was not expecting flow status responses");
+                        System.exit(1);
+                    }
+                }
+            } catch (InterruptedException e) {
+                // This shouldn't happen. Fail if it does.
+                e.printStackTrace();
+                System.exit(1);
+            }
         }
+
+        System.out.println("DONE. Elapsed time: " + (System.currentTimeMillis() - emulation_start_time) + " ms");
 
         // Terminate all SendingAgents
         for (String k : sa_contacts_.keySet()) {
@@ -263,8 +315,105 @@ public class Manager {
             sac.terminate();
         }
 
-        System.out.println("DONE");
         print_statistics("/job.csv", "/cct.csv");
+    }
+
+    // non-blocking handler of status response, only for coflow
+    private void onStatusResponse(ScheduleMessage m) {
+
+
+        if(canSchedule()){
+            schedule_Jimmy();
+        }
+    }
+
+    // non-blocking handler of flow completion, only for coflow
+    private void onFlowCompletion(ScheduleMessage m) {
+
+
+        if(canSchedule()){
+            schedule_Jimmy();
+        }
+    }
+
+    private void addBatchJobs(ScheduleMessage m){
+        for(String job_id : m.jobs){
+            // for each job
+            Job j = jobs_.get(job_id);
+
+            // add to active job list.
+            start_job(j);
+        }
+    }
+
+    // non-blocking handler of job insertion, (only for coflow)
+    private void onJobInsertion(ScheduleMessage m) {
+        // first add job then check the batch pool, if timestamp is the same, batch
+        // if not the same flush previous jobs, batch this one.
+        // no need to batch here.
+
+        // first add all the jobs to active_jobs
+        addBatchJobs(m);
+
+
+        // check state, if
+        // then check if we need schedule(reschedule)
+
+        if(canSchedule()){
+            schedule_Jimmy();
+        }
+
+        // this is previous implementation
+//        if (is_baseline_) {
+//            add_next_flows_for_job(j, System.currentTimeMillis());
+//        }
+//        else {
+//            reschedule();
+//        }
+
+    }
+
+    private boolean canSchedule() {
+        // first check the timing, last schedule happens 1s away?
+        long cur_time = System.currentTimeMillis();
+        if(cur_time - lastScheduledAt < 800){ // padding for some overhead, so we don't miss job coming in the next second.
+            return false;
+        }
+
+
+        // then check do we have things to schedule?
+        if(active_jobs_.isEmpty() || active_coflows_.isEmpty() || active_flows_.isEmpty() ){
+            return false;
+        }
+
+
+        // then check do we have all the info we need? STATUS etc.
+
+
+
+
+        return false;
+    }
+
+    // we schedule because: 1. job insertion 2. flow status change (including completion)
+    // since last schedule is at least 1s away, we query status for every schedule.
+    private void schedule_Jimmy() {
+        // first set the schedule time
+        lastScheduledAt = System.currentTimeMillis();
+        System.out.println("Manger: reschedule @ " + lastScheduledAt);
+
+        // then query the status? no!
+
+
+
+
+    }
+
+    private void requestAllFlowStatus(){
+        for (String sa_id : sa_contacts_.keySet()) {
+            SendingAgentContact sac = sa_contacts_.get(sa_id);
+            sac.send_status_request();
+        }
     }
 
     // Used by baseline scheduler to start the next flows of a job
@@ -320,8 +469,10 @@ public class Manager {
                     ScheduleMessage m = message_queue_.take();
 
                     if (m.type_ == ScheduleMessage.Type.JOB_INSERTION) {
-                        Job j = jobs_.get(m.job_id_);
-                        start_job(j);
+                        System.out.println("Manager: Job coming: " + m.jobs);
+                        addBatchJobs(m);
+//                        Job j = jobs_.get(m.job_id_);
+//                        start_job(j);
                     }
                     else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                         System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
@@ -366,6 +517,9 @@ public class Manager {
                 // Only update started_sending_ if we're running baseline
                 f.started_sending_ = is_baseline_;
             }
+
+            // we only start new flow here, and (modify/preempt) existing flows..?
+            // If a flow is going to be preempted, it has to be in active_flows. a bit paradox! FIXME
         }
 
     }
@@ -515,7 +669,9 @@ public class Manager {
         }
 
         // Update our set of flows
-        active_flows_.clear();
+        active_flows_.clear(); // init the flows
+
+        // create new active flows from coflows.
         HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(active_coflows_, current_time);
         active_flows_.putAll(scheduled_flows);
     }

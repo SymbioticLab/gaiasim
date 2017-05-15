@@ -184,7 +184,7 @@ public class SendingAgentContact {
     // Sends a message to the sending agent requesting an
     // update on the status of all active flows
     public void send_status_request() {
-        System.out.println("STATUS_REQUEST at " + id_);
+//        System.out.println("STATUS_REQUEST at " + id_);
         
         ControlMessage c = new ControlMessage();
         c.type_ = ControlMessage.Type.FLOW_STATUS_REQUEST;
@@ -200,7 +200,9 @@ public class SendingAgentContact {
     }
 
     public void terminate() {
-        listen_sa_thread_.interrupt();
+
+        // TODO: not interrupting, think about how to connect the next experiment.
+        //        listen_sa_thread_.interrupt();
 
         try {
             os_.writeObject(new ControlMessage(ControlMessage.Type.TERMINATE));
