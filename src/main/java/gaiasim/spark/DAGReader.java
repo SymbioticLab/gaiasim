@@ -86,7 +86,7 @@ public class DAGReader {
                 child.parent_coflows_.add(parent);
                 parent.child_coflows_.add(child);
                 child.volume_for_parent_.put(parent.id_, (double)data_size);
-                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.id_);
+//                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.id_);
             }
  
             jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));

@@ -321,11 +321,13 @@ public class Manager {
 
         if(   m.transmitted_ > -4  &&  m.flow_id_ != null ) {
 //        if(!active_flows_.isEmpty()) {
-            Flow f = active_flows_.get(m.flow_id_);
+            if(active_flows_.containsKey(m.flow_id_)) { // if active flow contains the key... otherwise do nothing!
+                Flow f = active_flows_.get(m.flow_id_);
 //        System.out.println("Registering FLOW_STATUS_RESPONSE for " + m.flow_id_ + " transmitted " + m.transmitted_ + " of " + f.volume_);
-            f.transmitted_ = m.transmitted_;
-            f.updated_ = true;
-            updated_flows.add(f);
+                f.transmitted_ = m.transmitted_;
+                f.updated_ = true;
+                updated_flows.add(f);
+            }
         }
 
         //        active_flows_.remove(m.flow_id_);
