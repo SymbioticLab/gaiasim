@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import gaiasim.network.Coflow;
-import gaiasim.network.FlowGroup;
-import gaiasim.network.Link;
-import gaiasim.network.NetGraph;
-import gaiasim.network.SubscribedLink;
+import gaiasim.network.*;
+import gaiasim.network.Coflow_Old;
 
 public class MMCFOptimizer {
     public static class MMCFOutput {
@@ -21,7 +18,7 @@ public class MMCFOptimizer {
             = new HashMap<Integer, ArrayList<Link>>();
     }
 
-    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
+    public static MMCFOutput glpk_optimize(Coflow_Old coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
         StringBuilder dat_string = new StringBuilder();
@@ -35,9 +32,9 @@ public class MMCFOptimizer {
 
         ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
-        System.out.println("Coflow " + coflow.getId() + " has flows: ");
+        System.out.println("Coflow_Old " + coflow.getId() + " has flows: ");
         for (String k : coflow.flows.keySet()) {
-            FlowGroup f = coflow.flows.get(k);
+            FlowGroup_Old f = coflow.flows.get(k);
             if (f.remaining_volume() > 0.0) {
                 System.out.println("  " + k + ": " + f.getSrc_loc() + "-" + f.getDst_loc() + " -> " + f.remaining_volume());
                 int int_id = coflow.flows.get(k).getInt_id();

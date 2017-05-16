@@ -3,27 +3,27 @@ package gaiasim.spark;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import gaiasim.network.Coflow;
+import gaiasim.network.Coflow_Old;
 
 // A job within a trace
 public class Job {
 
     private String id;
     private long arrivalTime;
-    public HashMap<String, Coflow> coflows = new HashMap<String, Coflow>();
-    public ArrayList<Coflow> root_coflows = new ArrayList<Coflow>();
-    public ArrayList<Coflow> leaf_coflows = new ArrayList<Coflow>();
+    public HashMap<String, Coflow_Old> coflows = new HashMap<String, Coflow_Old>();
+    public ArrayList<Coflow_Old> root_coflows = new ArrayList<Coflow_Old>();
+    public ArrayList<Coflow_Old> leaf_coflows = new ArrayList<Coflow_Old>();
     private boolean started = false;
     private long start_timestamp = -1;
     private long end_timestamp = -1;
 
     // Coflows that are currently running
-    public ArrayList<Coflow> running_coflows = new ArrayList<Coflow>();
+    public ArrayList<Coflow_Old> running_coflows = new ArrayList<Coflow_Old>();
 
     // Coflows taht are ready to begin but have not begun yet
-    public ArrayList<Coflow> ready_coflows = new ArrayList<Coflow>();
+    public ArrayList<Coflow_Old> ready_coflows = new ArrayList<Coflow_Old>();
 
-    public Job(String id, long start_time, HashMap<String, Coflow> coflows) {
+    public Job(String id, long start_time, HashMap<String, Coflow_Old> coflows) {
         this.id = id;
         this.coflows = coflows;
         arrivalTime = start_time;
@@ -31,7 +31,7 @@ public class Job {
         // Determine the end coflows of the DAG (those without any parents).
         // Determine the start coflows of the DAG (those without children).
         for (String key : this.coflows.keySet()) {
-            Coflow c = this.coflows.get(key);
+            Coflow_Old c = this.coflows.get(key);
             if (c.parent_coflows.size() == 0) {
                 leaf_coflows.add(c);
             }
@@ -51,7 +51,7 @@ public class Job {
     // A job is considered done if all of its coflows are done
     public boolean done() {
         for (String k : coflows.keySet()) {
-            Coflow c = coflows.get(k);
+            Coflow_Old c = coflows.get(k);
             if (!(c.done() || c.flows.isEmpty())) {
                 return false;
             }
@@ -66,10 +66,10 @@ public class Job {
         // A coflow's id is of the form <job_id>:<coflow_id> whereas
         // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
         String coflow_id = full_coflow_id.split(":")[1];
-        Coflow c = coflows.get(coflow_id);
+        Coflow_Old c = coflows.get(coflow_id);
         running_coflows.remove(c);
 
-        for (Coflow parent : c.parent_coflows) {
+        for (Coflow_Old parent : c.parent_coflows) {
             if (parent.ready()) {
                 ready_coflows.add(parent);
             }
@@ -80,22 +80,22 @@ public class Job {
 
     // Transition all ready coflows to running and return a list of all
     // coflows that are currently running for this job.
-    public ArrayList<Coflow> get_running_coflows() {
+    public ArrayList<Coflow_Old> get_running_coflows() {
         running_coflows.addAll(ready_coflows);
         ready_coflows.clear();
        
         // Return a clone of the list so that the calling function
         // can call finish_coflow while iterating over this list.
-        return (ArrayList<Coflow>) running_coflows.clone();
+        return (ArrayList<Coflow_Old>) running_coflows.clone();
     }
 
     // Start all of the first coflows of the job
     public void start() {
-        for (Coflow c : root_coflows) {
+        for (Coflow_Old c : root_coflows) {
             c.setDone(true);
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
-            for (Coflow parent : c.parent_coflows) {
+            for (Coflow_Old parent : c.parent_coflows) {
                 if (!ready_coflows.contains(parent)) {
                     if (parent.done()) {
                         // Hack to avoid error in finish_coflow

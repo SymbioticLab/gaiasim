@@ -8,20 +8,20 @@ import java.util.HashMap;
 
 import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
-import gaiasim.network.FlowGroup;
+import gaiasim.network.FlowGroup_Old;
 import gaiasim.util.Constants;
 
 public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
-    private HashMap<String, FlowGroup> flows_ = new HashMap<String, FlowGroup>();
+    private HashMap<String, FlowGroup_Old> flows_ = new HashMap<String, FlowGroup_Old>();
 
     public PoorManScheduler(NetGraph net_graph) {
         super(net_graph);
     }
     
-    public void finish_flow(FlowGroup f) {
+    public void finish_flow(FlowGroup_Old f) {
         for (Pathway p : f.paths) {
             for (int i = 0; i < p.node_list.size() - 1; i++) {
                 int src = Integer.parseInt(p.node_list.get(i));
@@ -31,7 +31,7 @@ public class PoorManScheduler extends Scheduler {
         }
     }
 
-    public void make_paths(FlowGroup f, ArrayList<Link> link_vals) {
+    public void make_paths(FlowGroup_Old f, ArrayList<Link> link_vals) {
         // TODO: Consider just choosing the shortest path (measured by hops)
         //       from src to dst if the flow has volume below some threshold.
         //       See if not accounting for bw consumption on a certain link
@@ -164,7 +164,7 @@ public class PoorManScheduler extends Scheduler {
         f.paths = completed_paths;
     }
 
-    public void progress_flow(FlowGroup f) {
+    public void progress_flow(FlowGroup_Old f) {
         for (Pathway p : f.paths) {
             f.setTransmitted_volume(f.getTransmitted_volume() + p.getBandwidth() * Constants.SIMULATION_TIMESTEP_SEC);
         }
@@ -183,24 +183,24 @@ public class PoorManScheduler extends Scheduler {
         return remaining_bw;
     }
 
-    public void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
-        ArrayList<FlowGroup> unscheduled_flowGroups = new ArrayList<FlowGroup>();
-        for (Coflow c : unscheduled_coflows) {
+    public void schedule_extra_flows(ArrayList<Coflow_Old> unscheduled_coflows, long timestamp) {
+        ArrayList<FlowGroup_Old> unscheduled_flowGroups = new ArrayList<FlowGroup_Old>();
+        for (Coflow_Old c : unscheduled_coflows) {
             for (String k : c.flows.keySet()) {
-                FlowGroup f = c.flows.get(k);
+                FlowGroup_Old f = c.flows.get(k);
                 if (f.remaining_volume() > 0) {
                     unscheduled_flowGroups.add(c.flows.get(k));
                 }
             }
         }
-        Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup>() {
-            public int compare(FlowGroup o1, FlowGroup o2) {
+        Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup_Old>() {
+            public int compare(FlowGroup_Old o1, FlowGroup_Old o2) {
                 if (o1.getVolume() == o2.getVolume()) return 0;
                 return o1.getVolume() < o2.getVolume() ? -1 : 1;
             }
         });
 
-        for (FlowGroup f : unscheduled_flowGroups) {
+        for (FlowGroup_Old f : unscheduled_flowGroups) {
             int src = Integer.parseInt(f.getSrc_loc());
             int dst = Integer.parseInt(f.getDst_loc());
             Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
@@ -243,27 +243,27 @@ public class PoorManScheduler extends Scheduler {
         }
     }
 
-    public HashMap<String, FlowGroup> schedule_flows(HashMap<String, Coflow> coflows,
-                                                     long timestamp) throws Exception {
+    public HashMap<String, FlowGroup_Old> schedule_flows(HashMap<String, Coflow_Old> coflows,
+                                                         long timestamp) throws Exception {
         flows_.clear();
         reset_links();
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
-        ArrayList<Coflow> unscheduled_coflows = new ArrayList<Coflow>();
-        for (Map.Entry<Coflow, Double> e : cct_list) {
-            Coflow c = e.getKey();
+        ArrayList<Map.Entry<Coflow_Old, Double>> cct_list = sort_coflows(coflows);
+        ArrayList<Coflow_Old> unscheduled_coflows = new ArrayList<Coflow_Old>();
+        for (Map.Entry<Coflow_Old, Double> e : cct_list) {
+            Coflow_Old c = e.getKey();
 
             if (remaining_bw() <= 0) {
                 unscheduled_coflows.add(c);
                 continue;
             }
 
-            System.out.println("Coflow " + c.getId() + " expected to complete in " + e.getValue());
+            System.out.println("Coflow_Old " + c.getId() + " expected to complete in " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
 
             boolean all_flows_scheduled = true;
             for (String k : c.flows.keySet()) {
-                FlowGroup f = c.flows.get(k);
+                FlowGroup_Old f = c.flows.get(k);
                 if (!f.isDone()) {
                     if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
                         all_flows_scheduled = false;
@@ -278,7 +278,7 @@ public class PoorManScheduler extends Scheduler {
             
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows.keySet()) {
-                FlowGroup f = c.flows.get(k);
+                FlowGroup_Old f = c.flows.get(k);
                 if (f.isDone()) {
                     continue;
                 }
@@ -319,20 +319,20 @@ public class PoorManScheduler extends Scheduler {
         return flows_;
     }
     
-    public ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
-        HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
+    public ArrayList<Map.Entry<Coflow_Old, Double>> sort_coflows(HashMap<String, Coflow_Old> coflows) throws Exception {
+        HashMap<Coflow_Old, Double> cct_map = new HashMap<Coflow_Old, Double>();
 
         for (String k : coflows.keySet()) {
-            Coflow c = coflows.get(k);
+            Coflow_Old c = coflows.get(k);
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
             if (mmcf_out.completion_time_ != -1.0) {
                 cct_map.put(c, mmcf_out.completion_time_);
             }
         }
 
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<Map.Entry<Coflow, Double>>(cct_map.entrySet());
-        Collections.sort(cct_list, new Comparator<Map.Entry<Coflow, Double>>() {
-            public int compare(Map.Entry<Coflow, Double> o1, Map.Entry<Coflow, Double> o2) {
+        ArrayList<Map.Entry<Coflow_Old, Double>> cct_list = new ArrayList<Map.Entry<Coflow_Old, Double>>(cct_map.entrySet());
+        Collections.sort(cct_list, new Comparator<Map.Entry<Coflow_Old, Double>>() {
+            public int compare(Map.Entry<Coflow_Old, Double> o1, Map.Entry<Coflow_Old, Double> o2) {
                 if (o1.getValue() == o2.getValue()) return 0;
                 return o1.getValue() < o2.getValue() ? -1 : 1;
             }
@@ -342,5 +342,5 @@ public class PoorManScheduler extends Scheduler {
     }
 
     // Updates the rates of flows
-    public void update_flows(HashMap<String, FlowGroup> flows) {}
+    public void update_flows(HashMap<String, FlowGroup_Old> flows) {}
 }

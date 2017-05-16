@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import gaiasim.network.*;
-import gaiasim.network.FlowGroup;
+import gaiasim.network.FlowGroup_Old;
 import gaiasim.util.Constants;
 
 public class BaselineScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
-    private HashMap<String, FlowGroup> flows_ = new HashMap<String, FlowGroup>();
+    private HashMap<String, FlowGroup_Old> flows_ = new HashMap<String, FlowGroup_Old>();
 
     public BaselineScheduler(NetGraph net_graph) {
         super(net_graph);
     }
     
-    public void finish_flow(FlowGroup f) {
+    public void finish_flow(FlowGroup_Old f) {
         ArrayList<String> nodes = f.paths.get(0).node_list;
         for (int i = 0; i < nodes.size()- 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
@@ -26,20 +26,20 @@ public class BaselineScheduler extends Scheduler {
         }
     }
 
-    public void progress_flow(FlowGroup f) {
+    public void progress_flow(FlowGroup_Old f) {
         f.setTransmitted_volume(f.getTransmitted_volume() + f.getRate() * Constants.SIMULATION_TIMESTEP_SEC);
     }
 
-    public HashMap<String, FlowGroup> schedule_flows(HashMap<String, Coflow> coflows,
-                                                     long timestamp) throws Exception {
+    public HashMap<String, FlowGroup_Old> schedule_flows(HashMap<String, Coflow_Old> coflows,
+                                                         long timestamp) throws Exception {
         flows_.clear();
         reset_links();
 
         for (String k : coflows.keySet()) {
-            Coflow c = coflows.get(k);
+            Coflow_Old c = coflows.get(k);
 
             for (String k_ : c.flows.keySet()) {
-                FlowGroup f = c.flows.get(k_);
+                FlowGroup_Old f = c.flows.get(k_);
                 if (f.isDone()) {
                     continue;
                 }
@@ -65,7 +65,7 @@ public class BaselineScheduler extends Scheduler {
         }
         
         for (String k : flows_.keySet()) {
-            FlowGroup f = flows_.get(k);
+            FlowGroup_Old f = flows_.get(k);
 
             double min_bw = Double.MAX_VALUE;
 
@@ -89,9 +89,9 @@ public class BaselineScheduler extends Scheduler {
     }
 
     // Updates the rates of flows
-    public void update_flows(HashMap<String, FlowGroup> flows) {
+    public void update_flows(HashMap<String, FlowGroup_Old> flows) {
         for (String k : flows.keySet()) {
-            FlowGroup f = flows.get(k);
+            FlowGroup_Old f = flows.get(k);
 
             double min_bw = Double.MAX_VALUE;
 

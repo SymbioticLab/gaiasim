@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.network.FlowGroup;
+import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.util.Constants;
@@ -141,7 +141,7 @@ public class SendingAgentContact {
 
     // Sends a FLOW_START or FLOW_UPDATE  message to the sending agent along
     // with information about the paths and rates used by the flow.
-    public void start_flow(FlowGroup f) {
+    public void start_flow(FlowGroup_Old f) {
         String start_or_update = f.isUpdated() ? "UPDATING" : "STARTING";
         System.out.println(start_or_update + " flow " + f.getId() + " at " + Constants.node_id_to_trace_id.get(id_));
 

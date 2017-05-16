@@ -1,6 +1,6 @@
 package gaiasim.spark;
 
-import gaiasim.network.Coflow;
+import gaiasim.network.Coflow_Old;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 
+// This is the DAGReader.
+// it reads the trace.txt and put Job(DAG) into an event queue, according to the time of arrival.
+// We implement it as a Runnable.
 
-// Currently DAGReader maps coflow to stages (n+1),
-// but actually should map to shuffles (n), which saves an empty coflow.
-
-// Target PseudoCode:
+// Target PseudoCode of extracting coflows from DAGs.
 // For each job{
 //        Create HashMap h1 <stage,List_of_Locations>
 //        Create HashMap h2 <End_Stage,CoFlow>
@@ -28,15 +28,29 @@ import java.util.Random;
 //        For each shuffle (2 shuffles){
 //          Read shuffle <Map2 Reducer2 5>
 //          Check if (the End_Stage (Reducer2) is already in h2.) {
-//              If so, add shuffle to the Coflow h2.get(Reducer2)
-//              If not, add Coflow <Map2 Reducer2 5> to h2
+//              If so, add shuffle to the Coflow_Old h2.get(Reducer2)
+//              If not, add Coflow_Old <Map2 Reducer2 5> to h2
 //          }
 //        }
 // }
 
 
-public class DAGReader {
+public class DAGReader implements Runnable{
 
+
+    // Add a field of event queue.
+
+    public DAGReader(String filepath, NetGraph net_graph ){
+
+    }
+
+    // First reads the message.
+    @Override
+    public void run() {
+
+    }
+
+    // this is old API
     public static HashMap<String, Job> read_trace(String filepath, NetGraph net_graph) throws java.io.IOException {
         HashMap<String, Job> jobs = new HashMap<String, Job>();
 
@@ -96,11 +110,11 @@ public class DAGReader {
                 // store location info
                 location_map.put(stage_id, task_locs);
 
-//                coflow_map.put(stage_id, new Coflow(job_id + ':' + stage_id, dst_locs));
+//                coflow_map.put(stage_id, new Coflow_Old(job_id + ':' + stage_id, dst_locs));
             }
 
             // map coflows to their destination stage.
-            HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
+            HashMap<String, Coflow_Old> coflow_map = new HashMap<String, Coflow_Old>();
 
             // Map coflow and Determine coflow dependencies
             line = br.readLine();
@@ -118,15 +132,15 @@ public class DAGReader {
 
                 // first check if is owned by an existing coflow
                 if(coflow_map.containsKey(dst_stage)){
-                    Coflow owning_coflow = coflow_map.get(dst_stage);
+                    Coflow_Old owning_coflow = coflow_map.get(dst_stage);
                     owning_coflow.addShuffle(src_stage , data_size);
                     // Then resolve dependencies.
 
-                    //  coflow_map.put(stage_id, new Coflow(job_id + ':' + stage_id, dst_locs));
+                    //  coflow_map.put(stage_id, new Coflow_Old(job_id + ':' + stage_id, dst_locs));
                 }
                 else {
-                    Coflow new_coflow = new Coflow( job_id , dst_stage , location_map.get(dst_stage)); // init an empty coflow
-                    new_coflow.addShuffle();
+                    Coflow_Old new_coflow = new Coflow_Old( job_id , dst_stage , location_map.get(dst_stage)); // init an empty coflow
+                    new_coflow.addShuffle(src_stage , data_size);
 
                     coflow_map.put(dst_stage,new_coflow);
 
@@ -135,8 +149,8 @@ public class DAGReader {
 
 
 
-                Coflow child = coflow_map.get(src_stage);
-                Coflow parent = coflow_map.get(dst_stage);
+                Coflow_Old child = coflow_map.get(src_stage);
+                Coflow_Old parent = coflow_map.get(dst_stage);
                 child.parent_coflows.add(parent);
                 parent.child_coflows.add(child);
                 child.volume_for_parent.put(parent.getId(), (double)data_size);
@@ -149,4 +163,5 @@ public class DAGReader {
         br.close();
         return jobs;
     }
+
 }

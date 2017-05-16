@@ -6,14 +6,14 @@ import java.util.HashMap;
 // A coflow represents a (set of) shuffles within a job. It is one or more edges within a DAG.
 // It is defined as a set of shuffles with a common destination stage.
 // We use the destination stage as an anchor(key) for this coflow.
-public class Coflow {
+public class Coflow_Old {
 
     private String id;
     private String job_id;
     private String dst_stage;
-    public HashMap<String, FlowGroup> flows = new HashMap<String, FlowGroup>();
+    public HashMap<String, FlowGroup_Old> flows = new HashMap<String, FlowGroup_Old>();
 
-    private double volume = 0.0; // FIXME(jimmy): volume is not enough for a Coflow.
+    private double volume = 0.0; // FIXME(jimmy): volume is not enough for a Coflow_Old.
 
     // TODO use intermediate data of Shuffles, to derive ultimately FlowGroups.
 
@@ -27,25 +27,25 @@ public class Coflow {
 
     // Coflows that this coflow depends on (must complete before this
     // coflow starts).
-    public ArrayList<Coflow> child_coflows = new ArrayList<Coflow>();
+    public ArrayList<Coflow_Old> child_coflows = new ArrayList<Coflow_Old>();
 
-    // Coflows which depend on this Coflow (this Coflow must complete
+    // Coflows which depend on this Coflow_Old (this Coflow_Old must complete
     // before parent Coflows start).
-    public ArrayList<Coflow> parent_coflows = new ArrayList<Coflow>();
+    public ArrayList<Coflow_Old> parent_coflows = new ArrayList<Coflow_Old>();
 
     // The volume to be shuffled to parent coflow, keyed by parent coflow id
     public HashMap<String, Double> volume_for_parent = new HashMap<String, Double>();
 
-//    public Coflow(String id, String[] dst_locs) {
+//    public Coflow_Old(String id, String[] dst_locs) {
 //        this.id = id;
 //        this.dst_locs = dst_locs;
 //    }
 //
-//    public Coflow(String id){
+//    public Coflow_Old(String id){
 //        this.id = id;
 //    }
 
-    public Coflow(String job_id , String dst_stage , String [] dst_locs){
+    public Coflow_Old(String job_id , String dst_stage , String [] dst_locs){
         this.id = job_id + ':' + dst_stage;
         this.job_id = job_id;
         this.dst_stage = dst_stage;
@@ -54,7 +54,7 @@ public class Coflow {
 
     // When adding a shuffle to a coflow, we record the size, src_stage, src_task_locs[].
     // we can't yet write the dependency.
-    public void addShuffle(int shuffle_size){
+    public void addShuffle(String src_stage , int shuffle_size){
 
     }
 
@@ -67,7 +67,7 @@ public class Coflow {
 
         // This shuffle transmits data to other tasks in the DAG. Tasks are
         // grouped together into the shuffles resulting from them.
-        for (Coflow child : child_coflows) {
+        for (Coflow_Old child : child_coflows) {
 
             // A child will have tasks in multiple locations. We assume that
             // there is one flow between each pair of locations within our
@@ -84,7 +84,7 @@ public class Coflow {
                     // transmission is needed, so we don't create a flow.
                     if (src_loc != dst_loc) {
                         String flow_id = flow_id_prefix + flow_id_suffix;
-                        flows.put(flow_id, new FlowGroup(flow_id, flow_id_suffix, id, src_loc, dst_loc, volume_per_flow));
+                        flows.put(flow_id, new FlowGroup_Old(flow_id, flow_id_suffix, id, src_loc, dst_loc, volume_per_flow));
                         System.out.println("CoFlow: created flow id: " + flow_id + " owned by coflow id: " + id + " with volume " + volume_per_flow);
                         volume += volume_per_flow;
                         flow_id_suffix++;
@@ -107,7 +107,7 @@ public class Coflow {
         // TODO: what if there are no flows. creating a new function.
         start_timestamp = Long.MAX_VALUE;
         for (String k : flows.keySet()) {
-            FlowGroup f = flows.get(k);
+            FlowGroup_Old f = flows.get(k);
             if (f.getStart_timestamp() < start_timestamp) {
                 start_timestamp = f.getStart_timestamp();
             }
@@ -132,10 +132,10 @@ public class Coflow {
         return true;
     }
 
-    // Returns whether the Coflow can begin or not. A Coflow can begin
+    // Returns whether the Coflow_Old can begin or not. A Coflow_Old can begin
     // only if all of the Coflows on which it depends have completed.
     public boolean ready() {
-        for (Coflow s : child_coflows) {
+        for (Coflow_Old s : child_coflows) {
             if (!s.done) {
                 return false;
             }
