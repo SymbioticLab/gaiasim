@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.LinkedBlockingQueue;
 
 // This is the DAGReader.
 // it reads the trace.txt and put Job(DAG) into an event queue, according to the time of arrival.
@@ -37,12 +38,20 @@ import java.util.Random;
 
 public class DAGReader implements Runnable{
 
+    String tracefile;
+    NetGraph netGraph;
+    LinkedBlockingQueue<YARNMessages> yarnEventQueue;
 
-    // Add a field of event queue.
+    public DAGReader(String tracefile, NetGraph netGraph, LinkedBlockingQueue<YARNMessages> yarnEventQueue) {
+        this.tracefile = tracefile;
+        this.netGraph = netGraph;
+        this.yarnEventQueue = yarnEventQueue;
 
-    public DAGReader(String filepath, NetGraph net_graph ){
 
     }
+    // Add a field of event queue.
+
+
 
     // First reads the message.
     @Override

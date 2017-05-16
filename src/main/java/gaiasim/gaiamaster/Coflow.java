@@ -21,4 +21,8 @@ public class Coflow {
 //    private int state;
 //    private String owningClient;
 
+
+    public String getId() { return id; }
+
+    public ConcurrentHashMap<Object, FlowGroup> getFlowGroups() { return flowGroups; }
 }

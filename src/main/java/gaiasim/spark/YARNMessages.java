@@ -7,24 +7,26 @@ public class YARNMessages {
 
     public enum Type{
         DAG_ARRIVAL,
-        COFLOW_FIN;
+        COFLOW_FIN
     }
     private Type type;
 
     // coflow ID for COFLOW_FIN
+    public String FIN_coflow_ID;
 
     // DAG for DAG_ARRIVAL
+    public DAG arrivedDAG;
 
-    public YARNMessages(Type type){
-        this.type = type;
 
-        if (type == Type.DAG_ARRIVAL){
-
-        }
-        else if (type == Type.COFLOW_FIN){
-
-        }
+    public YARNMessages(DAG arrivedDAG){
+        this.type = Type.DAG_ARRIVAL;
+        this.arrivedDAG = arrivedDAG;
     }
 
-    public Type getType() {  return type;   }
+    public YARNMessages(String FIN_coflow_ID){
+        this.type = Type.COFLOW_FIN;
+        this.FIN_coflow_ID = FIN_coflow_ID;
+    }
+
+    public Type getType() { return type; }
 }

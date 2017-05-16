@@ -9,7 +9,8 @@ package gaiasim.gaiamessage;
 //Structure:
 //SA (this)  * 1
 //        RA (dst)   * (n):
-//        for each RA, we have k {Path_id -> Port} tuples
+//        for each RA, we have k {Path_id -> Port} tuples (but for different RA we have different k)
+// so we can't efficiently batch messages for different RAs. It's also fine, because this message is sent only once.
 
 // in total we have (n-1) * k tuples, i.e. (n) * k matching rules (port) for the SDN...
 // Total number of rules for SDN is (n) * k * (n) * (avg switches per conn)
@@ -17,22 +18,19 @@ package gaiasim.gaiamessage;
 public class PortAnnouncementMessage extends AgentMessage{
 
     private String fromID;
-    private int [] raList;
-    private int [][] ra_path_port_Mapping;
+    private int raID;
+    private int [] pathID_to_Port;
 
-    public PortAnnouncementMessage(String fromID, int[] raList, int[][] ra_path_port_mapping) {
-        this.type = Type.PORT_ANNOUNCEMENT;
-
+    public PortAnnouncementMessage(String fromID, int raID, int[] pathID_to_Port) {
         this.fromID = fromID;
-        this.raList = raList;
-        this.ra_path_port_Mapping = ra_path_port_mapping;
-
+        this.raID = raID;
+        this.pathID_to_Port = pathID_to_Port;
     }
 
     public String getFromID() {     return fromID;    }
 
-    public int[] getRaList() {     return raList;    }
+    public int getRaID() { return raID; }
 
-    public int[][] getRa_path_port_Mapping() {       return ra_path_port_Mapping;    }
+    public int getPortfromPath(int pathID) { return pathID_to_Port[pathID]; }
 
 }
