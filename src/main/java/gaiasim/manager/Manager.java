@@ -13,6 +13,7 @@ import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
+import gaiasim.scheduler.MultiPathScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
@@ -53,6 +54,9 @@ public class Manager {
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
             scheduler_ = new PoorManScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("multipath")) {
+            scheduler_ = new MultiPathScheduler(net_graph_);
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);

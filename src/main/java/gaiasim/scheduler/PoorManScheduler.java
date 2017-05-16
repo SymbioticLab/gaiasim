@@ -19,7 +19,7 @@ public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
-    private HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    protected HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
 
     public PoorManScheduler(NetGraph net_graph) {
         super(net_graph);
