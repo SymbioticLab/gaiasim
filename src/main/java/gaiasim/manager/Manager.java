@@ -15,6 +15,7 @@ import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.MultiPathScheduler;
 import gaiasim.scheduler.PoorManScheduler;
+import gaiasim.scheduler.VarysScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
@@ -57,6 +58,9 @@ public class Manager {
         }
         else if (scheduler_type.equals("multipath")) {
             scheduler_ = new MultiPathScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("varys")) {
+            scheduler_ = new VarysScheduler(net_graph_);
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
