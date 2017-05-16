@@ -3,9 +3,6 @@ package gaiasim;
 import java.util.HashMap;
 
 import gaiasim.manager.Manager;
-import gaiasim.network.NetGraph;
-import gaiasim.spark.DAGReader;
-import gaiasim.spark.Job;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;

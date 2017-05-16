@@ -8,12 +8,10 @@ import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceFactory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import gaiasim.util.Constants;
-import gaiasim.network.Link;
 
 public class NetGraph {
     public Graph graph_;

@@ -3,8 +3,6 @@ package gaiasim.network;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import gaiasim.network.Flow;
-
 // A coflow represents a shuffle within a job. It is an edge within a DAG.
 public class Coflow {
     // TODO(jack): Once finished translating from original simulator, switch

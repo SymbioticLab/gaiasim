@@ -1,7 +1,5 @@
 package gaiasim.network;
 
-import gaiasim.network.Pathway;
-
 import java.util.ArrayList;
 
 public class Flow {
@@ -25,8 +23,8 @@ public class Flow {
         src_loc_ = src_loc;
         dst_loc_ = dst_loc;
         volume_ = volume;
-        rate_ = (double)0.0;
-        transmitted_ = (double)0.0;
+        rate_ = 0.0;
+        transmitted_ = 0.0;
     }
 
     public double remaining_volume() {

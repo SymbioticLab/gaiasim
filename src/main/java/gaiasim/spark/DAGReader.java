@@ -2,7 +2,6 @@ package gaiasim.spark;
 
 import gaiasim.network.Coflow;
 import gaiasim.network.NetGraph;
-import gaiasim.spark.Job;
 import gaiasim.util.Constants;
 
 import java.io.BufferedReader;
