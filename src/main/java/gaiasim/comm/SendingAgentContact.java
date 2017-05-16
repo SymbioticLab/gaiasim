@@ -32,13 +32,13 @@ public class SendingAgentContact {
         public Socket sd_; // PersistentConnection to SendingAgent
         public ObjectInputStream is_;
         public LinkedBlockingQueue<ScheduleMessage> schedule_queue_;
-        public LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue_;
+        public LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announce_queue_;
         public int num_port_announcements_;
         public boolean is_baseline_;
         
         public SendingAgentListener(String id, Socket sd,
                                     LinkedBlockingQueue<ScheduleMessage> schedule_queue,
-                                    LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue,
+                                    LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announce_queue,
                                     int num_port_announcements,
                                     boolean is_baseline) {
             id_ = id;
@@ -66,7 +66,7 @@ public class SendingAgentContact {
                 if (!is_baseline_) {
                     int num_ports_recv = 0;
                     while (num_ports_recv < num_port_announcements_) {
-                        PortAnnouncementMessage m = (PortAnnouncementMessage) is_.readObject();
+                        PortAnnouncementMessage_Old m = (PortAnnouncementMessage_Old) is_.readObject();
                         port_announce_queue_.put(m);
                         num_ports_recv++;
                         System.out.println(id_ + " received " + num_ports_recv + " / " + num_port_announcements_);
@@ -104,7 +104,7 @@ public class SendingAgentContact {
 
     public SendingAgentContact(String id, NetGraph net_graph, String sa_ip, int sa_port, 
                                LinkedBlockingQueue<ScheduleMessage> schedule_queue,
-                               LinkedBlockingQueue<PortAnnouncementMessage> port_announce_queue,
+                               LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announce_queue,
                                boolean is_baseline) {
         id_ = id;
         net_graph_ = net_graph;

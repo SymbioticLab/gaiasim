@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 import gaiasim.comm.ControlMessage;
-import gaiasim.comm.PortAnnouncementMessage;
+import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
@@ -89,7 +89,7 @@ public class PersistentSendingAgent {
                             connections_.put(conn.data_.id_, conn);
 
                             // Inform the controller of the port number selected
-                            writeMessage(new PortAnnouncementMessage(id_, ra_id, i, port));
+                            writeMessage(new PortAnnouncementMessage_Old(id_, ra_id, i, port));
                         }
                         catch (java.io.IOException e) {
                             // TODO: Close socket
@@ -137,7 +137,7 @@ public class PersistentSendingAgent {
             flows_.remove(flow_id);
         }
 
-        public synchronized void writeMessage(PortAnnouncementMessage m) throws java.io.IOException {
+        public synchronized void writeMessage(PortAnnouncementMessage_Old m) throws java.io.IOException {
             os_.writeObject(m);
         }
 

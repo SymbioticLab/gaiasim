@@ -3,11 +3,12 @@ package gaiasim.spark;
 // This is YARNMessages. Intended for communication between the DAGReader and Coflow_Old Inserter.
 
 public class YARNMessages {
+
+
     public enum Type{
         DAG_ARRIVAL,
-        COFLOW_FIN
+        COFLOW_FIN;
     }
-
     private Type type;
 
     // coflow ID for COFLOW_FIN
@@ -24,4 +25,6 @@ public class YARNMessages {
 
         }
     }
+
+    public Type getType() {  return type;   }
 }

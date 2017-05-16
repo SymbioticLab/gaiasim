@@ -15,10 +15,10 @@ import gaiasim.network.Pathway;
 public class PortAnnouncementRelayMessage {
 
     public NetGraph net_graph_;
-    public LinkedBlockingQueue<PortAnnouncementMessage> port_announcements_;
+    public LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announcements_;
     
     public PortAnnouncementRelayMessage(NetGraph net_graph,
-                                        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements) {
+                                        LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announcements) {
         net_graph_ = net_graph;
         port_announcements_ = port_announcements;
     }
@@ -53,7 +53,7 @@ public class PortAnnouncementRelayMessage {
             // As we receive port announcements, send the information needed
             // by the OF controller to set FlowMods for the paths.
             while (num_ports_recv < net_graph_.total_num_paths_) {
-                PortAnnouncementMessage m = port_announcements_.take();
+                PortAnnouncementMessage_Old m = port_announcements_.take();
                 announcement = "Received port <" + m.sa_id_ + ", " + m.ra_id_ + ", " + m.path_id_ + ", " + m.port_no_ + ">";
 
                 Pathway p = net_graph_.apap_.get(m.sa_id_).get(m.ra_id_).get(m.path_id_);

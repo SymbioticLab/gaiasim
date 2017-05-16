@@ -11,7 +11,7 @@ import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import gaiasim.comm.SendingAgentContact;
-import gaiasim.comm.PortAnnouncementMessage;
+import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Coflow_Old;
@@ -181,8 +181,8 @@ public class Manager {
     }
 
     public void emulate() throws Exception {
-        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements = 
-            new LinkedBlockingQueue<PortAnnouncementMessage>();
+        LinkedBlockingQueue<PortAnnouncementMessage_Old> port_announcements =
+            new LinkedBlockingQueue<PortAnnouncementMessage_Old>();
 
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
