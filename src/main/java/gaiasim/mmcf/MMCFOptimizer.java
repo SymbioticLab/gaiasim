@@ -22,7 +22,7 @@ public class MMCFOptimizer {
     }
 
     public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
-        long lastTime = System.currentTimeMillis();
+        long lastTime = System.nanoTime();
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
         StringBuilder dat_string = new StringBuilder();
@@ -182,8 +182,8 @@ public class MMCFOptimizer {
         }
         br.close();
 
-        long curTime = System.currentTimeMillis();
-        System.out.println("Calling LP (including File I/O) cost (ms) : " + (curTime - lastTime));
+        long curTime = System.nanoTime();
+        System.out.println("Calling LP (including File I/O) cost (ns) : " + (curTime - lastTime));
         return mmcf_out;
     }
 }
