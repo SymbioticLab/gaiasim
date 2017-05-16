@@ -1,9 +1,9 @@
 package gaiasim.spark;
 
 // This is YARNMessages. Intended for communication between the DAGReader and Coflow_Old Inserter.
+// We don't need multiple classes for these messages, because they are small and simple.
 
 public class YARNMessages {
-
 
     public enum Type{
         DAG_ARRIVAL,
