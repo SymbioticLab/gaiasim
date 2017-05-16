@@ -42,6 +42,7 @@ public class Manager {
     public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
     public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
 
+
     public Manager(String gml_file, String trace_file, 
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
@@ -141,6 +142,9 @@ public class Manager {
     public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
+        int last_num_jobs = -1;
+        int last_job_size = -1;
+        long last_time = -5000;
         
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
 
@@ -260,10 +264,19 @@ public class Manager {
 
             } // for EPOCH_MILLI
 
-            System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
-                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
+            // Not printing Timestamp every time. every 1s or every change happens.
+            if(num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || ( CURRENT_TIME_ - last_time >= 1000 )  ){
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
+                last_job_size = active_jobs_.size();
+                last_num_jobs = num_dispatched_jobs;
+                last_time = CURRENT_TIME_;
+            }
+
 
         } // while stuff to do
+
+        System.out.println("Simulation DONE");
 
         // Save output statistics
         print_statistics("/job.csv", "/cct.csv");
