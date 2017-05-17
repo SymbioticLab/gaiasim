@@ -21,6 +21,7 @@ import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
+import gaiasim.spark.DAGReader_old;
 import gaiasim.spark.Job;
 import gaiasim.spark.JobInserter;
 import gaiasim.util.Constants;
@@ -64,7 +65,7 @@ public class Manager {
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
-        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
+        jobs_ = DAGReader_old.read_trace(trace_file, net_graph_);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);

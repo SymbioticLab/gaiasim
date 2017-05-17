@@ -1,22 +1,24 @@
 package gaiasim.spark;
 
-import gaiasim.network.Coflow_Old;
+//import gaiasim.network.Coflow_Old;
+
+import gaiasim.gaiamaster.Coflow;
+import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Random;
+import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 // This is the DAGReader.
 // it reads the trace.txt and put Job(DAG) into an event queue, according to the time of arrival.
 // We implement it as a Runnable.
 
-// Target PseudoCode of extracting coflows from DAGs.
+// Target PseudoCode of extracting coflows from DAGs. In real world this problem is handled by YARN etc.
 // For each job{
 //        Create HashMap h1 <stage,List_of_Locations>
 //        Create HashMap h2 <End_Stage,CoFlow>
@@ -35,7 +37,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 //        }
 // }
 
-
 public class DAGReader implements Runnable{
 
     String tracefile;
@@ -46,6 +47,9 @@ public class DAGReader implements Runnable{
         this.tracefile = tracefile;
         this.netGraph = netGraph;
         this.yarnEventQueue = yarnEventQueue;
+
+        System.out.println("YARN: Initing DAGReader.");
+
 
 
     }
@@ -59,9 +63,8 @@ public class DAGReader implements Runnable{
 
     }
 
-    // this is old API
-    public static HashMap<String, Job> read_trace(String filepath, NetGraph net_graph) throws java.io.IOException {
-        HashMap<String, Job> jobs = new HashMap<String, Job>();
+    public static ArrayList<DAG> getListofDAGs( String filepath, NetGraph net_graph ) throws IOException {
+        ArrayList<DAG> dagList = new ArrayList<DAG>();
 
         // For now, use the same seed between runs.
         // Currently this is only used for assigning nodes to task
@@ -79,12 +82,13 @@ public class DAGReader implements Runnable{
                 line = br.readLine();
             }
 
-            // Get job metadata
+            // Get DAG metadata
             String[] splits = line.split(" ");
             int num_stages = Integer.parseInt(splits[0]);
-            String job_id = splits[1];
+            String dag_id = splits[1];
             long arrival_time = Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND;
 
+            DAG dag = new DAG(dag_id , arrival_time);
 
             // store location of stages in this job.
             HashMap<String, String[]> location_map = new HashMap<String, String[]>();
@@ -123,7 +127,12 @@ public class DAGReader implements Runnable{
             }
 
             // map coflows to their destination stage.
-            HashMap<String, Coflow_Old> coflow_map = new HashMap<String, Coflow_Old>();
+//            HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
+
+            // create a buffer for constructing Coflows:
+            // map shuffles to their destination stage. In the end we flush the buffer to create real Coflows.
+            HashMap<String , ArrayList<FlowGroup> > bufferForCoflow = new HashMap<>();
+            HashMap<String , Integer> counterForFlowGroupID = new HashMap<>();
 
             // Map coflow and Determine coflow dependencies
             line = br.readLine();
@@ -139,38 +148,49 @@ public class DAGReader implements Runnable{
                 int data_size = Integer.parseInt(splits[2]);
                 data_size = Math.max(1, data_size) * 8; // * 8 to convert to megabits
 
-                // first check if is owned by an existing coflow
-                if(coflow_map.containsKey(dst_stage)){
-                    Coflow_Old owning_coflow = coflow_map.get(dst_stage);
-                    owning_coflow.addShuffle(src_stage , data_size);
-                    // Then resolve dependencies.
+                // first check if we need to map this shuffle to a new "Coflow" or not.
+                if(bufferForCoflow.containsKey(dst_stage)){
+                    // we don't need to create a new "Coflow"
+                    ArrayList<FlowGroup> owningCoflow = bufferForCoflow.get(dst_stage);
+                    Integer cnt = counterForFlowGroupID.get(dst_stage);
+                    cnt++; // TODO: Only works for Java 7+ !!!  check if it works here
 
-                    //  coflow_map.put(stage_id, new Coflow_Old(job_id + ':' + stage_id, dst_locs));
+                    // Create FlowGroup per Shuffle.
+                    // id - job_id:coflow_id:#
+                    // src - src
+                    // dst - dst
+                    // owningCoflowID - dst
+                    // Volume - data_size
+                    FlowGroup fg = new FlowGroup(dag_id + ':' + dst_stage + ':' + cnt ,
+                            src_stage, dst_stage , dst_stage , data_size);
+
+                    owningCoflow.add( fg );
+
                 }
-                else {
-                    Coflow_Old new_coflow = new Coflow_Old( job_id , dst_stage , location_map.get(dst_stage)); // init an empty coflow
-                    new_coflow.addShuffle(src_stage , data_size);
+                else { // we are creating a new "Coflow"
+                    FlowGroup fg = new FlowGroup(dag_id + ':' + dst_stage + ":0" ,
+                            src_stage, dst_stage , dst_stage , data_size);
 
-                    coflow_map.put(dst_stage,new_coflow);
-
-                    // Then resolve dependencies.
+                    ArrayList<FlowGroup> owningCoflow = new ArrayList<FlowGroup>();
+                    owningCoflow.add(fg);
+                    counterForFlowGroupID.put(dst_stage , 0); // init the counter
+                    bufferForCoflow.put(dst_stage , owningCoflow );
                 }
 
+                // Then set dependencies
+                dag.setDependency( src_stage , dst_stage);
 
+            } // end of current DAG
+            // putting the coflow into the dag, then add to dagList.
 
-                Coflow_Old child = coflow_map.get(src_stage);
-                Coflow_Old parent = coflow_map.get(dst_stage);
-                child.parent_coflows.add(parent);
-                parent.child_coflows.add(child);
-                child.volume_for_parent.put(parent.getId(), (double)data_size);
-//                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.getId());
-            }
+            dagList.add(dag);
 
-            jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));
-        }
+//            jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));
+        } // end of trace.txt
 
         br.close();
-        return jobs;
+        return dagList;
+
     }
 
 }

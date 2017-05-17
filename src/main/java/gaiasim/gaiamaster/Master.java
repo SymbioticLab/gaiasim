@@ -28,13 +28,30 @@ public class Master {
         this.outdir = outdir;
         this.netGraph = new NetGraph(gml_file);
 
-        coflowInput = new LinkedBlockingQueue<Coflow>();
 
+        // setting up interface with YARN.
+        coflowInput = new LinkedBlockingQueue<Coflow>();
         yarn = new YARNEmulator( trace_file , netGraph , coflowInput);
+
+
 
 
 
     }
 
 
+    public void emulate() {
+        // setting up the states
+
+        // start the three threads.
+
+
+
+    }
+
+    public void simulate() {
+        System.out.println("Simulation not supported");
+        System.err.println("Simulation not supported in this version");
+        System.exit(1);
+    }
 }

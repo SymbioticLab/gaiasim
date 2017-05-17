@@ -1,6 +1,6 @@
 package gaiasim.util;
 
-import com.revinate.guava.util.concurrent.RateLimiter;
+import com.google.common.util.concurrent.RateLimiter;
 
 import java.io.FilterOutputStream;
 import java.io.IOException;

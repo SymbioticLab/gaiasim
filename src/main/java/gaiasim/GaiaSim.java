@@ -2,6 +2,7 @@ package gaiasim;
 
 import java.util.HashMap;
 
+import gaiasim.gaiamaster.Master;
 import gaiasim.manager.Manager;
 import gaiasim.network.NetGraph;
 import gaiasim.spark.DAGReader;
@@ -87,7 +88,7 @@ public class GaiaSim {
 
             logger.info("GAIA: finished copying the model..");
 
-            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
+            Master m = new Master(args_map.get("gml"), args_map.get("trace"),
                                     args_map.get("scheduler"), args_map.get("outdir"));
 
             if (is_emulation_) {

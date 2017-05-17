@@ -7,44 +7,58 @@ package gaiasim.spark;
 
 // since it is only inside YARN, so it's fine to make it public.
 
-// TODO: add optimizations of making coflows finish immediately in case of co-location.
+// Maybe add optimizations of making coflows finish immediately in case of co-location? Jimmy: not necessary, we handle this in master.
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.SetMultimap;
 import gaiasim.gaiamaster.Coflow;
-import gaiasim.network.Coflow_Old;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DAG {
     public String id;
     public long arrivalTime;
+
     public long startTime;
     public long finishTime;
 
-    public HashMap<String, Coflow> coflowlist;
+    public HashMap<String, Coflow> coflowlist; // we don't remove coflows from this list while executing.
 
-    public ArrayList<Coflow> rootCoflows; // root Coflows := active coflows
-    public HashMap<Coflow , ArrayList<Coflow>> coflow_to_childrens;
+    //// ******* We remove coflows from the {rootCoflowsID, to_parents } while executing.
+    public Set<String> rootCoflowsID; // root Coflows := active coflows // MUST use set to guarantee uniqueness.
+
+    // using set multimap so there will be no duplicate items.
+    public SetMultimap<String , String> coflow_to_parents;
+    public SetMultimap<String , String> coflow_to_children; // we also don't remove coflows from this list.
 
     public DAG (String id, long arrivalTime){
         this.id = id;
         this.arrivalTime = arrivalTime;
-
-
-
+        this.rootCoflowsID = new HashSet<String>();
+        this.coflow_to_parents = HashMultimap.create();
+        this.coflow_to_children = HashMultimap.create();
+        this.coflowlist = new HashMap<>(); // TODO check init
     }
 
-    // handles the finish of a Coflow, and returns a list of new root Coflows.
+    // handles the finish of a Coflow, and returns a list of new root Coflows -> for scheduling? FIXME!
     public ArrayList<Coflow> onCoflowFIN(String finishedCoflowID){
         // first manipulate the state of DAG.
         if(coflowlist.containsKey(finishedCoflowID)){
-            Coflow cf = coflowlist.get(finishedCoflowID);
-            if(rootCoflows.contains(cf)){
-                // then we should add the child coflows to root
-                rootCoflows.addAll( coflow_to_childrens.get(cf) );
+            if(rootCoflowsID.contains(finishedCoflowID)){
+                // remove it from rootCoflows (MUST remove it from the entire DAG, so need also remove the multimap)
+                rootCoflowsID.remove(finishedCoflowID);
 
-                // then we can remove the finishing coflows from FIN.
-                rootCoflows.remove(cf);
+                // search its childrens, remove { child -> parent (Coflow_FIN) }.
+                for ( String child : coflow_to_children.get(finishedCoflowID) ){
+                    coflow_to_parents.remove( child , finishedCoflowID  );
+                    // If dependency are met, add the child coflows to root
+                    if (coflow_to_parents.get(child).isEmpty()) {
+                        rootCoflowsID.add(child);
+                    }
+                }
             }
             else {
                 System.err.println("YARN: [ERROR] Received a COFLOW_FIN for a coflow that is not active (not scheduled or has finished)");
@@ -61,12 +75,18 @@ public class DAG {
             onFinish();
             return null;
         }
-        return getRootCoflows();
+        return getRootCoflows(); // FIXME!
     }
 
-    public ArrayList<Coflow> getRootCoflows(){ return rootCoflows; }
+    public ArrayList<Coflow> getRootCoflows() {
+        ArrayList<Coflow> ret = new ArrayList<Coflow> (rootCoflowsID.size());
+        for(String k : rootCoflowsID){
+            ret.add(coflowlist.get(k));
+        }
+        return ret;
+    }
 
-    public boolean isDone() { return rootCoflows.isEmpty(); }
+    public boolean isDone() { return rootCoflowsID.isEmpty(); }
 
     public void onStart(){
         startTime = System.currentTimeMillis();
@@ -76,85 +96,19 @@ public class DAG {
         finishTime = System.currentTimeMillis();
     }
 
+    // Given {src, dst}, set the appropriate dependency:
+    // (1) dst.parent.has(src)
+    // (2) remove dst from root, add src to root.
+    public void setDependency( String src_stage , String dst_stage ){
+        // first set the coflow -> [] parent mapping
+        coflow_to_parents.put(dst_stage , src_stage);
+        // then set the coflow -> children mapping
+        coflow_to_children.put(src_stage , dst_stage);
+        // Then set the root_list:
+        rootCoflowsID.add(src_stage); // Because it is a set this is fine!
+        rootCoflowsID.remove(dst_stage);
+    }
 
-
-
-//
-//    public HashMap<String, Coflow_Old> coflows = new HashMap<String, Coflow_Old>();
-//    public ArrayList<Coflow_Old> root_coflows = new ArrayList<Coflow_Old>();
-//    public ArrayList<Coflow_Old> leaf_coflows = new ArrayList<Coflow_Old>();
-//    private boolean started = false;
-//    private long start_timestamp = -1;
-//    private long end_timestamp = -1;
-//
-//    // Coflows that are currently running
-//    public ArrayList<Coflow_Old> running_coflows = new ArrayList<Coflow_Old>();
-//
-//    // Coflows taht are ready to begin but have not begun yet
-//    public ArrayList<Coflow_Old> ready_coflows = new ArrayList<Coflow_Old>();
-
-//    public DAG(String id, long start_time, HashMap<String, Coflow_Old> coflows) {
-//        this.id = id;
-//        this.coflows = coflows;
-//        arrivalTime = start_time;
-//
-//        // Determine the end coflows of the DAG (those without any parents).
-//        // Determine the start coflows of the DAG (those without children).
-//        for (String key : this.coflows.keySet()) {
-//            Coflow_Old c = this.coflows.get(key);
-//            if (c.parent_coflows.size() == 0) {
-//                leaf_coflows.add(c);
-//            }
-//
-//            if (c.child_coflows.size() == 0) {
-//                root_coflows.add(c);
-//            }
-//            else {
-//                // Flows are created by depedent coflows. Since
-//                // starting coflows do not depend on anyone, they
-//                // should not create coflows.
-//                c.create_flows();
-//            }
-//        }
-//    }
-
-//    // A job is considered done if all of its coflows are done
-//    public boolean done() {
-//        for (String k : coflows.keySet()) {
-//            Coflow_Old c = coflows.get(k);
-//            if (!(c.done() || c.flows.isEmpty())) {
-//                return false;
-//            }
-//        }
-//
-//        return true;
-//    }
-
-
-
-//    // Start all of the first coflows of the job
-//    public void start() {
-//        for (Coflow_Old c : root_coflows) {
-//            c.setDone(true);
-//            // Coflows are defined from parent stage to child stage,
-//            // so we add the start stage's parents first.
-//            for (Coflow_Old parent : c.parent_coflows) {
-//                if (!ready_coflows.contains(parent)) {
-//                    if (parent.done()) {
-//                        // Hack to avoid error in finish_coflow
-//                        running_coflows.add(parent);
-//                        finish_coflow(parent.getId());
-//                    }
-//                    // Add coflows which can be scheduled as a whole
-//                    else if (parent.ready()) {
-//                        ready_coflows.add(parent);
-//                    }
-//                }
-//            } // for parent_coflows
-//
-//        } // for root_coflows
-//        started = true;
-//    }
 
     ///// getters and setters /////
     public String getId() {
@@ -172,6 +126,5 @@ public class DAG {
     public void setArrivalTime(long arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
-
 
 }

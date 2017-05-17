@@ -14,7 +14,7 @@ public class FlowGroup {
     private final String src;
 
     private final String dst;
-    private final String owning_coflow;
+    private final String owningCoflowID;
     private final double totalVolume;
     // non-final fields
     private long startTime = -1;
@@ -26,11 +26,11 @@ public class FlowGroup {
     // The subflow info, is essientially immutable data.
     private ArrayList<Pathway> paths = new ArrayList<Pathway>();
 
-    public FlowGroup(String id, String src, String dst, String owning_coflow, double totalVolume) {
+    public FlowGroup(String id, String src, String dst, String owningCoflowID, double totalVolume) {
         this.id = id;
         this.src = src;
         this.dst = dst;
-        this.owning_coflow = owning_coflow;
+        this.owningCoflowID = owningCoflowID;
         this.totalVolume = totalVolume;
     }
 
@@ -43,6 +43,6 @@ public class FlowGroup {
 
     public String getDst() { return dst; }
 
-    public String getOwning_coflow() { return owning_coflow; }
+    public String getOwningCoflowID() { return owningCoflowID; }
 
 }
