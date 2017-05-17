@@ -31,9 +31,9 @@ public class Master {
 
         // setting up interface with YARN.
         coflowInput = new LinkedBlockingQueue<Coflow>();
-        yarn = new YARNEmulator( trace_file , netGraph , coflowInput);
+//        yarn = new YARNEmulator( trace_file , netGraph , coflowInput);
 
-
+        Thread yarn = new Thread(new YARNEmulator(trace_file , netGraph , coflowInput));
 
 
 
@@ -44,6 +44,7 @@ public class Master {
         // setting up the states
 
         // start the three threads.
+        yarn.run();
 
 
 
