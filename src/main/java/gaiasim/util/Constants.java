@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 public class Constants {
 
+    // Min interval between schedule
+    public static final int SCHEDULE_INTERVAL_MS = 500;
+
     // Number of milliseconds in a second
     public static final int MILLI_IN_SECOND = 1000;
     public static final double MILLI_IN_SECOND_D = 1000.0;
@@ -23,10 +26,10 @@ public class Constants {
 
 //    public static final int DEFAULT_OUTPUTSTREAM_RATE = 100000;
 
-    public static final int BUFFER_SIZE = 64 * 1024 * 1024;
-
     // Block is the maximum size of transmission. (64MB for GB/s level trasmission)
     public static final int BLOCK_SIZE_MB = 64;
+
+    public static final int BUFFER_SIZE = 64 * 1024 * 1024;
 
     public static final int DEFAULT_TOKEN_RATE = 40;
 
