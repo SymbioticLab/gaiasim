@@ -2,28 +2,27 @@ package gaiasim.gaiamaster;
 
 // The new coflow definition. used by GAIA master, YARN emulator etc.
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
 
 public class Coflow {
-    // necessary fields
-
+    // final fields
     private final String id;
 
-    // is the list of flowgroups final?
-    private ConcurrentHashMap<Object , FlowGroup> flowGroups;
 
-    public Coflow(String id) {
-        this.id = id;
-    }
-
+    // list of flowgroups: final? ArrayList or ConcurrentHashMap?
+    private ArrayList<FlowGroup> flowGroups;
 
     // Optional field
 //    private int state;
 //    private String owningClient;
 
 
+    public Coflow(String id, ArrayList<FlowGroup> flowGroups) {
+
+        this.id = id;
+        this.flowGroups = flowGroups;
+    }
+
     public String getId() { return id; }
-
-    public ConcurrentHashMap<Object, FlowGroup> getFlowGroups() { return flowGroups; }
-
+    public ArrayList<FlowGroup> getFlowGroups() { return flowGroups; }
 }

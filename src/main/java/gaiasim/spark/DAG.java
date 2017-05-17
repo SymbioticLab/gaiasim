@@ -12,9 +12,11 @@ package gaiasim.spark;
 // we don't make DAG backward compatible yet.
 // Maybe add optimizations of making coflows finish immediately in case of co-location? Jimmy: not necessary, we handle this in master.
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 import gaiasim.gaiamaster.Coflow;
+import gaiasim.gaiamaster.FlowGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,11 +30,11 @@ public class DAG {
     public long startTime;
     public long finishTime;
 
-    public HashMap<String, Coflow> coflowlist; // we don't remove coflows from this list while executing.
+    public HashMap<String, Coflow> coflowList; // we don't remove coflows from this list while executing.
 
     //// ******* We remove coflows from the {rootCoflowsID, to_parents } while executing.
     public Set<String> rootCoflowsID; // root Coflows := active coflows // MUST use set to guarantee uniqueness.
-    // TODO FIXME: never add a stageID which is not yet marked as a coflow to (root)?
+
 
     // using SetMultimap so there will be no duplicate items.
     // This is actually mapping between stages, so contains more than mapping between coflows.
@@ -45,14 +47,14 @@ public class DAG {
         this.rootCoflowsID = new HashSet<String>();
         this.coflow_to_parents = HashMultimap.create();
         this.coflow_to_children = HashMultimap.create();
-        this.coflowlist = new HashMap<>(); // TODO check init
+        this.coflowList = new HashMap<>(); // TODO check init
     }
 
     // handles the finish of a Coflow, and returns a list of new root Coflows, for scheduling (ONLY new ones!)
     public ArrayList<Coflow> onCoflowFIN(String finishedCoflowID){
         ArrayList<Coflow> ret = new ArrayList<Coflow>();
         // first manipulate the state of DAG.
-        if(coflowlist.containsKey(finishedCoflowID)){
+        if(coflowList.containsKey(finishedCoflowID)){
             if(rootCoflowsID.contains(finishedCoflowID)){
                 // remove it from rootCoflows (MUST remove it from the entire DAG, so need also remove the multimap)
                 rootCoflowsID.remove(finishedCoflowID);
@@ -63,7 +65,7 @@ public class DAG {
                     // If dependency are met, add the child coflows to root
                     if (coflow_to_parents.get(child).isEmpty()) {
                         rootCoflowsID.add(child);
-                        ret.add( coflowlist.get(child) );
+                        ret.add( coflowList.get(child) );
                     }
                 }
             }
@@ -73,7 +75,7 @@ public class DAG {
             }
         }
         else {
-            System.err.println("YARN: [ERROR] Received COFLOW_FIN for a non-existing coflow");
+            System.err.println("YARN: [ERROR] Received COFLOW_FIN for a non-existent coflow");
             System.exit(1);
         }
 
@@ -89,7 +91,7 @@ public class DAG {
     public ArrayList<Coflow> getRootCoflows() {
         ArrayList<Coflow> ret = new ArrayList<Coflow> (rootCoflowsID.size());
         for(String k : rootCoflowsID){
-            ret.add(coflowlist.get(k));
+            ret.add(coflowList.get(k));
         }
         return ret;
     }
@@ -107,21 +109,41 @@ public class DAG {
     // Given {src, dst}, set the appropriate dependency:
     // (1) dst.parent.has(src)
     // (2) src.child.has(dst)
-    public void setDependency( String src_stage , String dst_stage ){
+    public void updateDependency(String src_stage , String dst_stage ){
         // first set the coflow -> [] parent mapping
         coflow_to_parents.put(dst_stage , src_stage);
         // then set the coflow -> children mapping
         coflow_to_children.put(src_stage , dst_stage);
 
-        // TODO: think about simply adding root, even when the coflow is null. we can resolve this in YARNEmulator.
-
+        // update the rootSet to contain the root of stages (not coflows), but their childrens are root coflows.
+        rootCoflowsID.add(src_stage);
+        rootCoflowsID.remove(dst_stage);
     }
 
+
+    // construct a list of coflow from the Multimap
+    public void addCoflows(ArrayListMultimap<String, FlowGroup> tmpCoflowList) {
+        for (String coflowID : tmpCoflowList.keySet()){
+            Coflow cf = new Coflow( coflowID , (ArrayList<FlowGroup>) tmpCoflowList.get(coflowID)); // TODO: verify
+            coflowList.put( coflowID , cf);
+        }
+    }
+
+    // TODO for all stages, trim those that do not delegate a coflow, and mark their children coflow as root
     // we can ONLY do this after we are done with all coflowList and dependencies!
-    public void setRootCoflowsID(){
-        // TODO for all stages, trim those that do not delegate a coflow, and mark their children coflow as root
+    public void trimRoot() {
+        // TODO: verify this.
+        for ( String k : rootCoflowsID){
+            // search its childrens, remove { child -> parent (k) }.
+            for ( String child : coflow_to_children.get(k) ){
+                coflow_to_parents.remove( child , k  );
+                // If dependency are met, add the child coflows to root
+                if (coflow_to_parents.get(child).isEmpty()) {
+                    rootCoflowsID.add(child);
+                }
+            }
+        }
     }
-
 
     ///// getters and setters /////
     public String getId() {
@@ -139,5 +161,4 @@ public class DAG {
     public void setArrivalTime(long arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
-
 }

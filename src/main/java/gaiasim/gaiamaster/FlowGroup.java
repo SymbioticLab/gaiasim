@@ -10,38 +10,36 @@ public class FlowGroup {
 
     // final fields
     private final String id;
-
-    private final String src;
-
-    private final String dst;
+    private final String srcLocation;
+    private final String dstLocation;
     private final String owningCoflowID;
     private final double totalVolume;
+
     // non-final fields
     private long startTime = -1;
-
     private long endTime = -1;
-    // make this field volatile!
+
+    // make this field volatile! Or maybe atomic?
     private volatile double transmitted;
 
-    // The subflow info, is essientially immutable data.
+    // The subflow info, is essientially immutable data? Nope. TODO: where to store this info? Could use a map in GAIA.
     private ArrayList<Pathway> paths = new ArrayList<Pathway>();
 
-    public FlowGroup(String id, String src, String dst, String owningCoflowID, double totalVolume) {
+    public FlowGroup(String id, String srcLocation, String dstLocation, String owningCoflowID, double totalVolume) {
         this.id = id;
-        this.src = src;
-        this.dst = dst;
+        this.srcLocation = srcLocation;
+        this.dstLocation = dstLocation;
         this.owningCoflowID = owningCoflowID;
         this.totalVolume = totalVolume;
     }
-
 
     public String getId() { return id; }
 
     public double getTotalVolume() { return totalVolume; }
 
-    public String getSrc() { return src; }
+    public String getSrcLocation() { return srcLocation; }
 
-    public String getDst() { return dst; }
+    public String getDstLocation() { return dstLocation; }
 
     public String getOwningCoflowID() { return owningCoflowID; }
 
