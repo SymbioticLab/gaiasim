@@ -1,6 +1,6 @@
 package gaiasim.agent;
 
-import com.revinate.guava.util.concurrent.RateLimiter;
+import com.google.common.util.concurrent.RateLimiter;
 import gaiasim.util.Constants;
 
 import java.io.*;
