@@ -30,7 +30,7 @@ public class DAG {
     public HashMap<String, Coflow> coflowList; // we don't remove coflows from this list while executing.
 
     //// ******* We remove coflows from the {rootCoflowsID, to_parents } while executing.
-    public Set<String> rootCoflowsID; // root Coflows := active coflows // MUST use set to guarantee uniqueness.
+    public HashSet<String> rootCoflowsID; // root Coflows := active coflows // MUST use set to guarantee uniqueness.
 
 
     // using SetMultimap so there will be no duplicate items.
@@ -55,7 +55,6 @@ public class DAG {
             if(rootCoflowsID.contains(finishedCoflowID)){
                 // remove it from rootCoflows (MUST remove it from the entire DAG, so need also remove the multimap)
                 rootCoflowsID.remove(finishedCoflowID);
-
                 // search its childrens, remove { child -> parent (Coflow_FIN) }.
                 for ( String child : coflow_to_children.get(finishedCoflowID) ){
                     coflow_to_parents.remove( child , finishedCoflowID  );
@@ -80,7 +79,6 @@ public class DAG {
         // then return the root. If we are done, set the finish time.
         if(getRootCoflows().isEmpty()){
             onFinish();
-            return null;
         }
         return ret;
     }
@@ -110,13 +108,13 @@ public class DAG {
     // (2) src.child.has(dst)
     public void updateDependency(String src_stage , String dst_stage ){
         // first set the coflow -> [] parent mapping
-        coflow_to_parents.put(dst_stage , src_stage);
+        coflow_to_parents.put(this.id + ":" + dst_stage , this.id + ":" + src_stage);
         // then set the coflow -> children mapping
-        coflow_to_children.put(src_stage , dst_stage);
+        coflow_to_children.put(this.id + ":" +src_stage , this.id + ":" + dst_stage);
 
         // update the rootSet to contain the root of stages (not coflows), but their childrens are root coflows.
-        rootCoflowsID.add(src_stage);
-        rootCoflowsID.remove(dst_stage);
+        rootCoflowsID.add(this.id + ":" + src_stage);
+        rootCoflowsID.remove(this.id + ":" + dst_stage);
     }
 
 
@@ -134,17 +132,24 @@ public class DAG {
     // TODO for all stages, trim those that do not delegate a coflow, and mark their children coflow as root
     // we can ONLY do this after we are done with all coflowList and dependencies!
     public void trimRoot() {
-        // TODO: verify this.
-        for ( String k : rootCoflowsID){
+        // TODO: verify this. Not working
+        // Using Iterator.remove() is the only safe way to remove item while iterating
+        // We can't add items while iterating
+        HashSet<String> rootsToAdd = new HashSet<String>();
+        for( Iterator<String> i = rootCoflowsID.iterator() ; i.hasNext(); ){
+            String root = i.next();
             // search its childrens, remove { child -> parent (k) }.
-            for ( String child : coflow_to_children.get(k) ){
-                coflow_to_parents.remove( child , k  );
+            for ( String child : coflow_to_children.get(root) ){
+                coflow_to_parents.remove( child , root );
                 // If dependency are met, add the child coflows to root
                 if (coflow_to_parents.get(child).isEmpty()) {
-                    rootCoflowsID.add(child);
+                    rootsToAdd.add(child);
                 }
             }
+            // remove this root
+            i.remove();
         }
+        rootCoflowsID.addAll(rootsToAdd);
     }
 
     ///// getters and setters /////
