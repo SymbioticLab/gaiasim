@@ -91,7 +91,7 @@ public class YARNEmulator implements Runnable {
             }
             // Check if DAG is done
             if (dag.isDone()){
-                System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getArrivalTime()) + " ms.");
+                System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
             }
         }
         else {

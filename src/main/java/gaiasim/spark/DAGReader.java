@@ -3,11 +3,9 @@ package gaiasim.spark;
 //import gaiasim.network.Coflow_Old;
 
 import com.google.common.collect.ArrayListMultimap;
-import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -70,7 +68,7 @@ public class DAGReader implements Runnable{
         long cur_time = 0;
         for (DAG dag : dagList) {
             time_sleep = dag.getArrivalTime() - cur_time;
-            System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + dag.id);
+            System.out.println("JobInserter: Waiting " + time_sleep + " ms before inserting new job " + dag.id);
             start = System.currentTimeMillis();
             while (time_sleep > 0) {
                 try {
@@ -206,11 +204,9 @@ public class DAGReader implements Runnable{
                 dag.updateDependency( src_stage , dst_stage);
 
             } // end of current DAG
-            // trim the DAG (remove the "root" -> null)
-            dag.trimRoot();
-
-            // flush the Coflows from the buffer to dag, then add to dagList
+            // flush the Coflows from the buffer to dag, then update the root, and then add to dagList
             dag.addCoflows(tmpCoflowList);
+            dag.updateRoot();
             dagList.add(dag);
 
         } // end of trace.txt

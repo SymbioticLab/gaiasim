@@ -112,9 +112,6 @@ public class DAG {
         // then set the coflow -> children mapping
         coflow_to_children.put(this.id + ":" +src_stage , this.id + ":" + dst_stage);
 
-        // update the rootSet to contain the root of stages (not coflows), but their childrens are root coflows.
-        rootCoflowsID.add(this.id + ":" + src_stage);
-        rootCoflowsID.remove(this.id + ":" + dst_stage);
     }
 
 
@@ -129,26 +126,22 @@ public class DAG {
         }
     }
 
-    // TODO for all stages, trim those that do not delegate a coflow, and mark their children coflow as root
+    // TODO parse the dependencies and find the roots.
     // we can ONLY do this after we are done with all coflowList and dependencies!
-    public void trimRoot() {
-        // TODO: verify this. Not working
-        // Using Iterator.remove() is the only safe way to remove item while iterating
-        // We can't add items while iterating
+    public void updateRoot() {
+        // TODO: verify this.
         HashSet<String> rootsToAdd = new HashSet<String>();
-        for( Iterator<String> i = rootCoflowsID.iterator() ; i.hasNext(); ){
-            String root = i.next();
-            // search its childrens, remove { child -> parent (k) }.
-            for ( String child : coflow_to_children.get(root) ){
-                coflow_to_parents.remove( child , root );
-                // If dependency are met, add the child coflows to root
-                if (coflow_to_parents.get(child).isEmpty()) {
-                    rootsToAdd.add(child);
-                }
+        // for each Coflow, check if it has (valid) parents, if not, add to the set.
+        for (String k : coflowList.keySet()){
+            // remove the redundant coflow_to_parent entries
+            coflow_to_parents.get(k).removeIf(parent -> !coflowList.containsKey(parent));
+
+            // then check if this is an outstanding coflow.
+            if( !coflow_to_parents.containsKey(k)){
+                rootsToAdd.add(k);
             }
-            // remove this root
-            i.remove();
         }
+
         rootCoflowsID.addAll(rootsToAdd);
     }
 
