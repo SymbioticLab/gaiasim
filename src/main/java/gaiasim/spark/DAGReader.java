@@ -210,9 +210,11 @@ public class DAGReader implements Runnable{
             dagList.add(dag);
 
         } // end of trace.txt
-
         br.close();
+
+        // sort the dagList according to arrivalTime
+        Collections.sort(dagList, (o1, o2) -> (int)(o1.getArrivalTime() - o2.getArrivalTime()));
+
         return dagList;
     }
-
 }
