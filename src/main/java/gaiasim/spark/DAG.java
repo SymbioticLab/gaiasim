@@ -18,14 +18,11 @@ import com.google.common.collect.SetMultimap;
 import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiamaster.FlowGroup;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DAG {
-    public String id;
-    public long arrivalTime;
+    public final String id;
+    public final long arrivalTime;
 
     public long startTime;
     public long finishTime;
@@ -98,12 +95,14 @@ public class DAG {
 
     public boolean isDone() { return rootCoflowsID.isEmpty(); }
 
-    public void onStart(){
+    public long onStart(){
         startTime = System.currentTimeMillis();
+        return startTime;
     }
 
-    public void onFinish(){
+    public long onFinish(){
         finishTime = System.currentTimeMillis();
+        return finishTime;
     }
 
     // Given {src, dst}, set the appropriate dependency:
@@ -124,7 +123,10 @@ public class DAG {
     // construct a list of coflow from the Multimap
     public void addCoflows(ArrayListMultimap<String, FlowGroup> tmpCoflowList) {
         for (String coflowID : tmpCoflowList.keySet()){
-            Coflow cf = new Coflow( coflowID , (ArrayList<FlowGroup>) tmpCoflowList.get(coflowID)); // TODO: verify
+//            List<FlowGroup> lfg = tmpCoflowList.get(coflowID);
+//            ArrayList<FlowGroup> al = new ArrayList<>(tmpCoflowList.get(coflowID));
+            // get the Collection<E>, create an ArrayList. CAN'T cast to ArrayList here.
+            Coflow cf = new Coflow( coflowID , new ArrayList<>(tmpCoflowList.get(coflowID)));
             coflowList.put( coflowID , cf);
         }
     }
@@ -146,19 +148,11 @@ public class DAG {
     }
 
     ///// getters and setters /////
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public long getArrivalTime() { return arrivalTime; }
 
-    public long getArrivalTime() {
-        return arrivalTime;
-    }
+    public long getStartTime() { return startTime; }
 
-    public void setArrivalTime(long arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
+    public long getFinishTime() { return finishTime; }
 }

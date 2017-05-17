@@ -7,6 +7,7 @@ import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -64,6 +65,7 @@ public class DAGReader implements Runnable{
     @Override
     public void run() {
         // move the logic of JobInserter to here
+        System.out.println("DAGReader: starting to submit DAGs to YARN");
         long time_sleep, start, end;
         long cur_time = 0;
         for (DAG dag : dagList) {
@@ -103,6 +105,8 @@ public class DAGReader implements Runnable{
         // Currently this is only used for assigning nodes to task
         // when a trace comes without such information.
         Random rnd = new Random(13);
+
+        System.out.println("DAGReader: reading from " + tracefile);
 
         FileReader fr = new FileReader(tracefile);
         BufferedReader br = new BufferedReader(fr);
@@ -164,7 +168,7 @@ public class DAGReader implements Runnable{
 
             // create a buffer for constructing Coflows.
             // when finished reading this job, we can recover all Coflow information from it.
-            // maps FlowGroup to the Coflow_id.
+            // maps Coflow_id to FlowGroups.
             ArrayListMultimap<String , FlowGroup> tmpCoflowList = ArrayListMultimap.create();
 
             // Map coflow and Determine coflow dependencies
@@ -193,7 +197,7 @@ public class DAGReader implements Runnable{
                         // Volume - divided_data_size
                         FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage ,
                             srcLoc, dstLoc , dst_stage , divided_data_size);
-                        tmpCoflowList.put(dst_stage , fg);
+                        tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
                     }
                 }
 
