@@ -42,6 +42,7 @@ public class DAGReader implements Runnable{
     String tracefile;
     NetGraph netGraph;
     LinkedBlockingQueue<YARNMessages> yarnEventQueue;
+    ArrayList<DAG> dagList;
 
     public DAGReader(String tracefile, NetGraph netGraph, LinkedBlockingQueue<YARNMessages> yarnEventQueue) {
         this.tracefile = tracefile;
@@ -50,6 +51,11 @@ public class DAGReader implements Runnable{
 
         System.out.println("YARN: Initing DAGReader.");
 
+        try {
+            this.dagList = getListofDAGs(tracefile , netGraph);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -57,10 +63,40 @@ public class DAGReader implements Runnable{
 
     @Override
     public void run() {
+        // move the logic of JobInserter to here
+        long time_sleep, start, end;
+        long cur_time = 0;
+        for (DAG dag : dagList) {
+            time_sleep = dag.getArrivalTime() - cur_time;
+            System.out.println("JobInserter: Waiting " + time_sleep + " before inserting new job " + dag.id);
+            start = System.currentTimeMillis();
+            while (time_sleep > 0) {
+                try {
+                    Thread.sleep(time_sleep);
+                    break;
+                }
+                catch (InterruptedException e) {
+                    end = System.currentTimeMillis();
+                    time_sleep -= (end - start);
+                }
+            } // while time_sleep > 0
 
+            cur_time = dag.getArrivalTime();
+
+            try {
+                yarnEventQueue.put(new YARNMessages(dag));
+                System.out.println("JobInserter: Inserted job " + dag.getId());
+            }
+            catch (InterruptedException e) {
+                // We shouldn't ever get this
+                e.printStackTrace();
+                System.exit(1);
+            }
+
+        } // for jobs
     }
 
-    public static ArrayList<DAG> getListofDAGs( String filepath, NetGraph net_graph ) throws IOException {
+    public static ArrayList<DAG> getListofDAGs( String tracefile, NetGraph net_graph ) throws IOException {
         ArrayList<DAG> dagList = new ArrayList<DAG>();
 
         // For now, use the same seed between runs.
@@ -68,7 +104,7 @@ public class DAGReader implements Runnable{
         // when a trace comes without such information.
         Random rnd = new Random(13);
 
-        FileReader fr = new FileReader(filepath);
+        FileReader fr = new FileReader(tracefile);
         BufferedReader br = new BufferedReader(fr);
 
         String line;
@@ -177,7 +213,6 @@ public class DAGReader implements Runnable{
 
         br.close();
         return dagList;
-
     }
 
 }
