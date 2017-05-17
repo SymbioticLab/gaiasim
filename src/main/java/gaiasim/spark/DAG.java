@@ -1,12 +1,15 @@
 package gaiasim.spark;
 
-// DAG is what is submitted by DAGReader to YARNEmulator.
-// It is like "Job" class. but simpler.
-// dependencies are stored in DAG rather than in Coflow this time!
+// CoflowDAG is what is submitted by DAGReader to YARNEmulator.
+// This DAG is NOT the same as the DAG in the trace, this is DAG between Coflows!!!
+// Dependencies are stored in DAG rather than in Coflow this time!
+
+// There are many ways to transform a job DAG into dependency graph of Coflows.
+// The one we use in DAGReader is only one valid way.
+// Key idea: construct coflows for dst in a shuffle (src,dst). So coflows are defined by collecting data to one sink.
+
+// since it is only inside YARN, so it's fine to make the field public.
 // we don't make DAG backward compatible yet.
-
-// since it is only inside YARN, so it's fine to make it public.
-
 // Maybe add optimizations of making coflows finish immediately in case of co-location? Jimmy: not necessary, we handle this in master.
 
 import com.google.common.collect.HashMultimap;
@@ -29,8 +32,10 @@ public class DAG {
 
     //// ******* We remove coflows from the {rootCoflowsID, to_parents } while executing.
     public Set<String> rootCoflowsID; // root Coflows := active coflows // MUST use set to guarantee uniqueness.
+    // TODO FIXME: never add a stageID which is not yet marked as a coflow to (root)?
 
-    // using set multimap so there will be no duplicate items.
+    // using SetMultimap so there will be no duplicate items.
+    // This is actually mapping between stages, so contains more than mapping between coflows.
     public SetMultimap<String , String> coflow_to_parents;
     public SetMultimap<String , String> coflow_to_children; // we also don't remove coflows from this list.
 
@@ -43,8 +48,9 @@ public class DAG {
         this.coflowlist = new HashMap<>(); // TODO check init
     }
 
-    // handles the finish of a Coflow, and returns a list of new root Coflows -> for scheduling? FIXME!
+    // handles the finish of a Coflow, and returns a list of new root Coflows, for scheduling (ONLY new ones!)
     public ArrayList<Coflow> onCoflowFIN(String finishedCoflowID){
+        ArrayList<Coflow> ret = new ArrayList<Coflow>();
         // first manipulate the state of DAG.
         if(coflowlist.containsKey(finishedCoflowID)){
             if(rootCoflowsID.contains(finishedCoflowID)){
@@ -57,6 +63,7 @@ public class DAG {
                     // If dependency are met, add the child coflows to root
                     if (coflow_to_parents.get(child).isEmpty()) {
                         rootCoflowsID.add(child);
+                        ret.add( coflowlist.get(child) );
                     }
                 }
             }
@@ -70,12 +77,13 @@ public class DAG {
             System.exit(1);
         }
 
+        // TODO check the logic here.
         // then return the root. If we are done, set the finish time.
         if(getRootCoflows().isEmpty()){
             onFinish();
             return null;
         }
-        return getRootCoflows(); // FIXME!
+        return ret;
     }
 
     public ArrayList<Coflow> getRootCoflows() {
@@ -98,15 +106,20 @@ public class DAG {
 
     // Given {src, dst}, set the appropriate dependency:
     // (1) dst.parent.has(src)
-    // (2) remove dst from root, add src to root.
+    // (2) src.child.has(dst)
     public void setDependency( String src_stage , String dst_stage ){
         // first set the coflow -> [] parent mapping
         coflow_to_parents.put(dst_stage , src_stage);
         // then set the coflow -> children mapping
         coflow_to_children.put(src_stage , dst_stage);
-        // Then set the root_list:
-        rootCoflowsID.add(src_stage); // Because it is a set this is fine!
-        rootCoflowsID.remove(dst_stage);
+
+        // TODO: think about simply adding root, even when the coflow is null. we can resolve this in YARNEmulator.
+
+    }
+
+    // we can ONLY do this after we are done with all coflowList and dependencies!
+    public void setRootCoflowsID(){
+        // TODO for all stages, trim those that do not delegate a coflow, and mark their children coflow as root
     }
 
 

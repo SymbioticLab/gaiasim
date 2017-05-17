@@ -20,7 +20,6 @@ import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
-import gaiasim.spark.DAGReader;
 import gaiasim.spark.DAGReader_old;
 import gaiasim.spark.Job;
 import gaiasim.spark.JobInserter;

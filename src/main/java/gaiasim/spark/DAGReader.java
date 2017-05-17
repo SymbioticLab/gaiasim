@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-// This is the DAGReader.
+// This is the DAGReader. (essientially DAG Reducer)
 // it reads the trace.txt and put Job(DAG) into an event queue, according to the time of arrival.
 // We implement it as a Runnable.
 
