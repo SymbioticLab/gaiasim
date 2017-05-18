@@ -3,6 +3,10 @@ package gaiasim.gaiamaster;
 // The GAIA master. Runing asynchronous message processing logic.
 // Three threads: 1. handling Coflow insertion (connects YARN),
 
+import gaiasim.comm.PortAnnouncementRelayMessage;
+import gaiasim.comm.SendingAgentContact;
+import gaiasim.network.Coflow_Old;
+import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.PoorManScheduler;
@@ -12,6 +16,7 @@ import gaiasim.spark.YARNMessages;
 import gaiasim.util.Constants;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
@@ -24,6 +29,7 @@ public class Master {
     NetGraph netGraph;
     Scheduler scheduler;
     protected String outdir;
+    protected boolean enablePersistentConn;
 
     // SubModules of Master
     protected Thread yarnEmulator;
@@ -74,9 +80,11 @@ public class Master {
         // setting up the scheduler
         if (scheduler_type.equals("baseline")) {
             scheduler = new BaselineScheduler(netGraph);
+            enablePersistentConn = false;
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
             scheduler = new PoorManScheduler(netGraph);
+            enablePersistentConn = true;
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
@@ -90,6 +98,20 @@ public class Master {
     // the emulate() Thread is the main thread.
     public void emulate() {
         // setting up the states
+
+        // Set up our SendingAgentContacts
+/*        for (String sa_id : netGraph.nodes_) {
+            sa_contacts_.put(sa_id,
+                    new SendingAgentContact(sa_id, netGraph, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
+                            message_queue_, port_announcements, is_baseline_));
+        }
+
+        // If we aren't emulating baseline, receive the port announcements
+        // from SendingAgents and set appropriate flow rules.
+        if (!isBaseline) {
+            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, port_announcements);
+            relay.relay_ports();
+        }*/
 
         // start the other two threads.
         coflowListener.start();
@@ -105,11 +127,10 @@ public class Master {
 
 
 
-
-        // Enter main event loop (no such thing)
+/*        // Enter main event loop (no such thing)
         while (true){
 
-        }
+        }*/
 
     }
 
@@ -122,19 +143,25 @@ public class Master {
     public void schedule(){
         System.out.println("Master: Scheduling......");
 
-        // iterate through the coflow list.
-        // update the state
+        // take a snapshot of the current state, and moves on, so as not to block other threads.
+        HashMap<String , Coflow_Old> outcf = new HashMap<>();
         for ( Map.Entry<String, Coflow> ecf : coflowPool.entrySet()){
-
-//            onFinishCoflow(ecf.getValue().getId());
-//
-//            try {
-//                yarnEventQueue.put( new YARNMessages(ecf.getValue().getId()));
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            Coflow_Old cfo = Coflow.toCoflow_Old(ecf.getValue());
+            outcf.put( cfo.getId() , cfo );
         }
+
+        long currentTime = System.currentTimeMillis();
+
+        try {
+            HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
+            // Act on the results
+
+
+
+        } catch (Exception e) { // could throw File I/O error
+            e.printStackTrace();
+        }
+
     }
 
     // handles coflow finish.
