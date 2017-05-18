@@ -50,6 +50,7 @@ public class FlowGroup {
     public static FlowGroup_Old toFlowGroup_Old(FlowGroup fg , int intID ){
         FlowGroup_Old fgo = new FlowGroup_Old(fg.getId() , intID ,
                 fg.getOwningCoflowID() , fg.getSrcLocation(), fg.getDstLocation() , fg.getTransmitted());
+        fgo.setVolume( fg.getTotalVolume() );
 
         return fgo;
     }
