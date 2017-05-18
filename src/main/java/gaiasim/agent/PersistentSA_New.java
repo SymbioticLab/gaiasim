@@ -32,6 +32,7 @@ import gaiasim.comm.ControlMessage;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.gaiamessage.AgentMessage;
+import gaiasim.gaiamessage.FlowStatusMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
@@ -62,6 +63,28 @@ public class PersistentSA_New extends PersistentSendingAgent{
 
         // We may want to override the get_status()  and  finish_flow().
 
+        @Override
+        public synchronized void finish_flow(String flow_id) {
+            // We don't send out ScheduleMessage this time. so that CTRL can decode correctly.
+            // Think about flow_status Message. TODO
+            HashMap<String , Double> content = new HashMap<>();
+            content.put(flow_id , new Double(-1));
+            AgentMessage m = new FlowStatusMessage(content);
+
+
+            flows_.remove(flow_id);
+        }
+
+        @Override
+        public synchronized void get_status() {
+            System.out.println("Should not invoke get_status()");
+        }
+
+        @Override
+        public synchronized void writeMessage(ScheduleMessage m) throws java.io.IOException {
+            System.out.println("Should not write this legacy ScheduleMessage");
+        }
+
     } // class DataBroker
 
     // Listens for CTRL messages, and contains some event handling logic.
@@ -77,10 +100,8 @@ public class PersistentSA_New extends PersistentSendingAgent{
                 while (true) {
                     ControlMessage c = (ControlMessage) dataBroker.is_.readObject();
 
-                    // TODO: Consider turning the functionality for FLOW_UPDATE and
-                    //       SUBFLOW_INFO into their own synchronized functions to
-                    //       avoid potential problems with a flow being finished in
-                    //       the middle of while we're calling one of these.
+                    // TODO change the message into the only ONE message that we will be using.
+
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(dataBroker.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
                         assert(!dataBroker.flows_.containsKey(c.flow_id_));
