@@ -2,6 +2,7 @@ package gaiasim.gaiamaster;
 
 // New definition of FlowGroup
 
+import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.Pathway;
 
 import java.util.ArrayList;
@@ -43,4 +44,22 @@ public class FlowGroup {
 
     public String getOwningCoflowID() { return owningCoflowID; }
 
+    public double getTransmitted() { return transmitted; }
+
+    // TODO check the two converters
+    public static FlowGroup_Old toFlowGroup_Old(FlowGroup fg , int intID ){
+        FlowGroup_Old fgo = new FlowGroup_Old(fg.getId() , intID ,
+                fg.getOwningCoflowID() , fg.getSrcLocation(), fg.getDstLocation() , fg.getTransmitted());
+
+        return fgo;
+    }
+
+    public FlowGroup( FlowGroup_Old fgo){
+        this.id = fgo.getId();
+        this.srcLocation = fgo.getSrc_loc();
+        this.dstLocation = fgo.getDst_loc();
+        this.owningCoflowID = fgo.getCoflow_id();
+        this.totalVolume = fgo.getVolume();
+        this.transmitted = fgo.getTransmitted_volume();
+    }
 }
