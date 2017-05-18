@@ -30,4 +30,12 @@ public class FlowStatusMessage extends AgentMessage{
         this.isFinished = new boolean[]{isFinished};
     }
 
+    public int getSize() { return size; }
+
+    public String[] getId() { return id; }
+
+    public double[] getTransmitted() { return transmitted; }
+
+    public boolean[] getIsFinished() { return isFinished; }
+
 }
