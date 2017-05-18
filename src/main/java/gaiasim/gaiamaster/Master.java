@@ -3,8 +3,12 @@ package gaiasim.gaiamaster;
 // The GAIA master. Runing asynchronous message processing logic.
 // Three threads: 1. handling Coflow insertion (connects YARN),
 
+import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
+import gaiasim.comm.ScheduleMessage;
 import gaiasim.comm.SendingAgentContact;
+import gaiasim.gaiamessage.AgentMessage;
+import gaiasim.gaiamessage.FlowStatusMessage;
 import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
@@ -31,14 +35,19 @@ public class Master {
     protected String outdir;
     protected boolean enablePersistentConn;
 
+    // Legacy fields
+    // SendingAgentContacts indexed by sending agent id
+    public HashMap<String, SendingAgentContact> sa_contacts_ = new HashMap<String, SendingAgentContact>();
+
     // SubModules of Master
     protected Thread yarnEmulator;
     protected Thread coflowListener;
-    protected Thread agentController; // maybe multiple threads?
+    protected Thread agentController; // This is similar to the Manager eventloop in old version. // maybe multiple threads?
     protected final ScheduledExecutorService mainExec; // For periodic call of schedule()
 
     protected LinkedBlockingQueue<Coflow> coflowEventQueue;
     protected LinkedBlockingQueue<YARNMessages> yarnEventQueue;
+    protected LinkedBlockingQueue<AgentMessage> agentEventQueue = new LinkedBlockingQueue<>();
 
     // volatile states of master
     protected volatile ConcurrentHashMap<String , Coflow> coflowPool;
@@ -61,6 +70,57 @@ public class Master {
                 }
             }
         }
+    }
+
+    protected class AgentController implements Runnable{
+        @Override
+        public void run() {
+            while (true) {
+                // Block until we have a message to receive
+                AgentMessage m = null;
+                try {
+                    m = agentEventQueue.take();
+                    switch (m.getType()){
+                        case FLOW_STATUS:
+                            FlowStatusMessage fsm = (FlowStatusMessage) m;
+                            if(fsm.getSize() == 1 && fsm.getIsFinished()[0]){ // single FLOW_FIN message
+                                onFinishFlow(fsm.getId() , System.currentTimeMillis());
+                            }
+                            else { // FLOW_STATUS message.
+                                int size = fsm.getSize();
+                                for(int i = 0 ; i < size ; i++ ){
+                                    // first get the current flowGroup ID
+                                    // fsm.getId()[i];
+                                    // check if it is finished , onFinishFlow
+                                    // set the transmitted volume
+                                    // ???
+                                }
+                            }
+
+
+                            break;
+
+                        case PORT_ANNOUNCEMENT:
+                            System.out.println("Master: should not receive PA during normal operation");
+                            break;
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }
+    }
+
+    private void onFinishFlow(String[] id, long curTime) {
+        // set the current status
+
+        // check if all the coflow is finished
+
+        // if so set coflow status, send COFLOW_FIN
+
+
     }
 
     public Master(String gml_file, String trace_file,
@@ -100,18 +160,28 @@ public class Master {
         // setting up the states
 
         // Set up our SendingAgentContacts
-/*        for (String sa_id : netGraph.nodes_) {
+        // TODO verify this can work, because the declared message type of event queue has changed!!!
+        // Should be fine, because even in old version there are two class of messages being sent,
+        // we count the message number and determines the state of execution.
+
+        LinkedBlockingQueue<PortAnnouncementMessage_Old> PAEventQueue =
+                new LinkedBlockingQueue<PortAnnouncementMessage_Old>();
+
+        // TODO verfiy this, because in baseline, the SendingAgentContact will forward the received message into it.
+        LinkedBlockingQueue<ScheduleMessage> devNull = new LinkedBlockingQueue<>();
+
+        for (String sa_id : netGraph.nodes_) {
             sa_contacts_.put(sa_id,
                     new SendingAgentContact(sa_id, netGraph, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
-                            message_queue_, port_announcements, is_baseline_));
+                            devNull, PAEventQueue, !enablePersistentConn));
         }
 
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
-        if (!isBaseline) {
-            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, port_announcements);
+        if (enablePersistentConn) {
+            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, PAEventQueue);
             relay.relay_ports();
-        }*/
+        }
 
         // start the other two threads.
         coflowListener.start();
@@ -124,7 +194,6 @@ public class Master {
 
         // Start the input
         yarnEmulator.start();
-
 
 
 /*        // Enter main event loop (no such thing)
