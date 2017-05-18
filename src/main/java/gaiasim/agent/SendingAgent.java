@@ -48,7 +48,8 @@ public class SendingAgent {
                 while (true) {
                     Socket socketToCTRL = listener.accept();
                     logger.info("SA: Starting RRF.");
-                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
+//                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
+                    PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL);
                 }
             }
 

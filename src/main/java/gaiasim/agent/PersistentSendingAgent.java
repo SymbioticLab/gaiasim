@@ -228,4 +228,8 @@ public class PersistentSendingAgent {
         Listener listener = new Listener(dataBroker);
         listener.run();
     }
+
+    // the default constructor
+    public PersistentSendingAgent(){
+    }
 }

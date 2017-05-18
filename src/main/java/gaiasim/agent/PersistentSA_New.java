@@ -26,46 +26,107 @@ package gaiasim.agent;
 // How do we implement heartbeat message?
 // What about thread safety?
 
+// for now just copy the code and modify.
 
-
+import gaiasim.comm.ControlMessage;
+import gaiasim.comm.PortAnnouncementMessage_Old;
+import gaiasim.comm.ScheduleMessage;
+import gaiasim.gaiamessage.AgentMessage;
 import gaiasim.network.NetGraph;
+import gaiasim.util.Constants;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class PersistentSA_New {
+import gaiasim.agent.PersistentSendingAgent.DataBroker;
 
-    String id;
-    String trace_id;
+import static gaiasim.agent.PersistentSendingAgent.*;
 
-    // A Map containing Connections for each path from this SendingAgent to each
-    // ReceivingAgent. The first index of the Map is the ReceivingAgent ID. The
-    // second index (the index into the array of Connections) is the ID of the
-    // path from the SendingAgent to the ReceivingAgent that is used by that
-    // PersistentConnection.
-    // TODO: Don't just have a single PersistentConnection per path, but a pool of
-    //       Connections per path. This could be implemented as a LinkedBlockingQueue
-    //       that Connections get cycled through in RR fashion. Or, if one really
-    //       wanted to get fancy, Connections could be kept in some order based
-    //       on their relative "hottness" -- how warmed up the TCP connection is.
+public class PersistentSA_New extends PersistentSendingAgent{
 
-    // Map of ra_id  ->  list[]
-    public HashMap<String, PersistentConnection[]> connectionPool = new HashMap<String, PersistentConnection[]>();
+    // Inner class DataBroker, function:
+    // 1. Upon construction, create persistentConn and send PA messages
+    //
+    public class NewDataBroker extends DataBroker{
 
-    // A Map of all Connections, indexed by PersistentConnection ID. PersistentConnection ID is
-    // composed of ReceivingAgentID + PathID.
-    public HashMap<String, PersistentConnection> connections = new HashMap<String, PersistentConnection>();
+        public NewDataBroker(String id, NetGraph net_graph, Socket sd) {
+            super(id , net_graph , sd);
+        }
 
-    // Flows that are currently being sent by this SendingAgent
-    public HashMap<String, FlowInfo> flows = new HashMap<String, FlowInfo>();
+        // the new message interface we use
+        public synchronized void writeMessage(AgentMessage m) throws java.io.IOException {
+            os_.writeObject(m);
+        }
 
-    public Socket socketToCTRL;
-    public ObjectOutputStream objectOutputStream;
-    public ObjectInputStream objectInputStream;
+        // We may want to override the get_status()  and  finish_flow().
 
+    } // class DataBroker
+
+    // Listens for CTRL messages, and contains some event handling logic.
+    private class NewListener implements Runnable {
+        public NewDataBroker dataBroker;
+
+        public NewListener(NewDataBroker dataBroker) {
+            this.dataBroker = dataBroker;
+        }
+
+        public void run() {
+            try {
+                while (true) {
+                    ControlMessage c = (ControlMessage) dataBroker.is_.readObject();
+
+                    // TODO: Consider turning the functionality for FLOW_UPDATE and
+                    //       SUBFLOW_INFO into their own synchronized functions to
+                    //       avoid potential problems with a flow being finished in
+                    //       the middle of while we're calling one of these.
+                    if (c.type_ == ControlMessage.Type.FLOW_START) {
+                        System.out.println(dataBroker.trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert(!dataBroker.flows_.containsKey(c.flow_id_));
+
+                        FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, dataBroker);
+                        dataBroker.flows_.put(f.id_, f);
+                    }
+                    else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
+                        System.out.println(dataBroker.trace_id_ + " FLOW_UPDATE(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert(dataBroker.flows_.containsKey(c.flow_id_));
+                        FlowInfo f = dataBroker.flows_.get(c.flow_id_);
+                        f.update_flow(c.field0_, c.field1_);
+                    }
+                    else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
+                        System.out.println(dataBroker.trace_id_ + " SUBFLOW_INFO(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
+                        assert dataBroker.flows_.containsKey(c.flow_id_) : dataBroker.trace_id_ + " does not currently have " + c.flow_id_;
+                        FlowInfo f = dataBroker.flows_.get(c.flow_id_);
+                        PersistentConnection conn = dataBroker.connection_pools_.get(c.ra_id_)[c.field0_];
+                        f.add_subflow(conn, c.field1_);
+                    }
+                    else {
+                        System.out.println(dataBroker.trace_id_ + " received an unexpected ControlMessage");
+//                        System.exit(1);
+                    }
+                }
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                // TODO: Close socket
+                return;
+            }
+            catch (java.lang.ClassNotFoundException e) {
+                e.printStackTrace();
+                // TODO: Close socket
+                return;
+            }
+        }
+    } // class Listener
+
+    public NewDataBroker dataBroker;
 
     public PersistentSA_New(String id, NetGraph net_graph, Socket client_sd) {
+        super();
+        dataBroker = new NewDataBroker(id, net_graph, client_sd);
 
+        NewListener listener = new NewListener(dataBroker);
+        listener.run();
     }
 }
