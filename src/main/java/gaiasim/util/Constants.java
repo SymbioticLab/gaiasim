@@ -5,7 +5,10 @@ import java.util.HashMap;
 public class Constants {
 
     // Min interval between schedule
-    public static final int SCHEDULE_INTERVAL_MS = 500;
+    public static final int SCHEDULE_INTERVAL_MS = 1000;
+
+    public static final int CHEAT_FACTOR_A = 1;
+    public static final int CHEAT_FACTOR_B = 1;
 
     // Number of milliseconds in a second
     public static final int MILLI_IN_SECOND = 1000;
