@@ -36,14 +36,17 @@ import gaiasim.gaiamessage.FlowStatusMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 
-import gaiasim.agent.PersistentSendingAgent.DataBroker;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
-import static gaiasim.agent.PersistentSendingAgent.*;
 
 public class PersistentSA_New extends PersistentSendingAgent{
 
@@ -66,18 +69,47 @@ public class PersistentSA_New extends PersistentSendingAgent{
         @Override
         public synchronized void finish_flow(String flow_id) {
             // We don't send out ScheduleMessage this time. so that CTRL can decode correctly.
-            // Think about flow_status Message. TODO
-            HashMap<String , Double> content = new HashMap<>();
-            content.put(flow_id , new Double(-1));
-            AgentMessage m = new FlowStatusMessage(content);
+            // Think about flow_status Message. TODO check when this message is sent out.
 
+            AgentMessage m = new FlowStatusMessage(flow_id,-1, true);
+            try {
+                writeMessage(m);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             flows_.remove(flow_id);
         }
 
+        // overriden, call this method on every 100 ms.
         @Override
         public synchronized void get_status() {
-            System.out.println("Should not invoke get_status()");
+            try {
+                int size = flows_.size();
+                if(size == 0){
+                    return;
+                }
+                String [] fid = new String[size];
+                double [] transmitted = new double[size];
+                boolean [] isFinished = new boolean[size];
+                int i = 0;
+                for (String k : flows_.keySet()) {
+                    FlowInfo f = flows_.get(k);
+                    fid[i] = f.id_;
+                    transmitted[i] = f.transmitted_;
+                    isFinished[i] = f.done_;
+
+                    i++;
+//                    f.set_update_pending(true); // no need?
+                }
+                AgentMessage m = new FlowStatusMessage(size , fid , transmitted , isFinished);
+                writeMessage(m);
+            }
+            catch (java.io.IOException e) {
+                e.printStackTrace();
+                // TODO: Close socket
+                return;
+            }
         }
 
         @Override
@@ -146,6 +178,11 @@ public class PersistentSA_New extends PersistentSendingAgent{
     public PersistentSA_New(String id, NetGraph net_graph, Socket client_sd) {
         super();
         dataBroker = new NewDataBroker(id, net_graph, client_sd);
+
+        final ScheduledExecutorService statusExec;
+        statusExec = Executors.newScheduledThreadPool(1);
+        final Runnable sendStatus = () -> dataBroker.get_status();
+        ScheduledFuture<?> mainHandler = statusExec.scheduleAtFixedRate(sendStatus, 0, 200, MILLISECONDS);
 
         NewListener listener = new NewListener(dataBroker);
         listener.run();
