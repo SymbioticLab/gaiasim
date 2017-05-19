@@ -117,10 +117,12 @@ public class Master {
 
     // Maybe also a Batch version of onFinish Flow?
     private void onFinishFlow(String id, long curTime) {
-        System.out.println("Master: received FLOW_FIN for " + id);
+        System.out.println("!!!!!!![Master]: received FLOW_FIN for " + id);
         // set the current status
 
+
         // check if all the coflow is finished
+
 
         // if so set coflow status, send COFLOW_FIN
 
@@ -230,7 +232,7 @@ public class Master {
 
         try {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
-            // Act on the results
+            // Act on the results // TODO send the flow_messages.
 
 
 
