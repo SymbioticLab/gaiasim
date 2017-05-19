@@ -40,16 +40,32 @@ public class Configuration {
         createDefaultConfig();
     }
 
-    public Configuration(int numSA, int numRA , String configFilePath){
+    public Configuration(int numSA, int numRA , String configFile){
         this.numRA = numRA;
         this.numSA = numSA;
+
+        // the arrays are initiated in parseConfigFile
+
+        this.configFilePath = configFile;
+        parseConfigFile(this.configFilePath);
+    }
+
+    // sometimes we don't know how many RA/SAs (when invoked by Agents)
+    public Configuration(String configFile) {
+        this.configFilePath = configFile;
+        parseConfigFile(this.configFilePath);
+    }
+
+    // create config according to default rules for maxAgents
+    public Configuration(int maxAgents) {
+        this.numSA = maxAgents;
+        this.numRA = maxAgents;
         this.SAIPs = new String[numSA];
         this.RAIPs = new String[numRA];
         this.SAPorts = new int[numSA];
         this.RAPorts = new int[numRA];
-
-        this.configFilePath = configFilePath;
-        parseConfigFile(this.configFilePath);
+        // default configuration
+        createDefaultConfig();
     }
 
     public void createDefaultConfig(){
@@ -91,10 +107,11 @@ public class Configuration {
 
                     case 1:
                         // read numSA
-                        if(numSA != Integer.parseInt(line)){
+                        numSA = Integer.parseInt(line);
+/*                        if(numSA != Integer.parseInt(line)){
                             System.err.println("Configuration error!");
                             return false;
-                        }
+                        }*/
 
                         if(numSA == 0){
                             state += 2; // skip the next state
@@ -103,6 +120,8 @@ public class Configuration {
                             cnt = 0;
                             state++;
                         }
+                        this.SAIPs = new String[numSA];
+                        this.SAPorts = new int[numSA];
                         break;
 
                     case 2:
@@ -121,10 +140,11 @@ public class Configuration {
 
                     case 3:
                         // read numRA
-                        if(numRA != Integer.parseInt(line)){
+                        numRA = Integer.parseInt(line);
+                        /*if(numRA != Integer.parseInt(line)){
                             System.err.println("Configuration error!");
                             return false;
-                        }
+                        }*/
 
                         if (numRA == 0){
                             return true;
@@ -133,6 +153,8 @@ public class Configuration {
                             cnt = 0;
                             state++;
                         }
+                        this.RAIPs = new String[numRA];
+                        this.RAPorts = new int[numRA];
                         break;
 
                     case 4:
