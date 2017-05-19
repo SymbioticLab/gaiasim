@@ -1,0 +1,12 @@
+# This is for testing the reallocation of bandwidth
+2 0 0
+Map1 1 n3
+Reducer1 1 n2
+1
+Map1 Reducer1 5
+# paper example job 2 (location tagged by jimmy)
+2 1 0
+Map9 1 n3
+Reducer9 1 n2
+1
+Map9 Reducer9 50

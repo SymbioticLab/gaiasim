@@ -1,0 +1,12 @@
+# job 1 is long running
+2 0 0
+Map1 1 n1
+Reducer1 1 n1
+1
+Map1 Reducer1 5
+# job 2 comes and finishes shortly
+2 1 3
+Map2 1 n1
+Reducer2 1 n1
+1
+Map2 Reducer2 1
