@@ -21,7 +21,7 @@ public class Configuration {
 
     protected int numSA;
     protected int numRA;
-    private String configFilePath;
+    protected String configFilePath;
 
     protected String [] SAIPs;
     protected String [] RAIPs;
@@ -49,7 +49,7 @@ public class Configuration {
         this.RAPorts = new int[numRA];
 
         this.configFilePath = configFilePath;
-        parseConfigFile(configFilePath);
+        parseConfigFile(this.configFilePath);
     }
 
     public void createDefaultConfig(){
