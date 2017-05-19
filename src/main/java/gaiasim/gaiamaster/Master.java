@@ -84,19 +84,23 @@ public class Master {
                         case FLOW_STATUS:
                             FlowStatusMessage fsm = (FlowStatusMessage) m;
                             if(fsm.getSize() == 1 && fsm.getIsFinished()[0]){ // single FLOW_FIN message
-                                onFinishFlow(fsm.getId() , System.currentTimeMillis());
+                                onFinishFlow(fsm.getId()[0] , System.currentTimeMillis());
                             }
                             else { // FLOW_STATUS message.
                                 int size = fsm.getSize();
                                 for(int i = 0 ; i < size ; i++ ){
                                     // first get the current flowGroup ID
-                                    // fsm.getId()[i];
-                                    // check if it is finished , onFinishFlow
-                                    // set the transmitted volume
-                                    // ???
+                                    String fid = fsm.getId()[i];
+                                    if(fsm.getIsFinished()[i]){
+                                        onFinishFlow( fid , System.currentTimeMillis());
+                                        continue;
+                                    } else {
+                                        // set the transmitted. TODO
+                                    }
+
+                                    // anything else?
                                 }
                             }
-
 
                             break;
 
@@ -107,13 +111,13 @@ public class Master {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }
     }
 
-    private void onFinishFlow(String[] id, long curTime) {
+    // Maybe also a Batch version of onFinish Flow?
+    private void onFinishFlow(String id, long curTime) {
+        System.out.println("Master: received FLOW_FIN for " + id);
         // set the current status
 
         // check if all the coflow is finished
@@ -130,6 +134,7 @@ public class Master {
         this.netGraph = new NetGraph(gml_file);
         this.coflowPool = new ConcurrentHashMap<>();
         this.mainExec = Executors.newScheduledThreadPool(1);
+        this.agentController = new Thread( new AgentController());
 
         // setting up interface with YARN.
         this.coflowEventQueue = new LinkedBlockingQueue<Coflow>();
@@ -151,7 +156,6 @@ public class Master {
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
             System.exit(1);
         }
-
     }
 
 
@@ -185,6 +189,7 @@ public class Master {
 
         // start the other two threads.
         coflowListener.start();
+        agentController.start();
 
 
         // start the periodic execution of schedule()
@@ -211,6 +216,8 @@ public class Master {
 
     public void schedule(){
         System.out.println("Master: Scheduling......");
+
+        // TODO for collocated task, finish right away!
 
         // take a snapshot of the current state, and moves on, so as not to block other threads.
         HashMap<String , Coflow_Old> outcf = new HashMap<>();
