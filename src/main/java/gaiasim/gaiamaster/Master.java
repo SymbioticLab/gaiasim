@@ -17,6 +17,7 @@ import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.YARNEmulator;
 import gaiasim.spark.YARNMessages;
+import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class Master {
     Scheduler scheduler;
     protected String outdir;
     protected boolean enablePersistentConn;
+    protected Configuration config;
 
     // Legacy fields
     // SendingAgentContacts indexed by sending agent id
@@ -130,10 +132,18 @@ public class Master {
     }
 
     public Master(String gml_file, String trace_file,
-                  String scheduler_type, String outdir) throws IOException {
+                  String scheduler_type, String outdir, String config) throws IOException {
 
         this.outdir = outdir;
         this.netGraph = new NetGraph(gml_file);
+        if(config == null){
+            this.config = new Configuration(netGraph.nodes_.size(), netGraph.nodes_.size());
+        }
+        else {
+            this.config = new Configuration(netGraph.nodes_.size(), netGraph.nodes_.size(), config);
+        }
+
+
         this.coflowPool = new ConcurrentHashMap<>();
         this.mainExec = Executors.newScheduledThreadPool(1);
         this.agentController = new Thread( new AgentController());
@@ -176,9 +186,16 @@ public class Master {
         // TODO verfiy this, because in baseline, the SendingAgentContact will forward the received message into it.
         LinkedBlockingQueue<ScheduleMessage> devNull = new LinkedBlockingQueue<>();
 
-        for (String sa_id : netGraph.nodes_) {
+/*        for (String sa_id : netGraph.nodes_) {
             sa_contacts_.put(sa_id,
                     new SendingAgentContact(sa_id, netGraph, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
+                            devNull, PAEventQueue, !enablePersistentConn));
+        }*/
+
+        for (String sa_id : netGraph.nodes_) {
+            int id = Integer.parseInt(sa_id); // id is from 0 to n, IP from 1 to (n+1)
+            sa_contacts_.put(sa_id,
+                    new SendingAgentContact(sa_id, netGraph, config.getSAIP(id), config.getSAPort(id),
                             devNull, PAEventQueue, !enablePersistentConn));
         }
 

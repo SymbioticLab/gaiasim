@@ -26,6 +26,7 @@ public class GaiaSim {
         options.addOption("s", true, "scheduler to use. One of {baseline, recursive-remain-flow}");
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("e", false, "run under emulation");
+        options.addOption("c", true, "path to config file");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -65,6 +66,13 @@ public class GaiaSim {
             is_emulation_ = true;
         }
 
+        if (cmd.hasOption("c")){
+            args_map.put("config" , cmd.getOptionValue("c"));
+        }
+        else {
+            args_map.put("config" , null);
+        }
+
         return args_map;
     }
 
@@ -85,7 +93,7 @@ public class GaiaSim {
             logger.info("GAIA: finished copying the model..");
 
             Master m = new Master(args_map.get("gml"), args_map.get("trace"),
-                                    args_map.get("scheduler"), args_map.get("outdir"));
+                                    args_map.get("scheduler"), args_map.get("outdir") , args_map.get("config"));
 
             if (is_emulation_) {
                 m.emulate();
