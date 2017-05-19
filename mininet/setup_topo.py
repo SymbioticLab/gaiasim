@@ -11,6 +11,7 @@ import os
 def setup_argparse(p):
     p.add_argument('-g', '--gml', help='Network data in gml format', required=True)
     p.add_argument('-s', '--scheduler', help='One of {recursive-remain-flow, baseline}', required=True)
+    p.add_argument('-d', '--debug', help='Do not start Agents', action="store_true")
     
 def main():
     p = argparse.ArgumentParser(
@@ -37,22 +38,26 @@ def main():
     
     net.start()
 
-    # Start the receiving agents
-    for key, host in ng.mininet_hosts.iteritems():
-        print "Starting receiving agent " + host.name
-        host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
+    if not args.debug:
+        print "Not debug mode, starting the agents..."
+        # Start the receiving agents
+        for key, host in ng.mininet_hosts.iteritems():
+            print "Starting receiving agent " + host.name
+            host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
 
-    
-    # Start the sending agents
-    for key, host in ng.mininet_hosts.iteritems():
-        host_id = int(ng.mininet_host_ips[key].split('.')[-1]) - 1
-        print "Starting sending agent " + host.name + " id " + str(host_id)
-        cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
-        if baseline:
-            cmd_str += ' 0 > /tmp/salog_' + str(host_id) + '.txt &'
-        else:
-            cmd_str += ' 1 ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
-        host.cmd(cmd_str)
+
+        # Start the sending agents
+        for key, host in ng.mininet_hosts.iteritems():
+            host_id = int(ng.mininet_host_ips[key].split('.')[-1]) - 1
+            print "Starting sending agent " + host.name + " id " + str(host_id)
+            cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
+            if baseline:
+                cmd_str += ' 0 > /tmp/salog_' + str(host_id) + '.txt &'
+            else:
+                cmd_str += ' 1 ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
+            host.cmd(cmd_str)
+    else:
+        print "In debug mode, do not start the agents"
         
     # Start the simulator
     out_file = '~/Sim/out_' + args.scheduler
