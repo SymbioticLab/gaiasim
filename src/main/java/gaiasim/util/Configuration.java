@@ -197,7 +197,7 @@ public class Configuration {
         return RAIPs[i];
     }
 
-    public int getSRAPort(int i){
+    public int getRAPort(int i){
         assert (i>=0 && i<numRA);
         return RAPorts[i];
     }

@@ -32,6 +32,7 @@ public class PersistentSendingAgent {
     public class DataBroker {
         String id_;
         String trace_id_;
+        NetGraph netGraph;
 
         // A Map containing Connections for each path from this SendingAgent to each
         // ReceivingAgent. The first index of the Map is the ReceivingAgent ID. The
@@ -58,6 +59,7 @@ public class PersistentSendingAgent {
 
         public DataBroker(String id, NetGraph net_graph, Socket sd) {
             id_ = id;
+            netGraph = net_graph;
 
             try {
                 socketToController = sd;
@@ -70,7 +72,10 @@ public class PersistentSendingAgent {
             }
 
             trace_id_ = Constants.node_id_to_trace_id.get(id);
+            sendPAMessages(netGraph);
+        }
 
+        public void sendPAMessages(NetGraph net_graph){
             for (String ra_id : net_graph.nodes_) {
 
                 if (!id_.equals(ra_id)) {

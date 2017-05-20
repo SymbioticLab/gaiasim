@@ -89,10 +89,19 @@ public class SendingAgent {
 
         NetGraph net_graph = new NetGraph(gmlFilePath);
 
-            Socket socketToCTRL = listener.accept();
-            logger.info("SA: Starting RRF.");
+        Socket socketToCTRL = listener.accept();
+        logger.info("SA: Accepted socket from CTRL. Starting RRF.");
+
+        PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL , config);
+        p.run();
+
+
+//        System.out.println("SA: Starting RRF.");
+
+
+
+
 //                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
-            PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL);
 
 //        System.setProperty("org.slf4j.simpleLogger.logFile" , "System.out"); // redirecting to stdout.
 
