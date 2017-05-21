@@ -7,6 +7,7 @@ import gaiasim.network.FlowGroup_Old;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Coflow {
     // final fields
@@ -14,20 +15,20 @@ public class Coflow {
 
 
     // list of flowgroups: final? ArrayList or ConcurrentHashMap?
-    private ArrayList<FlowGroup> flowGroups;
+    private HashMap<String , FlowGroup> flowGroups;
 
     // Optional field
 //    private int state;
 //    private String owningClient;
 
 
-    public Coflow(String id, ArrayList<FlowGroup> flowGroups) {
+    public Coflow(String id, HashMap<String , FlowGroup> flowGroups) {
         this.id = id;
         this.flowGroups = flowGroups;
     }
 
     public String getId() { return id; }
-    public ArrayList<FlowGroup> getFlowGroups() { return flowGroups; }
+    public HashMap<String , FlowGroup>  getFlowGroups() { return flowGroups; }
 
     // TODO verify the two converters
     // converter between Old Coflow and new coflow, for use by Scheduler.
@@ -38,7 +39,7 @@ public class Coflow {
         HashMap<String, FlowGroup_Old> flows = new HashMap<String, FlowGroup_Old>();
 
         int cnt = 0;
-        for (FlowGroup fg : cf.getFlowGroups()){
+        for (FlowGroup fg : cf.getFlowGroups().values()){
             FlowGroup_Old fgo = FlowGroup.toFlowGroup_Old(fg, (cnt++));
             flows.put( fg.getId() , fgo);
         }
@@ -50,10 +51,10 @@ public class Coflow {
 
     public Coflow (Coflow_Old cfo){
         this.id = cfo.id;
-        this.flowGroups = new ArrayList<>(cfo.flows.size());
+        this.flowGroups = new HashMap<String , FlowGroup>();
         for(String k : cfo.flows.keySet()){
             FlowGroup fg = new FlowGroup(cfo.flows.get(k));
-            flowGroups.add(fg);
+            flowGroups.put( fg.getId() , fg);
         }
 
     }
