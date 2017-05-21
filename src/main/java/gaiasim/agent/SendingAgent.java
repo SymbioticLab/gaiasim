@@ -3,8 +3,7 @@ package gaiasim.agent;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import gaiasim.agent.BaselineSendingAgent;
-import gaiasim.agent.PersistentSendingAgent;
+import gaiasim.gaiaagent.PersistentSA_New;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 import org.apache.commons.cli.*;
