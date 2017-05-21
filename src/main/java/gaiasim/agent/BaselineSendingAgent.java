@@ -5,8 +5,9 @@ import java.net.Socket;
 
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 // Acts on behalf of the controller to start transfers
 // from one node to another. Does not keep any persistent
@@ -16,7 +17,7 @@ import org.slf4j.LoggerFactory;
 // by the controller.
 public class BaselineSendingAgent {
 
-    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
+    private static final Logger logger = LogManager.getLogger();
     
     public class DataBroker {
         public String id_;

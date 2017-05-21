@@ -7,12 +7,12 @@ import gaiasim.gaiaagent.PersistentSA_New;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 import org.apache.commons.cli.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SendingAgent {
 
-    private final static Logger logger = LoggerFactory.getLogger("Sending Agent");
+    private static final Logger logger = LogManager.getLogger();
     protected static Configuration config;
 
     public static void main(String[] args) throws java.io.IOException {
