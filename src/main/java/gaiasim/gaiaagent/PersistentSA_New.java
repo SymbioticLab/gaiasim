@@ -82,7 +82,7 @@ public class PersistentSA_New implements Runnable{
                         PConnection conn = new PConnection(conn_id, socketToRA);
                         conns[i] = conn;
 
-                        // fix me.
+                        // fix me. conn ID = conn.data.ID = SA_id-RA_id.path_id
                         saAPI.connections_.put(conn.data_.id_, conn);
 
                         // Inform the controller of the port number selected
@@ -123,9 +123,9 @@ public class PersistentSA_New implements Runnable{
     }
 
     // a small inner class for forwarding socket from CTRL to controller event queue.
-    private class CTRLListner implements Runnable{
+    private class CTRLListener implements Runnable{
         ObjectInputStream inputStream;
-        public CTRLListner(ObjectInputStream inputStream, LinkedBlockingQueue<WorkerMessage> controllerQueue){
+        public CTRLListener(ObjectInputStream inputStream, LinkedBlockingQueue<WorkerMessage> controllerQueue){
             this.inputStream = inputStream;
         }
 
@@ -136,7 +136,7 @@ public class PersistentSA_New implements Runnable{
                 try {
                     ControlMessage c = (ControlMessage) inputStream.readObject();
 
-                    // TODO handle the message and put events into event queue.
+                    // TODO handle the message and put events into the corresponding SA's event queue.
 
 
                 } catch (IOException e) {
@@ -152,21 +152,21 @@ public class PersistentSA_New implements Runnable{
 //
 //            if (c.type_ == ControlMessage.Type.FLOW_START) {
 //                System.out.println(trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert(!flows_.containsKey(c.flow_id_));
+//                assert(!flowGroups.containsKey(c.flow_id_));
 //
 //                FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, dataBroker);
-//                flows_.put(f.id_, f);
+//                flowGroups.put(f.id_, f);
 //            }
 //            else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
 //                System.out.println(trace_id_ + " FLOW_UPDATE(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert(flows_.containsKey(c.flow_id_));
-//                FlowInfo f = flows_.get(c.flow_id_);
+//                assert(flowGroups.containsKey(c.flow_id_));
+//                FlowInfo f = flowGroups.get(c.flow_id_);
 //                f.update_flow(c.field0_, c.field1_);
 //            }
 //            else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
 //                System.out.println(trace_id_ + " SUBFLOW_INFO(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert flows_.containsKey(c.flow_id_) : trace_id_ + " does not currently have " + c.flow_id_;
-//                FlowInfo f = flows_.get(c.flow_id_);
+//                assert flowGroups.containsKey(c.flow_id_) : trace_id_ + " does not currently have " + c.flow_id_;
+//                FlowInfo f = flowGroups.get(c.flow_id_);
 //                PersistentConnection conn = connection_pools_.get(c.ra_id_)[c.field0_];
 //                f.add_subflow(conn, c.field1_);
 //            }
@@ -187,7 +187,7 @@ public class PersistentSA_New implements Runnable{
 
         try{
             ObjectInputStream is_ = new ObjectInputStream(client_sd.getInputStream());
-            Thread CTRLForwarder = new Thread(new CTRLListner(is_ , controllerQueue));
+            Thread CTRLForwarder = new Thread(new CTRLListener(is_ , controllerQueue));
 
             CTRLForwarder.start();
 
@@ -205,8 +205,10 @@ public class PersistentSA_New implements Runnable{
         trace_id_ = Constants.node_id_to_trace_id.get(id);
 
 
-        // First send PA Messages.
+        // First set up Persistent Connections and send PA Messages.
         setupPConns(netGraph);
+
+        // start the worker thread.
     }
 
     // called periodically to send the HeartBeat STATUS message to GAIA CTRL.

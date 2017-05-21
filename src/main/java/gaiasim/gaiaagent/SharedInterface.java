@@ -33,7 +33,7 @@ public class SharedInterface {
     public HashMap<String, PConnection> connections_ = new HashMap<String, PConnection>();
 
     // Flows that are currently being sent by this SendingAgent
-    public HashMap<String, FlowGroupInfo> flows_ = new HashMap<String, FlowGroupInfo>();
+    public HashMap<String, FlowGroupInfo> flowGroups = new HashMap<String, FlowGroupInfo>();
 
     public Socket socketToCTRL;
 
@@ -56,9 +56,10 @@ public class SharedInterface {
 
     }
 
+    // TODO the atomicity of this read?
     public void sendStatusUpdate(){
         try {
-            int size = flows_.size();
+            int size = flowGroups.size();
             if(size == 0){
                 return;
             }
@@ -66,8 +67,8 @@ public class SharedInterface {
             double [] transmitted = new double[size];
             boolean [] isFinished = new boolean[size];
             int i = 0;
-            for (String k : flows_.keySet()) {
-                FlowGroupInfo f = flows_.get(k);
+            for (String k : flowGroups.keySet()) {
+                FlowGroupInfo f = flowGroups.get(k);
 
                 fid[i] = f.id_;
                 transmitted[i] = f.transmitted_;
@@ -97,7 +98,7 @@ public class SharedInterface {
             e.printStackTrace();
         }
 
-        flows_.remove(fgID);
+        flowGroups.remove(fgID);
     }
 
     private void sendMsgToCTRL(AgentMessage m) throws IOException {
@@ -120,7 +121,7 @@ public class SharedInterface {
 
     public HashMap<String, PConnection> getConnections_() { return connections_; }
 
-    public HashMap<String, FlowGroupInfo> getFlows_() { return flows_; }
+    public HashMap<String, FlowGroupInfo> getFlowGroups() { return flowGroups; }
 
     public Socket getSocketToCTRL() { return socketToCTRL;}
 

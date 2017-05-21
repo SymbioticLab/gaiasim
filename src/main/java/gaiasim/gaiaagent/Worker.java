@@ -2,8 +2,14 @@ package gaiasim.gaiaagent;
 
 // A worker manages a persistent connection.
 
+// The logic of Worker.run:
+// if no subscription, then wait for subscription
+// if total_rate > 0 , then
+// first poll for subscription message, and process the message
+// send data according to the rate (rateLimiter.acquire() )
+// call distribute_transmitted to distribute the sent data to different subscribed FlowGroups.
 
-// TODO in the future we may may the worker thread not bind to a particular connection
+// TODO in the future we may make the worker thread not bind to a particular connection
 // so that we can use a thread pool to process on many connections.
 
 import com.google.common.util.concurrent.RateLimiter;
@@ -52,6 +58,7 @@ public class Worker implements Runnable{
 //        data_ = data;
     }
 
+
     @Override
     public void run() {
 
@@ -82,8 +89,8 @@ public class Worker implements Runnable{
                 if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
                     if (m.getFgi().commit_subscription(data_.id_, m.ts_)) {
                         System.out.println("PersistentConn: Subscribing flow " + m.getFgi().id_ + " to " + data_.id_);
-                        total_rate += m.rate_;
-                        subscribers.put(m.flow_info_.id_, new Subscription(m.flow_info_, m.rate_));
+                        total_rate += m.getRate();
+                        subscribers.put(m.flow_info_.id_, new Subscription(m.getFgi(), m.getRate()));
                     }
                 }
                 else if (m.getType()  == SubscriptionMessage.MsgType.UNSUBSCRIBE) {
