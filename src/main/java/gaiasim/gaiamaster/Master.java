@@ -350,14 +350,15 @@ public class Master {
         // transform this into a multimap, manually , maps f.getSrc_loc() (i.e. saID) -> f
         ArrayListMultimap<String , FlowGroup_Old> updates = ArrayListMultimap.create();
 
+        // we sort the flowGroup according the src_location (i.e. sendingAgentInterface), so we can send to corresponding SA.
         for (FlowGroup_Old fgo : scheduled_flows.values()){
-            // we sort the flowGroup according the src_location (i.e. sendingAgentInterface, and pass on the job.)
             updates.put( fgo.getSrc_loc()  , fgo  );
         }
 
-        // How to parallelize? use the threadpool
+        // How to parallelize -> use the threadpool (we don't parallelize here, for safety)
         for ( String saID : updates.keySet() ){
-            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) );
+            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run(); // serialized version
+//            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
         }
 
 /*        for (FlowGroup_Old f : preempted_flowGroups) {
