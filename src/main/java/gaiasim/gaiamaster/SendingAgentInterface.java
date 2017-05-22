@@ -204,8 +204,8 @@ public class SendingAgentInterface {
             os_ = new ObjectOutputStream(sd_.getOutputStream());
             System.out.println(id_ + " connected to SA");
         }
-        catch (java.io.IOException e) {
-            System.out.println("ERROR trying to connect to " + sa_ip);
+        catch (Exception e) {
+            System.out.println("ERROR trying to connect to " + sa_ip + ":" + sa_port);
             e.printStackTrace();
             System.exit(1);
         }
