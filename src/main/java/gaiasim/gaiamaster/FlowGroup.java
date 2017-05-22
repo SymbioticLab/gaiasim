@@ -37,17 +37,21 @@ public class FlowGroup {
         this.totalVolume = totalVolume;
     }
 
-    // This method is called upon receiving Status Update, if a flow is marked finished, we don't invoke transmit.
-    public synchronized boolean setFinish(long timestamp){
+    // This method is called upon receiving Status Update, if a flow is already marked finished, we don't invoke coflowFIN
+    public synchronized boolean getAndSetFinish(long timestamp){
         if (!finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished
-            return false;
+            return true;
         }
         else {
             this.transmitted = this.totalVolume;
             this.endTime = timestamp;
             this.finished = true;
-            return true;
+            return false;
         }
+    }
+
+    public synchronized void setStartTime(long timestamp){
+        this.startTime = timestamp;
     }
 
     public synchronized void setTransmitted(double txed){
@@ -70,7 +74,8 @@ public class FlowGroup {
     public static FlowGroup_Old toFlowGroup_Old(FlowGroup fg , int intID ){
         FlowGroup_Old fgo = new FlowGroup_Old(fg.getId() , intID ,
                 fg.getOwningCoflowID() , fg.getSrcLocation(), fg.getDstLocation() , fg.getTransmitted());
-        fgo.setVolume( fg.getTotalVolume() );
+
+        fgo.setVolume( fg.getTotalVolume()-fg.getTransmitted() );
 
         return fgo;
     }

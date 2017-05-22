@@ -68,6 +68,8 @@ public class Master {
 
         // handles coflow finish.
         public synchronized boolean onFinishCoflow(String coflowID) {
+            System.out.println("Master: trying to finish Coflow: " + coflowID);
+
             try {
 
                 // use the get and set method, to make sure that:
@@ -128,6 +130,9 @@ public class Master {
                     System.out.println("Master: Received Coflow from YARN with ID = " + cfID);
 
                     ms.addCoflow(cfID , cf);
+
+                    // TODO: track flowgroup starttime.
+
 //                    ms.coflowPool.put(cfID , cf);
 
                 } catch (InterruptedException e) {
