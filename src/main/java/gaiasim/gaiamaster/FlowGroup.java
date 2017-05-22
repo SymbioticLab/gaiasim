@@ -39,7 +39,7 @@ public class FlowGroup {
 
     // This method is called upon receiving Status Update, if a flow is already marked finished, we don't invoke coflowFIN
     public synchronized boolean getAndSetFinish(long timestamp){
-        if (!finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished
+        if (finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished TODO: verify the condition.
             return true;
         }
         else {
