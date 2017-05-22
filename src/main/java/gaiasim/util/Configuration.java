@@ -81,6 +81,7 @@ public class Configuration {
     }
 
     public boolean parseConfigFile(String configFilePath){
+        System.out.println("Loading config from " + configFilePath);
         try{
             FileReader fr = new FileReader(configFilePath);
             BufferedReader br = new BufferedReader(fr);
@@ -100,6 +101,7 @@ public class Configuration {
                         String [] splits = line.split(" ");
                         masterIP = splits[0];
                         masterPort = Integer.parseInt(splits[1]);
+                        System.out.println("MS " + masterIP + ":" + masterPort);
 
                         // state transition
                         state++;
@@ -108,6 +110,7 @@ public class Configuration {
                     case 1:
                         // read numSA
                         numSA = Integer.parseInt(line);
+                        System.out.println("numSA = " + numSA);
 /*                        if(numSA != Integer.parseInt(line)){
                             System.err.println("Configuration error!");
                             return false;
@@ -129,6 +132,7 @@ public class Configuration {
                         splits = line.split(" ");
                         SAIPs[cnt] = splits[0];
                         SAPorts[cnt] = Integer.parseInt(splits[1]);
+                        System.out.println("SA " + cnt + ' ' + SAIPs[cnt] + ":" + SAPorts[cnt]);
                         cnt++;
 
                         if (cnt == numSA){
@@ -141,6 +145,7 @@ public class Configuration {
                     case 3:
                         // read numRA
                         numRA = Integer.parseInt(line);
+                        System.out.println("numRA = " + numRA);
                         /*if(numRA != Integer.parseInt(line)){
                             System.err.println("Configuration error!");
                             return false;
@@ -162,13 +167,15 @@ public class Configuration {
                         splits = line.split(" ");
                         RAIPs[cnt] = splits[0];
                         RAPorts[cnt] = Integer.parseInt(splits[1]);
+                        System.out.println("RA " + cnt + ' ' + RAIPs[cnt] + ":" + RAPorts[cnt]);
                         cnt++;
 
                         if (cnt == numRA){
                             return true;
                         }
 
-                        return true;
+                        break;
+
                 }
             }
         } catch (FileNotFoundException e) {
