@@ -224,10 +224,10 @@ public class Worker implements Runnable{
             }
 
             // TODO need to remove from subscription list?
-//            for (SubscriptionInfo s : to_remove) {
-//                total_rate -= s.getRate();
-//                subscribers.remove(s.getFgi().getID());
-//            }
+            for (SubscriptionInfo s : to_remove) {
+                total_rate -= s.getRate();
+                subscribers.remove(s.getFgi().getID());
+            }
 
             // Ensure we don't get rounding errors
             if (subscribers.isEmpty()) {
