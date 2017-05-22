@@ -45,6 +45,7 @@ def main():
             print "Starting receiving agent " + host.name
             host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
 
+        num_of_hosts = str(len(ng.mininet_hosts));
 
         # Start the sending agents
         for key, host in ng.mininet_hosts.iteritems():
@@ -53,10 +54,10 @@ def main():
             cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent '
             if baseline: # not supported for now
                 # cmd_str += str(host_id) + ' 0 > /tmp/salog_' + str(host_id) + '.txt &'
-                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
+                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt &'
             else:
                 # cmd_str += str(host_id) + ' 1 ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
-                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
+                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt &'
 
             print "Starting sending agent " + host.name + " id " + str(host_id) +" . using: " + cmd_str
             host.cmd(cmd_str)
