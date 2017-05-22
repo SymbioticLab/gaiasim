@@ -194,7 +194,7 @@ public class DAGReader implements Runnable{
                         // owningCoflowID - dstStage
                         // Volume - divided_data_size
                         FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage ,
-                            srcLoc, dstLoc , dst_stage , divided_data_size);
+                            srcLoc, dstLoc , dag_id + ':' + dst_stage , divided_data_size);
                         tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
                     }
                 }
