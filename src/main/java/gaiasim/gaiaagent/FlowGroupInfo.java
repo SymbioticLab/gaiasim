@@ -18,6 +18,7 @@ public class FlowGroupInfo {
     public FlowGroupInfo(String ID, double volume) {
         this.ID = ID;
         this.volume = volume;
+        this.finished = false;
     }
 
 
@@ -40,11 +41,11 @@ public class FlowGroupInfo {
         return transmitted;
     }
 
-    public synchronized boolean transmit(double volume) {
+    public synchronized boolean transmit(double v) {
         if (finished){ // first check if is already finished.
             return true;
         }
-        transmitted += volume; // so volatile is not enough!
+        transmitted += v; // so volatile is not enough!
         if (transmitted + Constants.DOUBLE_EPSILON >= volume){
             finished = true;
             return true;
