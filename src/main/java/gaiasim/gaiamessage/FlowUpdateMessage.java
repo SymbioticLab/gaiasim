@@ -22,6 +22,7 @@ package gaiasim.gaiamessage;
 // This message corresponds to all PCs and all flows between one (SA -> RA) pair
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class FlowUpdateMessage implements Serializable{
 
@@ -73,6 +74,17 @@ public class FlowUpdateMessage implements Serializable{
 
     public double getRate(int i, int j){
         return rates[i][j];
+    }
+
+    @Override
+    public String toString() {
+        return "FlowUpdateMessage{" +
+                "raID='" + raID + '\'' +
+                ", sizeOfFlowGroups=" + sizeOfFlowGroups +
+                ", sizeOfPaths=" + sizeOfPaths +
+                ", fgID=" + Arrays.toString(fgID) +
+                ", remaingVolume=" + Arrays.toString(remaingVolume) +
+                '}';
     }
 
 }

@@ -200,6 +200,7 @@ public class Master {
                 }
 
                 FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
+                System.out.println("Created FUM: " + m.toString());
                 sai.get(said).sendFlowUpdate_Blocking(m);
             }
         }
