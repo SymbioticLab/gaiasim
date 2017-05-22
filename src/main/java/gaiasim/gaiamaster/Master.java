@@ -4,13 +4,10 @@ package gaiasim.gaiamaster;
 // Three threads: 1. handling Coflow insertion (connects YARN),
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.SetMultimap;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.gaiamessage.AgentMessage;
-import gaiasim.gaiamessage.FlowStatusMessage;
 import gaiasim.gaiamessage.FlowUpdateMessage;
 import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
@@ -318,13 +315,14 @@ public class Master {
     public void schedule(){
         System.out.println("Master: Scheduling......");
 
-        // TODO for collocated task, finish right away!
+        // for collocated task, finish right away (implemented during COFLOW_INSERTION)
 
         // take a snapshot of the current state, and moves on, so as not to block other threads.
         HashMap<String , Coflow_Old> outcf = new HashMap<>();
         for ( Map.Entry<String, Coflow> ecf : ms.coflowPool.entrySet()){
-            Coflow_Old cfo = Coflow.toCoflow_Old(ecf.getValue());
+            Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(ecf.getValue());
             outcf.put( cfo.getId() , cfo );
+
         }
 
         long currentTime = System.currentTimeMillis();
@@ -333,7 +331,6 @@ public class Master {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
             // Act on the results // TODO send the flow_messages.
             sendControlMessages(scheduled_flows);
-
 
 
         } catch (Exception e) { // could throw File I/O error
