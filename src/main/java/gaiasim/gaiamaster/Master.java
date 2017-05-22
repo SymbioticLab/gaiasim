@@ -131,6 +131,17 @@ public class Master {
 
                     ms.addCoflow(cfID , cf);
 
+                    long curTime = System.currentTimeMillis();
+                    cf.setStartTime(curTime);
+
+                    for (FlowGroup fg : cf.getFlowGroups().values()){
+                        fg.setStartTime(curTime);
+                        if(fg.getDstLocation() == fg.getSrcLocation()){ // job is co-located.
+                            fg.getAndSetFinish(curTime); // finish right away.
+                            // how to send the finish message?
+                        }
+                    }
+
                     // TODO: track flowgroup starttime.
 
 //                    ms.coflowPool.put(cfID , cf);

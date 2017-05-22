@@ -21,19 +21,20 @@ public class Coflow {
     // multiple FGs may finish concurrently leading to the finish of Coflow.
     private AtomicBoolean finished = new AtomicBoolean(false);
 
-    // Optional field
-    //    private String owningClient;
-//    private int state;
+    private long startTime = -1;
+
+    private long endTime = -1;
 
     public Coflow(String id, HashMap<String , FlowGroup> flowGroups) {
         this.id = id;
         this.flowGroups = flowGroups;
     }
 
-
     public String getId() { return id; }
 
+
     public HashMap<String , FlowGroup>  getFlowGroups() { return flowGroups; }
+
     public FlowGroup getFlowGroup(String fgid) { return flowGroups.get(fgid); }
     // TODO verify the two converters
     // converter between Old Coflow and new coflow, for use by Scheduler.
@@ -53,7 +54,6 @@ public class Coflow {
 
         return ret;
     }
-
     public Coflow (Coflow_Old cfo){
         this.id = cfo.id;
         this.flowGroups = new HashMap<String , FlowGroup>();
@@ -64,10 +64,21 @@ public class Coflow {
 
     }
 
-
     public boolean getFinished() { return finished.get(); }
+
 
     public void setFinished(boolean value) { this.finished.set(value); }
 
     public boolean getAndSetFinished(boolean newValue) { return this.finished.getAndSet(newValue); }
+
+    //    private int state;
+//    private String owningClient;
+// Optional field
+    public long getStartTime() { return startTime; }
+
+    public void setStartTime(long startTime) { this.startTime = startTime; }
+
+    public long getEndTime() { return endTime; }
+
+    public void setEndTime(long endTime) { this.endTime = endTime; }
 }
