@@ -1,15 +1,11 @@
 package gaiasim.gaiamaster;
 
-import gaiasim.comm.ControlMessage;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.ScheduleMessage;
 import gaiasim.gaiamessage.AgentMessage;
 import gaiasim.gaiamessage.FlowStatusMessage;
 import gaiasim.gaiamessage.FlowUpdateMessage;
-import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
-import gaiasim.network.Pathway;
-import gaiasim.util.Constants;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,6 +15,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 // A SendingAgentContact facilitates communication between
 // the GAIA controller and a sending agent at a certain datacenter.
+
+// we have n SAIs in a GAIA controller.
 
 
 public class SendingAgentInterface {
@@ -95,7 +93,7 @@ public class SendingAgentInterface {
                             case FLOW_STATUS:
                                 FlowStatusMessage fsm = (FlowStatusMessage) m;
                                 if(fsm.getSize() == 1 && fsm.getIsFinished()[0]){ // single FLOW_FIN message
-                                    onFinishFlow(fsm.getId()[0] , System.currentTimeMillis());
+                                    onFinishFlowGroup(fsm.getId()[0] , System.currentTimeMillis());
                                 }
                                 else { // FLOW_STATUS message.
                                     int size = fsm.getSize();
@@ -103,7 +101,7 @@ public class SendingAgentInterface {
                                         // first get the current flowGroup ID
                                         String fid = fsm.getId()[i];
                                         if(fsm.getIsFinished()[i]){
-                                            onFinishFlow( fid , System.currentTimeMillis());
+                                            onFinishFlowGroup( fid , System.currentTimeMillis());
                                             continue;
                                         } else {
                                             // set the transmitted.
@@ -147,19 +145,28 @@ public class SendingAgentInterface {
                 System.exit(1);
             }
         } // end of run()
+
         // Maybe also a Batch version of onFinish Flow?
-        private void onFinishFlow(String id, long curTime) {
+        private void onFinishFlowGroup(String id, long curTime) {
             System.out.println("SAI: received FLOW_FIN for " + id);
             // set the current status
 
-            FlowGroup fg = ms.getFlowGroup(id);
-            fg.setFinish(curTime);
+            FlowGroup fg = ms.getFlowGroup(id); // TODO: what if this returns null?
+            if(fg.getAndSetFinish(curTime)){
+                return; // if already finished, do nothing.
+            }
+
+
             // check if the owning coflow is finished
             Coflow cf = ms.coflowPool.get(fg.getOwningCoflowID());
 
+            if(cf == null){ // cf may already be finished.
+                return;
+            }
+
             boolean flag = true;
 
-            // TODO verify concurrency issues here.
+            // TODO verify concurrency issues here. here cf may be null.
             for(FlowGroup ffg : cf.getFlowGroups().values()){
                 flag = flag && ffg.isFinished();
             }
