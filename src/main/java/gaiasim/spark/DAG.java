@@ -120,8 +120,12 @@ public class DAG {
         for (String coflowID : tmpCoflowList.keySet()){
 //            List<FlowGroup> lfg = tmpCoflowList.get(coflowID);
 //            ArrayList<FlowGroup> al = new ArrayList<>(tmpCoflowList.get(coflowID));
-            // get the Collection<E>, create an ArrayList. CAN'T cast to ArrayList here.
-            Coflow cf = new Coflow( coflowID , new ArrayList<>(tmpCoflowList.get(coflowID)));
+            // get the Collection<E>, create an ArrayList. CAN'T directly cast to ArrayList here.
+            HashMap<String , FlowGroup> hfg = new HashMap<>();
+            for( FlowGroup fg : tmpCoflowList.get(coflowID)){
+                hfg.put(fg.getId() , fg);
+            }
+            Coflow cf = new Coflow( coflowID , hfg);
             coflowList.put( coflowID , cf);
         }
     }

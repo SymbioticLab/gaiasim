@@ -8,6 +8,7 @@ import gaiasim.network.FlowGroup_Old;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Coflow {
     // final fields
@@ -17,19 +18,23 @@ public class Coflow {
     // list of flowgroups: final? ArrayList or ConcurrentHashMap?
     private HashMap<String , FlowGroup> flowGroups;
 
-    // Optional field
-//    private int state;
-//    private String owningClient;
+    // multiple FGs may finish concurrently leading to the finish of Coflow.
+    private AtomicBoolean finished = new AtomicBoolean(false);
 
+    // Optional field
+    //    private String owningClient;
+//    private int state;
 
     public Coflow(String id, HashMap<String , FlowGroup> flowGroups) {
         this.id = id;
         this.flowGroups = flowGroups;
     }
 
-    public String getId() { return id; }
-    public HashMap<String , FlowGroup>  getFlowGroups() { return flowGroups; }
 
+    public String getId() { return id; }
+
+    public HashMap<String , FlowGroup>  getFlowGroups() { return flowGroups; }
+    public FlowGroup getFlowGroup(String fgid) { return flowGroups.get(fgid); }
     // TODO verify the two converters
     // converter between Old Coflow and new coflow, for use by Scheduler.
     // scheduler takes in ID, flowgroups (with IntID, srcLoc, dstLoc, volume remain.)
@@ -58,4 +63,11 @@ public class Coflow {
         }
 
     }
+
+
+    public boolean getFinished() { return finished.get(); }
+
+    public void setFinished(boolean value) { this.finished.set(value); }
+
+    public boolean getAndSetFinished(boolean newValue) { return this.finished.getAndSet(newValue); }
 }
