@@ -73,6 +73,9 @@ public class Master {
                 // 1. the value is false before we send COFLOW_FIN
                 // 2. the value must be set to true, after whatever we do.
                 if(  !coflowPool.get(coflowID).getAndSetFinished(true) ){
+
+                    coflowPool.remove(coflowID);
+
                     yarnEventQueue.put(new YARNMessages(coflowID));
                     return true;
                 }
