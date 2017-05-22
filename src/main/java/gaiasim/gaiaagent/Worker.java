@@ -17,13 +17,19 @@ import gaiasim.util.Constants;
 
 import java.io.BufferedOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Worker implements Runnable{
 
-    PConnection conn;
+//    PConnection conn;
     SharedInterface api;
+
+    String connID; // name of this TCP Connection. SA_id-RA_id.path_id
+    String raID;
+    int pathID;
 
     // Queue on which SendingAgent places updates for this PersistentConnection. Updates
     // flow, or that the PersistentConnection should terminate.
@@ -49,16 +55,20 @@ public class Worker implements Runnable{
 
 
 
-    public Worker(LinkedBlockingQueue<SubscriptionMessage> inputQueue , SharedInterface api){
+    public Worker(String workerID, String RAID, int pathID ,Socket soc, LinkedBlockingQueue<SubscriptionMessage> inputQueue , SharedInterface api){
+        this.connID = workerID;
+        this.dataSocket = soc;
         this.subcriptionQueue = inputQueue;
         this.api = api;
+        this.raID = RAID;
+        this.pathID = pathID;
 
         rateLimiter = RateLimiter.create(Constants.DEFAULT_TOKEN_RATE);
 
 //        data_ = data;
     }
 
-
+    // TODO: we should not couple the subscription handling and the data sending together!
     @Override
     public void run() {
 
@@ -86,7 +96,23 @@ public class Worker implements Runnable{
             // m will be null only if poll() returned that we have no
             // messages. If m is not null, process the message.
             while (m != null) {
-                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
+
+                // handles subscription message.
+
+                // Now we only use the subscription message as a sync signal..
+
+                if (m.getType() == SubscriptionMessage.MsgType.SYNC){
+                    // update the worker's subscription info
+                    // and go back to work.
+                    subscribers.clear();
+                    subscribers . putAll( api.subscriptionRateMaps.get(raID).get(pathID) );
+
+                    total_rate = api.subscriptionRateMaps.get(raID).get(pathID).values()
+                            .stream().mapToDouble(SubscriptionInfo::getRate).sum();
+
+                }
+
+/*                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
                     if (m.getFgi().commit_subscription(data_.id_, m.ts_)) {
                         System.out.println("PersistentConn: Subscribing flow " + m.getFgi().id_ + " to " + data_.id_);
                         total_rate += m.getRate();
@@ -105,18 +131,19 @@ public class Worker implements Runnable{
                             total_rate = 0.0;
                         }
                     }
-                }
-                else {
-                    // TERMINATE
-//                    try {
-//                        data_.dataSocket.close();
-//                    }
-//                    catch (java.io.IOException e) {
-//                        e.printStackTrace();
-//                        System.exit(1);
-//                    }
-//                    return;
-                }
+                }*/
+
+//                else {
+//                    // TERMINATE
+////                    try {
+////                        data_.dataSocket.close();
+////                    }
+////                    catch (java.io.IOException e) {
+////                        e.printStackTrace();
+////                        System.exit(1);
+////                    }
+////                    return;
+//                }
 
                 m = subcriptionQueue.poll();
             }
@@ -145,8 +172,8 @@ public class Worker implements Runnable{
                     // aquire one permit per flush.
                     rateLimiter.acquire(1);
 
-                    data_.bos.write(data_block , 0, data_length);
-                    data_.bos.flush();
+                    bos.write(data_block , 0, data_length);
+                    bos.flush();
 
 //                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
                     System.out.println("PersistentConn: Flushed Writing w/ rate: " + total_rate + " Mbit/s @ " + System.currentTimeMillis());
@@ -168,55 +195,61 @@ public class Worker implements Runnable{
 
 
     public synchronized void distribute_transmitted(double transmitted_MBit) {
-        if (transmitted_MBit > 0.0) {
+        if (transmitted_MBit > 0.0 ) {
 
             ArrayList<SubscriptionInfo> to_remove = new ArrayList<SubscriptionInfo>();
-            FlowGroupInfo f;
+
             double flow_rate;
             for (String k : subscribers.keySet()) {
                 SubscriptionInfo s = subscribers.get(k);
-                f = s.flow_info_;
-                flow_rate = s.rate_;
+                FlowGroupInfo f = s.getFgi();
+                flow_rate = s.getRate();
 
-                boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate, id_);
-                if (done) {
+//                boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate, PConnid); //  why need the id?
+                boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate);
+                if (done) { // meaning this flowGroup is done.
+
+                    // TODO: verify this. DO NOTHING here! even if we stop sending, we may still be told to send at a rate by GAIA (because the stale message is in the fly).
+                    // wait until GAIA told us to stop, then stop. (although could cause a problem here.)
+
                     to_remove.add(s);
                 }
             }
 
-            for (Subscription s : to_remove) {
-                total_rate -= s.rate_;
-                subscribers_.remove(s.flow_info_.id_);
-            }
+            // TODO need to remove from subscription list?
+//            for (SubscriptionInfo s : to_remove) {
+//                total_rate -= s.getRate();
+//                subscribers.remove(s.getFgi().getID());
+//            }
 
             // Ensure we don't get rounding errors
-            if (subscribers_.isEmpty()) {
+            if (subscribers.isEmpty()) {
                 total_rate = 0.0;
             }
         }
     }
 
-    public synchronized void subscribe(FlowInfo f, double rate, long update_ts) {
-        SubscriptionMessage m = new SubscriptionMessage(MsgType.SUBSCRIBE,
-                f, rate, update_ts);
-        try {
-            subscription_queue_.put(m);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
-    public synchronized void unsubscribe(FlowInfo f, long update_ts) {
-        SubscriptionMessage m = new SubscriptionMessage(MsgType.UNSUBSCRIBE, f, update_ts);
-
-        try {
-            subscription_queue_.put(m);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
+//    public synchronized void subscribe(FlowInfo f, double rate, long update_ts) {
+//        SubscriptionMessage m = new SubscriptionMessage(MsgType.SUBSCRIBE,
+//                f, rate, update_ts);
+//        try {
+//            subscription_queue_.put(m);
+//        }
+//        catch (InterruptedException e) {
+//            e.printStackTrace();
+//            System.exit(1);
+//        }
+//    }
+//
+//    public synchronized void unsubscribe(FlowInfo f, long update_ts) {
+//        SubscriptionMessage m = new SubscriptionMessage(MsgType.UNSUBSCRIBE, f, update_ts);
+//
+//        try {
+//            subscription_queue_.put(m);
+//        }
+//        catch (InterruptedException e) {
+//            e.printStackTrace();
+//            System.exit(1);
+//        }
+//    }
 }

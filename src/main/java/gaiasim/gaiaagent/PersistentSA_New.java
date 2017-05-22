@@ -28,8 +28,8 @@ package gaiasim.gaiaagent;
 
 // for now just copy the code and modify.
 
-import gaiasim.comm.ControlMessage;
 import gaiasim.comm.PortAnnouncementMessage_Old;
+import gaiasim.gaiamessage.FlowUpdateMessage;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
@@ -37,6 +37,7 @@ import gaiasim.util.Constants;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
@@ -57,20 +58,28 @@ public class PersistentSA_New implements Runnable{
     NetGraph netGraph;
     Configuration config;
 
+
     final ScheduledExecutorService statusExec;
 
-    // TODO defined the message.
-    LinkedBlockingQueue<WorkerMessage> controllerQueue = new LinkedBlockingQueue<WorkerMessage>();
+    LinkedBlockingQueue<ControlThreadMessage> controllerQueue = new LinkedBlockingQueue<ControlThreadMessage>();
+
+
+
+
+
 
     // TODO: use the new PA msg.
     public void setupPConns(NetGraph net_graph){
+
+
         for (String ra_id : net_graph.nodes_) {
 
             if (!id_.equals(ra_id)) { // don't consider path to SA itself.
 
                 // because apap is consistent among different programs.
-                PConnection[] conns = new PConnection[net_graph.apap_.get(id_).get(ra_id).size()];
-                for (int i = 0; i < conns.length; i++) {
+                LinkedBlockingQueue[] queues = new LinkedBlockingQueue[net_graph.apap_.get(id_).get(ra_id).size()];
+                int pathSize = net_graph.apap_.get(id_).get(ra_id).size();
+                for (int i = 0; i < pathSize; i++) {
                     // ID of connection is SA_id-RA_id.path_id
                     String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(ra_id) + "." + Integer.toString(i);
                     int raID = Integer.parseInt(ra_id);
@@ -79,14 +88,16 @@ public class PersistentSA_New implements Runnable{
                         // Create the socket that the PersistentConnection object will use
                         Socket socketToRA = new Socket( config.getRAIP(raID) , config.getRAPort(raID));
                         int port = socketToRA.getLocalPort();
-                        PConnection conn = new PConnection(conn_id, socketToRA);
-                        conns[i] = conn;
 
-                        // fix me. conn ID = conn.data.ID = SA_id-RA_id.path_id
-                        saAPI.connections_.put(conn.data_.id_, conn);
+                        queues[i] = new LinkedBlockingQueue<SubscriptionMessage>();
+
+                        // just start worker thread. PConn is the delegate of both worker thread and socket api.
+                        Thread wt = new Thread( new Worker(conn_id, ra_id , i ,socketToRA , queues[i] ,saAPI) );
+                        wt.start();
+                        // We don't track the thread after starting it.
 
                         // Inform the controller of the port number selected
-                        saAPI.writeMessage(new PortAnnouncementMessage_Old(id_, ra_id, i, port));
+                        saAPI.writeMessageToCTRL(new PortAnnouncementMessage_Old(id_, ra_id, i, port));
                     }
                     catch (java.io.IOException e) {
                         // TODO: Close socket
@@ -95,7 +106,7 @@ public class PersistentSA_New implements Runnable{
                     }
                 }
 
-                saAPI.connection_pools_.put(ra_id, conns);
+                saAPI.workerQueues.put(ra_id , queues);
 
             } // if id != ra_id
 
@@ -107,16 +118,11 @@ public class PersistentSA_New implements Runnable{
     @Override
     public void run() {
 
-        final Runnable sendStatus = new Runnable() {
-            @Override
-            public void run() {
-                saAPI.sendStatusUpdate();
-            }
-        };
+        final Runnable sendStatus = () -> saAPI.sendStatusUpdate();
 
         ScheduledFuture<?> mainHandler = statusExec.scheduleAtFixedRate(sendStatus, 0, 200, MILLISECONDS);
 
-        CTRLMessageListener controller = new CTRLMessageListener(controllerQueue);
+        CTRLMessageListener controller = new CTRLMessageListener(controllerQueue, saAPI);
         controller.run();
 
 
@@ -125,7 +131,7 @@ public class PersistentSA_New implements Runnable{
     // a small inner class for forwarding socket from CTRL to controller event queue.
     private class CTRLListener implements Runnable{
         ObjectInputStream inputStream;
-        public CTRLListener(ObjectInputStream inputStream, LinkedBlockingQueue<WorkerMessage> controllerQueue){
+        public CTRLListener(ObjectInputStream inputStream, LinkedBlockingQueue<ControlThreadMessage> controllerQueue){
             this.inputStream = inputStream;
         }
 
@@ -134,46 +140,14 @@ public class PersistentSA_New implements Runnable{
 
             while (true){
                 try {
-                    ControlMessage c = (ControlMessage) inputStream.readObject();
+                    FlowUpdateMessage fum = (FlowUpdateMessage) inputStream.readObject();
+                    // simply forwards the msg
+                    controllerQueue.put( new ControlThreadMessage(fum) );
 
-                    // TODO handle the message and put events into the corresponding SA's event queue.
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
+                } catch (IOException | ClassNotFoundException | InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-
-//            ControlMessage c = (ControlMessage) is_.readObject();
-//
-//            // TODO change the message into the only ONE message that we will be using.
-//
-//            if (c.type_ == ControlMessage.Type.FLOW_START) {
-//                System.out.println(trace_id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert(!flowGroups.containsKey(c.flow_id_));
-//
-//                FlowInfo f = new FlowInfo(c.flow_id_, c.field0_, c.field1_, dataBroker);
-//                flowGroups.put(f.id_, f);
-//            }
-//            else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
-//                System.out.println(trace_id_ + " FLOW_UPDATE(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert(flowGroups.containsKey(c.flow_id_));
-//                FlowInfo f = flowGroups.get(c.flow_id_);
-//                f.update_flow(c.field0_, c.field1_);
-//            }
-//            else if (c.type_ == ControlMessage.Type.SUBFLOW_INFO) {
-//                System.out.println(trace_id_ + " SUBFLOW_INFO(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
-//                assert flowGroups.containsKey(c.flow_id_) : trace_id_ + " does not currently have " + c.flow_id_;
-//                FlowInfo f = flowGroups.get(c.flow_id_);
-//                PersistentConnection conn = connection_pools_.get(c.ra_id_)[c.field0_];
-//                f.add_subflow(conn, c.field1_);
-//            }
-//            else {
-//                System.out.println(trace_id_ + " received an unexpected ControlMessage");
-////                        System.exit(1);
-//            }
 
         }
     }
@@ -195,8 +169,8 @@ public class PersistentSA_New implements Runnable{
             e.printStackTrace();
         }
 
-        saAPI = new SharedInterface(id , client_sd);
         netGraph = net_graph;
+        saAPI = new SharedInterface(id , client_sd , netGraph);
 
         statusExec = Executors.newScheduledThreadPool(1);
 
@@ -211,9 +185,5 @@ public class PersistentSA_New implements Runnable{
         // start the worker thread.
     }
 
-    // called periodically to send the HeartBeat STATUS message to GAIA CTRL.
-    public void sendHeatBeat(){
-
-    }
 
 }

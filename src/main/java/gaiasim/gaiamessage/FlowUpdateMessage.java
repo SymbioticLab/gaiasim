@@ -15,25 +15,62 @@ package gaiasim.gaiamessage;
 // Altogether we need an (k * m * n) Array of {pathid -> rate}.
 
 // The output of the LP is an #SA * k * m * n Array.
-// good news being that the array is sparse, so we can think of some way to compress it.
+// good news being that the array is sparse, so we may think of some way to compress it.
 
 
+
+// This message corresponds to all PCs and all flows between one (SA -> RA) pair
 
 public class FlowUpdateMessage {
 
-    String fgID;
     String raID;
 
-    int size; // number of paths
-    double remaingVolume; // the first time receiving this update, store it, then neglect future updates.
+    int sizeOfFlowGroups;
+    int sizeOfPaths; // number of paths
 
-    double [] rates; // rates[size]
+    String [] fgID;
 
+    double [] remaingVolume; // the first time receiving this update, store it, then neglect future updates.
 
+    double [][] rates; // rates[size]
 
+    public FlowUpdateMessage(String raID, int sizeOfFlowGroups, int sizeOfPaths, String[] fgID, double[] remaingVolume, double[][] rates) {
+        this.raID = raID;
+        this.sizeOfFlowGroups = sizeOfFlowGroups;
+        this.sizeOfPaths = sizeOfPaths;
+        this.fgID = fgID;
+        this.remaingVolume = remaingVolume;
+        this.rates = rates;
+    }
 
+    public String getRaID() { return raID; }
 
+    public int getSizeOfFlowGroups() {
+        return sizeOfFlowGroups;
+    }
 
+    public int getSizeOfPaths() {
+        return sizeOfPaths;
+    }
 
+    public String[] getFgID() {
+        return fgID;
+    }
+
+    public double[] getRemaingVolume() {
+        return remaingVolume;
+    }
+
+    public double getRemaingVolume(int i){
+        return remaingVolume[i];
+    }
+
+    public double[][] getRates() {
+        return rates;
+    }
+
+    public double getRate(int i, int j){
+        return rates[i][j];
+    }
 
 }

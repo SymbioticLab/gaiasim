@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class FlowStatusMessage extends AgentMessage{
 
     // the payload, use arrays as the payload
-//    private HashMap<String , Double> flow_to_progress_map;
+    // private HashMap<String , Double> flow_to_progress_map;
     int size;
     String  [] id;
     double  [] transmitted;

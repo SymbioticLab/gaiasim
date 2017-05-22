@@ -6,7 +6,7 @@ public class SubscriptionMessage {
     public enum  MsgType {
         SUBSCRIBE,
         UNSUBSCRIBE,
-        TERMINATE
+        SYNC // SYNC do not carry information
     }
 
     MsgType type;
@@ -29,6 +29,10 @@ public class SubscriptionMessage {
         this.fgi = fgi;
         this.rate = 0.0;
         this.pause = true;
+    }
+
+    public SubscriptionMessage(){
+        this.type = MsgType.SYNC;
     }
 
     public MsgType getType() { return type; }

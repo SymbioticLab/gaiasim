@@ -3,9 +3,9 @@ package gaiasim.gaiaagent;
 // Stores subscription information
 
 public class SubscriptionInfo {
-    String id;
-    FlowGroupInfo fgi;
-    double rate;
+    final String id;
+    final FlowGroupInfo fgi;
+    volatile double rate;
 
     public SubscriptionInfo(String id, FlowGroupInfo fgi, double rate) {
         this.id = id;
@@ -24,4 +24,6 @@ public class SubscriptionInfo {
     public double getRate() {
         return rate;
     }
+
+    public void setRate(double newRate) { this.rate = newRate; }
 }

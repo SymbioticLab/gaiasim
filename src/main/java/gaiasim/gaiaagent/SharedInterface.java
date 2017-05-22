@@ -5,12 +5,16 @@ package gaiasim.gaiaagent;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.gaiamessage.AgentMessage;
 import gaiasim.gaiamessage.FlowStatusMessage;
+import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class SharedInterface {
     final String saID;
@@ -26,23 +30,36 @@ public class SharedInterface {
     //       that Connections get cycled through in RR fashion. Or, if one really
     //       wanted to get fancy, Connections could be kept in some order based
     //       on their relative "hottness" -- how warmed up the TCP connection is.
-    public HashMap<String, PConnection[]> connection_pools_ = new HashMap<String, PConnection[]>();
+//    public HashMap<String, PConnection[]> connection_pools_ = new HashMap<String, PConnection[]>();
 
     // A Map of all Connections, indexed by PersistentConnection ID. PersistentConnection ID is
     // composed of ReceivingAgentID + PathID.
-    public HashMap<String, PConnection> connections_ = new HashMap<String, PConnection>();
+//    public HashMap<String, PConnection> connections_ = new HashMap<String, PConnection>();
 
-    // Flows that are currently being sent by this SendingAgent
+    NetGraph netGraph;
+
+    // TODO rethink about the data structures here. the consistency between the following two?
+    // FlowGroups that are currently being sent by this SendingAgent
     public HashMap<String, FlowGroupInfo> flowGroups = new HashMap<String, FlowGroupInfo>();
+
+    // List [size_of_workers] of hashMap (fgID -> rate). // But size_workers = RAs * paths. so...
+    // RAID , pathID -> subscription info
+    public HashMap<String , ArrayList< HashMap<String , SubscriptionInfo> > >subscriptionRateMaps;
+
+    // raID , pathID -> workerQueue.
+    HashMap<String, LinkedBlockingQueue<SubscriptionMessage>[]> workerQueues = new HashMap<>();
+
+//    public List< HashMap<String , SubscriptionInfo> > subscriptionRateMaps;
 
     public Socket socketToCTRL;
 
     public ObjectOutputStream os_;
 
 
-    public SharedInterface(String saID , Socket sd) {
+    public SharedInterface(String saID, Socket sd, NetGraph netGraph) {
         this.saID = saID;
         this.saName = Constants.node_id_to_trace_id.get(saID);
+        this.netGraph = netGraph;
 
         try {
             socketToCTRL = sd;
@@ -54,9 +71,22 @@ public class SharedInterface {
             System.exit(1);
         }
 
+        for (String ra_id : netGraph.nodes_) {
+            if (!saID.equals(ra_id)) { // don't consider path to SA itself.
+                // because apap is consistent among different programs.
+                int pathSize = netGraph.apap_.get(saID).get(ra_id).size();
+                ArrayList<HashMap<String, SubscriptionInfo>> maplist = new ArrayList<>(pathSize);
+                subscriptionRateMaps.put(ra_id, maplist);
+
+                for (int i = 0; i < pathSize; i++) {
+                    maplist.add(new HashMap<>());
+                }
+            }
+        }
+
     }
 
-    // TODO the atomicity of this read?
+    // TODO think about the atomicity of this read?
     public void sendStatusUpdate(){
         try {
             int size = flowGroups.size();
@@ -70,9 +100,9 @@ public class SharedInterface {
             for (String k : flowGroups.keySet()) {
                 FlowGroupInfo f = flowGroups.get(k);
 
-                fid[i] = f.id_;
-                transmitted[i] = f.transmitted_;
-                isFinished[i] = f.done_;
+                fid[i] = f.getID();
+                transmitted[i] = f.getTransmitted();
+                isFinished[i] = f.isFinished();
 
                 i++;
 //                    f.set_update_pending(true); // no need?
@@ -106,8 +136,13 @@ public class SharedInterface {
     }
 
     // TODO remove this in the future
-    public void writeMessage(PortAnnouncementMessage_Old m) throws IOException {
+    public void writeMessageToCTRL(PortAnnouncementMessage_Old m) throws IOException {
         os_.writeObject(m);
+    }
+
+    // called periodically to send the HeartBeat STATUS message to GAIA CTRL.
+    public void sendHeartBeat(){
+
     }
 
 
@@ -117,9 +152,9 @@ public class SharedInterface {
 
     public String getSaName() { return saName; }
 
-    public HashMap<String, PConnection[]> getConnection_pools_() { return connection_pools_; }
+//    public HashMap<String, PConnection[]> getConnection_pools_() { return connection_pools_; }
 
-    public HashMap<String, PConnection> getConnections_() { return connections_; }
+//    public HashMap<String, PConnection> getConnections_() { return connections_; }
 
     public HashMap<String, FlowGroupInfo> getFlowGroups() { return flowGroups; }
 

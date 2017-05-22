@@ -4,6 +4,7 @@ package gaiasim.gaiamaster;
 
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.Pathway;
+import gaiasim.util.Constants;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,8 @@ public class FlowGroup {
     private long startTime = -1;
     private long endTime = -1;
 
+    private boolean finished = false; // set true along with setting endTime.
+
     // make this field volatile! Or maybe atomic?
     private volatile double transmitted;
 
@@ -32,6 +35,23 @@ public class FlowGroup {
         this.dstLocation = dstLocation;
         this.owningCoflowID = owningCoflowID;
         this.totalVolume = totalVolume;
+    }
+
+    // This method is called upon receiving Status Update, if a flow is marked finished, we don't invoke transmit.
+    public synchronized boolean setFinish(long timestamp){
+        if (!finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished
+            return false;
+        }
+        else {
+            this.transmitted = this.totalVolume;
+            this.endTime = timestamp;
+            this.finished = true;
+            return true;
+        }
+    }
+
+    public synchronized void setTransmitted(double txed){
+        this.transmitted = txed;
     }
 
     public String getId() { return id; }
@@ -63,4 +83,10 @@ public class FlowGroup {
         this.totalVolume = fgo.getVolume();
         this.transmitted = fgo.getTransmitted_volume();
     }
+
+    public long getStartTime() { return startTime; }
+
+    public long getEndTime() { return endTime; }
+
+    public boolean isFinished() { return finished; }
 }

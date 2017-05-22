@@ -15,6 +15,9 @@ public class Constants {
     public static final int RECEIVING_AGENT_PORT = 33330;
     public static final String AGENT_ADDR_PREFIX = "10.0.0.";
 
+    // Comparison between double
+    public static final double DOUBLE_EPSILON = 0.00001;
+
     // Number of milliseconds in a second
     public static final int MILLI_IN_SECOND = 1000;
     public static final double MILLI_IN_SECOND_D = 1000.0;
