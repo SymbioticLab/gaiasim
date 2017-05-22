@@ -183,7 +183,7 @@ public class Worker implements Runnable{
                     bos.flush();
 
 //                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
-                    System.out.println("PersistentConn: Flushed Writing w/ rate: " + total_rate + " Mbit/s @ " + System.currentTimeMillis());
+//                    System.out.println("PersistentConn: Flushed Writing w/ rate: " + total_rate + " Mbit/s @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
                     double tx_ed = (double) data_length * 8 / 1024 / 1024;
@@ -226,7 +226,13 @@ public class Worker implements Runnable{
             // TODO need to remove from subscription list?
             for (SubscriptionInfo s : to_remove) {
                 total_rate -= s.getRate();
-                subscribers.remove(s.getFgi().getID());
+                String fgID = s.getFgi().getID(); // fgID == fgiID
+
+                // remove from two places.
+                subscribers.remove(fgID);
+                api.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
+                api.finishFlowGroup(fgID);
+
             }
 
             // Ensure we don't get rounding errors
