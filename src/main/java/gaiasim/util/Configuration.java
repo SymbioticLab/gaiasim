@@ -69,13 +69,13 @@ public class Configuration {
     }
 
     public void createDefaultConfig(){
-        for (int i = 1 ; i < numSA + 1 ; i++){ // starting from 10.0.0.1 !!!
-            SAIPs[i] = Constants.AGENT_ADDR_PREFIX + i;
+        for (int i = 0 ; i < numSA ; i++){
+            SAIPs[i] = Constants.AGENT_ADDR_PREFIX + String.valueOf(i+1); // starting from 10.0.0.1 !!!
             SAPorts[i] = Constants.SENDING_AGENT_PORT;
         }
 
-        for (int i = 1 ; i < numRA + 1 ; i++){
-            RAIPs[i] = Constants.AGENT_ADDR_PREFIX + i;
+        for (int i = 0 ; i < numRA ; i++){
+            RAIPs[i] = Constants.AGENT_ADDR_PREFIX + String.valueOf(i+1);
             RAPorts[i] = Constants.RECEIVING_AGENT_PORT;
         }
     }
