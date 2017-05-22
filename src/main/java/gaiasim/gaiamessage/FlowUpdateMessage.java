@@ -21,7 +21,9 @@ package gaiasim.gaiamessage;
 
 // This message corresponds to all PCs and all flows between one (SA -> RA) pair
 
-public class FlowUpdateMessage {
+import java.io.Serializable;
+
+public class FlowUpdateMessage implements Serializable{
 
     String raID;
 

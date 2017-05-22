@@ -44,7 +44,7 @@ public class SharedInterface {
 
     // List [size_of_workers] of hashMap (fgID -> rate). // But size_workers = RAs * paths. so...
     // RAID , pathID -> subscription info
-    public HashMap<String , ArrayList< HashMap<String , SubscriptionInfo> > >subscriptionRateMaps;
+    public HashMap<String , ArrayList< HashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new HashMap<>();
 
     // raID , pathID -> workerQueue.
     HashMap<String, LinkedBlockingQueue<SubscriptionMessage>[]> workerQueues = new HashMap<>();

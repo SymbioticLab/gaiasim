@@ -53,7 +53,7 @@ public class PersistentSA_New implements Runnable{
     // A class for shared saAPI (providing API for the threads.)
     SharedInterface saAPI;
 
-    String id_;
+    String saID;
     String trace_id_;
     NetGraph netGraph;
     Configuration config;
@@ -74,11 +74,11 @@ public class PersistentSA_New implements Runnable{
 
         for (String ra_id : net_graph.nodes_) {
 
-            if (!id_.equals(ra_id)) { // don't consider path to SA itself.
+            if (!saID.equals(ra_id)) { // don't consider path to SA itself.
 
                 // because apap is consistent among different programs.
-                LinkedBlockingQueue[] queues = new LinkedBlockingQueue[net_graph.apap_.get(id_).get(ra_id).size()];
-                int pathSize = net_graph.apap_.get(id_).get(ra_id).size();
+                LinkedBlockingQueue[] queues = new LinkedBlockingQueue[net_graph.apap_.get(saID).get(ra_id).size()];
+                int pathSize = net_graph.apap_.get(saID).get(ra_id).size();
                 for (int i = 0; i < pathSize; i++) {
                     // ID of connection is SA_id-RA_id.path_id
                     String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(ra_id) + "." + Integer.toString(i);
@@ -97,9 +97,10 @@ public class PersistentSA_New implements Runnable{
                         // We don't track the thread after starting it.
 
                         // Inform the controller of the port number selected
-                        saAPI.writeMessageToCTRL(new PortAnnouncementMessage_Old(id_, ra_id, i, port));
+                        saAPI.writeMessageToCTRL(new PortAnnouncementMessage_Old(saID, ra_id, i, port));
                     }
                     catch (java.io.IOException e) {
+                        System.err.println("SA: failed on socket to " + ra_id + " IP: " + config.getRAIP(raID) + " Port: " + config.getRAPort(raID));
                         // TODO: Close socket
                         e.printStackTrace();
                         System.exit(1);
@@ -146,6 +147,7 @@ public class PersistentSA_New implements Runnable{
 
                 } catch (IOException | ClassNotFoundException | InterruptedException e) {
                     e.printStackTrace();
+                    System.exit(1); // fail if happens
                 }
             }
 
@@ -158,6 +160,7 @@ public class PersistentSA_New implements Runnable{
     // TODO listens on socket from CTRL, and forward the event into controllerQueue
 
     public PersistentSA_New(String id, NetGraph net_graph, Socket client_sd , Configuration configuration) {
+        this.saID = id;
 
         try{
             ObjectInputStream is_ = new ObjectInputStream(client_sd.getInputStream());

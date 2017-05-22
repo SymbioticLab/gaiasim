@@ -16,6 +16,7 @@ import com.google.common.util.concurrent.RateLimiter;
 import gaiasim.util.Constants;
 
 import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,6 +65,12 @@ public class Worker implements Runnable{
         this.pathID = pathID;
 
         rateLimiter = RateLimiter.create(Constants.DEFAULT_TOKEN_RATE);
+
+        try {
+            bos = new BufferedOutputStream(soc.getOutputStream() , Constants.BUFFER_SIZE );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        data_ = data;
     }

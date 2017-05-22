@@ -94,10 +94,9 @@ public class Master {
             coflowPool.put(id , cf);
         }
 
-
-        public Coflow getCoflowFromFlowGroup(String id) {
-            return flowIDtoCoflow.get(id);
-        }
+//        public Coflow getCoflowFromFlowGroup(String id) {
+//            return flowIDtoCoflow.get(id);
+//        }
 
         public FlowGroup getFlowGroup(String id){
             if( flowIDtoCoflow.containsKey(id)){
@@ -128,7 +127,8 @@ public class Master {
                     String cfID = cf.getId();
                     System.out.println("Master: Received Coflow from YARN with ID = " + cfID);
 
-                    ms.coflowPool.put(cfID , cf);
+                    ms.addCoflow(cfID , cf);
+//                    ms.coflowPool.put(cfID , cf);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -259,6 +259,7 @@ public class Master {
         }
 
 
+        System.out.println("Master: SA Interfaces are up.");
 
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
@@ -267,11 +268,15 @@ public class Master {
             relay.relay_ports();
         }
 
+        System.out.println("Port Announcements forwarded, starting coflowListener");
+
         // start the other two threads.
         coflowListener.start();
-        agentController.start();
+//        System.out.println("Master: starting agentController");
+//        agentController.start();
 
 
+        System.out.println("Master: starting periodical scheduler at every " + Constants.SCHEDULE_INTERVAL_MS + " ms.");
         // start the periodic execution of schedule()
         final Runnable runSchedule = () -> schedule();
         ScheduledFuture<?> mainHandler = mainExec.scheduleAtFixedRate(runSchedule, 0, Constants.SCHEDULE_INTERVAL_MS, MILLISECONDS);
