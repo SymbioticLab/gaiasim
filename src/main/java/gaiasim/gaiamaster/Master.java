@@ -201,7 +201,7 @@ public class Master {
                 }
 
                 FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
-//                System.out.println("Created FUM: " + m.toString()); // it is working. // :-)
+                System.out.println("Created FUM: " + m.toString()); // it is working. // :-)
                 sai.get(said).sendFlowUpdate_Blocking(m);
             }
         }
@@ -358,10 +358,10 @@ public class Master {
 
         // How to parallelize -> use the threadpool (we don't parallelize here, for safety)
         for ( String saID : updates.keySet() ){
-            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
+//            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
 //            Runnable tmpTask = new FlowUpdateSender(saID , updates.get(saID) , netGraph );
 //            tmpTask.run(); // serialized version
-//            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
+            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
         }
 
 /*        for (FlowGroup_Old f : preempted_flowGroups) {
