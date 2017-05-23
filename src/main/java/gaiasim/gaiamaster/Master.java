@@ -318,7 +318,7 @@ public class Master {
     }
 
     public void schedule(){
-        System.out.println("Master: Scheduling......");
+        System.out.println("Master: Scheduling() is triggered. Active Coflows = " + ms.coflowPool.size());
 
         // for collocated task, finish right away (implemented during COFLOW_INSERTION)
 
@@ -336,6 +336,9 @@ public class Master {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
             // Act on the results // TODO send the flow_messages.
             sendControlMessages(scheduled_flows);
+
+            long deltaTime = System.currentTimeMillis() - currentTime;
+            System.out.println("Master: schedule() took " + deltaTime + " ms to schedule and send all messages.");
 
 
         } catch (Exception e) { // could throw File I/O error
