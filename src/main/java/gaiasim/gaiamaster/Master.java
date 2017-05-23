@@ -6,7 +6,6 @@ package gaiasim.gaiamaster;
 import com.google.common.collect.ArrayListMultimap;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
-import gaiasim.comm.ScheduleMessage;
 import gaiasim.gaiamessage.AgentMessage;
 import gaiasim.gaiamessage.FlowUpdateMessage;
 import gaiasim.network.Coflow_Old;
@@ -26,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
@@ -332,7 +332,8 @@ public class Master {
         try {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
             // Act on the results
-            sendControlMessages(scheduled_flows);
+//            sendControlMessages_Parallel(scheduled_flows);
+            sendControlMessages_Serial(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
             System.out.println("Master: schedule() took " + deltaTime + " ms. Active Coflows = " + ms.coflowPool.size());
@@ -348,51 +349,45 @@ public class Master {
     public void sendControlMessages_Serial(HashMap<String, FlowGroup_Old> scheduled_flows){
 
         // first transform this into messages.
-        // create a multimap for different RAs, (RA -> FGO).
-        ArrayListMultimap<String , FlowGroup_Old> saToFGOs = ArrayListMultimap.create();
-
-        for ( FlowGroup_Old f : scheduled_flows.values()){
-            saToFGOs.put( f.getSrc_loc() , f);
-        }
+        Map < String , Map < String , List<FlowGroup_Old>>> bySA_RA = scheduled_flows.values().stream()
+                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc,Collectors.groupingBy(FlowGroup_Old::getDst_loc)));
 
 
-        for (String saID : saToFGOs.keySet()){
+        for (Map.Entry<String , Map < String , List<FlowGroup_Old>>> entrybySA: bySA_RA.entrySet()){
             // for each SA we send num(RA) messages.
+            for (Map.Entry<String , List<FlowGroup_Old>> entrybyRA : entrybySA.getValue().entrySet() ){
+                String raID = entrybyRA.getKey();
+                List<FlowGroup_Old> fgosbyRA = entrybyRA.getValue();
+                // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
+                int sizeOfFGO = fgosbyRA.size();
+                assert (sizeOfFGO == 0);
+                int sizeOfPaths = fgosbyRA.get(0).paths.size(); // should be consistent among FGOs TODO verify
+                assert (sizeOfPaths == 0);
+                String [] fgID = new String[sizeOfFGO];
+                double [] fgVol = new double[sizeOfFGO];
+                double[][] rates = new double[sizeOfFGO][sizeOfPaths];
 
-            // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
-            // TODO finish this
+                for (int i = 0 ; i < sizeOfFGO ; i++){
+                    FlowGroup_Old fgo = fgosbyRA.get(i);
+                    fgID [i] = fgo.getId();
+                    fgVol[i] = fgo.remaining_volume();
 
-//            for (String raID : raToFGO.keySet()){
-//                // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
-//                int sizeOfFGO = raToFGO.get(raID).size();
-//                assert (sizeOfFGO == 0);
-//                int sizeOfPaths = raToFGO.get(raID).get(0).paths.size(); // should be consistent among FGOs TODO verify
-//                assert (sizeOfPaths == 0);
-//                String [] fgID = new String[sizeOfFGO];
-//                double [] fgVol = new double[sizeOfFGO];
-//                double[][] rates = new double[sizeOfFGO][sizeOfPaths];
-//
-//                for (int i = 0 ; i < sizeOfFGO ; i++){
-//                    FlowGroup_Old fgo = raToFGO.get(raID).get(i);
-//                    fgID [i] = fgo.getId();
-//                    fgVol[i] = fgo.remaining_volume();
-//
-//                    for (int j = 0; j < sizeOfPaths ; j++){
-//
-//                        Pathway p = fgo.paths.get(j);
-//                        int pid = ng.get_path_id(p);
-//
-//                        // TODO verify this. verify that pid maps to [0,MAX_P]
-//                        rates[i][pid] = p.getBandwidth();
-//
-//                    }
-//                }
-//
-//                FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
-//                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+                    for (int j = 0; j < sizeOfPaths ; j++){
+
+                        Pathway p = fgo.paths.get(j);
+                        int pid = netGraph.get_path_id(p);
+
+                        // TODO verify this. verify that pid maps to [0,MAX_P]
+                        rates[i][pid] = p.getBandwidth();
+                    }
+                }
+
+                FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
+                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
 //                sai.get(said).sendFlowUpdate_Blocking(m);
-//            }
+                sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
 
+            }
         }
         
 
@@ -400,26 +395,25 @@ public class Master {
 
     // divide the messages by the corresponding SA, aggregate the RAs.
     // We don't send "UNSCHEDULE" messages, but rather let SA decide how to unsubscribe.
-    public void sendControlMessages(HashMap<String, FlowGroup_Old> scheduled_flows){
+    public void sendControlMessages_Parallel(HashMap<String, FlowGroup_Old> scheduled_flows){
+        // group FGOs by SA
+        Map< String , List<FlowGroup_Old>> fgoBySA = scheduled_flows.values().stream()
+                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
-        // transform this into a multimap, manually , maps f.getSrc_loc() (i.e. saID) -> f
-        ArrayListMultimap<String , FlowGroup_Old> updates = ArrayListMultimap.create();
-
-        // we sort the flowGroup according the src_location (i.e. sendingAgentInterface), so we can send to corresponding SA.
-        for (FlowGroup_Old fgo : scheduled_flows.values()){
-            updates.put( fgo.getSrc_loc()  , fgo  );
-        }
+//        // transform this into a multimap, manually , maps f.getSrc_loc() (i.e. saID) -> f
+//        ArrayListMultimap<String , FlowGroup_Old> updates = ArrayListMultimap.create();
+//
+//        // we sort the flowGroup according the src_location (i.e. sendingAgentInterface), so we can send to corresponding SA.
+//        for (FlowGroup_Old fgo : scheduled_flows.values()){
+//            updates.put( fgo.getSrc_loc()  , fgo  );
+//        }
 
         // How to parallelize -> use the threadpool (we don't parallelize here, for safety)
-        for ( String saID : updates.keySet() ){
+        for ( Map.Entry<String,List<FlowGroup_Old>> entry : fgoBySA.entrySet() ){
 //            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
 //            Runnable tmpTask = new FlowUpdateSender(saID , updates.get(saID) , netGraph );
 //            tmpTask.run(); // serialized version
-            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
+            saControlExec.submit( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) ); // parallel version
         }
-
-
     }
-
-
 }
