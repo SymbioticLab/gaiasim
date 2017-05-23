@@ -21,6 +21,7 @@ import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,7 +154,8 @@ public class Master {
         }
     }
 
-    public class FlowUpdateSender implements Runnable{
+    // removed runnable interface
+    public class FlowUpdateSender implements Callable<Integer>{
         private List<FlowGroup_Old> fgos;
         String said;
         NetGraph ng;
@@ -164,7 +166,7 @@ public class Master {
         }
 
         @Override
-        public void run() {
+        public Integer call() throws Exception {
             // first transform this into messages.
             // first group FGOs by RAs
             Map < String , List<FlowGroup_Old>> fgosbyRA = fgos.stream()
@@ -203,6 +205,7 @@ public class Master {
                 System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
                 sai.get(said).sendFlowUpdate_Blocking(m);
             }
+            return 1;
         }
     }
 
@@ -332,7 +335,7 @@ public class Master {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
             // Act on the results
 //            sendControlMessages_Parallel(scheduled_flows);
-            sendControlMessages_Serial(scheduled_flows);
+            sendControlMessages_Parallel(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
             System.out.println("Master: schedule() took " + deltaTime + " ms. Active Coflows = " + ms.coflowPool.size());
@@ -397,20 +400,24 @@ public class Master {
         Map< String , List<FlowGroup_Old>> fgoBySA = scheduled_flows.values().stream()
                 .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
-//        // transform this into a multimap, manually , maps f.getSrc_loc() (i.e. saID) -> f
-//        ArrayListMultimap<String , FlowGroup_Old> updates = ArrayListMultimap.create();
-//
-//        // we sort the flowGroup according the src_location (i.e. sendingAgentInterface), so we can send to corresponding SA.
-//        for (FlowGroup_Old fgo : scheduled_flows.values()){
-//            updates.put( fgo.getSrc_loc()  , fgo  );
-//        }
 
-        // How to parallelize -> use the threadpool (we don't parallelize here, for safety)
+        // How to parallelize -> use the threadpool
+        List<FlowUpdateSender> tasks= new ArrayList<>();
         for ( Map.Entry<String,List<FlowGroup_Old>> entry : fgoBySA.entrySet() ){
 //            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
 //            Runnable tmpTask = new FlowUpdateSender(saID , updates.get(saID) , netGraph );
 //            tmpTask.run(); // serialized version
-            saControlExec.submit( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) ); // parallel version
+            tasks.add( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) );
         }
+
+        try {
+            List<Future<Integer>> futures = saControlExec.invokeAll(tasks);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        saControlExec.submit( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) ); // parallel version
+
+        // wait for all sending to finish before proceeding
+
     }
 }
