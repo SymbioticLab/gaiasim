@@ -9,6 +9,7 @@ import gaiasim.gaiamessage.FlowUpdateMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class CTRLMessageListener implements Runnable{
@@ -32,11 +33,12 @@ public class CTRLMessageListener implements Runnable{
                         // Goal: subscribe updated rates, and UNSUBSCRIBE ALL OTHER FLOWGROUPS.
 
                         // first reset all current subscription rates: (so we don't need to check if a flow is subscribed)
-                        for( String raID : si.subscriptionRateMaps.keySet()) {
-                            for (HashMap<String, SubscriptionInfo> h : si.subscriptionRateMaps.get(raID)) {
-                                for (SubscriptionInfo s : h.values()) {
+                        for(Map.Entry<String , ArrayList< HashMap<String , SubscriptionInfo>>> entry : si.subscriptionRateMaps.entrySet()) {
+                            for (HashMap<String, SubscriptionInfo> h : entry.getValue()) {
+                                h.forEach((k,v) -> v.setRate(0.0));
+/*                                for (SubscriptionInfo s : h.values()) {
                                     s.setRate(0.0); // TODO to set or to remove?
-                                }
+                                }*/
                             }
                         }
 

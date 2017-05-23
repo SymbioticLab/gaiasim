@@ -14,6 +14,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class SharedInterface {
@@ -97,8 +98,8 @@ public class SharedInterface {
             double [] transmitted = new double[size];
             boolean [] isFinished = new boolean[size];
             int i = 0;
-            for (String k : flowGroups.keySet()) {
-                FlowGroupInfo f = flowGroups.get(k);
+            for (Map.Entry<String, FlowGroupInfo> entry: flowGroups.entrySet()) {
+                FlowGroupInfo f = entry.getValue();
 
                 fid[i] = f.getID();
                 transmitted[i] = f.getTransmitted();

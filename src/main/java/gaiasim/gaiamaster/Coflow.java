@@ -8,6 +8,7 @@ import gaiasim.util.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -63,8 +64,8 @@ public class Coflow {
     public Coflow (Coflow_Old cfo){
         this.id = cfo.id;
         this.flowGroups = new HashMap<String , FlowGroup>();
-        for(String k : cfo.flows.keySet()){
-            FlowGroup fg = new FlowGroup(cfo.flows.get(k));
+        for(Map.Entry<String, FlowGroup_Old> entry : cfo.flows.entrySet()){
+            FlowGroup fg = new FlowGroup(entry.getValue());
             flowGroups.put( fg.getId() , fg);
         }
 

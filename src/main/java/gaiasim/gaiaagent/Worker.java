@@ -21,6 +21,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Worker implements Runnable{
@@ -207,8 +208,8 @@ public class Worker implements Runnable{
             ArrayList<SubscriptionInfo> to_remove = new ArrayList<SubscriptionInfo>();
 
             double flow_rate;
-            for (String k : subscribers.keySet()) {
-                SubscriptionInfo s = subscribers.get(k);
+            for (Map.Entry<String, SubscriptionInfo> entry : subscribers.entrySet()) {
+                SubscriptionInfo s = entry.getValue();
                 FlowGroupInfo f = s.getFgi();
                 flow_rate = s.getRate();
 
