@@ -39,14 +39,20 @@ public class CTRLMessageListener implements Runnable{
                             }
                         }
 
+                        System.out.println("CTRL: Received FUM. ");
                         FlowUpdateMessage fum = m.fum; // this time the message contains a lot of information
-                        HashMap<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> map = m.fum.getContent();
+                        HashMap<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> map = fum.getContent();
 
                         for (Map.Entry<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> oe: map.entrySet() ){
                             String raID = oe.getKey();
 
                             for (Map.Entry<String, FlowUpdateMessage.FlowGroupEntry> ie : oe.getValue().entrySet()){
                                 String fgID = ie.getKey();
+
+                                // add this flowgroup when not existent // only accept volume from CTRL at this point.
+                                if( !si.flowGroups.containsKey(fgID)){
+                                    si.flowGroups.put(fgID , new FlowGroupInfo(fgID , ie.getValue().remainingVolume ) );
+                                }
 
                                 for (Map.Entry<Integer , Double> entry: ie.getValue().pathToRate.entrySet()){
                                     int pathID = entry.getKey();

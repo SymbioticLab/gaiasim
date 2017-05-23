@@ -118,6 +118,7 @@ public class Worker implements Runnable{
                     total_rate = api.subscriptionRateMaps.get(raID).get(pathID).values()
                             .stream().mapToDouble(SubscriptionInfo::getRate).sum();
 
+                    System.out.println("Worker: Received SYNC message, now working with rate (MBit/s) " + total_rate);
                 }
 
 /*                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
@@ -183,8 +184,7 @@ public class Worker implements Runnable{
                     bos.write(data_block , 0, data_length);
                     bos.flush();
 
-//                        System.out.println("PersistentConn: Flushed Writing " + data_length + " w/ rate: " + data_.total_rate + " Mbit/s  @ " + System.currentTimeMillis());
-//                    System.out.println("PersistentConn: Flushed Writing w/ rate: " + total_rate + " Mbit/s @ " + System.currentTimeMillis());
+                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
                     double tx_ed = (double) data_length * 8 / 1024 / 1024;
