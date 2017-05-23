@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 public class FlowUpdateMessage implements Serializable{
 
-    public class FlowGroupEntry {
+    public class FlowGroupEntry implements Serializable{
         public double remainingVolume;
         public HashMap< Integer , Double> pathToRate;
 
