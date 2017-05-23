@@ -37,7 +37,6 @@ import gaiasim.util.Constants;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
@@ -97,7 +96,7 @@ public class PersistentSA_New implements Runnable{
                         // We don't track the thread after starting it.
 
                         // Inform the controller of the port number selected
-                        saAPI.writeMessageToCTRL(new PortAnnouncementMessage_Old(saID, ra_id, i, port));
+                        saAPI.sendPAMessageToCTRL(new PortAnnouncementMessage_Old(saID, ra_id, i, port));
                     }
                     catch (java.io.IOException e) {
                         System.err.println("SA: failed on socket to " + ra_id + " IP: " + config.getRAIP(raID) + " Port: " + config.getRAPort(raID));

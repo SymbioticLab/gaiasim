@@ -131,12 +131,12 @@ public class SharedInterface {
         flowGroups.remove(fgID);
     }
 
-    private void sendMsgToCTRL(AgentMessage m) throws IOException {
+    private synchronized void sendMsgToCTRL(AgentMessage m) throws IOException {
         os_.writeObject(m);
     }
 
     // TODO remove this in the future
-    public void writeMessageToCTRL(PortAnnouncementMessage_Old m) throws IOException {
+    public synchronized void sendPAMessageToCTRL(PortAnnouncementMessage_Old m) throws IOException {
         os_.writeObject(m);
     }
 
