@@ -179,6 +179,7 @@ public class Master {
                 int sizeOfFGO = raToFGO.get(raID).size();
                 assert (sizeOfFGO == 0);
                 int sizeOfPaths = raToFGO.get(raID).get(0).paths.size(); // should be consistent among FGOs TODO verify
+                assert (sizeOfPaths == 0);
                 String [] fgID = new String[sizeOfFGO];
                 double [] fgVol = new double[sizeOfFGO];
                 double[][] rates = new double[sizeOfFGO][sizeOfPaths];
@@ -357,7 +358,9 @@ public class Master {
 
         // How to parallelize -> use the threadpool (we don't parallelize here, for safety)
         for ( String saID : updates.keySet() ){
-            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run(); // serialized version
+            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
+//            Runnable tmpTask = new FlowUpdateSender(saID , updates.get(saID) , netGraph );
+//            tmpTask.run(); // serialized version
 //            saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
         }
 
