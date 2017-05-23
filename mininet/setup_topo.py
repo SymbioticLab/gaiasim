@@ -54,10 +54,10 @@ def main():
             cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent '
             if baseline: # not supported for now
                 # cmd_str += str(host_id) + ' 0 > /tmp/salog_' + str(host_id) + '.txt &'
-                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt &'
+                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'
             else:
                 # cmd_str += str(host_id) + ' 1 ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt &'
-                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt &'
+                cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'
 
             print "Starting sending agent " + host.name + " id " + str(host_id) +" . using: " + cmd_str
             host.cmd(cmd_str)
