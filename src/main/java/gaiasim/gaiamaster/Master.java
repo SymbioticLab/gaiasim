@@ -166,37 +166,36 @@ public class Master {
         @Override
         public void run() {
             // first transform this into messages.
-            // create a multimap for different RAs, (RA -> FGO).
-            ArrayListMultimap<String , FlowGroup_Old> raToFGO = ArrayListMultimap.create();
+            // first group FGOs by RAs
+            Map < String , List<FlowGroup_Old>> fgosbyRA = fgos.stream()
+                    .collect(Collectors.groupingBy(FlowGroup_Old::getDst_loc));
 
-            for ( FlowGroup_Old f : fgos){
-                raToFGO.put( f.getDst_loc() , f);
-            }
-
-            // TODO Can we parallelize this? hard.
-            for (String raID : raToFGO.keySet()){
+            // TODO Can we parallelize this? Yes, since the dimension of rates[][] is same across all RAs.
+            for (Map.Entry<String , List<FlowGroup_Old>> entry : fgosbyRA.entrySet()){
                 // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
-                int sizeOfFGO = raToFGO.get(raID).size();
+                String raID = entry.getKey();
+                List<FlowGroup_Old> listFGO = entry.getValue();
+                int sizeOfFGO = listFGO.size();
                 assert (sizeOfFGO == 0);
-                int sizeOfPaths = raToFGO.get(raID).get(0).paths.size(); // should be consistent among FGOs TODO verify
+                // create a big sparse array, that contains information for every path
+                int sizeOfPaths = netGraph.apap_.get(said).get(raID).size();
+//                int sizeOfPaths = raToFGO.get(raID).get(0).paths.size();
                 assert (sizeOfPaths == 0);
                 String [] fgID = new String[sizeOfFGO];
                 double [] fgVol = new double[sizeOfFGO];
                 double[][] rates = new double[sizeOfFGO][sizeOfPaths];
 
                 for (int i = 0 ; i < sizeOfFGO ; i++){
-                    FlowGroup_Old fgo = raToFGO.get(raID).get(i);
-                    fgID [i] = fgo.getId();
+                    FlowGroup_Old fgo = listFGO.get(i);
                     fgVol[i] = fgo.remaining_volume();
+                    fgID [i] = fgo.getId();
 
                     for (int j = 0; j < sizeOfPaths ; j++){
 
                         Pathway p = fgo.paths.get(j);
                         int pid = ng.get_path_id(p);
 
-                        // TODO verify this. verify that pid maps to [0,MAX_P]
                         rates[i][pid] = p.getBandwidth();
-
                     }
                 }
 
@@ -361,7 +360,7 @@ public class Master {
                 // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
                 int sizeOfFGO = fgosbyRA.size();
                 assert (sizeOfFGO == 0);
-                int sizeOfPaths = fgosbyRA.get(0).paths.size(); // should be consistent among FGOs TODO verify
+                int sizeOfPaths = netGraph.apap_.get(entrybySA.getKey()).get(raID).size();
                 assert (sizeOfPaths == 0);
                 String [] fgID = new String[sizeOfFGO];
                 double [] fgVol = new double[sizeOfFGO];
@@ -377,7 +376,6 @@ public class Master {
                         Pathway p = fgo.paths.get(j);
                         int pid = netGraph.get_path_id(p);
 
-                        // TODO verify this. verify that pid maps to [0,MAX_P]
                         rates[i][pid] = p.getBandwidth();
                     }
                 }
@@ -389,7 +387,6 @@ public class Master {
 
             }
         }
-        
 
     }
 
