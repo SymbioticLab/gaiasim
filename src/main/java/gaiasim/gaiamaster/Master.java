@@ -201,7 +201,7 @@ public class Master {
                 }
 
                 FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
-                System.out.println("Created FUM: " + m.toString()); // it is working. // :-)
+                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
                 sai.get(said).sendFlowUpdate_Blocking(m);
             }
         }
@@ -253,15 +253,12 @@ public class Master {
         // setting up the states
 
         // Set up our SendingAgentContacts
-        // TODO verify this can work, because the declared message type of event queue has changed!!!
+
         // Should be fine, because even in old version there are two class of messages being sent,
         // we count the message number and determines the state of execution.
 
-        LinkedBlockingQueue<PortAnnouncementMessage_Old> PAEventQueue =
-                new LinkedBlockingQueue<PortAnnouncementMessage_Old>();
+        LinkedBlockingQueue<PortAnnouncementMessage_Old> PAEventQueue = new LinkedBlockingQueue<PortAnnouncementMessage_Old>();
 
-        // TODO verfiy this, because in baseline, the SendingAgentContact will forward the received message into it.
-        LinkedBlockingQueue<ScheduleMessage> devNull = new LinkedBlockingQueue<>();
 
 /*        for (String sa_id : netGraph.nodes_) {
             sai.put(sa_id,
@@ -277,7 +274,7 @@ public class Master {
         }
 
 
-        System.out.println("Master: SA Interfaces are up.");
+        System.out.println("Master: SA Interfaces are up. ");
 
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
@@ -286,7 +283,7 @@ public class Master {
             relay.relay_ports();
         }
 
-        System.out.println("Port Announcements forwarded, starting coflowListener");
+        System.out.println("Master: Port Announcements forwarded, starting coflowListener");
 
         // start the other two threads.
         coflowListener.start();
@@ -295,7 +292,7 @@ public class Master {
 
 
         System.out.println("Master: starting periodical scheduler at every " + Constants.SCHEDULE_INTERVAL_MS + " ms.");
-        // start the periodic execution of schedule()
+        // start the periodic execution of schedule(),
         final Runnable runSchedule = () -> schedule();
         ScheduledFuture<?> mainHandler = mainExec.scheduleAtFixedRate(runSchedule, 0, Constants.SCHEDULE_INTERVAL_MS, MILLISECONDS);
 
@@ -318,27 +315,27 @@ public class Master {
     }
 
     public void schedule(){
-        System.out.println("Master: Scheduling() is triggered. Active Coflows = " + ms.coflowPool.size());
+        System.out.println("Master: Scheduling() is triggered.");
 
         // for collocated task, finish right away (implemented during COFLOW_INSERTION)
 
-        // take a snapshot of the current state, and moves on, so as not to block other threads.
+        // take a snapshot of the current state, and move on, so as not to block other threads.
+        // Ensure that every non-final field is cloned (only FlowGroup.transmitted is non-final)
         HashMap<String , Coflow_Old> outcf = new HashMap<>();
         for ( Map.Entry<String, Coflow> ecf : ms.coflowPool.entrySet()){
             Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(ecf.getValue());
             outcf.put( cfo.getId() , cfo );
-
         }
 
         long currentTime = System.currentTimeMillis();
 
         try {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
-            // Act on the results // TODO send the flow_messages.
+            // Act on the results
             sendControlMessages(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
-            System.out.println("Master: schedule() took " + deltaTime + " ms to schedule and send all messages.");
+            System.out.println("Master: schedule() took " + deltaTime + " ms. Active Coflows = " + ms.coflowPool.size());
 
 
         } catch (Exception e) { // could throw File I/O error
@@ -347,7 +344,61 @@ public class Master {
 
     }
 
-    // divide the messages by the corresponding SA, aggregate by RAs.
+    // Fully serialized version
+    public void sendControlMessages_Serial(HashMap<String, FlowGroup_Old> scheduled_flows){
+
+        // first transform this into messages.
+        // create a multimap for different RAs, (RA -> FGO).
+        ArrayListMultimap<String , FlowGroup_Old> saToFGOs = ArrayListMultimap.create();
+
+        for ( FlowGroup_Old f : scheduled_flows.values()){
+            saToFGOs.put( f.getSrc_loc() , f);
+        }
+
+
+        for (String saID : saToFGOs.keySet()){
+            // for each SA we send num(RA) messages.
+
+            // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
+            // TODO finish this
+
+//            for (String raID : raToFGO.keySet()){
+//                // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
+//                int sizeOfFGO = raToFGO.get(raID).size();
+//                assert (sizeOfFGO == 0);
+//                int sizeOfPaths = raToFGO.get(raID).get(0).paths.size(); // should be consistent among FGOs TODO verify
+//                assert (sizeOfPaths == 0);
+//                String [] fgID = new String[sizeOfFGO];
+//                double [] fgVol = new double[sizeOfFGO];
+//                double[][] rates = new double[sizeOfFGO][sizeOfPaths];
+//
+//                for (int i = 0 ; i < sizeOfFGO ; i++){
+//                    FlowGroup_Old fgo = raToFGO.get(raID).get(i);
+//                    fgID [i] = fgo.getId();
+//                    fgVol[i] = fgo.remaining_volume();
+//
+//                    for (int j = 0; j < sizeOfPaths ; j++){
+//
+//                        Pathway p = fgo.paths.get(j);
+//                        int pid = ng.get_path_id(p);
+//
+//                        // TODO verify this. verify that pid maps to [0,MAX_P]
+//                        rates[i][pid] = p.getBandwidth();
+//
+//                    }
+//                }
+//
+//                FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
+//                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+//                sai.get(said).sendFlowUpdate_Blocking(m);
+//            }
+
+        }
+        
+
+    }
+
+    // divide the messages by the corresponding SA, aggregate the RAs.
     // We don't send "UNSCHEDULE" messages, but rather let SA decide how to unsubscribe.
     public void sendControlMessages(HashMap<String, FlowGroup_Old> scheduled_flows){
 
@@ -367,25 +418,6 @@ public class Master {
             saControlExec.submit( new FlowUpdateSender(saID , updates.get(saID) , netGraph ) ); // parallel version
         }
 
-/*        for (FlowGroup_Old f : preempted_flowGroups) {
-            if (!active_flows_.containsKey(f.getId())) {
-                active_flows_.put(f.getId(), f);
-            }
-        }
-
-        // Send FLOW_UPDATEs and FLOW_STARTs based on new schedule
-        // TODO: Consider parallelizing this so that messages intended
-        //       for different SAs don't block on each other.
-        for (String flow_id : active_flows_.keySet()) {
-            FlowGroup_Old f = active_flows_.get(flow_id);
-
-            if (!f.isStarted_sending()) {
-                sa_contacts_.get(f.getSrc_loc()).start_flow(f);
-
-                // Only update started_sending if we're running baseline
-                f.setStarted_sending(is_baseline_);
-            }
-        }*/
 
     }
 
