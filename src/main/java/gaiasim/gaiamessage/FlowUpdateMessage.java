@@ -17,26 +17,79 @@ package gaiasim.gaiamessage;
 // The output of the LP is an #SA * k * m * n Array.
 // good news being that the array is sparse, so we may think of some way to compress it.
 
+// ver 1.0
+
+// ver 2.0 FUM: use HashMap rather than arrays.
+// essientially we want to store, for each SA (i.e. each FUM):
+//  1.  (RA, Paths , FGID) -> rate
+//  2.  (RA, FGID) -> volume
+//  3.  (RA) -> FGID[]
+//  4.  RA[]
 
 
-// This message corresponds to all PCs and all flows between one (SA -> RA) pair
-
+import gaiasim.network.FlowGroup_Old;
+import gaiasim.network.NetGraph;
+import gaiasim.network.Pathway;
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+
 
 public class FlowUpdateMessage implements Serializable{
 
-    String raID;
+    public class FlowGroupEntry {
+        public double remainingVolume;
+        public HashMap< Integer , Double> pathToRate;
 
-    int sizeOfFlowGroups;
-    int sizeOfPaths; // number of paths
+        public FlowGroupEntry(FlowGroup_Old fgo, NetGraph ng) {
+            this.remainingVolume = fgo.remaining_volume();
+            this.pathToRate = new HashMap<>();
+            for ( Pathway p : fgo.paths){
+                pathToRate.put( ng.get_path_id(p) , p.getBandwidth() );
+            }
+        }
+    }
 
-    String [] fgID;
+    // raID -> fgID -> FGE  , so if we want to get rate: raID -> fgID -> pathID -> rate
+    HashMap<String , HashMap<String , FlowGroupEntry>> content;
 
-    double [] remaingVolume; // the first time receiving this update, store it, then neglect future updates.
+    /**
+    * @param fgos a collection of FlowGroup_Old objects whose Src_location
+    *             is the same as the intended recipient of this FUM.
+    * @param ng   NetGraph for us to parse the information in fgos.
+    */
+    public FlowUpdateMessage(Collection<FlowGroup_Old> fgos, NetGraph ng, String saID){
+        content = new HashMap<>();
+        for(FlowGroup_Old fgo : fgos){ // for each FGO, we create an FlowGroupEntry
+            assert (saID.equals(fgo.getSrc_loc()));
+            String raID = fgo.getDst_loc();
+            String fgoID = fgo.getId();
+            FlowGroupEntry fge = new FlowGroupEntry(fgo , ng);
 
-    double [][] rates; // rates[size]
+            // we may need to create the inner hashMap, so first check
+            if(content.containsKey(raID)){
+                content.get(raID).put(fgoID , fge);
+            }
+            else { // no inner hashmap
+                HashMap<String , FlowGroupEntry> tmpMap = new HashMap<>();
+                tmpMap.put(fgoID, fge);
+                content.put(raID , tmpMap);
+            }
+        } // end for each FGO.
+    }
 
+    public HashMap<String, HashMap<String, FlowGroupEntry>> getContent() { return content; }
+
+    @Override
+    public String toString() {
+        return "FlowUpdateMessage{" +
+                "content=" + content +
+                '}';
+    }
+
+/*
+
+    // Below is OLD ver 1.0 API
     public FlowUpdateMessage(String raID, int sizeOfFlowGroups, int sizeOfPaths, String[] fgID, double[] remaingVolume, double[][] rates) {
         this.raID = raID;
         this.sizeOfFlowGroups = sizeOfFlowGroups;
@@ -45,6 +98,23 @@ public class FlowUpdateMessage implements Serializable{
         this.remaingVolume = remaingVolume;
         this.rates = rates;
     }
+
+    public double getRate(int i, int j){
+        return rates[i][j];
+    }
+
+
+    String raID;
+
+    int sizeOfFlowGroups;
+
+    int sizeOfPaths; // number of paths
+
+    String [] fgID;
+
+    double [] remaingVolume; // the first time receiving this update, store it, then neglect future updates.
+
+    double [][] rates; // rates[size]
 
     public String getRaID() { return raID; }
 
@@ -71,20 +141,5 @@ public class FlowUpdateMessage implements Serializable{
     public double[][] getRates() {
         return rates;
     }
-
-    public double getRate(int i, int j){
-        return rates[i][j];
-    }
-
-    @Override
-    public String toString() {
-        return "FlowUpdateMessage{" +
-                "raID='" + raID + '\'' +
-                ", sizeOfFlowGroups=" + sizeOfFlowGroups +
-                ", sizeOfPaths=" + sizeOfPaths +
-                ", fgID=" + Arrays.toString(fgID) +
-                ", remaingVolume=" + Arrays.toString(remaingVolume) +
-                '}';
-    }
-
+*/
 }

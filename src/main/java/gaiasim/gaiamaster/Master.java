@@ -169,10 +169,17 @@ public class Master {
         public Integer call() throws Exception {
             // first transform this into messages.
             // first group FGOs by RAs
+
+            // This is ver 2.0 for FUM.
+            FlowUpdateMessage m = new FlowUpdateMessage(fgos, ng, said);
+            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+            sai.get(said).sendFlowUpdate_Blocking(m);
+
+
+/*          // This is ver 1.0, before using HashMap in FUM
             Map < String , List<FlowGroup_Old>> fgosbyRA = fgos.stream()
                     .collect(Collectors.groupingBy(FlowGroup_Old::getDst_loc));
 
-            // TODO Can we parallelize this? Yes, since the dimension of rates[][] is same across all RAs.
             for (Map.Entry<String , List<FlowGroup_Old>> entry : fgosbyRA.entrySet()){
                 // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
                 String raID = entry.getKey();
@@ -204,7 +211,8 @@ public class Master {
                 FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
                 System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
                 sai.get(said).sendFlowUpdate_Blocking(m);
-            }
+            }*/
+
             return 1;
         }
     }
@@ -349,14 +357,24 @@ public class Master {
 
     // Fully serialized version
     public void sendControlMessages_Serial(HashMap<String, FlowGroup_Old> scheduled_flows){
-
-        // first transform this into messages.
-        Map < String , Map < String , List<FlowGroup_Old>>> bySA_RA = scheduled_flows.values().stream()
-                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc,Collectors.groupingBy(FlowGroup_Old::getDst_loc)));
+        Map < String , List<FlowGroup_Old>> fgobySA = scheduled_flows.values().stream()
+                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
 
-        for (Map.Entry<String , Map < String , List<FlowGroup_Old>>> entrybySA: bySA_RA.entrySet()){
-            // for each SA we send num(RA) messages.
+        // first transform this into messages. this is OLD ver 1.0
+/*        Map < String , Map < String , List<FlowGroup_Old>>> bySA_RA = scheduled_flows.values().stream()
+                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc,Collectors.groupingBy(FlowGroup_Old::getDst_loc)));*/
+
+
+        for (Map.Entry<String , List<FlowGroup_Old>> entrybySA: fgobySA.entrySet()){
+            // for each SA we send (1 message for ver 2.0 FUM)  /  (num(RA) messages for ver 1.0)
+
+            FlowUpdateMessage m = new FlowUpdateMessage(entrybySA.getValue() , netGraph , entrybySA.getKey());
+            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+//                sai.get(said).sendFlowUpdate_Blocking(m);
+            sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
+
+/*            // This is old ver 1.0 FUM message
             for (Map.Entry<String , List<FlowGroup_Old>> entrybyRA : entrybySA.getValue().entrySet() ){
                 String raID = entrybyRA.getKey();
                 List<FlowGroup_Old> fgosbyRA = entrybyRA.getValue();
@@ -388,7 +406,7 @@ public class Master {
 //                sai.get(said).sendFlowUpdate_Blocking(m);
                 sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
 
-            }
+            }*/
         }
 
     }

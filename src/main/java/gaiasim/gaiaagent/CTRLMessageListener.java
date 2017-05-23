@@ -33,37 +33,38 @@ public class CTRLMessageListener implements Runnable{
                         // Goal: subscribe updated rates, and UNSUBSCRIBE ALL OTHER FLOWGROUPS.
 
                         // first reset all current subscription rates: (so we don't need to check if a flow is subscribed)
-                        for(Map.Entry<String , ArrayList< HashMap<String , SubscriptionInfo>>> entry : si.subscriptionRateMaps.entrySet()) {
-                            for (HashMap<String, SubscriptionInfo> h : entry.getValue()) {
-                                h.forEach((k,v) -> v.setRate(0.0));
-/*                                for (SubscriptionInfo s : h.values()) {
-                                    s.setRate(0.0); // TODO to set or to remove?
-                                }*/
+                        for(Map.Entry<String , ArrayList< HashMap<String , SubscriptionInfo>>> entry : si.subscriptionRateMaps.entrySet()) { // for all RAs
+                            for (HashMap<String, SubscriptionInfo> h : entry.getValue()) { // for each path, clean the hashMap
+                                h.forEach((k,v) -> v.setRate(0.0)); // we don't remove, just set the rate to 0.
                             }
                         }
 
-                        FlowUpdateMessage fum = m.fum; // this is only for a specific RA_ID.
-                        int sizeFG = fum.getSizeOfFlowGroups();
-                        int sizePaths = fum.getSizeOfPaths();
-                        for (int i = 0 ; i < sizeFG ; i++){
-                            String fgid = fum.getFgID()[i];
+                        FlowUpdateMessage fum = m.fum; // this time the message contains a lot of information
+                        HashMap<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> map = m.fum.getContent();
 
-                            // add this flowgroup is not existent // only accept volume from CTRL at this point.
-                            if( !si.flowGroups.containsKey(fgid)){
-                                si.flowGroups.put(fgid , new FlowGroupInfo(fgid , fum.getRemaingVolume(i)));
-                            }
-                            // after this codeblock are we sure that flowGroup must contain fgid? // TODO verify the case with completing a flow.
+                        for (Map.Entry<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> oe: map.entrySet() ){
+                            String raID = oe.getKey();
 
-                            for (int j = 0; j < sizePaths ; j++){
-                                HashMap<String, SubscriptionInfo> infoMap = si.subscriptionRateMaps.get(fum.getRaID()).get(j);
-                                if( infoMap.containsKey(fgid)){
-                                    infoMap.get(fgid).setRate( fum.getRate(i , j) );
-                                }
-                                else { // create this info
-                                    infoMap.put(fgid , new SubscriptionInfo(fgid, si.flowGroups.get(fgid) , fum.getRate(i , j)));
-                                }
-                            }
-                        }
+                            for (Map.Entry<String, FlowUpdateMessage.FlowGroupEntry> ie : oe.getValue().entrySet()){
+                                String fgID = ie.getKey();
+
+                                for (Map.Entry<Integer , Double> entry: ie.getValue().pathToRate.entrySet()){
+                                    int pathID = entry.getKey();
+                                    double rate = entry.getValue();
+                                    HashMap<String, SubscriptionInfo> infoMap = si.subscriptionRateMaps.get(raID).get(pathID);
+
+                                    if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
+                                        infoMap.get(fgID).setRate( rate );
+                                    }
+                                    else { // create this info
+                                        infoMap.put(fgID , new SubscriptionInfo(fgID, si.flowGroups.get(fgID) , entry.getValue() ));
+                                    }
+
+                                } // end loop for pathID
+
+                            } // end loop for fgID
+
+                        } // end loop for raID
 
                         // notify all subscribed workers..? or maybe all workers?
                         for( String raID : si.subscriptionRateMaps.keySet()) {

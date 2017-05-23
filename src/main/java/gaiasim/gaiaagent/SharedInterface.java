@@ -43,8 +43,7 @@ public class SharedInterface {
     // FlowGroups that are currently being sent by this SendingAgent
     public HashMap<String, FlowGroupInfo> flowGroups = new HashMap<String, FlowGroupInfo>();
 
-    // List [size_of_workers] of hashMap (fgID -> rate). // But size_workers = RAs * paths. so...
-    // RAID , pathID -> subscription info
+    // RAID , pathID -> FGID -> subscription info // ArrayList works good here!
     public HashMap<String , ArrayList< HashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new HashMap<>();
 
     // raID , pathID -> workerQueue.
