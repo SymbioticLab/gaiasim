@@ -245,7 +245,6 @@ public class PoorManScheduler extends Scheduler {
 
     public HashMap<String, FlowGroup_Old> schedule_flows(HashMap<String, Coflow_Old> coflows,
                                                          long timestamp) throws Exception {
-        long curTime = System.currentTimeMillis();
         flows_.clear();
         reset_links();
         ArrayList<Map.Entry<Coflow_Old, Double>> cct_list = sort_coflows(coflows); // here LP is called n times to sort.
@@ -317,10 +316,6 @@ public class PoorManScheduler extends Scheduler {
         if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
             schedule_extra_flows(unscheduled_coflows, timestamp);        
         }
-
-        long deltaTime = System.currentTimeMillis() - curTime;
-        System.out.println("Scheduler: schedule() FIN in " + deltaTime + " ms.");
-
         return flows_;
     }
     
