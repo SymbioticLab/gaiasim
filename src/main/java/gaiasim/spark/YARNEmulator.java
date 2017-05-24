@@ -12,6 +12,7 @@ import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -69,16 +70,8 @@ public class YARNEmulator implements Runnable {
         this.yarnEventQueue = yarnEventInput;
         this.dagPool = new HashMap<>();
 
-//        yarnEventQueue = new LinkedBlockingQueue<YARNMessages>();
-
         // init the YARN, read the trace and prepare a list of DAGs.
         dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue));
-
-
-//        DAGReader dagReader = new DAGReader(tracefile , netGraph , yarnEventQueue);
-
-        //dagReader
-
 
     }
 
@@ -97,13 +90,20 @@ public class YARNEmulator implements Runnable {
                 System.err.println("Received FIN for Coflow that is not in the owning DAG.");
             }
 
-            // get new coflows and schedule them
-            for( Coflow cf : dag.onCoflowFIN(fin_coflow_id)){
-                insertCoflow(cf);
-            }
-            // Check if DAG is done
+            // process CF_FIN message.
+            ArrayList<Coflow> cfToAdd = dag.onCoflowFIN(fin_coflow_id);
+
+            // Check if DAG is done first, if DAG is done, handle it and return.
+            // check before inserting new CF, because the insertion of CF may cause DAG to finish, if the CF is totally co-located.
+            // If we insert CF first, then we will have multiple DAG_FIN.
             if (dag.isDone()){
-                System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
+                onDAGFinish(dag , System.currentTimeMillis());
+                return;
+            }
+
+            // Only if the DAG is not done, get new coflows and schedule them
+            for( Coflow cf : cfToAdd){
+                insertCoflow(cf);
             }
         }
         else {
@@ -157,5 +157,9 @@ public class YARNEmulator implements Runnable {
         }
 
         return cfFinished;
+    }
+
+    private void onDAGFinish(DAG dag, long timeStamp){
+        System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
     }
 }
