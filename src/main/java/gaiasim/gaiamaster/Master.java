@@ -3,7 +3,7 @@ package gaiasim.gaiamaster;
 // The GAIA master. Runing asynchronous message processing logic.
 // Three threads: 1. handling Coflow insertion (connects YARN),
 
-import com.google.common.collect.ArrayListMultimap;
+import com.opencsv.CSVWriter;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.gaiamessage.AgentMessage;
@@ -11,7 +11,6 @@ import gaiasim.gaiamessage.FlowUpdateMessage;
 import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
-import gaiasim.network.Pathway;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
@@ -20,6 +19,7 @@ import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,9 +97,6 @@ public class Master {
             coflowPool.put(id , cf);
         }
 
-//        public Coflow getCoflowFromFlowGroup(String id) {
-//            return flowIDtoCoflow.get(id);
-//        }
 
         public FlowGroup getFlowGroup(String id){
             if( flowIDtoCoflow.containsKey(id)){
@@ -139,7 +136,7 @@ public class Master {
                         fg.setStartTime(curTime);
                         if(fg.getDstLocation() == fg.getSrcLocation()){ // job is co-located.
                             fg.getAndSetFinish(curTime); // finish right away.
-                            // how to send the finish message?
+                            // how to send the finish message? TODO
                         }
                     }
 
@@ -174,44 +171,6 @@ public class Master {
             FlowUpdateMessage m = new FlowUpdateMessage(fgos, ng, said);
             System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
             sai.get(said).sendFlowUpdate_Blocking(m);
-
-
-/*          // This is ver 1.0, before using HashMap in FUM
-            Map < String , List<FlowGroup_Old>> fgosbyRA = fgos.stream()
-                    .collect(Collectors.groupingBy(FlowGroup_Old::getDst_loc));
-
-            for (Map.Entry<String , List<FlowGroup_Old>> entry : fgosbyRA.entrySet()){
-                // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
-                String raID = entry.getKey();
-                List<FlowGroup_Old> listFGO = entry.getValue();
-                int sizeOfFGO = listFGO.size();
-                assert (sizeOfFGO == 0);
-                // create a big sparse array, that contains information for every path
-                int sizeOfPaths = netGraph.apap_.get(said).get(raID).size();
-//                int sizeOfPaths = raToFGO.get(raID).get(0).paths.size();
-                assert (sizeOfPaths == 0);
-                String [] fgID = new String[sizeOfFGO];
-                double [] fgVol = new double[sizeOfFGO];
-                double[][] rates = new double[sizeOfFGO][sizeOfPaths];
-
-                for (int i = 0 ; i < sizeOfFGO ; i++){
-                    FlowGroup_Old fgo = listFGO.get(i);
-                    fgVol[i] = fgo.remaining_volume();
-                    fgID [i] = fgo.getId();
-
-                    for (int j = 0; j < sizeOfPaths ; j++){
-
-                        Pathway p = fgo.paths.get(j);
-                        int pid = ng.get_path_id(p);
-
-                        rates[i][pid] = p.getBandwidth();
-                    }
-                }
-
-                FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
-                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
-                sai.get(said).sendFlowUpdate_Blocking(m);
-            }*/
 
             return 1;
         }
@@ -266,15 +225,8 @@ public class Master {
 
         // Should be fine, because even in old version there are two class of messages being sent,
         // we count the message number and determines the state of execution.
-
         LinkedBlockingQueue<PortAnnouncementMessage_Old> PAEventQueue = new LinkedBlockingQueue<PortAnnouncementMessage_Old>();
 
-
-/*        for (String sa_id : netGraph.nodes_) {
-            sai.put(sa_id,
-                    new SendingAgentContact(sa_id, netGraph, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
-                            devNull, PAEventQueue, !enablePersistentConn));
-        }*/
 
         // we have netGraph.nodes_.size() SAs
         for (String sa_id : netGraph.nodes_) {
@@ -324,10 +276,10 @@ public class Master {
         System.exit(1);
     }
 
-    public void schedule(){
+    private void schedule(){
         System.out.println("Master: Scheduling() is triggered.");
 
-        // for collocated task, finish right away (implemented during COFLOW_INSERTION)
+        // TODO for collocated task, finish right away (implemented during COFLOW_INSERTION)
 
         // take a snapshot of the current state, and move on, so as not to block other threads.
         // Ensure that every non-final field is cloned (only FlowGroup.transmitted is non-final)
@@ -341,12 +293,13 @@ public class Master {
 
         try {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
+
             // Act on the results
             sendControlMessages_Parallel(scheduled_flows);
 //            sendControlMessages_Serial(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
-            System.out.println("Master: schedule() took " + deltaTime + " ms. Active Coflows = " + ms.coflowPool.size());
+            System.out.println("Master: schedule() took " + deltaTime + " ms. Active CF: " + ms.coflowPool.size() + " scheduled FG: " + scheduled_flows.size());
 
 
         } catch (Exception e) { // could throw File I/O error
@@ -356,86 +309,95 @@ public class Master {
     }
 
     // Fully serialized version
-    public void sendControlMessages_Serial(HashMap<String, FlowGroup_Old> scheduled_flows){
+    private void sendControlMessages_Serial(HashMap<String, FlowGroup_Old> scheduled_flows){
         Map < String , List<FlowGroup_Old>> fgobySA = scheduled_flows.values().stream()
                 .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
-
-        // first transform this into messages. this is OLD ver 1.0
-/*        Map < String , Map < String , List<FlowGroup_Old>>> bySA_RA = scheduled_flows.values().stream()
-                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc,Collectors.groupingBy(FlowGroup_Old::getDst_loc)));*/
-
-
         for (Map.Entry<String , List<FlowGroup_Old>> entrybySA: fgobySA.entrySet()){
-            // for each SA we send (1 message for ver 2.0 FUM)  /  (num(RA) messages for ver 1.0)
 
             FlowUpdateMessage m = new FlowUpdateMessage(entrybySA.getValue() , netGraph , entrybySA.getKey());
             System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
-//                sai.get(said).sendFlowUpdate_Blocking(m);
             sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
 
-/*            // This is old ver 1.0 FUM message
-            for (Map.Entry<String , List<FlowGroup_Old>> entrybyRA : entrybySA.getValue().entrySet() ){
-                String raID = entrybyRA.getKey();
-                List<FlowGroup_Old> fgosbyRA = entrybyRA.getValue();
-                // for each RA, we generate a FUM: fgID[] , fgVol[] , rates [fg][path]
-                int sizeOfFGO = fgosbyRA.size();
-                assert (sizeOfFGO == 0);
-                int sizeOfPaths = netGraph.apap_.get(entrybySA.getKey()).get(raID).size();
-                assert (sizeOfPaths == 0);
-                String [] fgID = new String[sizeOfFGO];
-                double [] fgVol = new double[sizeOfFGO];
-                double[][] rates = new double[sizeOfFGO][sizeOfPaths];
-
-                for (int i = 0 ; i < sizeOfFGO ; i++){
-                    FlowGroup_Old fgo = fgosbyRA.get(i);
-                    fgID [i] = fgo.getId();
-                    fgVol[i] = fgo.remaining_volume();
-
-                    for (int j = 0; j < sizeOfPaths ; j++){
-
-                        Pathway p = fgo.paths.get(j);
-                        int pid = netGraph.get_path_id(p);
-
-                        rates[i][pid] = p.getBandwidth();
-                    }
-                }
-
-                FlowUpdateMessage m = new FlowUpdateMessage(raID , sizeOfFGO , sizeOfPaths , fgID, fgVol , rates);
-                System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
-//                sai.get(said).sendFlowUpdate_Blocking(m);
-                sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
-
-            }*/
         }
-
     }
 
     // divide the messages by the corresponding SA, aggregate the RAs.
     // We don't send "UNSCHEDULE" messages, but rather let SA decide how to unsubscribe.
-    public void sendControlMessages_Parallel(HashMap<String, FlowGroup_Old> scheduled_flows){
+    private void sendControlMessages_Parallel(HashMap<String, FlowGroup_Old> scheduled_flows){
         // group FGOs by SA
         Map< String , List<FlowGroup_Old>> fgoBySA = scheduled_flows.values().stream()
                 .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
-
         // How to parallelize -> use the threadpool
         List<FlowUpdateSender> tasks= new ArrayList<>();
         for ( Map.Entry<String,List<FlowGroup_Old>> entry : fgoBySA.entrySet() ){
-//            new FlowUpdateSender(saID , updates.get(saID) , netGraph ).run();
-//            Runnable tmpTask = new FlowUpdateSender(saID , updates.get(saID) , netGraph );
-//            tmpTask.run(); // serialized version
             tasks.add( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) );
         }
 
         try {
+            // wait for all sending to finish before proceeding
             List<Future<Integer>> futures = saControlExec.invokeAll(tasks);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        saControlExec.submit( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) ); // parallel version
+    }
 
-        // wait for all sending to finish before proceeding
+    private void initCSVFiles(String dagFileName , String cfFileName) throws IOException {
+        String dagFilePath = outdir + dagFileName;
+        String cfFilePath = outdir + cfFileName;
+
+        CSVWriter writer = new CSVWriter(new FileWriter(dagFilePath), ',');
+        String[] record = new String[4];
+        record[0] = "JobID";
+        record[1] = "StartTime";
+        record[2] = "EndTime";
+        record[3] = "JobCompletionTime";
+        writer.writeNext(record);
+
 
     }
+
+/*    public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
+        String job_output = outdir_ + job_filename;
+        CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
+        String[] record = new String[4];
+        record[0] = "JobID";
+        record[1] = "StartTime";
+        record[2] = "EndTime";
+        record[3] = "JobCompletionTime";
+        writer.writeNext(record);
+        for (Job j : completed_jobs_) {
+            record[0] = j.getId();
+            record[1] = Double.toString(j.getStart_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(j.getEnd_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((j.getEnd_timestamp() - j.getStart_timestamp()) / Constants.MILLI_IN_SECOND_D);
+            writer.writeNext(record);
+        }
+        writer.close();
+
+        String coflow_output = outdir_ + coflow_filename;
+        CSVWriter c_writer = new CSVWriter(new FileWriter(coflow_output), ',');
+        record[0] = "CoflowID";
+        record[1] = "StartTime";
+        record[2] = "EndTime";
+        record[3] = "CoflowCompletionTime";
+        c_writer.writeNext(record);
+
+        Collections.sort(completed_coflows_, new Comparator<Coflow_Old>() {
+            public int compare(Coflow_Old o1, Coflow_Old o2) {
+                if (o1.getStart_timestamp() == o2.getStart_timestamp()) return 0;
+                return o1.getStart_timestamp() < o2.getStart_timestamp() ? -1 : 1;
+            }
+        });
+
+        for (Coflow_Old c : completed_coflows_) {
+            record[0] = c.getId();
+            record[1] = Double.toString(c.getStart_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[2] = Double.toString(c.getEnd_timestamp() / Constants.MILLI_IN_SECOND_D);
+            record[3] = Double.toString((c.getEnd_timestamp() - c.getStart_timestamp()) / Constants.MILLI_IN_SECOND_D);
+            c_writer.writeNext(record);
+        }
+        c_writer.close();
+    }*/
 }
