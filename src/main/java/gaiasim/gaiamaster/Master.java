@@ -342,8 +342,8 @@ public class Master {
         try {
             HashMap<String, FlowGroup_Old> scheduled_flows = scheduler.schedule_flows(outcf, currentTime);
             // Act on the results
-//            sendControlMessages_Parallel(scheduled_flows);
-            sendControlMessages_Serial(scheduled_flows);
+            sendControlMessages_Parallel(scheduled_flows);
+//            sendControlMessages_Serial(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
             System.out.println("Master: schedule() took " + deltaTime + " ms. Active Coflows = " + ms.coflowPool.size());
