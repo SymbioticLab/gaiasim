@@ -188,12 +188,12 @@ public class DAGReader implements Runnable{
                 // create FlowGroups and add to buffer.
                 for( String srcLoc : locationMap.get(src_stage)){
                     for (String dstLoc : locationMap.get(dst_stage)){
-                        // id - job_id:src:dst
+                        // id - job_id:srcStage:dstStage:srcLoc-dstLoc // encoding task location info.
                         // src - srcLoc
                         // dst - dstLoc
                         // owningCoflowID - dstStage
                         // Volume - divided_data_size
-                        FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage ,
+                        FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
                             srcLoc, dstLoc , dag_id + ':' + dst_stage , divided_data_size);
                         tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
                     }
