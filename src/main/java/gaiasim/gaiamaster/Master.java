@@ -88,7 +88,7 @@ public class Master {
             return false;
         }
 
-        public void addCoflow(String id, Coflow cf){
+        public void addCoflow(String id, Coflow cf){ // trim the co-located flowgroup before adding!
             // first add index
             for ( FlowGroup fg : cf.getFlowGroups().values()){
                 flowIDtoCoflow.put( fg.getId() , cf );
@@ -129,20 +129,19 @@ public class Master {
 
                     ms.addCoflow(cfID , cf);
 
-                    long curTime = System.currentTimeMillis();
-                    cf.setStartTime(curTime);
+//                    long curTime = System.currentTimeMillis();
+//                    cf.setStartTime(curTime);
 
-                    for (FlowGroup fg : cf.getFlowGroups().values()){
+/*                    for (FlowGroup fg : cf.getFlowGroups().values()){
                         fg.setStartTime(curTime);
                         if(fg.getDstLocation() == fg.getSrcLocation()){ // job is co-located.
                             fg.getAndSetFinish(curTime); // finish right away.
-                            // how to send the finish message? TODO
+                            // how to send the finish message?
                         }
-                    }
+                    }*/
 
                     // TODO: track flowgroup starttime.
 
-//                    ms.coflowPool.put(cfID , cf);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

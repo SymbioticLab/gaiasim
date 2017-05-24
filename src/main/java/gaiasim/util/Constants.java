@@ -10,6 +10,8 @@ public class Constants {
     public static final int CHEAT_FACTOR_A = 1;
     public static final int CHEAT_FACTOR_B = 1;
 
+    public static final int COLOCATED_FG_COMPLETION_TIME = 0;
+
     // Port and Addresses
     public static final int SENDING_AGENT_PORT = 23330;
     public static final int RECEIVING_AGENT_PORT = 33330;
