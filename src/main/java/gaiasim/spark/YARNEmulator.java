@@ -11,7 +11,12 @@ import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.QuoteMode;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,6 +25,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class YARNEmulator implements Runnable {
 
+    private static final Object [] JCTFILE_HEADER = {"JobID","StartTime (s)","EndTime (s)","JCT (s)"};
+    private static final Object [] CCTFILE_HEADER = {"CoflowID","StartTime (s)","EndTime (s)","CCT (s)"};
+    CSVFormat csvFileFormat = CSVFormat.DEFAULT.withRecordSeparator("\n").withQuoteMode(QuoteMode.NON_NUMERIC);
+
+    private final String outDir;
     private String tracefile;
     private NetGraph netGraph;
     private LinkedBlockingQueue<YARNMessages> yarnEventQueue;
@@ -27,11 +37,19 @@ public class YARNEmulator implements Runnable {
     private Thread dagThread;
 
     private HashMap<String , DAG> dagPool; // In YARNEmulator, we define CoflowID to be DAG:dst_stage
+    private FileWriter dagFileWriter;
+    private CSVPrinter dagCSVPrinter;
+    private FileWriter cfFileWriter;
+    private CSVPrinter cfCSVPrinter;
+
+    private long YARNStartTime = 0;
 
     @Override
     public void run() {
+        initCSVFiles("/jct_emu.csv" , "/cct_emu.csv");
 
         System.out.println("YARN: YARM Emulator is up");
+        YARNStartTime = System.currentTimeMillis();
 
         // when states are ready, start inserting jobs!
                 dagThread.start();
@@ -62,13 +80,14 @@ public class YARNEmulator implements Runnable {
     }
 
 
-    public YARNEmulator(String tracefile, NetGraph netGraph ,
-            LinkedBlockingQueue<YARNMessages> yarnEventInput, LinkedBlockingQueue<Coflow> coflowOutput) {
+    public YARNEmulator(String tracefile, NetGraph netGraph,
+                        LinkedBlockingQueue<YARNMessages> yarnEventInput, LinkedBlockingQueue<Coflow> coflowOutput, String outdir) {
         this.tracefile = tracefile;
         this.netGraph = netGraph;
         this.coflowOutput = coflowOutput;
         this.yarnEventQueue = yarnEventInput;
         this.dagPool = new HashMap<>();
+        this.outDir = outdir;
 
         // init the YARN, read the trace and prepare a list of DAGs.
         dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue));
@@ -82,9 +101,11 @@ public class YARNEmulator implements Runnable {
         String [] split = fin_coflow_id.split(":"); // DAG_ID = split[0]
         if (dagPool.containsKey(split[0])){
             DAG dag = dagPool.get(split[0]);
-            // set the CF completion time for this CF
+            // set the CF completion time for this CF, and log the timestamp.
             if(dag.coflowList.containsKey(fin_coflow_id)){
-                dag.coflowList.get(fin_coflow_id).setEndTime(timeStamp);
+                Coflow cf = dag.coflowList.get(fin_coflow_id);
+                cf.setEndTime(timeStamp);
+                appendCSV(cfCSVPrinter, fin_coflow_id, cf.getStartTime() , cf.getEndTime(), (cf.getEndTime() - cf.getStartTime()));
             }
             else {
                 System.err.println("Received FIN for Coflow that is not in the owning DAG.");
@@ -161,5 +182,52 @@ public class YARNEmulator implements Runnable {
 
     private void onDAGFinish(DAG dag, long timeStamp){
         System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
+        // write to CSV
+        appendCSV(dagCSVPrinter, dag.getId(), dag.getStartTime(), dag.getStartTime(),  (dag.getFinishTime() - dag.getStartTime()) );
+    }
+
+    private void initCSVFiles(String dagFileName , String cfFileName) {
+        String dagFilePath = outDir + dagFileName;
+        String cfFilePath = outDir + cfFileName;
+        try{
+            // first init the JCT, overwrite.
+            dagFileWriter = new FileWriter(dagFilePath);
+            dagCSVPrinter = new CSVPrinter(dagFileWriter, csvFileFormat);
+            dagCSVPrinter.printRecord(JCTFILE_HEADER);
+
+            // Then init the CCT, rewrite previous results.
+            cfFileWriter = new FileWriter(cfFilePath);
+            cfCSVPrinter = new CSVPrinter(cfFileWriter, csvFileFormat);
+            cfCSVPrinter.printRecord(CCTFILE_HEADER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // take in record in long, convert into double and write to CSV
+    private void appendCSV(CSVPrinter csvPrinter, String id, long startTimeStamp, long endTimeStamp, long delta_Millis){
+        double startTime = (double) (startTimeStamp - YARNStartTime) / 1000;
+        double endTime = (double) (endTimeStamp - YARNStartTime) / 1000;
+        double deltaTime = (double) delta_Millis / 1000;
+        Object [] record = {id,startTime,endTime,deltaTime};
+        try {
+            csvPrinter.printRecord(record);
+            csvPrinter.flush();  // flush right after append.
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void onEmualtionFinish() {
+        try {
+            dagFileWriter.flush();
+            cfFileWriter.flush();
+            dagFileWriter.close();
+            cfFileWriter.close();
+            dagCSVPrinter.close();
+            cfCSVPrinter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -194,7 +194,7 @@ public class Master {
         // setting up interface with YARN.
         this.coflowEventQueue = new LinkedBlockingQueue<Coflow>();
         this.yarnEventQueue = new LinkedBlockingQueue<YARNMessages>();
-        this.yarnEmulator = new Thread(new YARNEmulator(trace_file , netGraph , yarnEventQueue , coflowEventQueue));
+        this.yarnEmulator = new Thread(new YARNEmulator(trace_file , netGraph , yarnEventQueue , coflowEventQueue, outdir));
         this.coflowListener = new Thread( new CoflowListener() );
 
         // setting up the scheduler
@@ -342,20 +342,6 @@ public class Master {
         }
     }
 
-    private void initCSVFiles(String dagFileName , String cfFileName) throws IOException {
-        String dagFilePath = outdir + dagFileName;
-        String cfFilePath = outdir + cfFileName;
-
-        CSVWriter writer = new CSVWriter(new FileWriter(dagFilePath), ',');
-        String[] record = new String[4];
-        record[0] = "JobID";
-        record[1] = "StartTime";
-        record[2] = "EndTime";
-        record[3] = "JobCompletionTime";
-        writer.writeNext(record);
-
-
-    }
 
 /*    public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
         String job_output = outdir_ + job_filename;

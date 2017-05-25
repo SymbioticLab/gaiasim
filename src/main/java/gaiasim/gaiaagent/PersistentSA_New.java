@@ -120,7 +120,7 @@ public class PersistentSA_New implements Runnable{
 
         final Runnable sendStatus = () -> saAPI.sendStatusUpdate();
 
-        ScheduledFuture<?> mainHandler = statusExec.scheduleAtFixedRate(sendStatus, 0, 200, MILLISECONDS);
+        ScheduledFuture<?> mainHandler = statusExec.scheduleAtFixedRate(sendStatus, 0, Constants.STATUS_MESSAGE_INTERVAL_MS, MILLISECONDS);
 
         CTRLMessageListener controller = new CTRLMessageListener(controllerQueue, saAPI);
         controller.run();

@@ -4,8 +4,9 @@ import java.util.HashMap;
 
 public class Constants {
 
-    // Min interval between schedule
-    public static final int SCHEDULE_INTERVAL_MS = 1000;
+    // Min interval between schedule and Min STATUS interval
+    public static final int SCHEDULE_INTERVAL_MS = 500;
+    public static final int STATUS_MESSAGE_INTERVAL_MS = 100;
 
     public static final int CHEAT_FACTOR_A = 1;
     public static final int CHEAT_FACTOR_B = 1;
