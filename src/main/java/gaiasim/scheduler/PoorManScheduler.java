@@ -10,8 +10,13 @@ import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.util.Constants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class PoorManScheduler extends Scheduler {
+
+    private static final Logger logger = LogManager.getLogger();
+
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
@@ -229,11 +234,11 @@ public class PoorManScheduler extends Scheduler {
                 f.paths.clear();
                 f.paths.add(p);
 
-                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
+/*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway path : f.paths) {
                     System.out.println("    " + path.toString());
-                }
+                }*/
 
                 if (f.getStart_timestamp() == -1) {
                     f.setStart_timestamp(timestamp);
@@ -257,7 +262,8 @@ public class PoorManScheduler extends Scheduler {
                 continue;
             }
 
-            System.out.println("Scheduler: Coflow_Old " + c.getId() + " expected to complete in " + e.getValue() + " seconds");
+//            System.out.println("Scheduler: Coflow " + c.getId() + " expected to complete in " + e.getValue() + " seconds");
+            logger.info("Scheduler: Coflow {} expected to complete in {} seconds" ,c.getId() , e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_); // This is the recursive part.
 
@@ -298,11 +304,11 @@ public class PoorManScheduler extends Scheduler {
                     }
                 }
                 
-                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
+/*                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway p : f.paths) {
                     System.out.println("    " + p.toString());
-                }
+                }*/
 
                 if (f.getStart_timestamp() == -1) {
                     f.setStart_timestamp(timestamp);

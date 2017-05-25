@@ -10,8 +10,12 @@ import java.util.HashMap;
 
 import gaiasim.network.*;
 import gaiasim.network.Coflow_Old;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MMCFOptimizer {
+    private static final Logger logger = LogManager.getLogger();
+
     public static class MMCFOutput {
         public double completion_time_ = 0.0;
         public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_ 
@@ -32,11 +36,11 @@ public class MMCFOptimizer {
 
         ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
-        System.out.println("Coflow_Old " + coflow.getId() + " has flows: ");
+//        System.out.println("Coflow_Old " + coflow.getId() + " has flows: ");
         for (String k : coflow.flows.keySet()) {
             FlowGroup_Old f = coflow.flows.get(k);
             if (f.remaining_volume() > 0.0) {
-                System.out.println("  " + k + ": " + f.getSrc_loc() + "-" + f.getDst_loc() + " -> " + f.remaining_volume());
+//                System.out.println("  " + k + ": " + f.getSrc_loc() + "-" + f.getDst_loc() + " -> " + f.remaining_volume());
                 int int_id = coflow.flows.get(k).getInt_id();
                 flow_int_id_list.add(int_id);
                 flow_int_id_to_id.put(int_id, k);
@@ -100,7 +104,8 @@ public class MMCFOptimizer {
             writer.close();
         }
         catch (java.io.IOException e) {
-            System.out.println("ERROR: Failed to write to file " + dat_file_name);
+//            System.out.println("ERROR: Failed to write to file " + dat_file_name);
+            logger.error("ERROR: Failed to write to file {}" , dat_file_name);
             System.exit(1);
         }
 
@@ -130,7 +135,8 @@ public class MMCFOptimizer {
             if (line.contains("Objective")) {
                 double alpha = Double.parseDouble(line.split("\\s+")[3]);
                 if (alpha < 0.00001) {
-                    System.out.println("Optimizer: Coflow " + coflow.getId() + " cannot be allocated on current network");
+//                    System.out.println("Optimizer: Coflow " + coflow.getId() + " cannot be allocated on current network");
+                    logger.info("Optimizer: Coflow {} cannot be allocated on current network", coflow.getId());
                     mmcf_out.completion_time_ = -1.0;
                     return mmcf_out;
                 }

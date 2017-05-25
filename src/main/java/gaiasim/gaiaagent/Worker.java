@@ -14,6 +14,8 @@ package gaiasim.gaiaagent;
 
 import com.google.common.util.concurrent.RateLimiter;
 import gaiasim.util.Constants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -26,6 +28,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Worker implements Runnable{
 
+    private static final Logger logger = LogManager.getLogger();
 //    PConnection conn;
     SharedInterface api;
 
@@ -54,7 +57,6 @@ public class Worker implements Runnable{
     private byte[] data_block = new byte[Constants.BLOCK_SIZE_MB * 1024 * 1024]; // 32MB for now.
 
     private BufferedOutputStream bos;
-
 
 
     public Worker(String workerID, String RAID, int pathID ,Socket soc, LinkedBlockingQueue<SubscriptionMessage> inputQueue , SharedInterface api){
@@ -118,7 +120,8 @@ public class Worker implements Runnable{
                     total_rate = api.subscriptionRateMaps.get(raID).get(pathID).values()
                             .stream().mapToDouble(SubscriptionInfo::getRate).sum();
 
-                    System.out.println("Worker: Received SYNC message, now working with rate (MBit/s) " + total_rate);
+                    logger.info("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
+//                    System.out.println("Worker: Received SYNC message, now working with rate (MBit/s) " + total_rate);
                 }
 
 /*                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
@@ -184,7 +187,7 @@ public class Worker implements Runnable{
                     bos.write(data_block , 0, data_length);
                     bos.flush();
 
-                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
+//                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
                     double tx_ed = (double) data_length * 8 / 1024 / 1024;
