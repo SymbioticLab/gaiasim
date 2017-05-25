@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
+    public static double SCALE_FACTOR = 1.0; // default value, used by DAGReader.java
 
     private static final Logger logger = LogManager.getLogger();
 
@@ -28,6 +29,7 @@ public class GaiaSim {
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("e", false, "run under emulation");
         options.addOption("c", true, "path to config file");
+        options.addOption("u", true, "scale up the data size by factor of X");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -72,6 +74,11 @@ public class GaiaSim {
         }
         else {
             args_map.put("config" , null);
+        }
+
+        if (cmd.hasOption('u')){
+            SCALE_FACTOR = Double.parseDouble(cmd.getOptionValue('u'));
+            System.out.println("Using scaling factor = " + SCALE_FACTOR);
         }
 
         return args_map;

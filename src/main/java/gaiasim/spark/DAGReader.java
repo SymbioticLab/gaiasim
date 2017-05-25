@@ -3,6 +3,7 @@ package gaiasim.spark;
 //import gaiasim.network.Coflow_Old;
 
 import com.google.common.collect.ArrayListMultimap;
+import gaiasim.GaiaSim;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
@@ -147,7 +148,7 @@ public class DAGReader implements Runnable{
                         task_locs[j] = net_graph.trace_id_to_node_id_.get(splits[2 + j]);
                     }
                 }
-                else {
+                else { // randomize task location assignment (not really needed)
                     ArrayList<String> tmp_nodes = net_graph.nodes_;
                     Collections.shuffle(tmp_nodes, rnd);
                     for (int j = 0; j < num_tasks; j++) {
@@ -158,11 +159,8 @@ public class DAGReader implements Runnable{
                 // store location info
                 locationMap.put(stage_id, task_locs);
 
-//                coflow_map.put(stage_id, new Coflow_Old(job_id + ':' + stage_id, dst_locs));
             }
 
-            // map coflows to their destination stage.
-//            HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
 
             // create a buffer for constructing Coflows.
             // when finished reading this job, we can recover all Coflow information from it.
@@ -179,8 +177,8 @@ public class DAGReader implements Runnable{
                 String src_stage = splits[0];
                 String dst_stage = splits[1];
 
-                // Direct read Double data TODO: verify this works
-                double data_size = Double.parseDouble(splits[2]);
+                // Direct read Double data
+                double data_size = Double.parseDouble(splits[2]) * GaiaSim.SCALE_FACTOR; // Added scale factor here!
                 // Convert to megabits, then divide by FlowGroups
                 int numberOfFlowGroups = locationMap.get(src_stage).length * locationMap.get(dst_stage).length;
                 double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
