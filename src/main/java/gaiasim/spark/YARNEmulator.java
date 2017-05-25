@@ -183,7 +183,7 @@ public class YARNEmulator implements Runnable {
     private void onDAGFinish(DAG dag, long timeStamp){
         System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
         // write to CSV
-        appendCSV(dagCSVPrinter, dag.getId(), dag.getStartTime(), dag.getStartTime(),  (dag.getFinishTime() - dag.getStartTime()) );
+        appendCSV(dagCSVPrinter, dag.getId(), dag.getStartTime(), dag.getFinishTime(),  (dag.getFinishTime() - dag.getStartTime()) );
     }
 
     private void initCSVFiles(String dagFileName , String cfFileName) {
