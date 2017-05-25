@@ -1,0 +1,192 @@
+# 5: TPC-H query15
+8 0 0
+Map1 3 NY FL BA
+Reducer4 1 FL
+Reducer7 1 FL
+Reducer6 1 FL
+Map8 1 BA
+Map5 3 HK NY LA
+Reducer3 1 HK
+Reducer2 1 HK
+7
+Map1 Reducer2 6179
+Reducer7 Reducer3 31
+Reducer6 Reducer7 47
+Map8 Reducer3 32
+Map5 Reducer6 6078
+Reducer3 Reducer4 94
+Reducer2 Reducer3 80
+# 10: TPC-H query21
+14 1 0
+Reducer5 2 HK LA
+Map10 3 HK FL NY
+Map1 1 HK
+Reducer4 1 NY
+Reducer7 2 FL BA
+Map2 1 LA
+Reducer6 2 LA NY
+Reducer14 1 NY
+Map13 3 BA NY HK
+Reducer8 1 HK
+Reducer12 3 BA LA HK
+Map11 3 NY FL HK
+Map9 3 BA FL NY
+Reducer3 1 FL
+13
+Reducer5 Reducer6 1198
+Map10 Reducer4 902
+Map1 Map2 4
+Reducer4 Reducer5 206
+Reducer7 Reducer8 16
+Map2 Reducer3 891
+Reducer6 Reducer7 1813
+Reducer14 Reducer6 1662
+Map13 Reducer14 10714
+Reducer12 Reducer5 6364
+Map11 Reducer12 16781
+Map9 Reducer3 7374
+Reducer3 Reducer4 1097
+# 10: TPC-H query21
+14 2 0
+Reducer5 2 FL BA
+Map10 3 BA FL NY
+Map1 1 FL
+Reducer4 1 FL
+Reducer7 2 NY FL
+Map2 1 FL
+Reducer6 2 HK LA
+Reducer14 1 FL
+Map13 3 LA FL BA
+Reducer8 1 BA
+Reducer12 3 FL BA HK
+Map11 3 HK NY LA
+Map9 3 HK BA LA
+Reducer3 1 BA
+13
+Reducer5 Reducer6 1198
+Map10 Reducer4 902
+Map1 Map2 4
+Reducer4 Reducer5 206
+Reducer7 Reducer8 16
+Map2 Reducer3 891
+Reducer6 Reducer7 1813
+Reducer14 Reducer6 1662
+Map13 Reducer14 10714
+Reducer12 Reducer5 6364
+Map11 Reducer12 16781
+Map9 Reducer3 7374
+Reducer3 Reducer4 1097
+# 16: TPC-H query7
+11 3 0
+Reducer5 1 BA
+Reducer4 1 BA
+Map1 1 LA
+Map10 1 NY
+Reducer6 1 NY
+Map11 1 HK
+Map8 3 HK FL BA
+Map9 2 HK BA
+Reducer3 2 FL NY
+Reducer2 1 BA
+Map7 3 FL NY HK
+10
+Reducer5 Reducer6 1
+Reducer4 Reducer5 15283
+Map1 Reducer2 3261
+Map10 Reducer4 2547
+Map11 Reducer4 2547
+Map8 Reducer3 6466
+Map9 Reducer4 5094
+Reducer3 Reducer4 7938
+Reducer2 Reducer3 5394
+Map7 Reducer2 10538
+# 8: TPC-H query1
+3 4 0
+Map1 3 HK LA BA
+Reducer3 1 HK
+Reducer2 2 FL HK
+2
+Map1 Reducer2 13585
+Reducer2 Reducer3 14
+# 0: TPC-H query10
+8 5 0
+Reducer5 1 BA
+Reducer4 1 HK
+Map1 2 NY BA
+Map8 1 NY
+Reducer3 2 NY HK
+Map6 3 FL LA BA
+Reducer2 1 NY
+Map7 3 FL LA BA
+7
+Reducer4 Reducer5 320
+Map1 Reducer2 156
+Map8 Reducer3 1204
+Reducer3 Reducer4 6210
+Map6 Reducer2 445
+Reducer2 Reducer3 1268
+Map7 Reducer3 7731
+# 12: TPC-H query3
+7 6 0
+Reducer5 1 LA
+Map1 2 HK FL
+Reducer4 1 NY
+Map6 3 BA LA HK
+Reducer3 2 FL HK
+Map7 3 NY FL HK
+Reducer2 1 HK
+6
+Map1 Reducer2 220
+Reducer4 Reducer5 41
+Map6 Reducer2 573
+Reducer3 Reducer4 2689
+Map7 Reducer3 6696
+Reducer2 Reducer3 791
+# 15: TPC-H query6
+2 7 0
+Map1 3 FL NY BA
+Reducer2 1 HK
+1
+Map1 Reducer2 2619
+# 1: TPC-H query11
+12 8 0
+Reducer10 1 BA
+Reducer4 1 LA
+Map1 3 FL HK BA
+Reducer9 1 NY
+Reducer8 1 LA
+Map11 1 NY
+Map12 1 NY
+Map5 1 NY
+Reducer3 1 FL
+Map6 1 HK
+Reducer2 1 BA
+Map7 3 BA HK FL
+11
+Reducer10 Reducer3 25
+Map1 Reducer2 1322
+Reducer9 Reducer10 16
+Reducer8 Reducer9 508
+Map11 Reducer8 99
+Map12 Reducer8 98
+Map5 Reducer2 395
+Reducer3 Reducer4 51
+Map6 Reducer2 395
+Reducer2 Reducer3 1013
+Map7 Reducer8 432
+# 12: TPC-H query3
+7 9 0
+Reducer5 1 HK
+Map1 2 BA NY
+Reducer4 1 HK
+Map6 3 HK FL LA
+Reducer3 2 HK BA
+Map7 3 BA LA HK
+Reducer2 1 HK
+6
+Map1 Reducer2 220
+Reducer4 Reducer5 41
+Map6 Reducer2 573
+Reducer3 Reducer4 2689
+Map7 Reducer3 6696
+Reducer2 Reducer3 791
