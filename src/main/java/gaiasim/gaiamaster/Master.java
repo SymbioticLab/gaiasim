@@ -3,7 +3,6 @@ package gaiasim.gaiamaster;
 // The GAIA master. Runing asynchronous message processing logic.
 // Three threads: 1. handling Coflow insertion (connects YARN),
 
-import com.opencsv.CSVWriter;
 import gaiasim.comm.PortAnnouncementMessage_Old;
 import gaiasim.comm.PortAnnouncementRelayMessage;
 import gaiasim.gaiamessage.AgentMessage;
@@ -18,8 +17,9 @@ import gaiasim.spark.YARNEmulator;
 import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +31,8 @@ import java.util.stream.Collectors;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class Master {
+
+    private static final Logger logger = LogManager.getLogger();
 
     // immutable fields
     NetGraph netGraph;
@@ -168,7 +170,7 @@ public class Master {
 
             // This is ver 2.0 for FUM.
             FlowUpdateMessage m = new FlowUpdateMessage(fgos, ng, said);
-            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+//            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
             sai.get(said).sendFlowUpdate_Blocking(m);
 
             return 1;
@@ -298,7 +300,9 @@ public class Master {
 //            sendControlMessages_Serial(scheduled_flows);
 
             long deltaTime = System.currentTimeMillis() - currentTime;
-            System.out.println("Master: schedule() took " + deltaTime + " ms. Active CF: " + ms.coflowPool.size() + " scheduled FG: " + scheduled_flows.size());
+
+//            System.out.println("Master: schedule() took " + deltaTime + " ms. Active CF: " + ms.coflowPool.size() + " scheduled FG: " + scheduled_flows.size());
+            logger.info("Master: schedule() took {} ms. Active CF: {} Scheduled FG: {}", deltaTime , ms.coflowPool.size(), scheduled_flows.size());
 
 
         } catch (Exception e) { // could throw File I/O error
@@ -315,7 +319,7 @@ public class Master {
         for (Map.Entry<String , List<FlowGroup_Old>> entrybySA: fgobySA.entrySet()){
 
             FlowUpdateMessage m = new FlowUpdateMessage(entrybySA.getValue() , netGraph , entrybySA.getKey());
-            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+//            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
             sai.get(entrybySA.getKey()).sendFlowUpdate_Blocking(m);
 
         }
