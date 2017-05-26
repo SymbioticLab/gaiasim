@@ -187,6 +187,7 @@ public class Worker implements Runnable{
                     bos.write(data_block , 0, data_length);
                     bos.flush();
 
+                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
 //                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
