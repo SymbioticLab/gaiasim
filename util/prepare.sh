@@ -1,19 +1,20 @@
 #!/bin/bash
 
+# Script ver 1.1
 # This script is used to download and build codes
-# to perform  emulation.
 
-sudo apt install -y nload bwm-ng htop pv
-export LC_ALL=en_US.UTF-8
-sudo pip install networkx
+#sudo apt install -y nload bwm-ng htop pv
+#export LC_ALL=en_US.UTF-8
+#sudo pip install networkx
 
 echo "mounting /tmp as tmpfs..."
 sudo mount -t tmpfs tmpfs /tmp
 
-rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/floodlight
+echo "Copying floodlight into home folder"
+#rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/floodlight
+cp -rp /usr/local/share/floodlight/ ~/floodlight
 
-echo "Floodlight ready for use, now compiling gaiasim..."
-
+echo "Compiling GAIA"
 cd ~/gaiasim
 mvn package
 
