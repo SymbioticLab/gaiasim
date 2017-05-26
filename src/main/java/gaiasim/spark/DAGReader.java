@@ -82,8 +82,8 @@ public class DAGReader {
 
                 Coflow child = coflow_map.get(src_task);
                 Coflow parent = coflow_map.get(dst_task);
-                child.parent_coflows_.add(parent);
-                parent.child_coflows_.add(child);
+                child.child_coflows.add(parent);
+                parent.parent_coflows.add(child);
                 child.volume_for_parent_.put(parent.id_, (double)data_size);
             }
  

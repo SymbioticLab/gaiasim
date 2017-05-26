@@ -32,11 +32,11 @@ public class Job {
         // Determine the start coflows of the DAG (those without children).
         for (String key : coflows_.keySet()) {
             Coflow c = coflows_.get(key);
-            if (c.parent_coflows_.size() == 0) {
+            if (c.child_coflows.size() == 0) {
                 end_coflows_.add(c);
             }
 
-            if (c.child_coflows_.size() == 0) {
+            if (c.parent_coflows.size() == 0) {
                 start_coflows_.add(c);
             }
             else {
@@ -69,12 +69,12 @@ public class Job {
         Coflow c = coflows_.get(coflow_id);
         running_coflows_.remove(c);
 
-        for (Coflow parent : c.parent_coflows_) {
+        for (Coflow parent : c.child_coflows) {
             if (parent.ready()) {
                 ready_coflows_.add(parent);
             }
 
-        } // for parent_coflows_
+        } // for child_coflows
 
     }
 
@@ -95,7 +95,7 @@ public class Job {
             c.done_ = true; 
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
-            for (Coflow parent : c.parent_coflows_) {
+            for (Coflow parent : c.child_coflows) {
                 if (!ready_coflows_.contains(parent)) {
                     if (parent.done()) {
                         // Hack to avoid error in finish_coflow
@@ -107,7 +107,7 @@ public class Job {
                         ready_coflows_.add(parent);
                     }
                 }
-            } // for parent_coflows_
+            } // for child_coflows
 
         } // for start_coflows_
         started_ = true;
