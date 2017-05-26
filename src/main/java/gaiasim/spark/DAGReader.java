@@ -63,7 +63,8 @@ public class DAGReader {
                         task_locs[j] = tmp_nodes.get(j % tmp_nodes.size());
                     }
                 }
-                coflow_map.put(stage_id, new Coflow(job_id + ':' + stage_id, task_locs));
+                // Changed to include jobID into CoflowID, for consistency
+                coflow_map.put(job_id + ':' + stage_id, new Coflow(job_id + ':' + stage_id, task_locs));
             }
 
             // Determine coflow dependencies

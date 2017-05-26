@@ -69,10 +69,8 @@ public class Job {
     // Remove s all of the parent Coflows depending on it. If any parent
     // Coflows are now ready to run, add them to ready_coflows_.
     public void finish_coflow(String full_coflow_id) {
-        // A coflow's id is of the form <job_id>:<coflow_id> whereas
-        // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
-        String coflow_id = full_coflow_id.split(":")[1];
-        Coflow c = coflows_.get(coflow_id);
+        // No need to split to get partial coflow_id here.
+        Coflow c = coflows_.get(full_coflow_id);
         running_coflows_.remove(c);
 
         for (Coflow child : c.child_coflows) {
