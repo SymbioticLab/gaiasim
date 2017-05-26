@@ -80,11 +80,11 @@ public class DAGReader {
                 int data_size = Integer.parseInt(splits[2]); 
                 data_size = Math.max(1, data_size) * 8; // * 8 to conver to megabits
 
-                Coflow child = coflow_map.get(src_task);
-                Coflow parent = coflow_map.get(dst_task);
-                child.child_coflows.add(parent);
-                parent.parent_coflows.add(child);
-                child.volume_for_parent_.put(parent.id_, (double)data_size);
+                Coflow parent = coflow_map.get(src_task);
+                Coflow child = coflow_map.get(dst_task);
+                child.child_coflows.add(child);
+                parent.parent_coflows.add(parent);
+                child.volume_for_parent_.put(parent.id_, (double)data_size); // This is not used
             }
  
             jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));
