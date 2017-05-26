@@ -28,8 +28,8 @@ public class Job {
         coflows_ = coflows;
         start_time_ = start_time;
 
-        // Determine the end coflows of the DAG (those without any parents).
-        // Determine the start coflows of the DAG (those without children).
+        // Determine the end coflows of the DAG (those without any children).
+        // Determine the start coflows of the DAG (those without parents).
         for (String key : coflows_.keySet()) {
             Coflow c = coflows_.get(key);
             if (c.child_coflows.size() == 0) {
@@ -46,6 +46,12 @@ public class Job {
                 c.create_flows();
             }
         }
+    }
+
+    // the new constructor. We don't call Coflow.create_flows() here.
+    public Job(String id, long arrivalTime){
+        this.id_ = id;
+        this.start_time_ = arrivalTime;
     }
 
     // A job is considered done if all of its coflows are done
