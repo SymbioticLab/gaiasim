@@ -44,16 +44,16 @@ public class Coflow {
 
         // This shuffle transmits data to other tasks in the DAG. Tasks are
         // grouped together into the shuffles resulting from them.
-        for (Coflow child : parent_coflows) {
+        for (Coflow parent : parent_coflows) {
 
             // A child will have tasks in multiple locations. We assume that
             // there is one flow between each pair of locations within our
             // task set and the child's task set and that these transfers
             // are all of the same size. Note that flows go from
             // child_task -> our_task.
-            int num_flows = task_locs_.length * child.task_locs_.length;
-            double volume_per_flow = child.volume_for_parent_.get(id_) / (double)num_flows;
-            for (String src_loc : child.task_locs_) {
+            int num_flows = task_locs_.length * parent.task_locs_.length;
+            double volume_per_flow = parent.volume_for_parent_.get(id_) / (double)num_flows;
+            for (String src_loc : parent.task_locs_) {
 
                 for (String dst_loc : task_locs_) {
 
@@ -66,7 +66,7 @@ public class Coflow {
                         flow_id_suffix++;
                     }
                     else {
-                        System.out.println("Skipping because src and dst are same " + src_loc + " " + dst_loc + " " + child.id_ + "->" + id_);
+                        System.out.println("Skipping because src and dst are same " + src_loc + " " + dst_loc + " " + parent.id_ + "->" + id_);
                     }
 
                 } // task_locs_

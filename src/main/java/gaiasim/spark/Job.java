@@ -75,9 +75,9 @@ public class Job {
         Coflow c = coflows_.get(coflow_id);
         running_coflows_.remove(c);
 
-        for (Coflow parent : c.child_coflows) {
-            if (parent.ready()) {
-                ready_coflows_.add(parent);
+        for (Coflow child : c.child_coflows) {
+            if (child.ready()) {
+                ready_coflows_.add(child);
             }
 
         } // for child_coflows
@@ -101,16 +101,16 @@ public class Job {
             c.done_ = true; 
             // Coflows are defined from parent stage to child stage,
             // so we add the start stage's parents first.
-            for (Coflow parent : c.child_coflows) {
-                if (!ready_coflows_.contains(parent)) {
-                    if (parent.done()) {
+            for (Coflow child : c.child_coflows) {
+                if (!ready_coflows_.contains(child)) {
+                    if (child.done()) {
                         // Hack to avoid error in finish_coflow
-                        running_coflows_.add(parent);
-                        finish_coflow(parent.id_);
+                        running_coflows_.add(child);
+                        finish_coflow(child.id_);
                     }
                     // Add coflows which can be scheduled as a whole
-                    else if (parent.ready()) {
-                        ready_coflows_.add(parent);
+                    else if (child.ready()) {
+                        ready_coflows_.add(child);
                     }
                 }
             } // for child_coflows
