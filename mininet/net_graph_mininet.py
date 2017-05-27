@@ -5,7 +5,7 @@ from mininet.net import Mininet
 from mininet.node import OVSSwitch
 
 class NetGraph(object):
-    def __init__(self, linkData=None, nodesData=None, gmlfilename=None, defaultbandwidth=1000):
+    def __init__(self, linkData=None, nodesData=None, gmlfilename=None, defaultbandwidth=1000, isBaseline=False):
         # links: {node : {neighbor : {"bandwith" : bw, "status" : "free/busy", "available" : time}}}
         self.links = {}
         self.nodes = [] # Node name (e.g., HK, BA, LA)
@@ -13,6 +13,7 @@ class NetGraph(object):
         self.node_id_by_label = {}
         self.link_dict = LinkDict()
         self.G = None
+        self.isBaseline = isBaseline
 
         self.mininet_hosts = {}
         self.mininet_host_switches = {}
@@ -124,7 +125,11 @@ class NetGraph(object):
         # Connect the controller to all switches
         # TODO: Figure out a more realistic connectivity
         for host, switch in sorted(self.mininet_host_switches.items()):
-            print "Adding CTRL-" + host + " link with 9999 bw"
-            net.addLink(ctrl_switch, switch, bw=9999)
+            if self.isBaseline:
+                print "Adding CTRL-" + host + " link with bw = 1 (baseline)"
+                net.addLink(ctrl_switch, switch, bw=1)
+            else:
+                print "Adding CTRL-" + host + " link with 9999 bw"
+                net.addLink(ctrl_switch, switch, bw=9999)
 
         return ctrl
