@@ -93,12 +93,13 @@ public class Job {
         return (ArrayList<Coflow>)running_coflows_.clone();
     }
 
-    // Start all of the first coflows of the job
+    // Start all of the first coflows of the job, old version.
+    // It ignores the start_coflows because by old definition these are void coflows.
     public void start() {
         for (Coflow c : start_coflows_) {
-            c.done_ = true; 
+            c.done_ = true; // BEWARE! This is a hack!
             // Coflows are defined from parent stage to child stage,
-            // so we add the start stage's parents first.
+            // so we add the start stage's children first.
             for (Coflow child : c.child_coflows) {
                 if (!ready_coflows_.contains(child)) {
                     if (child.done()) {
@@ -115,5 +116,22 @@ public class Job {
 
         } // for start_coflows_
         started_ = true;
+    }
+
+    // new Job.start(), used with DAGReader_New().
+    public void start_New(){
+        for (Coflow cf : start_coflows_) {
+            if (!ready_coflows_.contains(cf)) {
+                // we only proceed if
+                if (cf.done()) { // This should never happen
+                    System.err.println("ERROR: Root coflow " + cf.id_ + " is done when starting" );
+                    System.exit(1);
+                }
+                // Add coflows which can be scheduled as a whole
+                else if (cf.ready()) {
+                    ready_coflows_.add(cf);
+                }
+            }
+        }
     }
 }

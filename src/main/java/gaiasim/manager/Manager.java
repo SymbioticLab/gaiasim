@@ -189,7 +189,8 @@ public class Manager {
                     // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
                     if (!j.started_) {
                         j.start_timestamp_ = CURRENT_TIME_;
-                        j.start();
+//                        j.start();
+                        j.start_New();
                     }
 
                     // The next coflow in the job may be the last coflow in the job. If the stages involved
