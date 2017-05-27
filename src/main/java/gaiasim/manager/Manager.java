@@ -2,6 +2,7 @@ package gaiasim.manager;
 
 import com.opencsv.CSVWriter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,7 +109,12 @@ public class Manager {
 
     public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
         String job_output = outdir_ + job_filename;
-        CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
+
+        // Create directory if it doesn't exist
+        File file = new File(job_output);
+        file.getParentFile().mkdirs();
+
+        CSVWriter writer = new CSVWriter(new FileWriter(file), ',');
         String[] record = new String[4];
         record[0] = "JobID";
         record[1] = "StartTime";
