@@ -191,7 +191,11 @@ public class Manager {
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
             PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
-            relay.relay_ports(); // seems not working. FIXME(jimmy)
+            relay.relay_ports();
+        }
+        else { // if we are baseline, then we set up baseline flow tables
+            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
+            bcon.setFlowRules();
         }
 
         num_dispatched_jobs_ = 0;
