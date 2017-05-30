@@ -51,12 +51,11 @@ public class NetGraph {
             int dst = Integer.parseInt(e.getNode1().toString());
 
             // Use default bandwidth of 1 Gbps when it's unspecified
-            double bw = 1024;
-            if (e.getAttribute("bandwidth") != null) {
-                bw = Double.parseDouble(e.getAttribute("bandwidth").toString());
+            if (e.getAttribute("bandwidth") == null) {
+                e.setAttribute("bandwidth", "1024");
             }
-            link_bw_[src][dst] = bw;
-            link_bw_[dst][src] = bw;
+            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString());;
+            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString());;
         }
         
         APSP apsp = new APSP();
