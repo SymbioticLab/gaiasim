@@ -49,8 +49,14 @@ public class NetGraph {
         for (Edge e : graph_.getEachEdge()) {
             int src = Integer.parseInt(e.getNode0().toString());
             int dst = Integer.parseInt(e.getNode1().toString());
-            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString());
-            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString());
+
+            // Use default bandwidth of 1 Gbps when it's unspecified
+            double bw = 1024;
+            if (e.getAttribute("bandwidth") != null) {
+                bw = Double.parseDouble(e.getAttribute("bandwidth").toString());
+            }
+            link_bw_[src][dst] = bw;
+            link_bw_[dst][src] = bw;
         }
         
         APSP apsp = new APSP();
