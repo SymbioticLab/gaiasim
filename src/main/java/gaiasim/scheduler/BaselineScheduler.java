@@ -47,7 +47,6 @@ public class BaselineScheduler extends Scheduler {
                 }
                 
                 Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
-                //Pathway p = net_graph_.apmb_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
                 f.paths_.clear();
                 f.paths_.add(p);
               
