@@ -28,15 +28,6 @@ graph [
   LastProcessed "2011_09_01"
   Testbed 0
   node [
-    id 0
-    label "NY54"
-    Country "United States"
-    Longitude -74.00597
-    Internal 1
-    Latitude 40.71427
-    type "Completion 2007 - 2008"
-  ]
-  node [
     id 1
     label "CMBR"
     Country "United States"
@@ -252,23 +243,32 @@ graph [
     Latitude 33.44838
     type "Completion 2007 - 2008"
   ]
+  node [
+    id 25
+    label "NY54"
+    Country "United States"
+    Longitude -74.00597
+    Internal 1
+    Latitude 40.71427
+    type "Completion 2007 - 2008"
+  ]
   edge [
-    source 0
+    source 25
     target 1
     LinkLabel "Completion 2007-2008"
   ]
   edge [
-    source 0
+    source 25
     target 2
     LinkLabel "Completed"
   ]
   edge [
-    source 0
+    source 25
     target 6
     LinkLabel "Completion 2007-2008"
   ]
   edge [
-    source 0
+    source 25
     target 7
     LinkLabel "Completed"
   ]

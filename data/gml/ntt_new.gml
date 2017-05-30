@@ -1,15 +1,6 @@
 graph [
   network "NTT"
   node [
-    id 0
-    label "bucharest"
-    latitude 44.44
-    ginpop "True"
-    ppp "False"
-    dc "False"
-    longitude 26.1
-  ]
-  node [
     id 1
     label "houston"
     latitude 29.76
@@ -378,8 +369,17 @@ graph [
     dc "True"
     longitude 121.56
   ]
+  node [
+    id 42
+    label "bucharest"
+    latitude 44.44
+    ginpop "True"
+    ppp "False"
+    dc "False"
+    longitude 26.1
+  ]
   edge [
-    source 0
+    source 42
     target 40
     bandwidth 607133
   ]
