@@ -54,15 +54,22 @@ public class BaselineFloodlightContact {
                 // dstIP = "10.0.0." + (dst + 1)
                 // outPort = interfaces_.get(src).get(dst);
 
-                int src = i + 1; // src == the ID of the switch
+                int src = i ; // src == the ID of the switch
                 String dstIP = "10.0.0." + (j+1);
-                String nextNode = getNextNodeFromShortestPath( src , j+1 );
+                String outPort = null;
 
-                // get the interface from src to the next
-                // this is only the interface number, i.e., the "1" of "eth1"
-                String outPort = netGraph.interfaces_.get( String.valueOf(src) ).get( nextNode );
+                if ( i==j ){ // packets arrives at the end switch
+                    outPort = netGraph.interfaces_.get(String.valueOf(i)).get(String.valueOf(j));
+                }
+                else { // route to the next node on the shortest path
+                    String nextNode = getNextNodeFromShortestPath(src, j);
 
-                String msg = src + " " + dstIP + " " + outPort;
+                    // get the interface from src to the next
+                    // this is only the interface number, i.e., the "1" of "eth1"
+                    outPort = netGraph.interfaces_.get(String.valueOf(src)).get(nextNode);
+                }
+
+                String msg = (src + 1) + " " + dstIP + " " + outPort;
                 pw.println(msg);
                 System.out.println(msg);
             }
