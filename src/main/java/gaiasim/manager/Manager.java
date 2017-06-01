@@ -541,17 +541,21 @@ public class Manager {
         print_statistics("/job.csv", "/cct.csv");
     }
 
+    // This is only used in emulation.
     public void start_job(Job j) {
         // Start arriving job
         // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
         j.start_timestamp_ = System.currentTimeMillis();
-        j.start();
+//        j.start();
+        j.start_New();
 
         // The next coflow in the job may be the last coflow in the job. If the stages involved
         // in that coflow are colocated, then there's nothing for us to do. This could cause
         // the job to be marked as done.
         if (j.done()) { // Testing if the job is done instantly.
             j.end_timestamp_ = j.start_timestamp_;
+//            System.err.println("Don't handle this!!!");
+//            System.exit(1);
             System.out.println("Manager/start_job: Job " + j.id_ + " done. (done instantly) Took " + (j.end_timestamp_ - j.start_timestamp_));
             completed_jobs_.addElement(j);
         }
