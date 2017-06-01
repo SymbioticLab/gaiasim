@@ -68,6 +68,7 @@ public class NetGraph {
 
         link_bw_ = new Double[nodes_.size()][nodes_.size()];
         for (Edge e : graph_.getEachEdge()) {
+            // TODO handle unspecified link bandwidth
             String src_str = e.getNode0().toString();
             String dst_str = e.getNode1().toString();
             int src = Integer.parseInt(src_str);
@@ -94,7 +95,7 @@ public class NetGraph {
                 }
             }
         }
-        
+
         APSP apsp = new APSP();
         apsp.init(graph_);
         apsp.setDirected(false);
@@ -105,6 +106,7 @@ public class NetGraph {
         apsp_ = new Path[nodes_.size()][nodes_.size()];
         apmb_ = new Pathway[nodes_.size()][nodes_.size()];
         apap_ = new HashMap<String, HashMap<String, ArrayList<Pathway>>>();
+        //apsp_ = new Path[nodes_.size() + 1][nodes_.size() + 1];
 
         for (Node n : graph_) {
             APSPInfo info = n.getAttribute(APSPInfo.ATTRIBUTE_NAME);
@@ -126,7 +128,7 @@ public class NetGraph {
                             max_bw_path = p;
                         }
                     }
-                    
+
                     apmb_[src][dst] = max_bw_path;
                 }
 

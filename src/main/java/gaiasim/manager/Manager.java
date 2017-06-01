@@ -2,6 +2,7 @@ package gaiasim.manager;
 
 import com.opencsv.CSVWriter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,9 +19,12 @@ import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
+import gaiasim.scheduler.MultiPathScheduler;
 import gaiasim.scheduler.PoorManScheduler;
+import gaiasim.scheduler.VarysScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
+import gaiasim.spark.DAGReader_New;
 import gaiasim.spark.Job;
 import gaiasim.spark.JobInserter;
 import gaiasim.util.Constants;
@@ -31,7 +35,7 @@ public class Manager {
     public Scheduler scheduler_;
 
     // The number of jobs that have been inserted
-    public int num_dispatched_jobs_ = 0;
+    public int num_dispatched_jobs = 0;
 
     // Path to directory to save output files
     public String outdir_;
@@ -55,16 +59,17 @@ public class Manager {
         new LinkedBlockingQueue<ScheduleMessage>();
 
     // SendingAgentContacts indexed by sending agent id
-    public HashMap<String, SendingAgentContact> sa_contacts_ = 
+    public HashMap<String, SendingAgentContact> sa_contacts_ =
         new HashMap<String, SendingAgentContact>();
 
     public boolean is_baseline_ = false;
 
-    public Manager(String gml_file, String trace_file, 
+    public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
-        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
+//        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
+        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -72,6 +77,12 @@ public class Manager {
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
             scheduler_ = new PoorManScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("multipath")) {
+            scheduler_ = new MultiPathScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("varys")) {
+            scheduler_ = new VarysScheduler(net_graph_);
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
@@ -90,11 +101,12 @@ public class Manager {
             }
         });
     }
- 
+
     public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
-        c.determine_start_time();  // FIXME: it must be that sometime start_time = Long.max
+        c.determine_start_time();
         c.end_timestamp_ = cur_time;
-        System.out.println("Coflow " + c.id_ + " done. Took " + (c.end_timestamp_ - c.start_timestamp_));
+        System.out.println("Coflow " + c.id_ + " done. Took " 
+                + (c.end_timestamp_ - c.start_timestamp_));
         c.done_ = true;
 
         completed_coflows_.add(c);
@@ -126,7 +138,7 @@ public class Manager {
         // After completing a flow, an owning coflow may have been completed
         Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
         if (owning_coflow.done()) {
-            handle_finished_coflow(owning_coflow, cur_time); 
+            handle_finished_coflow(owning_coflow, cur_time);
             return true;
         } // if coflow.done
 
@@ -135,7 +147,12 @@ public class Manager {
 
     public void print_statistics(String job_filename, String coflow_filename) throws java.io.IOException {
         String job_output = outdir_ + job_filename;
-        CSVWriter writer = new CSVWriter(new FileWriter(job_output), ',');
+
+        // Create directory if it doesn't exist
+        File file = new File(job_output);
+        file.getParentFile().mkdirs();
+
+        CSVWriter writer = new CSVWriter(new FileWriter(file), ',');
         String[] record = new String[4];
         record[0] = "JobID";
         record[1] = "StartTime";
@@ -177,16 +194,16 @@ public class Manager {
     }
 
     public void emulate() throws Exception {
-        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements = 
+        LinkedBlockingQueue<PortAnnouncementMessage> port_announcements =
             new LinkedBlockingQueue<PortAnnouncementMessage>();
 
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
-            sa_contacts_.put(sa_id, 
-                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330, 
+            sa_contacts_.put(sa_id,
+                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
                                                      message_queue_, port_announcements, is_baseline_));
         }
-      
+
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
@@ -198,7 +215,7 @@ public class Manager {
             bcon.setFlowRules();
         }
 
-        num_dispatched_jobs_ = 0;
+        num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
 
         // Start inserting jobs
@@ -207,7 +224,7 @@ public class Manager {
 
         // Handle job insertions and flow updates
         try {
-            while ((num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty()) {
+            while ((num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty()) {
                 // Block until we have a message to receive
                 ScheduleMessage m = message_queue_.take(); // JobInserter inserts messages by time. (emulating online job coming)
 
@@ -225,7 +242,7 @@ public class Manager {
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                     System.out.println("Received FLOW_COMPLETION for Flow " + m.flow_id_);
-                    
+
                     Flow f = active_flows_.get(m.flow_id_);
                     long current_time = System.currentTimeMillis();
                     boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
@@ -286,7 +303,7 @@ public class Manager {
                 coflow_map.put(c.id_, c);
             }
         }
- 
+
         HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(coflow_map, current_time);
         active_flows_.putAll(scheduled_flows);
         for (String flow_id : scheduled_flows.keySet()) {
@@ -315,7 +332,7 @@ public class Manager {
                 SendingAgentContact sac = sa_contacts_.get(sa_id);
                 sac.send_status_request();
             }
-      
+
             // Wait until we've received either a FLOW_COMPLETION or
             // FLOW_STATUS_RESPONSE for every active flow
             while (!active_flows_.isEmpty()) {
@@ -375,8 +392,12 @@ public class Manager {
     }
 
     public void simulate() throws Exception {
-        int num_dispatched_jobs_ = 0;
+        int num_dispatched_jobs = 0;
         int total_num_jobs = jobs_.size();
+        int last_num_jobs = -1;
+        int last_job_size = -1;
+        long last_time = -5000;
+
 
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
 
@@ -384,12 +405,12 @@ public class Manager {
         boolean coflow_finished = false;
 
         for (CURRENT_TIME_ = 0; 
-                (num_dispatched_jobs_ < total_num_jobs) || !active_jobs_.isEmpty();
+                (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
                     CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
             // Add any jobs which should be added during this epoch
-            for (; num_dispatched_jobs_ < total_num_jobs; num_dispatched_jobs_++) {
-                Job j = jobs_by_time_.get(num_dispatched_jobs_);
+            for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
+                Job j = jobs_by_time_.get(num_dispatched_jobs);
 
                 // If the next job to start won't start during this epoch, no
                 // further jobs should be considered.
@@ -411,7 +432,8 @@ public class Manager {
                     // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
                     if (!j.started_) {
                         j.start_timestamp_ = CURRENT_TIME_;
-                        j.start();
+//                        j.start();
+                        j.start_New();
                     }
 
                     // The next coflow in the job may be the last coflow in the job. If the stages involved
@@ -426,6 +448,11 @@ public class Manager {
                         active_jobs_.put(j.id_, j);
                     }
                 }
+               
+/*                // Update our set of active coflows
+                active_coflows_.clear();
+                for (String k : active_jobs_.keySet()) {
+                    Job j = active_jobs_.get(k);*/
 
                 update_and_schedule_flows(CURRENT_TIME_);
                 ready_jobs.clear();
@@ -436,6 +463,13 @@ public class Manager {
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
+/*            if (active_jobs_.size() == 4 && num_dispatched_jobs == 399) {
+                for (String k : active_flows_.keySet()) {
+                    Flow f = active_flows_.get(k);
+                    System.out.println("    Flow " + f.id_ + " transmitted " + f.transmitted_ + " / " + f.volume_);
+                }
+            }*/
+
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
                     ts <= Constants.EPOCH_MILLI; 
@@ -445,18 +479,39 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     scheduler_.progress_flow(f);
-
-                    // If there's less than one bit remaining of the flow, consider it fully
+                    // TODO verify this
+/*                    // If there's less than one bit remaining of the flow, consider it fully
                     // transmitted.
-                    if ((f.volume_ - f.transmitted_) < 1/*f.transmitted_ >= f.volume_*/) {
+                    if ((f.volume_ - f.transmitted_) < 1*//*f.transmitted_ >= f.volume_*//*) {
+                        finished.add(f);
+                    }*/
+
+                    if (f.transmitted_ >= f.volume_) {
                         finished.add(f);
                     }
                 }
 
                 // Handle flows which have completed
                 for (Flow f : finished) {
+/*
                     boolean caused_coflow_finish = handle_finished_flow(f, CURRENT_TIME_ + ts);
                     coflow_finished = coflow_finished || caused_coflow_finish;
+*/
+
+
+                    active_flows_.remove(f.id_);
+                    f.done_ = true;
+                    f.end_timestamp_ = CURRENT_TIME_ + ts;
+                    scheduler_.finish_flow(f);
+                    System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
+
+                    // After completing a flow, an owning coflow may have been completed
+                    Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
+                    if (owning_coflow.done()) {
+                        handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts); 
+                        coflow_finished = true;
+                    } // if coflow.done
+
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated
@@ -469,10 +524,18 @@ public class Manager {
 
             } // for EPOCH_MILLI
 
-            System.out.printf("Timestep: %6d Running: %3d Started: %5d\n", 
-                              CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
+            // Not printing Timestamp every time. every 1s or every change happens.
+            if(num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || ( CURRENT_TIME_ - last_time >= 1000 )  ){
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
+                last_job_size = active_jobs_.size();
+                last_num_jobs = num_dispatched_jobs;
+                last_time = CURRENT_TIME_;
+            }
 
         } // while stuff to do
+
+        System.out.println("Simulation DONE");
 
         // Save output statistics
         print_statistics("/job.csv", "/cct.csv");
@@ -496,7 +559,7 @@ public class Manager {
             active_jobs_.put(j.id_, j);
         }
 
-        num_dispatched_jobs_++;
+        num_dispatched_jobs++;
     }
 
     public void update_and_schedule_flows(long current_time) throws Exception {

@@ -13,16 +13,13 @@ import gaiasim.network.Link;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.network.SubscribedLink;
-import gaiasim.scheduler.Scheduler;
 import gaiasim.util.Constants;
-
-import org.graphstream.graph.*;
 
 public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
-    private HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    protected HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
 
     public PoorManScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -49,7 +46,7 @@ public class PoorManScheduler extends Scheduler {
         ArrayList<Pathway> completed_paths = new ArrayList<Pathway>();
 
         // Find all links in the network from the flow's source that have some bandwidth
-        // availible and start paths from them.
+        // available and start paths from them.
         ArrayList<Link> links_to_remove = new ArrayList<Link>();
         for (Link l : link_vals) {
             if (l.src_loc_.equals(f.src_loc_)) {

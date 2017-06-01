@@ -64,7 +64,8 @@ public class DAGReader {
                         task_locs[j] = tmp_nodes.get(j % tmp_nodes.size());
                     }
                 }
-                coflow_map.put(stage_id, new Coflow(job_id + ':' + stage_id, task_locs));
+                // Changed to include jobID into CoflowID, for consistency
+                coflow_map.put(job_id + ':' + stage_id, new Coflow(job_id + ':' + stage_id, task_locs));
             }
 
             // Determine coflow dependencies
@@ -81,12 +82,11 @@ public class DAGReader {
                 int data_size = Integer.parseInt(splits[2]); 
                 data_size = Math.max(1, data_size) * 8; // * 8 to convert to megabits
 
-                Coflow child = coflow_map.get(src_task);
-                Coflow parent = coflow_map.get(dst_task);
-                child.parent_coflows_.add(parent);
-                parent.child_coflows_.add(child);
-                child.volume_for_parent_.put(parent.id_, (double)data_size);
-                System.out.println("DAGReader: putting data_size " + data_size + " into " + parent.id_);
+                Coflow parent = coflow_map.get(src_task);
+                Coflow child = coflow_map.get(dst_task);
+                child.child_coflows.add(child);
+                parent.parent_coflows.add(parent);
+                child.volume_for_parent_.put(parent.id_, (double)data_size); // This is not used
             }
  
             jobs.put(job_id, new Job(job_id, arrival_time, coflow_map));

@@ -1,7 +1,5 @@
 package gaiasim.network;
 
-import java.util.ArrayList;
-
 import gaiasim.util.Constants;
 
 public class Link {

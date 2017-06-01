@@ -1,24 +1,19 @@
 package gaiasim.scheduler;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
-import gaiasim.network.SubscribedLink;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
-import gaiasim.scheduler.Scheduler;
 import gaiasim.util.Constants;
-
-import org.graphstream.graph.*;
 
 public class BaselineScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
-    // when we need it to hld new data rather than creating another
+    // when we need it to hold new data rather than creating another
     // new map object (avoid GC).
-    private HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    protected HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
 
     public BaselineScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -51,9 +46,7 @@ public class BaselineScheduler extends Scheduler {
                     continue;
                 }
                 
-                //Path gp = net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
-                //Pathway p = new Pathway(gp);
-                Pathway p = net_graph_.apmb_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)];
+                Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
                 f.paths_.clear();
                 f.paths_.add(p);
               

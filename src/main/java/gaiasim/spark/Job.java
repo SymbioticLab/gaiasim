@@ -28,15 +28,15 @@ public class Job {
         coflows_ = coflows;
         start_time_ = start_time;
 
-        // Determine the end coflows of the DAG (those without any parents).
-        // Determine the start coflows of the DAG (those without children).
+        // Determine the end coflows of the DAG (those without any children).
+        // Determine the start coflows of the DAG (those without parents).
         for (String key : coflows_.keySet()) {
             Coflow c = coflows_.get(key);
-            if (c.parent_coflows_.size() == 0) {
+            if (c.child_coflows.size() == 0) {
                 end_coflows_.add(c);
             }
 
-            if (c.child_coflows_.size() == 0) {
+            if (c.parent_coflows.size() == 0) {
                 start_coflows_.add(c);
             }
             else {
@@ -46,6 +46,12 @@ public class Job {
                 c.create_flows();
             }
         }
+    }
+
+    // the new constructor. We don't call Coflow.create_flows() here.
+    public Job(String id, long arrivalTime){
+        this.id_ = id;
+        this.start_time_ = arrivalTime;
     }
 
     // A job is considered done if all of its coflows are done
@@ -63,18 +69,16 @@ public class Job {
     // Remove s all of the parent Coflows depending on it. If any parent
     // Coflows are now ready to run, add them to ready_coflows_.
     public void finish_coflow(String full_coflow_id) {
-        // A coflow's id is of the form <job_id>:<coflow_id> whereas
-        // our coflow map is indxed by <coflow_id>. Retrieve the coflow_id here.
-        String coflow_id = full_coflow_id.split(":")[1];
-        Coflow c = coflows_.get(coflow_id);
+        // No need to split to get partial coflow_id here.
+        Coflow c = coflows_.get(full_coflow_id);
         running_coflows_.remove(c);
 
-        for (Coflow parent : c.parent_coflows_) {
-            if (parent.ready()) {
-                ready_coflows_.add(parent);
+        for (Coflow child : c.child_coflows) {
+            if (child.ready()) {
+                ready_coflows_.add(child);
             }
 
-        } // for parent_coflows_
+        } // for child_coflows
 
     }
 
@@ -89,27 +93,45 @@ public class Job {
         return (ArrayList<Coflow>)running_coflows_.clone();
     }
 
-    // Start all of the first coflows of the job
+    // Start all of the first coflows of the job, old version.
+    // It ignores the start_coflows because by old definition these are void coflows.
     public void start() {
         for (Coflow c : start_coflows_) {
-            c.done_ = true; 
+            c.done_ = true; // BEWARE! This is a hack!
             // Coflows are defined from parent stage to child stage,
-            // so we add the start stage's parents first.
-            for (Coflow parent : c.parent_coflows_) {
-                if (!ready_coflows_.contains(parent)) {
-                    if (parent.done()) {
+            // so we add the start stage's children first.
+            for (Coflow child : c.child_coflows) {
+                if (!ready_coflows_.contains(child)) {
+                    if (child.done()) {
                         // Hack to avoid error in finish_coflow
-                        running_coflows_.add(parent);
-                        finish_coflow(parent.id_);
+                        running_coflows_.add(child);
+                        finish_coflow(child.id_);
                     }
                     // Add coflows which can be scheduled as a whole
-                    else if (parent.ready()) {
-                        ready_coflows_.add(parent);
+                    else if (child.ready()) {
+                        ready_coflows_.add(child);
                     }
                 }
-            } // for parent_coflows_
+            } // for child_coflows
 
         } // for start_coflows_
         started_ = true;
+    }
+
+    // new Job.start(), used with DAGReader_New().
+    public void start_New(){
+        for (Coflow cf : start_coflows_) {
+            if (!ready_coflows_.contains(cf)) {
+                // we only proceed if
+                if (cf.done()) { // This should never happen
+                    System.err.println("ERROR: Root coflow " + cf.id_ + " is done when starting" );
+                    System.exit(1);
+                }
+                // Add coflows which can be scheduled as a whole
+                else if (cf.ready()) {
+                    ready_coflows_.add(cf);
+                }
+            }
+        }
     }
 }
