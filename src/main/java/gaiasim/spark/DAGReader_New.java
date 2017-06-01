@@ -136,7 +136,7 @@ public class DAGReader_New {
 
                         flowIDCounter++; // We don't know how many coflows we have. So we use a counter per Job, as long as it is unique
 
-                        if (srcLoc != dstLoc) {
+                        if ( !srcLoc.equals(dstLoc) ) { // Ignore co-located Flow.
                             tmpFlowList.add(f);
                             tmpCoflowList.put(dag_id + ":" + dst_stage , f);
                         }
