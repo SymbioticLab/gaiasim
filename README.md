@@ -41,7 +41,7 @@ Command line arguments are as follows:
 ```
 -g : Path to the gml file used for the topology
 -j : Path to the trace file used for submitting jobs
--s : Type of scheduler to use (currently one of { baseline, recursive-remain-flow })
+-s : Type of scheduler to use (currently one of { baseline, recursive-remain-flow, varys, multipath })
 -o : (optional) Path to directory to save statistics output. If not specified, default is /tmp
 -e : (optional) Run under emulation
 ```

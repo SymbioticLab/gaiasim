@@ -527,7 +527,7 @@ public class Manager {
             // Not printing Timestamp every time. every 1s or every change happens.
             if(num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || ( CURRENT_TIME_ - last_time >= 1000 )  ){
                 System.out.printf("Timestep: %6d Running: %3d Started: %5d\n",
-                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs_);
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
                 last_job_size = active_jobs_.size();
                 last_num_jobs = num_dispatched_jobs;
                 last_time = CURRENT_TIME_;
