@@ -23,7 +23,6 @@ import gaiasim.scheduler.MultiPathScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.VarysScheduler;
 import gaiasim.scheduler.Scheduler;
-import gaiasim.spark.DAGReader;
 import gaiasim.spark.DAGReader_New;
 import gaiasim.spark.Job;
 import gaiasim.spark.JobInserter;
@@ -127,7 +126,7 @@ public class Manager {
 
     // Returns true if the completion of this flow caused a coflow
     // to be completed.
-    public boolean handle_finished_flow(Flow f, long cur_time) throws java.io.IOException {
+    public boolean handle_finished_flow_emu(Flow f, long cur_time) throws java.io.IOException {
         active_flows_.remove(f.id_);
         f.transmitted_ = f.volume_;
         f.done_ = true;
@@ -234,7 +233,7 @@ public class Manager {
                     start_job(j);
 
                     if (is_baseline_) {
-                        add_next_flows_for_job(j, System.currentTimeMillis());
+                        add_next_flows_for_job_emu(j, System.currentTimeMillis());
                     }
                     else {
                         reschedule();
@@ -245,20 +244,20 @@ public class Manager {
 
                     Flow f = active_flows_.get(m.flow_id_);
                     long current_time = System.currentTimeMillis();
-                    boolean coflow_finished = handle_finished_flow(f, System.currentTimeMillis());
+                    boolean coflow_finished = handle_finished_flow_emu(f, System.currentTimeMillis());
                     if (coflow_finished) {
                         System.out.println(" Some Coflow finished, results in reschedule");
                         if (is_baseline_) {
 
                             // There is a chance that completing this coflow finished the
-                            // job. If this is the case, the call to handle_finished_flow will
+                            // job. If this is the case, the call to handle_finished_flow_emu will
                             // have removed the job from active_jobs_ and thus j will be null.
                             // Therefore, if j is null, we know that the job must be done and
                             // that there are no more flows to add. There's probably a better
                             // way to check for this.
                             Job j = active_jobs_.get(Constants.get_job_id(f.id_));
                             if (j != null) {
-                                add_next_flows_for_job(j, current_time);
+                                add_next_flows_for_job_emu(j, current_time);
                             }
                         }
                         else {
@@ -289,7 +288,7 @@ public class Manager {
     }
 
     // Used by baseline scheduler to start the next flows of a job
-    public void add_next_flows_for_job(Job j, long current_time) throws Exception {
+    public void add_next_flows_for_job_emu(Job j, long current_time) throws Exception {
         ArrayList<Coflow> coflows = j.get_running_coflows();
         HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
         for (Coflow c : coflows) {
@@ -347,7 +346,7 @@ public class Manager {
                     else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
                         System.out.println("Registering FLOW_COMPLETION for " + m.flow_id_);
                         Flow f = active_flows_.get(m.flow_id_);
-                        handle_finished_flow(f, System.currentTimeMillis());
+                        handle_finished_flow_emu(f, System.currentTimeMillis());
                     }
                     else if (m.type_ == ScheduleMessage.Type.FLOW_STATUS_RESPONSE) {
                         Flow f = active_flows_.get(m.flow_id_);
@@ -442,7 +441,7 @@ public class Manager {
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
                         System.out.println("Manger/simulate: Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
-                        completed_jobs_.addElement(j);
+                        completed_jobs_.addElement(j); // FIXME: we also print the results for the co-located jobs (JCT=0)
                     }
                     else {
                         active_jobs_.put(j.id_, j);
@@ -494,7 +493,7 @@ public class Manager {
                 // Handle flows which have completed
                 for (Flow f : finished) {
 /*
-                    boolean caused_coflow_finish = handle_finished_flow(f, CURRENT_TIME_ + ts);
+                    boolean caused_coflow_finish = handle_finished_flow_emu(f, CURRENT_TIME_ + ts);
                     coflow_finished = coflow_finished || caused_coflow_finish;
 */
 
@@ -566,6 +565,7 @@ public class Manager {
         num_dispatched_jobs++;
     }
 
+    // This method is used both in emulation and simulation
     public void update_and_schedule_flows(long current_time) throws Exception {
         // Update our set of active coflows
         active_coflows_.clear();
