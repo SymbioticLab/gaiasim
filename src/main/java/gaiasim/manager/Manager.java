@@ -440,8 +440,8 @@ public class Manager {
                     // the job to be marked as done.
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
-                        System.out.println("Manger/simulate: Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
-                        completed_jobs_.addElement(j); // FIXME: we also print the results for the co-located jobs (JCT=0)
+                        System.out.println("Manger/simulate: Job " + j.id_ + " done (instantly). Took " + (j.end_timestamp_ - j.start_timestamp_));
+//                        completed_jobs_.addElement(j); // FIXME: we also print the results for the co-located jobs (JCT=0)
                     }
                     else {
                         active_jobs_.put(j.id_, j);
