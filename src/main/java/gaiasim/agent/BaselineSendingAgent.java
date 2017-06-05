@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 // by the controller.
 public class BaselineSendingAgent {
 
-    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
+//    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
     
     public class DataBroker {
         public String id_;
@@ -95,7 +95,7 @@ public class BaselineSendingAgent {
 //                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
                     bos.write(buffer_);
                     bos.flush(); // it is important to flush
-                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
+//                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
@@ -104,12 +104,12 @@ public class BaselineSendingAgent {
 
                 // We track how much we've sent in terms of megabits
                 flow_.transmitted_ += (buffer_size_megabits_);
-                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
+//                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
             }
 
             try {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
-                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Not closing socket..");
+//                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Not closing socket..");
 //                sd_.close();
             }
             catch (java.io.IOException e) {
