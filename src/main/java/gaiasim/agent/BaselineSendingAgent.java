@@ -109,8 +109,8 @@ public class BaselineSendingAgent {
 
             try {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
-//                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Not closing socket..");
-//                sd_.close();
+                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Now closing socket to RA");
+                sd_.close(); // we have to close the socket here!!!!
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
