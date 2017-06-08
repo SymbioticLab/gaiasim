@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 public class BaselineSendingAgent {
 
 //    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
+
     
     public class DataBroker {
         public String id_;
@@ -89,6 +90,7 @@ public class BaselineSendingAgent {
         }
 
         public void run() {
+            System.out.println(Thread.currentThread().getName() + " starts working on " + flow_.id_);
             while (flow_.transmitted_ < flow_.volume_) {
                 try {
 //                    os_.write(buffer_);
@@ -104,7 +106,7 @@ public class BaselineSendingAgent {
 
                 // We track how much we've sent in terms of megabits
                 flow_.transmitted_ += (buffer_size_megabits_);
-//                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
+                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
             }
 
             try {
@@ -115,6 +117,8 @@ public class BaselineSendingAgent {
             catch (java.io.IOException e) {
                 e.printStackTrace();
             }
+
+            System.out.println(Thread.currentThread().getName() + " says goodbye ");
         }
     }
 
