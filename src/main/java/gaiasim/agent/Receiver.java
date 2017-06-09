@@ -28,6 +28,7 @@ public class Receiver implements Runnable {
         }
         
         try {
+            in_.close();
             sd_.close();
         }
         catch (java.io.IOException e) {
