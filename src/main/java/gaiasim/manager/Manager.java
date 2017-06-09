@@ -246,7 +246,7 @@ public class Manager {
                     long current_time = System.currentTimeMillis();
                     boolean coflow_finished = handle_finished_flow_emu(f, System.currentTimeMillis());
                     if (coflow_finished) {
-                        System.out.println(" Some Coflow finished, results in reschedule");
+                        System.out.println(" Some Coflow finished, results in reschedule. CF: " + active_coflows_.size() + " F: " + active_flows_.size());
                         if (is_baseline_) {
 
                             // There is a chance that completing this coflow finished the
