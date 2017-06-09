@@ -2,6 +2,10 @@ package gaiasim.agent;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
@@ -17,6 +21,8 @@ import org.slf4j.LoggerFactory;
 public class BaselineSendingAgent {
 
 //    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
+//    ExecutorService es = new ThreadPoolExecutor(10, 100, 10, );
+    ExecutorService es = Executors.newFixedThreadPool(100);
 
     
     public class DataBroker {
@@ -139,7 +145,13 @@ public class BaselineSendingAgent {
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_Broker_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
 
-                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
+//                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
+                        try {
+                            es.submit(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)));
+                        }
+                        catch (RejectedExecutionException e){
+                            e.printStackTrace();
+                        }
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                         System.out.println("ERROR: Received FLOW_UPDATE for baseline scheduler");
