@@ -188,7 +188,8 @@ public class DAGReader implements Runnable{
                 double data_size = Double.parseDouble(splits[2]) * GaiaSim.SCALE_FACTOR; // Added scale factor here!
                 // Convert to megabits, then divide by FlowGroups
                 int numberOfFlowGroups = locationMap.get(src_stage).length * locationMap.get(dst_stage).length;
-                double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
+//                double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
+                double divided_data_size = Math.max(8 , data_size * 8 / numberOfFlowGroups);
 
                 // create FlowGroups and add to buffer.
                 for( String srcLoc : locationMap.get(src_stage)){
