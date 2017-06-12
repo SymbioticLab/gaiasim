@@ -22,7 +22,7 @@ public class BaselineSendingAgent {
 
 //    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
 //    ExecutorService es = new ThreadPoolExecutor(10, 100, 10, );
-    ExecutorService es = Executors.newFixedThreadPool(100);
+//    ExecutorService es = Executors.newFixedThreadPool(100);
 
     
     public class DataBroker {
@@ -81,39 +81,44 @@ public class BaselineSendingAgent {
             flow_ = new LightFlow(flow_id, volume);
             ra_ip_ = ra_ip;
 
-            try {
-                sd_ = new Socket(ra_ip, 33330);
-//                dos = new DataOutputStream(new BufferedOutputStream(sd_.getOutputStream()));
-//                tos = new ThrottledOutputStream(sd_.getOutputStream(), Constants.DEFAULT_OUTPUTSTREAM_RATE);
-//                os_ = sd_.getOutputStream();
-//                dos = new DataOutputStream(os_);
-                bos = new BufferedOutputStream(sd_.getOutputStream());
-            }
-            catch (java.io.IOException e) {
-                e.printStackTrace();
-                System.exit(1);
-            }
         }
 
         public void run() {
+
+
             System.out.println(Thread.currentThread().getName() + " starts working on " + flow_.id_);
             while (flow_.transmitted_ < flow_.volume_) {
+
+                // first try to establish the connection
                 try {
-//                    os_.write(buffer_);
-//                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
-                    bos.write(buffer_);
-                    bos.flush(); // it is important to flush
-//                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
+                    sd_ = new Socket(ra_ip_, 33330);
+                    bos = new BufferedOutputStream(sd_.getOutputStream());
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
-                    System.exit(1);
+                    System.out.println("Exception while connecting, retry");
+                    continue;
+//                    System.exit(1);
                 }
 
-                // We track how much we've sent in terms of megabits
-                flow_.transmitted_ += (buffer_size_megabits_);
-                System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
-            }
+                // try to send the data
+                while (flow_.transmitted_ < flow_.volume_) {
+                    try {
+//                    System.out.println("BaselineSA: Writing 1MB @ " + System.currentTimeMillis());
+                        bos.write(buffer_);
+                        bos.flush(); // it is important to flush
+//                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
+                    } catch (java.io.IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Exception while sending, re-connecting");
+                        break;
+                    }
+
+                    // We track how much we've sent in terms of megabits
+                    flow_.transmitted_ += (buffer_size_megabits_);
+                    System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
+                }
+            } // end of sending all data
 
             try {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
@@ -147,13 +152,13 @@ public class BaselineSendingAgent {
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_Broker_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
 
-//                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
-                        try {
+                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
+/*                        try {
                             es.submit(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)));
                         }
                         catch (RejectedExecutionException e){
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                     else if (c.type_ == ControlMessage.Type.FLOW_UPDATE) {
                         System.out.println("ERROR: Received FLOW_UPDATE for baseline scheduler");
