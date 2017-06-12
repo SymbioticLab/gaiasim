@@ -344,8 +344,22 @@ public class CoflowScheduler extends Scheduler {
     }
 
     // uponFlowGroupFIN, we set the flowGroupVolume to zero.
-    public void handleFlowGroupFIN(){
+    public void handleFlowGroupFIN(HashMap<String, Coflow_Old> coflows){
+        // iterate through CFList, if non-existent, remove, else update the cct.
+        Iterator<CoflowSchedulerEntry> iter = cfList.iterator();
 
+        while (iter.hasNext()){
+            CoflowSchedulerEntry cfse = iter.next();
+            if ( !coflows.containsKey(cfse.cf.getId()) ){
+                iter.remove();
+            }
+            else {
+                Coflow_Old cfo = coflows.get(cfse.cf.getId());
+                // update the volume
+                cfse.cf = cfo; // TODO verify, also update the CCT?
+            }
+
+        }
     }
 
     // Upon finish of Coflow, we simply remove the CF from the list, and update the CCT
