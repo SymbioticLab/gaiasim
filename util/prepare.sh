@@ -10,9 +10,9 @@
 echo "mounting /tmp as tmpfs..."
 sudo mount -t tmpfs tmpfs /tmp
 
-echo "Copying floodlight into home folder"
+#echo "Copying floodlight into home folder"
 #rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/floodlight
-cp -rp /usr/local/share/floodlight/ ~/floodlight
+#cp -rp /usr/local/share/floodlight/ ~/floodlight
 
 echo "Compiling GAIA"
 cd ~/gaiasim
