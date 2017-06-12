@@ -95,6 +95,8 @@ public class DAGReader implements Runnable{
             }
 
         } // for jobs
+
+        // TODO: send end of job signal
     }
 
     public static ArrayList<DAG> getListofDAGs( String tracefile, NetGraph net_graph ) throws IOException {
@@ -211,7 +213,8 @@ public class DAGReader implements Runnable{
         br.close();
 
         // sort the dagList according to arrivalTime
-        Collections.sort(dagList, (o1, o2) -> (int)(o1.getArrivalTime() - o2.getArrivalTime()));
+//        Collections.sort(dagList, (o1, o2) -> (int)(o1.getArrivalTime() - o2.getArrivalTime()));
+        Collections.sort(dagList,  Comparator.comparingLong(o -> o.getArrivalTime()));
 
         return dagList;
     }
