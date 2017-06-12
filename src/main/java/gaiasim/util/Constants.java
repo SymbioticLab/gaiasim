@@ -20,6 +20,7 @@ public class Constants {
 
     // Comparison between double
     public static final double DOUBLE_EPSILON = 0.00001;
+    public static final double LINK_AVAILABLE_THR = 0.1;
 
     // Number of milliseconds in a second
     public static final int MILLI_IN_SECOND = 1000;

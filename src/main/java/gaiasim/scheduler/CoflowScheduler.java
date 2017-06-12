@@ -1,35 +1,66 @@
 package gaiasim.scheduler;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.HashMap;
-
 import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
-import gaiasim.network.FlowGroup_Old;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.graphstream.graph.Edge;
 
-// Coflow scheduler 0.1.0
+import java.util.*;
+
+// coflow scheduler 0.2.0
 
 @SuppressWarnings("Duplicates")
 
-public class PoorManScheduler extends Scheduler {
+public class CoflowScheduler extends Scheduler {
 
     private static final Logger logger = LogManager.getLogger();
+    private final SubscribedLink[][] linksAtStart;
 
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
     private HashMap<String, FlowGroup_Old> flows_ = new HashMap<String, FlowGroup_Old>();
 
-    public PoorManScheduler(NetGraph net_graph) {
+    // TODO: really need this?
+//    protected HashMap<Coflow_Old, Double> cct_Init = new HashMap<>();
+
+    protected Comparator<CoflowSchedulerEntry> smallCCTFirst = Comparator.comparingDouble(o -> o.cct);
+
+    protected List<CoflowSchedulerEntry> cfList = new LinkedList<>();
+
+    // Create a priority queue to sort the CFs according to completion time.
+//    protected Queue<CoflowSchedulerEntry> cfQueue = new PriorityQueue<>(smallCCTFirst);
+
+    public CoflowScheduler(NetGraph net_graph) {
         super(net_graph);
+
+        // TODO init links to empty
+        linksAtStart = new SubscribedLink[net_graph_.nodes_.size()][net_graph_.nodes_.size()];
+        for (Edge e : net_graph_.graph_.getEachEdge()) {
+            int src = Integer.parseInt(e.getNode0().toString());
+            int dst = Integer.parseInt(e.getNode1().toString());
+            linksAtStart[src][dst] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+            linksAtStart[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+        }
     }
-    
+
+    public class CoflowSchedulerEntry {
+        Double cct;
+        Coflow_Old cf;
+        MMCFOptimizer.MMCFOutput firstLPOutput;
+
+        public CoflowSchedulerEntry(Coflow_Old cf, MMCFOptimizer.MMCFOutput mmcfOutput) {
+            this.cf = cf;
+            this.firstLPOutput = mmcfOutput;
+            this.cct = mmcfOutput.completion_time_;
+        }
+
+        public void updateCCT(double newCCT) {cct = newCCT;}
+    }
+
+
     public void finish_flow(FlowGroup_Old f) {
         for (Pathway p : f.paths) {
             for (int i = 0; i < p.node_list.size() - 1; i++) {
@@ -256,79 +287,17 @@ public class PoorManScheduler extends Scheduler {
                                                          long timestamp) throws Exception {
         flows_.clear();
         reset_links();
-        ArrayList<Map.Entry<Coflow_Old, Double>> cct_list = sort_coflows(coflows); // here LP is called n times to sort.
-        ArrayList<Coflow_Old> unscheduled_coflows = new ArrayList<Coflow_Old>();
-        for (Map.Entry<Coflow_Old, Double> e : cct_list) {
-            Coflow_Old c = e.getKey();
 
-            if (remaining_bw() <= 0) {
-                unscheduled_coflows.add(c);
-                continue;
-            }
+        resetCFList(coflows);
 
-//            System.out.println("Scheduler: Coflow " + c.getId() + " expected to complete in " + e.getValue() + " seconds");
-            logger.info("Scheduler: Coflow {} expected to complete in {} seconds" ,c.getId() , e.getValue());
-
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_); // This is the recursive part.
-
-            boolean all_flows_scheduled = true;
-            for (String k : c.flows.keySet()) {
-                FlowGroup_Old f = c.flows.get(k);
-                if (!f.isDone()) {
-                    if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
-                        all_flows_scheduled = false;
-                    }
-                }
-            }
-
-            if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
-                unscheduled_coflows.add(c);
-                continue;
-            }
-            
-            // This portion is similar to CoFlow::make() in Sim
-            for (String k : c.flows.keySet()) {
-                FlowGroup_Old f = c.flows.get(k);
-                if (f.isDone()) {
-                    continue;
-                }
-
-                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.getInt_id());
-                assert(link_vals != null);
-
-                // This portion is similar to FlowGroup::make() in Sim
-                make_paths(f, link_vals);
-                
-                // Subscribe the flow's paths to the links it uses
-                for (Pathway p : f.paths) {
-                    for (int i = 0; i < p.node_list.size() - 1; i++) {
-                        int src = Integer.parseInt(p.node_list.get(i));
-                        int dst = Integer.parseInt(p.node_list.get(i+1));
-                        links_[src][dst].subscribers_.add(p);
-                    }
-                }
-                
-/*                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
-                System.out.println("  has pathways: ");
-                for (Pathway p : f.paths) {
-                    System.out.println("    " + p.toString());
-                }*/
-
-                if (f.getStart_timestamp() == -1) {
-                    f.setStart_timestamp(timestamp);
-                }
-
-                flows_.put(f.getId(), f);
-            }
+        List<FlowGroup_Old> flowList = scheduleRRF(timestamp);
+        for (FlowGroup_Old fgo : flowList){
+            flows_.put(fgo.getId() , fgo);
         }
 
-        // Schedule any available flows
-        if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
-            schedule_extra_flows(unscheduled_coflows, timestamp);        
-        }
         return flows_;
     }
-    
+
     public ArrayList<Map.Entry<Coflow_Old, Double>> sort_coflows(HashMap<String, Coflow_Old> coflows) throws Exception {
         HashMap<Coflow_Old, Double> cct_map = new HashMap<Coflow_Old, Double>();
 
@@ -351,6 +320,216 @@ public class PoorManScheduler extends Scheduler {
         return cct_list;
     }
 
-    // Updates the rates of flows
+
+    // init the coflow and calculate the CCT under empty network
+    // called upon adding a coflow
+    public void coflowInit(Coflow_Old cf){
+
+        // call LP once to get the CCT_init
+        MMCFOptimizer.MMCFOutput mmcf_out = null;
+        try {
+
+            mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, linksAtStart); // LP when links are empty
+            if (mmcf_out.completion_time_ != -1.0) { // If this Coflow is valid, add to a list
+                cfList.add(new CoflowSchedulerEntry(cf, mmcf_out));
+            }
+            else {
+                logger.error("Unable to init CF {}" , cf.getId());
+                System.exit(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // uponFlowGroupFIN, we set the flowGroupVolume to zero.
+    public void handleFlowGroupFIN(){
+
+    }
+
+    // Upon finish of Coflow, we simply remove the CF from the list, and update the CCT
+    public void handleCoflowFIN(HashMap<String, Coflow_Old> coflows){
+
+        // iterate through CFList, if non-existent, remove, else update the cct.
+        Iterator<CoflowSchedulerEntry> iter = cfList.iterator();
+
+        while (iter.hasNext()){
+            CoflowSchedulerEntry cfse = iter.next();
+            if ( !coflows.containsKey(cfse.cf.getId()) ){
+                iter.remove();
+            }
+            else {
+                Coflow_Old cfo = coflows.get(cfse.cf.getId());
+                // update the volume
+                cfse.cf = cfo; // TODO verify, also update the CCT?
+            }
+
+        }
+    }
+
+    // Updates the rates of flows, called upon receiving flow_status update.
     public void update_flows(HashMap<String, FlowGroup_Old> flows) {}
+
+    // this function is RRF scheduling, given that CFs are already sorted
+    public List<FlowGroup_Old> scheduleRRF(long timestamp) throws Exception {
+        List<FlowGroup_Old> scheduledFGs = new LinkedList<>();
+        ArrayList<Coflow_Old> unscheduled_coflows = new ArrayList<Coflow_Old>();
+
+        reset_links();
+
+        // Part 1: recursively schedule CFs in the priority queue
+        for ( CoflowSchedulerEntry e : cfList){
+
+            Coflow_Old c = e.cf;
+
+            // first fast check, we need to check every CF, even if we only have small BW left.
+            if ( !fastCheckCF(e) ){
+                unscheduled_coflows.add(c);
+                continue;
+            }
+
+            // schedule this CF
+            logger.info("CoflowScheduler: Coflow {} expected to complete in {} seconds" , c.getId() , e.cct);
+
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_); // This is the recursive part.
+
+            boolean all_flows_scheduled = true;
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (!f.isDone()) {
+                    if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
+                        all_flows_scheduled = false;
+                    }
+                }
+            }
+
+            // check if successfully scheduled
+            if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
+                unscheduled_coflows.add(c);
+                continue;
+            }
+
+            // This portion is similar to CoFlow::make() in Sim
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (f.isDone()) {
+                    continue;
+                }
+
+                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.getInt_id());
+                assert(link_vals != null);
+
+                // This portion is similar to FlowGroup::make() in Sim
+                make_paths(f, link_vals);
+
+                // Subscribe the flow's paths to the links it uses
+                for (Pathway p : f.paths) {
+                    for (int i = 0; i < p.node_list.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list.get(i));
+                        int dst = Integer.parseInt(p.node_list.get(i+1));
+                        links_[src][dst].subscribers_.add(p);
+                    }
+                }
+
+/*                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
+                System.out.println("  has pathways: ");
+                for (Pathway p : f.paths) {
+                    System.out.println("    " + p.toString());
+                }*/
+
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
+                }
+
+//                flows_.put(f.getId(), f);
+                scheduledFGs.add(f);
+            }
+        }
+
+        // TODO implement the remain-flows part
+/*
+        // Part 2: remain-flows
+        // Schedule any available flows
+        if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
+            schedule_extra_flows(unscheduled_coflows, timestamp);
+        }
+*/
+
+        return scheduledFGs;
+    }
+
+    public boolean fastCheckCF(CoflowSchedulerEntry cfse){
+        // check the FGs, if anyone of them can't be allocated, return false
+        for( Map.Entry<String, FlowGroup_Old> e : cfse.cf.flows.entrySet() ){
+            if ( !fastCheckFG(e.getValue()) ){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean fastCheckFG(FlowGroup_Old fgo) {
+        // check connectivity using link[][].remainingBW
+
+        int srcID = Integer.parseInt(fgo.getSrc_loc());
+        int dstID = Integer.parseInt(fgo.getDst_loc());
+
+        // BFS the graph from the source TODO: efficiency
+        Queue<Integer> nodeIDtoCheck = new LinkedList<>();
+        nodeIDtoCheck.add(srcID);
+
+        Set<Integer> nodeIDDone = new HashSet<>();
+
+        while ( !nodeIDtoCheck.isEmpty() ){
+            int curID = nodeIDtoCheck.remove();
+            nodeIDDone.add(curID);
+
+            // check nearby nodes from curID
+            SubscribedLink[] nodeArray = links_[curID];
+            if (nodeArray != null){
+                for (int j = 0; j < net_graph_.nodes_.size(); j++) {
+                    if (links_[curID][j] != null) {
+                        if(links_[curID][j].remaining_bw() >= Constants.LINK_AVAILABLE_THR){
+
+                            if ( j == dstID ){
+                                return true;
+                            }
+
+                            if ( !nodeIDDone.contains(j)) {
+                                nodeIDtoCheck.add(j);
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                logger.error("nodeArray==null !");
+            }
+        }
+
+        return false;
+    }
+
+    // sort first and then schedule
+    public List<FlowGroup_Old> scheduleRRFwithSort(long timestamp) throws Exception {
+        sortCFList();
+        return scheduleRRF(timestamp);
+    }
+
+    public void sortCFList(){
+        cfList.sort(smallCCTFirst);
+    }
+
+    // called upon CF_ADD
+    public void resetCFList(HashMap<String, Coflow_Old> CFs){
+        cfList.clear();
+        for (Map.Entry<String, Coflow_Old> entry : CFs.entrySet()){
+            coflowInit(entry.getValue());
+        }
+
+        sortCFList();
+
+    }
 }

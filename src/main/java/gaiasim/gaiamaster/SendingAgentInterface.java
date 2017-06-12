@@ -156,6 +156,7 @@ public class SendingAgentInterface {
                 return; // if already finished, do nothing.
             }
 
+            ms.flag_FG_FIN = true;
 
             // check if the owning coflow is finished
             Coflow cf = ms.coflowPool.get(fg.getOwningCoflowID());

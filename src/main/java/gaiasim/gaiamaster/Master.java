@@ -11,6 +11,7 @@ import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
 import gaiasim.scheduler.BaselineScheduler;
+import gaiasim.scheduler.CoflowScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.YARNEmulator;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -36,7 +38,7 @@ public class Master {
 
     // immutable fields
     NetGraph netGraph;
-    Scheduler scheduler;
+    CoflowScheduler scheduler;
     protected String outdir;
     protected boolean enablePersistentConn;
     protected Configuration config;
@@ -66,6 +68,15 @@ public class Master {
         // only need to add entry, no need to delete entry. TODO verify this.
         public volatile ConcurrentHashMap<String , Coflow> flowIDtoCoflow;
 
+        public volatile boolean flag_CF_ADD = false;
+        public volatile boolean flag_CF_FIN = false;
+        public volatile boolean flag_FG_FIN = false;
+
+
+/*        public AtomicBoolean flag_CF_ADD = new AtomicBoolean(false);
+        public AtomicBoolean flag_CF_FIN = new AtomicBoolean(false);
+        public AtomicBoolean flag_FG_FIN = new AtomicBoolean(false);*/
+
         // handles coflow finish.
         public synchronized boolean onFinishCoflow(String coflowID) {
             System.out.println("Master: trying to finish Coflow: " + coflowID);
@@ -76,6 +87,8 @@ public class Master {
                 // 1. the value is false before we send COFLOW_FIN
                 // 2. the value must be set to true, after whatever we do.
                 if(  !coflowPool.get(coflowID).getAndSetFinished(true) ){
+
+                    ms.flag_CF_FIN = true;
 
                     coflowPool.remove(coflowID);
 
@@ -130,6 +143,7 @@ public class Master {
                     System.out.println("Master: Received Coflow from YARN with ID = " + cfID);
 
                     ms.addCoflow(cfID , cf);
+                    ms.flag_CF_ADD = true;
 
 //                    long curTime = System.currentTimeMillis();
 //                    cf.setStartTime(curTime);
@@ -171,6 +185,7 @@ public class Master {
             // This is ver 2.0 for FUM.
             FlowUpdateMessage m = new FlowUpdateMessage(fgos, ng, said);
 //            System.out.println("FlowUpdateSender: Created FUM: " + m.toString()); // it is working. // :-)
+            logger.info("FlowUpdateSender: Created FUM: {}" , m.toString()); // it is working. // :-)
             sai.get(said).sendFlowUpdate_Blocking(m);
 
             return 1;
@@ -200,12 +215,15 @@ public class Master {
         this.coflowListener = new Thread( new CoflowListener() );
 
         // setting up the scheduler
-        if (scheduler_type.equals("baseline")) {
-            scheduler = new BaselineScheduler(netGraph);
-            enablePersistentConn = false;
+        if (scheduler_type.equals("baseline")) { // no baseline!!!
+            System.err.println("No baseline");
+            System.exit(1);
+//            scheduler = new BaselineScheduler(netGraph);
+//            enablePersistentConn = false;
         }
         else if (scheduler_type.equals("recursive-remain-flow")) {
-            scheduler = new PoorManScheduler(netGraph);
+//            scheduler = new PoorManScheduler(netGraph);
+            scheduler = new CoflowScheduler(netGraph);
             enablePersistentConn = true;
         }
         else {
@@ -255,8 +273,10 @@ public class Master {
 
 
         System.out.println("Master: starting periodical scheduler at every " + Constants.SCHEDULE_INTERVAL_MS + " ms.");
-        // start the periodic execution of schedule(),
-        final Runnable runSchedule = () -> schedule();
+        // start the periodic execution of schedule()
+
+//        final Runnable runSchedule = () -> schedule();
+        final Runnable runSchedule = () -> schedule_New();
         ScheduledFuture<?> mainHandler = mainExec.scheduleAtFixedRate(runSchedule, 0, Constants.SCHEDULE_INTERVAL_MS, MILLISECONDS);
 
 
@@ -275,6 +295,63 @@ public class Master {
         System.out.println("Simulation not supported");
         System.err.println("Simulation not supported in this version");
         System.exit(1);
+    }
+
+    // the new version of schedule()
+    // 1. check in the last interval if anything happens, and determine a fast schedule or re-do the sorting process
+    private void schedule_New(){
+        logger.info("schedule_New(): CF_ADD: {} CF_FIN: {} FG_FIN: {}", ms.flag_CF_ADD, ms.flag_CF_FIN, ms.flag_FG_FIN);
+
+        long currentTime = System.currentTimeMillis();
+        List<FlowGroup_Old> scheduledFGs = new ArrayList<>(0);
+
+        // snapshoting and converting
+        HashMap<String , Coflow_Old> outcf = new HashMap<>();
+        for ( Map.Entry<String, Coflow> ecf : ms.coflowPool.entrySet()){
+            Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(ecf.getValue());
+            outcf.put( cfo.getId() , cfo );
+        }
+
+        if (ms.flag_CF_ADD){ // redo sorting, may result in preemption
+            ms.flag_CF_ADD = false;
+
+            // TODO update the CF_Status in scheduler
+            scheduler.resetCFList(outcf);
+
+            try {
+                scheduledFGs = scheduler.scheduleRRF(currentTime);
+                sendControlMessages_Parallel(scheduledFGs);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        else if (ms.flag_CF_FIN){ // no LP-sort, just update volume status and re-schedule
+            ms.flag_CF_FIN = false;
+            scheduler.handleCoflowFIN(outcf);
+
+            try {
+                scheduledFGs = scheduler.scheduleRRF(currentTime);
+                sendControlMessages_Parallel(scheduledFGs);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        else if (ms.flag_FG_FIN){ // no-reschedule, just pick up a new flowgroup.
+            ms.flag_FG_FIN = false;
+            // FIXME: currently NOP
+        }
+        else {  // if none, NOP
+
+        }
+
+        long deltaTime = System.currentTimeMillis() - currentTime;
+
+        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {}", deltaTime , ms.coflowPool.size(), scheduledFGs.size());
+
     }
 
     private void schedule(){
@@ -330,6 +407,26 @@ public class Master {
     private void sendControlMessages_Parallel(HashMap<String, FlowGroup_Old> scheduled_flows){
         // group FGOs by SA
         Map< String , List<FlowGroup_Old>> fgoBySA = scheduled_flows.values().stream()
+                .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
+
+        // How to parallelize -> use the threadpool
+        List<FlowUpdateSender> tasks= new ArrayList<>();
+        for ( Map.Entry<String,List<FlowGroup_Old>> entry : fgoBySA.entrySet() ){
+            tasks.add( new FlowUpdateSender(entry.getKey() , entry.getValue() , netGraph ) );
+        }
+
+        try {
+            // wait for all sending to finish before proceeding
+            List<Future<Integer>> futures = saControlExec.invokeAll(tasks);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // overrided version
+    private void sendControlMessages_Parallel(List<FlowGroup_Old> scheduled_flows){
+        // group FGOs by SA
+        Map< String , List<FlowGroup_Old>> fgoBySA = scheduled_flows.stream()
                 .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));
 
         // How to parallelize -> use the threadpool
