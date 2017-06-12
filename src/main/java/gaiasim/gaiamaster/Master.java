@@ -341,7 +341,14 @@ public class Master {
         }
         else if (ms.flag_FG_FIN){ // no-reschedule, just pick up a new flowgroup.
             ms.flag_FG_FIN = false;
-            // FIXME: currently NOP
+
+            try {
+                scheduledFGs = scheduler.scheduleRRF(currentTime);
+                sendControlMessages_Parallel(scheduledFGs);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else {  // if none, NOP
 

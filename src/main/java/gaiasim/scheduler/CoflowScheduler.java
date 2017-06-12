@@ -447,16 +447,74 @@ public class CoflowScheduler extends Scheduler {
             }
         }
 
-        // TODO implement the remain-flows part
-/*
-        // Part 2: remain-flows
-        // Schedule any available flows
+        // TODO verify the remain-flows part
         if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
-            schedule_extra_flows(unscheduled_coflows, timestamp);
+            scheduleRemainFlows(unscheduled_coflows , scheduledFGs, timestamp);
         }
-*/
 
         return scheduledFGs;
+    }
+
+    private void scheduleRemainFlows(ArrayList<Coflow_Old> unscheduled_coflows, List<FlowGroup_Old> scheduledFGs, long timestamp) {
+        ArrayList<FlowGroup_Old> unscheduled_flowGroups = new ArrayList<FlowGroup_Old>();
+        for (Coflow_Old c : unscheduled_coflows) {
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (f.remaining_volume() > 0) {
+                    unscheduled_flowGroups.add(c.flows.get(k));
+                }
+            }
+        }
+        // schedule from small to big
+        Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup_Old>() {
+            public int compare(FlowGroup_Old o1, FlowGroup_Old o2) {
+                if (o1.getVolume() == o2.getVolume()) return 0;
+                return o1.getVolume() < o2.getVolume() ? -1 : 1;
+            }
+        });
+
+        for (FlowGroup_Old f : unscheduled_flowGroups) {
+            int src = Integer.parseInt(f.getSrc_loc());
+            int dst = Integer.parseInt(f.getDst_loc());
+            Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
+
+            double min_bw = Double.MAX_VALUE;
+            SubscribedLink[] path_links = new SubscribedLink[p.node_list.size() - 1];
+            for (int i = 0; i < p.node_list.size() - 1; i++) {
+                int lsrc = Integer.parseInt(p.node_list.get(i));
+                int ldst = Integer.parseInt(p.node_list.get(i+1));
+                SubscribedLink l = links_[lsrc][ldst];
+
+                double bw = l.remaining_bw();
+                path_links[i] = l;
+                if (bw < min_bw) {
+                    min_bw = bw;
+                }
+            }
+
+            if (min_bw > 0) {
+//                p.bandwidth = min_bw;
+                p.setBandwidth( min_bw);
+
+                for (SubscribedLink l : path_links) {
+                    l.subscribers_.add(p);
+                }
+                f.paths.clear();
+                f.paths.add(p);
+
+/*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
+                System.out.println("  has pathways: ");
+                for (Pathway path : f.paths) {
+                    System.out.println("    " + path.toString());
+                }*/
+
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
+                }
+//                flows_.put(f.getId(), f);
+                scheduledFGs.add(f);
+            }
+        }
     }
 
     public boolean fastCheckCF(CoflowSchedulerEntry cfse){
