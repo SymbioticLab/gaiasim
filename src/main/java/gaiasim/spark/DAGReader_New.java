@@ -120,7 +120,8 @@ public class DAGReader_New {
                 double data_size = Double.parseDouble(splits[2]) ;
                 // Convert to megabits, then divide by FlowGroups
                 int numberOfFlowGroups = locationMap.get(src_stage).length * locationMap.get(dst_stage).length;
-                double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
+//                double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
+                double divided_data_size = Math.max(8 , data_size * 8 / numberOfFlowGroups); // changed to ensure that each SA has at least 8MBit to send.
 
                 // create FlowGroups and add to buffer.
                 for( String srcLoc : locationMap.get(src_stage)){
