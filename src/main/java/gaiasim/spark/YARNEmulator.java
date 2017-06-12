@@ -43,6 +43,7 @@ public class YARNEmulator implements Runnable {
     private CSVPrinter cfCSVPrinter;
 
     private long YARNStartTime = 0;
+    private volatile boolean noIncomingJobs = false;
 
     @Override
     public void run() {
@@ -69,6 +70,11 @@ public class YARNEmulator implements Runnable {
                         // insert the root Coflows
 
                         onDAGArrival(m.arrivedDAG);
+                        break;
+
+                    case END_OF_JOBS:
+                        noIncomingJobs = true;
+
                         break;
 
                 }
@@ -184,6 +190,14 @@ public class YARNEmulator implements Runnable {
         System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
         // write to CSV
         appendCSV(dagCSVPrinter, dag.getId(), dag.getStartTime(), dag.getFinishTime(),  (dag.getFinishTime() - dag.getStartTime()) );
+        // remove from pool
+        dagPool.remove(dag.getId());
+
+        // judge if all jobs finished
+        if(noIncomingJobs && dagPool.isEmpty()){
+            System.out.println("YARN: All jobs done. exiting");
+            System.exit(0);
+        }
     }
 
     private void initCSVFiles(String dagFileName , String cfFileName) {

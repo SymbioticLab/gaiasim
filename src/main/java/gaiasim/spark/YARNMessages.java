@@ -7,7 +7,8 @@ public class YARNMessages {
 
     public enum Type{
         DAG_ARRIVAL,
-        COFLOW_FIN
+        END_OF_JOBS,
+        COFLOW_FIN,
     }
     private Type type;
 
@@ -17,6 +18,10 @@ public class YARNMessages {
     // DAG for DAG_ARRIVAL
     public DAG arrivedDAG;
 
+    // default msg: END_OF_JOBS
+    public YARNMessages(){
+        this.type = Type.END_OF_JOBS;
+    }
 
     public YARNMessages(DAG arrivedDAG){
         this.type = Type.DAG_ARRIVAL;

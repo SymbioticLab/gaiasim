@@ -96,7 +96,12 @@ public class DAGReader implements Runnable{
 
         } // for jobs
 
-        // TODO: send end of job signal
+        try {
+            // send end of job signal
+            yarnEventQueue.put(new YARNMessages());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ArrayList<DAG> getListofDAGs( String tracefile, NetGraph net_graph ) throws IOException {
