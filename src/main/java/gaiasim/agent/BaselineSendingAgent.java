@@ -75,11 +75,13 @@ public class BaselineSendingAgent {
         public int buffer_size_ = 1024*1024;
         public int buffer_size_megabits_ = buffer_size_ / 1024 / 1024 * 8;
         public byte[] buffer_ = new byte[buffer_size_];
+        private String threadName;
 
         public Sender(DataBroker dataBroker, String flow_id, double volume, String ra_ip) {
             data_Broker_ = dataBroker;
             flow_ = new LightFlow(flow_id, volume);
             ra_ip_ = ra_ip;
+            threadName = Thread.currentThread().getName();
 
         }
 
@@ -96,7 +98,7 @@ public class BaselineSendingAgent {
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
-                    System.out.println("Exception while connecting, retry");
+                    System.out.println( threadName + " Exception while connecting, retry");
                     continue;
 //                    System.exit(1);
                 }
@@ -110,13 +112,13 @@ public class BaselineSendingAgent {
 //                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                     } catch (java.io.IOException e) {
                         e.printStackTrace();
-                        System.out.println("Exception while sending, re-connecting");
+                        System.out.println( threadName + " Exception while sending, re-connecting");
                         break;
                     }
 
                     // We track how much we've sent in terms of megabits
                     flow_.transmitted_ += (buffer_size_megabits_);
-                    System.out.println("BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
+                    System.out.println( threadName + "BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
                 }
             } // end of sending all data
 
@@ -129,6 +131,7 @@ public class BaselineSendingAgent {
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
+                System.out.println(threadName + "Exception when closing socket");
             }
 
             System.out.println(Thread.currentThread().getName() + " says goodbye ");
