@@ -40,7 +40,7 @@ def main():
     # Start the receiving agents
     for key, host in ng.mininet_hosts.iteritems():
         print "Starting receiving agent " + host.name
-        ra_log = host.name + "-ra.txt"
+        ra_log = '/tmp/'+ host.name + "-ra.txt"
         # host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
         host.cmd('java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent > '+ra_log+' 2>&1 &');
 
