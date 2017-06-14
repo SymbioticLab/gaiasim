@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class DAGReader_New {
-    public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph) throws IOException {
+    public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph, double workload_factor) throws IOException {
         HashMap<String, Job> jobs = new HashMap<String, Job>();
 
         // For now, use the same seed between runs.
@@ -117,7 +117,7 @@ public class DAGReader_New {
                 String dst_stage = splits[1];
 
                 // Direct read Double data
-                double data_size = Double.parseDouble(splits[2]) ;
+                double data_size = Double.parseDouble(splits[2]) * workload_factor;
                 // Convert to megabits, then divide by FlowGroups
                 int numberOfFlowGroups = locationMap.get(src_stage).length * locationMap.get(dst_stage).length;
                 double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;

@@ -48,11 +48,12 @@ public class Manager {
 
 
     public Manager(String gml_file, String trace_file, 
-                   String scheduler_type, String outdir) throws java.io.IOException {
+                   String scheduler_type, String outdir,
+                   double bw_factor, double workload_factor) throws java.io.IOException {
         outdir_ = outdir;
-        net_graph_ = new NetGraph(gml_file);
+        net_graph_ = new NetGraph(gml_file, bw_factor);
 //        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
-        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_);
+        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_, workload_factor);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
