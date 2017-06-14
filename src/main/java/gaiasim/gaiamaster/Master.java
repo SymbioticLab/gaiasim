@@ -184,7 +184,7 @@ public class Master {
             // This is ver 2.0 for FUM.
             FlowUpdateMessage m = new FlowUpdateMessage(fgos, ng, said);
 //            System.out.println("FlowUpdateSender: Created FUM: " + m.toString());
-//            logger.info("FlowUpdateSender: Created FUM: {}" , m.toString());
+            logger.info("FlowUpdateSender: Created FUM: {}" , m.toString());
             sai.get(said).sendFlowUpdate_Blocking(m);
 
             return 1;
@@ -357,11 +357,11 @@ public class Master {
 
         long deltaTime = System.currentTimeMillis() - currentTime;
 
-        String fumContent = "FUM:\n";
+        String fumContent = "\n";
         for ( FlowGroup_Old fgo : scheduledFGs){
             fumContent += fgo.getId() + " " + fgo.paths + "\n";
         }
-        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FUM:{}", deltaTime , ms.coflowPool.size(), scheduledFGs.size(), fumContent);
+        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , ms.coflowPool.size(), scheduledFGs.size(), fumContent);
 
     }
 

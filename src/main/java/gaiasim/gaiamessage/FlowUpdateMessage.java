@@ -33,6 +33,7 @@ import gaiasim.network.Pathway;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class FlowUpdateMessage implements Serializable{
@@ -82,9 +83,17 @@ public class FlowUpdateMessage implements Serializable{
 
     @Override
     public String toString() {
-        return "FlowUpdateMessage{" +
-                "content=" + content +
-                '}';
+        String ret = "FUM: ";
+        for (Map.Entry<String, HashMap<String, FlowGroupEntry>> entry : content.entrySet()){
+            for( Map.Entry<String, FlowGroupEntry> e : entry.getValue().entrySet()){
+                ret += e.getKey() + "  ";
+                for( Map.Entry<Integer , Double> rate : e.getValue().pathToRate.entrySet()){
+                    ret += rate.getKey() + ":" + rate.getValue() + " ";
+                }
+            }
+        }
+
+        return ret;
     }
 
 /*

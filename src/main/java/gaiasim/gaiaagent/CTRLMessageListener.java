@@ -6,6 +6,8 @@ package gaiasim.gaiaagent;
 
 
 import gaiasim.gaiamessage.FlowUpdateMessage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +17,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class CTRLMessageListener implements Runnable{
     LinkedBlockingQueue<ControlThreadMessage> ctrlQueue;
     SharedInterface si;
+    private static final Logger logger = LogManager.getLogger();
+
     public CTRLMessageListener(LinkedBlockingQueue<ControlThreadMessage> controllerQueue, SharedInterface si) {
         this.ctrlQueue = controllerQueue;
         this.si = si;
@@ -39,10 +43,11 @@ public class CTRLMessageListener implements Runnable{
                             }
                         }
 
-                        System.out.println("CTRL: Received FUM. ");
+//                        System.out.println("CTRL: Received FUM. ");
                         FlowUpdateMessage fum = m.fum; // this time the message contains a lot of information
                         HashMap<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> map = fum.getContent();
 
+                        logger.info("Received FUM {}");
                         for (Map.Entry<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> oe: map.entrySet() ){
                             String raID = oe.getKey();
 
