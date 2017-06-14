@@ -29,7 +29,7 @@ public abstract class Scheduler {
     
     public abstract void finish_flow(Flow f);
 
-    public abstract void progress_flow(Flow f);
+    public abstract double progress_flow(Flow f);
 
     public void reset_links() {
         for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {

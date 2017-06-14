@@ -240,15 +240,22 @@ public class Manager {
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
+            // Keep track of total allocated bandwidth across ALL flows
+            double totalBW = 0.0;
+
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
                     ts <= Constants.EPOCH_MILLI; 
                     ts += Constants.SIMULATION_TIMESTEP_MILLI) {
-                
+
+                // Reset for each EPOCH
+                finished.clear();
+                totalBW = 0.0;
+
                 for (String k : active_flows_.keySet()) {
                     Flow f = active_flows_.get(k);
 
-                    scheduler_.progress_flow(f);
+                    totalBW += scheduler_.progress_flow(f);
                     if (f.transmitted_ >= f.volume_) {
                         finished.add(f);
                     }
@@ -276,15 +283,12 @@ public class Manager {
                 if (!finished.isEmpty()) {
                     scheduler_.update_flows(active_flows_);
                 }
-
-                finished.clear();
-
             } // for EPOCH_MILLI
 
             // Not printing Timestamp every time. every 1s or every change happens.
             if(num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || ( CURRENT_TIME_ - last_time >= 1000 )  ){
-                System.out.printf("Timestep: %6d Running: %3d Started: %5d\n",
-                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs);
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW);
                 last_job_size = active_jobs_.size();
                 last_num_jobs = num_dispatched_jobs;
                 last_time = CURRENT_TIME_;

@@ -160,10 +160,13 @@ public class PoorManScheduler extends Scheduler {
         f.paths_ = completed_paths;
     }
 
-    public void progress_flow(Flow f) {
+    public double progress_flow(Flow f) {
+        double totalBW = 0.0;
         for (Pathway p : f.paths_) {
             f.transmitted_ += p.bandwidth_ * Constants.SIMULATION_TIMESTEP_SEC;
+            totalBW += p.bandwidth_;
         }
+        return totalBW;
     }
 
     public double remaining_bw() {

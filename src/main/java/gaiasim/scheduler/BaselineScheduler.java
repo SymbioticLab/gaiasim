@@ -28,8 +28,9 @@ public class BaselineScheduler extends Scheduler {
         }
     }
 
-    public void progress_flow(Flow f) {
+    public double progress_flow(Flow f) {
         f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
+        return f.rate_;
     }
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
