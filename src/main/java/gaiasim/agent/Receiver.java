@@ -23,6 +23,7 @@ public class Receiver implements Runnable {
                 }
             }
             catch (java.io.IOException e) {
+                e.printStackTrace();
                 break;
             }
         }

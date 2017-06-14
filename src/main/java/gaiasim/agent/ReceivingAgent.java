@@ -13,7 +13,7 @@ public class ReceivingAgent {
 
     // also use Thread Pool on the receiver side
     static LinkedBlockingQueue<Runnable> taskQueue = new LinkedBlockingQueue<>();
-    static ExecutorService es = new ThreadPoolExecutor(10,50,5000, TimeUnit.MILLISECONDS , taskQueue);
+    static ExecutorService es = new ThreadPoolExecutor(10,200,5000, TimeUnit.MILLISECONDS , taskQueue);
 
     public static void main(String[] args) {
         int port = 33330;
