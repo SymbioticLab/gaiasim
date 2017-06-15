@@ -47,7 +47,7 @@ public class CTRLMessageListener implements Runnable{
                         FlowUpdateMessage fum = m.fum; // this time the message contains a lot of information
                         HashMap<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> map = fum.getContent();
 
-                        logger.info("Received FUM {}");
+                        logger.info("Received FUM {}" , fum);
                         for (Map.Entry<String, HashMap<String, FlowUpdateMessage.FlowGroupEntry>> oe: map.entrySet() ){
                             String raID = oe.getKey();
 

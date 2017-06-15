@@ -83,17 +83,22 @@ public class FlowUpdateMessage implements Serializable{
 
     @Override
     public String toString() {
-        String ret = "FUM: ";
+        StringBuilder ret = new StringBuilder("FUM:");
+//        String ret = "FUM: ";
         for (Map.Entry<String, HashMap<String, FlowGroupEntry>> entry : content.entrySet()){
             for( Map.Entry<String, FlowGroupEntry> e : entry.getValue().entrySet()){
-                ret += e.getKey() + "  ";
+                ret.append(e.getKey());
+                ret.append("  ");
                 for( Map.Entry<Integer , Double> rate : e.getValue().pathToRate.entrySet()){
-                    ret += rate.getKey() + ":" + rate.getValue() + " ";
+                    ret.append(rate.getKey());
+                    ret.append(':');
+                    ret.append(rate.getValue());
+                    ret.append('\n');
                 }
             }
         }
 
-        return ret;
+        return ret.toString();
     }
 
 /*
