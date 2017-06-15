@@ -62,7 +62,7 @@ public class CTRLMessageListener implements Runnable{
                                 for (Map.Entry<Integer , Double> entry: ie.getValue().pathToRate.entrySet()){
                                     int pathID = entry.getKey();
                                     double rate = entry.getValue();
-                                    HashMap<String, SubscriptionInfo> infoMap = si.subscriptionRateMaps.get(raID).get(pathID);
+                                    HashMap<String, SubscriptionInfo> infoMap = si.subscriptionRateMaps.get(raID).get(pathID); // FIXME: sometimes array index out of bound
 
                                     if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
                                         infoMap.get(fgID).setRate( rate );

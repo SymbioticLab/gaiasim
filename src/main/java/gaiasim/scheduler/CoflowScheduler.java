@@ -527,6 +527,7 @@ public class CoflowScheduler extends Scheduler {
                     f.setStart_timestamp(timestamp);
                 }
 //                flows_.put(f.getId(), f);
+                logger.info("Selected remaining flow: {}" , f.getId());
                 scheduledFGs.add(f);
             }
         }
