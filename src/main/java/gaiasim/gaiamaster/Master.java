@@ -313,6 +313,8 @@ public class Master {
 
         if (ms.flag_CF_ADD){ // redo sorting, may result in preemption
             ms.flag_CF_ADD = false;
+            ms.flag_CF_FIN = false; // also reset other flags
+            ms.flag_FG_FIN = false;
 
             // TODO update the CF_Status in scheduler
             scheduler.resetCFList(outcf);
@@ -328,6 +330,7 @@ public class Master {
         }
         else if (ms.flag_CF_FIN){ // no LP-sort, just update volume status and re-schedule
             ms.flag_CF_FIN = false;
+            ms.flag_FG_FIN = false;
             scheduler.handleCoflowFIN(outcf);
 
             try {
@@ -352,7 +355,7 @@ public class Master {
             }
         }
         else {  // if none, NOP
-
+            return; // no need to print out the execution time.
         }
 
         long deltaTime = System.currentTimeMillis() - currentTime;

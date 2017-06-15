@@ -367,6 +367,7 @@ public class CoflowScheduler extends Scheduler {
 
         // iterate through CFList, if non-existent, remove, else update the cct.
         Iterator<CoflowSchedulerEntry> iter = cfList.iterator();
+        System.out.println("CF in scheduler: " + cfList.size());
 
         while (iter.hasNext()){
             CoflowSchedulerEntry cfse = iter.next();
