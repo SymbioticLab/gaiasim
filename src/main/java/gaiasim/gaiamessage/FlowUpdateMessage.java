@@ -46,7 +46,14 @@ public class FlowUpdateMessage implements Serializable{
             this.remainingVolume = fgo.remaining_volume();
             this.pathToRate = new HashMap<>();
             for ( Pathway p : fgo.paths){
-                pathToRate.put( ng.get_path_id(p) , p.getBandwidth() );
+                int pathID = ng.get_path_id(p);
+                if(pathID != -1) {
+                    pathToRate.put(pathID, p.getBandwidth());
+                }
+                else {
+                    System.err.println("FATAL: illegal path!");
+                    System.exit(1);
+                }
             }
         }
     }

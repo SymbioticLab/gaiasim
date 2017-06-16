@@ -360,11 +360,11 @@ public class Master {
 
         long deltaTime = System.currentTimeMillis() - currentTime;
 
-        String fumContent = "\n";
+        String fgoContent = "\n";
         for ( FlowGroup_Old fgo : scheduledFGs){
-            fumContent += fgo.getId() + " " + fgo.paths + "\n";
+            fgoContent += fgo.getId() + " " + fgo.paths + "\n";
         }
-        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , ms.coflowPool.size(), scheduledFGs.size(), fumContent);
+        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , ms.coflowPool.size(), scheduledFGs.size(), fgoContent);
 
     }
 

@@ -447,11 +447,11 @@ public class CoflowScheduler extends Scheduler {
                     }
                 }
 
-/*                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
+                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway p : f.paths) {
                     System.out.println("    " + p.toString());
-                }*/
+                }
 
                 if (f.getStart_timestamp() == -1) {
                     f.setStart_timestamp(timestamp);
