@@ -10,6 +10,7 @@ import gaiasim.gaiamessage.FlowUpdateMessage;
 import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
+import gaiasim.network.Pathway;
 import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.CoflowScheduler;
 import gaiasim.scheduler.PoorManScheduler;
@@ -196,6 +197,7 @@ public class Master {
 
         this.outdir = outdir;
         this.netGraph = new NetGraph(gml_file);
+        printPaths(netGraph);
         if(config == null){
             this.config = new Configuration(netGraph.nodes_.size(), netGraph.nodes_.size());
         }
@@ -454,6 +456,24 @@ public class Master {
             List<Future<Integer>> futures = saControlExec.invokeAll(tasks);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void printPaths(NetGraph ng){
+        // TODO print the pathway with their ID
+        for (String src : ng.nodes_){
+            if (ng.apap_.get(src) == null){
+                continue;
+            }
+            for (String dst : ng.nodes_){
+                ArrayList<Pathway> list = ng.apap_.get(src).get(dst);
+                if(list != null && list.size() > 0 ){
+                    System.out.println("Paths for " + src + " - " + dst + " :");
+                    for (int i = 0 ; i < list.size() ; i++){
+                        System.out.println( i + " : " + list.get(i));
+                    }
+                }
+            }
         }
     }
 
