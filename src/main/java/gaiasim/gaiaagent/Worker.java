@@ -236,6 +236,7 @@ public class Worker implements Runnable{
                 // remove from two places.
                 subscribers.remove(fgID);
                 api.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
+                logger.info("Sending FG_FIN for {} to CTRL" , fgID);
                 api.finishFlowGroup(fgID);
 
             }
