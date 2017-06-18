@@ -106,7 +106,12 @@ public class SendingAgentInterface {
                                         } else {
                                             // set the transmitted.
                                             FlowGroup fg = ms.getFlowGroup(fid);
-                                            fg.setTransmitted( fsm.getTransmitted()[i] );
+                                            if(fg != null){
+                                                fg.setTransmitted( fsm.getTransmitted()[i] ); // FIXME maybe nullpointer
+                                            }
+                                            else{
+                                                System.out.println("SAI: recevied status update for finished FG: " + fid);
+                                            }
                                         }
 
                                         // anything else?
