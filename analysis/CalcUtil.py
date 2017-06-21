@@ -5,8 +5,8 @@
 import argparse
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
+# import matplotlib.pyplot as plt
+# from matplotlib.backends.backend_pdf import PdfPages
 #import statsmodels.api as sm # recommended import according to the docs
 
 # reads the csvfile, and apply filters to calculate utilization
@@ -34,12 +34,16 @@ def utilByTimestamp(data, timestamp, filters):
     # for each interface in filter, sum up the totalBW and calculate the utilization
     for interface in filters:
         # don't check the nullness. Fail if happens
-        if filters[interface][0] == 1:
-            usedBW += out_rate[interface]
-            totalBW += filters[interface][2]
-        if filters[interface][1] == 1:
-            usedBW += in_rate[interface]
-            totalBW += filters[interface][2]
+        try:
+            if filters[interface][0] == 1:
+                usedBW += out_rate[interface]
+                totalBW += filters[interface][2]
+            if filters[interface][1] == 1:
+                usedBW += in_rate[interface]
+                totalBW += filters[interface][2]
+        except:
+            print('Oops, interface ' + interface + ' not found at time: ' + timestamp)
+            break
     
     
     if totalBW != 0:
