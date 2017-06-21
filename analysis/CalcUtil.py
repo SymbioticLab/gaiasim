@@ -43,8 +43,8 @@ def utilByTimestamp(data, timestamp, filters):
                 usedBW += in_rate[interface]
                 totalBW += filters[interface][2]
         except:
-            sys.stderr.write('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) )
-            break
+            sys.stderr.write('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) + '\n' )
+            continue # Not all interfaces will miss the sampling, so we continue and still return a valid uitlization (>0)
     
     
     if totalBW != 0:
