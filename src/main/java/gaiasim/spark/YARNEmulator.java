@@ -142,12 +142,20 @@ public class YARNEmulator implements Runnable {
     private void onDAGArrival(DAG arrivedDAG) throws InterruptedException {
         System.out.println("YARN: DAG " + arrivedDAG.getId() + " arrived at " + arrivedDAG.getArrivalTime() + " s.");
         arrivedDAG.onStart();
-        // first add dag to the pool.
-        dagPool.put(arrivedDAG.getId() , arrivedDAG);
 
-        // then insert the root coflows to GAIA (into coflowOutput)
-        for ( Coflow cf : arrivedDAG.getRootCoflows()){
-            insertCoflow(cf);
+        // check is the DAG is totally co-located
+        if( arrivedDAG.coflowList.size() == 0){ // if the DAG is totally co-located, finish right away, don't insert CF
+            // don't call onFinish! so that the JCT will be exactly 0
+            appendCSV(dagCSVPrinter, arrivedDAG.getId(), arrivedDAG.getStartTime(), arrivedDAG.getStartTime(),  0 );
+        }
+        else {
+            // first add dag to the pool.
+            dagPool.put(arrivedDAG.getId(), arrivedDAG);
+
+            // then insert the root coflows to GAIA (into coflowOutput)
+            for (Coflow cf : arrivedDAG.getRootCoflows()) {
+                insertCoflow(cf);
+            }
         }
     }
 

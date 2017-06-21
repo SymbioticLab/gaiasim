@@ -7,6 +7,7 @@ import gaiasim.GaiaSim;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -201,7 +202,14 @@ public class DAGReader implements Runnable{
                         // Volume - divided_data_size
                         FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
                             srcLoc, dstLoc , dag_id + ':' + dst_stage , divided_data_size);
-                        tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
+
+                        // To deal with co-located flowGroups and Jobs, we don't add them. So the co-located jobs will be empty jobs.
+                        if ( !srcLoc.equals(dstLoc)){
+                            tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
+                        }
+                        else {
+                            System.out.println("DAGReader: skipped flowgroup " + fg.getId() + " because co-located");
+                        }
                     }
                 }
 
