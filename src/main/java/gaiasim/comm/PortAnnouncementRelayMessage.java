@@ -68,7 +68,10 @@ public class PortAnnouncementRelayMessage {
                 // dst_id:      id of path destination
                 // src_port:    port number used by sending agent
                 // dst_port:    port number used by receiving agent (should be 33330)
-                String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + p.src() + ' ' + p.dst() + ' ' + Integer.toString(m.port_no_) + " 33330\n";
+//                String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + p.src() + ' ' + p.dst() + ' ' + Integer.toString(m.port_no_) + " 33330\n";
+                // Fixed: If we make ID starts with 0, then we need to add 1 here
+                String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + (Integer.parseInt(p.src())+1) + ' ' +
+                        (Integer.parseInt(p.dst())+1) + ' ' + Integer.toString(m.port_no_) + " 33330\n";
                 System.out.println("sending metadata: " + metadata + "for path: " + p.toString());
                 bw.write(metadata);
 
