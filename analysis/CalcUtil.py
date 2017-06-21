@@ -3,6 +3,7 @@
 
 
 import argparse
+import sys
 import pandas as pd
 import numpy as np
 # import matplotlib.pyplot as plt
@@ -42,7 +43,7 @@ def utilByTimestamp(data, timestamp, filters):
                 usedBW += in_rate[interface]
                 totalBW += filters[interface][2]
         except:
-            print('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) )
+            sys.stderr.write('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) )
             break
     
     
