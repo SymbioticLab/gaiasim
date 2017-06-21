@@ -42,7 +42,7 @@ def utilByTimestamp(data, timestamp, filters):
                 usedBW += in_rate[interface]
                 totalBW += filters[interface][2]
         except:
-            print('Oops, interface ' + interface + ' not found at time: ' + timestamp)
+            print('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) )
             break
     
     
