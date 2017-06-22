@@ -203,9 +203,12 @@ public class DAGReader implements Runnable{
                         FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
                             srcLoc, dstLoc , dag_id + ':' + dst_stage , divided_data_size);
 
+                        tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
+
+                        // FIXME: it is not as easy to fix as I thought
                         // To deal with co-located flowGroups and Jobs, we don't add them. So the co-located jobs will be empty jobs.
                         if ( !srcLoc.equals(dstLoc)){
-                            tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
+//                            tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
                         }
                         else {
                             System.out.println("DAGReader: skipped flowgroup " + fg.getId() + " because co-located");

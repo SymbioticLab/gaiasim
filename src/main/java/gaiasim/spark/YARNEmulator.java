@@ -145,6 +145,7 @@ public class YARNEmulator implements Runnable {
 
         // check is the DAG is totally co-located
         if( arrivedDAG.coflowList.size() == 0){ // if the DAG is totally co-located, finish right away, don't insert CF
+            System.out.println("YARN: DAG " + arrivedDAG.getId() + " is co-located, skipping");
             // don't call onFinish! so that the JCT will be exactly 0
             appendCSV(dagCSVPrinter, arrivedDAG.getId(), arrivedDAG.getStartTime(), arrivedDAG.getStartTime(),  0 );
         }
