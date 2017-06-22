@@ -136,7 +136,7 @@ public class MMCFOptimizer {
                 double alpha = Double.parseDouble(line.split("\\s+")[3]);
                 if (alpha < 0.00001) {
 //                    System.out.println("Optimizer: Coflow " + coflow.getId() + " cannot be allocated on current network");
-                    logger.info("Optimizer: Coflow {} cannot be allocated on current network", coflow.getId());
+                    logger.info("Optimizer: Coflow {} cannot be allocated on current network , alpha = {} ", coflow.getId() , alpha);
                     mmcf_out.completion_time_ = -1.0;
                     return mmcf_out;
                 }

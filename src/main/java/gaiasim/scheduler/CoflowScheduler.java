@@ -325,6 +325,21 @@ public class CoflowScheduler extends Scheduler {
     // called upon adding a coflow
     public void coflowInit(Coflow_Old cf){
 
+        // check if this cf has already finished
+        boolean isEmpty = true;
+
+        for ( Map.Entry<String, FlowGroup_Old> e : cf.flows.entrySet() ){
+            if( e.getValue().remaining_volume() > 0 + Constants.DOUBLE_EPSILON){
+                isEmpty = false;
+                break;
+            }
+        }
+
+        if(isEmpty){
+            logger.error("Trying to init empty CF {}, skipping" , cf.getId());
+            return;
+        }
+
         // call LP once to get the CCT_init
         MMCFOptimizer.MMCFOutput mmcf_out = null;
         try {
@@ -334,7 +349,7 @@ public class CoflowScheduler extends Scheduler {
                 cfList.add(new CoflowSchedulerEntry(cf, mmcf_out));
             }
             else {
-                logger.error("Unable to init CF {}" , cf.getId());
+                logger.error("Unable to init CF {}, completion time = {}" , cf.getId() , mmcf_out.completion_time_ );
                 System.exit(1);
             }
         } catch (Exception e) {
@@ -600,7 +615,8 @@ public class CoflowScheduler extends Scheduler {
     public void resetCFList(HashMap<String, Coflow_Old> CFs){
         cfList.clear();
         for (Map.Entry<String, Coflow_Old> entry : CFs.entrySet()){
-            coflowInit(entry.getValue());
+            coflowInit(entry.getValue()); // FIXME: sometimes at some point GAIA tries to init a finished CF...
+            // fixed by checking in coflowInit()
         }
 
         sortCFList();
