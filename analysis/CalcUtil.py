@@ -1,6 +1,4 @@
-
 # Format of filter conf file: [interface] [if_out] [if_in] [bw] (eth1 1 1 1280)
-
 
 import argparse
 import sys
@@ -17,7 +15,6 @@ def process(filters, csvfile):
     endTime = data[0].max()
     
     for i in range(startTime, endTime + 1):
-        
         print str(i) + ' ' + str(utilByTimestamp(data, i, filters))
         
 
@@ -25,10 +22,14 @@ def process(filters, csvfile):
 def utilByTimestamp(data, timestamp, filters):
     tmp_data = data[ data[0] == timestamp]
     
-    # 2 bytes_out/s 3 bytes_in/s
-    out_rate = tmp_data.groupby(1).agg(np.mean)[2]
-    in_rate = tmp_data.groupby(1).agg(np.mean)[3]
-    
+    # # 2 bytes_out/s 3 bytes_in/s
+    # out_rate = tmp_data.groupby(1).agg(np.mean)[2]
+    # in_rate = tmp_data.groupby(1).agg(np.mean)[3]
+
+    # 5 bytes_in 6 bytes_out
+    in_rate = tmp_data.groupby(1).agg(np.sum)[5]
+    out_rate = tmp_data.groupby(1).agg(np.sum)[6]
+
     totalBW = 0.0
     usedBW = 0.0
     
@@ -43,10 +44,9 @@ def utilByTimestamp(data, timestamp, filters):
                 usedBW += in_rate[interface]
                 totalBW += filters[interface][2]
         except:
-            sys.stderr.write('Oops, interface ' + interface + ' not found at time: ' + str(timestamp) + '\n' )
+            sys.stderr.write('Oops, interface ' + interface + ' missed the sampling at time: ' + str(timestamp) + '\n' )
             continue # Not all interfaces will miss the sampling, so we continue and still return a valid uitlization (>0)
-    
-    
+
     if totalBW != 0:
         utilization = usedBW / totalBW
     else:
@@ -67,7 +67,6 @@ def readFilterConf(filterConf):
             ret[split[0]] = [ int(split[1]) , int(split[2]) , float(split[3])]
             
     return ret
-
 
 def main():
     parser = argparse.ArgumentParser()      
