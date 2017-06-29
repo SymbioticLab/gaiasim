@@ -43,13 +43,16 @@ public class MultiPathScheduler extends PoorManScheduler {
 
         for (Flow f: combined_coflow.flows_.values()) {
             ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
-            assert(link_vals != null);
 
             // Fix int_id_ of the flow
             f.int_id_ = combined_to_original_int_id.get(f.int_id_);
 
-            // This portion is similar to Flow::make() in Sim
-            make_paths(f, link_vals);
+            if (link_vals != null) {
+                make_paths(f, link_vals);
+            } else if (f.paths_.size() == 0) {
+                // Select the shortest path if nothing else is found
+                f.paths_.add(new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]));
+            }
 
             // Subscribe the flow's paths to the links it uses
             for (Pathway p : f.paths_) {
