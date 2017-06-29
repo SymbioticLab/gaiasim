@@ -17,6 +17,7 @@ import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.MultiPathScheduler;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.VarysScheduler;
+import gaiasim.scheduler.SwanScheduler;
 import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.DAGReader_New;
@@ -66,6 +67,9 @@ public class Manager {
         }
         else if (scheduler_type.equals("varys")) {
             scheduler_ = new VarysScheduler(net_graph_);
+        }
+        else if (scheduler_type.equals("swan")) {
+            scheduler_ = new SwanScheduler(net_graph_);
         }
         else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);

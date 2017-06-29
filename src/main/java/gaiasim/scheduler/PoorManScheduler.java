@@ -169,7 +169,7 @@ public class PoorManScheduler extends Scheduler {
         return totalBW;
     }
 
-    public double remaining_bw() {
+    private double remaining_bw() {
         double remaining_bw = 0.0;
         for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {
             for (int j = 0; j < net_graph_.nodes_.size() + 1; j++) {
@@ -182,7 +182,7 @@ public class PoorManScheduler extends Scheduler {
         return remaining_bw;
     }
 
-    public void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+    private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         ArrayList<Flow> unscheduled_flows = new ArrayList<Flow>();
         for (Coflow c : unscheduled_coflows) {
             for (String k : c.flows_.keySet()) {
@@ -314,7 +314,7 @@ public class PoorManScheduler extends Scheduler {
         return flows_;
     }
     
-    public ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
+    private ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
         HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
 
         for (String k : coflows.keySet()) {
