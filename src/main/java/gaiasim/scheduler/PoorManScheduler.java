@@ -182,6 +182,107 @@ public class PoorManScheduler extends Scheduler {
         return remaining_bw;
     }
 
+    private void schedule_extra_flows_exp(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
+        // Collapse all coflows to one
+        Coflow combined_coflow = new Coflow("COMBINED", null);
+        combined_coflow.volume_ = 0.0;
+        int combined_flow_int_id = 0;
+        HashMap<Integer, Integer> combined_to_original_int_id = new HashMap<>();
+        for (Coflow coflow: unscheduled_coflows) {
+            for (Flow flow: coflow.flows_.values()) {
+                if (!flow.done_) {
+                    // Serializing flow_int_id_ values for the optimizer.
+                    // Put back after the optimizer results have been parsed.
+                    combined_to_original_int_id.put(combined_flow_int_id, flow.int_id_);
+                    flow.int_id_ = combined_flow_int_id;
+                    combined_flow_int_id++;
+
+                    combined_coflow.volume_ += flow.volume_;
+                    combined_coflow.flows_.put(flow.id_, flow);
+                }
+            }
+        }
+
+        // Find paths for each flow
+        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+
+        int[][] subscriber_counts = new int[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
+
+        for (Flow f: combined_coflow.flows_.values()) {
+            ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+
+            // Fix int_id_ of the flow
+            f.int_id_ = combined_to_original_int_id.get(f.int_id_);
+
+            // Remap if we get a new mapping
+            if (link_vals != null) {
+                make_paths(f, link_vals);
+
+                // Select one path for the flow
+                Pathway max_bw_path = null;
+                double max_bw = 0.0;
+                for (Pathway p : f.paths_) {
+                    if (p.bandwidth_ > max_bw) {
+                        max_bw = p.bandwidth_;
+                        max_bw_path = p;
+                    }
+                }
+
+                // Remember the selected path
+                f.max_bw_path = max_bw_path;
+            } else if (f.max_bw_path == null || f.rate_ == 0.0){
+                // Select the shortest path if nothing else is found
+                f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
+            }
+
+            if (f.max_bw_path == null) {
+                int x = 0;
+            }
+
+            // Subscribe the flow's paths to the links it uses on the selected path
+            for (int i = 0; i < f.max_bw_path.node_list_.size() - 1; i++) {
+                int src = Integer.parseInt(f.max_bw_path.node_list_.get(i));
+                int dst = Integer.parseInt(f.max_bw_path.node_list_.get(i+1));
+                links_[src][dst].subscribers_.add(f.max_bw_path);
+                subscriber_counts[src][dst]++;
+            }
+
+            System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
+            System.out.println("  has pathways: ");
+            System.out.println("    " + f.max_bw_path.toString());
+
+            if (f.start_timestamp_ == -1) {
+                System.out.println("Setting start_timestamp to " + timestamp);
+                f.start_timestamp_ = timestamp;
+            }
+
+            flows_.put(f.id_, f);
+        }
+
+        // Must fix bandwidth allocation because we cannot use rates from the optimization, only paths
+        for (Flow f: combined_coflow.flows_.values()) {
+            f.rate_ = 0;
+            f.paths_.clear();
+            f.paths_.add(f.max_bw_path);
+            for (Pathway p : f.paths_) {
+                double min_bw = Double.MAX_VALUE;
+                for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                    int src = Integer.parseInt(p.node_list_.get(i));
+                    int dst = Integer.parseInt(p.node_list_.get(i+1));
+                    double link_bw = links_[src][dst].remaining_bw() / subscriber_counts[src][dst];
+
+                    if (link_bw < min_bw) {
+                        min_bw = link_bw;
+                    }
+                }
+                p.bandwidth_ = min_bw;
+                f.rate_ += min_bw;
+            }
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
+        }
+
+    }
+
     private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         ArrayList<Flow> unscheduled_flows = new ArrayList<Flow>();
         for (Coflow c : unscheduled_coflows) {
