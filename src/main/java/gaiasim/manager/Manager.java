@@ -19,7 +19,7 @@ import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.VarysScheduler;
 import gaiasim.scheduler.SwanScheduler;
 import gaiasim.scheduler.Scheduler;
-import gaiasim.spark.DAGReader_New;
+import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
 import gaiasim.util.Constants;
 
@@ -53,7 +53,7 @@ public class Manager {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file, bw_factor);
 //        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
-        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_, workload_factor);
+        jobs_ = DAGReader.read_trace_new(trace_file, net_graph_, workload_factor);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);

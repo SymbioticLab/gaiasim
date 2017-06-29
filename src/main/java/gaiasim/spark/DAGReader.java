@@ -32,7 +32,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class DAGReader_New {
+public class DAGReader {
     public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph, double workload_factor) throws IOException {
         HashMap<String, Job> jobs = new HashMap<String, Job>();
 

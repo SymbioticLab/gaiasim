@@ -118,7 +118,7 @@ public class Job {
         started_ = true;
     }
 
-    // new Job.start(), used with DAGReader_New().
+    // new Job.start(), used with DAGReader().
     public void start_New(){
         for (Coflow cf : start_coflows_) {
             if (!ready_coflows_.contains(cf)) {
