@@ -19,7 +19,6 @@ import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.scheduler.VarysScheduler;
 import gaiasim.scheduler.SwanScheduler;
 import gaiasim.scheduler.Scheduler;
-import gaiasim.spark.DAGReader;
 import gaiasim.spark.DAGReader_New;
 import gaiasim.spark.Job;
 import gaiasim.util.Constants;
