@@ -1,6 +1,6 @@
 package gaiasim.scheduler;
 
-import gaiasim.mmcf.MMCFOptimizer;
+import gaiasim.mmcf.MaxFlowOptimizer;
 import gaiasim.network.*;
 
 import java.util.ArrayList;
@@ -39,10 +39,10 @@ public class MultiPathScheduler extends PoorManScheduler {
         }
 
         // Find paths for each flow
-        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         for (Flow f : combined_coflow.flows_.values()) {
-            ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+            ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
 
             // Fix int_id_ of the flow
             f.int_id_ = combined_to_original_int_id.get(f.int_id_);

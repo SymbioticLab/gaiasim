@@ -79,6 +79,8 @@ public class GaiaSim {
         try {
             Process p = Runtime.getRuntime().exec("cp models/MinCCT.mod /tmp/MinCCT.mod");
             p.waitFor();
+            p = Runtime.getRuntime().exec("cp models/MaxFlow.mod /tmp/MaxFlow.mod");
+            p.waitFor();
 
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"),
                     args_map.get("scheduler"), args_map.get("outdir"),

@@ -1,17 +1,17 @@
 package gaiasim.scheduler;
 
-import gaiasim.mmcf.MMCFOptimizer;
+import gaiasim.mmcf.MaxFlowOptimizer;
 import gaiasim.network.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SwanScheduler extends PoorManScheduler {
+    private static long REMAP_INTERVAL_MS = 5 * 60 * 1000;
     // Remember when was the last time we remapped paths for the flows;
     // If it's more than REMAP_INTERVAL_MS milliseconds, lets remap.
     // By default, SWAN remaps every 5 minutes.
     private long last_remap_timestamp;
-    private static long REMAP_INTERVAL_MS = 5 * 60 * 1000;
 
     public SwanScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -59,10 +59,10 @@ public class SwanScheduler extends PoorManScheduler {
         }
 
         // Find paths for each flow
-        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         for (Flow f : combined_coflow.flows_.values()) {
-            ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+            ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
 
             // Fix int_id_ of the flow
             f.int_id_ = combined_to_original_int_id.get(f.int_id_);
