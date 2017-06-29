@@ -110,6 +110,11 @@ public class SwanScheduler extends PoorManScheduler {
         // Add back flows that were already mapped
         for (Flow of: old_flows) {
             flows_.put(of.id_, of);
+            for (int i = 0; i < of.max_bw_path.node_list_.size() - 1; i++) {
+                int src = Integer.parseInt(of.max_bw_path.node_list_.get(i));
+                int dst = Integer.parseInt(of.max_bw_path.node_list_.get(i+1));
+                links_[src][dst].subscribers_.add(of.max_bw_path);
+            }
         }
 
         // Must call this because we cannot use rates from the optimization, only paths
