@@ -12,7 +12,7 @@ public class Constants {
     // in milliseconds.
     public static final int SIMULATION_TIMESTEP_MILLI = 10;
 
-    public static final double SIMULATION_TIMESTEP_SEC = (double)SIMULATION_TIMESTEP_MILLI / (double)MILLI_IN_SECOND;
+    public static final double SIMULATION_TIMESTEP_SEC = (double) SIMULATION_TIMESTEP_MILLI / (double) MILLI_IN_SECOND;
 
     // The number of milliseconds in an epoch. An epoch is
     // a period during which jobs may be scheduled. By

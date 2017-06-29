@@ -2,9 +2,6 @@ package gaiasim.network;
 
 import java.util.ArrayList;
 
-import gaiasim.network.Link;
-import gaiasim.network.Pathway;
-
 // A SubscribedLink has a number of flows currently using it
 public class SubscribedLink extends Link {
 
@@ -18,7 +15,7 @@ public class SubscribedLink extends Link {
     // Return the amount of bandwidth allocated to each subscribing
     // flow if all subscribers receive an equal amount.
     public double bw_per_flow() {
-        return subscribers_.isEmpty() ? max_bw_ : max_bw_ / (double)subscribers_.size();
+        return subscribers_.isEmpty() ? max_bw_ : max_bw_ / (double) subscribers_.size();
     }
 
     // Return the amount of bandwidth not yet allocated.

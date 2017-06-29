@@ -1,26 +1,15 @@
 package gaiasim.mmcf;
 
+import gaiasim.network.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
-import java.lang.StringBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import gaiasim.network.Coflow;
-import gaiasim.network.Flow;
-import gaiasim.network.Link;
-import gaiasim.network.NetGraph;
-import gaiasim.network.SubscribedLink;
-
 public class MMCFOptimizer {
-    public static class MMCFOutput {
-        public double completion_time_ = 0.0;
-        public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_ 
-            = new HashMap<Integer, ArrayList<Link>>();
-    }
-
     public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         long lastTime = System.nanoTime();
         String path_root = "/tmp";
@@ -51,10 +40,10 @@ public class MMCFOptimizer {
             dat_string.append(" f" + fid); // NOTE: Original mmcf did fid-1
         }
         dat_string.append(";\n\n");
-        
+
         dat_string.append("param b:\n");
         for (int i = 1; i <= net_graph.nodes_.size(); i++) {
-            dat_string.append(i + " " );
+            dat_string.append(i + " ");
         }
         dat_string.append(":=\n");
         for (int i = 1; i <= net_graph.nodes_.size(); i++) {
@@ -62,8 +51,7 @@ public class MMCFOptimizer {
             for (int j = 1; j <= net_graph.nodes_.size(); j++) {
                 if (i == j || links[i][j] == null) {
                     dat_string.append(" 0.000");
-                }
-                else {
+                } else {
                     dat_string.append(String.format(" %.3f", links[i][j].remaining_bw()));
                 }
             }
@@ -100,8 +88,7 @@ public class MMCFOptimizer {
             PrintWriter writer = new PrintWriter(dat_file_name, "UTF-8");
             writer.println(dat_string.toString());
             writer.close();
-        }
-        catch (java.io.IOException e) {
+        } catch (java.io.IOException e) {
             System.out.println("ERROR: Failed to write to file " + dat_file_name);
             System.exit(1);
         }
@@ -113,8 +100,7 @@ public class MMCFOptimizer {
         try {
             Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
@@ -135,12 +121,10 @@ public class MMCFOptimizer {
                     System.out.println("Given coflow cannot be allocated on current network");
                     mmcf_out.completion_time_ = -1.0;
                     return mmcf_out;
-                }
-                else {
+                } else {
                     mmcf_out.completion_time_ = 1.0 / alpha;
                 }
-            }
-            else if (line.contains("f[f") && !line.contains("NL")) {
+            } else if (line.contains("f[f") && !line.contains("NL")) {
                 String[] splits = line.split("\\s+");
                 String fsplits[] = splits[2].substring(3).split(",");
                 fi_int = Integer.parseInt(fsplits[0]);
@@ -157,12 +141,10 @@ public class MMCFOptimizer {
                         mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
                     }
                     missing_pieces = false;
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     missing_pieces = true;
                 }
-            }
-            else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
+            } else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
                 String[] splits = line.split("\\s+");
                 try {
                     double bw = Math.round(Math.abs(Double.parseDouble(splits[2]) * 100.0) / 100.0);
@@ -171,12 +153,10 @@ public class MMCFOptimizer {
                         mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
                     }
                     missing_pieces = false;
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     missing_pieces = true;
                 }
-            }
-            else if (line.contains("alpha")) {
+            } else if (line.contains("alpha")) {
                 missing_pieces = false;
             }
         }
@@ -185,5 +165,11 @@ public class MMCFOptimizer {
         long curTime = System.nanoTime();
         System.out.println("Calling LP (including File I/O) cost (ns) : " + (curTime - lastTime));
         return mmcf_out;
+    }
+
+    public static class MMCFOutput {
+        public double completion_time_ = 0.0;
+        public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_
+                = new HashMap<Integer, ArrayList<Link>>();
     }
 }

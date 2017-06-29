@@ -1,27 +1,17 @@
 package gaiasim.manager;
 
 import com.opencsv.CSVWriter;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Vector;
-
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
-import gaiasim.scheduler.BaselineScheduler;
-import gaiasim.scheduler.MultiPathScheduler;
-import gaiasim.scheduler.PoorManScheduler;
-import gaiasim.scheduler.VarysScheduler;
-import gaiasim.scheduler.SwanScheduler;
-import gaiasim.scheduler.Scheduler;
+import gaiasim.scheduler.*;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
 import gaiasim.util.Constants;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.*;
 
 public class Manager {
     public NetGraph net_graph_;
@@ -47,7 +37,7 @@ public class Manager {
     public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
 
 
-    public Manager(String gml_file, String trace_file, 
+    public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
                    double bw_factor, double workload_factor) throws java.io.IOException {
         outdir_ = outdir;
@@ -57,20 +47,15 @@ public class Manager {
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
-        }
-        else if (scheduler_type.equals("recursive-remain-flow")) {
+        } else if (scheduler_type.equals("recursive-remain-flow")) {
             scheduler_ = new PoorManScheduler(net_graph_);
-        }
-        else if (scheduler_type.equals("multipath")) {
+        } else if (scheduler_type.equals("multipath")) {
             scheduler_ = new MultiPathScheduler(net_graph_);
-        }
-        else if (scheduler_type.equals("varys")) {
+        } else if (scheduler_type.equals("varys")) {
             scheduler_ = new VarysScheduler(net_graph_);
-        }
-        else if (scheduler_type.equals("swan")) {
+        } else if (scheduler_type.equals("swan")) {
             scheduler_ = new SwanScheduler(net_graph_);
-        }
-        else {
+        } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
             System.exit(1);
@@ -91,12 +76,12 @@ public class Manager {
     public void handle_finished_coflow(Coflow c, long cur_time) throws java.io.IOException {
         c.determine_start_time();
         c.end_timestamp_ = cur_time;
-        System.out.println("Coflow " + c.id_ + " done. Took " 
+        System.out.println("Coflow " + c.id_ + " done. Took "
                 + (c.end_timestamp_ - c.start_timestamp_));
         c.done_ = true;
 
         completed_coflows_.add(c);
-        
+
         // After completing a coflow, an owning job may have been completed
         Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
         owning_job.finish_coflow(c.id_);
@@ -104,7 +89,7 @@ public class Manager {
         if (owning_job.done()) {
             owning_job.end_timestamp_ = cur_time;
             System.out.println("Job " + owning_job.id_ + " done. Took "
-                    + (owning_job.end_timestamp_ - owning_job.start_timestamp_)); 
+                    + (owning_job.end_timestamp_ - owning_job.start_timestamp_));
             active_jobs_.remove(owning_job.id_);
             completed_jobs_.addElement(owning_job);
             print_statistics("/tmp_job.csv", "/tmp_cct.csv");
@@ -165,15 +150,15 @@ public class Manager {
         int last_num_jobs = -1;
         int last_job_size = -1;
         long last_time = -5000;
-        
+
         ArrayList<Job> ready_jobs = new ArrayList<Job>();
 
         // Whether a coflow finished in the last epoch
         boolean coflow_finished = false;
 
-        for (CURRENT_TIME_ = 0; 
-                (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
-                    CURRENT_TIME_ += Constants.EPOCH_MILLI) {
+        for (CURRENT_TIME_ = 0;
+             (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
+             CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
             // Add any jobs which should be added during this epoch
             for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
@@ -187,13 +172,13 @@ public class Manager {
                     // Perhaps we want the emulator to simply sleep while waiting.
                     break;
                 }
-              
+
                 ready_jobs.add(j);
-                
+
             } // dispatch jobs loop
 
             if (coflow_finished || !ready_jobs.isEmpty()) {
-                
+
                 for (Job j : ready_jobs) {
                     // Start arriving jobs
                     // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
@@ -208,13 +193,12 @@ public class Manager {
                     // the job to be marked as done.
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
-                        System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_)); 
-                    }
-                    else {
+                        System.out.println("Job " + j.id_ + " done. Took " + (j.end_timestamp_ - j.start_timestamp_));
+                    } else {
                         active_jobs_.put(j.id_, j);
                     }
                 }
-               
+
                 // Update our set of active coflows
                 active_coflows_.clear();
                 for (String k : active_jobs_.keySet()) {
@@ -225,8 +209,7 @@ public class Manager {
                         if (c.done()) {
                             c.start_timestamp_ = CURRENT_TIME_;
                             handle_finished_coflow(c, CURRENT_TIME_);
-                        }
-                        else {
+                        } else {
                             System.out.println("Adding coflow " + c.id_);
                             active_coflows_.put(c.id_, c);
                         }
@@ -240,7 +223,7 @@ public class Manager {
             }
 
             coflow_finished = false;
-            
+
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<Flow>();
 
@@ -248,9 +231,9 @@ public class Manager {
             double totalBW = 0.0;
 
             // Make progress on all running flows
-            for (long ts = Constants.SIMULATION_TIMESTEP_MILLI; 
-                    ts <= Constants.EPOCH_MILLI; 
-                    ts += Constants.SIMULATION_TIMESTEP_MILLI) {
+            for (long ts = Constants.SIMULATION_TIMESTEP_MILLI;
+                 ts <= Constants.EPOCH_MILLI;
+                 ts += Constants.SIMULATION_TIMESTEP_MILLI) {
 
                 // Reset for each EPOCH
                 finished.clear();
@@ -271,12 +254,12 @@ public class Manager {
                     f.done_ = true;
                     f.end_timestamp_ = CURRENT_TIME_ + ts;
                     scheduler_.finish_flow(f);
-                    System.out.println("Flow " + f.id_ + " done. Took "+ (f.end_timestamp_ - f.start_timestamp_));
+                    System.out.println("Flow " + f.id_ + " done. Took " + (f.end_timestamp_ - f.start_timestamp_));
 
                     // After completing a flow, an owning coflow may have been completed
                     Coflow owning_coflow = active_coflows_.get(f.coflow_id_);
                     if (owning_coflow.done()) {
-                        handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts); 
+                        handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts);
                         coflow_finished = true;
                     } // if coflow.done
 
@@ -290,7 +273,7 @@ public class Manager {
             } // for EPOCH_MILLI
 
             // Not printing Timestamp every time. every 1s or every change happens.
-            if(num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || ( CURRENT_TIME_ - last_time >= 1000 )  ){
+            if (num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || (CURRENT_TIME_ - last_time >= 1000)) {
                 System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f\n",
                         CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW);
                 last_job_size = active_jobs_.size();

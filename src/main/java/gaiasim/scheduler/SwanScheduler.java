@@ -39,8 +39,8 @@ public class SwanScheduler extends PoorManScheduler {
         combined_coflow.volume_ = 0.0;
         int combined_flow_int_id = 0;
         HashMap<Integer, Integer> combined_to_original_int_id = new HashMap<>();
-        for (Coflow coflow: coflows.values()) {
-            for (Flow flow: coflow.flows_.values()) {
+        for (Coflow coflow : coflows.values()) {
+            for (Flow flow : coflow.flows_.values()) {
                 if (!flow.done_) {
                     if (remap_flows || flow.max_bw_path == null) {
                         // Serializing flow_int_id_ values for the optimizer.
@@ -61,7 +61,7 @@ public class SwanScheduler extends PoorManScheduler {
         // Find paths for each flow
         MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
-        for (Flow f: combined_coflow.flows_.values()) {
+        for (Flow f : combined_coflow.flows_.values()) {
             ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
 
             // Fix int_id_ of the flow
@@ -83,7 +83,7 @@ public class SwanScheduler extends PoorManScheduler {
 
                 // Remember the selected path for the future until it's remapped
                 f.max_bw_path = max_bw_path;
-            } else if (f.max_bw_path == null || f.rate_ == 0.0){
+            } else if (f.max_bw_path == null || f.rate_ == 0.0) {
                 // Select the shortest path if nothing else is found
                 f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }
@@ -91,7 +91,7 @@ public class SwanScheduler extends PoorManScheduler {
             // Subscribe the flow's paths to the links it uses on the selected path
             for (int i = 0; i < f.max_bw_path.node_list_.size() - 1; i++) {
                 int src = Integer.parseInt(f.max_bw_path.node_list_.get(i));
-                int dst = Integer.parseInt(f.max_bw_path.node_list_.get(i+1));
+                int dst = Integer.parseInt(f.max_bw_path.node_list_.get(i + 1));
                 links_[src][dst].subscribers_.add(f.max_bw_path);
             }
 
@@ -108,11 +108,11 @@ public class SwanScheduler extends PoorManScheduler {
         }
 
         // Add back flows that were already mapped
-        for (Flow of: old_flows) {
+        for (Flow of : old_flows) {
             flows_.put(of.id_, of);
             for (int i = 0; i < of.max_bw_path.node_list_.size() - 1; i++) {
                 int src = Integer.parseInt(of.max_bw_path.node_list_.get(i));
-                int dst = Integer.parseInt(of.max_bw_path.node_list_.get(i+1));
+                int dst = Integer.parseInt(of.max_bw_path.node_list_.get(i + 1));
                 links_[src][dst].subscribers_.add(of.max_bw_path);
             }
         }
@@ -125,7 +125,7 @@ public class SwanScheduler extends PoorManScheduler {
 
     @Override
     public void update_flows(HashMap<String, Flow> flows) {
-        for (Flow f: flows.values()) {
+        for (Flow f : flows.values()) {
             f.rate_ = 0;
             f.paths_.clear();
             f.paths_.add(f.max_bw_path);
@@ -133,7 +133,7 @@ public class SwanScheduler extends PoorManScheduler {
                 double min_bw = Double.MAX_VALUE;
                 for (int i = 0; i < p.node_list_.size() - 1; i++) {
                     int src = Integer.parseInt(p.node_list_.get(i));
-                    int dst = Integer.parseInt(p.node_list_.get(i+1));
+                    int dst = Integer.parseInt(p.node_list_.get(i + 1));
                     double link_bw = links_[src][dst].bw_per_flow();
 
                     if (link_bw < min_bw) {

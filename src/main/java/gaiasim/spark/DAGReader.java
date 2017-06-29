@@ -21,7 +21,6 @@ package gaiasim.spark;
 // }
 
 import com.google.common.collect.ArrayListMultimap;
-import gaiasim.GaiaSim;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
@@ -83,8 +82,7 @@ public class DAGReader {
                     for (int j = 0; j < num_tasks; j++) {
                         task_locs[j] = net_graph.trace_id_to_node_id_.get(splits[2 + j]);
                     }
-                }
-                else { // randomize task location assignment (not really needed)
+                } else { // randomize task location assignment (not really needed)
                     ArrayList<String> tmp_nodes = net_graph.nodes_;
                     Collections.shuffle(tmp_nodes, rnd);
                     for (int j = 0; j < num_tasks; j++) {
@@ -101,7 +99,7 @@ public class DAGReader {
             // create a buffer for constructing Coflows.
             // when finished reading this job, we can recover all Coflow information from it.
             // maps Coflow_id to FlowGroups.
-            ArrayListMultimap<String , Flow> tmpCoflowList = ArrayListMultimap.create();
+            ArrayListMultimap<String, Flow> tmpCoflowList = ArrayListMultimap.create();
 
             ArrayList<Flow> tmpFlowList = new ArrayList<>();
             int flowIDCounter = 0;
@@ -123,8 +121,8 @@ public class DAGReader {
                 double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
 
                 // create FlowGroups and add to buffer.
-                for( String srcLoc : locationMap.get(src_stage)){
-                    for (String dstLoc : locationMap.get(dst_stage)){
+                for (String srcLoc : locationMap.get(src_stage)) {
+                    for (String dstLoc : locationMap.get(dst_stage)) {
                         // id - job_id:srcStage:dstStage:srcLoc-dstLoc // encoding task location info.
                         // src - srcLoc
                         // dst - dstLoc
@@ -132,15 +130,14 @@ public class DAGReader {
                         // Volume - divided_data_size
 
                         Flow f = new Flow(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
-                                flowIDCounter , dag_id + ':' + dst_stage, srcLoc, dstLoc, divided_data_size );
+                                flowIDCounter, dag_id + ':' + dst_stage, srcLoc, dstLoc, divided_data_size);
 
                         flowIDCounter++; // We don't know how many coflows we have. So we use a counter per Job, as long as it is unique
 
                         if (srcLoc != dstLoc) {
                             tmpFlowList.add(f);
-                            tmpCoflowList.put(dag_id + ":" + dst_stage , f);
-                        }
-                        else {
+                            tmpCoflowList.put(dag_id + ":" + dst_stage, f);
+                        } else {
                             System.out.println("Skipping Flow " + f.id_ + " because Src and Dst are same");
                         }
 
@@ -149,7 +146,7 @@ public class DAGReader {
 
                 // Then update dependencies and the "root"
                 // Note that after this operation "root" is not Coflow_root, we need to trim() the DAG.
-                dr.updateDependency( src_stage , dst_stage);
+                dr.updateDependency(src_stage, dst_stage);
 
             } // end of current DAG
             // flush the Coflows from the buffer to dag, this also creates the coflow instances.
@@ -157,20 +154,20 @@ public class DAGReader {
             dr.updateRoot();
 
             // create the actual job using the dependency information from dr
-            Job job = new Job(dag_id , arrival_time);
+            Job job = new Job(dag_id, arrival_time);
             job.coflows_.putAll(dr.coflowList);
 
             // read the child/parent info from coflow, and generate the start/end coflow list.
             job.start_coflows_.addAll(dr.getRootCoflows());
             // Though end_coflows are not used, we still create them.
-            for (Map.Entry<String,Coflow> entry : job.coflows_.entrySet()) {
+            for (Map.Entry<String, Coflow> entry : job.coflows_.entrySet()) {
                 Coflow cf = entry.getValue();
                 if (cf.child_coflows.size() == 0) {
                     job.end_coflows_.add(cf);
                 }
             }
 
-            jobs.put( dag_id , job);
+            jobs.put(dag_id, job);
 
         } // end of trace.txt
         br.close();

@@ -1,19 +1,10 @@
 package gaiasim.scheduler;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.HashMap;
-
 import gaiasim.mmcf.MMCFOptimizer;
-import gaiasim.network.Coflow;
-import gaiasim.network.Flow;
-import gaiasim.network.Link;
-import gaiasim.network.NetGraph;
-import gaiasim.network.Pathway;
-import gaiasim.network.SubscribedLink;
+import gaiasim.network.*;
 import gaiasim.util.Constants;
+
+import java.util.*;
 
 public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
@@ -24,12 +15,12 @@ public class PoorManScheduler extends Scheduler {
     public PoorManScheduler(NetGraph net_graph) {
         super(net_graph);
     }
-    
+
     public void finish_flow(Flow f) {
         for (Pathway p : f.paths_) {
             for (int i = 0; i < p.node_list_.size() - 1; i++) {
                 int src = Integer.parseInt(p.node_list_.get(i));
-                int dst = Integer.parseInt(p.node_list_.get(i+1));
+                int dst = Integer.parseInt(p.node_list_.get(i + 1));
                 links_[src][dst].subscribers_.remove(p);
             }
         }
@@ -52,8 +43,7 @@ public class PoorManScheduler extends Scheduler {
 
                 if (l.dst_loc_.equals(f.dst_loc_)) {
                     completed_paths.add(p);
-                }
-                else {
+                } else {
                     potential_paths.add(p);
                 }
 
@@ -107,7 +97,7 @@ public class PoorManScheduler extends Scheduler {
                     else if (Math.round((p.bandwidth_ - l.cur_bw_) * 100.0) / 100.0 >= 0.01) {
                         Pathway new_p = new Pathway();
                         new_p.bandwidth_ = p.bandwidth_ - l.cur_bw_;
-                        new_p.node_list_ = (ArrayList<String>)p.node_list_.clone();
+                        new_p.node_list_ = (ArrayList<String>) p.node_list_.clone();
                         potential_paths.add(new_p);
                         p.bandwidth_ = l.cur_bw_;
                         p.node_list_.add(l.dst_loc_);
@@ -188,8 +178,8 @@ public class PoorManScheduler extends Scheduler {
         combined_coflow.volume_ = 0.0;
         int combined_flow_int_id = 0;
         HashMap<Integer, Integer> combined_to_original_int_id = new HashMap<>();
-        for (Coflow coflow: unscheduled_coflows) {
-            for (Flow flow: coflow.flows_.values()) {
+        for (Coflow coflow : unscheduled_coflows) {
+            for (Flow flow : coflow.flows_.values()) {
                 if (!flow.done_) {
                     // Serializing flow_int_id_ values for the optimizer.
                     // Put back after the optimizer results have been parsed.
@@ -208,7 +198,7 @@ public class PoorManScheduler extends Scheduler {
 
         int[][] subscriber_counts = new int[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
 
-        for (Flow f: combined_coflow.flows_.values()) {
+        for (Flow f : combined_coflow.flows_.values()) {
             ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
 
             // Fix int_id_ of the flow
@@ -230,7 +220,7 @@ public class PoorManScheduler extends Scheduler {
 
                 // Remember the selected path
                 f.max_bw_path = max_bw_path;
-            } else if (f.max_bw_path == null || f.rate_ == 0.0){
+            } else if (f.max_bw_path == null || f.rate_ == 0.0) {
                 // Select the shortest path if nothing else is found
                 f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }
@@ -242,7 +232,7 @@ public class PoorManScheduler extends Scheduler {
             // Subscribe the flow's paths to the links it uses on the selected path
             for (int i = 0; i < f.max_bw_path.node_list_.size() - 1; i++) {
                 int src = Integer.parseInt(f.max_bw_path.node_list_.get(i));
-                int dst = Integer.parseInt(f.max_bw_path.node_list_.get(i+1));
+                int dst = Integer.parseInt(f.max_bw_path.node_list_.get(i + 1));
                 links_[src][dst].subscribers_.add(f.max_bw_path);
                 subscriber_counts[src][dst]++;
             }
@@ -260,7 +250,7 @@ public class PoorManScheduler extends Scheduler {
         }
 
         // Must fix bandwidth allocation because we cannot use rates from the optimization, only paths
-        for (Flow f: combined_coflow.flows_.values()) {
+        for (Flow f : combined_coflow.flows_.values()) {
             f.rate_ = 0;
             f.paths_.clear();
             f.paths_.add(f.max_bw_path);
@@ -268,7 +258,7 @@ public class PoorManScheduler extends Scheduler {
                 double min_bw = Double.MAX_VALUE;
                 for (int i = 0; i < p.node_list_.size() - 1; i++) {
                     int src = Integer.parseInt(p.node_list_.get(i));
-                    int dst = Integer.parseInt(p.node_list_.get(i+1));
+                    int dst = Integer.parseInt(p.node_list_.get(i + 1));
                     double link_bw = links_[src][dst].remaining_bw() / subscriber_counts[src][dst];
 
                     if (link_bw < min_bw) {
@@ -309,7 +299,7 @@ public class PoorManScheduler extends Scheduler {
             SubscribedLink[] path_links = new SubscribedLink[p.node_list_.size() - 1];
             for (int i = 0; i < p.node_list_.size() - 1; i++) {
                 int lsrc = Integer.parseInt(p.node_list_.get(i));
-                int ldst = Integer.parseInt(p.node_list_.get(i+1));
+                int ldst = Integer.parseInt(p.node_list_.get(i + 1));
                 SubscribedLink l = links_[lsrc][ldst];
 
                 double bw = l.remaining_bw();
@@ -342,7 +332,7 @@ public class PoorManScheduler extends Scheduler {
         }
     }
 
-    public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
+    public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                 long timestamp) throws Exception {
         flows_.clear();
         reset_links();
@@ -370,7 +360,7 @@ public class PoorManScheduler extends Scheduler {
                 unscheduled_coflows.add(c);
                 continue;
             }
-            
+
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows_.keySet()) {
                 Flow f = c.flows_.get(k);
@@ -379,20 +369,20 @@ public class PoorManScheduler extends Scheduler {
                 }
 
                 ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
-                assert(link_vals != null);
+                assert (link_vals != null);
 
                 // This portion is similar to Flow::make() in Sim
                 make_paths(f, link_vals);
-                
+
                 // Subscribe the flow's paths to the links it uses
                 for (Pathway p : f.paths_) {
                     for (int i = 0; i < p.node_list_.size() - 1; i++) {
                         int src = Integer.parseInt(p.node_list_.get(i));
-                        int dst = Integer.parseInt(p.node_list_.get(i+1));
+                        int dst = Integer.parseInt(p.node_list_.get(i + 1));
                         links_[src][dst].subscribers_.add(p);
                     }
                 }
-                
+
                 System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway p : f.paths_) {
@@ -410,11 +400,11 @@ public class PoorManScheduler extends Scheduler {
 
         // Schedule any available flows
         if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
-            schedule_extra_flows(unscheduled_coflows, timestamp);        
+            schedule_extra_flows(unscheduled_coflows, timestamp);
         }
         return flows_;
     }
-    
+
     private ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
         HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
 
@@ -438,5 +428,6 @@ public class PoorManScheduler extends Scheduler {
     }
 
     // Updates the rates of flows
-    public void update_flows(HashMap<String, Flow> flows) {}
+    public void update_flows(HashMap<String, Flow> flows) {
+    }
 }

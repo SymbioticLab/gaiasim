@@ -1,13 +1,13 @@
 package gaiasim.scheduler;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.util.Constants;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BaselineScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
@@ -18,12 +18,12 @@ public class BaselineScheduler extends Scheduler {
     public BaselineScheduler(NetGraph net_graph) {
         super(net_graph);
     }
-    
+
     public void finish_flow(Flow f) {
         ArrayList<String> nodes = f.paths_.get(0).node_list_;
-        for (int i = 0; i < nodes.size()- 1; i++) {
+        for (int i = 0; i < nodes.size() - 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
-            int dst = Integer.parseInt(nodes.get(i+1));
+            int dst = Integer.parseInt(nodes.get(i + 1));
             links_[src][dst].subscribers_.remove(f.paths_.get(0));
         }
     }
@@ -33,7 +33,7 @@ public class BaselineScheduler extends Scheduler {
         return f.rate_;
     }
 
-    public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, 
+    public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                 long timestamp) throws Exception {
         flows_.clear();
         reset_links();
@@ -46,14 +46,14 @@ public class BaselineScheduler extends Scheduler {
                 if (f.done_) {
                     continue;
                 }
-                
+
                 Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
                 f.paths_.clear();
                 f.paths_.add(p);
-              
+
                 for (int i = 0; i < p.node_list_.size() - 1; i++) {
                     int src = Integer.parseInt(p.node_list_.get(i));
-                    int dst = Integer.parseInt(p.node_list_.get(i+1));
+                    int dst = Integer.parseInt(p.node_list_.get(i + 1));
                     links_[src][dst].subscribers_.addAll(f.paths_);
                 }
 
@@ -64,7 +64,7 @@ public class BaselineScheduler extends Scheduler {
                 flows_.put(f.id_, f);
             }
         }
-        
+
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
 
@@ -73,7 +73,7 @@ public class BaselineScheduler extends Scheduler {
             ArrayList<String> nodes = f.paths_.get(0).node_list_;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
-                int dst = Integer.parseInt(nodes.get(i+1));
+                int dst = Integer.parseInt(nodes.get(i + 1));
                 double link_bw = links_[src][dst].bw_per_flow();
 
                 if (link_bw < min_bw) {
@@ -99,7 +99,7 @@ public class BaselineScheduler extends Scheduler {
             ArrayList<String> nodes = f.paths_.get(0).node_list_;
             for (int i = 0; i < nodes.size() - 1; i++) {
                 int src = Integer.parseInt(nodes.get(i));
-                int dst = Integer.parseInt(nodes.get(i+1));
+                int dst = Integer.parseInt(nodes.get(i + 1));
                 double link_bw = links_[src][dst].bw_per_flow();
 
                 if (link_bw < min_bw) {

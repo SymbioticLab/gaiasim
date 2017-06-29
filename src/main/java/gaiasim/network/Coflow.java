@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 // A coflow represents a shuffle within a job. It is an edge within a DAG.
 public class Coflow {
-    
+
     public String id_;
     public HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
     public double volume_ = 0.0;
@@ -52,7 +52,7 @@ public class Coflow {
             // are all of the same size. Note that flows go from
             // child_task -> our_task.
             int num_flows = task_locs_.length * parent.task_locs_.length;
-            double volume_per_flow = parent.volume_for_parent_.get(id_) / (double)num_flows;
+            double volume_per_flow = parent.volume_for_parent_.get(id_) / (double) num_flows;
             for (String src_loc : parent.task_locs_) {
 
                 for (String dst_loc : task_locs_) {
@@ -64,8 +64,7 @@ public class Coflow {
                         flows_.put(flow_id, new Flow(flow_id, flow_id_suffix, id_, src_loc, dst_loc, volume_per_flow));
                         volume_ += volume_per_flow;
                         flow_id_suffix++;
-                    }
-                    else {
+                    } else {
                         System.out.println("Skipping because src and dst are same " + src_loc + " " + dst_loc + " " + parent.id_ + "->" + id_);
                     }
 
@@ -80,7 +79,7 @@ public class Coflow {
     // Sets the coflow's start time to be that of the earliest starting flow.
     // Assumes all flows are done.
     public void determine_start_time() {
-        start_timestamp_  = Long.MAX_VALUE;
+        start_timestamp_ = Long.MAX_VALUE;
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
             if (f.start_timestamp_ < start_timestamp_) {

@@ -1,13 +1,12 @@
 package gaiasim.scheduler;
 
-import java.util.HashMap;
-
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
-import gaiasim.network.SubscribedLink;
 import gaiasim.network.NetGraph;
-
+import gaiasim.network.SubscribedLink;
 import org.graphstream.graph.Edge;
+
+import java.util.HashMap;
 
 public abstract class Scheduler {
     public NetGraph net_graph_;
@@ -26,7 +25,7 @@ public abstract class Scheduler {
             links_[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
         }
     }
-    
+
     public abstract void finish_flow(Flow f);
 
     public abstract double progress_flow(Flow f);
