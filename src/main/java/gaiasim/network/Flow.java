@@ -11,7 +11,7 @@ public class Flow {
     public double volume_;
     public double transmitted_;
     public double rate_; // in Mbps
-    public ArrayList<Pathway> paths_ = new ArrayList<Pathway>();
+    public ArrayList<Pathway> paths_ = new ArrayList<>();
     public Pathway max_bw_path = null;
     public boolean done_ = false;
     public long start_timestamp_ = -1;
@@ -31,4 +31,4 @@ public class Flow {
     public double remaining_volume() {
         return volume_ - transmitted_;
     }
-};
+}

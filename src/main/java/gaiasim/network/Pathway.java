@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pathway {
-    public ArrayList<String> node_list_ = new ArrayList<String>();
+    public ArrayList<String> node_list_ = new ArrayList<>();
     public double bandwidth_ = 0.0;
 
     public Pathway() {

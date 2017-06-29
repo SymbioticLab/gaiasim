@@ -23,8 +23,8 @@ public class MMCFOptimizer {
         }
         dat_string.append(";\n");
 
-        ArrayList<Integer> flow_int_id_list = new ArrayList<Integer>();
-        HashMap<Integer, String> flow_int_id_to_id = new HashMap<Integer, String>();
+        ArrayList<Integer> flow_int_id_list = new ArrayList<>();
+        HashMap<Integer, String> flow_int_id_to_id = new HashMap<>();
         System.out.println("Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
             Flow f = coflow.flows_.get(k);
@@ -135,8 +135,7 @@ public class MMCFOptimizer {
                     double bw = Math.round(Double.parseDouble(splits[4]) * 100.0) / 100.0;
                     if (bw >= 0.01 && !fs.equals(fe)) {
                         if (mmcf_out.flow_link_bw_map_.get(fi_int) == null) {
-                            int num_nodes = net_graph.nodes_.size() + 1;
-                            mmcf_out.flow_link_bw_map_.put(fi_int, new ArrayList<Link>());
+                            mmcf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
                         }
                         mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
                     }
@@ -170,6 +169,6 @@ public class MMCFOptimizer {
     public static class MMCFOutput {
         public double completion_time_ = 0.0;
         public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_
-                = new HashMap<Integer, ArrayList<Link>>();
+                = new HashMap<>();
     }
 }

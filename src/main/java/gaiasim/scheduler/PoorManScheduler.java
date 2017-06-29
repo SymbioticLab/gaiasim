@@ -10,7 +10,7 @@ public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
-    protected HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    protected HashMap<String, Flow> flows_ = new HashMap<>();
 
     public PoorManScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -274,7 +274,7 @@ public class PoorManScheduler extends Scheduler {
     }
 
     private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
-        ArrayList<Flow> unscheduled_flows = new ArrayList<Flow>();
+        ArrayList<Flow> unscheduled_flows = new ArrayList<>();
         for (Coflow c : unscheduled_coflows) {
             for (String k : c.flows_.keySet()) {
                 Flow f = c.flows_.get(k);
@@ -337,7 +337,7 @@ public class PoorManScheduler extends Scheduler {
         flows_.clear();
         reset_links();
         ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
-        ArrayList<Coflow> unscheduled_coflows = new ArrayList<Coflow>();
+        ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
         for (Map.Entry<Coflow, Double> e : cct_list) {
             Coflow c = e.getKey();
 
@@ -406,7 +406,7 @@ public class PoorManScheduler extends Scheduler {
     }
 
     private ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
-        HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
+        HashMap<Coflow, Double> cct_map = new HashMap<>();
 
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
@@ -416,7 +416,7 @@ public class PoorManScheduler extends Scheduler {
             }
         }
 
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<Map.Entry<Coflow, Double>>(cct_map.entrySet());
+        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<>(cct_map.entrySet());
         Collections.sort(cct_list, new Comparator<Map.Entry<Coflow, Double>>() {
             public int compare(Map.Entry<Coflow, Double> o1, Map.Entry<Coflow, Double> o2) {
                 if (o1.getValue() == o2.getValue()) return 0;

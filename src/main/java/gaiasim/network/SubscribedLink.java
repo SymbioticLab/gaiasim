@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SubscribedLink extends Link {
 
     // Flows which are currently using this link
-    public ArrayList<Pathway> subscribers_ = new ArrayList<Pathway>();
+    public ArrayList<Pathway> subscribers_ = new ArrayList<>();
 
     public SubscribedLink(double max_bw) {
         super(max_bw);

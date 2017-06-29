@@ -16,8 +16,8 @@ import java.util.HashMap;
 
 public class NetGraph {
     public Graph graph_;
-    public ArrayList<String> nodes_ = new ArrayList<String>();
-    public HashMap<String, String> trace_id_to_node_id_ = new HashMap<String, String>();
+    public ArrayList<String> nodes_ = new ArrayList<>();
+    public HashMap<String, String> trace_id_to_node_id_ = new HashMap<>();
 
     // All pairs shortest path. First index is src node, second index
     // is dst node.
@@ -32,7 +32,7 @@ public class NetGraph {
         fs.readAll(gml_file);
         fs.removeSink(graph_);
 
-        Constants.node_id_to_trace_id = new HashMap<String, String>();
+        Constants.node_id_to_trace_id = new HashMap<>();
         for (Node n : graph_) {
             nodes_.add(n.toString());
             trace_id_to_node_id_.put(n.getLabel("ui.label").toString(), n.toString());
@@ -61,7 +61,7 @@ public class NetGraph {
             APSPInfo info = n.getAttribute(APSPInfo.ATTRIBUTE_NAME);
 
             for (Node n_ : graph_) {
-                if (n.toString() != n_.toString()) {
+                if (!n.toString().equals(n_.toString())) {
                     int src = Integer.parseInt(n.toString());
                     int dst = Integer.parseInt(n_.toString());
                     apsp_[src][dst] = info.getShortestPathTo(n_.toString());

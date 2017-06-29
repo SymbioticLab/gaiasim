@@ -10,10 +10,10 @@ import java.util.HashMap;
 
 public class GaiaSim {
 
-    public static HashMap<String, String> parse_cli(String[] args)
+    private static HashMap<String, String> parse_cli(String[] args)
             throws org.apache.commons.cli.ParseException {
 
-        HashMap<String, String> args_map = new HashMap<String, String>();
+        HashMap<String, String> args_map = new HashMap<>();
         Options options = new Options();
         options.addOption("g", true, "path to gml file");
         options.addOption("j", true, "path to trace file");
@@ -68,7 +68,7 @@ public class GaiaSim {
     }
 
     public static void main(String[] args) {
-        HashMap<String, String> args_map = null;
+        HashMap<String, String> args_map;
         try {
             args_map = parse_cli(args);
         } catch (org.apache.commons.cli.ParseException e) {
@@ -88,7 +88,5 @@ public class GaiaSim {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return;
     }
 }

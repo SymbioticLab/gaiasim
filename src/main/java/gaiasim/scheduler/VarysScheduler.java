@@ -45,7 +45,7 @@ public class VarysScheduler extends BaselineScheduler {
 
         // Order coflows based on CCT estimation
         ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
-        ArrayList<Coflow> unscheduled_coflows = new ArrayList<Coflow>();
+        ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
 
         for (Map.Entry<Coflow, Double> e : cct_list) {
             Coflow c = e.getKey();
@@ -131,7 +131,7 @@ public class VarysScheduler extends BaselineScheduler {
     }
 
     public ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
-        HashMap<Coflow, Double> cct_map = new HashMap<Coflow, Double>();
+        HashMap<Coflow, Double> cct_map = new HashMap<>();
 
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
@@ -141,7 +141,7 @@ public class VarysScheduler extends BaselineScheduler {
             }
         }
 
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<Map.Entry<Coflow, Double>>(cct_map.entrySet());
+        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<>(cct_map.entrySet());
         Collections.sort(cct_list, new Comparator<Map.Entry<Coflow, Double>>() {
             public int compare(Map.Entry<Coflow, Double> o1, Map.Entry<Coflow, Double> o2) {
                 if (o1.getValue() == o2.getValue()) return 0;

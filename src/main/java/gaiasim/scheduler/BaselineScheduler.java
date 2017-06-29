@@ -13,7 +13,7 @@ public class BaselineScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hold new data rather than creating another
     // new map object (avoid GC).
-    protected HashMap<String, Flow> flows_ = new HashMap<String, Flow>();
+    protected HashMap<String, Flow> flows_ = new HashMap<>();
 
     public BaselineScheduler(NetGraph net_graph) {
         super(net_graph);

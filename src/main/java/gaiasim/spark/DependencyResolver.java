@@ -35,10 +35,6 @@ public class DependencyResolver {
         this.coflow_to_children = HashMultimap.create();
     }
 
-    public boolean isDone() {
-        return rootCoflowsID.isEmpty();
-    }
-
     // Given {src, dst}, set the appropriate dependency:
     // (1) dst.parent.has(src)
     // (2) src.child.has(dst)
@@ -87,7 +83,7 @@ public class DependencyResolver {
     // parse the dependencies and find the roots.
     // we can ONLY do this after we are done with all coflowList and dependencies!
     public void updateRoot() {
-        HashSet<String> rootsToAdd = new HashSet<String>();
+        HashSet<String> rootsToAdd = new HashSet<>();
         // for each Coflow, check if it has (valid) parents, if not, add to the set.
         for (String k : coflowList.keySet()) {
             // remove the redundant coflow_to_parent entries
@@ -103,7 +99,7 @@ public class DependencyResolver {
     }
 
     public ArrayList<Coflow> getRootCoflows() {
-        ArrayList<Coflow> ret = new ArrayList<Coflow>(rootCoflowsID.size());
+        ArrayList<Coflow> ret = new ArrayList<>(rootCoflowsID.size());
         for (String k : rootCoflowsID) {
             ret.add(coflowList.get(k));
         }

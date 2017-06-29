@@ -11,7 +11,7 @@ public class SwanScheduler extends PoorManScheduler {
     // If it's more than REMAP_INTERVAL_MS milliseconds, lets remap.
     // By default, SWAN remaps every 5 minutes.
     private long last_remap_timestamp;
-    private long REMAP_INTERVAL_MS = 5 * 60 * 1000;
+    private static long REMAP_INTERVAL_MS = 5 * 60 * 1000;
 
     public SwanScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -32,7 +32,7 @@ public class SwanScheduler extends PoorManScheduler {
         reset_links();
 
         // Keep track of flows that are already mapped
-        ArrayList<Flow> old_flows = new ArrayList<Flow>();
+        ArrayList<Flow> old_flows = new ArrayList<>();
 
         // Collapse all coflows to one
         Coflow combined_coflow = new Coflow("COMBINED", null);

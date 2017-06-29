@@ -33,7 +33,7 @@ import java.util.*;
 
 public class DAGReader {
     public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph, double workload_factor) throws IOException {
-        HashMap<String, Job> jobs = new HashMap<String, Job>();
+        HashMap<String, Job> jobs = new HashMap<>();
 
         // For now, use the same seed between runs.
         // Currently this is only used for assigning nodes to task
@@ -62,7 +62,7 @@ public class DAGReader {
             DependencyResolver dr = new DependencyResolver(dag_id);
 
             // store location of stages in this job.
-            HashMap<String, String[]> locationMap = new HashMap<String, String[]>();
+            HashMap<String, String[]> locationMap = new HashMap<>();
 
             // Get stage metadata
             // store the location tag of stages (temporarily), and refer to them later.
@@ -134,7 +134,7 @@ public class DAGReader {
 
                         flowIDCounter++; // We don't know how many coflows we have. So we use a counter per Job, as long as it is unique
 
-                        if (srcLoc != dstLoc) {
+                        if (!srcLoc.equals(dstLoc)) {
                             tmpFlowList.add(f);
                             tmpCoflowList.put(dag_id + ":" + dst_stage, f);
                         } else {

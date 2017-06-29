@@ -25,16 +25,16 @@ public class Manager {
     public HashMap<String, Job> jobs_;
 
     // Jobs sorted in increasing order of arrival time
-    public Vector<Job> jobs_by_time_ = new Vector<Job>();
-    public Vector<Job> completed_jobs_ = new Vector<Job>();
-    public ArrayList<Coflow> completed_coflows_ = new ArrayList<Coflow>();
+    public Vector<Job> jobs_by_time_ = new Vector<>();
+    public Vector<Job> completed_jobs_ = new Vector<>();
+    public ArrayList<Coflow> completed_coflows_ = new ArrayList<>();
 
     public long CURRENT_TIME_;
 
     // Jobs and Coflows that are currently being worked on 
-    public HashMap<String, Job> active_jobs_ = new HashMap<String, Job>();
-    public HashMap<String, Coflow> active_coflows_ = new HashMap<String, Coflow>();
-    public HashMap<String, Flow> active_flows_ = new HashMap<String, Flow>();
+    public HashMap<String, Job> active_jobs_ = new HashMap<>();
+    public HashMap<String, Coflow> active_coflows_ = new HashMap<>();
+    public HashMap<String, Flow> active_flows_ = new HashMap<>();
 
 
     public Manager(String gml_file, String trace_file,
@@ -151,7 +151,7 @@ public class Manager {
         int last_job_size = -1;
         long last_time = -5000;
 
-        ArrayList<Job> ready_jobs = new ArrayList<Job>();
+        ArrayList<Job> ready_jobs = new ArrayList<>();
 
         // Whether a coflow finished in the last epoch
         boolean coflow_finished = false;
@@ -225,7 +225,7 @@ public class Manager {
             coflow_finished = false;
 
             // List to keep track of flow keys that have finished
-            ArrayList<Flow> finished = new ArrayList<Flow>();
+            ArrayList<Flow> finished = new ArrayList<>();
 
             // Keep track of total allocated bandwidth across ALL flows
             double totalBW = 0.0;
