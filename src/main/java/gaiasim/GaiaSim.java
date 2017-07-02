@@ -26,6 +26,8 @@ public class GaiaSim {
         options.addOption("s", true, "scheduler to use. One of {baseline, recursive-remain-flow}");
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("e", false, "run under emulation");
+        options.addOption("b", true, "scaling factor for bandwidth");
+        options.addOption("w", true, "scaling factor for workload");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -65,6 +67,19 @@ public class GaiaSim {
             is_emulation_ = true;
         }
 
+        if (cmd.hasOption("b")) {
+            args_map.put("bw_factor", cmd.getOptionValue("b"));
+            System.out.println("Given bw_factor: " + Double.parseDouble(args_map.get("bw_factor")) + " but ignored in baseline emulation");
+        } else {
+            args_map.put("bw_factor", "1.0");
+        }
+
+        if (cmd.hasOption("w")) {
+            args_map.put("workload_factor", cmd.getOptionValue("w"));
+        } else {
+            args_map.put("workload_factor", "1.0");
+        }
+
         return args_map;
     }
 
@@ -85,7 +100,9 @@ public class GaiaSim {
             logger.info("GAIA: finished copying the model..");
 
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
-                                    args_map.get("scheduler"), args_map.get("outdir"));
+                                    args_map.get("scheduler"), args_map.get("outdir"),
+                    Double.parseDouble(args_map.get("bw_factor")),
+                    Double.parseDouble(args_map.get("workload_factor")));
 
             if (is_emulation_) {
                 m.emulate();

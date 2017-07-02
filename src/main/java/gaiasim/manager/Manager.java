@@ -64,11 +64,11 @@ public class Manager {
     public boolean is_baseline_ = false;
 
     public Manager(String gml_file, String trace_file,
-                   String scheduler_type, String outdir) throws java.io.IOException {
+                   String scheduler_type, String outdir, double bw_factor, double workload_factor) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
 //        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
-        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_);
+        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_ , workload_factor);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -551,7 +551,7 @@ public class Manager {
         // The next coflow in the job may be the last coflow in the job. If the stages involved
         // in that coflow are colocated, then there's nothing for us to do. This could cause
         // the job to be marked as done.
-        if (j.done()) { // Testing if the job is done instantly.
+        if (j.done()) { // Testing if the job is done instantly. This is where the co-located job is resolved.
             j.end_timestamp_ = j.start_timestamp_;
 //            System.err.println("Don't handle this!!!");
 //            System.exit(1);
