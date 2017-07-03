@@ -29,7 +29,10 @@ public class GaiaSim {
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("e", false, "run under emulation");
         options.addOption("c", true, "path to config file");
-        options.addOption("u", true, "scale up the data size by factor of X");
+//        options.addOption("u", true, "scale up the data size by factor of X");
+
+        options.addOption("b", true, "scaling factor for bandwidth");
+        options.addOption("w", true, "scaling factor for workload");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -76,9 +79,16 @@ public class GaiaSim {
             args_map.put("config" , null);
         }
 
-        if (cmd.hasOption('u')){
-            SCALE_FACTOR = Double.parseDouble(cmd.getOptionValue('u'));
+        if (cmd.hasOption('w')){
+            SCALE_FACTOR = Double.parseDouble(cmd.getOptionValue('w'));
             System.out.println("Using scaling factor = " + SCALE_FACTOR);
+        }
+
+        if (cmd.hasOption("b")) {
+            args_map.put("bw_factor", cmd.getOptionValue("b"));
+            System.out.println("Given bw_factor: " + Double.parseDouble(args_map.get("bw_factor")) + " , the sending agents don't need this factor");
+        } else {
+            args_map.put("bw_factor", "1.0");
         }
 
         return args_map;
@@ -101,7 +111,8 @@ public class GaiaSim {
             logger.info("GAIA: finished copying the model..");
 
             Master m = new Master(args_map.get("gml"), args_map.get("trace"),
-                                    args_map.get("scheduler"), args_map.get("outdir") , args_map.get("config"));
+                                    args_map.get("scheduler"), args_map.get("outdir") , args_map.get("config"),
+                                    Double.parseDouble(args_map.get("bw_factor")));
 
             if (is_emulation_) {
                 m.emulate();

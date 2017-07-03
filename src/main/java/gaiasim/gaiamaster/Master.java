@@ -193,10 +193,10 @@ public class Master {
     }
 
     public Master(String gml_file, String trace_file,
-                  String scheduler_type, String outdir, String config) throws IOException {
+                  String scheduler_type, String outdir, String config, double bw_factor) throws IOException {
 
         this.outdir = outdir;
-        this.netGraph = new NetGraph(gml_file);
+        this.netGraph = new NetGraph(gml_file , bw_factor );
         printPaths(netGraph);
         if(config == null){
             this.config = new Configuration(netGraph.nodes_.size(), netGraph.nodes_.size());

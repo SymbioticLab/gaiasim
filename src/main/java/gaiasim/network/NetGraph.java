@@ -39,7 +39,7 @@ public class NetGraph {
     // Max bandwidth of each link
     public Double[][] link_bw_;
 
-    public NetGraph(String gml_file) throws java.io.IOException {
+    public NetGraph(String gml_file, double bw_factor) throws java.io.IOException {
         graph_ = new SingleGraph("GaiaSimGraph");
         
         FileSource fs = FileSourceFactory.sourceFor(gml_file);
@@ -70,8 +70,8 @@ public class NetGraph {
             String dst_str = e.getNode1().toString();
             int src = Integer.parseInt(src_str);
             int dst = Integer.parseInt(dst_str);
-            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString());
-            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString());
+            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString()) * bw_factor; // multiplied by factor
+            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString()) * bw_factor;
         }
 
 

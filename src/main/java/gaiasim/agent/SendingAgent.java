@@ -86,7 +86,7 @@ public class SendingAgent {
 
         ServerSocket listener = new ServerSocket(config.getSAPort(Integer.parseInt(id)));  // always listening
 
-        NetGraph net_graph = new NetGraph(gmlFilePath);
+        NetGraph net_graph = new NetGraph(gmlFilePath ,1); // sending agent is unaware of the bw_factor
 
         Socket socketToCTRL = listener.accept();
         logger.info("SA: Accepted socket from CTRL. Starting RRF.");
