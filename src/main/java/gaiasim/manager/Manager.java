@@ -243,7 +243,7 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     totalBW += scheduler_.progress_flow(f);
-                    if (f.transmitted_ >= f.volume_) {
+                    if (f.transmitted_ + Constants.EPSILON >= f.volume_) { // ignoring the remaining 0.01MBit
                         finished.add(f);
                     }
                 }
