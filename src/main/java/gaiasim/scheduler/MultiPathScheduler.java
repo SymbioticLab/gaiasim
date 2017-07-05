@@ -49,7 +49,9 @@ public class MultiPathScheduler extends PoorManScheduler {
 
             if (link_vals != null) {
                 make_paths(f, link_vals);
-            } else if (f.paths_.size() == 0) {
+            }
+
+            if (f.paths_.size() == 0) {
                 // Select the shortest path if nothing else is found
                 f.paths_.add(new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]));
             }
