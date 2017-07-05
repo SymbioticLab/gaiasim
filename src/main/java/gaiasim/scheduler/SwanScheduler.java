@@ -83,7 +83,9 @@ public class SwanScheduler extends PoorManScheduler {
 
                 // Remember the selected path for the future until it's remapped
                 f.max_bw_path = max_bw_path;
-            } else if (f.max_bw_path == null || f.rate_ == 0.0) {
+            }
+
+            if (f.max_bw_path == null || f.rate_ == 0.0) {
                 // Select the shortest path if nothing else is found
                 f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }

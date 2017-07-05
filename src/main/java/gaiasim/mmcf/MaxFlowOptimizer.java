@@ -108,6 +108,7 @@ public class MaxFlowOptimizer {
         String fe = "";
         int fi_int = -1;
         while ((line = br.readLine()) != null) {
+            line = line.trim();
             if (line.contains("Objective")) {
                 double mu = Double.parseDouble(line.split("\\s+")[3]);
                 if (mu < 0.00001) {
@@ -119,13 +120,13 @@ public class MaxFlowOptimizer {
                 }
             } else if (line.contains("f[f") && !line.contains("NL")) {
                 String[] splits = line.split("\\s+");
-                String fsplits[] = splits[2].substring(3).split(",");
+                String fsplits[] = splits[1].substring(3).split(",");
                 fi_int = Integer.parseInt(fsplits[0]);
                 fs = fsplits[1];
                 fe = fsplits[2].split("]")[0];
                 try {
                     // Quick hack to round to nearest 2 decimal places
-                    double bw = Math.round(Double.parseDouble(splits[4]) * 100.0) / 100.0;
+                    double bw = Math.round(Double.parseDouble(splits[3]) * 100.0) / 100.0;
                     if (bw >= 0.01 && !fs.equals(fe)) {
                         if (mf_out.flow_link_bw_map_.get(fi_int) == null) {
                             mf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
@@ -139,7 +140,7 @@ public class MaxFlowOptimizer {
             } else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
                 String[] splits = line.split("\\s+");
                 try {
-                    double bw = Math.round(Math.abs(Double.parseDouble(splits[2]) * 100.0) / 100.0);
+                    double bw = Math.round(Math.abs(Double.parseDouble(splits[1]) * 100.0) / 100.0);
                     if (bw >= 0.01 && !fs.equals(fe)) {
                         // At this point the flow id should be registered in the map
                         mf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
