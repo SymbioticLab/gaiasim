@@ -132,9 +132,10 @@ public class DAGReader {
                         Flow f = new Flow(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
                                 flowIDCounter, dag_id + ':' + dst_stage, srcLoc, dstLoc, divided_data_size);
 
-                        flowIDCounter++; // We don't know how many coflows we have. So we use a counter per Job, as long as it is unique
 
                         if (!srcLoc.equals(dstLoc)) {
+                            // we only increase flowID counter for non-co-located flows.
+                            flowIDCounter++; // We don't know how many coflows we have. So we use a counter per Job, as long as it is unique
                             tmpFlowList.add(f);
                             tmpCoflowList.put(dag_id + ":" + dst_stage, f);
                         } else {
