@@ -72,10 +72,10 @@ public class Job {
     public void start_New() {
         for (Coflow cf : start_coflows_) {
             if (!ready_coflows_.contains(cf)) {
-                // we only proceed if
-                if (cf.done()) { // This should never happen
-                    System.err.println("ERROR: Root coflow " + cf.id_ + " is done when starting");
-                    System.exit(1);
+                // we only proceed if not co-located
+                if (cf.done()) { //
+                    System.out.println("WARNING: Root coflow " + cf.id_ + " is done when starting");
+//                    System.exit(1);
                 }
                 // Add coflows which can be scheduled as a whole
                 else if (cf.ready()) {

@@ -139,9 +139,11 @@ public class DAGReader {
                             tmpFlowList.add(f);
                             tmpCoflowList.put(dag_id + ":" + dst_stage, f);
                         } else {
-                            System.out.println("Skipping Flow " + f.id_ + " because Src and Dst are same");
+                            System.out.println("Flow " + f.id_ + " is co-located!");
+                            // We still add co-located flow to preserve dependency, but we have to ignore them elsewhere
+                            tmpFlowList.add(f);
+                            tmpCoflowList.put(dag_id + ":" + dst_stage, f);
                         }
-
                     }
                 }
 
