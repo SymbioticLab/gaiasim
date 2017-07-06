@@ -21,6 +21,7 @@ public class Constants {
     // one second.
     public static final int EPOCH_MILLI = MILLI_IN_SECOND / 100;
     public static final double EPSILON = 0.01;
+    public static final long COLOCATED_FG_COMPLETION_TIME = 0;
 
     public static HashMap<String, String> node_id_to_trace_id;
 

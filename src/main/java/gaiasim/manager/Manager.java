@@ -36,6 +36,8 @@ public class Manager {
     public HashMap<String, Coflow> active_coflows_ = new HashMap<>();
     public HashMap<String, Flow> active_flows_ = new HashMap<>();
 
+    // Some state variables moved out of simulate():
+    boolean coflow_finished = false;    // Whether a coflow finished
 
     public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
@@ -151,10 +153,9 @@ public class Manager {
         int last_job_size = -1;
         long last_time = -5000;
 
-        ArrayList<Job> ready_jobs = new ArrayList<>();
+        int stallingCounter = 0;
 
-        // Whether a coflow finished in the last epoch
-        boolean coflow_finished = false;
+        ArrayList<Job> ready_jobs = new ArrayList<>();
 
         for (CURRENT_TIME_ = 0;
              (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
@@ -177,7 +178,10 @@ public class Manager {
 
             } // dispatch jobs loop
 
+            // essientially YARN logic: (i) insert job (ii) handle CF_FIN
             if (coflow_finished || !ready_jobs.isEmpty()) {
+
+                coflow_finished = false; // clean the flag first
 
                 for (Job j : ready_jobs) {
                     // Start arriving jobs
@@ -199,30 +203,64 @@ public class Manager {
                     }
                 }
 
-                // Update our set of active coflows
+                // Update our set of active coflows: insert CF whenever ready
                 active_coflows_.clear();
-                for (String k : active_jobs_.keySet()) {
-                    Job j = active_jobs_.get(k);
+                // use iterator so that we can delete jobs that finishes with co-located CF.
+                Iterator<Map.Entry<String, Job>> iter = active_jobs_.entrySet().iterator();
+                while (iter.hasNext()){
+                    Map.Entry<String, Job> e = iter.next();
+                    Job j = e.getValue();
 
                     ArrayList<Coflow> coflows = j.get_running_coflows();
                     for (Coflow c : coflows) {
-                        if (c.done()) {
+                        if (c.done()) { //  would never happen
                             c.start_timestamp_ = CURRENT_TIME_;
                             handle_finished_coflow(c, CURRENT_TIME_);
+                            System.err.println("ERROR: CF done before init");
                         } else {
-                            System.out.println("Adding coflow " + c.id_);
-                            active_coflows_.put(c.id_, c);
+                            System.out.println("Checking coflow " + c.id_); // check CF before adding to ensure no co-located FlowGroups
+
+                            // if the CF is not fully trimmed, insert it. If fully trimmed, no output for it.
+                            if( !trimCoflow(c, CURRENT_TIME_) ) {
+                                active_coflows_.put(c.id_, c);
+                            }
+                            else {
+                                System.out.println("CF trimmed");
+
+                                // mark the CF as done in YARN, we still need to handle the finish of this coflow
+//                                handle_finished_coflow(c, CURRENT_TIME_); // ConcurrentModificationException
+
+                                coflow_finished = true;
+
+                                c.start_timestamp_ = CURRENT_TIME_;
+                                c.end_timestamp_ = CURRENT_TIME_;
+                                c.done_ = true;
+                                j.finish_coflow(c.id_);
+
+                                // We still need to print out these kind of jobs..
+                                completed_coflows_.add(c);
+                                if(j.done()) {
+                                    j.end_timestamp_ = CURRENT_TIME_;
+                                    iter.remove();
+                                    completed_jobs_.addElement(j);
+                                    print_statistics("/tmp_job.csv", "/tmp_cct.csv");
+                                }
+
+                            }
                         }
                     }
+
                 }
+
 
                 // Update our set of flows
                 active_flows_.clear();
-                active_flows_.putAll(scheduler_.schedule_flows(active_coflows_, CURRENT_TIME_));
-                ready_jobs.clear();
-            }
+                HashMap<String, Flow> scheduled_flows = scheduler_.schedule_flows(active_coflows_, CURRENT_TIME_);
+                active_flows_.putAll(scheduled_flows);
+                ready_jobs.clear(); // all the jobs in ready_jobs have been inserted, hence clearing it.
+            } // End of YARN code
 
-            coflow_finished = false;
+//            coflow_finished = false; // moved this flag into YARN, only after YARN reads this flag will YARN erase it
 
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<>();
@@ -276,6 +314,16 @@ public class Manager {
             if (num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || (CURRENT_TIME_ - last_time >= 1000)) {
                 System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f\n",
                         CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW);
+
+                // Adds stalling detector
+                if(num_dispatched_jobs >= jobs_.size() && active_flows_.isEmpty() && !active_jobs_.isEmpty()){
+                    stallingCounter++;
+                    if(stallingCounter > 100){
+                        System.err.println("Simulation stalled");
+                        System.exit(1);
+                    }
+                }
+
                 last_job_size = active_jobs_.size();
                 last_num_jobs = num_dispatched_jobs;
                 last_time = CURRENT_TIME_;
@@ -288,5 +336,32 @@ public class Manager {
 
         // Save output statistics
         print_statistics("/job.csv", "/cct.csv");
+    }
+
+    public boolean trimCoflow(Coflow cf, long curTime){
+        boolean cfFinished = true; // init a flag
+
+        // need iterator because we need to remove while iterating
+        Iterator<Map.Entry<String, Flow>> iter = cf.flows_.entrySet().iterator();
+        while (iter.hasNext()){
+            Map.Entry<String, Flow> entry = iter.next();
+            Flow f = entry.getValue();
+            if(f.dst_loc_ == f.src_loc_){ // job is co-located.
+
+                // Finish this FG rightaway. And remove the entry
+                f.end_timestamp_ = curTime + Constants.COLOCATED_FG_COMPLETION_TIME;
+                f.done_ = true;
+                iter.remove();
+
+                System.out.println("Flow " + f.id_ + " ignored (due to co-location) " );
+
+
+            }
+            else {
+                cfFinished = false; // more than one FlowGroup are not trimmed (need to be transmitted).
+            }
+        }
+
+        return cfFinished;
     }
 }

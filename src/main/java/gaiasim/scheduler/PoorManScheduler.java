@@ -1,6 +1,7 @@
 package gaiasim.scheduler;
 
 import gaiasim.mmcf.MMCFOptimizer;
+import gaiasim.mmcf.MaxFlowOptimizer;
 import gaiasim.network.*;
 import gaiasim.util.Constants;
 
@@ -172,7 +173,7 @@ public class PoorManScheduler extends Scheduler {
         return remaining_bw;
     }
 
-    private void schedule_extra_flows_exp(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
+    private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
         // Collapse all coflows to one
         Coflow combined_coflow = new Coflow("COMBINED", null);
         combined_coflow.volume_ = 0.0;
@@ -194,12 +195,12 @@ public class PoorManScheduler extends Scheduler {
         }
 
         // Find paths for each flow
-        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         int[][] subscriber_counts = new int[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
 
         for (Flow f : combined_coflow.flows_.values()) {
-            ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+            ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
 
             // Fix int_id_ of the flow
             f.int_id_ = combined_to_original_int_id.get(f.int_id_);
@@ -220,13 +221,11 @@ public class PoorManScheduler extends Scheduler {
 
                 // Remember the selected path
                 f.max_bw_path = max_bw_path;
-            } else if (f.max_bw_path == null || f.rate_ == 0.0) {
-                // Select the shortest path if nothing else is found
-                f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }
 
-            if (f.max_bw_path == null) {
-                int x = 0;
+            // Select the shortest path if nothing else is found
+            if (f.max_bw_path == null || f.rate_ == 0.0) {
+                f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }
 
             // Subscribe the flow's paths to the links it uses on the selected path
@@ -273,7 +272,7 @@ public class PoorManScheduler extends Scheduler {
 
     }
 
-    private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+    private void schedule_extra_flows_old(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         ArrayList<Flow> unscheduled_flows = new ArrayList<>();
         for (Coflow c : unscheduled_coflows) {
             for (String k : c.flows_.keySet()) {
@@ -338,11 +337,13 @@ public class PoorManScheduler extends Scheduler {
         reset_links();
         ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
         ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
+        boolean no_bw_remains = false;
         for (Map.Entry<Coflow, Double> e : cct_list) {
             Coflow c = e.getKey();
 
-            if (remaining_bw() <= 0) {
+            if (no_bw_remains || remaining_bw() <= 0) {
                 unscheduled_coflows.add(c);
+                no_bw_remains = true;
                 continue;
             }
 
@@ -374,6 +375,11 @@ public class PoorManScheduler extends Scheduler {
                 // This portion is similar to Flow::make() in Sim
                 make_paths(f, link_vals);
 
+                // Select the shortest path if nothing else is found
+                if (f.paths_.size() == 0) {
+                    f.paths_.add(new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]));
+                }
+
                 // Subscribe the flow's paths to the links it uses
                 for (Pathway p : f.paths_) {
                     for (int i = 0; i < p.node_list_.size() - 1; i++) {
@@ -399,7 +405,7 @@ public class PoorManScheduler extends Scheduler {
         }
 
         // Schedule any available flows
-        if (!unscheduled_coflows.isEmpty() && remaining_bw() > 0.0) {
+        if (!unscheduled_coflows.isEmpty() && !no_bw_remains) {
             schedule_extra_flows(unscheduled_coflows, timestamp);
         }
         return flows_;
