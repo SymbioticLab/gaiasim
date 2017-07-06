@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+@SuppressWarnings("Duplicates")
+
 public class MaxFlowOptimizer {
     public static MaxFlowOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         long lastTime = System.nanoTime();
@@ -109,6 +111,12 @@ public class MaxFlowOptimizer {
         int fi_int = -1;
         while ((line = br.readLine()) != null) {
             line = line.trim();
+
+            // concatenate the lines if the first line has "[", and ends with "]"
+            if(line.contains("[") && (line.substring(line.length() - 1).equals( "]")) ){
+                line = line + br.readLine();
+            }
+
             if (line.contains("Objective")) {
                 double mu = Double.parseDouble(line.split("\\s+")[3]);
                 if (mu < 0.00001) {
