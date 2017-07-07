@@ -113,7 +113,7 @@ public class MaxFlowOptimizer {
             line = line.trim();
 
             // concatenate the lines if the first line has "[", and ends with "]"
-            if(line.contains("[") && (line.substring(line.length() - 1).equals( "]")) ){
+            if (line.contains("[") && (line.substring(line.length() - 1).equals("]"))) {
                 line = line + br.readLine();
             }
 
