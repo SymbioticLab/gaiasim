@@ -12,7 +12,7 @@ Command line arguments are as follows:
 ```
 -g : Path to the gml file used for the topology
 -j : Path to the trace file used for simulation
--s : Type of scheduler to use (currently one of { baseline, recursive-remain-flow, multipath, varys, swan })
+-s : Type of scheduler to use (currently one of { baseline, recursive-remain-flow, multipath, varys, swan, dark })
 -o : (optional) Path to directory to save statistics output. If not specified, default is /tmp
 -b : multiplicative scaling factor for edge bandwidths
 -w : multiplicative scaling factor for transfer sizes in workloads

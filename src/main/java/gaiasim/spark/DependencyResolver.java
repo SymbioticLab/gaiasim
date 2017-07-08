@@ -55,6 +55,7 @@ public class DependencyResolver {
 
             // iterate through all the contained Flow(Group)s
             for (Flow f : tmpCoflowList.get(coflowID)) {
+                f.owning_coflow_ = cf;
                 cf.flows_.put(f.id_, f);
                 cf.volume_ += f.volume_;
             }

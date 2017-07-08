@@ -5,7 +5,10 @@ import gaiasim.mmcf.MaxFlowOptimizer;
 import gaiasim.network.*;
 import gaiasim.util.Constants;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class PoorManScheduler extends Scheduler {
     // Persistent map used ot hold temporary data. We simply clear it
@@ -335,19 +338,15 @@ public class PoorManScheduler extends Scheduler {
                                                 long timestamp) throws Exception {
         flows_.clear();
         reset_links();
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = sort_coflows(coflows);
+        ArrayList<Coflow> cct_list = sort_coflows(coflows);
         ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
         boolean no_bw_remains = false;
-        for (Map.Entry<Coflow, Double> e : cct_list) {
-            Coflow c = e.getKey();
-
+        for (Coflow c : cct_list) {
             if (no_bw_remains || remaining_bw() <= 0) {
                 unscheduled_coflows.add(c);
                 no_bw_remains = true;
                 continue;
             }
-
-            System.out.println("Coflow " + c.id_ + " expected to complete in " + e.getValue());
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
 
@@ -411,7 +410,7 @@ public class PoorManScheduler extends Scheduler {
         return flows_;
     }
 
-    private ArrayList<Map.Entry<Coflow, Double>> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
+    protected ArrayList<Coflow> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
         HashMap<Coflow, Double> cct_map = new HashMap<>();
 
         for (String k : coflows.keySet()) {
@@ -422,11 +421,11 @@ public class PoorManScheduler extends Scheduler {
             }
         }
 
-        ArrayList<Map.Entry<Coflow, Double>> cct_list = new ArrayList<>(cct_map.entrySet());
-        Collections.sort(cct_list, new Comparator<Map.Entry<Coflow, Double>>() {
-            public int compare(Map.Entry<Coflow, Double> o1, Map.Entry<Coflow, Double> o2) {
-                if (o1.getValue() == o2.getValue()) return 0;
-                return o1.getValue() < o2.getValue() ? -1 : 1;
+        ArrayList<Coflow> cct_list = new ArrayList<>(cct_map.keySet());
+        Collections.sort(cct_list, new Comparator<Coflow>() {
+            public int compare(Coflow o1, Coflow o2) {
+                if (cct_map.get(o1) == cct_map.get(o2)) return 0;
+                return cct_map.get(o1) < cct_map.get(o2) ? -1 : 1;
             }
         });
 

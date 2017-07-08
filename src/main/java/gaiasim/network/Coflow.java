@@ -27,6 +27,10 @@ public class Coflow {
     // before child Coflows start).
     public ArrayList<Coflow> child_coflows = new ArrayList<>();
 
+    // DarkScheduler-specific variables
+    public int current_queue_ = 0;
+    public double transmitted_ = 0.0;
+
     public Coflow(String id, String[] task_locs) {
         id_ = id;
         task_locs_ = task_locs;

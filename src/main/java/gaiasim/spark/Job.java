@@ -59,7 +59,10 @@ public class Job {
 
     // Transition all ready coflows to running and return a list of all
     // coflows that are currently running for this job.
-    public ArrayList<Coflow> get_running_coflows() {
+    public ArrayList<Coflow> get_running_coflows(long current_timestamp) {
+        for (Coflow c : ready_coflows_) {
+            c.start_timestamp_ = current_timestamp;
+        }
         running_coflows_.addAll(ready_coflows_);
         ready_coflows_.clear();
 

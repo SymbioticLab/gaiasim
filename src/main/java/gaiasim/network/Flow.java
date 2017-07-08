@@ -17,6 +17,10 @@ public class Flow {
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
 
+    // Reference to owning coflow used in the DarkScheduler
+    // Populated in DependencyResolver.addCoflows()
+    public Coflow owning_coflow_;
+
     public Flow(String id, int int_id, String coflow_id, String src_loc, String dst_loc, double volume) {
         id_ = id;
         int_id_ = int_id;

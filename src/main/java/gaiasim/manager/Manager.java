@@ -57,6 +57,8 @@ public class Manager {
             scheduler_ = new VarysScheduler(net_graph_);
         } else if (scheduler_type.equals("swan")) {
             scheduler_ = new SwanScheduler(net_graph_);
+        } else if (scheduler_type.equals("dark")) {
+            scheduler_ = new DarkScheduler(net_graph_);
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
@@ -211,7 +213,7 @@ public class Manager {
                     Map.Entry<String, Job> e = iter.next();
                     Job j = e.getValue();
 
-                    ArrayList<Coflow> coflows = j.get_running_coflows();
+                    ArrayList<Coflow> coflows = j.get_running_coflows(CURRENT_TIME_);
                     for (Coflow c : coflows) {
                         if (c.done()) { //  would never happen
                             c.start_timestamp_ = CURRENT_TIME_;
