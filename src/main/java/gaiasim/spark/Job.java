@@ -41,7 +41,7 @@ public class Job {
         return true;
     }
 
-    // Remove s all of the parent Coflows depending on it. If any parent
+    // Removes all of the parent Coflows depending on it. If any parent
     // Coflows are now ready to run, add them to ready_coflows_.
     public void finish_coflow(String full_coflow_id) {
         // No need to split to get partial coflow_id here.
@@ -52,7 +52,6 @@ public class Job {
             if (child.ready()) {
                 ready_coflows_.add(child);
             }
-
         } // for child_coflows
 
     }
@@ -78,7 +77,6 @@ public class Job {
                 // we only proceed if not co-located
                 if (cf.done()) { //
                     System.out.println("WARNING: Root coflow " + cf.id_ + " is done when starting");
-//                    System.exit(1);
                 }
                 // Add coflows which can be scheduled as a whole
                 else if (cf.ready()) {

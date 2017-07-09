@@ -44,7 +44,6 @@ public class Manager {
                    double bw_factor, double workload_factor) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file, bw_factor);
-//        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
         jobs_ = DAGReader.read_trace_new(trace_file, net_graph_, workload_factor);
 
         if (scheduler_type.equals("baseline")) {
@@ -180,7 +179,7 @@ public class Manager {
 
             } // dispatch jobs loop
 
-            // essientially YARN logic: (i) insert job (ii) handle CF_FIN
+            // essentially YARN logic: (i) insert job (ii) handle CF_FIN
             if (coflow_finished || !ready_jobs.isEmpty()) {
 
                 coflow_finished = false; // clean the flag first
@@ -190,7 +189,6 @@ public class Manager {
                     // NOTE: This assumes that JCT is measured as the time as (job_finish_time - job_arrival_time)
                     if (!j.started_) {
                         j.start_timestamp_ = CURRENT_TIME_;
-//                        j.start();
                         j.start_New();
                     }
 
@@ -220,7 +218,8 @@ public class Manager {
                             handle_finished_coflow(c, CURRENT_TIME_);
                             System.err.println("ERROR: CF done before init");
                         } else {
-                            System.out.println("Checking coflow " + c.id_); // check CF before adding to ensure no co-located FlowGroups
+                            // check CF before adding to ensure no co-located FlowGroups
+                            System.out.println("Checking coflow " + c.id_);
 
                             // if the CF is not fully trimmed, insert it. If fully trimmed, no output for it.
                             if (!trimCoflow(c, CURRENT_TIME_)) {
@@ -230,7 +229,7 @@ public class Manager {
                                 System.out.println("CF trimmed");
 
                                 // mark the CF as done in YARN, we still need to handle the finish of this coflow
-//                                handle_finished_coflow(c, CURRENT_TIME_); // ConcurrentModificationException
+                                // handle_finished_coflow(c, CURRENT_TIME_); // ConcurrentModificationException
 
                                 coflow_finished = true;
 
@@ -251,9 +250,7 @@ public class Manager {
                             }
                         }
                     }
-
                 }
-
 
                 // Update our set of flows
                 active_flows_.clear();
@@ -261,8 +258,6 @@ public class Manager {
                 active_flows_.putAll(scheduled_flows);
                 ready_jobs.clear(); // all the jobs in ready_jobs have been inserted, hence clearing it.
             } // End of YARN code
-
-//            coflow_finished = false; // moved this flag into YARN, only after YARN reads this flag will YARN erase it
 
             // List to keep track of flow keys that have finished
             ArrayList<Flow> finished = new ArrayList<>();
@@ -303,7 +298,6 @@ public class Manager {
                         coflow_finished = true;
                         scheduler_.remove_coflow(owning_coflow);
                     } // if coflow.done
-
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated
@@ -331,8 +325,6 @@ public class Manager {
                 last_num_jobs = num_dispatched_jobs;
                 last_time = CURRENT_TIME_;
             }
-
-
         } // while stuff to do
 
         System.out.println("Simulation DONE");
@@ -351,14 +343,12 @@ public class Manager {
             Flow f = entry.getValue();
             if (f.dst_loc_ == f.src_loc_) { // job is co-located.
 
-                // Finish this FG rightaway. And remove the entry
+                // Finish this FG right away. And remove the entry
                 f.end_timestamp_ = curTime + Constants.COLOCATED_FG_COMPLETION_TIME;
                 f.done_ = true;
                 iter.remove();
 
                 System.out.println("Flow " + f.id_ + " ignored (due to co-location) ");
-
-
             } else {
                 cfFinished = false; // more than one FlowGroup are not trimmed (need to be transmitted).
             }

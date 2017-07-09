@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @SuppressWarnings("Duplicates")
-
 public class MaxFlowOptimizer {
     public static MaxFlowOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         long lastTime = System.nanoTime();

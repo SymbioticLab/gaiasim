@@ -275,65 +275,6 @@ public class PoorManScheduler extends Scheduler {
 
     }
 
-    private void schedule_extra_flows_old(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
-        ArrayList<Flow> unscheduled_flows = new ArrayList<>();
-        for (Coflow c : unscheduled_coflows) {
-            for (String k : c.flows_.keySet()) {
-                Flow f = c.flows_.get(k);
-                if (f.remaining_volume() > 0) {
-                    unscheduled_flows.add(c.flows_.get(k));
-                }
-            }
-        }
-        Collections.sort(unscheduled_flows, new Comparator<Flow>() {
-            public int compare(Flow o1, Flow o2) {
-                if (o1.volume_ == o2.volume_) return 0;
-                return o1.volume_ < o2.volume_ ? -1 : 1;
-            }
-        });
-
-        for (Flow f : unscheduled_flows) {
-            int src = Integer.parseInt(f.src_loc_);
-            int dst = Integer.parseInt(f.dst_loc_);
-            Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
-
-            double min_bw = Double.MAX_VALUE;
-            SubscribedLink[] path_links = new SubscribedLink[p.node_list_.size() - 1];
-            for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                int lsrc = Integer.parseInt(p.node_list_.get(i));
-                int ldst = Integer.parseInt(p.node_list_.get(i + 1));
-                SubscribedLink l = links_[lsrc][ldst];
-
-                double bw = l.remaining_bw();
-                path_links[i] = l;
-                if (bw < min_bw) {
-                    min_bw = bw;
-                }
-            }
-
-            if (min_bw > 0) {
-                p.bandwidth_ = min_bw;
-
-                for (SubscribedLink l : path_links) {
-                    l.subscribers_.add(p);
-                }
-                f.paths_.clear();
-                f.paths_.add(p);
-
-                System.out.println("Adding separate flow " + f.id_ + " remaining = " + f.remaining_volume());
-                System.out.println("  has pathways: ");
-                for (Pathway path : f.paths_) {
-                    System.out.println("    " + path.toString());
-                }
-
-                if (f.start_timestamp_ == -1) {
-                    f.start_timestamp_ = timestamp;
-                }
-                flows_.put(f.id_, f);
-            }
-        }
-    }
-
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                 long timestamp) throws Exception {
         flows_.clear();
