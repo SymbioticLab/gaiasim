@@ -225,6 +225,7 @@ public class Manager {
                             // if the CF is not fully trimmed, insert it. If fully trimmed, no output for it.
                             if (!trimCoflow(c, CURRENT_TIME_)) {
                                 active_coflows_.put(c.id_, c);
+                                scheduler_.add_coflow(c);
                             } else {
                                 System.out.println("CF trimmed");
 
@@ -300,6 +301,7 @@ public class Manager {
                     if (owning_coflow.done()) {
                         handle_finished_coflow(owning_coflow, CURRENT_TIME_ + ts);
                         coflow_finished = true;
+                        scheduler_.remove_coflow(owning_coflow);
                     } // if coflow.done
 
                 } // for finished

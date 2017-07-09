@@ -44,4 +44,12 @@ public abstract class Scheduler {
                                                          long timestamp) throws Exception;
 
     public abstract void update_flows(HashMap<String, Flow> flows);
+
+    // Called when a new coflow is added; only used by the DarkScheduler for now.
+    public void add_coflow(Coflow c) {
+    }
+
+    // Called when an existing coflow finishes; only used by the DarkScheduler for now.
+    public void remove_coflow(Coflow c) {
+    }
 }

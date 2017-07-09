@@ -6,7 +6,9 @@ import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.util.Constants;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Vector;
 
 public class DarkScheduler extends PoorManScheduler {
     private static int NUM_JOB_QUEUES = 10;
@@ -37,24 +39,29 @@ public class DarkScheduler extends PoorManScheduler {
     }
 
     @Override
-    protected ArrayList<Coflow> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
-        // Put coflows into their queues
+    public void add_coflow(Coflow c) {
         for (int i = 0; i < NUM_JOB_QUEUES; i++) {
-            sortedCoflows[i].clear();
-        }
-        for (String k : coflows.keySet()) {
-            Coflow c = coflows.get(k);
-            sortedCoflows[c.current_queue_].add(c);
-        }
-        for (int i = 0; i < NUM_JOB_QUEUES; i++) {
-            Collections.sort(sortedCoflows[i], new Comparator<Coflow>() {
-                public int compare(Coflow o1, Coflow o2) {
-                    if (o1.start_timestamp_ == o2.start_timestamp_) return 0;
-                    return o1.start_timestamp_ < o2.start_timestamp_ ? -1 : 1;
-                }
-            });
+            if (sortedCoflows[i].contains(c)) {
+                return;
+            }
         }
 
+        // Add to the end of the first queue
+        sortedCoflows[0].add(c);
+        c.current_queue_ = 0;
+    }
+
+    @Override
+    public void remove_coflow(Coflow c) {
+        for (int i = 0; i < NUM_JOB_QUEUES; i++) {
+            if (sortedCoflows[i].remove(c)) {
+                break;
+            }
+        }
+    }
+
+    @Override
+    protected ArrayList<Coflow> sort_coflows(HashMap<String, Coflow> coflows) throws Exception {
         // Move them around
         for (int i = 0; i < NUM_JOB_QUEUES; i++) {
             Vector<Coflow> coflowsToMove = new Vector<>();
