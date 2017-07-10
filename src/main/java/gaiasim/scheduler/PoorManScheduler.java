@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class PoorManScheduler extends Scheduler {
+    private static double ALPHA = 0.99;
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
@@ -322,6 +323,9 @@ public class PoorManScheduler extends Scheduler {
 
                 // Subscribe the flow's paths to the links it uses
                 for (Pathway p : f.paths_) {
+                    // Scale down allocations by ALPHA to leave space for starvation freedom
+                    p.bandwidth_ = p.bandwidth_ * ALPHA;
+
                     for (int i = 0; i < p.node_list_.size() - 1; i++) {
                         int src = Integer.parseInt(p.node_list_.get(i));
                         int dst = Integer.parseInt(p.node_list_.get(i + 1));
