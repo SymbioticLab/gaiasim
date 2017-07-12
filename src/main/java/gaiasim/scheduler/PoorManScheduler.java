@@ -11,7 +11,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class PoorManScheduler extends Scheduler {
-    private static double ALPHA = 0.99;
+    // Starvation-freedom
+    private static final double ALPHA = 0.99;
+    // Path restrictions
+    private static final int MAX_PARALLEL_PATHWAYS = 15;
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
@@ -29,6 +32,19 @@ public class PoorManScheduler extends Scheduler {
                 links_[src][dst].subscribers_.remove(p);
             }
         }
+    }
+
+    private ArrayList<Pathway> restrict_paths(ArrayList<Pathway> paths) {
+        if (paths.size() <= MAX_PARALLEL_PATHWAYS)
+            return paths;
+
+        Collections.sort(paths, new Comparator<Pathway>() {
+            public int compare(Pathway o1, Pathway o2) {
+                if (o1.bandwidth_ == o2.bandwidth_) return 0;
+                return o1.bandwidth_ < o2.bandwidth_ ? -1 : 1;
+            }
+        });
+        return new ArrayList<>(paths.subList(0, MAX_PARALLEL_PATHWAYS));
     }
 
     public void make_paths(Flow f, ArrayList<Link> link_vals) {
@@ -152,7 +168,7 @@ public class PoorManScheduler extends Scheduler {
             }
         } // while link_vals
         f.paths_.clear();
-        f.paths_ = completed_paths;
+        f.paths_ = restrict_paths(completed_paths);
     }
 
     public double progress_flow(Flow f) {
