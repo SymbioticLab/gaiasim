@@ -193,7 +193,7 @@ public class Manager {
                     }
 
                     // The next coflow in the job may be the last coflow in the job. If the stages involved
-                    // in that coflow are colocated, then there's nothing for us to do. This could cause
+                    // in that coflow are collocated, then there's nothing for us to do. This could cause
                     // the job to be marked as done.
                     if (j.done()) {
                         j.end_timestamp_ = CURRENT_TIME_;
@@ -344,7 +344,7 @@ public class Manager {
             if (f.dst_loc_ == f.src_loc_) { // job is co-located.
 
                 // Finish this FG right away. And remove the entry
-                f.end_timestamp_ = curTime + Constants.COLOCATED_FG_COMPLETION_TIME;
+                f.end_timestamp_ = curTime + Constants.COLLOCATED_FG_COMPLETION_TIME;
                 f.done_ = true;
                 iter.remove();
 
