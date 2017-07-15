@@ -63,12 +63,16 @@ public class Manager {
 
     public boolean is_baseline_ = false;
 
+    public DistConfiguration dconf;
+
     public Manager(String gml_file, String trace_file,
-                   String scheduler_type, String outdir, double bw_factor, double workload_factor) throws java.io.IOException {
+                   String scheduler_type, String outdir, double bw_factor, double workload_factor, String conf) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
 //        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
         jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_ , workload_factor);
+
+        dconf = new DistConfiguration( net_graph_.nodes_.size() , conf);
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -198,20 +202,20 @@ public class Manager {
 
         // Set up our SendingAgentContacts
         for (String sa_id : net_graph_.nodes_) {
-            sa_contacts_.put(sa_id,
-                             new SendingAgentContact(sa_id, net_graph_, "10.0.0." + (Integer.parseInt(sa_id) + 1), 23330,
-                                                     message_queue_, port_announcements, is_baseline_));
+            sa_contacts_.put(sa_id, new SendingAgentContact(sa_id, net_graph_, dconf.getAgentIP(Integer.parseInt(sa_id)),
+                    23330, message_queue_, port_announcements, is_baseline_));
         }
 
         // If we aren't emulating baseline, receive the port announcements
         // from SendingAgents and set appropriate flow rules.
         if (!is_baseline_) {
-            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
-            relay.relay_ports();
+            System.err.println("ERROR: This code is intended for distributed baseline emulation");
+//            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
+//            relay.relay_ports();
         }
-        else { // if we are baseline, then we set up baseline flow tables
-            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
-            bcon.setFlowRules();
+        else { // do nothing in distributed version, because we shall set up the rules before running the gaia_ctrl
+//            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
+//            bcon.setFlowRules();
         }
 
         num_dispatched_jobs = 0;

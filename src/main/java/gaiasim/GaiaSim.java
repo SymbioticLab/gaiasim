@@ -28,6 +28,7 @@ public class GaiaSim {
         options.addOption("e", false, "run under emulation");
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
+        options.addOption("c", true, "configuration file for the IP addresses of SAs on the control plane");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -80,6 +81,13 @@ public class GaiaSim {
             args_map.put("workload_factor", "1.0");
         }
 
+        if (cmd.hasOption("c")) {
+            args_map.put("conf", cmd.getOptionValue("c"));
+        } else {
+            System.err.println("ERROR: no configuration file");
+            System.exit(1);
+        }
+
         return args_map;
     }
 
@@ -102,7 +110,8 @@ public class GaiaSim {
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
                                     args_map.get("scheduler"), args_map.get("outdir"),
                     Double.parseDouble(args_map.get("bw_factor")),
-                    Double.parseDouble(args_map.get("workload_factor")));
+                    Double.parseDouble(args_map.get("workload_factor")),
+                    args_map.get("conf"));
 
             if (is_emulation_) {
                 m.emulate();
