@@ -70,8 +70,10 @@ public class NetGraph {
             String dst_str = e.getNode1().toString();
             int src = Integer.parseInt(src_str);
             int dst = Integer.parseInt(dst_str);
-            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString()) * bw_factor; // multiplied by factor
-            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString()) * bw_factor;
+            // multiply the bandwidth by scale factor
+            e.setAttribute("bandwidth", Double.parseDouble(e.getAttribute("bandwidth").toString()) * bw_factor );
+            link_bw_[src][dst] = Double.parseDouble(e.getAttribute("bandwidth").toString());
+            link_bw_[dst][src] = Double.parseDouble(e.getAttribute("bandwidth").toString());
         }
 
 
