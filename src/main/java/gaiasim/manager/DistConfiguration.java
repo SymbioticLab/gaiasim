@@ -48,7 +48,7 @@ public class DistConfiguration {
                 cnt++;
             }
 
-            if ( cnt != numAgents){
+            if ( cnt != numAgents + 1){ // Num = ctrl + agents
                 System.err.println("ERROR: corrupted config file");
                 System.exit(1);
             }
