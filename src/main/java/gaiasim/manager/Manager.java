@@ -213,9 +213,10 @@ public class Manager {
 //            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
 //            relay.relay_ports();
         }
-        else { // still need to set the static rules, otherwise the floodlight controller will be overwhelmed.
-            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
-            bcon.setFlowRules();
+        else { // ver 1.1 still need to set the static rules, otherwise the floodlight controller will be overwhelmed.
+            // ver 2.0 add an option to only set up the baseline static flow rules.
+/*            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
+            bcon.setFlowRules();*/
         }
 
         num_dispatched_jobs = 0;

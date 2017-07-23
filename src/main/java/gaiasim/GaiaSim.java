@@ -2,8 +2,10 @@ package gaiasim;
 
 import java.util.HashMap;
 
+import gaiasim.manager.BaselineFloodlightContact;
 import gaiasim.manager.Manager;
 
+import gaiasim.network.NetGraph;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -29,6 +31,7 @@ public class GaiaSim {
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
         options.addOption("c", true, "configuration file for the IP addresses of SAs on the control plane");
+        options.addOption("p", false, "only set up the flow rules");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -39,6 +42,22 @@ public class GaiaSim {
         else {
             System.out.println("ERROR: Must specify a path to a gml file using the -g flag");
             System.exit(1);
+        }
+
+        if (cmd.hasOption("p")) {
+            try {
+                NetGraph net_graph = new NetGraph(args_map.get("gml"));
+                BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph);
+                bcon.setFlowRules();
+                System.out.println("Baseline flow rules are set, please try ping all");
+                System.exit(0);
+            } catch (Exception e) {
+                System.err.println("Emulator: setting up baseline flow rules failed, please try again");
+            }
+        }
+        else {
+            // do nothing
+            System.out.println("Emulator: we don't set up flow rules now, assuming it is already set.");
         }
 
         if (cmd.hasOption("j")) {
