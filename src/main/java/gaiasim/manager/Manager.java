@@ -213,9 +213,9 @@ public class Manager {
 //            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(net_graph_, port_announcements);
 //            relay.relay_ports();
         }
-        else { // do nothing in distributed version, because we shall set up the rules before running the gaia_ctrl
-//            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
-//            bcon.setFlowRules();
+        else { // still need to set the static rules, otherwise the floodlight controller will be overwhelmed.
+            BaselineFloodlightContact bcon = new BaselineFloodlightContact(net_graph_);
+            bcon.setFlowRules();
         }
 
         num_dispatched_jobs = 0;
