@@ -57,15 +57,9 @@ public class PersistentSA_New implements Runnable{
     NetGraph netGraph;
     Configuration config;
 
-
     final ScheduledExecutorService statusExec;
 
     LinkedBlockingQueue<ControlThreadMessage> controllerQueue = new LinkedBlockingQueue<ControlThreadMessage>();
-
-
-
-
-
 
     // TODO: use the new PA msg.
     public void setupPConns(NetGraph net_graph){
