@@ -11,10 +11,7 @@ import gaiasim.network.Coflow_Old;
 import gaiasim.network.FlowGroup_Old;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
-import gaiasim.scheduler.BaselineScheduler;
 import gaiasim.scheduler.CoflowScheduler;
-import gaiasim.scheduler.PoorManScheduler;
-import gaiasim.scheduler.Scheduler;
 import gaiasim.spark.YARNEmulator;
 import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
@@ -28,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
