@@ -96,7 +96,8 @@ public class Worker implements Runnable{
                 }
                 catch (InterruptedException e) {
                     e.printStackTrace();
-                    System.exit(1);
+                    System.err.println("Interrupted while polling subscription queue");
+//                    System.exit(1); // don't just fail here
                 }
             }
             else {
@@ -198,8 +199,9 @@ public class Worker implements Runnable{
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                 }
                 catch (java.io.IOException e) {
+                    System.err.println("Fail to write data to ra");
                     e.printStackTrace();
-                    System.exit(1);
+//                    System.exit(1); // don't fail here
                 }
             }
         } // while (true)

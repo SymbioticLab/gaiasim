@@ -67,8 +67,9 @@ public class SharedInterface {
 //            is_ = new ObjectInputStream(sd.getInputStream());
         }
         catch (java.io.IOException e) {
+            System.err.println("Failed to get outputStream from socket");
             e.printStackTrace();
-            System.exit(1);
+            System.exit(1); // fail early
         }
 
         for (String ra_id : netGraph.nodes_) {

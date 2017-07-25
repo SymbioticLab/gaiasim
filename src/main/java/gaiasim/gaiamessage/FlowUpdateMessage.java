@@ -52,7 +52,7 @@ public class FlowUpdateMessage implements Serializable{
                 }
                 else {
                     System.err.println("FATAL: illegal path!");
-                    System.exit(1);
+//                    System.exit(1); // don't fail yet! // FIXME
                 }
             }
         }

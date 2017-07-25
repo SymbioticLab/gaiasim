@@ -26,7 +26,7 @@ public class ReceivingAgent {
         }
         catch (java.io.IOException e) {
             e.printStackTrace();
-            System.exit(1);
+//            System.exit(1);
         }
     }
 }

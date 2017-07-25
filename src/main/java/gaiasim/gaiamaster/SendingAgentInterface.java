@@ -65,7 +65,7 @@ public class SendingAgentInterface {
             }
             catch (Exception e) {
                 e.printStackTrace();
-                System.exit(1);
+                System.exit(2); // fail early
             }
         }
 
@@ -92,6 +92,7 @@ public class SendingAgentInterface {
                         switch (m.getType()){
                             case FLOW_STATUS:
                                 FlowStatusMessage fsm = (FlowStatusMessage) m;
+                                System.out.println("SAI: " + id_ + " received FSM!!!!!!");
                                 if(fsm.getSize() == 1 && fsm.getIsFinished()[0]){ // single FLOW_FIN message
                                     onFinishFlowGroup(fsm.getId()[0] , System.currentTimeMillis());
                                 }
@@ -138,7 +139,8 @@ public class SendingAgentInterface {
                 }
 
                 e.printStackTrace();
-                System.exit(1);
+                System.err.println("SAI: socket exception");
+//                System.exit(1); // don't easily fail
             }
             catch (java.io.EOFException e) {
                 System.out.println(id_ + " connection to SA closed and interrupted=" + Thread.interrupted());
@@ -146,8 +148,9 @@ public class SendingAgentInterface {
             }
             catch (Exception e) {
                 e.printStackTrace();
+                System.err.println("SAI: other exception");
                 // TODO: Close socket
-                System.exit(1);
+//                System.exit(1); // don't easily fail
             }
         } // end of run()
 
@@ -213,7 +216,7 @@ public class SendingAgentInterface {
         catch (Exception e) {
             System.out.println("ERROR trying to connect to " + sa_ip + ":" + sa_port);
             e.printStackTrace();
-            System.exit(1);
+            System.exit(2); // fail early
         }
         
         // Start thread to listen for messages from the

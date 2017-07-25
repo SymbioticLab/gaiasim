@@ -144,6 +144,7 @@ public class PortAnnouncementRelayMessage {
         }
         catch (Exception e) {
             e.printStackTrace();
+            System.err.println("Error while setting up flow rules");
             System.exit(1);
         }
 

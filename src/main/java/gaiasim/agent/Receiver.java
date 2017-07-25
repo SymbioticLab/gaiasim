@@ -33,7 +33,7 @@ public class Receiver implements Runnable {
         catch (java.io.IOException e) {
             System.out.println("Error closing socket");
             e.printStackTrace();
-            System.exit(1);
+//            System.exit(1);
         }
     }
 }

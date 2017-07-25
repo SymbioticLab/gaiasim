@@ -93,10 +93,10 @@ public class PersistentSA_New implements Runnable{
                         saAPI.sendPAMessageToCTRL(new PortAnnouncementMessage_Old(saID, ra_id, i, port));
                     }
                     catch (java.io.IOException e) {
-                        System.err.println("SA: failed on socket to " + ra_id + " IP: " + config.getRAIP(raID) + " Port: " + config.getRAPort(raID));
+                        System.err.println("SA: failed on socket to RA " + ra_id + " @IP: " + config.getRAIP(raID) + " Port: " + config.getRAPort(raID));
                         // TODO: Close socket
                         e.printStackTrace();
-                        System.exit(1);
+                        System.exit(1); // fail early
                     }
                 }
 
@@ -140,7 +140,7 @@ public class PersistentSA_New implements Runnable{
 
                 } catch (IOException | ClassNotFoundException | InterruptedException e) {
                     e.printStackTrace();
-                    System.exit(1); // fail if happens
+//                    System.exit(1); // don't fail if happens
                 }
             }
 
