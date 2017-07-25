@@ -19,11 +19,13 @@ public class Receiver implements Runnable {
             try {
                 num_recv = in_.read(buffer);
                 if (num_recv < 0) {
-                    break;
+                    System.err.println("SocketInputStream.read() returns " + num_recv);
+//                    break;
                 }
             }
             catch (java.io.IOException e) {
-                break;
+                System.err.println("IOException caught");
+//                break;
             }
         }
         
