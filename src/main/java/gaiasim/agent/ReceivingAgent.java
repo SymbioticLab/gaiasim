@@ -21,6 +21,7 @@ public class ReceivingAgent {
             sd.setSoTimeout(0);
             while (true) {
                 Socket client = sd.accept();
+                client.setSoTimeout(0);
                 System.out.println("Got a connection");
                 (new Thread(new Receiver(client))).start();
             }
