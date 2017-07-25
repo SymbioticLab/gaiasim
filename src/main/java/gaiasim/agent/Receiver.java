@@ -27,14 +27,14 @@ public class Receiver implements Runnable {
             }
         }
         
-        try {
-            sd_.close();
-        }
-        catch (java.io.IOException e) {
-            System.out.println("Error closing socket");
-            e.printStackTrace();
-//            System.exit(1);
-        }
+//        try {
+//            sd_.close();
+//        }
+//        catch (java.io.IOException e) {
+//            System.out.println("Error closing socket");
+//            e.printStackTrace();
+////            System.exit(1);
+//        }
     }
 }
 
