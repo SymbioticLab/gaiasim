@@ -80,6 +80,7 @@ public class PersistentSA_New implements Runnable{
                     try {
                         // Create the socket that the PersistentConnection object will use
                         Socket socketToRA = new Socket( config.getRAIP(raID) , config.getRAPort(raID));
+                        socketToRA.setSoTimeout(0);
                         int port = socketToRA.getLocalPort();
 
                         queues[i] = new LinkedBlockingQueue<SubscriptionMessage>();

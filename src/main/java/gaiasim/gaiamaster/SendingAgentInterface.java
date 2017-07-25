@@ -210,6 +210,7 @@ public class SendingAgentInterface {
         // get the port numbers that it plans to use
         try {
             sd_ = new Socket(sa_ip, sa_port);
+            sd_.setSoTimeout(0); // don't time out.
             os_ = new ObjectOutputStream(sd_.getOutputStream());
             System.out.println(id_ + " connected to SA");
         }

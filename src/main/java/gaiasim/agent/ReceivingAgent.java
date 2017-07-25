@@ -18,6 +18,7 @@ public class ReceivingAgent {
 
         try {
             sd = new ServerSocket(port);
+            sd.setSoTimeout(0);
             while (true) {
                 Socket client = sd.accept();
                 System.out.println("Got a connection");

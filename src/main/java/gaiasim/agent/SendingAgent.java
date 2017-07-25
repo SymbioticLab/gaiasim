@@ -76,10 +76,12 @@ public class SendingAgent {
 //        String use_persistent = args[1];
 
         ServerSocket listener = new ServerSocket(config.getSAPort(Integer.parseInt(id)));  // always listening
+        listener.setSoTimeout(0);
 
         NetGraph net_graph = new NetGraph(gmlFilePath ,1); // sending agent is unaware of the bw_factor
 
         Socket socketToCTRL = listener.accept();
+        socketToCTRL.setSoTimeout(0);
         logger.info("SA: Accepted socket from CTRL. Starting RRF.");
 
         PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL , config);
