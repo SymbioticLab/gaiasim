@@ -82,6 +82,8 @@ public class SendingAgent {
 
         Socket socketToCTRL = listener.accept();
         socketToCTRL.setSoTimeout(0);
+        socketToCTRL.setTcpNoDelay(true);
+        socketToCTRL.setKeepAlive(true);
         logger.info("SA: Accepted socket from CTRL. Starting RRF.");
 
         PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL , config);

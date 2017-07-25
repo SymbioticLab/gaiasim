@@ -211,6 +211,8 @@ public class SendingAgentInterface {
         try {
             sd_ = new Socket(sa_ip, sa_port);
             sd_.setSoTimeout(0); // don't time out.
+            sd_.setTcpNoDelay(true);
+            sd_.setKeepAlive(true);
             os_ = new ObjectOutputStream(sd_.getOutputStream());
             System.out.println(id_ + " connected to SA");
         }
