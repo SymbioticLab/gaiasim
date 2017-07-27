@@ -284,6 +284,11 @@ public class PoorManScheduler extends Scheduler {
                         min_bw = link_bw;
                     }
                 }
+
+                if (min_bw < 0){
+                    System.err.println("WARNING: min_bw < 0. (no action)");
+                }
+
                 p.bandwidth_ = min_bw;
                 f.rate_ += min_bw;
             }
@@ -362,10 +367,26 @@ public class PoorManScheduler extends Scheduler {
 
                 flows_.put(f.id_, f);
             }
+        }// for all Coflows: the first round of scheduling
+
+        // check if we have the headroom
+        for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {
+            for (int j = 0; j < net_graph_.nodes_.size() + 1; j++) {
+                if (links_[i][j] != null) {
+                    double bw = links_[i][j].remaining_bw();
+                    if (bw < 0 ) {
+                        System.err.println("ERROR: no headroom left!");
+                    }
+                    double delta = bw - links_[i][j].max_bw_ * (1 - ALPHA) * 0.8; // warning if headroom < 80%
+                    if (delta < 0) {
+                        System.err.println("WARNING: not enough headroom, headroom: " + bw);
+                    }
+                }
+            }
         }
 
         // Schedule any available flows
-        if (!unscheduled_coflows.isEmpty() && !no_bw_remains) {
+        if (!unscheduled_coflows.isEmpty() && !no_bw_remains) { // FIXME: the condition here
             schedule_extra_flows(unscheduled_coflows, timestamp);
         }
         return flows_;
