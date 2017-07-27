@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
+@SuppressWarnings("Duplicates") // readability
+
 public class PoorManScheduler extends Scheduler {
     // Starvation-freedom
     private static final double ALPHA = 0.99;
@@ -313,7 +315,7 @@ public class PoorManScheduler extends Scheduler {
                 continue;
             }
 
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, ALPHA);
 
             boolean all_flows_scheduled = true;
             for (String k : c.flows_.keySet()) {
@@ -347,7 +349,7 @@ public class PoorManScheduler extends Scheduler {
                 // Subscribe the flow's paths to the links it uses
                 for (Pathway p : f.paths_) {
                     // Scale down allocations by ALPHA to leave space for starvation freedom
-                    p.bandwidth_ = p.bandwidth_ * ALPHA;
+//                    p.bandwidth_ = p.bandwidth_ * ALPHA; // scale down in MMCF, not here
 
                     for (int i = 0; i < p.node_list_.size() - 1; i++) {
                         int src = Integer.parseInt(p.node_list_.get(i));
@@ -399,7 +401,7 @@ public class PoorManScheduler extends Scheduler {
 
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, ALPHA); // should be indifferent to 1 or ALPHA here.
             if (mmcf_out.completion_time_ != -1.0) {
                 cct_map.put(c, mmcf_out.completion_time_);
             }

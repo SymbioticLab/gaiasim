@@ -27,4 +27,14 @@ public class SubscribedLink extends Link {
 
         return remaining_bw;
     }
+
+    // starvation free version of remaining_bw()
+    public double remaining_bw(double scale_down_factor) {
+        double remaining_bw = max_bw_ * scale_down_factor; // starvation free factor
+        for (Pathway p : subscribers_) {
+            remaining_bw -= p.bandwidth_;
+        }
+
+        return remaining_bw;
+    }
 }

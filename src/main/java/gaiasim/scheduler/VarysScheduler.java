@@ -135,7 +135,7 @@ public class VarysScheduler extends BaselineScheduler {
 
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_);
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, 1);
             if (mmcf_out.completion_time_ != -1.0) {
                 cct_map.put(c, mmcf_out.completion_time_);
             }

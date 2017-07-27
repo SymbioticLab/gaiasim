@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 @SuppressWarnings("Duplicates")
 public class MMCFOptimizer {
-    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
+    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links, double scale_down_factor) throws Exception {
         long lastTime = System.nanoTime();
         String path_root = "/tmp";
         String mod_file_name = path_root + "/MinCCT.mod";
@@ -53,7 +53,7 @@ public class MMCFOptimizer {
                 if (i == j || links[i][j] == null) {
                     dat_string.append(" 0.000");
                 } else {
-                    dat_string.append(String.format(" %.3f", links[i][j].remaining_bw()));
+                    dat_string.append(String.format(" %.3f", links[i][j].remaining_bw(scale_down_factor)));
                 }
             }
             dat_string.append("\n");
