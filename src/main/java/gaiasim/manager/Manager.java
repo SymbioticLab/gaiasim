@@ -280,6 +280,7 @@ public class Manager {
                     totalBW += scheduler_.progress_flow(f);
                     if (f.transmitted_ + Constants.EPSILON >= f.volume_) { // ignoring the remaining 0.01MBit
                         finished.add(f);
+                        f.transmitted_ = f.volume_; // so that the remain_volume = 0
                     }
                 }
 
