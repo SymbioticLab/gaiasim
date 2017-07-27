@@ -33,7 +33,7 @@ public class DarkScheduler extends PoorManScheduler {
             double t = p.bandwidth_ * Constants.SIMULATION_TIMESTEP_SEC;
             f.transmitted_ += t;
             f.owning_coflow_.transmitted_ += t;
-            totalBW += p.bandwidth_;
+            totalBW += p.bandwidth_ * ( p.node_list_.size() - 1 ); // actual BW usage = pathBW * hops
         }
         return totalBW;
     }

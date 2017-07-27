@@ -175,7 +175,7 @@ public class PoorManScheduler extends Scheduler {
         double totalBW = 0.0;
         for (Pathway p : f.paths_) {
             f.transmitted_ += p.bandwidth_ * Constants.SIMULATION_TIMESTEP_SEC;
-            totalBW += p.bandwidth_;
+            totalBW += p.bandwidth_ * ( p.node_list_.size() - 1 ); // actual BW usage = pathBW * hops
         }
         return totalBW;
     }
