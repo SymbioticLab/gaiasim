@@ -317,33 +317,65 @@ public class PoorManScheduler extends Scheduler {
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, ALPHA);
 
-            boolean all_flows_scheduled = true;
-            for (String k : c.flows_.keySet()) {
-                int id = c.flows_.get(k).int_id_;
-                all_flows_scheduled = all_flows_scheduled && (mmcf_out.flow_link_bw_map_.get(id) != null);
-            }
-
-            if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
+            if (mmcf_out.completion_time_ == -1.0) {
+                System.out.println("INFO: unschedule cf " + c.id_ + " because cct = -1");
                 unscheduled_coflows.add(c);
                 continue;
             }
 
+            // check this coflow to see if fully scheduled
+            boolean all_flows_scheduled = true;
+            for (String k : c.flows_.keySet()) {
+                Flow f = c.flows_.get(k);
+
+                if (f.done_){
+                    if (f.remaining_volume() !=0 ){
+                        System.err.println("FATAL: remaining vol != 0");
+                    }
+                    continue; // ignoring this flow, continue to check other flows of this coflow
+                }
+
+                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+
+                // first phase: check if link exists
+                if (link_vals == null || link_vals.size() == 0){
+                    System.out.println("WARNING: no link is assigned by LP for flow " + f.id_);
+                    all_flows_scheduled = false;
+                    break; // break here, give up this coflow (clean up later)
+                }
+
+                // try to make paths
+                make_paths(f, link_vals);
+
+                // check if we can actually make paths
+                if (f.paths_.size() == 0) {
+                    System.out.println("WARNING: no paths is created in make_path() for flow " + f.id_);
+                    // make paths failed for this flow, we move the owning coflow into unscheduled later
+                    all_flows_scheduled = false;
+                    break; // break here, give up this coflow (clean up later)
+                }
+
+
+            }
+
+            if (!all_flows_scheduled) {
+                unscheduled_coflows.add(c);
+
+                // clean up this coflow
+                for (String k : c.flows_.keySet()) {
+                    Flow f = c.flows_.get(k);
+                    f.paths_.clear(); // clean the paths of this flow.
+                }
+
+                continue;
+            }
+
+            // this coflow is fully scheduled, we subscribe the flows to the link.
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows_.keySet()) {
                 Flow f = c.flows_.get(k);
                 if (f.done_) {
                     continue;
-                }
-
-                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
-                assert (link_vals != null);
-
-                // This portion is similar to Flow::make() in Sim
-                make_paths(f, link_vals);
-
-                // Select the shortest path if nothing else is found
-                if (f.paths_.size() == 0) {
-                    f.paths_.add(new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]));
                 }
 
                 // Subscribe the flow's paths to the links it uses
