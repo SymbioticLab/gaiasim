@@ -248,6 +248,8 @@ public class PoorManScheduler extends Scheduler {
                 f.max_bw_path = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
             }
 
+            f.max_bw_path.bandwidth_ = 0; // set the bw to 0 before subscribing, so we can get the accurate remaining bw.
+
             // Subscribe the flow's paths to the links it uses on the selected path
             for (int i = 0; i < f.max_bw_path.node_list_.size() - 1; i++) {
                 int src = Integer.parseInt(f.max_bw_path.node_list_.get(i));
