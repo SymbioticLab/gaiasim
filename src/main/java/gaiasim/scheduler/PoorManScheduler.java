@@ -290,7 +290,8 @@ public class PoorManScheduler extends Scheduler {
                 }
 
                 if (min_bw < 0){
-                    System.err.println("WARNING: min_bw < 0. (no action)");
+                    min_bw = 0;
+                    System.err.println("WARNING: min_bw < 0.");
                 }
 
                 p.bandwidth_ = min_bw;
