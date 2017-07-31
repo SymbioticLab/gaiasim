@@ -100,6 +100,12 @@ public class MultiPathScheduler extends PoorManScheduler {
                         min_bw = link_bw;
                     }
                 }
+
+                if (min_bw < 0) {
+                    min_bw = 0;
+                    System.err.println("WARNING: min_bw < 0.");
+                }
+
                 p.bandwidth_ = min_bw;
                 f.rate_ += min_bw;
             }
