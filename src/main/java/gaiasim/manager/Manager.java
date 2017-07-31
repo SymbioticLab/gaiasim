@@ -38,13 +38,16 @@ public class Manager {
 
     // Some state variables moved out of simulate():
     boolean coflow_finished = false;    // Whether a coflow finished
+    boolean isOneByOne;
 
     public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
-                   double bw_factor, double workload_factor) throws java.io.IOException {
+                   double bw_factor, double workload_factor, boolean is_one_by_one) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file, bw_factor);
         jobs_ = DAGReader.read_trace_new(trace_file, net_graph_, workload_factor);
+
+        this.isOneByOne = is_one_by_one;
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -162,22 +165,31 @@ public class Manager {
              (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
              CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
-            // Add any jobs which should be added during this epoch
-            for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
-                Job j = jobs_by_time_.get(num_dispatched_jobs);
-
-                // If the next job to start won't start during this epoch, no
-                // further jobs should be considered.
-                if (j.start_time_ >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
-
-                    // TODO(jack): Add method which may be called here.
-                    // Perhaps we want the emulator to simply sleep while waiting.
-                    break;
+            if (isOneByOne){
+                if(active_jobs_.isEmpty()){
+                    Job j = jobs_by_time_.get(num_dispatched_jobs);
+                    ready_jobs.add(j);
+                    num_dispatched_jobs++;
                 }
+            }
+            else {
+                // Add any jobs which should be added during this epoch
+                for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
+                    Job j = jobs_by_time_.get(num_dispatched_jobs);
 
-                ready_jobs.add(j);
+                    // If the next job to start won't start during this epoch, no
+                    // further jobs should be considered.
+                    if (j.start_time_ >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
 
-            } // dispatch jobs loop
+                        // TODO(jack): Add method which may be called here.
+                        // Perhaps we want the emulator to simply sleep while waiting.
+                        break;
+                    }
+
+                    ready_jobs.add(j);
+
+                } // dispatch jobs loop
+            }
 
             // essentially YARN logic: (i) insert job (ii) handle CF_FIN
             if (coflow_finished || !ready_jobs.isEmpty()) {

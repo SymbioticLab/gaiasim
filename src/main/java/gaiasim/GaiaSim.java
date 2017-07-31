@@ -21,6 +21,7 @@ public class GaiaSim {
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
+        options.addOption("onebyone", false, "insert the job one by one");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -64,6 +65,9 @@ public class GaiaSim {
             args_map.put("workload_factor", "1.0");
         }
 
+        boolean isOneByOne = cmd.hasOption("onebyone");
+        args_map.put("is_one_by_one", String.valueOf(isOneByOne));
+
         return args_map;
     }
 
@@ -85,7 +89,8 @@ public class GaiaSim {
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"),
                     args_map.get("scheduler"), args_map.get("outdir"),
                     Double.parseDouble(args_map.get("bw_factor")),
-                    Double.parseDouble(args_map.get("workload_factor")));
+                    Double.parseDouble(args_map.get("workload_factor")),
+                    Boolean.parseBoolean(args_map.get("is_one_by_one")));
             m.simulate();
         } catch (Exception e) {
             e.printStackTrace();
