@@ -10,6 +10,7 @@
     <name>gaiasim</name>
 
     <build>
+        <finalName>gaia</finalName>
         <resources>
             <resource>
                 <directory>res</directory>
@@ -48,7 +49,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>gaia_ctrl</finalName>
+                            <!--<finalName>gaia_ctrl</finalName>-->
                         </configuration>
                     </execution>
                     <execution>
@@ -66,7 +67,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>gaia_sa</finalName>
+                            <!--<finalName>gaia_sa</finalName>-->
                         </configuration>
                     </execution>
                     <execution>
@@ -84,7 +85,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>gaia_ra</finalName>
+                            <!--<finalName>gaia_ra</finalName>-->
                         </configuration>
                     </execution>
                 </executions>
