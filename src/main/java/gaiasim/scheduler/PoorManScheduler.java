@@ -243,6 +243,7 @@ public class PoorManScheduler extends Scheduler {
 
             // Subscribe the flow's paths to the links it uses
             for (Pathway p : f.paths_) {
+                p.bandwidth_ = 0; // we will recalculate the B/W later
                 for (int i = 0; i < p.node_list_.size() - 1; i++) {
                     int src = Integer.parseInt(p.node_list_.get(i));
                     int dst = Integer.parseInt(p.node_list_.get(i + 1));
@@ -537,7 +538,7 @@ public class PoorManScheduler extends Scheduler {
 
         for (String k : coflows.keySet()) {
             Coflow c = coflows.get(k);
-            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, ALPHA); // should be indifferent to 1 or ALPHA here.
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_, 1); // use 1 so that we can set ALPHA to 0.
             if (mmcf_out.completion_time_ != -1.0) {
                 cct_map.put(c, mmcf_out.completion_time_);
             }
