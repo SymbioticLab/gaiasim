@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_package = "gaiasim.gaiaprotos";
+option java_outer_classname = "GaiaMessageProtos";
+
+service GAIA {
+    rpc controlFlow(stream FlowUpdate) returns (stream StatusUpdate) {}
+}
+
+service PAReport {
+    rpc getFlowRules(PAM_REQ) returns (stream PortAnnouncement) {}
+}
+
+message StatusUpdate {
+    message FlowStatus {
+        string id = 1;
+        bool finished = 2;  
+        double transmitted = 3;
+    }
+
+    repeated FlowStatus phones = 1;
+}
+
+message FlowUpdate {
+    message FlowUpdateEntry {
+        double remainingVolume = 1;
+        string flowID = 2;
+        // also path to rate mapping
+        map <int32, double> pathToRate = 3;
+    }
+    
+    message RA_FUE_map {
+        map <string, FlowUpdateEntry> content = 1;
+    }
+
+    // can't nest map now
+    // map <string, RA_FUE_map > content = 1;
+}
+
+
+message PortAnnouncement {
+    bool finished = 1;
+}
+
+message PAM_REQ {
+    bool finished = 1;
+}
+
+
