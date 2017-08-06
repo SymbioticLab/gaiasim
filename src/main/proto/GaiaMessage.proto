@@ -3,12 +3,17 @@ syntax = "proto3";
 option java_package = "gaiasim.gaiaprotos";
 option java_outer_classname = "GaiaMessageProtos";
 
-service GAIA {
-    rpc controlFlow(stream FlowUpdate) returns (stream StatusUpdate) {}
-}
+//service GAIA {
+//    rpc controlFlow(stream FlowUpdate) returns (stream StatusUpdate) {}
+//}
+//
+//service PAReport {
+//    rpc getFlowRules(PAM_REQ) returns (stream PAMessage) {}
+//}
 
-service PAReport {
-    rpc getFlowRules(PAM_REQ) returns (stream PortAnnouncement) {}
+service SAService {
+    rpc SetFlow(stream FlowUpdate) returns (stream StatusUpdate) {}
+    rpc PrepareConnections(PAM_REQ) returns (stream PAMessage) {}
 }
 
 message StatusUpdate {
@@ -38,8 +43,11 @@ message FlowUpdate {
 }
 
 
-message PortAnnouncement {
-    bool finished = 1;
+message PAMessage {
+    string sa_id = 1;
+    string ra_id = 2;
+    int32 path_id = 3;
+    int32 port_no = 4;
 }
 
 message PAM_REQ {

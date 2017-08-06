@@ -86,7 +86,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>src.main.java.gaiasim.agent.SendingAgent</mainClass>
+                                    <mainClass>src.main.java.gaiasim.gaiaagent.SendingAgent</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

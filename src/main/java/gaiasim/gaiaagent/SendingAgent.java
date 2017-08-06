@@ -1,17 +1,18 @@
-package gaiasim.agent;
+package gaiasim.gaiaagent;
 
-import java.net.ServerSocket;
-import java.net.Socket;
+// New sending agent using grpc.
 
-import gaiasim.gaiaagent.PersistentSA_New;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
+
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SendingAgent {
 
+@SuppressWarnings("Duplicates")
+
+public class SendingAgent {
     private static final Logger logger = LogManager.getLogger();
     protected static Configuration config;
 
@@ -25,9 +26,6 @@ public class SendingAgent {
         String id = null;
         String configfilePath;
         String gmlFilePath = null;
-
-        // TODO add option for whether use persistent connection.
-        //        options.addOption("")
 
         // automatically generate the help statement
         HelpFormatter formatter = new HelpFormatter();
@@ -67,27 +65,22 @@ public class SendingAgent {
                 logger.info("using gml from file: " + gmlFilePath);
             }
 
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-//        String id = args[0];
-//        String use_persistent = args[1];
-
-        ServerSocket listener = new ServerSocket(config.getSAPort(Integer.parseInt(id)));  // always listening
-        listener.setSoTimeout(0);
-
         NetGraph net_graph = new NetGraph(gmlFilePath ,1); // sending agent is unaware of the bw_factor
 
-        Socket socketToCTRL = listener.accept();
-        socketToCTRL.setSoTimeout(0);
-        socketToCTRL.setTcpNoDelay(true);
-        socketToCTRL.setKeepAlive(true);
-        logger.info("SA: Accepted socket from CTRL. Starting RRF.");
-
-        PersistentSA_New p = new PersistentSA_New(id, net_graph, socketToCTRL , config);
-        p.run();
+        // there should be 3 RPC servers?
+        final AgentRPCServer server = new AgentRPCServer(id, net_graph, config);
+        server.start();
+        try {
+            server.blockUntilShutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
+
+
 }
