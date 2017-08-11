@@ -231,6 +231,8 @@ public class WorkerThread implements Runnable{
             }
 
             // TODO need to remove from subscription list?
+            logger.info("SIZE of to_remove {}" , to_remove.size());
+
             for (SubscriptionInfo s : to_remove) {
                 total_rate -= s.getRate();
                 String fgID = s.getFgi().getID(); // fgID == fgiID
@@ -238,7 +240,7 @@ public class WorkerThread implements Runnable{
                 // remove from two places.
                 subscribers.remove(fgID);
                 sharedData.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
-//                logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
+                logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
                 sharedData.finishFlowGroup(fgID);
 
             }

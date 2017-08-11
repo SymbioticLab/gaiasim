@@ -117,6 +117,6 @@ public class AgentRPCClient {
 
         clientStreamObserver.onNext(FG_FIN);
 
-        logger.info("finished sending FLOW_FIN for {}", fgID);
+//        logger.info("finished sending FLOW_FIN for {}", fgID);
     }
 }
