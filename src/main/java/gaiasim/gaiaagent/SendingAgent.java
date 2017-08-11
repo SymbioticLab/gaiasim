@@ -2,12 +2,22 @@ package gaiasim.gaiaagent;
 
 // New sending agent using grpc.
 
+import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 
+import gaiasim.util.Constants;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 
 @SuppressWarnings("Duplicates")
@@ -15,8 +25,9 @@ import org.apache.logging.log4j.Logger;
 public class SendingAgent {
     private static final Logger logger = LogManager.getLogger();
     protected static Configuration config;
+    private static ScheduledExecutorService statusReportExec;
 
-    public static void main(String[] args) throws java.io.IOException {
+    public static void main(String[] args) {
         Options options = new Options();
         options.addRequiredOption("g", "gml",true, "path to gml file");
         options.addRequiredOption("i", "id" ,true, "ID of this sending agent");
@@ -69,11 +80,46 @@ public class SendingAgent {
             e.printStackTrace();
         }
 
-        NetGraph net_graph = new NetGraph(gmlFilePath ,1); // sending agent is unaware of the bw_factor
+        NetGraph net_graph = null; // sending agent is unaware of the bw_factor
+        try {
+            net_graph = new NetGraph(gmlFilePath ,1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        // there should be 3 RPC servers?
-        final AgentRPCServer server = new AgentRPCServer(id, net_graph, config);
-        server.start();
+        AgentSharedData sharedData;
+        sharedData = new AgentSharedData(id, net_graph);
+
+        final AgentRPCServer server = new AgentRPCServer(id, net_graph, config, sharedData);
+
+        Thread fumListener = new Thread( new CTRLMessageListener(sharedData.fumQueue, sharedData));
+        fumListener.start();
+
+        try {
+            server.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // TODO: wait for the status become READY, then start the Client
+        logger.info("Waiting for the READY status before starting the gRPC client");
+
+        try {
+            sharedData.readySignal.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        logger.info("agent now READY, starting agent RPC client");
+        // start the client first? no! start the client after the server
+        sharedData.rpcClient = new AgentRPCClient(config.getMasterIP(), config.getMasterPort(), sharedData);
+
+        statusReportExec = Executors.newScheduledThreadPool(1);
+
+        final Runnable sendStatus = () -> sharedData.rpcClient.sendStatusUpdate();
+
+        ScheduledFuture<?> mainHandler = statusReportExec.scheduleAtFixedRate(sendStatus, 0, Constants.STATUS_MESSAGE_INTERVAL_MS, MILLISECONDS);
+
         try {
             server.blockUntilShutdown();
         } catch (InterruptedException e) {

@@ -43,7 +43,7 @@ def main():
         # Start the receiving agents
         for key, host in ng.mininet_hosts.iteritems():
             print "Starting receiving agent " + host.name
-            host.cmd('cd ~/gaiasim; java -cp target/gaia_ra-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
+            host.cmd('java -cp target/gaia_all-jar-with-dependencies.jar gaiasim.agent.ReceivingAgent &');
 
         num_of_hosts = str(len(ng.mininet_hosts));
 
@@ -51,7 +51,7 @@ def main():
         for key, host in ng.mininet_hosts.iteritems():
             host_id = int(ng.mininet_host_ips[key].split('.')[-1]) - 1
 
-            cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent '
+            cmd_str = 'java -cp target/gaia_all-jar-with-dependencies.jar gaiasim.gaiaagent.SendingAgent '
             if baseline: # not supported for now
                 # cmd_str += str(host_id) + ' 0 > /tmp/salog_' + str(host_id) + '.txt &'
                 cmd_str += ' -i ' + str(host_id) + ' -g ' + args.gml + ' -n ' + num_of_hosts + ' > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'

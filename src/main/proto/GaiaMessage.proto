@@ -11,35 +11,48 @@ option java_outer_classname = "GaiaMessageProtos";
 //    rpc getFlowRules(PAM_REQ) returns (stream PAMessage) {}
 //}
 
-service SAService {
-    rpc SetFlow(stream FlowUpdate) returns (stream StatusUpdate) {}
-    rpc PrepareConnections(PAM_REQ) returns (stream PAMessage) {}
+service SendingAgentService {
+//    rpc StartFlow (FlowUpdate) returns (stream StatusReport) {}
+    rpc PrepareConnections (PAM_REQ) returns (stream PAMessage) {}
+    rpc ChangeFlow (stream FlowUpdate) returns (FUM_ACK) {}
 }
 
-message StatusUpdate {
+service MasterService {
+    rpc UpdateFlowStatus (stream StatusReport) returns (FlowStatus_ACK) {}
+}
+
+message StatusReport {
     message FlowStatus {
         string id = 1;
-        bool finished = 2;  
-        double transmitted = 3;
+        double transmitted = 2;
+        bool finished = 3;
     }
 
-    repeated FlowStatus phones = 1;
+    repeated FlowStatus status = 1;
 }
 
 message FlowUpdate {
+
+    message PathRateEntry {
+        int32 pathID = 1;
+        double rate = 2;
+    }
+
     message FlowUpdateEntry {
         double remainingVolume = 1;
         string flowID = 2;
-        // also path to rate mapping
-        map <int32, double> pathToRate = 3;
+        // path to rate mapping
+        repeated PathRateEntry pathToRate = 3;
+//        map <int32, double> pathToRate = 3;
     }
     
-    message RA_FUE_map {
-        map <string, FlowUpdateEntry> content = 1;
+    message RAUpdateEntry {
+        string raID = 1;
+        repeated FlowUpdateEntry fges = 2;
     }
 
-    // can't nest map now
-    // map <string, RA_FUE_map > content = 1;
+    repeated RAUpdateEntry RAUpdate = 1;
+    // Collectors.groupingBy() should enforce that multiple RAUEntry all have different raID
 }
 
 
@@ -51,7 +64,11 @@ message PAMessage {
 }
 
 message PAM_REQ {
-    bool finished = 1;
+//    bool finished = 1;
 }
+
+message FUM_ACK {}
+
+message FlowStatus_ACK {}
 
 

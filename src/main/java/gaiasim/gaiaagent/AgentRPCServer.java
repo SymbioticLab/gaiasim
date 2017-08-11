@@ -4,16 +4,16 @@ package gaiasim.gaiaagent;
  1. idle
  2. connecting to RAs
  3. ready
-
 */
 
 import gaiasim.gaiaprotos.GaiaMessageProtos;
-import gaiasim.gaiaprotos.SAServiceGrpc;
+import gaiasim.gaiaprotos.SendingAgentServiceGrpc;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.stub.StreamObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,26 +32,20 @@ public class AgentRPCServer {
     Configuration config;
 
     // data structures from the SAAPI
-    SharedData sharedData;
+    AgentSharedData sharedData;
 
-    public AgentRPCServer(String id, NetGraph net_graph, Configuration config) {
+    public AgentRPCServer(String id, NetGraph net_graph, Configuration config, AgentSharedData sharedData) {
         this.config = config;
         this.saID = id;
         this.netGraph = net_graph;
         this.port = config.getSAPort(Integer.parseInt(id));
         this.trace_id_ = Constants.node_id_to_trace_id.get(id);
-        this.sharedData = new SharedData(id, netGraph);
+        this.sharedData = sharedData;
     }
-
-    enum SAState {
-        IDLE, CONNECTING, READY
-    }
-
-    SAState saState = SAState.IDLE;
 
     public void start() throws IOException {
         server = ServerBuilder.forPort(port)
-                .addService(new GreeterImpl())
+                .addService(new SAServiceImpl())
                 .build()
                 .start();
         logger.info("gRPC Server started, listening on " + port);
@@ -63,8 +57,10 @@ public class AgentRPCServer {
                 AgentRPCServer.this.stop();
                 System.err.println("*** server shut down");
             }
-        });
+        }); // end of Shutdown Hook
 
+
+        // TODO forward the FUM message
 
     }
 
@@ -83,19 +79,20 @@ public class AgentRPCServer {
         }
     }
 
-    class GreeterImpl extends SAServiceGrpc.SAServiceImplBase {
+    class SAServiceImpl extends SendingAgentServiceGrpc.SendingAgentServiceImplBase {
 
         // handler of prepareConns message, setup the Workers and PConns, reply with the PA message.
         @Override
         public void prepareConnections(gaiasim.gaiaprotos.GaiaMessageProtos.PAM_REQ request,
                                        io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.PAMessage> responseObserver) {
 
-            if (saState != SAState.IDLE) {
+            if (sharedData.saState != AgentSharedData.SAState.IDLE) {
+                logger.error("Received Prepare Connection message when not IDLE");
                 // TODO error handling
 //                    responseObserver.onError();
             }
 
-            saState = SAState.CONNECTING;
+            sharedData.saState = AgentSharedData.SAState.CONNECTING;
             // set up Persistent Connections and send PA Messages.
             for (String ra_id : netGraph.nodes_) {
 
@@ -121,12 +118,9 @@ public class AgentRPCServer {
                             GaiaMessageProtos.PAMessage reply = GaiaMessageProtos.PAMessage.newBuilder().setSaId(saID).setRaId(ra_id).setPathId(i).setPortNo(port).build();
                             responseObserver.onNext(reply);
 
-                            // TODO start the thread to handle this connection
-/*                               // just start worker thread. PConn is the delegate of both worker thread and socket api.
-                                Thread wt = new Thread( new Worker(conn_id, ra_id , i ,socketToRA , queues[i] ,saAPI) );
-                                wt.start();
-                                // We don't track the thread after starting it.*/
-
+                            // Start the worker Thread TODO: handle thread failure/PConn failure
+                            Thread wt = new Thread( new WorkerThread(conn_id, ra_id , i ,socketToRA , queues[i] , sharedData) );
+                            wt.start();
 
                         }
                         catch (java.io.IOException e) {
@@ -139,16 +133,65 @@ public class AgentRPCServer {
 
                     sharedData.workerQueues.put(ra_id , queues);
 
-
                 } // if id != ra_id
 
             } // for ra_id in nodes
 
-            // build reply for each connection
+            responseObserver.onCompleted();
+            sharedData.saState = AgentSharedData.SAState.READY;
+            sharedData.readySignal.countDown();
+//            sharedData.saState.notify();
+        }
 
+        @Override
+        public io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate> changeFlow(
+                io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.FUM_ACK> responseObserver) {
+
+            return new StreamObserver<GaiaMessageProtos.FlowUpdate>() {
+                @Override
+                public void onNext(GaiaMessageProtos.FlowUpdate flowUpdate) {
+//                    logger.info("Received FUM\n {}", flowUpdate);
+                    try {
+                        sharedData.fumQueue.put(flowUpdate);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+
+                }
+
+                @Override
+                public void onCompleted() {
+                    logger.info("Received RPC completion from master RPC client");
+                }
+            };
+        }
+
+        // non-stream version
+/*        @Override
+        public void changeFlow(gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate request,
+                               io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.FUM_ACK> responseObserver) {
+            if (saState != SAState.READY) {
+                logger.error("Received changeFLow when not READY");
+            }
+
+            // forward the FUM to the CTRLMessageListener.
+            try {
+                fumQueue.put(request);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            gaiasim.gaiaprotos.GaiaMessageProtos.FUM_ACK fumAck = gaiasim.gaiaprotos.GaiaMessageProtos.FUM_ACK.newBuilder().build();
+
+            responseObserver.onNext(fumAck);
             responseObserver.onCompleted();
 
-        }
-    }
+        }*/
 
+
+    }
 }

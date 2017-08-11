@@ -72,7 +72,7 @@ public class PortAnnouncementRelayMessage {
                 // Fixed: If we make ID starts with 0, then we need to add 1 here
                 String metadata = Integer.toString(msg_id) + ' ' + Integer.toString(num_messages) + ' ' + (Integer.parseInt(p.src())+1) + ' ' +
                         (Integer.parseInt(p.dst())+1) + ' ' + Integer.toString(m.port_no_) + " 33330\n";
-                System.out.println("sending metadata: " + metadata + "for path: " + p.toString());
+//                System.out.println("sending metadata: " + metadata + "for path: " + p.toString());
                 bw.write(metadata);
 
                 // Individual messages are of form:

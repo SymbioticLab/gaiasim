@@ -78,6 +78,10 @@ public class Configuration {
             RAIPs[i] = Constants.AGENT_ADDR_PREFIX + String.valueOf(i+1);
             RAPorts[i] = Constants.RECEIVING_AGENT_PORT;
         }
+
+        masterPort = Constants.DEFAULT_MASTER_PORT;
+        masterIP = Constants.AGENT_ADDR_PREFIX + String.valueOf(numRA+1);
+
     }
 
     public boolean parseConfigFile(String configFilePath){

@@ -8,15 +8,13 @@ public class Constants {
     public static final int SCHEDULE_INTERVAL_MS = 500;
     public static final int STATUS_MESSAGE_INTERVAL_MS = 100;
 
-    public static final int CHEAT_FACTOR_A = 1;
-    public static final int CHEAT_FACTOR_B = 1;
-
     public static final int COLOCATED_FG_COMPLETION_TIME = 0;
 
     // Port and Addresses
     public static final int SENDING_AGENT_PORT = 23330;
     public static final int RECEIVING_AGENT_PORT = 33330;
     public static final String AGENT_ADDR_PREFIX = "10.0.0.";
+    public static final int DEFAULT_MASTER_PORT = 8888;
 
     // Comparison between double
     public static final double DOUBLE_EPSILON = 0.00001;

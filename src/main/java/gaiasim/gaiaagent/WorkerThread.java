@@ -21,16 +21,15 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
-
-public class Worker implements Runnable{
+@SuppressWarnings("Duplicates")
+public class WorkerThread implements Runnable{
 
     private static final Logger logger = LogManager.getLogger();
 //    PConnection conn;
-    SharedInterface api;
+    AgentSharedData sharedData;
 
     String connID; // name of this TCP Connection. SA_id-RA_id.path_id
     String raID;
@@ -47,7 +46,7 @@ public class Worker implements Runnable{
     public HashMap<String, SubscriptionInfo> subscribers = new HashMap<String, SubscriptionInfo>();
 
     // Current total rate requested by subscribers. This is the aggregate rate of the Data Center.
-    public volatile double total_rate = 0.0; // TODO(jimmy): track the total_rate.
+    public volatile double total_rate = 0.0;
 
     public Socket dataSocket;
 
@@ -59,11 +58,11 @@ public class Worker implements Runnable{
     private BufferedOutputStream bos;
 
 
-    public Worker(String workerID, String RAID, int pathID ,Socket soc, LinkedBlockingQueue<SubscriptionMessage> inputQueue , SharedInterface api){
+    public WorkerThread(String workerID, String RAID, int pathID , Socket soc, LinkedBlockingQueue<SubscriptionMessage> inputQueue , AgentSharedData sharedData){
         this.connID = workerID;
         this.dataSocket = soc;
         this.subcriptionQueue = inputQueue;
-        this.api = api;
+        this.sharedData = sharedData;
         this.raID = RAID;
         this.pathID = pathID;
 
@@ -75,10 +74,8 @@ public class Worker implements Runnable{
             e.printStackTrace();
         }
 
-//        data_ = data;
     }
 
-    // TODO: we should not couple the subscription handling and the data sending together!
     @Override
     public void run() {
 
@@ -116,13 +113,15 @@ public class Worker implements Runnable{
                     // update the worker's subscription info
                     // and go back to work.
                     subscribers.clear();
-                    subscribers . putAll( api.subscriptionRateMaps.get(raID).get(pathID) );
+                    subscribers . putAll( sharedData.subscriptionRateMaps.get(raID).get(pathID) );
 
-                    total_rate = api.subscriptionRateMaps.get(raID).get(pathID).values()
+                    total_rate = sharedData.subscriptionRateMaps.get(raID).get(pathID).values()
                             .stream().mapToDouble(SubscriptionInfo::getRate).sum();
 
-                    logger.info("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
-//                    System.out.println("Worker: Received SYNC message, now working with rate (MBit/s) " + total_rate);
+                    if (total_rate  > 0){
+                        logger.info("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
+                    }
+
                 }
 
 /*                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
@@ -167,7 +166,7 @@ public class Worker implements Runnable{
                 try {
                     // rate is MBit/s, converting to Block/s
 
-                    double cur_rate = total_rate * Constants.CHEAT_FACTOR_A; // FIXME: also cheat here.
+                    double cur_rate = total_rate;
 
                     int data_length;
 
@@ -194,11 +193,11 @@ public class Worker implements Runnable{
                     // distribute transmitted...
                     double tx_ed = (double) data_length * 8 / 1024 / 1024;
 
-                    distribute_transmitted( Constants.CHEAT_FACTOR_B * tx_ed); // FIXME: cheat here!
+                    distribute_transmitted( tx_ed);
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                 }
-                catch (java.io.IOException e) {
+                catch (IOException e) {
                     System.err.println("Fail to write data to ra");
                     e.printStackTrace();
 //                    System.exit(1); // don't fail here
@@ -237,9 +236,9 @@ public class Worker implements Runnable{
 
                 // remove from two places.
                 subscribers.remove(fgID);
-                api.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
+                sharedData.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
                 logger.info("Sending FG_FIN for {} to CTRL" , fgID);
-                api.finishFlowGroup(fgID);
+                sharedData.finishFlowGroup(fgID);
 
             }
 
