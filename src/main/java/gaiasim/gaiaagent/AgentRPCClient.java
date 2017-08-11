@@ -109,14 +109,14 @@ public class AgentRPCClient {
 
     public void sendFG_FIN(String fgID){
         GaiaMessageProtos.StatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.StatusReport.FlowStatus.newBuilder()
-                .setFinished(true).setId(fgID).setTransmitted(-1);
-        GaiaMessageProtos.StatusReport.Builder statusReportBuilder = GaiaMessageProtos.StatusReport.newBuilder();
-        statusReportBuilder.addStatus(fsBuilder);
+                .setFinished(true).setId(fgID).setTransmitted(0);
+//        GaiaMessageProtos.StatusReport.Builder statusReportBuilder = GaiaMessageProtos.StatusReport.newBuilder().addStatus(fsBuilder);
+//        statusReportBuilder.addStatus(fsBuilder);
 
-        GaiaMessageProtos.StatusReport FG_FIN = statusReportBuilder.build();
+        GaiaMessageProtos.StatusReport FG_FIN = GaiaMessageProtos.StatusReport.newBuilder().addStatus(fsBuilder).build();
 
         clientStreamObserver.onNext(FG_FIN);
 
-        logger.info("finished sending FG_FIN for {}", fgID);
+        logger.info("finished sending FLOW_FIN for {}", fgID);
     }
 }

@@ -113,7 +113,7 @@ public class WorkerThread implements Runnable{
                     // update the worker's subscription info
                     // and go back to work.
                     subscribers.clear();
-                    subscribers . putAll( sharedData.subscriptionRateMaps.get(raID).get(pathID) );
+                    subscribers.putAll( sharedData.subscriptionRateMaps.get(raID).get(pathID) );
 
                     total_rate = sharedData.subscriptionRateMaps.get(raID).get(pathID).values()
                             .stream().mapToDouble(SubscriptionInfo::getRate).sum();
@@ -187,7 +187,8 @@ public class WorkerThread implements Runnable{
                     bos.write(data_block , 0, data_length);
                     bos.flush();
 
-                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
+//                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
+                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
 //                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
@@ -225,7 +226,7 @@ public class WorkerThread implements Runnable{
                     // TODO: verify this. DO NOTHING here! even if we stop sending, we may still be told to send at a rate by GAIA (because the stale message is in the fly).
                     // wait until GAIA told us to stop, then stop. (although could cause a problem here.)
 
-                    to_remove.add(s);
+                    to_remove.add(s); // FIXME might contain duplicate
                 }
             }
 
@@ -237,7 +238,7 @@ public class WorkerThread implements Runnable{
                 // remove from two places.
                 subscribers.remove(fgID);
                 sharedData.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
-                logger.info("Sending FG_FIN for {} to CTRL" , fgID);
+//                logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
                 sharedData.finishFlowGroup(fgID);
 
             }

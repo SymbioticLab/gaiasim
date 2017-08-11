@@ -95,7 +95,6 @@ public class MasterRPCServer {
         for ( GaiaMessageProtos.StatusReport.FlowStatus status : statusReport.getStatusList()) {
             // first get the current flowGroup ID
             String fid = status.getId();
-            boolean isFIN = status.getFinished();
             if(status.getFinished()){
                 onFinishFlowGroup( fid , System.currentTimeMillis());
                 continue;

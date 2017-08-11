@@ -79,7 +79,6 @@ public class AgentSharedData {
 
     public void finishFlowGroup(String fgID){
 
-        // TODO send FIN message to CTRL immediately
         rpcClient.sendFG_FIN(fgID);
 
         flowGroups.remove(fgID);
