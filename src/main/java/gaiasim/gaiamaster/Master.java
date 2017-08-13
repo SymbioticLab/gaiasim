@@ -91,7 +91,7 @@ public class Master {
 
         this.rpcServer = new MasterRPCServer(this.config, this.masterSharedData);
 
-        this.masterSharedData.coflowPool = new ConcurrentHashMap<>();
+//        this.masterSharedData.coflowPool = new ConcurrentHashMap<>();
         this.mainExec = Executors.newScheduledThreadPool(1);
 
         // setting up interface with YARN.
