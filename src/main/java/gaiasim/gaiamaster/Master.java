@@ -374,11 +374,11 @@ public class Master {
         for( Map.Entry<String, Coflow> cfe : masterSharedData.coflowPool.entrySet()){
             Coflow cf = cfe.getValue();
 
-            str.append(cf.getId()).append(' ').append(cf.getStartTime()).append(' ');
+            str.append(cf.getId()).append(' ').append(cf.getStartTime()).append('\n');
 
             for ( Map.Entry<String, FlowGroup> fge : cf.getFlowGroups().entrySet()){
                 FlowGroup fg = fge.getValue();
-                str.append(fge.getKey()).append(' ').append(fg.getFlowState())
+                str.append(' ').append(fge.getKey()).append(' ').append(fg.getFlowState())
                         .append(' ').append(fg.getTransmitted()).append(' ').append(fg.getTotalVolume()).append('\n');
             }
         }

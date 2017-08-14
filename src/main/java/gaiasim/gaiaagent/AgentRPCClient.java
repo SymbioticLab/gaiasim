@@ -39,6 +39,7 @@ public class AgentRPCClient {
 
             @Override
             public void onError(Throwable t) {
+
             }
 
             @Override
@@ -128,6 +129,12 @@ public class AgentRPCClient {
     }
 
     public void sendFG_FIN(String fgID){
+
+        if (fgID == null){
+            System.err.println("fgID = null when sending FG_FIN");
+            return;
+        }
+
         GaiaMessageProtos.StatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.StatusReport.FlowStatus.newBuilder()
                 .setFinished(true).setId(fgID).setTransmitted(0);
 //        GaiaMessageProtos.StatusReport.Builder statusReportBuilder = GaiaMessageProtos.StatusReport.newBuilder().addStatus(fsBuilder);
