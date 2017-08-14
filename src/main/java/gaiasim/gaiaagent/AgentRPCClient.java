@@ -147,7 +147,7 @@ public class AgentRPCClient {
         strBuilder.append("---------SA STATUS---------\n");
         for (Map.Entry<String, FlowGroupInfo> fgie : agentSharedData.flowGroups.entrySet()){
             FlowGroupInfo fgi = fgie.getValue();
-            strBuilder.append(' ').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getTransmitted()).append('\n');
+            strBuilder.append(' ').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getVolume()-fgi.getTransmitted()).append('\n');
 
             for(FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
                 SubscriptionInfo tmpSI = agentSharedData.subscriptionRateMaps.get(wi.getRaID()).get(wi.getPathID()).get(fgi.getID());

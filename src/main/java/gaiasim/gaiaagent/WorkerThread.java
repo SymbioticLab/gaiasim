@@ -188,7 +188,7 @@ public class WorkerThread implements Runnable{
                     bos.flush();
 
 //                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
-                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
+//                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
 //                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
 
                     // distribute transmitted...
