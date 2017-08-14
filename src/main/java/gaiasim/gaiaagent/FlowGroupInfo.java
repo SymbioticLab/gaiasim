@@ -81,6 +81,7 @@ public class FlowGroupInfo {
         transmitted += v; // so volatile is not enough!
         if (transmitted + Constants.DOUBLE_EPSILON >= volume){
             finished = true;
+            transmitted = volume; // ensure that remaining volume >= 0
             return true;
         }
         else {

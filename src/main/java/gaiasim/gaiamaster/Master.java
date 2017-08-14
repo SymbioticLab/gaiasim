@@ -291,6 +291,7 @@ public class Master {
         }
         logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , masterSharedData.coflowPool.size(), scheduledFGs.size(), fgoContent);
 
+        printMasterState();
     }
 
     // update the flowState in the CFPool, before sending out the information.
@@ -366,6 +367,23 @@ public class Master {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
+    }
+
+    public void printMasterState(){
+        StringBuilder str = new StringBuilder("-----Master state-----\n");
+        for( Map.Entry<String, Coflow> cfe : masterSharedData.coflowPool.entrySet()){
+            Coflow cf = cfe.getValue();
+
+            str.append(cf.getId()).append(' ').append(cf.getStartTime()).append(' ');
+
+            for ( Map.Entry<String, FlowGroup> fge : cf.getFlowGroups().entrySet()){
+                FlowGroup fg = fge.getValue();
+                str.append(fge.getKey()).append(' ').append(fg.getFlowState())
+                        .append(' ').append(fg.getTransmitted()).append(' ').append(fg.getTotalVolume()).append('\n');
+            }
+        }
+
+        logger.info(str);
     }
 
 /*    void testSA (String saIP, int saPort){
