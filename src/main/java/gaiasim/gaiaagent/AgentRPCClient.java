@@ -83,10 +83,22 @@ public class AgentRPCClient {
         GaiaMessageProtos.StatusReport.Builder statusReportBuilder = GaiaMessageProtos.StatusReport.newBuilder();
 
         for (Map.Entry<String, FlowGroupInfo> entry: sharedData.flowGroups.entrySet()) {
-            FlowGroupInfo f = entry.getValue();
+            FlowGroupInfo fgi = entry.getValue();
+
+            if (fgi.getFlowState() == FlowGroupInfo.FlowState.INIT ){
+                logger.error("fgi in INIT state");
+                continue;
+            }
+            if ( fgi.getFlowState() == FlowGroupInfo.FlowState.FIN ){
+                continue;
+            }
+            if ( fgi.getFlowState() == FlowGroupInfo.FlowState.PAUSED) {
+//                logger.info("");
+                continue;
+            }
 
             GaiaMessageProtos.StatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.StatusReport.FlowStatus.newBuilder()
-                    .setFinished(f.isFinished()).setId(f.getID()).setTransmitted(f.getTransmitted());
+                    .setFinished(fgi.isFinished()).setId(fgi.getID()).setTransmitted(fgi.getTransmitted());
 
             statusReportBuilder.addStatus(fsBuilder);
         }

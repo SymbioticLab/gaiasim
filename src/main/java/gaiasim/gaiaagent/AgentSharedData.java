@@ -134,7 +134,7 @@ public class AgentSharedData {
             FlowGroupInfo flowGroupInfo = flowGroups.get(fgID);
 
         } else {
-            logger.error("CHANGE/RESUME failed: a non-existing flow!");
+            logger.warn("CHANGE/RESUME failed: a non-existing flow!"); // after FG finished, this can happen
             return;
         }
 
