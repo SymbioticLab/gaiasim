@@ -101,8 +101,7 @@ public class CTRLMessageListener implements Runnable{
                     }
                 }
 
-                printSAStatus();
-
+                logger.info("Sent SYNC message");
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -111,23 +110,4 @@ public class CTRLMessageListener implements Runnable{
 
     }
 
-    private void printSAStatus() {
-
-        StringBuilder strBuilder = new StringBuilder();
-//        System.out.println("---------SA STATUS---------");
-        strBuilder.append("---------SA STATUS---------\n");
-        for (Map.Entry<String, FlowGroupInfo> fgie : agentSharedData.flowGroups.entrySet()){
-            FlowGroupInfo fgi = fgie.getValue();
-            strBuilder.append('-').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getTransmitted()).append('\n');
-
-            for(FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
-                SubscriptionInfo tmpSI = agentSharedData.subscriptionRateMaps.get(wi.getRaID()).get(wi.getPathID()).get(fgi.getID());
-                strBuilder.append("  ").append(wi.getRaID()).append(' ').append(wi.getPathID()).append(tmpSI.getRate()).append('\n');
-            }
-
-        }
-
-        logger.info(strBuilder.toString());
-
-    }
 }

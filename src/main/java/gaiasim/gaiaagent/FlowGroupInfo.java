@@ -53,6 +53,10 @@ public class FlowGroupInfo {
         workerInfoList.add( new FlowGroupInfo.WorkerInfo(raID, pathID));
     }
 
+    public void removeAllWorkerInfo(){
+        workerInfoList.clear();
+    }
+
     public String getID() {
         return ID;
     }

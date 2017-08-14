@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class AgentRPCClient {
     private static final Logger logger = LogManager.getLogger();
 
-    AgentSharedData sharedData;
+    AgentSharedData agentSharedData;
 
     private final ManagedChannel channel;
 //    private final MasterServiceGrpc.MasterServiceBlockingStub blockingStub;
@@ -27,7 +27,7 @@ public class AgentRPCClient {
 
     public AgentRPCClient (String masterIP, int masterPort, AgentSharedData sharedData) {
         this(ManagedChannelBuilder.forAddress(masterIP, masterPort).usePlaintext(true).build());
-        this.sharedData = sharedData;
+        this.agentSharedData = sharedData;
         logger.info("Agent RPC Client connecting to {}:{}", masterIP, masterPort);
 
         responseObserver = new StreamObserver<GaiaMessageProtos.FlowStatus_ACK>() {
@@ -64,7 +64,7 @@ public class AgentRPCClient {
 
     public void sendStatusUpdate() {
 
-        int size = sharedData.flowGroups.size();
+        int size = agentSharedData.flowGroups.size();
         if(size == 0){
 //            System.out.println("FG_SIZE = 0");
             return;         // if there is no data to send (i.e. the master has not come online), we simply skip.
@@ -76,13 +76,16 @@ public class AgentRPCClient {
         clientStreamObserver.onNext(statusReport);
 
         logger.info("finished sending status report\n{}", statusReport);
+
+        printSAStatus();
+
     }
 
     private GaiaMessageProtos.StatusReport buildStatusReport() {
 
         GaiaMessageProtos.StatusReport.Builder statusReportBuilder = GaiaMessageProtos.StatusReport.newBuilder();
 
-        for (Map.Entry<String, FlowGroupInfo> entry: sharedData.flowGroups.entrySet()) {
+        for (Map.Entry<String, FlowGroupInfo> entry: agentSharedData.flowGroups.entrySet()) {
             FlowGroupInfo fgi = entry.getValue();
 
             if (fgi.getFlowState() == FlowGroupInfo.FlowState.INIT ){
@@ -135,5 +138,25 @@ public class AgentRPCClient {
         clientStreamObserver.onNext(FG_FIN);
 
 //        logger.info("finished sending FLOW_FIN for {}", fgID);
+    }
+
+    private void printSAStatus() {
+
+        StringBuilder strBuilder = new StringBuilder();
+//        System.out.println("---------SA STATUS---------");
+        strBuilder.append("---------SA STATUS---------\n");
+        for (Map.Entry<String, FlowGroupInfo> fgie : agentSharedData.flowGroups.entrySet()){
+            FlowGroupInfo fgi = fgie.getValue();
+            strBuilder.append(' ').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getTransmitted()).append('\n');
+
+            for(FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
+                SubscriptionInfo tmpSI = agentSharedData.subscriptionRateMaps.get(wi.getRaID()).get(wi.getPathID()).get(fgi.getID());
+                strBuilder.append("  ").append(wi.getRaID()).append(' ').append(wi.getPathID()).append(' ').append(tmpSI.getRate()).append('\n');
+            }
+
+        }
+
+        logger.info(strBuilder.toString());
+
     }
 }

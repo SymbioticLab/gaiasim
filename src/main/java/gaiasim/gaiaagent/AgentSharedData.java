@@ -100,6 +100,7 @@ public class AgentSharedData {
         }
 
         flowGroups.get(fgID).setFlowState(FlowGroupInfo.FlowState.FIN);
+        logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
         rpcClient.sendFG_FIN(fgID);
         flowGroups.remove(fgID);
     }
@@ -184,6 +185,8 @@ public class AgentSharedData {
                 e.printStackTrace();
             }
         }
+
+        fgi.removeAllWorkerInfo();
 
     }
 

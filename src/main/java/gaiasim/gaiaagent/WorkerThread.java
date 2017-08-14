@@ -237,7 +237,7 @@ public class WorkerThread implements Runnable{
                 // remove from two places.
                 subscribers.remove(fgID);
                 sharedData.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
-                logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
+
                 sharedData.finishFlow(fgID);
 
             }
