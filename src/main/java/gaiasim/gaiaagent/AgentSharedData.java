@@ -127,9 +127,12 @@ public class AgentSharedData {
             double rate = pathToRate.getRate();
             ConcurrentHashMap<String, SubscriptionInfo> infoMap = subscriptionRateMaps.get(raID).get(pathID);
 
-            if (rate > 0){
-                flowGroupInfo.addWorkerInfo(raID, pathID);  // reverse look-up ArrayList
+            if (rate < 0.1){
+                rate = 0.1;
+                System.err.println("WARNING: rate of FUM too low: " + fgID);
             }
+            
+            flowGroupInfo.addWorkerInfo(raID, pathID);  // reverse look-up ArrayList
 
             if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
                 infoMap.get(fgID).setRate( rate );
