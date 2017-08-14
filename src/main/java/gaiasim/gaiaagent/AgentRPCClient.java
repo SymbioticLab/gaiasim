@@ -97,6 +97,11 @@ public class AgentRPCClient {
                 continue;
             }
 
+//            if (fgi.getTransmitted() == 0){
+//                logger.info("FG {} tx=0, status {}",fgi.getID(), fgi.getFlowState());
+//                continue;
+//            }
+
             GaiaMessageProtos.StatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.StatusReport.FlowStatus.newBuilder()
                     .setFinished(fgi.isFinished()).setId(fgi.getID()).setTransmitted(fgi.getTransmitted());
 

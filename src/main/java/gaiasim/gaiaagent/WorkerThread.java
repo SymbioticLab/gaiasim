@@ -238,7 +238,7 @@ public class WorkerThread implements Runnable{
                 subscribers.remove(fgID);
                 sharedData.subscriptionRateMaps.get(raID).get(pathID).remove(fgID);
                 logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
-                sharedData.finishFlowGroup(fgID);
+                sharedData.finishFlow(fgID);
 
             }
 

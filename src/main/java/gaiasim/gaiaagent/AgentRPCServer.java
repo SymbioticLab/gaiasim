@@ -150,7 +150,7 @@ public class AgentRPCServer {
             return new StreamObserver<GaiaMessageProtos.FlowUpdate>() {
                 @Override
                 public void onNext(GaiaMessageProtos.FlowUpdate flowUpdate) {
-//                    logger.info("Received FUM\n {}", flowUpdate);
+                    logger.info("Received FUM\n {}", flowUpdate);
                     try {
                         sharedData.fumQueue.put(flowUpdate);
                     } catch (InterruptedException e) {

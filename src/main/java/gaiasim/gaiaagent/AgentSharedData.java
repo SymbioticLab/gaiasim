@@ -84,7 +84,20 @@ public class AgentSharedData {
     }
 
 
-    public void finishFlowGroup(String fgID){
+    public void finishFlow(String fgID){
+
+        // null pointer because of double sending FG_FIN
+        if (flowGroups.get(fgID) == null){
+            // already sent the FIN message, do nothing
+            return;
+        }
+
+        if(flowGroups.get(fgID).getFlowState() == FlowGroupInfo.FlowState.FIN){
+            // already sent the FIN message, do nothing
+            logger.error("Already sent the FIN for {}", fgID);
+            flowGroups.remove(fgID);
+            return;
+        }
 
         flowGroups.get(fgID).setFlowState(FlowGroupInfo.FlowState.FIN);
         rpcClient.sendFG_FIN(fgID);
