@@ -117,42 +117,9 @@ public class MasterRPCServer {
         logger.info("Received FLOW_FIN for {}", fid);
         // set the current status
 
-        FlowGroup fg = masterSharedData.getFlowGroup(fid); // TODO: what if this returns null?
-        if (fg == null){
-            logger.warn("fg == null for fid = {}", fid);
-            return;
-        }
-        if(fg.getAndSetFinish(timestamp)){
-            return; // if already finished, do nothing.
-        }
+        masterSharedData.onFinishFlowGroup(fid, timestamp);
 
-        masterSharedData.flag_FG_FIN = true;
 
-        // check if the owning coflow is finished
-        Coflow cf = masterSharedData.coflowPool.get(fg.getOwningCoflowID());
-
-        if(cf == null){ // cf may already be finished.
-            return;
-        }
-
-        boolean flag = true;
-
-        // TODO verify concurrency issues here. here cf may be null.
-        for(FlowGroup ffg : cf.getFlowGroups().values()){
-            flag = flag && ffg.isFinished();
-        }
-
-        // if so set coflow status, send COFLOW_FIN
-        if (flag){
-            String coflowID = fg.getOwningCoflowID();
-            if ( masterSharedData.onFinishCoflow(coflowID) ){
-                try {
-                    masterSharedData.yarnEventQueue.put(new YARNMessages(coflowID));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
 }

@@ -6,6 +6,9 @@ package gaiasim.gaiaagent;
 import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,8 +19,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 @SuppressWarnings("Duplicates")
 
 public class AgentSharedData {
+    private static final Logger logger = LogManager.getLogger();
+
     final String saID;
     final String saName; // the name of Data Center in the trace file.
+
+
 
     enum SAState {
         IDLE, CONNECTING, READY
@@ -43,11 +50,11 @@ public class AgentSharedData {
     // TODO rethink about the data structures here. the consistency between the following two?
 
     // TODO do we need ConcurrentHashMap?
-    // FlowGroups that are currently being sent by this SendingAgent
+    // fgID -> FGI. FlowGroups that are currently being sent by this SendingAgent
     public ConcurrentHashMap<String, FlowGroupInfo> flowGroups = new ConcurrentHashMap<String, FlowGroupInfo>();
 
     // RAID , pathID -> FGID -> subscription info // ArrayList works good here!
-    public ConcurrentHashMap<String , ArrayList< HashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new ConcurrentHashMap<>();
+    public ConcurrentHashMap<String , ArrayList< ConcurrentHashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new ConcurrentHashMap<>();
 
     // raID , pathID -> workerQueue.
     HashMap<String, LinkedBlockingQueue<SubscriptionMessage>[]> workerQueues = new HashMap<>();
@@ -65,11 +72,11 @@ public class AgentSharedData {
             if (!saID.equals(ra_id)) { // don't consider path to SA itself.
                 // because apap is consistent among different programs.
                 int pathSize = netGraph.apap_.get(saID).get(ra_id).size();
-                ArrayList<HashMap<String, SubscriptionInfo>> maplist = new ArrayList<>(pathSize);
+                ArrayList<ConcurrentHashMap<String, SubscriptionInfo>> maplist = new ArrayList<>(pathSize);
                 subscriptionRateMaps.put(ra_id, maplist);
 
                 for (int i = 0; i < pathSize; i++) {
-                    maplist.add(new HashMap<>());
+                    maplist.add(new ConcurrentHashMap<>());
                 }
             }
         }
@@ -79,11 +86,93 @@ public class AgentSharedData {
 
     public void finishFlowGroup(String fgID){
 
+        flowGroups.get(fgID).setFlowState(FlowGroupInfo.FlowState.FIN);
         rpcClient.sendFG_FIN(fgID);
-
         flowGroups.remove(fgID);
     }
 
+
+    // methods to update the flowGroups and subscriptionRateMaps
+    public void startFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {
+        // add this flowgroup when not existent // only accept volume from CTRL at this point.
+        if( flowGroups.containsKey(fgID)){
+            logger.error("START failed: an existing flow!");
+            return;
+        }
+
+        FlowGroupInfo fgi = new FlowGroupInfo(fgID, fge.getRemainingVolume()).setFlowState(FlowGroupInfo.FlowState.RUNNING);
+        flowGroups.put(fgID , fgi);
+
+        addAllSubscription(raID, fgID, fge, fgi);
+
+    }
+
+    private void addAllSubscription(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge, FlowGroupInfo flowGroupInfo) {
+        for ( gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate.PathRateEntry pathToRate : fge.getPathToRateList() ){
+            int pathID = pathToRate.getPathID();
+            double rate = pathToRate.getRate();
+            ConcurrentHashMap<String, SubscriptionInfo> infoMap = subscriptionRateMaps.get(raID).get(pathID);
+
+            if (rate > 0){
+                flowGroupInfo.addWorkerInfo(raID, pathID);  // reverse look-up ArrayList
+            }
+
+            if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
+                infoMap.get(fgID).setRate( rate );
+                logger.error("DEBUG: this should not happen");
+            }
+            else { // create this info
+                infoMap.put(fgID , new SubscriptionInfo(fgID, flowGroups.get(fgID) , rate ));
+            }
+
+        } // end loop for pathID
+    }
+
+    public void changeFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {
+
+        if( flowGroups.containsKey(fgID)){
+            FlowGroupInfo flowGroupInfo = flowGroups.get(fgID);
+
+        } else {
+            logger.error("CHANGE/RESUME failed: a non-existing flow!");
+            return;
+        }
+
+        FlowGroupInfo fgi = flowGroups.get(fgID);
+        fgi.setFlowState(FlowGroupInfo.FlowState.RUNNING);
+
+        removeAllSubscription(raID, fgID, fgi);
+        addAllSubscription(raID, fgID, fge, fgi);
+    }
+
+    public void pauseFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {
+        // search for all subscription with this flowID, and remove them
+
+        if( flowGroups.containsKey(fgID)){
+            FlowGroupInfo flowGroupInfo = flowGroups.get(fgID);
+
+        } else {
+            logger.error("PAUSE failed: a non-existing flow!");
+            return;
+        }
+
+        FlowGroupInfo fgi = flowGroups.get(fgID);
+        fgi.setFlowState(FlowGroupInfo.FlowState.PAUSED);
+        removeAllSubscription(raID, fgID, fgi);
+
+    }
+
+    private void removeAllSubscription(String raID, String fgID, FlowGroupInfo fgi) {
+
+        for ( FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
+            try {
+                subscriptionRateMaps.get(raID).get(wi.getPathID()).remove(fgID);
+            } catch (NullPointerException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 /*    // Getters//
 

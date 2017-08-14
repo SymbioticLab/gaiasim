@@ -17,8 +17,18 @@ public class FlowGroup_Old {
     private long start_timestamp = -1;
     private long end_timestamp = -1;
     private boolean updated = false; // whether the flow has had its allocation updated
-    private boolean started_sending = false; // whether the flow has started to be sent
+//    private boolean started_sending = false; // whether the flow has started to be sent
                                              // by a sending agent (only used by baseline)
+
+    // the state of this flow
+    public enum FlowState{
+        INIT,
+        STARTING,
+        PAUSING,
+        CHANGING
+    }
+
+    private FlowState flowState;
 
     public FlowGroup_Old(String id, int int_id, String coflow_id, String src_loc, String dst_loc, double volume) {
         this.id = id;
@@ -29,6 +39,7 @@ public class FlowGroup_Old {
         this.volume = volume;
         this.rate = (double)0.0;
         this.transmitted_volume = (double)0.0;
+        this.flowState = FlowState.INIT;
     }
 
     public double remaining_volume() {
@@ -132,11 +143,15 @@ public class FlowGroup_Old {
         this.updated = updated;
     }
 
-    public boolean isStarted_sending() {
-        return started_sending;
-    }
+//    public boolean isStarted_sending() {
+//        return started_sending;
+//    }
+//
+//    public void setStarted_sending(boolean started_sending) {
+//        this.started_sending = started_sending;
+//    }
 
-    public void setStarted_sending(boolean started_sending) {
-        this.started_sending = started_sending;
-    }
+    public FlowState getFlowState() { return flowState; }
+
+    public FlowGroup_Old setFlowState(FlowState flowState) { this.flowState = flowState; return this; }
 };

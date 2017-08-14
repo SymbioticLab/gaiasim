@@ -10,7 +10,6 @@ import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.scheduler.CoflowScheduler;
 import gaiasim.spark.YARNEmulator;
-import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
@@ -222,6 +221,7 @@ public class Master {
 
         long currentTime = System.currentTimeMillis();
         List<FlowGroup_Old> scheduledFGs = new ArrayList<>(0);
+        List<FlowGroup_Old> FGsToSend = new ArrayList<>();
 
         // snapshoting and converting
         HashMap<String , Coflow_Old> outcf = new HashMap<>();
@@ -240,7 +240,9 @@ public class Master {
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
-                sendControlMessages_Parallel(scheduledFGs);
+
+                FGsToSend = parseFlowState(masterSharedData, scheduledFGs);
+                sendControlMessages_Async(FGsToSend);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -254,7 +256,9 @@ public class Master {
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
-                sendControlMessages_Parallel(scheduledFGs);
+
+                FGsToSend = parseFlowState(masterSharedData, scheduledFGs);
+                sendControlMessages_Async(FGsToSend);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -267,7 +271,9 @@ public class Master {
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
-                sendControlMessages_Parallel(scheduledFGs);
+
+                FGsToSend = parseFlowState(masterSharedData, scheduledFGs);
+                sendControlMessages_Async(FGsToSend);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -287,7 +293,54 @@ public class Master {
 
     }
 
-    private void sendControlMessages_Parallel(List<FlowGroup_Old> scheduledFGs) {
+    // update the flowState in the CFPool, before sending out the information.
+    private List<FlowGroup_Old> parseFlowState(MasterSharedData masterSharedData, List<FlowGroup_Old> scheduledFGs) {
+        List<FlowGroup_Old> fgoToSend = new ArrayList<>();
+        HashMap<String, FlowGroup_Old> fgoHashMap = new HashMap<>();
+
+        // first convert List to hashMap
+        for (FlowGroup_Old fgo : scheduledFGs){
+            fgoHashMap.put(fgo.getId(), fgo);
+        }
+
+        // traverse all FGs in CFPool
+        for ( Map.Entry<String, Coflow> ecf : masterSharedData.coflowPool.entrySet()) { // snapshoting should not be a problem
+            Coflow cf = ecf.getValue();
+            for ( Map.Entry<String, FlowGroup> fge : cf.getFlowGroups().entrySet()){
+                FlowGroup fg = fge.getValue();
+                if (fg.getFlowState() == FlowGroup.FlowState.FIN){
+                    continue; // ignore finished, they shall be removed soon
+                }
+                else if (fg.getFlowState() == FlowGroup.FlowState.RUNNING) { // may pause/change the running flow
+                    if (fgoHashMap.containsKey(fg.getId())){ // we may need to change, if the path/rate are different TODO: speculatively send change message
+                        fgoToSend.add (fgoHashMap.get(fg.getId()).setFlowState(FlowGroup_Old.FlowState.CHANGING) ); // running flow needs to change
+                    }
+                    else { // we need to pause
+                        fg.setFlowState(FlowGroup.FlowState.PAUSED);
+                        fgoToSend.add ( FlowGroup.toFlowGroup_Old(fg, 0).setFlowState(FlowGroup_Old.FlowState.PAUSING) );
+                    }
+                }
+                else { // case: NEW/PAUSED
+                    if (fgoHashMap.containsKey(fg.getId())) { // we take action only if the flow get (re)scheduled
+                        if (fg.getFlowState() == FlowGroup.FlowState.NEW){ // start the flow
+                            fg.setFlowState(FlowGroup.FlowState.RUNNING);
+                            fgoToSend.add (fgoHashMap.get(fg.getId()).setFlowState(FlowGroup_Old.FlowState.STARTING) );
+                        }
+                        else if (fg.getFlowState() == FlowGroup.FlowState.PAUSED){ // RESUME the flow
+                            fg.setFlowState(FlowGroup.FlowState.RUNNING);
+                            fgoToSend.add (fgoHashMap.get(fg.getId()).setFlowState(FlowGroup_Old.FlowState.CHANGING) );
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        return fgoToSend;
+    }
+
+    private void sendControlMessages_Async(List<FlowGroup_Old> scheduledFGs) {
         // group FGOs by SA
         Map< String , List<FlowGroup_Old>> fgoBySA = scheduledFGs.stream()
                 .collect(Collectors.groupingBy(FlowGroup_Old::getSrc_loc));

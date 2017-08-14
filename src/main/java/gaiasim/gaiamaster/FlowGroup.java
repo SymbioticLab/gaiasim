@@ -26,7 +26,17 @@ public class FlowGroup {
     // make this field volatile! Or maybe atomic?
     private volatile double transmitted;
 
-    // The subflow info, is essientially immutable data? Nope. TODO: where to store this info? Could use a map in GAIA.
+    // the state of this flow
+    public enum FlowState{
+        NEW,
+        RUNNING,
+        PAUSED,
+        FIN
+    }
+
+    private FlowState flowState;
+
+    // The subflow info, is essientially immutable data? Nope.
     private ArrayList<Pathway> paths = new ArrayList<Pathway>();
 
     public FlowGroup(String id, String srcLocation, String dstLocation, String owningCoflowID, double totalVolume) {
@@ -35,17 +45,20 @@ public class FlowGroup {
         this.dstLocation = dstLocation;
         this.owningCoflowID = owningCoflowID;
         this.totalVolume = totalVolume;
+        this.flowState = FlowState.NEW;
     }
 
-    // This method is called upon receiving Status Update, if a flow is already marked finished, we don't invoke coflowFIN
+    // This method is called upon receiving Status Update, this method must be call if a Flow is finishing
+    // if a flow is already marked finished, we don't invoke coflowFIN
     public synchronized boolean getAndSetFinish(long timestamp){
-        if (finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished TODO: verify the condition.
+        if (finished && this.transmitted + Constants.DOUBLE_EPSILON >= totalVolume){ // if already finished, do nothing
             return true;
         }
-        else {
+        else { // if we are the first thread to finish it
             this.transmitted = this.totalVolume;
             this.endTime = timestamp;
             this.finished = true;
+            this.flowState = FlowState.FIN;
             return false;
         }
     }
@@ -94,4 +107,8 @@ public class FlowGroup {
     public long getEndTime() { return endTime; }
 
     public boolean isFinished() { return finished; }
+
+    public FlowState getFlowState() { return flowState; }
+
+    public FlowGroup setFlowState(FlowState flowState) { this.flowState = flowState; return this; }
 }

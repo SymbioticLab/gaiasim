@@ -223,15 +223,12 @@ public class WorkerThread implements Runnable{
                 boolean done = f.transmit(transmitted_MBit * flow_rate / total_rate);
                 if (done) { // meaning this flowGroup is done.
 
-                    // TODO: verify this. DO NOTHING here! even if we stop sending, we may still be told to send at a rate by GAIA (because the stale message is in the fly).
+                    //
                     // wait until GAIA told us to stop, then stop. (although could cause a problem here.)
 
-                    to_remove.add(s); // FIXME might contain duplicate
+                    to_remove.add(s);
                 }
             }
-
-            // TODO need to remove from subscription list?
-            logger.info("SIZE of to_remove {}" , to_remove.size());
 
             for (SubscriptionInfo s : to_remove) {
                 total_rate -= s.getRate();

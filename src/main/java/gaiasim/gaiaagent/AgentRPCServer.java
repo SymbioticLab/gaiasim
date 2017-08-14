@@ -140,7 +140,7 @@ public class AgentRPCServer {
             responseObserver.onCompleted();
             sharedData.saState = AgentSharedData.SAState.READY;
             sharedData.readySignal.countDown();
-//            sharedData.saState.notify();
+//            agentSharedData.saState.notify();
         }
 
         @Override

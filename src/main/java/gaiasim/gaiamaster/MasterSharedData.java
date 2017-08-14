@@ -1,21 +1,24 @@
 package gaiasim.gaiamaster;
 
 import gaiasim.spark.YARNMessages;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class MasterSharedData {
+    private static final Logger logger = LogManager.getLogger();
 
-    public volatile ConcurrentHashMap<String , Coflow> coflowPool;
+    volatile ConcurrentHashMap<String , Coflow> coflowPool;
 
     // index for searching flowGroup in this data structure.
     // only need to add entry, no need to delete entry. TODO verify this.
-    public volatile ConcurrentHashMap<String , Coflow> flowIDtoCoflow;
+    private volatile ConcurrentHashMap<String , Coflow> flowIDtoCoflow;
 
-    public volatile boolean flag_CF_ADD = false;
-    public volatile boolean flag_CF_FIN = false;
-    public volatile boolean flag_FG_FIN = false;
+    volatile boolean flag_CF_ADD = false;
+    volatile boolean flag_CF_FIN = false;
+    volatile boolean flag_FG_FIN = false;
 
     // move this event queue here because the RPC server module need to access it
     protected LinkedBlockingQueue<YARNMessages> yarnEventQueue = new LinkedBlockingQueue<YARNMessages>();
@@ -71,4 +74,42 @@ public class MasterSharedData {
         this.flowIDtoCoflow = new ConcurrentHashMap<>();
     }
 
+    public void onFinishFlowGroup(String fid, long timestamp) {
+        FlowGroup fg = getFlowGroup(fid);
+        if (fg == null){
+            logger.warn("fg == null for fid = {}", fid);
+            return;
+        }
+        if(fg.getAndSetFinish(timestamp)){
+            return; // if already finished, do nothing.
+        }
+
+        flag_FG_FIN = true;
+
+        // check if the owning coflow is finished
+        Coflow cf = coflowPool.get(fg.getOwningCoflowID());
+
+        if(cf == null){ // cf may already be finished.
+            return;
+        }
+
+        boolean flag = true;
+
+        // TODO verify concurrency issues here. here cf may be null.
+        for(FlowGroup ffg : cf.getFlowGroups().values()){
+            flag = flag && ffg.isFinished();
+        }
+
+        // if so set coflow status, send COFLOW_FIN
+        if (flag){
+            String coflowID = fg.getOwningCoflowID();
+            if ( onFinishCoflow(coflowID) ){
+                try {
+                    yarnEventQueue.put(new YARNMessages(coflowID));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

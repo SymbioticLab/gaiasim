@@ -41,8 +41,14 @@ message FlowUpdate {
     message FlowUpdateEntry {
         double remainingVolume = 1;
         string flowID = 2;
+        enum Operation{
+            START = 0;
+            CHANGE = 1;
+            PAUSE = 2;
+        }
+        Operation op = 3;
         // path to rate mapping
-        repeated PathRateEntry pathToRate = 3;
+        repeated PathRateEntry pathToRate = 4;
 //        map <int32, double> pathToRate = 3;
     }
     

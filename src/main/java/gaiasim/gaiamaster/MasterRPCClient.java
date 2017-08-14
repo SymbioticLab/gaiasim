@@ -74,7 +74,7 @@ public class MasterRPCClient {
     public void setFlow( Collection<FlowGroup_Old> fgos, NetGraph ng, String saID ){
 
         GaiaMessageProtos.FlowUpdate fum = buildFUM(fgos, ng, saID);
-//        logger.info("Built the FUM\n {}", fum);
+        logger.info("Built the FUM\n {}", fum);
 
         clientStreamObserver.onNext(fum);
         logger.info("FUM sent for saID = {}" , saID);
@@ -100,28 +100,41 @@ public class MasterRPCClient {
                 String fgoID = fgo.getId();
 
                 GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.Builder fueBuilder = GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.newBuilder();
-                fueBuilder.setRemainingVolume(fgo.remaining_volume());
                 fueBuilder.setFlowID(fgoID);
 
-//            HashMap<Object, Object> pathToRate = new HashMap<>();
-                for (Pathway p : fgo.paths) {
-                    int pathID = ng.get_path_id(p);
-                    if (pathID != -1) {
-                        fueBuilder.addPathToRate(GaiaMessageProtos.FlowUpdate.PathRateEntry.newBuilder().setPathID(pathID).setRate(p.getBandwidth()));
+                if (fgo.getFlowState() == FlowGroup_Old.FlowState.INIT) {
+                    logger.error("ERROR: FUM message contains flows that have not been scheduled");
+                    continue;
+                }
+                else if (fgo.getFlowState() == FlowGroup_Old.FlowState.PAUSING){
+                    fueBuilder.setOp(GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.Operation.PAUSE);
+                    continue;
+                }
+                else if (fgo.getFlowState() == FlowGroup_Old.FlowState.STARTING ||
+                        fgo.getFlowState() == FlowGroup_Old.FlowState.CHANGING) { // STARTING && CHANGING
 
-//                    pathToRate.put(pathID, p.getBandwidth());
+                    if (fgo.getFlowState() == FlowGroup_Old.FlowState.STARTING) {
+                        fueBuilder.setOp(GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.Operation.START);
                     } else {
-                        System.err.println("FATAL: illegal path!");
+                        fueBuilder.setOp(GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.Operation.CHANGE);
+                    }
+
+                    fueBuilder.setRemainingVolume(fgo.remaining_volume());
+                    for (Pathway p : fgo.paths) {
+                        int pathID = ng.get_path_id(p);
+                        if (pathID != -1) {
+                            fueBuilder.addPathToRate(GaiaMessageProtos.FlowUpdate.PathRateEntry.newBuilder().setPathID(pathID).setRate(p.getBandwidth()));
+                        } else {
+                            System.err.println("FATAL: illegal path!");
 //                    System.exit(1); // don't fail yet!
+                        }
                     }
                 }
 
                 raueBuilder.addFges(fueBuilder);
-
             } // end of creating all the FlowUpdateEntry
 
             fumBuilder.addRAUpdate(raueBuilder);
-
         } // end of creating all the RAUpdateEntry
 
         return fumBuilder.build();
