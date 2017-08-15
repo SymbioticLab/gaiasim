@@ -88,6 +88,7 @@ public class MasterSharedData {
             return;
         }
         if(fg.getAndSetFinish(timestamp)){
+            logger.error("Fishing a flow that should have been finished");
             return; // if already finished, do nothing.
         }
 
@@ -102,7 +103,6 @@ public class MasterSharedData {
 
         boolean flag = true;
 
-        // TODO verify concurrency issues here. here cf may be null.
         for(FlowGroup ffg : cf.getFlowGroups().values()){
             flag = flag && ffg.isFinished();
         }
