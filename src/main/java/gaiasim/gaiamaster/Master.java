@@ -372,7 +372,8 @@ public class Master {
 
     public void printMasterState(){
         StringBuilder str = new StringBuilder("-----Master state-----\n");
-        str.append("s: ").append(masterSharedData.flowStartCnt).append(" f: ").append(masterSharedData.flowFINCnt).append('\n');
+        int paused = 0;
+        int running = 0;
         for( Map.Entry<String, Coflow> cfe : masterSharedData.coflowPool.entrySet()){
             Coflow cf = cfe.getValue();
 
@@ -382,9 +383,16 @@ public class Master {
                 FlowGroup fg = fge.getValue();
                 str.append(' ').append(fge.getKey()).append(' ').append(fg.getFlowState())
                         .append(' ').append(fg.getTransmitted()).append(' ').append(fg.getTotalVolume()).append('\n');
+                if (fg.getFlowState() == FlowGroup.FlowState.PAUSED) {
+                    paused++;
+                } else if (fg.getFlowState() == FlowGroup.FlowState.RUNNING){
+                    running++;
+                }
             }
         }
 
+        str.append("stats s: ").append(masterSharedData.flowStartCnt).append(" f: ").append(masterSharedData.flowFINCnt)
+            .append(" p: ").append(paused).append(" r: ").append(running).append('\n');
         logger.info(str);
     }
 
