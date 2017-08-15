@@ -39,7 +39,7 @@ public class AgentRPCClient {
 
             @Override
             public void onError(Throwable t) {
-
+                logger.error("ERROR in sending flow status update: {}", t);
             }
 
             @Override
