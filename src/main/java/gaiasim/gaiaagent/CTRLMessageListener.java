@@ -69,25 +69,25 @@ public class CTRLMessageListener implements Runnable{
                                 break;
                         }
 
-                        // add this flowgroup when not existent // only accept volume from CTRL at this point.
-                        if( !agentSharedData.flowGroups.containsKey(fgID)){
-                            agentSharedData.flowGroups.put(fgID , new FlowGroupInfo(fgID , fge.getRemainingVolume() ) );
-                        }
-
-                        //
-                        for ( gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate.PathRateEntry pathToRate : fge.getPathToRateList() ){
-                            int pathID = pathToRate.getPathID();
-                            double rate = pathToRate.getRate();
-                            ConcurrentHashMap<String, SubscriptionInfo> infoMap = agentSharedData.subscriptionRateMaps.get(raID).get(pathID);
-
-                            if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
-                                infoMap.get(fgID).setRate( rate );
-                            }
-                            else { // create this info
-                                infoMap.put(fgID , new SubscriptionInfo(fgID, agentSharedData.flowGroups.get(fgID) , rate ));
-                            }
-
-                        } // end loop for pathID
+//                        // add this flowgroup when not existent // only accept volume from CTRL at this point.
+//                        if( !agentSharedData.flowGroups.containsKey(fgID)){
+//                            agentSharedData.flowGroups.put(fgID , new FlowGroupInfo(fgID , fge.getRemainingVolume() ) );
+//                        }
+//
+//                        //
+//                        for ( gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate.PathRateEntry pathToRate : fge.getPathToRateList() ){
+//                            int pathID = pathToRate.getPathID();
+//                            double rate = pathToRate.getRate();
+//                            ConcurrentHashMap<String, SubscriptionInfo> infoMap = agentSharedData.subscriptionRateMaps.get(raID).get(pathID);
+//
+//                            if( infoMap.containsKey(fgID)){ // check whether this FlowGroup is in subscriptionMap.
+//                                infoMap.get(fgID).setRate( rate );
+//                            }
+//                            else { // create this info
+//                                infoMap.put(fgID , new SubscriptionInfo(fgID, agentSharedData.flowGroups.get(fgID) , rate ));
+//                            }
+//
+//                        } // end loop for pathID
 
                     } // end loop for fgID
 
