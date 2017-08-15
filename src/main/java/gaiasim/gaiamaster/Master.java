@@ -326,6 +326,7 @@ public class Master {
                         if (fg.getFlowState() == FlowGroup.FlowState.NEW){ // start the flow
                             fg.setFlowState(FlowGroup.FlowState.RUNNING);
                             fgoToSend.add (fgoHashMap.get(fg.getId()).setFlowState(FlowGroup_Old.FlowState.STARTING) );
+                            masterSharedData.flowStartCnt ++ ;
                         }
                         else if (fg.getFlowState() == FlowGroup.FlowState.PAUSED){ // RESUME the flow
                             fg.setFlowState(FlowGroup.FlowState.RUNNING);
@@ -371,10 +372,11 @@ public class Master {
 
     public void printMasterState(){
         StringBuilder str = new StringBuilder("-----Master state-----\n");
+        str.append("s: ").append(masterSharedData.flowStartCnt).append(" f: ").append(masterSharedData.flowFINCnt).append('\n');
         for( Map.Entry<String, Coflow> cfe : masterSharedData.coflowPool.entrySet()){
             Coflow cf = cfe.getValue();
 
-            str.append(cf.getId()).append(' ').append(cf.getStartTime()).append('\n');
+            str.append(cf.getId()).append('\n');
 
             for ( Map.Entry<String, FlowGroup> fge : cf.getFlowGroups().entrySet()){
                 FlowGroup fg = fge.getValue();

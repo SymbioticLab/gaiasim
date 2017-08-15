@@ -27,6 +27,10 @@ public class MasterSharedData {
     public AtomicBoolean flag_CF_FIN = new AtomicBoolean(false);
     public AtomicBoolean flag_FG_FIN = new AtomicBoolean(false);*/
 
+// stats
+    int flowStartCnt = 0;
+    int flowFINCnt = 0;
+
     // handles coflow finish.
     public synchronized boolean onFinishCoflow(String coflowID) {
         System.out.println("Master: trying to finish Coflow: " + coflowID);
@@ -75,6 +79,9 @@ public class MasterSharedData {
     }
 
     public void onFinishFlowGroup(String fid, long timestamp) {
+
+        flowFINCnt ++;
+
         FlowGroup fg = getFlowGroup(fid);
         if (fg == null){
             logger.warn("fg == null for fid = {}", fid);
