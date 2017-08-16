@@ -230,7 +230,7 @@ public class Master {
             outcf.put( cfo.getId() , cfo );
         }
 
-        printCFList(outcf);
+//        printCFList(outcf);
 
         if (masterSharedData.flag_CF_ADD){ // redo sorting, may result in preemption
             masterSharedData.flag_CF_ADD = false;
@@ -239,6 +239,8 @@ public class Master {
 
             // TODO update the CF_Status in scheduler
             scheduler.resetCFList(outcf);
+
+            scheduler.printCFList();
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
@@ -256,6 +258,8 @@ public class Master {
             masterSharedData.flag_FG_FIN = false;
             scheduler.handleCoflowFIN(outcf);
 
+            scheduler.printCFList();
+
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
 
@@ -270,6 +274,8 @@ public class Master {
         else if (masterSharedData.flag_FG_FIN){ // no-reschedule, just pick up a new flowgroup.
             masterSharedData.flag_FG_FIN = false;
             scheduler.handleFlowGroupFIN(outcf);
+
+            scheduler.printCFList();
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
@@ -398,25 +404,6 @@ public class Master {
         logger.info(str);
     }
 
-    // print the CFList that is going into the scheduler
-    public void printCFList(HashMap<String, Coflow_Old> outcf){
-        StringBuilder str = new StringBuilder("-----CF List-----\n");
-        for( Map.Entry<String, Coflow_Old> cfe : outcf.entrySet()){
-            Coflow_Old cf = cfe.getValue();
-
-            str.append(cf.getId()).append('\n');
-
-            for ( Map.Entry<String, FlowGroup_Old> fge : cf.flows.entrySet()){
-                FlowGroup_Old fgo = fge.getValue();
-                str.append(' ').append(fge.getKey()).append(' ').append(fgo.getFlowState())
-                        .append(' ').append(fgo.getTransmitted_volume()).append(' ').append(fgo.getVolume()).append('\n');
-
-            }
-        }
-
-        logger.info(str);
-
-    }
 
 /*    void testSA (String saIP, int saPort){
 

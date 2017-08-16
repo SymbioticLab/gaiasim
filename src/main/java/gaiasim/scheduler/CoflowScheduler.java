@@ -622,4 +622,26 @@ public class CoflowScheduler extends Scheduler {
         sortCFList();
 
     }
+
+    // print the CFList that is going into the scheduler
+    public void printCFList(){
+        StringBuilder str = new StringBuilder("-----CF List-----\n");
+
+        for (CoflowSchedulerEntry cfe : cfList){
+            Coflow_Old cf = cfe.cf;
+
+            str.append(cf.getId()).append(' ').append(cfe.cct).append('\n');
+
+            for ( Map.Entry<String, FlowGroup_Old> fge : cf.flows.entrySet()){
+                FlowGroup_Old fgo = fge.getValue();
+                str.append(' ').append(fge.getKey()).append(' ').append(fgo.getFlowState())
+                        .append(' ').append(fgo.getTransmitted_volume()).append(' ').append(fgo.getVolume()).append('\n');
+
+            }
+
+        }
+
+        logger.info(str);
+
+    }
 }
