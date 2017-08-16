@@ -74,7 +74,7 @@ public class MasterRPCServer {
 
                 @Override
                 public void onError(Throwable t) {
-                    logger.error("ERROR in handling flow status report: {}", t);
+                    logger.error("ERROR in handling flow status report: {}", t.toString());
                 }
 
                 @Override

@@ -160,7 +160,7 @@ public class AgentRPCServer {
 
                 @Override
                 public void onError(Throwable t) {
-                    logger.error("ERROR in handling FUM: {}", t);
+                    logger.error("ERROR in handling FUM: {}", t.toString());
                 }
 
                 @Override

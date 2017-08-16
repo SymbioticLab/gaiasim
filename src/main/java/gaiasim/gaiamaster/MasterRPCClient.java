@@ -51,7 +51,7 @@ public class MasterRPCClient {
 
             @Override
             public void onError(Throwable t) {
-                logger.error("ERROR in sending FUM: {}", t);
+                logger.error("ERROR in sending FUM: {}", t.toString());
             }
 
             @Override
