@@ -297,7 +297,7 @@ public class Master {
         for ( FlowGroup_Old fgo : scheduledFGs){
             fgoContent += fgo.getId() + " " + fgo.paths + "\n";
         }
-        logger.info("schedule_New(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , masterSharedData.coflowPool.size(), scheduledFGs.size(), fgoContent);
+        logger.info("schedule(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , masterSharedData.coflowPool.size(), scheduledFGs.size(), fgoContent);
 
         printMasterState();
     }

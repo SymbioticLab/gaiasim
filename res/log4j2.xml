@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
+        <Console name="ConsoleERR" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
+            <!--<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>-->
+        </Console>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
         </Console>
@@ -9,5 +13,10 @@
         <Root level="info" additivity="false">
             <AppenderRef ref="console"/>
         </Root>
+        <root>
+            <priority value="debug"></priority>
+            <appender-ref ref="ConsoleERR" />
+            <appender-ref ref="console" />
+        </root>
     </Loggers>
 </Configuration>
