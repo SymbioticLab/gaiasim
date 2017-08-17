@@ -90,7 +90,9 @@ public class AgentRPCClient {
         if ( !isStreamReady ) {
             initStream();
         }
-        clientStreamObserver.onNext(statusReport);
+        synchronized (this) {
+            clientStreamObserver.onNext(statusReport);
+        }
 
         logger.info("finished sending status report\n{}", statusReport);
 
@@ -143,7 +145,9 @@ public class AgentRPCClient {
             initStream();
         }
 
-        clientStreamObserver.onNext(statusReport);
+        synchronized (this) {
+            clientStreamObserver.onNext(statusReport);
+        }
 
         logger.info("finished testing status report");
     }
@@ -166,7 +170,10 @@ public class AgentRPCClient {
         if ( !isStreamReady ) {
             initStream();
         }
-        clientStreamObserver.onNext(FG_FIN);
+
+        synchronized (this) {
+            clientStreamObserver.onNext(FG_FIN);
+        }
 
 //        logger.info("finished sending FLOW_FIN for {}", fgID);
     }
