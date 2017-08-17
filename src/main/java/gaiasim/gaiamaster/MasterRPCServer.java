@@ -20,6 +20,7 @@ public class MasterRPCServer {
     private Server server;
     int port;
     MasterSharedData masterSharedData;
+    private int srMaxSize = 0;
 
     public MasterRPCServer(Configuration config, MasterSharedData masterSharedData) {
         this.port = config.getMasterPort();
@@ -68,7 +69,9 @@ public class MasterRPCServer {
             return new StreamObserver<GaiaMessageProtos.StatusReport>() {
                 @Override
                 public void onNext(GaiaMessageProtos.StatusReport statusReport) {
-                    logger.info("Received Flow Status: {}" , statusReport);
+                    int srSize = statusReport.getSerializedSize();
+                    srMaxSize = srSize > srMaxSize ? srSize : srMaxSize;
+                    logger.info("Received Flow Status, size: {} / {}\ncontent: {}" , srSize , srMaxSize , statusReport);
                     handleStatusReport(statusReport);
                 }
 

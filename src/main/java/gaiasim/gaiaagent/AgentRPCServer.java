@@ -33,6 +33,7 @@ public class AgentRPCServer {
 
     // data structures from the SAAPI
     AgentSharedData sharedData;
+    private int fumaxsize = 0;
 
     public AgentRPCServer(String id, NetGraph net_graph, Configuration config, AgentSharedData sharedData) {
         this.config = config;
@@ -150,7 +151,9 @@ public class AgentRPCServer {
             return new StreamObserver<GaiaMessageProtos.FlowUpdate>() {
                 @Override
                 public void onNext(GaiaMessageProtos.FlowUpdate flowUpdate) {
-                    logger.info("Received FUM\n {}", flowUpdate);
+                    int fusize = flowUpdate.getSerializedSize();
+                    fumaxsize = fusize > fumaxsize ? fusize : fumaxsize;
+                    logger.info("Received FUM, size: {} / {}\ncontent: {}", fusize, fumaxsize, flowUpdate);
                     try {
                         sharedData.fumQueue.put(flowUpdate);
                     } catch (InterruptedException e) {
