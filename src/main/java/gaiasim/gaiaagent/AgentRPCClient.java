@@ -138,6 +138,10 @@ public class AgentRPCClient {
 
         GaiaMessageProtos.StatusReport statusReport = statusReportBuilder.build();
 
+        if ( !isStreamReady ) {
+            initStream();
+        }
+
         clientStreamObserver.onNext(statusReport);
 
         logger.info("finished testing status report");
@@ -157,6 +161,10 @@ public class AgentRPCClient {
 
         GaiaMessageProtos.StatusReport FG_FIN = GaiaMessageProtos.StatusReport.newBuilder().addStatus(fsBuilder).build();
 
+
+        if ( !isStreamReady ) {
+            initStream();
+        }
         clientStreamObserver.onNext(FG_FIN);
 
 //        logger.info("finished sending FLOW_FIN for {}", fgID);
