@@ -69,7 +69,7 @@ public class MasterRPCClient {
     }
 
     public void initStream() {
-        logger.error("(re)starting the stream");
+        logger.warn("(Re)starting the stream");
         clientStreamObserver = asyncStub.changeFlow(responseObserver);
         isStreamReady = true;
     }

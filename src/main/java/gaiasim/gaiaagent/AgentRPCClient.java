@@ -65,7 +65,7 @@ public class AgentRPCClient {
     }
 
     public void initStream() {
-        logger.info("Starting the Stream for SA {}", agentSharedData.saID);
+        logger.warn("(Re)starting the Stream for SA {}", agentSharedData.saID);
         clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
         isStreamReady = true;
     }

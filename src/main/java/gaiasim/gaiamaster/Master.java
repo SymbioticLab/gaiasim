@@ -240,7 +240,7 @@ public class Master {
             // TODO update the CF_Status in scheduler
             scheduler.resetCFList(outcf);
 
-            scheduler.printCFList();
+//            scheduler.printCFList();
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
@@ -258,7 +258,7 @@ public class Master {
             masterSharedData.flag_FG_FIN = false;
             scheduler.handleCoflowFIN(outcf);
 
-            scheduler.printCFList();
+//            scheduler.printCFList();
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
@@ -275,7 +275,7 @@ public class Master {
             masterSharedData.flag_FG_FIN = false;
             scheduler.handleFlowGroupFIN(outcf);
 
-            scheduler.printCFList();
+//            scheduler.printCFList();
 
             try {
                 scheduledFGs = scheduler.scheduleRRF(currentTime);
@@ -299,7 +299,7 @@ public class Master {
         }
         logger.info("schedule(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , masterSharedData.coflowPool.size(), scheduledFGs.size(), fgoContent);
 
-        printMasterState();
+//        printMasterState();
     }
 
     // update the flowState in the CFPool, before sending out the information.

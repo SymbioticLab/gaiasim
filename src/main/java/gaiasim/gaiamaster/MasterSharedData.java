@@ -88,7 +88,7 @@ public class MasterSharedData {
             return;
         }
         if(fg.getAndSetFinish(timestamp)){
-            logger.error("Fishing a flow that should have been finished");
+            logger.warn("Finishing a flow that should have been finished");
             return; // if already finished, do nothing.
         }
 
