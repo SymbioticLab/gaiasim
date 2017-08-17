@@ -25,6 +25,8 @@ public class AgentRPCClient {
     // should not create a new stream every time!!!
     StreamObserver<GaiaMessageProtos.StatusReport> clientStreamObserver;
 
+    volatile boolean isStreamReady = false;
+
     public AgentRPCClient (String masterIP, int masterPort, AgentSharedData sharedData) {
         this(ManagedChannelBuilder.forAddress(masterIP, masterPort).usePlaintext(true).build());
         this.agentSharedData = sharedData;
@@ -48,9 +50,6 @@ public class AgentRPCClient {
             }
         };
 
-
-        // FIXME: when to call this function? after we are sure that the master is up!
-        clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
     }
 
     public AgentRPCClient(ManagedChannel channel) {
@@ -61,6 +60,11 @@ public class AgentRPCClient {
 
     public void shutdown() throws InterruptedException {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+    }
+
+    public void initStream() {
+        clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
+        isStreamReady = true;
     }
 
     public void sendStatusUpdate() {
@@ -74,6 +78,14 @@ public class AgentRPCClient {
 //        GaiaMessageProtos.StatusReport statusReport = statusReportBuilder.build();
         GaiaMessageProtos.StatusReport statusReport = buildStatusReport();
 
+//        while ( !isStreamReady ) {
+//            initStream();
+//            clientStreamObserver.onNext(statusReport);
+//        }
+
+        if ( !isStreamReady ) {
+            initStream();
+        }
         clientStreamObserver.onNext(statusReport);
 
         logger.info("finished sending status report\n{}", statusReport);
