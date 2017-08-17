@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AgentRPCClient {
     private static final Logger logger = LogManager.getLogger();
@@ -24,6 +25,8 @@ public class AgentRPCClient {
     private StreamObserver<GaiaMessageProtos.FlowStatus_ACK> responseObserver;
     // should not create a new stream every time!!!
     StreamObserver<GaiaMessageProtos.StatusReport> clientStreamObserver;
+
+    volatile boolean isStreamReady = false;
 
     public AgentRPCClient (String masterIP, int masterPort, AgentSharedData sharedData) {
         this(ManagedChannelBuilder.forAddress(masterIP, masterPort).usePlaintext(true).build());
@@ -40,6 +43,7 @@ public class AgentRPCClient {
             @Override
             public void onError(Throwable t) {
                 logger.error("ERROR in agent {} when sending flow status update: {}", agentSharedData.saID, t.toString());
+                isStreamReady = false;
             }
 
             @Override
@@ -48,9 +52,6 @@ public class AgentRPCClient {
             }
         };
 
-
-        // FIXME: when to call this function? after we are sure that the master is up!
-        clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
     }
 
     public AgentRPCClient(ManagedChannel channel) {
@@ -63,12 +64,23 @@ public class AgentRPCClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
+    public void initStream(){
+        clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
+        isStreamReady = true;
+
+        logger.info("Init stream of sa {}", agentSharedData.saID);
+    }
+
     public void sendStatusUpdate() {
 
         int size = agentSharedData.flowGroups.size();
         if(size == 0){
 //            System.out.println("FG_SIZE = 0");
             return;         // if there is no data to send (i.e. the master has not come online), we simply skip.
+        }
+
+        if ( !isStreamReady ){
+            initStream();
         }
 
 //        GaiaMessageProtos.StatusReport statusReport = statusReportBuilder.build();
