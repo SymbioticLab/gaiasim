@@ -23,11 +23,13 @@ public class MasterRPCClient {
     private final ManagedChannel channel;
     private final SendingAgentServiceGrpc.SendingAgentServiceBlockingStub blockingStub;
     private final SendingAgentServiceGrpc.SendingAgentServiceStub asyncStub;
-    private final StreamObserver<GaiaMessageProtos.FUM_ACK> responseObserver;
-    private final StreamObserver<GaiaMessageProtos.FlowUpdate> clientStreamObserver;
+    private StreamObserver<GaiaMessageProtos.FUM_ACK> responseObserver;
+    private StreamObserver<GaiaMessageProtos.FlowUpdate> clientStreamObserver;
 
     String targetIP;
     int targetPort;
+
+    volatile boolean isStreamReady = false;
 
     public MasterRPCClient(String saIP, int saPort) {
         // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
@@ -60,11 +62,16 @@ public class MasterRPCClient {
             }
         };
 
-        clientStreamObserver = asyncStub.changeFlow(responseObserver);
     }
 
     public void shutdown() throws InterruptedException {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+    }
+
+    public void initStream() {
+        logger.error("(re)starting the stream");
+        clientStreamObserver = asyncStub.changeFlow(responseObserver);
+        isStreamReady = true;
     }
 
     public Iterator<GaiaMessageProtos.PAMessage> preparePConn(){
@@ -76,6 +83,10 @@ public class MasterRPCClient {
 
         GaiaMessageProtos.FlowUpdate fum = buildFUM(fgos, ng, saID);
         logger.info("Built the FUM\n {}", fum);
+
+        if ( !isStreamReady ) {
+            initStream();
+        }
 
         clientStreamObserver.onNext(fum);
         logger.info("FUM sent for saID = {}" , saID);
