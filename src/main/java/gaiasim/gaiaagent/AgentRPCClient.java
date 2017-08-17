@@ -42,6 +42,8 @@ public class AgentRPCClient {
             @Override
             public void onError(Throwable t) {
                 logger.error("ERROR in agent {} when sending flow status update: {}", agentSharedData.saID, t.toString());
+
+                isStreamReady = false;
             }
 
             @Override
@@ -63,6 +65,7 @@ public class AgentRPCClient {
     }
 
     public void initStream() {
+        logger.info("Starting the Stream for SA {}", agentSharedData.saID);
         clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
         isStreamReady = true;
     }
