@@ -82,14 +82,14 @@ public class MasterRPCClient {
     public void setFlow( Collection<FlowGroup_Old> fgos, NetGraph ng, String saID ){
 
         GaiaMessageProtos.FlowUpdate fum = buildFUM(fgos, ng, saID);
-        logger.info("Built the FUM\n {}", fum);
+        logger.debug("Built the FUM\n {}", fum);
 
         if ( !isStreamReady ) {
             initStream();
         }
 
         clientStreamObserver.onNext(fum);
-        logger.info("FUM sent for saID = {}" , saID);
+        logger.debug("FUM sent for saID = {}" , saID);
 
     }
 

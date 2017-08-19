@@ -94,7 +94,7 @@ public class AgentSharedData {
 
         if(flowGroups.get(fgID).getFlowState() == FlowGroupInfo.FlowState.FIN){
             // already sent the FIN message, do nothing
-            logger.error("Already sent the FIN for {}", fgID);
+            logger.warn("Already sent the FIN for {}", fgID);
             flowGroups.remove(fgID);
             return;
         }

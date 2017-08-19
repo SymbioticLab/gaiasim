@@ -119,7 +119,7 @@ public class WorkerThread implements Runnable{
                             .stream().mapToDouble(SubscriptionInfo::getRate).sum();
 
                     if (total_rate  > 0){
-                        logger.info("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
+                        logger.debug("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
                     }
 
                 }

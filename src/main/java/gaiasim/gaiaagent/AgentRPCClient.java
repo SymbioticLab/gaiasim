@@ -41,8 +41,7 @@ public class AgentRPCClient {
 
             @Override
             public void onError(Throwable t) {
-                logger.warn("ERROR in agent {} when sending flow status update: {}", agentSharedData.saID, t.toString());
-                logger.warn("asdf {}", t);
+                logger.error("ERROR in agent {} when sending flow status update: {}", agentSharedData.saID, t.toString());
                 t.printStackTrace();
                 isStreamReady = false;
             }
@@ -94,9 +93,9 @@ public class AgentRPCClient {
             clientStreamObserver.onNext(statusReport);
         }
 
-        logger.info("finished sending status report\n{}", statusReport);
+        logger.debug("finished sending status report\n{}", statusReport);
 
-        printSAStatus();
+//        printSAStatus();
 
     }
 

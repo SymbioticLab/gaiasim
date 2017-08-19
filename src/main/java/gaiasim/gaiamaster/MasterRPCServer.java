@@ -69,9 +69,9 @@ public class MasterRPCServer {
             return new StreamObserver<GaiaMessageProtos.StatusReport>() {
                 @Override
                 public void onNext(GaiaMessageProtos.StatusReport statusReport) {
-                    int srSize = statusReport.getSerializedSize();
-                    srMaxSize = srSize > srMaxSize ? srSize : srMaxSize;
-                    logger.info("Received Flow Status, size: {} / {}\ncontent: {}" , srSize , srMaxSize , statusReport);
+//                    int srSize = statusReport.getSerializedSize();
+//                    srMaxSize = srSize > srMaxSize ? srSize : srMaxSize;
+//                    logger.debug("Received Flow Status, size: {} / {}\ncontent: {}" , srSize , srMaxSize , statusReport);
                     handleStatusReport(statusReport);
                 }
 
