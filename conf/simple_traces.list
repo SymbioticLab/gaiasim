@@ -1,0 +1,4 @@
+data/simple_jobs/simple_trace-swan.txt 1.0 ~/output/recursive-remain-flow/swan/BigBench
+data/simple_jobs/simple_trace-swan.txt 0.4 ~/output/recursive-remain-flow/swan/TPC-DS
+data/simple_jobs/simple_trace-swan.txt 0.3333 ~/output/recursive-remain-flow/swan/TPC-H
+data/simple_jobs/simple_trace-swan.txt 0.2 ~/output/recursive-remain-flow/swan/FB

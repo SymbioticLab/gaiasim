@@ -7,6 +7,7 @@ package gaiasim.spark;
 //  (1) insert initial Coflows w/o dependencies at the trace-specified time
 //  (2) dependent coflows when their dependencies have already been met (i.e. on COFLOW_FIN)
 
+import gaiasim.GaiaSim;
 import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
@@ -14,22 +15,26 @@ import gaiasim.util.Constants;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.QuoteMode;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class YARNEmulator implements Runnable {
 
+    private static final Logger logger = LogManager.getLogger();
+
     private static final Object [] JCTFILE_HEADER = {"JobID","StartTime (s)","EndTime (s)","JCT (s)"};
     private static final Object [] CCTFILE_HEADER = {"CoflowID","StartTime (s)","EndTime (s)","CCT (s)"};
+    private final boolean isRunningOnList;
     CSVFormat csvFileFormat = CSVFormat.DEFAULT.withRecordSeparator("\n").withQuoteMode(QuoteMode.NON_NUMERIC);
 
-    private final String outDir;
+    private final String outputDir;
     private String tracefile;
     private NetGraph netGraph;
     private LinkedBlockingQueue<YARNMessages> yarnEventQueue;
@@ -44,18 +49,68 @@ public class YARNEmulator implements Runnable {
 
     private long YARNStartTime = 0;
     private volatile boolean noIncomingJobs = false;
+    private volatile boolean emulationFIN = false;
+
+    public class TraceEntity{
+        public String traceFile;
+        public double workload = 1;
+        public String outputDir;
+
+        public TraceEntity(String traceFile, double workload, String outputDir) {
+            this.traceFile = traceFile;
+            this.workload = workload;
+            this.outputDir = outputDir;
+        }
+
+    }
 
     @Override
     public void run() {
-        initCSVFiles("/jct_emu.csv" , "/cct_emu.csv");
 
-        System.out.println("YARN: YARM Emulator is up");
+        if (isRunningOnList){
+            try {
+                List<TraceEntity> jobList = readJobList(tracefile);
+
+                for ( TraceEntity te : jobList){
+                    runTraceTillFinish(te.traceFile, te.workload, te.outputDir);
+                    Thread.sleep(100000); // sleep 100s
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else {
+            runTraceTillFinish(tracefile, GaiaSim.SCALE_FACTOR, outputDir);
+        }
+
+    }
+
+    // called in both list mode and normal mode
+    public void runTraceTillFinish(String tracefile, double workload_factor, String outDir){
+
+        // 1. set the workload factor, for list mode
+        GaiaSim.SCALE_FACTOR = workload_factor;
+
+        // 2. read the trace and prepare a list of DAGs.
+        dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue));
+
+        initCSVFiles("/jct_emu.csv" , "/cct_emu.csv", outDir);
+
+        noIncomingJobs = false;
+        emulationFIN = false;
+
+        logger.info("YARN: YARM Emulator is up");
         YARNStartTime = System.currentTimeMillis();
 
         // when states are ready, start inserting jobs!
-                dagThread.start();
+        dagThread.start();
 
-        while (true){
+        while ( !emulationFIN ){
             try {
                 YARNMessages m = yarnEventQueue.take();
                 switch (m.getType()){
@@ -72,7 +127,7 @@ public class YARNEmulator implements Runnable {
                         onDAGArrival(m.arrivedDAG);
                         break;
 
-                    case END_OF_JOBS:
+                    case END_OF_INCOMING_JOBS:
                         noIncomingJobs = true;
 
                         break;
@@ -83,24 +138,62 @@ public class YARNEmulator implements Runnable {
                 e.printStackTrace();
             }
         }
+
+        try {
+            dagThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        onEmualtionFinish();
+
     }
 
-
     public YARNEmulator(String tracefile, NetGraph netGraph,
-                        LinkedBlockingQueue<YARNMessages> yarnEventInput, LinkedBlockingQueue<Coflow> coflowOutput, String outdir) {
+                        LinkedBlockingQueue<YARNMessages> yarnEventInput, LinkedBlockingQueue<Coflow> coflowOutput, String outdir, boolean isRunningOnList) {
         this.tracefile = tracefile;
         this.netGraph = netGraph;
         this.coflowOutput = coflowOutput;
         this.yarnEventQueue = yarnEventInput;
         this.dagPool = new HashMap<>();
-        this.outDir = outdir;
-
-        // init the YARN, read the trace and prepare a list of DAGs.
-        dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue));
+        this.outputDir = outdir;
+        this.isRunningOnList = isRunningOnList;
 
     }
 
-    // TODO Handle finish of a coflow.
+    private List<TraceEntity> readJobList(String jobListFile) throws IOException {
+        logger.info("Reading job list from {}" , tracefile);
+
+        List<TraceEntity> ret = new ArrayList<>();
+
+        FileReader fr = new FileReader(tracefile);
+        BufferedReader br = new BufferedReader(fr);
+
+        String line;
+        while ((line = br.readLine()) != null) { // for each job
+            line = line.trim();
+            if ( line.length() == 0 ) {
+                continue;  // Skip blank lines
+            } // otherwise:
+
+            String [] split = line.split(" ");
+
+            if (split.length != 3){
+                logger.error("Corrupted job list file!");
+                System.exit(1);
+            }
+
+            logger.info("New job trace listed {} : {}", split[0], split[1] );
+            ret.add( new TraceEntity(split[0], Double.parseDouble(split[1]), split[2]) );
+        }
+
+        br.close();
+        fr.close();
+
+        return ret;
+    }
+
+    // Handle finish of a coflow.
     private void onCoflowFIN(String fin_coflow_id , long timeStamp) throws InterruptedException {
         System.out.println("YARN: Received FIN for Coflow " + fin_coflow_id);
         // get the owning DAG from dag_pool , by Coflow_id.
@@ -196,7 +289,7 @@ public class YARNEmulator implements Runnable {
     }
 
     private void onDAGFinish(DAG dag, long timeStamp){
-        System.out.println("YARN: DAG " + dag.getId() + " DONE, Took " + (dag.getFinishTime() - dag.getStartTime()) + " ms.");
+        logger.info("YARN: DAG {} DONE, Took {} ms" , dag.getId() , (dag.getFinishTime() - dag.getStartTime()));
         // write to CSV
         appendCSV(dagCSVPrinter, dag.getId(), dag.getStartTime(), dag.getFinishTime(),  (dag.getFinishTime() - dag.getStartTime()) );
         // remove from pool
@@ -204,12 +297,13 @@ public class YARNEmulator implements Runnable {
 
         // judge if all jobs finished
         if(noIncomingJobs && dagPool.isEmpty()){
-            System.out.println("YARN: All jobs done. exiting");
-            System.exit(0);
+            emulationFIN = true;
+            logger.info("YARN: All jobs done.");
+//            System.exit(0);
         }
     }
 
-    private void initCSVFiles(String dagFileName , String cfFileName) {
+    private void initCSVFiles(String dagFileName , String cfFileName, String outDir) {
         String dagFilePath = outDir + dagFileName;
         String cfFilePath = outDir + cfFileName;
         try{
@@ -252,5 +346,9 @@ public class YARNEmulator implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // 2 clear up the cache etc.
+
+        this.dagPool.clear();
     }
 }

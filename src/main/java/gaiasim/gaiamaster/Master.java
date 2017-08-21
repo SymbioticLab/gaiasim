@@ -74,7 +74,7 @@ public class Master {
     }
 
     public Master(String gml_file, String trace_file,
-                  String scheduler_type, String outdir, String configFile, double bw_factor) throws IOException {
+                  String scheduler_type, String outdir, String configFile, double bw_factor, boolean isRunningOnList) throws IOException {
 
         this.outdir = outdir;
         this.netGraph = new NetGraph(gml_file , bw_factor );
@@ -95,7 +95,7 @@ public class Master {
 
         // setting up interface with YARN.
         this.coflowEventQueue = new LinkedBlockingQueue<Coflow>();
-        this.yarnEmulator = new Thread(new YARNEmulator(trace_file , netGraph , masterSharedData.yarnEventQueue , coflowEventQueue, outdir));
+        this.yarnEmulator = new Thread(new YARNEmulator(trace_file , netGraph , masterSharedData.yarnEventQueue , coflowEventQueue, outdir, isRunningOnList));
         this.coflowListener = new Thread( new CoflowListener() );
 
         // setting up the scheduler

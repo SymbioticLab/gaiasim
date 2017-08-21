@@ -14,8 +14,9 @@ import org.apache.logging.log4j.Logger;
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
-    public static double SCALE_FACTOR = 1.0; // default value, used by DAGReader.java
+    private static boolean isRunningOnList = false;
 
+    public static double SCALE_FACTOR = 1.0; // default value, used by DAGReader.java
     private static final Logger logger = LogManager.getLogger();
 
     public static HashMap<String, String> parse_cli(String[] args) 
@@ -33,6 +34,7 @@ public class GaiaSim {
 
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
+        options.addOption("l", false, "run on a list of job traces");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -70,6 +72,10 @@ public class GaiaSim {
 
         if (cmd.hasOption("e")) {
             is_emulation_ = true;
+        }
+
+        if (cmd.hasOption("l")) {
+            isRunningOnList = true;
         }
 
         if (cmd.hasOption("c")){
@@ -112,7 +118,7 @@ public class GaiaSim {
 
             Master m = new Master(args_map.get("gml"), args_map.get("trace"),
                                     args_map.get("scheduler"), args_map.get("outdir") , args_map.get("config"),
-                                    Double.parseDouble(args_map.get("bw_factor")));
+                                    Double.parseDouble(args_map.get("bw_factor")), isRunningOnList);
 
             if (is_emulation_) {
                 m.emulate();

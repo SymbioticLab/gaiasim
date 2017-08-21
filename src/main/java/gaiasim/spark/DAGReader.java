@@ -7,6 +7,8 @@ import gaiasim.GaiaSim;
 import gaiasim.gaiamaster.FlowGroup;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Constants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedReader;
@@ -39,6 +41,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 // }
 
 public class DAGReader implements Runnable{
+    private static final Logger logger = LogManager.getLogger();
 
     String tracefile;
     NetGraph netGraph;
@@ -103,6 +106,8 @@ public class DAGReader implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        logger.info("Finished inserting all DAGs for {}", tracefile);
     }
 
     public static ArrayList<DAG> getListofDAGs( String tracefile, NetGraph net_graph ) throws IOException {
