@@ -349,8 +349,10 @@ public class CoflowScheduler extends Scheduler {
                 cfList.add(new CoflowSchedulerEntry(cf, mmcf_out));
             }
             else {
-                logger.error("Unable to init CF {}, completion time = {}" , cf.getId() , mmcf_out.completion_time_ );
-                System.exit(1);
+                logger.error("Unable to init CF {}, completion time = {}, fg_size {} , max volume {}" ,cf.getId() ,
+                        mmcf_out.completion_time_ , cf.flows.size(), cf.flows.values().stream().max(Comparator.comparingDouble(s -> s.remaining_volume()))
+                );
+//                System.exit(1); // don't fail
             }
         } catch (Exception e) {
             e.printStackTrace();
