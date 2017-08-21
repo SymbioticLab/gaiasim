@@ -70,7 +70,7 @@ public class YARNEmulator implements Runnable {
 
                 for ( TraceEntity te : jobList){
                     runTraceTillFinish(te.traceFile, te.workload, te.outputDir);
-                    Thread.sleep(100000); // sleep 100s
+                    Thread.sleep(Constants.EXPERIMENT_INTERVAL); // sleep
                 }
 
             } catch (IOException e) {
@@ -84,6 +84,9 @@ public class YARNEmulator implements Runnable {
         else {
             runTraceTillFinish(tracefile, GaiaSim.SCALE_FACTOR, outputDir);
         }
+
+        logger.info("All experiments finished, exiting");
+        System.exit(0);
 
     }
 
