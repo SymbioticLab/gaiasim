@@ -18,10 +18,7 @@ import org.apache.commons.csv.QuoteMode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -308,12 +305,19 @@ public class YARNEmulator implements Runnable {
         String cfFilePath = outDir + cfFileName;
         try{
             // first init the JCT, overwrite.
-            dagFileWriter = new FileWriter(dagFilePath);
+            // Create directory if it doesn't exist
+            File jctCSV = new File(dagFilePath);
+            jctCSV.getParentFile().mkdirs();
+
+            dagFileWriter = new FileWriter(jctCSV);
             dagCSVPrinter = new CSVPrinter(dagFileWriter, csvFileFormat);
             dagCSVPrinter.printRecord(JCTFILE_HEADER);
 
             // Then init the CCT, rewrite previous results.
-            cfFileWriter = new FileWriter(cfFilePath);
+            // Create directory if it doesn't exist
+            File cctCSV = new File(cfFilePath);
+            cctCSV.getParentFile().mkdirs();
+            cfFileWriter = new FileWriter(cctCSV);
             cfCSVPrinter = new CSVPrinter(cfFileWriter, csvFileFormat);
             cfCSVPrinter.printRecord(CCTFILE_HEADER);
         } catch (IOException e) {
