@@ -68,8 +68,10 @@ public class YARNEmulator implements Runnable {
             try {
                 List<TraceEntity> jobList = readJobList(tracefile);
 
+                int cnt = 0;
                 for ( TraceEntity te : jobList){
                     runTraceTillFinish(te.traceFile, te.workload, te.outputDir);
+                    logger.info("Experiment {} finished, sleeping {} ms", cnt++, Constants.EXPERIMENT_INTERVAL);
                     Thread.sleep(Constants.EXPERIMENT_INTERVAL); // sleep
                 }
 
