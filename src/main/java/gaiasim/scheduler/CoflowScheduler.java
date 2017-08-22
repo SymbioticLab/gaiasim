@@ -350,7 +350,7 @@ public class CoflowScheduler extends Scheduler {
             }
             else {
                 logger.error("Unable to init CF {}, completion time = {}, fg_size {} , max volume {}" ,cf.getId() ,
-                        mmcf_out.completion_time_ , cf.flows.size(), cf.flows.values().stream().max(Comparator.comparingDouble(s -> s.remaining_volume()))
+                        mmcf_out.completion_time_ , cf.flows.size(), cf.flows.values().stream().max(Comparator.comparingDouble(s -> s.remaining_volume())).get().remaining_volume()
                 );
 //                System.exit(1); // don't fail
             }
