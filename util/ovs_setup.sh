@@ -28,7 +28,7 @@ setovs(){
     for vlan in "$@"
     do
         ifconfig $vlan 0.0
-        ovs-vsctl add-port s$1 $vlan
+        ovs-vsctl add-port s$agentID $vlan
     done
 
     ovs-vsctl set-controller s$agentID tcp:$ctrlIP
