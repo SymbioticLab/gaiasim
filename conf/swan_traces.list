@@ -1,4 +1,4 @@
-data/combined_traces_fb/BigBench-swan.txt 1.0 /tmp/output/recursive-remain-flow/swan/BigBench
-data/combined_traces_fb/TPC-DS-swan.txt 0.4 /tmp/output/recursive-remain-flow/swan/TPC-DS
-data/combined_traces_fb/TPC-H-swan.txt 0.3333 /tmp/output/recursive-remain-flow/swan/TPC-H
-data/combined_traces_fb/FB-swan.txt 0.2 /tmp/output/recursive-remain-flow/swan/FB
+data/combined_traces_fb/BigBench-swan.txt 1.0 /tmp/output/swan/BigBench/recursive-remain-flow
+data/combined_traces_fb/TPC-DS-swan.txt 0.4 /tmp/output/swan/TPC-DS/recursive-remain-flow
+data/combined_traces_fb/TPC-H-swan.txt 0.3333 /tmp/output/swan/TPC-H/recursive-remain-flow
+data/combined_traces_fb/FB-swan.txt 0.2 /tmp/output/swan/FB/recursive-remain-flow
