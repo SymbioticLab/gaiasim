@@ -182,9 +182,8 @@ public class AgentSharedData {
 
         for ( FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
             try {
+                subscriptionRateMaps.get(raID).get(wi.getPathID()).get(fgID).setRate(0);
                 subscriptionRateMaps.get(raID).get(wi.getPathID()).remove(fgID);
-//                logger.info("status after remove {} {} {} :", raID, wi.getPathID(), fgID);
-//               printSAStatus();
             } catch (NullPointerException e){
                 e.printStackTrace();
             }

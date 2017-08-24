@@ -120,7 +120,6 @@ public class MasterRPCClient {
                 }
                 else if (fgo.getFlowState() == FlowGroup_Old.FlowState.PAUSING){
                     fueBuilder.setOp(GaiaMessageProtos.FlowUpdate.FlowUpdateEntry.Operation.PAUSE);
-                    continue;
                 }
                 else if (fgo.getFlowState() == FlowGroup_Old.FlowState.STARTING ||
                         fgo.getFlowState() == FlowGroup_Old.FlowState.CHANGING) { // STARTING && CHANGING
