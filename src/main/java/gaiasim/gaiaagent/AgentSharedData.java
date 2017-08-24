@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -23,8 +24,6 @@ public class AgentSharedData {
 
     final String saID;
     final String saName; // the name of Data Center in the trace file.
-
-
 
     enum SAState {
         IDLE, CONNECTING, READY
@@ -184,12 +183,34 @@ public class AgentSharedData {
         for ( FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
             try {
                 subscriptionRateMaps.get(raID).get(wi.getPathID()).remove(fgID);
+//                logger.info("status after remove {} {} {} :", raID, wi.getPathID(), fgID);
+//                printSAStatus();
             } catch (NullPointerException e){
                 e.printStackTrace();
             }
         }
 
         fgi.removeAllWorkerInfo();
+
+    }
+
+    public void printSAStatus() {
+
+        StringBuilder strBuilder = new StringBuilder();
+//        System.out.println("---------SA STATUS---------");
+        strBuilder.append("---------SA STATUS---------\n");
+        for (Map.Entry<String, FlowGroupInfo> fgie : flowGroups.entrySet()){
+            FlowGroupInfo fgi = fgie.getValue();
+            strBuilder.append(' ').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getVolume()-fgi.getTransmitted()).append('\n');
+
+            for(FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
+                SubscriptionInfo tmpSI = subscriptionRateMaps.get(wi.getRaID()).get(wi.getPathID()).get(fgi.getID());
+                strBuilder.append("  ").append(wi.getRaID()).append(' ').append(wi.getPathID()).append(' ').append(tmpSI.getRate()).append('\n');
+            }
+
+        }
+
+        logger.info(strBuilder.toString());
 
     }
 

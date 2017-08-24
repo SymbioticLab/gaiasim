@@ -95,7 +95,7 @@ public class AgentRPCClient {
 
         logger.debug("finished sending status report\n{}", statusReport);
 
-//        printSAStatus();
+//        agentSharedData.printSAStatus();
 
     }
 
@@ -177,23 +177,4 @@ public class AgentRPCClient {
 //        logger.info("finished sending FLOW_FIN for {}", fgID);
     }
 
-    private void printSAStatus() {
-
-        StringBuilder strBuilder = new StringBuilder();
-//        System.out.println("---------SA STATUS---------");
-        strBuilder.append("---------SA STATUS---------\n");
-        for (Map.Entry<String, FlowGroupInfo> fgie : agentSharedData.flowGroups.entrySet()){
-            FlowGroupInfo fgi = fgie.getValue();
-            strBuilder.append(' ').append(fgi.getID()).append(' ').append(fgi.getFlowState()).append(' ').append(fgi.getVolume()-fgi.getTransmitted()).append('\n');
-
-            for(FlowGroupInfo.WorkerInfo wi : fgi.workerInfoList){
-                SubscriptionInfo tmpSI = agentSharedData.subscriptionRateMaps.get(wi.getRaID()).get(wi.getPathID()).get(fgi.getID());
-                strBuilder.append("  ").append(wi.getRaID()).append(' ').append(wi.getPathID()).append(' ').append(tmpSI.getRate()).append('\n');
-            }
-
-        }
-
-        logger.info(strBuilder.toString());
-
-    }
 }
