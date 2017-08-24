@@ -293,9 +293,9 @@ public class Master {
 
         long deltaTime = System.currentTimeMillis() - currentTime;
 
-        String fgoContent = "\n";
-        for ( FlowGroup_Old fgo : scheduledFGs){
-            fgoContent += fgo.getId() + " " + fgo.paths + "\n";
+        StringBuilder fgoContent = new StringBuilder("\n");
+        for ( FlowGroup_Old fgo : FGsToSend){
+            fgoContent.append(fgo.getId()).append(' ').append(fgo.paths).append(' ').append(fgo.getFlowState()).append('\n');
         }
         logger.info("schedule(): took {} ms. Active CF: {} Scheduled FG: {} FG content:{}", deltaTime , masterSharedData.coflowPool.size(), scheduledFGs.size(), fgoContent);
 
