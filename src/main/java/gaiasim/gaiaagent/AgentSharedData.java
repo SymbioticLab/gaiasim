@@ -127,7 +127,7 @@ public class AgentSharedData {
             ConcurrentHashMap<String, SubscriptionInfo> infoMap = subscriptionRateMaps.get(raID).get(pathID);
 
             if (rate < 0.1){
-//                rate = 0.1;
+                rate = 0.1;
                 System.err.println("WARNING: rate of FUM too low: " + fgID);
             }
 
