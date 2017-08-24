@@ -148,34 +148,34 @@ public class AgentSharedData {
     public void changeFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {
 
         if( flowGroups.containsKey(fgID)){
-            FlowGroupInfo flowGroupInfo = flowGroups.get(fgID);
+
+            FlowGroupInfo fgi = flowGroups.get(fgID);
+            fgi.setFlowState(FlowGroupInfo.FlowState.RUNNING);
+
+            removeAllSubscription(raID, fgID, fgi);
+            addAllSubscription(raID, fgID, fge, fgi);
 
         } else {
             logger.warn("CHANGE/RESUME failed: a non-existing flow!"); // after FG finished, this can happen
             return;
         }
 
-        FlowGroupInfo fgi = flowGroups.get(fgID);
-        fgi.setFlowState(FlowGroupInfo.FlowState.RUNNING);
 
-        removeAllSubscription(raID, fgID, fgi);
-        addAllSubscription(raID, fgID, fge, fgi);
     }
 
     public void pauseFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {
         // search for all subscription with this flowID, and remove them
 
         if( flowGroups.containsKey(fgID)){
-            FlowGroupInfo flowGroupInfo = flowGroups.get(fgID);
+
+            FlowGroupInfo fgi = flowGroups.get(fgID);
+            fgi.setFlowState(FlowGroupInfo.FlowState.PAUSED);
+            removeAllSubscription(raID, fgID, fgi); // FIXME: not pausing the flow
 
         } else {
             logger.error("PAUSE failed: a non-existing flow!");
             return;
         }
-
-        FlowGroupInfo fgi = flowGroups.get(fgID);
-        fgi.setFlowState(FlowGroupInfo.FlowState.PAUSED);
-        removeAllSubscription(raID, fgID, fgi);
 
     }
 

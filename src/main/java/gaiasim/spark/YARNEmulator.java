@@ -235,7 +235,7 @@ public class YARNEmulator implements Runnable {
 
     // Handle submission of DAGs.
     private void onDAGArrival(DAG arrivedDAG) throws InterruptedException {
-        System.out.println("YARN: DAG " + arrivedDAG.getId() + " arrived at " + arrivedDAG.getArrivalTime() + " s.");
+        System.out.println("YARN: DAG " + arrivedDAG.getId() + " arrived at " + arrivedDAG.getArrivalTime() + " ms.");
         arrivedDAG.onStart();
 
         // check is the DAG is totally co-located

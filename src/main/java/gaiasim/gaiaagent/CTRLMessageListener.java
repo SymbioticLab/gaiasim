@@ -94,10 +94,18 @@ public class CTRLMessageListener implements Runnable{
                 } // end loop for raID
 
                 // notify all subscribed workers..? or maybe all workers?
-                for( String raID : agentSharedData.subscriptionRateMaps.keySet()) {
+                // FIXME: notify all workers!!?
+/*                for( String raID : agentSharedData.subscriptionRateMaps.keySet()) {
                     ArrayList<ConcurrentHashMap<String , SubscriptionInfo> > al = agentSharedData.subscriptionRateMaps.get(raID);
                     for (int i = 0 ; i < al.size() ; i++){ // i = pathID..?
                         agentSharedData.workerQueues.get(raID)[i].put( new SubscriptionMessage());
+                    }
+                }*/
+//                think about the overhead of this notification
+                for(Map.Entry<String, LinkedBlockingQueue<SubscriptionMessage>[] > qe :agentSharedData.workerQueues.entrySet()){
+                    LinkedBlockingQueue<SubscriptionMessage>[] ql = qe.getValue();
+                    for (int i = 0 ; i < ql.length ; i++){
+                        ql[i].put( new SubscriptionMessage());
                     }
                 }
 
