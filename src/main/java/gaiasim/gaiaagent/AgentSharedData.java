@@ -53,7 +53,7 @@ public class AgentSharedData {
     public ConcurrentHashMap<String, FlowGroupInfo> flowGroups = new ConcurrentHashMap<String, FlowGroupInfo>();
 
     // RAID , pathID -> FGID -> subscription info // ArrayList works good here!
-    public ConcurrentHashMap<String , ArrayList< ConcurrentHashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new ConcurrentHashMap<>();
+    public HashMap<String , ArrayList< ConcurrentHashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new HashMap<>();
 
     // raID , pathID -> workerQueue.
     HashMap<String, LinkedBlockingQueue<SubscriptionMessage>[]> workerQueues = new HashMap<>();
@@ -184,7 +184,7 @@ public class AgentSharedData {
             try {
                 subscriptionRateMaps.get(raID).get(wi.getPathID()).remove(fgID);
 //                logger.info("status after remove {} {} {} :", raID, wi.getPathID(), fgID);
-//                printSAStatus();
+//               printSAStatus();
             } catch (NullPointerException e){
                 e.printStackTrace();
             }
