@@ -199,7 +199,8 @@ public class WorkerThread implements Runnable{
 //                        data_.distribute_transmitted(buffer_size_megabits_);
                 }
                 catch (IOException e) {
-                    System.err.println("Fail to write data to ra");
+//                    System.err.println("Fail to write data to ra");
+                    logger.error("Fail to write data to ra {} , thread {}", raID, connID);
                     e.printStackTrace();
 //                    System.exit(1); // don't fail here
                 }
