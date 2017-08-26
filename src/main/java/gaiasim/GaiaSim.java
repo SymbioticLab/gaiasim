@@ -18,6 +18,7 @@ public class GaiaSim {
 
     public static double SCALE_FACTOR = 1.0; // default value, used by DAGReader.java
     private static final Logger logger = LogManager.getLogger();
+    public static double MASTER_SCALE_FACTOR = 1.0;
 
     public static HashMap<String, String> parse_cli(String[] args) 
                                                     throws org.apache.commons.cli.ParseException {
@@ -86,8 +87,8 @@ public class GaiaSim {
         }
 
         if (cmd.hasOption('w')){
-            SCALE_FACTOR = Double.parseDouble(cmd.getOptionValue('w'));
-            System.out.println("Using scaling factor = " + SCALE_FACTOR);
+            MASTER_SCALE_FACTOR = Double.parseDouble(cmd.getOptionValue('w'));
+            System.out.println("Using master scaling factor = " + MASTER_SCALE_FACTOR);
         }
 
         if (cmd.hasOption("b")) {

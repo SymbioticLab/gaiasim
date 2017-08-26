@@ -84,7 +84,7 @@ public class YARNEmulator implements Runnable {
 
         }
         else {
-            runTraceTillFinish(tracefile, GaiaSim.SCALE_FACTOR, outputDir);
+            runTraceTillFinish(tracefile, GaiaSim.MASTER_SCALE_FACTOR, outputDir);
         }
 
         logger.info("All experiments finished, exiting");
