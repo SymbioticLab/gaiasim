@@ -113,6 +113,8 @@ public class MMCFOptimizer {
         String out_file_name = path_root + "/" + coflow.getId() + ".out";
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
 
+
+        long LPTime = System.currentTimeMillis();
         try {
             Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
@@ -121,6 +123,9 @@ public class MMCFOptimizer {
             e.printStackTrace();
             System.exit(1);
         }
+
+        LPTime = System.currentTimeMillis() - LPTime;
+        logger.info("LP time {} ms", LPTime);
 
         // Read the output
         MMCFOutput mmcf_out = new MMCFOutput();
