@@ -84,6 +84,13 @@ public class WorkerThread implements Runnable{
     public void run() {
         SubscriptionMessage m = null;
 
+        // await for the signal before starting sending Heartbeat Msgs
+        try {
+            sharedData.readySignal.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
 
         int heartBeatCnt = 0;
