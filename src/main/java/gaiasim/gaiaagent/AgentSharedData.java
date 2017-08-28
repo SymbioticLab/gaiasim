@@ -169,7 +169,7 @@ public class AgentSharedData {
 
             FlowGroupInfo fgi = flowGroups.get(fgID);
             fgi.setFlowState(FlowGroupInfo.FlowState.PAUSED);
-            removeAllSubscription(raID, fgID, fgi); // FIXME: not pausing the flow
+            removeAllSubscription(raID, fgID, fgi);
 
         } else {
             logger.error("PAUSE failed: a non-existing flow!");
@@ -184,7 +184,7 @@ public class AgentSharedData {
             try {
                 subscriptionRateMaps.get(raID).get(wi.getPathID()).get(fgID).setRate(0);
                 subscriptionRateMaps.get(raID).get(wi.getPathID()).remove(fgID);
-            } catch (NullPointerException e){
+            } catch (NullPointerException e){ // FIXME? sometimes happens
                 e.printStackTrace();
             }
         }

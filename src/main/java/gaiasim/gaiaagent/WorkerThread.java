@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+
 @SuppressWarnings("Duplicates")
 public class WorkerThread implements Runnable{
 
@@ -78,51 +80,110 @@ public class WorkerThread implements Runnable{
 
     @Override
     public void run() {
+        SubscriptionMessage m = null;
 
-        // nested while loop
-        while (true) {
-            SubscriptionMessage m = null;
+        rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
 
-            // If we don't currently have any subscribers (rate = 0),
-            // then data_block until we get some subscription message (take()).
-            // Otherwise, check if there's a subscription message, but
-            // don't data_block if there isn't one (poll()).
-            if (total_rate <= 0.0) {
-                try {
-                    m = subcriptionQueue.take();
-                }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                    System.err.println("Interrupted while polling subscription queue");
-//                    System.exit(1); // don't just fail here
-                }
+        // use a single eventloop
+        while (true){
+            m = subcriptionQueue.poll();
+
+            // process the msg
+            processMessage(m);
+
+            // do the job
+            if (total_rate > 0){
+                sendData(total_rate);
             }
             else {
-                m = subcriptionQueue.poll();
+                sendHeartBeat();
             }
 
-            // m will be null only if poll() returned that we have no
-            // messages. If m is not null, process the message.
-            while (m != null) {
+            // rate limiting
+            rateLimiter.acquire(1);
 
-                // handles subscription message.
+            // what if the jobs are to heavy to finish in time?
 
-                // Now we only use the subscription message as a sync signal..
+        }
+    }
 
-                if (m.getType() == SubscriptionMessage.MsgType.SYNC){
-                    // update the worker's subscription info
-                    // and go back to work.
-                    subscribers.clear();
-                    subscribers.putAll( sharedData.subscriptionRateMaps.get(raID).get(pathID) );
+    private void sendData(double total_rate) {
+        try {
+            // rate is MBit/s, converting to Block/s
 
-                    total_rate = sharedData.subscriptionRateMaps.get(raID).get(pathID).values()
-                            .stream().mapToDouble(SubscriptionInfo::getRate).sum();
+            double cur_rate = total_rate;
 
-                    if (total_rate  > 0){
-                        logger.debug("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
-                    }
+            int data_length;
 
+            // check if 100 permits/s is enough (3200MByte/s enough?)
+            if( cur_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
+                // no need to change rate , calculate the length
+                rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
+                data_length = (int) (cur_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
+            }
+            else {
+                data_length = Constants.BLOCK_SIZE_MB;
+                double new_rate = cur_rate / 8 / Constants.BLOCK_SIZE_MB;
+                logger.warn("Total rate {} too high for {}, setting new sending rate to {} / s", total_rate, this.connID, new_rate);
+                rateLimiter.setRate(new_rate);
+            }
+
+            bos.write(data_block , 0, data_length);
+            bos.flush();
+
+//                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
+//                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
+//                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
+
+            // distribute transmitted...
+            double tx_ed = (double) data_length * 8 / 1024 / 1024;
+
+            distribute_transmitted( tx_ed);
+//                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
+//                        data_.distribute_transmitted(buffer_size_megabits_);
+        }
+        catch (IOException e) {
+//                    System.err.println("Fail to write data to ra");
+            logger.error("Fail to write data to ra {} , thread {}", raID, connID);
+            e.printStackTrace();
+//                    System.exit(1); // don't fail here
+        }
+    }
+
+    private void sendHeartBeat() {
+        try {
+            bos.write(1);
+            bos.flush();
+//                    logger.info("sending heartbeat from {}", this.connID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void processMessage(SubscriptionMessage m) {
+        // m will be null only if poll() returned that we have no
+        // messages. If m is not null, process the message.
+        // use while loop to process all queued message.
+        while (m != null) {
+
+            // handles subscription message.
+
+            // Now we only use the subscription message as a sync signal..
+
+            if (m.getType() == SubscriptionMessage.MsgType.SYNC){
+                // update the worker's subscription info
+                // and go back to work.
+                subscribers.clear();
+                subscribers.putAll( sharedData.subscriptionRateMaps.get(raID).get(pathID) );
+
+                total_rate = sharedData.subscriptionRateMaps.get(raID).get(pathID).values()
+                        .stream().mapToDouble(SubscriptionInfo::getRate).sum();
+
+                if (total_rate  > 0){
+                    logger.debug("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
                 }
+
+            }
 
 /*                if (m.getType() == SubscriptionMessage.MsgType.SUBSCRIBE) {
                     if (m.getFgi().commit_subscription(data_.id_, m.ts_)) {
@@ -157,55 +218,8 @@ public class WorkerThread implements Runnable{
 ////                    return;
 //                }
 
-                m = subcriptionQueue.poll();
-            }
-
-            // If we have some subscribers (rate > 0), then transmit on
-            // behalf of the subscribers.
-            if (total_rate > 0.0) {
-                try {
-                    // rate is MBit/s, converting to Block/s
-
-                    double cur_rate = total_rate;
-
-                    int data_length;
-
-                    // check if 100 permits/s is enough (3200MByte/s enough?)
-                    if( cur_rate < Constants.BLOCK_SIZE_MB * 8 * Constants.DEFAULT_TOKEN_RATE  ){
-                        // no need to change rate , calculate the length
-                        rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
-                        data_length = (int) (cur_rate / Constants.DEFAULT_TOKEN_RATE * 1024 * 1024 / 8);
-                    }
-                    else {
-                        data_length = Constants.BLOCK_SIZE_MB;
-                        rateLimiter.setRate(cur_rate / 8 / Constants.BLOCK_SIZE_MB);
-                    }
-
-                    // aquire one permit per flush.
-                    rateLimiter.acquire(1);
-
-                    bos.write(data_block , 0, data_length);
-                    bos.flush();
-
-//                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
-//                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
-//                    System.out.println("Worker: Flushed Writing " + data_length + " w/ rate: " + total_rate + " Mbit/s  @ " + System.currentTimeMillis());
-
-                    // distribute transmitted...
-                    double tx_ed = (double) data_length * 8 / 1024 / 1024;
-
-                    distribute_transmitted( tx_ed);
-//                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
-//                        data_.distribute_transmitted(buffer_size_megabits_);
-                }
-                catch (IOException e) {
-//                    System.err.println("Fail to write data to ra");
-                    logger.error("Fail to write data to ra {} , thread {}", raID, connID);
-                    e.printStackTrace();
-//                    System.exit(1); // don't fail here
-                }
-            }
-        } // while (true)
+            m = subcriptionQueue.poll();
+        }
     }
 
 
