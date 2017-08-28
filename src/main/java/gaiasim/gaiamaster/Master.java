@@ -166,6 +166,11 @@ public class Master {
 
         logger.info("All flow rules set up");
 
+        try {
+            Thread.sleep(10000); // sleep 10s for the rules to propagate // TODO test the rules first before proceeding
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // start the other two threads.
         coflowListener.start();
