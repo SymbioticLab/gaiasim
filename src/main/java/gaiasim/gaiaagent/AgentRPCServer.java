@@ -111,6 +111,7 @@ public class AgentRPCServer {
                             // Create the socket that the PersistentConnection object will use
                             Socket socketToRA = new Socket( config.getRAIP(raID) , config.getRAPort(raID));
                             socketToRA.setSoTimeout(0);
+                            socketToRA.setKeepAlive(true);
                             int port = socketToRA.getLocalPort();
 
                             queues[i] = new LinkedBlockingQueue<SubscriptionMessage>();

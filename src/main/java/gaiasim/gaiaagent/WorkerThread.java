@@ -76,6 +76,8 @@ public class WorkerThread implements Runnable{
             e.printStackTrace();
         }
 
+        logger.info("WorkerThread {} created, src port {}", this.connID, this.dataSocket.getPort());
+
     }
 
     @Override
@@ -160,7 +162,7 @@ public class WorkerThread implements Runnable{
         try {
             bos.write(1);
             bos.flush();
-//                    logger.info("sending heartbeat from {}", this.connID);
+            logger.info("sending heartbeat from {}", this.connID);
         } catch (IOException e) {
             e.printStackTrace();
         }
