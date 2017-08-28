@@ -22,6 +22,8 @@ public class Constants {
     public static final int EPOCH_MILLI = MILLI_IN_SECOND / 100;
     public static final double EPSILON = 0.01;
     public static final long COLLOCATED_FG_COMPLETION_TIME = 0;
+    public static final double VALID_CCT_THR = 0.00001;
+    public static final double FLOW_RATE_THR = 0.1;
     public static HashMap<String, String> node_id_to_trace_id;
 
     // Return the id of the job owning the Stage, Coflow, or Flow
