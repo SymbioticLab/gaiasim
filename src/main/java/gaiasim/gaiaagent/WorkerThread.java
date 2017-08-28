@@ -84,6 +84,8 @@ public class WorkerThread implements Runnable{
 
         rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
 
+        int heartBeatCnt = 0;
+
         // use a single eventloop
         while (true){
             m = subcriptionQueue.poll();
@@ -96,7 +98,11 @@ public class WorkerThread implements Runnable{
                 sendData(total_rate);
             }
             else {
-                sendHeartBeat();
+                heartBeatCnt ++;
+                if (heartBeatCnt >= 100) {
+                    sendHeartBeat();
+                    heartBeatCnt = 0;
+                }
             }
 
             // rate limiting
