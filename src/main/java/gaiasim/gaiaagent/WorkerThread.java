@@ -76,7 +76,7 @@ public class WorkerThread implements Runnable{
             e.printStackTrace();
         }
 
-        logger.info("WorkerThread {} created, src port {}", this.connID, this.dataSocket.getPort());
+        logger.info("WorkerThread {} created, src port {}", this.connID, this.dataSocket.getLocalPort());
 
     }
 
