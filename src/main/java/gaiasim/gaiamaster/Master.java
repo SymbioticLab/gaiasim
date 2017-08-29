@@ -164,7 +164,7 @@ public class Master {
         PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, PAEventQueue);
         relay.relay_ports();
 
-        logger.info("All flow rules set up");
+        logger.info("All flow rules set up sleeping 10s before starting HeartBeat");
 
         try {
             Thread.sleep(10000); // sleep 10s for the rules to propagate // TODO test the rules first before proceeding
@@ -176,6 +176,8 @@ public class Master {
         for (String sa_id : netGraph.nodes_) {
             rpcClientHashMap.get(sa_id).startHeartBeat();
         }
+
+        logger.info("All SA heartbeat started");
 
         // start the other two threads.
         coflowListener.start();

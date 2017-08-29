@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("Duplicates")
 
@@ -35,6 +36,8 @@ public class AgentSharedData {
     CountDownLatch readySignal = new CountDownLatch(1);
 
     AtomicBoolean isSendingHeartBeat = new AtomicBoolean(false);
+
+    CountDownLatch cnt_RestartedConnections = null;
 
     LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> fumQueue = new LinkedBlockingQueue<>();
 
@@ -59,7 +62,7 @@ public class AgentSharedData {
     public HashMap<String , ArrayList< ConcurrentHashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new HashMap<>();
 
     // raID , pathID -> workerQueue.
-    HashMap<String, LinkedBlockingQueue<SubscriptionMessage>[]> workerQueues = new HashMap<>();
+    HashMap<String, LinkedBlockingQueue<WorkerCTRLMsg>[]> workerQueues = new HashMap<>();
 
 //    public List< HashMap<String , SubscriptionInfo> > subscriptionRateMaps;
 

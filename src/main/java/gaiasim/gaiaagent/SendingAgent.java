@@ -34,7 +34,7 @@ public class SendingAgent {
         options.addOption("c", "config",true, "path to config file");
         options.addOption("n" , "total-number" , true , "total number of agents");
 
-        String id = null;
+        String said = null;
         String configfilePath;
         String gmlFilePath = null;
 
@@ -52,7 +52,7 @@ public class SendingAgent {
             cmd = parser.parse(options, args);
 
             if (cmd.hasOption("i")){
-                id = cmd.getOptionValue('i');
+                said = cmd.getOptionValue('i');
             }
 
             if (cmd.hasOption("c")){
@@ -88,9 +88,9 @@ public class SendingAgent {
         }
 
         AgentSharedData sharedData;
-        sharedData = new AgentSharedData(id, net_graph);
+        sharedData = new AgentSharedData(said, net_graph);
 
-        final AgentRPCServer server = new AgentRPCServer(id, net_graph, config, sharedData);
+        final AgentRPCServer server = new AgentRPCServer(said, net_graph, config, sharedData);
 
         Thread fumListener = new Thread( new CTRLMessageListener(sharedData.fumQueue, sharedData));
         fumListener.start();

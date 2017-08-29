@@ -8,9 +8,7 @@ import gaiasim.gaiaprotos.GaiaMessageProtos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @SuppressWarnings("Duplicates")
@@ -102,10 +100,10 @@ public class CTRLMessageListener implements Runnable{
                     }
                 }*/
 //                think about the overhead of this notification
-                for(Map.Entry<String, LinkedBlockingQueue<SubscriptionMessage>[] > qe :agentSharedData.workerQueues.entrySet()){
-                    LinkedBlockingQueue<SubscriptionMessage>[] ql = qe.getValue();
+                for(Map.Entry<String, LinkedBlockingQueue<WorkerCTRLMsg>[] > qe :agentSharedData.workerQueues.entrySet()){
+                    LinkedBlockingQueue<WorkerCTRLMsg>[] ql = qe.getValue();
                     for (int i = 0 ; i < ql.length ; i++){
-                        ql[i].put( new SubscriptionMessage());
+                        ql[i].put( new WorkerCTRLMsg());
                     }
                 }
 

@@ -2,10 +2,11 @@ package gaiasim.gaiaagent;
 
 // Message for subscribe a FlowGroup to a persistent connection (worker).
 
-public class SubscriptionMessage {
+public class WorkerCTRLMsg {
     public enum  MsgType {
         SUBSCRIBE,
         UNSUBSCRIBE,
+        RECONNECT,
         SYNC // SYNC do not carry information
     }
 
@@ -16,7 +17,7 @@ public class SubscriptionMessage {
     boolean pause = false;
 
     // subscribe or change rate.
-    public SubscriptionMessage(FlowGroupInfo fgi, double rate) {
+    public WorkerCTRLMsg(FlowGroupInfo fgi, double rate) {
         this.type = MsgType.SUBSCRIBE;
         this.fgi = fgi;
         this.rate = rate;
@@ -24,14 +25,18 @@ public class SubscriptionMessage {
     }
 
     // unsubscribe
-    public SubscriptionMessage(FlowGroupInfo fgi) {
+    public WorkerCTRLMsg(FlowGroupInfo fgi) {
         this.type = MsgType.UNSUBSCRIBE;
         this.fgi = fgi;
         this.rate = 0.0;
         this.pause = true;
     }
 
-    public SubscriptionMessage(){
+    public WorkerCTRLMsg(int NULL){
+        this.type = MsgType.RECONNECT;
+    }
+
+    public WorkerCTRLMsg(){
         this.type = MsgType.SYNC;
     }
 

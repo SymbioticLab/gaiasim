@@ -20,11 +20,11 @@ import org.apache.logging.log4j.Logger;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("Duplicates")
 public class WorkerThread implements Runnable{
@@ -40,7 +40,7 @@ public class WorkerThread implements Runnable{
     // Queue on which SendingAgent places updates for this PersistentConnection. Updates
     // flow, or that the PersistentConnection should terminate.
     // may inform the PersistentConnection of a new subscribing flow, an unsubscribing
-    LinkedBlockingQueue<SubscriptionMessage> subcriptionQueue;
+    LinkedBlockingQueue<WorkerCTRLMsg> subcriptionQueue;
 
 
     // The subscription info should contain: FG_ID -> FGI and FG_ID -> rate
@@ -51,6 +51,9 @@ public class WorkerThread implements Runnable{
     public volatile double total_rate = 0.0;
 
     public Socket dataSocket;
+    private String raIP;
+    private int raPort;
+    private int localPort;
 
     // data related
 
@@ -60,29 +63,26 @@ public class WorkerThread implements Runnable{
     private BufferedOutputStream bos;
 
 
-    public WorkerThread(String workerID, String RAID, int pathID , Socket soc, LinkedBlockingQueue<SubscriptionMessage> inputQueue , AgentSharedData sharedData){
+    public WorkerThread(String workerID, String RAID, int pathID, LinkedBlockingQueue<WorkerCTRLMsg> inputQueue,
+                        AgentSharedData sharedData, String raip, int raPort, int port){
         this.connID = workerID;
-        this.dataSocket = soc;
         this.subcriptionQueue = inputQueue;
         this.sharedData = sharedData;
         this.raID = RAID;
         this.pathID = pathID;
+        this.raIP = raip;
+        this.raPort = raPort;
+        this.localPort = port;
 
         rateLimiter = RateLimiter.create(Constants.DEFAULT_TOKEN_RATE);
 
-        try {
-            bos = new BufferedOutputStream(soc.getOutputStream() , Constants.BUFFER_SIZE );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        logger.info("WorkerThread {} created, src port {}", this.connID, this.dataSocket.getLocalPort());
+//        logger.info("WorkerThread {} created, src port {}", this.connID, this.dataSocket.getLocalPort());
 
     }
 
     @Override
     public void run() {
-        SubscriptionMessage m = null;
+        WorkerCTRLMsg m = null;
 
         // await for the signal before starting sending Heartbeat Msgs
         try {
@@ -177,7 +177,23 @@ public class WorkerThread implements Runnable{
         }
     }
 
-    private void processMessage(SubscriptionMessage m) {
+    public void connectSocket() throws IOException {
+
+        logger.info("Worker {} connecting socket to {} : {}", connID, raIP, raPort);
+
+        dataSocket = new Socket(raIP, raPort, null, localPort);
+
+        try {
+            bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        sharedData.cnt_RestartedConnections.countDown();
+
+    }
+
+    private void processMessage(WorkerCTRLMsg m) {
         // m will be null only if poll() returned that we have no
         // messages. If m is not null, process the message.
         // use while loop to process all queued message.
@@ -187,7 +203,7 @@ public class WorkerThread implements Runnable{
 
             // Now we only use the subscription message as a sync signal..
 
-            if (m.getType() == SubscriptionMessage.MsgType.SYNC){
+            if (m.getType() == WorkerCTRLMsg.MsgType.SYNC){
                 // update the worker's subscription info
                 // and go back to work.
                 subscribers.clear();
@@ -198,6 +214,16 @@ public class WorkerThread implements Runnable{
 
                 if (total_rate  > 0){
                     logger.debug("Worker {} Received SYNC message, now working with rate {} (MBit/s)", this.connID , total_rate);
+                }
+
+            }
+
+            if (m.getType() == WorkerCTRLMsg.MsgType.RECONNECT){
+                try {
+                    connectSocket();
+                } catch (IOException e) {
+                    e.printStackTrace();
+//                    logger.error("failed on socket to RA {} @ IP: {} Port: {}", ra_id , config.getRAIP(raID), config.getRAPort(raID));
                 }
 
             }

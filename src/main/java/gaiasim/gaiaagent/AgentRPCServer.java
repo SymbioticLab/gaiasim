@@ -19,6 +19,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class AgentRPCServer {
@@ -94,6 +96,8 @@ public class AgentRPCServer {
             }
 
             sharedData.saState = AgentSharedData.SAState.CONNECTING;
+
+            int workerCnt = 0;
             // set up Persistent Connections and send PA Messages.
             for (String ra_id : netGraph.nodes_) {
 
@@ -107,30 +111,26 @@ public class AgentRPCServer {
                         String conn_id = trace_id_ + "-" + Constants.node_id_to_trace_id.get(ra_id) + "." + Integer.toString(i);
                         int raID = Integer.parseInt(ra_id);
 
-                        try {
-                            // Create the socket that the PersistentConnection object will use
-                            Socket socketToRA = new Socket( config.getRAIP(raID) , config.getRAPort(raID));
-                            socketToRA.setSoTimeout(0);
-                            socketToRA.setKeepAlive(true);
-                            int port = socketToRA.getLocalPort();
 
-                            queues[i] = new LinkedBlockingQueue<SubscriptionMessage>();
+//                            // Create the socket that the PersistentConnection object will use
+//                            Socket socketToRA = new Socket( config.getRAIP(raID) , config.getRAPort(raID));
+//                            socketToRA.setSoTimeout(0);
+//                            socketToRA.setKeepAlive(true);
 
-                            // send PA message
-                            GaiaMessageProtos.PAMessage reply = GaiaMessageProtos.PAMessage.newBuilder().setSaId(saID).setRaId(ra_id).setPathId(i).setPortNo(port).build();
-                            responseObserver.onNext(reply);
+                        workerCnt++;
+                        int port = 40000 + Integer.parseInt(saID) * 100 + workerCnt;
 
-                            // Start the worker Thread TODO: handle thread failure/PConn failure
-                            Thread wt = new Thread( new WorkerThread(conn_id, ra_id , i ,socketToRA , queues[i] , sharedData) );
-                            wt.start();
+                        queues[i] = new LinkedBlockingQueue<WorkerCTRLMsg>();
 
-                        }
-                        catch (java.io.IOException e) {
-                            logger.error("failed on socket to RA {} @ IP: {} Port: {}", ra_id , config.getRAIP(raID), config.getRAPort(raID));
-//                                System.err.println("SA: failed on socket to RA " + ra_id + " @IP: " + config.getRAIP(raID) + " Port: " + config.getRAPort(raID));
-                            e.printStackTrace();
-                            System.exit(1); // fail early
-                        }
+                        // send PA message
+                        GaiaMessageProtos.PAMessage reply = GaiaMessageProtos.PAMessage.newBuilder().setSaId(saID).setRaId(ra_id).setPathId(i).setPortNo(port).build();
+                        responseObserver.onNext(reply);
+
+                        // Start the worker Thread TODO: handle thread failure/PConn failure
+                        Thread wt = new Thread( new WorkerThread(conn_id, ra_id , i , queues[i] , sharedData,
+                                config.getRAIP(raID) , config.getRAPort(raID), port ) );
+                        wt.start();
+
                     }
 
                     sharedData.workerQueues.put(ra_id , queues);
@@ -178,9 +178,39 @@ public class AgentRPCServer {
         @Override
         public void startHeartBeat(gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL request,
                                    io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL_ACK> responseObserver) {
+            // send the reconnect message
+            int replyCnt = 0;
+            for(Map.Entry<String, LinkedBlockingQueue<WorkerCTRLMsg>[] > qe :sharedData.workerQueues.entrySet()){
+                LinkedBlockingQueue<WorkerCTRLMsg>[] ql = qe.getValue();
+                for (int i = 0 ; i < ql.length ; i++){
+                    try {
+                        ql[i].put( new WorkerCTRLMsg(0));
+                        replyCnt++;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            // block until all workers are done with reconnection
+            if (sharedData.cnt_RestartedConnections == null){
+                sharedData.cnt_RestartedConnections = new CountDownLatch(replyCnt);
+            }
+            else {
+                logger.error("CountDownLatch already initialized!");
+            }
+
+            try {
+                sharedData.cnt_RestartedConnections.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            // start heartbeat and return
             sharedData.isSendingHeartBeat.set(true);
             responseObserver.onNext(GaiaMessageProtos.Exp_CTRL_ACK.getDefaultInstance());
             responseObserver.onCompleted();
+            logger.info("starting heartbeat");
         }
 
         // non-stream version
