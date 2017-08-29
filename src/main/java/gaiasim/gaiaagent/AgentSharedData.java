@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("Duplicates")
 
@@ -32,6 +33,8 @@ public class AgentSharedData {
     SAState saState = SAState.IDLE;
 
     CountDownLatch readySignal = new CountDownLatch(1);
+
+    AtomicBoolean isSendingHeartBeat = new AtomicBoolean(false);
 
     LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> fumQueue = new LinkedBlockingQueue<>();
 

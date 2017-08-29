@@ -175,6 +175,14 @@ public class AgentRPCServer {
             };
         }
 
+        @Override
+        public void startHeartBeat(gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL request,
+                                   io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL_ACK> responseObserver) {
+            sharedData.isSendingHeartBeat.set(true);
+            responseObserver.onNext(GaiaMessageProtos.Exp_CTRL_ACK.getDefaultInstance());
+            responseObserver.onCompleted();
+        }
+
         // non-stream version
 /*        @Override
         public void changeFlow(gaiasim.gaiaprotos.GaiaMessageProtos.FlowUpdate request,

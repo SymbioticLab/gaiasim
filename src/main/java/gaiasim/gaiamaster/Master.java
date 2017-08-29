@@ -172,6 +172,11 @@ public class Master {
             e.printStackTrace();
         }
 
+        // start sending heartbeat
+        for (String sa_id : netGraph.nodes_) {
+            rpcClientHashMap.get(sa_id).startHeartBeat();
+        }
+
         // start the other two threads.
         coflowListener.start();
 

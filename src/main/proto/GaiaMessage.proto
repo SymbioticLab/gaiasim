@@ -15,6 +15,7 @@ service SendingAgentService {
 //    rpc StartFlow (FlowUpdate) returns (stream StatusReport) {}
     rpc PrepareConnections (PAM_REQ) returns (stream PAMessage) {}
     rpc ChangeFlow (stream FlowUpdate) returns (FUM_ACK) {}
+    rpc StartHeartBeat (Exp_CTRL) returns (Exp_CTRL_ACK) {}
 }
 
 service MasterService {
@@ -76,5 +77,9 @@ message PAM_REQ {
 message FUM_ACK {}
 
 message FlowStatus_ACK {}
+
+message Exp_CTRL{}
+
+message Exp_CTRL_ACK{}
 
 

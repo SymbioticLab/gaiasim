@@ -107,10 +107,12 @@ public class WorkerThread implements Runnable{
                 sendData(total_rate);
             }
             else {
-                heartBeatCnt ++;
-                if (heartBeatCnt >= 100) {
-                    sendHeartBeat();
-                    heartBeatCnt = 0;
+                if (sharedData.isSendingHeartBeat.get()) {
+                    heartBeatCnt++;
+                    if (heartBeatCnt >= 100) {
+                        sendHeartBeat();
+                        heartBeatCnt = 0;
+                    }
                 }
             }
 
