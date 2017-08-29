@@ -179,7 +179,7 @@ public class WorkerThread implements Runnable{
 
     public void connectSocket() throws IOException {
 
-        logger.info("Worker {} connecting socket to {} : {}", connID, raIP, raPort);
+        logger.info("Worker {} connecting socket to {} : {} from port {}", connID, raIP, raPort, localPort);
 
         dataSocket = new Socket(raIP, raPort, null, localPort);
 
