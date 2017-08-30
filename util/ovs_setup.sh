@@ -28,6 +28,8 @@ setovs(){
     for vlan in "$@"
     do
         ifconfig $vlan 0.0
+        ip addr flush dev $vlan
+        ip addr -6 flush dev $vlan
         ovs-vsctl add-port s$agentID $vlan
     done
 
