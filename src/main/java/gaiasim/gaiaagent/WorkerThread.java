@@ -177,11 +177,16 @@ public class WorkerThread implements Runnable{
         }
     }
 
-    public void connectSocket() throws IOException {
+    public void connectSocket(){
 
-        logger.info("Worker {} connecting socket to {} : {} from port {}", connID, raIP, raPort, localPort);
+        try {
+            dataSocket = new Socket(raIP, raPort, null, localPort);
+        } catch (IOException e) {
+            logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
+            e.printStackTrace();
+        }
 
-        dataSocket = new Socket(raIP, raPort, null, localPort);
+        logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
 
         try {
             bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
@@ -219,12 +224,8 @@ public class WorkerThread implements Runnable{
             }
 
             if (m.getType() == WorkerCTRLMsg.MsgType.RECONNECT){
-                try {
-                    connectSocket();
-                } catch (IOException e) {
-                    e.printStackTrace();
-//                    logger.error("failed on socket to RA {} @ IP: {} Port: {}", ra_id , config.getRAIP(raID), config.getRAPort(raID));
-                }
+
+                connectSocket();
 
             }
 
