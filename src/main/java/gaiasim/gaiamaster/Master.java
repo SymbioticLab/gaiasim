@@ -29,6 +29,7 @@ public class Master {
     private final String outdir;
     private final Configuration config;
     private final CoflowScheduler scheduler;
+    private final boolean is_SettingFlowRules;
 
     NetGraph netGraph;
 
@@ -73,12 +74,13 @@ public class Master {
         }
     }
 
-    public Master(String gml_file, String trace_file,
-                  String scheduler_type, String outdir, String configFile, double bw_factor, boolean isRunningOnList) throws IOException {
+    public Master(String gml_file, String trace_file, String scheduler_type, String outdir, String configFile,
+                  double bw_factor, boolean isRunningOnList, boolean isSettingFlowRules) throws IOException {
 
         this.outdir = outdir;
         this.netGraph = new NetGraph(gml_file , bw_factor );
         this.rpcClientHashMap = new HashMap<>();
+        this.is_SettingFlowRules = isSettingFlowRules;
 
         printPaths(netGraph);
         if(configFile == null){
@@ -160,14 +162,19 @@ public class Master {
 
         logger.info("Connection established between SA-RA");
 
-        // receive the port announcements from SendingAgents and set appropriate flow rules.
-        PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, PAEventQueue);
-        relay.relay_ports();
+        if (is_SettingFlowRules) {
+            // receive the port announcements from SendingAgents and set appropriate flow rules.
+            PortAnnouncementRelayMessage relay = new PortAnnouncementRelayMessage(netGraph, PAEventQueue);
+            relay.relay_ports();
+            logger.info("All flow rules set up sleeping 5s before starting HeartBeat");
+        }
+        else {
+            logger.info("skipping setting flow rules, sleep 5s");
+        }
 
-        logger.info("All flow rules set up sleeping 10s before starting HeartBeat");
 
         try {
-            Thread.sleep(10000); // sleep 10s for the rules to propagate // TODO test the rules first before proceeding
+            Thread.sleep(5000); // sleep 10s for the rules to propagate // TODO test the rules first before proceeding
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

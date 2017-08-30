@@ -10,11 +10,13 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
     private static boolean isRunningOnList = false;
+    private static boolean isSettingFlowRules = false;
 
     public static double SCALE_FACTOR = 1.0; // default value, used by DAGReader.java
     private static final Logger logger = LogManager.getLogger();
@@ -36,6 +38,7 @@ public class GaiaSim {
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
         options.addOption("l", false, "run on a list of job traces");
+        options.addOption("p", false, "set up flow rules");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -46,6 +49,14 @@ public class GaiaSim {
         else {
             System.out.println("ERROR: Must specify a path to a gml file using the -g flag");
             System.exit(1);
+        }
+
+        if (cmd.hasOption("p")){
+            System.out.println("Flow rules not set, we are setting flow rules this time");
+            isSettingFlowRules = true;
+        }
+        else {
+            logger.warn("Assuming flow rules has been set");
         }
 
         if (cmd.hasOption("j")) {
@@ -119,7 +130,7 @@ public class GaiaSim {
 
             Master m = new Master(args_map.get("gml"), args_map.get("trace"),
                                     args_map.get("scheduler"), args_map.get("outdir") , args_map.get("config"),
-                                    Double.parseDouble(args_map.get("bw_factor")), isRunningOnList);
+                                    Double.parseDouble(args_map.get("bw_factor")), isRunningOnList, isSettingFlowRules);
 
             if (is_emulation_) {
                 m.emulate();

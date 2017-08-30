@@ -4,8 +4,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import gaiasim.agent.Receiver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ReceivingAgent {
+
+    private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         int port = 33330;
@@ -15,7 +19,7 @@ public class ReceivingAgent {
 
         if(args.length == 1){
             port = Integer.parseInt(args[0]);
-            System.out.println("Running with 1 argument, set port to " + port);
+            logger.info("Running with 1 argument, set port to {}" , port);
         }
 
         try {
@@ -26,7 +30,7 @@ public class ReceivingAgent {
                 conn_cnt ++;
                 client.setSoTimeout(0);
                 client.setKeepAlive(true);
-                System.out.println( conn_cnt + " Got a connection from " + client.getRemoteSocketAddress().toString());
+                logger.info( "{} Got a connection from {}", conn_cnt , client.getRemoteSocketAddress().toString());
                 (new Thread(new Receiver(client))).start();
             }
         }
