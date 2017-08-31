@@ -3,9 +3,9 @@
 # Script ver 1.1
 # This script is used to download and build codes
 
-#sudo apt install -y nload bwm-ng htop pv
-#export LC_ALL=en_US.UTF-8
-#sudo pip install networkx
+export LC_ALL=en_US.UTF-8
+sudo apt install -y nload bwm-ng htop pv nmap
+sudo pip install networkx
 
 echo "mounting /tmp as tmpfs..."
 sudo mount -t tmpfs tmpfs /tmp
