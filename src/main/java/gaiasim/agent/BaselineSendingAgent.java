@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 // routing strategy. Once started, flows are not preempted
 // by the controller.
 public class BaselineSendingAgent {
+    private final boolean isCloudLab;
 
 //    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
 //    ExecutorService es = new ThreadPoolExecutor(10, 100, 10, );
@@ -155,7 +156,16 @@ public class BaselineSendingAgent {
                     if (c.type_ == ControlMessage.Type.FLOW_START) {
                         System.out.println(data_Broker_.id_ + " FLOW_START(" + c.flow_id_ + ", " + c.field0_ + ", " + c.field1_ + ")");
 
-                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)))).start();
+                        String raIP = null;
+                        if (isCloudLab) {
+                            // raIP for cloudlab
+                            raIP = "10.0." + (Integer.parseInt(c.ra_id_) + 1) + "." + (Integer.parseInt(c.ra_id_) + 1);
+                        }
+                        else {
+                            raIP = "10.0.0." + (Integer.parseInt(c.ra_id_) + 1);
+                        }
+
+                        (new Thread(new Sender(data_Broker_, c.flow_id_, c.field1_, raIP))).start();
 /*                        try {
                             es.submit(new Sender(data_Broker_, c.flow_id_, c.field1_, "10.0.0." + (Integer.parseInt(c.ra_id_) + 1)));
                         }
@@ -201,9 +211,10 @@ public class BaselineSendingAgent {
     public DataBroker data_Broker;
     public Thread listener_;
 
-    public BaselineSendingAgent(String id, Socket client_sd) throws InterruptedException {
+    public BaselineSendingAgent(String id, Socket client_sd, boolean isCloudlab) throws InterruptedException {
 
         data_Broker = new DataBroker(id, client_sd);
+        this.isCloudLab = isCloudlab;
 //        listener_ = new Thread(new Listener(data_Broker));
 //        listener_.start();
 //        listener_.join(); // waiting for it to die.

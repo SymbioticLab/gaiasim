@@ -39,17 +39,26 @@ public class SendingAgent {
             if (use_persistent.equals("0")) {
                 while (true) {
                     Socket socketToCTRL = listener.accept(); //TODO: need to make *Agent() blocking. so we only serve one CTRL at a time.
-                    logger.info("SA: Starting Baseline.");
-                    BaselineSendingAgent b = new BaselineSendingAgent(id, socketToCTRL);
+                    logger.info("SA: Starting Baseline with cloudlab setup.");
+                    BaselineSendingAgent b = new BaselineSendingAgent(id, socketToCTRL, true);
                 }
-            } else {
-                String gml_file = args[2];
-                NetGraph net_graph = new NetGraph(gml_file);
+            } else if (use_persistent.equals("1")) {
                 while (true) {
-                    Socket socketToCTRL = listener.accept();
-                    logger.info("SA: Starting RRF.");
-                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
+                    Socket socketToCTRL = listener.accept(); //TODO: need to make *Agent() blocking. so we only serve one CTRL at a time.
+                    logger.info("SA: Starting Baseline with mininet setup.");
+                    BaselineSendingAgent b = new BaselineSendingAgent(id, socketToCTRL, false);
                 }
+
+//                String gml_file = args[2];
+//                NetGraph net_graph = new NetGraph(gml_file);
+//                while (true) {
+//                    Socket socketToCTRL = listener.accept();
+//                    logger.info("SA: Starting RRF.");
+//                    PersistentSendingAgent p = new PersistentSendingAgent(id, net_graph, socketToCTRL);
+//                }
+            } else {
+                logger.error("Wrong parameters");
+                System.exit(1);
             }
 
         } catch (java.io.IOException e) {
