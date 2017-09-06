@@ -150,7 +150,7 @@ public class WorkerThread implements Runnable{
             bos.write(data_block , 0, data_length);
             bos.flush();
 
-            logger.info("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
+//            logger.info("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
 
 //                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
 //                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
