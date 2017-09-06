@@ -186,8 +186,8 @@ public class WorkerThread implements Runnable{
 
         try {
             dataSocket = new Socket(raIP, raPort, null, localPort);
-            dataSocket.setSendBufferSize(64*1024*1024);
-            dataSocket.setReceiveBufferSize(64*1024*1024);
+            dataSocket.setSendBufferSize(16*1024*1024);
+            dataSocket.setReceiveBufferSize(16*1024*1024);
         } catch (IOException e) {
             logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
             e.printStackTrace();

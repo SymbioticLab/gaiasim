@@ -37,8 +37,8 @@ public class ReceivingAgent {
             while (true) {
                 Socket dataSocket = sd.accept();
                 conn_cnt ++;
-                dataSocket.setSendBufferSize(64*1024*1024);
-                dataSocket.setReceiveBufferSize(64*1024*1024);
+                dataSocket.setSendBufferSize(16*1024*1024);
+                dataSocket.setReceiveBufferSize(16*1024*1024);
 //                dataSocket.setSoTimeout(0);
 //                dataSocket.setKeepAlive(true);
                 logger.info( "{} Got a connection from {}", conn_cnt , dataSocket.getRemoteSocketAddress().toString());
