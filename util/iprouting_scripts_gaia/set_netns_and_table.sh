@@ -67,10 +67,25 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
     sudo ip netns exec $net_name ip rule add from all fwmark $counter table T$counter
 
     # set the bw for this interface!!!
+#    sudo ip netns exec $net_name tc qdisc del dev $nic_name
+#    sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle 10$counter: htb default 1
+#    sudo ip netns exec $net_name tc class add dev $nic_name parent 10$counter:1 classid 10$counter:1 htb rate 1048Mbit ceil 1048Mbit burst 1441b cburst 1441b
+
+    # set the bw / delay for this interface!!!
     sudo ip netns exec $net_name tc qdisc del dev $nic_name
-    sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle 10$counter: htb default 1
-    sudo ip netns exec $net_name tc class add dev $nic_name parent 10$counter:1 classid 10$counter:1 htb rate 1048Mbit ceil 1048Mbit burst 1441b cburst 1441b
+    sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle $counter: htb default 12
+    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid 1:12 htb rate 1048Mbit ceil 3048Mbit burst 1441b cburst 3882b
+
+    # test uniform 100ms
+    sudo ip netns exec $net_name tc qdisc add dev $nic_name parent $counter:12 netem delay 100ms
 
 done
+
+sudo sysctl net.ipv4.tcp_window_scaling=1;
+sudo sysctl net.ipv4.tcp_syncookies=1;
+sudo sysctl net.core.rmem_max=128777216;
+sudo sysctl net.core.wmem_max=128777216;
+sudo sysctl net.ipv4.tcp_rmem='4096 87380 16777216';
+sudo sysctl net.ipv4.tcp_wmem='4096 65536 16777216';
 
 echo "done"
