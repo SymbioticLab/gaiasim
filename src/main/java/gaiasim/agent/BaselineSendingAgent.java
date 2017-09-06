@@ -121,7 +121,7 @@ public class BaselineSendingAgent {
 
                     // We track how much we've sent in terms of megabits
                     flow_.transmitted_ += (buffer_size_megabits_);
-                    System.out.println( threadName + "BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
+//                    System.out.println( threadName + "BaselineSA: sent: " + flow_.transmitted_ + " for flow: " + flow_.id_);
                 }
             } // end of sending all data
 
