@@ -52,9 +52,10 @@ def main():
         # cmd_str = 'cd ~/gaiasim; java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
         cmd_str = 'java -cp target/gaia_sa-jar-with-dependencies.jar gaiasim.agent.SendingAgent ' + str(host_id)
         if baseline:
-            cmd_str += ' 0 > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'
+            cmd_str += ' 1 > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'
         else:
-            cmd_str += ' 1 ' + args.gml + ' > /tmp/salog_' + str(host_id) + '.txt 2>&1 &'
+            print 'ERROR! only support baseline'
+            return -1
         print "Starting sending agent " + host.name + " id " + str(host_id) +" . using: " + cmd_str
         host.cmd(cmd_str)
         
