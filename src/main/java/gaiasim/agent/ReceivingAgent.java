@@ -25,7 +25,7 @@ public class ReceivingAgent {
 
         try {
             sd = new ServerSocket(port);
-            sd.setSoTimeout(0);
+//            sd.setSoTimeout(0);
 
             Runtime.getRuntime().addShutdownHook(new Thread(){public void run(){
                 try {
@@ -35,12 +35,14 @@ public class ReceivingAgent {
             }});
 
             while (true) {
-                Socket client = sd.accept();
+                Socket dataSocket = sd.accept();
                 conn_cnt ++;
-                client.setSoTimeout(0);
-                client.setKeepAlive(true);
-                logger.info( "{} Got a connection from {}", conn_cnt , client.getRemoteSocketAddress().toString());
-                (new Thread(new Receiver(client))).start();
+                dataSocket.setSendBufferSize(64*1024*1024);
+                dataSocket.setReceiveBufferSize(64*1024*1024);
+//                dataSocket.setSoTimeout(0);
+//                dataSocket.setKeepAlive(true);
+                logger.info( "{} Got a connection from {}", conn_cnt , dataSocket.getRemoteSocketAddress().toString());
+                (new Thread(new Receiver(dataSocket))).start();
             }
         }
         catch (java.io.IOException e) {
