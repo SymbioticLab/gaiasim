@@ -61,6 +61,7 @@ public class WorkerThread implements Runnable{
     private byte[] data_block = new byte[Constants.BLOCK_SIZE_MB * 1024 * 1024]; // 32MB for now.
 
     private BufferedOutputStream bos;
+    private long tmp_timestamp;
 
 
     public WorkerThread(String workerID, String RAID, int pathID, LinkedBlockingQueue<WorkerCTRLMsg> inputQueue,
@@ -145,8 +146,11 @@ public class WorkerThread implements Runnable{
                 rateLimiter.setRate(new_rate);
             }
 
+            tmp_timestamp = System.currentTimeMillis();
             bos.write(data_block , 0, data_length);
             bos.flush();
+
+            logger.info("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
 
 //                    logger.info("Worker {} flushed {} Bytes at rate {} on {}", connID, data_length, total_rate, System.currentTimeMillis());
 //                    logger.info("Worker {} flushed {} Bytes at rate {}", connID, data_length, total_rate);
@@ -161,6 +165,7 @@ public class WorkerThread implements Runnable{
         }
         catch (IOException e) {
 //                    System.err.println("Fail to write data to ra");
+            logger.error("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
             logger.error("Fail to write data to ra {} , thread {}", raID, connID);
             e.printStackTrace();
 //                    System.exit(1); // don't fail here
@@ -171,7 +176,7 @@ public class WorkerThread implements Runnable{
         try {
             bos.write(1);
             bos.flush();
-            logger.info("sending heartbeat from {}", this.connID);
+//            logger.info("sending heartbeat from {}", this.connID);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package gaiasim.agent;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,6 +26,14 @@ public class ReceivingAgent {
         try {
             sd = new ServerSocket(port);
             sd.setSoTimeout(0);
+
+            Runtime.getRuntime().addShutdownHook(new Thread(){public void run(){
+                try {
+                    sd.close();
+                    System.out.println("The server is shut down!");
+                } catch (IOException e) { System.exit(1); }
+            }});
+
             while (true) {
                 Socket client = sd.accept();
                 conn_cnt ++;

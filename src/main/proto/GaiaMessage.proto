@@ -29,6 +29,12 @@ message StatusReport {
         bool finished = 3;
     }
 
+    message LinkStatus {
+        string saID = 1;
+        string raID = 2;
+        bool isBroken = 3;
+    }
+
     repeated FlowStatus status = 1;
 }
 
