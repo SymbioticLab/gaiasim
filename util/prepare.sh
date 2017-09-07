@@ -10,7 +10,7 @@ sudo pip install networkx
 echo "mounting /tmp as tmpfs..."
 sudo mount -t tmpfs tmpfs /tmp
 
-rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/floodlight
+#rsync -avh /proj/gaia-PG0/gaia/floodlight/floodlight/ ~/floodlight
 
 echo "Floodlight ready for use, now compiling gaiasim..."
 
