@@ -96,8 +96,8 @@ public class BaselineSendingAgent {
                 try {
                     sd_ = new Socket(ra_ip_, 33330);
                     bos = new BufferedOutputStream(sd_.getOutputStream());
-                    sd_.setSendBufferSize(64*1024*1024);
-                    System.err.println("Send buf " + sd_.getSendBufferSize());
+//                    sd_.setSendBufferSize(64*1024*1024);
+//                    System.err.println("Send buf " + sd_.getSendBufferSize());
 //                    sd_.setReceiveBufferSize(16*1024*1024);
                 }
                 catch (java.io.IOException e) {
