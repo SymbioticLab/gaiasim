@@ -76,8 +76,19 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
     sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle $counter: htb default 12
     sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 1048Mbit ceil 3048Mbit burst 1441b cburst 3882b
 
-    # test uniform 100ms
-    sudo ip netns exec $net_name tc qdisc add dev $nic_name parent $counter:12 netem delay 100ms
+    case "$link_id" in
+        "12") lat='82ms' ;;
+        "13") lat='104ms' ;;
+        "23") lat='33.7ms' ;;
+        "24") lat='29ms' ;;
+        "34") lat='17ms' ;;
+        "35") lat='64.2ms' ;;
+        "45") lat='64.7ms' ;;
+        *) echo "Wrong link_id!"
+        exit;;
+    esac
+
+    sudo ip netns exec $net_name tc qdisc add dev $nic_name parent $counter:12 netem delay $lat
 
 done
 
