@@ -74,7 +74,7 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
     # set the bw / delay for this interface!!!
     sudo ip netns exec $net_name tc qdisc del dev $nic_name
     sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle $counter: htb default 12
-    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 1048Mbit ceil 1500Mbit burst 1441b cburst 2002b
+    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 1048Mbit ceil 1048Mbit #burst 1441b cburst 2002b
 
     case "$link_id" in
         "12") lat='82ms' ;;
