@@ -94,9 +94,10 @@ done
 
 sudo sysctl net.ipv4.tcp_window_scaling=1;
 sudo sysctl net.ipv4.tcp_syncookies=1;
-sudo sysctl net.core.rmem_max=128777216;
-sudo sysctl net.core.wmem_max=128777216;
-sudo sysctl net.ipv4.tcp_rmem='8192 174760 32777216';
-sudo sysctl net.ipv4.tcp_wmem='8192 174760 32777216';
+sudo sysctl net.core.rmem_max=134217728;
+sudo sysctl net.core.wmem_max=134217728;
+sudo sysctl net.ipv4.tcp_rmem='10240 2097152 134217728';
+sudo sysctl net.ipv4.tcp_wmem='10240 2097152 134217728';
+sudo sysctl net.ipv4.tcp_mem='134217728 1073741824 1073741824';
 
 echo "done"
