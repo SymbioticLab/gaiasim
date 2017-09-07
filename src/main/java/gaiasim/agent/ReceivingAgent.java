@@ -23,8 +23,8 @@ public class ReceivingAgent {
             sd = new ServerSocket(port);
             while (true) {
                 Socket dataSoc = sd.accept();
-                dataSoc.setSendBufferSize(16*1024*1024);
-                dataSoc.setReceiveBufferSize(16*1024*1024);
+//                dataSoc.setSendBufferSize(16*1024*1024);
+//                dataSoc.setReceiveBufferSize(16*1024*1024);
                 System.out.println("Got a connection");
 
 //                (new Thread(new Receiver(client))).start();
