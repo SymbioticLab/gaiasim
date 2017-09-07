@@ -21,10 +21,13 @@ public class ReceivingAgent {
 
         try {
             sd = new ServerSocket(port);
+            sd.setReceiveBufferSize(32*1024*1024);
+            System.err.println("Buf: " + sd.getReceiveBufferSize());
             while (true) {
                 Socket dataSoc = sd.accept();
 //                dataSoc.setSendBufferSize(16*1024*1024);
-//                dataSoc.setReceiveBufferSize(16*1024*1024);
+                dataSoc.setReceiveBufferSize(32*1024*1024);
+                System.err.println("Buf: " + dataSoc.getReceiveBufferSize());
                 System.out.println("Got a connection");
 
 //                (new Thread(new Receiver(client))).start();
