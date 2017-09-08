@@ -31,8 +31,6 @@ public class ReceivingAgent {
                 Socket dataSoc = sd.accept();
 //                dataSoc.setSendBufferSize(16*1024*1024);
                 dataSoc.setReceiveBufferSize(64*1024*1024);
-                logger.info("Got connection from {} , buf {} ", dataSoc.getRemoteSocketAddress() , dataSoc.getReceiveBufferSize());
-
 //                (new Thread(new Receiver(client))).start();
 //                taskQueue.put(new Receiver(client));
                 es.submit(new Receiver(dataSoc));

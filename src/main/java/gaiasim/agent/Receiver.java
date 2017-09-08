@@ -5,10 +5,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Receiver implements Runnable {
 
     private static final Logger logger = LogManager.getLogger();
+
+    private static AtomicInteger socketCnt = new AtomicInteger(0);
 
     public Socket sd_;
     public InputStream in_;
@@ -18,6 +21,8 @@ public class Receiver implements Runnable {
     public Receiver(Socket client_sd) throws java.io.IOException {
         sd_ = client_sd;
         in_ = client_sd.getInputStream();
+        socketCnt.incrementAndGet();
+        logger.info("Got connection from {} , buffer {} , total {}", sd_.getRemoteSocketAddress() , sd_.getReceiveBufferSize(), socketCnt);
     }
 
     public void run() {
@@ -43,7 +48,7 @@ public class Receiver implements Runnable {
         try {
             in_.close();
             sd_.close();
-            logger.info("Closed socket from {}, received {} Bytes", sd_.getRemoteSocketAddress() , recvBytes);
+            logger.info("Closed socket from {}, received {} Bytes, remaining sockets: {}", sd_.getRemoteSocketAddress() , recvBytes, socketCnt.decrementAndGet());
         }
         catch (java.io.IOException e) {
             logger.error("Error closing socket");
