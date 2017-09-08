@@ -5,10 +5,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import gaiasim.agent.PersistentSendingAgent;
-import gaiasim.comm.ControlMessage;
-import gaiasim.comm.PortAnnouncementMessage;
-import gaiasim.comm.ScheduleMessage;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;

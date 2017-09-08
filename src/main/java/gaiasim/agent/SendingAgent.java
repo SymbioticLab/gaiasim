@@ -3,15 +3,12 @@ package gaiasim.agent;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import gaiasim.agent.BaselineSendingAgent;
-import gaiasim.agent.PersistentSendingAgent;
-import gaiasim.network.NetGraph;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SendingAgent {
 
-    private final static Logger logger = LoggerFactory.getLogger(SendingAgent.class);
+    private static final Logger logger = LogManager.getLogger();
 //    private final static Logger logger = LoggerFactory.getLogger(SendingAgent.class);
 
     public static void main(String[] args) throws java.io.IOException {
@@ -29,8 +26,6 @@ public class SendingAgent {
         ServerSocket listener = new ServerSocket(23330);  // always listening
 
         System.setProperty("org.slf4j.simpleLogger.logFile" , "System.out"); // redirecting to stdout.
-
-
 
 
 

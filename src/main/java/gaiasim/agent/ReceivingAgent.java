@@ -8,8 +8,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import gaiasim.agent.Receiver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ReceivingAgent {
+
+    private static final Logger logger = LogManager.getLogger();
 
     // also use Thread Pool on the receiver side
     static LinkedBlockingQueue<Runnable> taskQueue = new LinkedBlockingQueue<>();
@@ -22,13 +26,12 @@ public class ReceivingAgent {
         try {
             sd = new ServerSocket(port);
             sd.setReceiveBufferSize(64*1024*1024);
-            System.err.println("Buf: " + sd.getReceiveBufferSize());
+            logger.info("Server socket Buffer {} " , sd.getReceiveBufferSize());
             while (true) {
                 Socket dataSoc = sd.accept();
 //                dataSoc.setSendBufferSize(16*1024*1024);
                 dataSoc.setReceiveBufferSize(64*1024*1024);
-                System.err.println("Buf: " + dataSoc.getReceiveBufferSize());
-                System.out.println("Got a connection");
+                logger.info("Got connection from {} , buf {} ", dataSoc.getRemoteSocketAddress() , dataSoc.getReceiveBufferSize());
 
 //                (new Thread(new Receiver(client))).start();
 //                taskQueue.put(new Receiver(client));

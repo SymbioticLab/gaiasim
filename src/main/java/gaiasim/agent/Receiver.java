@@ -1,11 +1,19 @@
 package gaiasim.agent;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.InputStream;
 import java.net.Socket;
 
 public class Receiver implements Runnable {
+
+    private static final Logger logger = LogManager.getLogger();
+
     public Socket sd_;
     public InputStream in_;
+
+    long recvBytes = 0;
 
     public Receiver(Socket client_sd) throws java.io.IOException {
         sd_ = client_sd;
@@ -19,10 +27,14 @@ public class Receiver implements Runnable {
             try {
                 num_recv = in_.read(buffer);
                 if (num_recv < 0) {
+                    logger.info("Received -1 with socket from {}", sd_.getRemoteSocketAddress());
                     break;
+                } else {
+                    recvBytes += num_recv;
                 }
             }
             catch (java.io.IOException e) {
+                logger.error("Exception caught with socket from {}", sd_.getRemoteSocketAddress());
                 e.printStackTrace();
                 break;
             }
@@ -31,9 +43,10 @@ public class Receiver implements Runnable {
         try {
             in_.close();
             sd_.close();
+            logger.info("Closed socket from {}, received {} Bytes", sd_.getRemoteSocketAddress() , recvBytes);
         }
         catch (java.io.IOException e) {
-            System.out.println("Error closing socket");
+            logger.error("Error closing socket");
             e.printStackTrace();
             System.exit(1);
         }

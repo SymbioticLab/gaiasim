@@ -9,8 +9,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import gaiasim.comm.ControlMessage;
 import gaiasim.comm.ScheduleMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Acts on behalf of the controller to start transfers
 // from one node to another. Does not keep any persistent
@@ -19,6 +19,9 @@ import org.slf4j.LoggerFactory;
 // routing strategy. Once started, flows are not preempted
 // by the controller.
 public class BaselineSendingAgent {
+
+    private static final Logger logger = LogManager.getLogger();
+
     private final boolean isCloudLab;
 
 //    private static final Logger logger = LoggerFactory.getLogger("SendingAgent.class");
@@ -87,7 +90,6 @@ public class BaselineSendingAgent {
         }
 
         public void run() {
-
 
             System.out.println(Thread.currentThread().getName() + " starts working on " + flow_.id_);
             while (flow_.transmitted_ < flow_.volume_) {

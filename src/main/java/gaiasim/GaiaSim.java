@@ -10,13 +10,13 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
 
-    private static final Logger logger = LoggerFactory.getLogger(GaiaSim.class);
+    private static final Logger logger = LogManager.getLogger();
 
     public static HashMap<String, String> parse_cli(String[] args) 
                                                     throws org.apache.commons.cli.ParseException {
