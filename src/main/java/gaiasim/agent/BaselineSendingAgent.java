@@ -119,7 +119,7 @@ public class BaselineSendingAgent {
 //                    System.err.println("Send buf " + sd_.getSendBufferSize());
 //                    sd_.setReceiveBufferSize(16*1024*1024);
 
-                    logger.info("Flow {} connected to {}", flow_.id_ , sd_.getRemoteSocketAddress());
+                    logger.info("Flow {} connected via {}", flow_.id_ , sd_.getLocalPort());
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
@@ -151,8 +151,8 @@ public class BaselineSendingAgent {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
                 logger.info("BaselineSA: flow {} completed {} Mbit. closing socket", flow_.id_ , flow_.transmitted_);
 
-                bos.close(); // clean up
                 sd_.close(); // we have to close the socket here!!!!
+                bos.close(); // clean up
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
