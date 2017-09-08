@@ -11,14 +11,6 @@
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>res</directory>
-                <includes>
-                    <include>log4j2.xml</include>
-                </includes>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
