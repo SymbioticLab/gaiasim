@@ -46,6 +46,8 @@ public class Receiver implements Runnable {
         }
         
         try {
+            sd_.shutdownInput();
+            sd_.shutdownOutput();
             in_.close();
             sd_.close();
             logger.info("Closed socket from {}, received {} kB, remaining sockets: {}", sd_.getRemoteSocketAddress() , recvBytes/1024, socketCnt.decrementAndGet());

@@ -110,7 +110,9 @@ sudo sysctl net.ipv4.tcp_wmem='10240 2097152 134217728';
 sudo sysctl net.ipv4.tcp_mem='33554432 33554432 33554432';
 
 sudo sysctl net.ipv4.tcp_max_syn_backlog=2048;
-sudo sysctl net.core.somaxconn=1024;
+sudo sysctl net.core.somaxconn=2048;
 sudo sysctl net.core.netdev_max_backlog=2048;
+
+echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 
 echo "done"
