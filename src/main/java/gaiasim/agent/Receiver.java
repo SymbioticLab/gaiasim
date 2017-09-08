@@ -22,7 +22,7 @@ public class Receiver implements Runnable {
         sd_ = client_sd;
         in_ = client_sd.getInputStream();
         socketCnt.incrementAndGet();
-        logger.info("Got connection from {} , buffer {} , total {}", sd_.getRemoteSocketAddress() , sd_.getReceiveBufferSize(), socketCnt);
+        logger.info("Got connection from {} , buffer {} , total sockets {}", sd_.getRemoteSocketAddress() , sd_.getReceiveBufferSize(), socketCnt);
     }
 
     public void run() {
@@ -48,7 +48,7 @@ public class Receiver implements Runnable {
         try {
             in_.close();
             sd_.close();
-            logger.info("Closed socket from {}, received {} Bytes, remaining sockets: {}", sd_.getRemoteSocketAddress() , recvBytes, socketCnt.decrementAndGet());
+            logger.info("Closed socket from {}, received {} kB, remaining sockets: {}", sd_.getRemoteSocketAddress() , recvBytes/1024, socketCnt.decrementAndGet());
         }
         catch (java.io.IOException e) {
             logger.error("Error closing socket");
