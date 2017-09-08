@@ -73,7 +73,7 @@ public class BaselineSendingAgent {
         public Socket sd_;
 //        public OutputStream os_;
 //        private DataOutputStream dos; // some people say you should never use this
-        private BufferedOutputStream bos; // FIXME(jimmy): not throttling this for now.
+        private BufferedOutputStream bos;
 //        private ThrottledOutputStream tos;
 
         public int buffer_size_ = 1024*1024;
@@ -91,8 +91,25 @@ public class BaselineSendingAgent {
 
         public void run() {
 
-            System.out.println(Thread.currentThread().getName() + " starts working on " + flow_.id_);
+            logger.info(" {} starts working on {}" ,Thread.currentThread().getName(), flow_.id_);
             while (flow_.transmitted_ < flow_.volume_) {
+
+                if (bos != null) {
+                    try {
+                        bos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if ( sd_ != null && !sd_.isClosed() ){
+                    logger.error("Close previous socket to reinitialize new socket.");
+                    try {
+                        sd_.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 // first try to establish the connection
                 try {
@@ -104,7 +121,7 @@ public class BaselineSendingAgent {
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
-                    System.out.println( threadName + " Exception while connecting, retry");
+                    logger.error(" {} Exception while connecting, retry" , threadName);
                     continue;
 //                    System.exit(1);
                 }
@@ -118,7 +135,7 @@ public class BaselineSendingAgent {
 //                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                     } catch (java.io.IOException e) {
                         e.printStackTrace();
-                        System.out.println( threadName + " Exception while sending, re-connecting");
+                        logger.error(" {} Exception while sending, reconnect" , threadName);
                         break;
                     }
 
@@ -130,14 +147,14 @@ public class BaselineSendingAgent {
 
             try {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
-                System.out.println("BaselineSA: flow " + flow_.id_ + " completed. Now closing socket to RA");
+                logger.info("BaselineSA: flow " + flow_.id_ + " completed. Now closing socket to RA");
 
                 bos.close(); // clean up
                 sd_.close(); // we have to close the socket here!!!!
             }
             catch (java.io.IOException e) {
                 e.printStackTrace();
-                System.out.println(threadName + "Exception when closing socket");
+                logger.error("{} Exception when closing socket", threadName);
             }
 
             System.out.println(Thread.currentThread().getName() + " says goodbye ");
