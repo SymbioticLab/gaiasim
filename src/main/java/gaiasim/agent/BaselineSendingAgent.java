@@ -151,6 +151,9 @@ public class BaselineSendingAgent {
                 data_Broker_.writeMessage(new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, flow_.id_));
                 logger.info("BaselineSA: flow {} completed {} Mbit. closing socket", flow_.id_ , flow_.transmitted_);
 
+                sd_.shutdownOutput();
+                sd_.shutdownInput();
+
                 sd_.close(); // we have to close the socket here!!!!
                 bos.close(); // clean up
             }
