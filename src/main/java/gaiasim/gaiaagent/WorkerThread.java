@@ -20,7 +20,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +39,7 @@ public class WorkerThread implements Runnable{
     // Queue on which SendingAgent places updates for this PersistentConnection. Updates
     // flow, or that the PersistentConnection should terminate.
     // may inform the PersistentConnection of a new subscribing flow, an unsubscribing
-    LinkedBlockingQueue<WorkerCTRLMsg> subcriptionQueue;
+    LinkedBlockingQueue<CTRL_to_WorkerMsg> subcriptionQueue;
 
 
     // The subscription info should contain: FG_ID -> FGI and FG_ID -> rate
@@ -64,7 +63,7 @@ public class WorkerThread implements Runnable{
     private long tmp_timestamp;
 
 
-    public WorkerThread(String workerID, String RAID, int pathID, LinkedBlockingQueue<WorkerCTRLMsg> inputQueue,
+    public WorkerThread(String workerID, String RAID, int pathID, LinkedBlockingQueue<CTRL_to_WorkerMsg> inputQueue,
                         AgentSharedData sharedData, String raip, int raPort, int port){
         this.connID = workerID;
         this.subcriptionQueue = inputQueue;
@@ -83,7 +82,7 @@ public class WorkerThread implements Runnable{
 
     @Override
     public void run() {
-        WorkerCTRLMsg m = null;
+        CTRL_to_WorkerMsg m = null;
 
         // await for the signal before starting sending Heartbeat Msgs
         try {
@@ -182,18 +181,30 @@ public class WorkerThread implements Runnable{
         }
     }
 
-    public void connectSocket(){
+    public void connectSocket() {
 
-        try {
-            dataSocket = new Socket(raIP, raPort, null, localPort);
-//            dataSocket.setSendBufferSize(16*1024*1024);
-//            dataSocket.setReceiveBufferSize(16*1024*1024);
-        } catch (IOException e) {
-            logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
-            e.printStackTrace();
+        boolean isConnected = false;
+        while ( !isConnected ) {
+            try {
+                dataSocket = new Socket(raIP, raPort, null, localPort);
+            } catch (IOException e) {
+                logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
+                e.printStackTrace();
+
+                // sleep for some time
+                try {
+                    logger.info("Retry-connection in {} seconds", Constants.SOCKET_RETRY_MILLIS/1000);
+                    Thread.sleep(Constants.SOCKET_RETRY_MILLIS);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                continue;
+            }
+            logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
+            isConnected = true;
         }
 
-        logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
 
         try {
             bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
@@ -201,11 +212,46 @@ public class WorkerThread implements Runnable{
             e.printStackTrace();
         }
 
-        sharedData.cnt_RestartedConnections.countDown();
+        sharedData.cnt_StartedConnections.countDown();
 
     }
 
-    private void processMessage(WorkerCTRLMsg m) {
+    public void reconnectSocket() {
+
+        boolean isConnected = false;
+        while ( !isConnected ) {
+            try {
+                dataSocket = new Socket(raIP, raPort, null, localPort);
+            } catch (IOException e) {
+                logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
+                e.printStackTrace();
+
+                // sleep for some time
+                try {
+                    logger.info("Retry-connection in {} seconds", Constants.SOCKET_RETRY_MILLIS/1000);
+                    Thread.sleep(Constants.SOCKET_RETRY_MILLIS);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                continue;
+            }
+            logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
+            isConnected = true;
+        }
+
+        try {
+            bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // TODO send link status back to master
+//        sharedData.rpcClient.
+
+    }
+
+    private void processMessage(CTRL_to_WorkerMsg m) {
         // m will be null only if poll() returned that we have no
         // messages. If m is not null, process the message.
         // use while loop to process all queued message.
@@ -215,7 +261,7 @@ public class WorkerThread implements Runnable{
 
             // Now we only use the subscription message as a sync signal..
 
-            if (m.getType() == WorkerCTRLMsg.MsgType.SYNC){
+            if (m.getType() == CTRL_to_WorkerMsg.MsgType.SYNC){
                 // update the worker's subscription info
                 // and go back to work.
                 subscribers.clear();
@@ -230,7 +276,7 @@ public class WorkerThread implements Runnable{
 
             }
 
-            if (m.getType() == WorkerCTRLMsg.MsgType.RECONNECT){
+            if (m.getType() == CTRL_to_WorkerMsg.MsgType.CONNECT){
 
                 connectSocket();
 

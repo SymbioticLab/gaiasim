@@ -46,6 +46,7 @@ public class Constants {
 
     public static final int DEFAULT_TOKEN_RATE = 40;
     public static final long EXPERIMENT_INTERVAL = 5000; // 5s between experiments, to re-use the hot connection
+    public static final long SOCKET_RETRY_MILLIS = 5000;
 
     public static HashMap<String, String> node_id_to_trace_id;
 

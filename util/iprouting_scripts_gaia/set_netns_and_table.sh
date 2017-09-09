@@ -109,6 +109,13 @@ sudo sysctl net.ipv4.tcp_max_syn_backlog = 2048;
 sudo sysctl net.core.somaxconn = 1024;
 sudo sysctl net.core.netdev_max_backlog = 2048;
 
+# Decrease TIME_WAIT seconds
+sudo sysctl net.ipv4.tcp_fin_timeout=10
+
+# Recycle and Reuse TIME_WAIT sockets faster
+sudo sysctl net.ipv4.tcp_tw_recycle=1
+sudo sysctl net.ipv4.tcp_tw_reuse=1
+
 echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 
 echo "done"

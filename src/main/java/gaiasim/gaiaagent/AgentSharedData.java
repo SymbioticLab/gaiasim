@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("Duplicates")
 
@@ -26,6 +25,32 @@ public class AgentSharedData {
 
     final String saID;
     final String saName; // the name of Data Center in the trace file.
+
+    public void pushStatusUpdate() {
+        int size = flowGroups.size();
+        if(size == 0){
+//            System.out.println("FG_SIZE = 0");
+            return;         // if there is no data to send (i.e. the master has not come online), we simply skip.
+        }
+
+//        GaiaMessageProtos.FlowStatusReport statusReport = statusReportBuilder.build();
+        GaiaMessageProtos.FlowStatusReport statusReport = buildCurrentFlowStatusReport();
+
+        try {
+            worker_to_ctrlMsgQueue.put( new Worker_to_CTRLMsg(statusReport));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        logger.debug("finished pushing status report\n{}", statusReport);
+
+//        while ( !isStreamReady ) {
+//            initStream();
+//            clientStreamObserver.onNext(statusReport);
+//        }
+
+
+    }
 
     enum SAState {
         IDLE, CONNECTING, READY
@@ -37,9 +62,11 @@ public class AgentSharedData {
 
     AtomicBoolean isSendingHeartBeat = new AtomicBoolean(false);
 
-    CountDownLatch cnt_RestartedConnections = null;
+    CountDownLatch cnt_StartedConnections = null;
 
     LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> fumQueue = new LinkedBlockingQueue<>();
+
+    LinkedBlockingQueue<Worker_to_CTRLMsg> worker_to_ctrlMsgQueue = new LinkedBlockingQueue<>();
 
     // moved the rpcClient to shared.
     AgentRPCClient rpcClient;
@@ -62,7 +89,7 @@ public class AgentSharedData {
     public HashMap<String , ArrayList< ConcurrentHashMap<String , SubscriptionInfo> > >subscriptionRateMaps = new HashMap<>();
 
     // raID , pathID -> workerQueue.
-    HashMap<String, LinkedBlockingQueue<WorkerCTRLMsg>[]> workerQueues = new HashMap<>();
+    HashMap<String, LinkedBlockingQueue<CTRL_to_WorkerMsg>[]> workerQueues = new HashMap<>();
 
 //    public List< HashMap<String , SubscriptionInfo> > subscriptionRateMaps;
 
@@ -217,6 +244,39 @@ public class AgentSharedData {
 
         logger.info(strBuilder.toString());
 
+    }
+
+    public GaiaMessageProtos.FlowStatusReport buildCurrentFlowStatusReport() {
+
+        GaiaMessageProtos.FlowStatusReport.Builder statusReportBuilder = GaiaMessageProtos.FlowStatusReport.newBuilder();
+
+        for (Map.Entry<String, FlowGroupInfo> entry: flowGroups.entrySet()) {
+            FlowGroupInfo fgi = entry.getValue();
+
+            if (fgi.getFlowState() == FlowGroupInfo.FlowState.INIT ){
+                logger.error("fgi in INIT state");
+                continue;
+            }
+            if ( fgi.getFlowState() == FlowGroupInfo.FlowState.FIN ){
+                continue;
+            }
+            if ( fgi.getFlowState() == FlowGroupInfo.FlowState.PAUSED) {
+//                logger.info("");
+                continue;
+            }
+
+//            if (fgi.getTransmitted() == 0){
+//                logger.info("FG {} tx=0, status {}",fgi.getID(), fgi.getFlowState());
+//                continue;
+//            }
+
+            GaiaMessageProtos.FlowStatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.FlowStatusReport.FlowStatus.newBuilder()
+                    .setFinished(fgi.isFinished()).setId(fgi.getID()).setTransmitted(fgi.getTransmitted());
+
+            statusReportBuilder.addStatus(fsBuilder);
+        }
+
+        return statusReportBuilder.build();
     }
 
 /*    // Getters//

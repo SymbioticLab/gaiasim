@@ -151,8 +151,8 @@ public class MasterRPCClient {
         return fumBuilder.build();
     }
 
-    public void startHeartBeat() {
+    public void startExp() {
         GaiaMessageProtos.Exp_CTRL hb = GaiaMessageProtos.Exp_CTRL.newBuilder().build();
-        blockingStub.startHeartBeat(hb);
+        blockingStub.controlExperiment(hb);
     }
 }

@@ -63,12 +63,12 @@ public class MasterRPCServer {
     class MasterServiceImpl extends MasterServiceGrpc.MasterServiceImplBase {
 
         @Override
-        public io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.StatusReport> updateFlowStatus(
+        public io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.FlowStatusReport> updateFlowStatus(
                 io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.FlowStatus_ACK> responseObserver) {
 
-            return new StreamObserver<GaiaMessageProtos.StatusReport>() {
+            return new StreamObserver<GaiaMessageProtos.FlowStatusReport>() {
                 @Override
-                public void onNext(GaiaMessageProtos.StatusReport statusReport) {
+                public void onNext(GaiaMessageProtos.FlowStatusReport statusReport) {
 //                    int srSize = statusReport.getSerializedSize();
 //                    srMaxSize = srSize > srMaxSize ? srSize : srMaxSize;
 //                    logger.debug("Received Flow Status, size: {} / {}\ncontent: {}" , srSize , srMaxSize , statusReport);
@@ -93,9 +93,9 @@ public class MasterRPCServer {
 
     }
 
-    public void handleStatusReport(GaiaMessageProtos.StatusReport statusReport){
+    public void handleStatusReport(GaiaMessageProtos.FlowStatusReport statusReport){
 
-        for ( GaiaMessageProtos.StatusReport.FlowStatus status : statusReport.getStatusList()) {
+        for ( GaiaMessageProtos.FlowStatusReport.FlowStatus status : statusReport.getStatusList()) {
             // first get the current flowGroup ID
             String fid = status.getId();
             if(status.getFinished()){

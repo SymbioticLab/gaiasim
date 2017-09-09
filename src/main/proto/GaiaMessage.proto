@@ -15,15 +15,15 @@ service SendingAgentService {
 //    rpc StartFlow (FlowUpdate) returns (stream StatusReport) {}
     rpc PrepareConnections (PAM_REQ) returns (stream PAMessage) {}
     rpc ChangeFlow (stream FlowUpdate) returns (FUM_ACK) {}
-    rpc StartHeartBeat (Exp_CTRL) returns (Exp_CTRL_ACK) {}
+    rpc ControlExperiment (Exp_CTRL) returns (Exp_CTRL_ACK) {}
 }
 
 service MasterService {
-    rpc UpdateFlowStatus (stream StatusReport) returns (FlowStatus_ACK) {}
-    rpc UpdateLinkStatus (LinkStatusReport) returns (FlowStatus_ACK) {}
+    rpc UpdateFlowStatus (stream FlowStatusReport) returns (FlowStatus_ACK) {}
+    rpc UpdatePathStatus (PathStatusReport) returns (FlowStatus_ACK) {}
 }
 
-message StatusReport {
+message FlowStatusReport {
     message FlowStatus {
         string id = 1;
         double transmitted = 2;
@@ -33,14 +33,14 @@ message StatusReport {
     repeated FlowStatus status = 1;
 }
 
-message LinkStatusReport {
-    message LinkStatus {
+message PathStatusReport {
+    message PathStatus {
         string saID = 1;
         string raID = 2;
         bool isBroken = 3;
     }
 
-    repeated LinkStatus linkStatus = 1;
+    repeated PathStatus pathStatus = 1;
 }
 
 message FlowUpdate {
@@ -89,7 +89,15 @@ message FUM_ACK {}
 
 message FlowStatus_ACK {}
 
-message Exp_CTRL{}
+message Exp_CTRL{
+    enum CTRL_Operation{
+        START = 0;
+        STOP = 1;
+    }
+
+    CTRL_Operation op = 1;
+    string ExpName = 2;
+}
 
 message Exp_CTRL_ACK{}
 

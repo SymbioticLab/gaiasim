@@ -181,7 +181,7 @@ public class Master {
 
         // start sending heartbeat
         for (String sa_id : netGraph.nodes_) {
-            rpcClientHashMap.get(sa_id).startHeartBeat();
+            rpcClientHashMap.get(sa_id).startExp();
         }
 
         logger.info("All SA heartbeat started");

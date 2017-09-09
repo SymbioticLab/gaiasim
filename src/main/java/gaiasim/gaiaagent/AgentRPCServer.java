@@ -18,7 +18,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -120,7 +119,7 @@ public class AgentRPCServer {
                         workerCnt++;
                         int port = 40000 + Integer.parseInt(saID) * 100 + workerCnt;
 
-                        queues[i] = new LinkedBlockingQueue<WorkerCTRLMsg>();
+                        queues[i] = new LinkedBlockingQueue<CTRL_to_WorkerMsg>();
 
                         // send PA message
                         GaiaMessageProtos.PAMessage reply = GaiaMessageProtos.PAMessage.newBuilder().setSaId(saID).setRaId(ra_id).setPathId(i).setPortNo(port).build();
@@ -176,15 +175,31 @@ public class AgentRPCServer {
         }
 
         @Override
-        public void startHeartBeat(gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL request,
+        public void controlExperiment(gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL request,
                                    io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.Exp_CTRL_ACK> responseObserver) {
-            // send the reconnect message
+
+            switch (request.getOp() ){
+                case START:
+                    startExperiment(request.getExpName());
+                    break;
+
+                case STOP:
+
+                    break;
+            }
+
+            responseObserver.onNext(GaiaMessageProtos.Exp_CTRL_ACK.getDefaultInstance());
+            responseObserver.onCompleted();
+        }
+
+        private void startExperiment(String expName) {
+            // tell all workers to connect the socket and start heartbeat.
             int replyCnt = 0;
-            for(Map.Entry<String, LinkedBlockingQueue<WorkerCTRLMsg>[] > qe :sharedData.workerQueues.entrySet()){
-                LinkedBlockingQueue<WorkerCTRLMsg>[] ql = qe.getValue();
+            for(Map.Entry<String, LinkedBlockingQueue<CTRL_to_WorkerMsg>[] > qe :sharedData.workerQueues.entrySet()){
+                LinkedBlockingQueue<CTRL_to_WorkerMsg>[] ql = qe.getValue();
                 for (int i = 0 ; i < ql.length ; i++){
                     try {
-                        ql[i].put( new WorkerCTRLMsg(0));
+                        ql[i].put( new CTRL_to_WorkerMsg(0));
                         replyCnt++;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -192,24 +207,27 @@ public class AgentRPCServer {
                 }
             }
 
+            // TODO: add bwm-ng command
+            if (expName != null) {
+                logger.info("Agent start working for experiment {}" , expName);
+            }
+
             // block until all workers are done with reconnection
-            if (sharedData.cnt_RestartedConnections == null){
-                sharedData.cnt_RestartedConnections = new CountDownLatch(replyCnt);
+            if (sharedData.cnt_StartedConnections == null){
+                sharedData.cnt_StartedConnections = new CountDownLatch(replyCnt);
             }
             else {
                 logger.error("CountDownLatch already initialized!");
             }
 
             try {
-                sharedData.cnt_RestartedConnections.await();
+                sharedData.cnt_StartedConnections.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             // start heartbeat and return
             sharedData.isSendingHeartBeat.set(true);
-            responseObserver.onNext(GaiaMessageProtos.Exp_CTRL_ACK.getDefaultInstance());
-            responseObserver.onCompleted();
             logger.info("starting heartbeat");
         }
 

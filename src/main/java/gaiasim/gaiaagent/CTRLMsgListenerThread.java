@@ -13,13 +13,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @SuppressWarnings("Duplicates")
 
-public class CTRLMessageListener implements Runnable{
+public class CTRLMsgListenerThread implements Runnable{
     private static final Logger logger = LogManager.getLogger();
 
     LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> ctrlQueue;
     AgentSharedData agentSharedData;
 
-    public CTRLMessageListener(LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> controllerQueue, AgentSharedData sharedData) {
+    public CTRLMsgListenerThread(LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> controllerQueue, AgentSharedData sharedData) {
         this.ctrlQueue = controllerQueue;
         this.agentSharedData = sharedData;
     }
@@ -100,10 +100,10 @@ public class CTRLMessageListener implements Runnable{
                     }
                 }*/
 //                think about the overhead of this notification
-                for(Map.Entry<String, LinkedBlockingQueue<WorkerCTRLMsg>[] > qe :agentSharedData.workerQueues.entrySet()){
-                    LinkedBlockingQueue<WorkerCTRLMsg>[] ql = qe.getValue();
+                for(Map.Entry<String, LinkedBlockingQueue<CTRL_to_WorkerMsg>[] > qe :agentSharedData.workerQueues.entrySet()){
+                    LinkedBlockingQueue<CTRL_to_WorkerMsg>[] ql = qe.getValue();
                     for (int i = 0 ; i < ql.length ; i++){
-                        ql[i].put( new WorkerCTRLMsg());
+                        ql[i].put( new CTRL_to_WorkerMsg());
                     }
                 }
 

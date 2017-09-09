@@ -2,7 +2,6 @@ package gaiasim.gaiaagent;
 
 // New sending agent using grpc.
 
-import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.network.NetGraph;
 import gaiasim.util.Configuration;
 
@@ -13,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
@@ -92,7 +90,7 @@ public class SendingAgent {
 
         final AgentRPCServer server = new AgentRPCServer(said, net_graph, config, sharedData);
 
-        Thread fumListener = new Thread( new CTRLMessageListener(sharedData.fumQueue, sharedData));
+        Thread fumListener = new Thread( new CTRLMsgListenerThread(sharedData.fumQueue, sharedData));
         fumListener.start();
 
         try {
@@ -116,7 +114,10 @@ public class SendingAgent {
 
         statusReportExec = Executors.newScheduledThreadPool(1);
 
-        final Runnable sendStatus = () -> sharedData.rpcClient.sendStatusUpdate();
+//        final Runnable sendStatus = () -> sharedData.rpcClient.sendStatusUpdate();
+        final Runnable sendStatus = () -> sharedData.pushStatusUpdate();
+
+        (new Thread ( new CTRLMsgSenderThread(sharedData)) ).start();
 
         ScheduledFuture<?> mainHandler = statusReportExec.scheduleAtFixedRate(sendStatus, 0, Constants.STATUS_MESSAGE_INTERVAL_MS, MILLISECONDS);
 
