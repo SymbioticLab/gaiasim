@@ -20,6 +20,7 @@ service SendingAgentService {
 
 service MasterService {
     rpc UpdateFlowStatus (stream StatusReport) returns (FlowStatus_ACK) {}
+    rpc UpdateLinkStatus (LinkStatusReport) returns (FlowStatus_ACK) {}
 }
 
 message StatusReport {
@@ -29,13 +30,17 @@ message StatusReport {
         bool finished = 3;
     }
 
+    repeated FlowStatus status = 1;
+}
+
+message LinkStatusReport {
     message LinkStatus {
         string saID = 1;
         string raID = 2;
         bool isBroken = 3;
     }
 
-    repeated FlowStatus status = 1;
+    repeated LinkStatus linkStatus = 1;
 }
 
 message FlowUpdate {

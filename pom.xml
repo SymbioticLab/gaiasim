@@ -11,14 +11,6 @@
 
     <build>
         <finalName>gaia_all</finalName>
-        <resources>
-            <resource>
-                <directory>res</directory>
-                <includes>
-                    <include>log4j2.xml</include>
-                </includes>
-            </resource>
-        </resources>
         <!--<sourceDirectory>src/main/java</sourceDirectory>-->
         <extensions>
             <extension>
