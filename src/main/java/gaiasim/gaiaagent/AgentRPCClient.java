@@ -90,38 +90,16 @@ public class AgentRPCClient {
         logger.info("finished testing status report");
     }
 
-    public void sendFG_FIN(String fgID){
-
-        if (fgID == null){
-            System.err.println("fgID = null when sending FG_FIN");
-            return;
-        }
-
-        GaiaMessageProtos.FlowStatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.FlowStatusReport.FlowStatus.newBuilder()
-                .setFinished(true).setId(fgID).setTransmitted(0);
-//        GaiaMessageProtos.FlowStatusReport.Builder statusReportBuilder = GaiaMessageProtos.FlowStatusReport.newBuilder().addStatus(fsBuilder);
-//        statusReportBuilder.addStatus(fsBuilder);
-
-        GaiaMessageProtos.FlowStatusReport FG_FIN = GaiaMessageProtos.FlowStatusReport.newBuilder().addStatus(fsBuilder).build();
-
-
-        if ( !isStreamReady ) {
-            initStream();
-        }
-
-        synchronized (this) {
-            clientStreamObserver.onNext(FG_FIN);
-        }
-
-//        logger.info("finished sending FLOW_FIN for {}", fgID);
-    }
+//    public void sendFG_FIN(String fgID){
+//
+//
+//    }
 
     // send the LinkStatus
-    public void sendLinkStatus(){
-        GaiaMessageProtos.PathStatusReport req = null;
+    public void sendPathStatus(GaiaMessageProtos.PathStatusReport pathStatusReport){
 
         synchronized (blockingStub) {
-            blockingStub.updatePathStatus(req);
+            blockingStub.updatePathStatus(pathStatusReport);
         }
     }
 

@@ -24,7 +24,8 @@ public class CTRLMsgSenderThread implements Runnable {
 
                         break;
 
-                    case LINKSTATUS:
+                    case PATHSTATUS:
+                        sendPathStatus(m);
 
                         break;
                 }
@@ -36,8 +37,12 @@ public class CTRLMsgSenderThread implements Runnable {
 
     }
 
+    private void sendPathStatus(Worker_to_CTRLMsg m) {
+        sharedData.rpcClient.sendPathStatus(m.pathStatusReport);
+    }
+
     private void sendFlowStatus(Worker_to_CTRLMsg m) {
-        sharedData.rpcClient.sendFlowStatus( m.statusReport );
+        sharedData.rpcClient.sendFlowStatus( m.flowStatusReport );
     }
 
 }

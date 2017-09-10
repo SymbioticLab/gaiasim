@@ -5,17 +5,21 @@ import gaiasim.gaiaprotos.GaiaMessageProtos;
 public class Worker_to_CTRLMsg {
     public enum  MsgType {
         FLOWSTATUS,
-        LINKSTATUS
+        PATHSTATUS
     }
 
     public MsgType type;
 
-    public GaiaMessageProtos.FlowStatusReport statusReport;
+    public GaiaMessageProtos.FlowStatusReport flowStatusReport;
+    public GaiaMessageProtos.PathStatusReport pathStatusReport;
 
     public Worker_to_CTRLMsg(GaiaMessageProtos.FlowStatusReport statusReport){
-        this.statusReport = statusReport;
+        this.flowStatusReport = statusReport;
         this.type = MsgType.FLOWSTATUS;
     }
 
-
+    public Worker_to_CTRLMsg(GaiaMessageProtos.PathStatusReport statusReport){
+        this.pathStatusReport = statusReport;
+        this.type = MsgType.PATHSTATUS;
+    }
 }

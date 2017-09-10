@@ -13,6 +13,7 @@ package gaiasim.gaiaagent;
 // so that we can use a thread pool to process on many connections.
 
 import com.google.common.util.concurrent.RateLimiter;
+import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +63,7 @@ public class WorkerThread implements Runnable{
 
     private BufferedOutputStream bos;
     private long tmp_timestamp;
+    private boolean isReconnecting;
 
 
     public WorkerThread(String workerID, String RAID, int pathID, LinkedBlockingQueue<CTRL_to_WorkerMsg> inputQueue,
@@ -84,7 +87,7 @@ public class WorkerThread implements Runnable{
     public void run() {
         CTRL_to_WorkerMsg m = null;
 
-        // await for the signal before starting sending Heartbeat Msgs
+        // 1 await for the READY signal before entering the main eventloop
         try {
             sharedData.readySignal.await();
         } catch (InterruptedException e) {
@@ -93,35 +96,100 @@ public class WorkerThread implements Runnable{
 
         rateLimiter.setRate(Constants.DEFAULT_TOKEN_RATE);
 
-        int heartBeatCnt = 0;
+        // 2 wait for the CONNECT msg from the CTRL
+        while (true) {
+            try {
+                m = subcriptionQueue.take();
 
-        // use a single eventloop
+                if (m.type == CTRL_to_WorkerMsg.MsgType.CONNECT){
+                    connectSocket();
+                    break;
+                }
+                else {
+                    logger.error("Expecting CONNECT msg, got {}", m.type);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        int heartBeatCnt = 0;
+        int reconnCnt = 0;
+
+        // 3 enter eventloop
         while (true){
             m = subcriptionQueue.poll();
 
-            // process the msg
-            processMessage(m);
+            if (isReconnecting) {
 
-            // do the job
-            if (total_rate > 0){
-                sendData(total_rate);
-            }
-            else {
-                if (sharedData.isSendingHeartBeat.get()) {
-                    heartBeatCnt++;
-                    if (heartBeatCnt >= 100) {
-                        sendHeartBeat();
-                        heartBeatCnt = 0;
+                rateLimiter.acquire(1);
+                reconnCnt++;
+                if (reconnCnt >= Constants.SOCKET_RETRY_MILLIS / 1000 * Constants.DEFAULT_TOKEN_RATE) {
+
+                    boolean reconnected = tryReconnectSocket();
+
+                    if (reconnected) {
+                        exitReconnectingState();
+                    } else {
+                        // sleep for some time
+                        logger.info("Retry connecting in {} seconds", Constants.SOCKET_RETRY_MILLIS / 1000);
                     }
                 }
+
+            }
+            else {
+
+                // process the msg
+                // ignore incoming SYNC msg if connection is down! but still need to take them out of the queue
+                processMessage(m);
+
+                // do the job
+                if (total_rate > 0) {
+                    sendData(total_rate);
+                } else {
+                    if (sharedData.isSendingHeartBeat.get()) {
+                        heartBeatCnt++;
+                        if (heartBeatCnt >= Constants.HEARTBEAT_INTERVAL_MILLIS / 1000 * Constants.DEFAULT_TOKEN_RATE) {
+                            sendHeartBeat();
+                            heartBeatCnt = 0;
+                        }
+                    }
+                }
+
+                // rate limiting
+                rateLimiter.acquire(1);
+
+                // what if the jobs are to heavy to finish in time?
             }
 
-            // rate limiting
-            rateLimiter.acquire(1);
-
-            // what if the jobs are to heavy to finish in time?
-
         }
+    }
+
+    private boolean tryReconnectSocket() {
+
+        try {
+            dataSocket = new Socket(raIP, raPort, null, localPort);
+        } catch (IOException e) {
+            logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
+            e.printStackTrace();
+
+            return false;
+        }
+
+        logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
+
+        try {
+            bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("Fail to setup BOS");
+            return false;
+        }
+
+        // TODO send link status back to master
+//        sharedData.rpcClient.
+
+        return true;
     }
 
     private void sendData(double total_rate) {
@@ -141,8 +209,8 @@ public class WorkerThread implements Runnable{
             else {
                 data_length = Constants.BLOCK_SIZE_MB;
                 double new_rate = cur_rate / 8 / Constants.BLOCK_SIZE_MB;
-                logger.warn("Total rate {} too high for {}, setting new sending rate to {} / s", total_rate, this.connID, new_rate);
-                rateLimiter.setRate(new_rate);
+                logger.error("Total rate {} too high for {}, setting new sending rate to {} / s", total_rate, this.connID, new_rate);
+                rateLimiter.setRate(new_rate); // TODO: verify that the rate is enforced , since here we (re)set the rate for each chunk
             }
 
             tmp_timestamp = System.currentTimeMillis();
@@ -162,20 +230,50 @@ public class WorkerThread implements Runnable{
 //                        System.out.println("T_MBit " + tx_ed + " original " + buffer_size_megabits_);
 //                        data_.distribute_transmitted(buffer_size_megabits_);
         }
-        catch (IOException e) {
+        catch (SocketException e) {
 //                    System.err.println("Fail to write data to ra");
             logger.error("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
             logger.error("Fail to write data to ra {} , thread {}", raID, connID);
+
+            enterReconnectingState();
             e.printStackTrace();
 //                    System.exit(1); // don't fail here
         }
+        catch (IOException e) {
+            logger.error("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
+            logger.error("Fail to write to bos. ra {} , thread {}", raID, connID);
+
+            e.printStackTrace();
+        }
+    }
+
+    private void enterReconnectingState() {
+
+        // TODO call rpc
+//        new GaiaMessageProtos.PathStatusReport()
+//        new Worker_to_CTRLMsg()
+
+//        GaiaMessageProtos.PathStatusReport.Builder statusReportBuilder = GaiaMessageProtos.PathStatusReport.newBuilder().set;
+
+        isReconnecting = true;
+        total_rate = 0;
+
+    }
+
+    private void exitReconnectingState() {
+        // TODO call rpc
+        isReconnecting = false;
     }
 
     private void sendHeartBeat() {
         try {
             bos.write(1);
             bos.flush();
-//            logger.info("sending heartbeat from {}", this.connID);
+            logger.debug("sending heartbeat from {}", this.connID);
+        } catch (SocketException e) {
+            logger.error("Fail to send heartbeat to ra {} , thread {}", raID, connID);
+            e.printStackTrace();
+            enterReconnectingState();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -216,41 +314,6 @@ public class WorkerThread implements Runnable{
 
     }
 
-    public void reconnectSocket() {
-
-        boolean isConnected = false;
-        while ( !isConnected ) {
-            try {
-                dataSocket = new Socket(raIP, raPort, null, localPort);
-            } catch (IOException e) {
-                logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
-                e.printStackTrace();
-
-                // sleep for some time
-                try {
-                    logger.info("Retry-connection in {} seconds", Constants.SOCKET_RETRY_MILLIS/1000);
-                    Thread.sleep(Constants.SOCKET_RETRY_MILLIS);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-
-                continue;
-            }
-            logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
-            isConnected = true;
-        }
-
-        try {
-            bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // TODO send link status back to master
-//        sharedData.rpcClient.
-
-    }
-
     private void processMessage(CTRL_to_WorkerMsg m) {
         // m will be null only if poll() returned that we have no
         // messages. If m is not null, process the message.
@@ -278,7 +341,7 @@ public class WorkerThread implements Runnable{
 
             if (m.getType() == CTRL_to_WorkerMsg.MsgType.CONNECT){
 
-                connectSocket();
+                logger.error("Received CONNECT message when expecting SYNC");
 
             }
 

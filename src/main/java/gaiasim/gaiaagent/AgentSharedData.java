@@ -26,32 +26,6 @@ public class AgentSharedData {
     final String saID;
     final String saName; // the name of Data Center in the trace file.
 
-    public void pushStatusUpdate() {
-        int size = flowGroups.size();
-        if(size == 0){
-//            System.out.println("FG_SIZE = 0");
-            return;         // if there is no data to send (i.e. the master has not come online), we simply skip.
-        }
-
-//        GaiaMessageProtos.FlowStatusReport statusReport = statusReportBuilder.build();
-        GaiaMessageProtos.FlowStatusReport statusReport = buildCurrentFlowStatusReport();
-
-        try {
-            worker_to_ctrlMsgQueue.put( new Worker_to_CTRLMsg(statusReport));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        logger.debug("finished pushing status report\n{}", statusReport);
-
-//        while ( !isStreamReady ) {
-//            initStream();
-//            clientStreamObserver.onNext(statusReport);
-//        }
-
-
-    }
-
     enum SAState {
         IDLE, CONNECTING, READY
     }
@@ -133,10 +107,58 @@ public class AgentSharedData {
 
         flowGroups.get(fgID).setFlowState(FlowGroupInfo.FlowState.FIN);
         logger.info("Sending FLOW_FIN for {} to CTRL" , fgID);
-        rpcClient.sendFG_FIN(fgID);
+//        rpcClient.sendFG_FIN(fgID); // TODO remove
+        pushFG_FIN(fgID);
         flowGroups.remove(fgID);
     }
 
+    public void pushFG_FIN(String fgID){
+        if (fgID == null){
+            System.err.println("fgID = null when sending FG_FIN");
+            return;
+        }
+
+        GaiaMessageProtos.FlowStatusReport.FlowStatus.Builder fsBuilder = GaiaMessageProtos.FlowStatusReport.FlowStatus.newBuilder()
+                .setFinished(true).setId(fgID).setTransmitted(0);
+//        GaiaMessageProtos.FlowStatusReport.Builder statusReportBuilder = GaiaMessageProtos.FlowStatusReport.newBuilder().addStatus(fsBuilder);
+//        statusReportBuilder.addStatus(fsBuilder);
+
+        GaiaMessageProtos.FlowStatusReport FG_FIN = GaiaMessageProtos.FlowStatusReport.newBuilder().addStatus(fsBuilder).build();
+
+        try {
+            worker_to_ctrlMsgQueue.put( new Worker_to_CTRLMsg(FG_FIN));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+//        logger.info("finished sending FLOW_FIN for {}", fgID);
+    }
+
+
+    public void pushStatusUpdate() {
+        int size = flowGroups.size();
+        if(size == 0){
+//            System.out.println("FG_SIZE = 0");
+            return;         // if there is no data to send (i.e. the master has not come online), we simply skip.
+        }
+
+//        GaiaMessageProtos.FlowStatusReport statusReport = statusReportBuilder.build();
+        GaiaMessageProtos.FlowStatusReport statusReport = buildCurrentFlowStatusReport();
+
+        try {
+            worker_to_ctrlMsgQueue.put( new Worker_to_CTRLMsg(statusReport));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        logger.debug("finished pushing status report\n{}", statusReport);
+
+//        while ( !isStreamReady ) {
+//            initStream();
+//            clientStreamObserver.onNext(statusReport);
+//        }
+
+    }
 
     // methods to update the flowGroups and subscriptionRateMaps
     public void startFlow(String raID, String fgID, GaiaMessageProtos.FlowUpdate.FlowUpdateEntry fge) {

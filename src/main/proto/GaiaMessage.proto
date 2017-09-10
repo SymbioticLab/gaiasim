@@ -37,7 +37,8 @@ message PathStatusReport {
     message PathStatus {
         string saID = 1;
         string raID = 2;
-        bool isBroken = 3;
+        int32 pathID = 3;
+        bool isBroken = 4;
     }
 
     repeated PathStatus pathStatus = 1;
