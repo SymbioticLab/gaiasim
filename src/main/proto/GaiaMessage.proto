@@ -20,7 +20,8 @@ service SendingAgentService {
 
 service MasterService {
     rpc UpdateFlowStatus (stream FlowStatusReport) returns (FlowStatus_ACK) {}
-    rpc UpdatePathStatus (PathStatusReport) returns (FlowStatus_ACK) {}
+    rpc UpdatePathStatus (PathStatusReport) returns (PathStatus_ACK) {}
+//    rpc StreamUpdatePathStatus (stream PathStatusReport) returns (PathStatus_ACK) {}
 }
 
 message FlowStatusReport {
@@ -34,14 +35,14 @@ message FlowStatusReport {
 }
 
 message PathStatusReport {
-    message PathStatus {
+//    message PathStatus {
         string saID = 1;
         string raID = 2;
         int32 pathID = 3;
         bool isBroken = 4;
-    }
+//    }
 
-    repeated PathStatus pathStatus = 1;
+//    repeated PathStatus pathStatus = 1;
 }
 
 message FlowUpdate {
@@ -89,6 +90,8 @@ message PAM_REQ {
 message FUM_ACK {}
 
 message FlowStatus_ACK {}
+
+message PathStatus_ACK {}
 
 message Exp_CTRL{
     enum CTRL_Operation{

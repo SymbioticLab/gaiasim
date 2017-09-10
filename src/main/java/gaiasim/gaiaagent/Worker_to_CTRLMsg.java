@@ -11,6 +11,7 @@ public class Worker_to_CTRLMsg {
     public MsgType type;
 
     public GaiaMessageProtos.FlowStatusReport flowStatusReport;
+
     public GaiaMessageProtos.PathStatusReport pathStatusReport;
 
     public Worker_to_CTRLMsg(GaiaMessageProtos.FlowStatusReport statusReport){

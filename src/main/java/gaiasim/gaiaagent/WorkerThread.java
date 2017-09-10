@@ -248,20 +248,28 @@ public class WorkerThread implements Runnable{
     }
 
     private void enterReconnectingState() {
+        GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
+                .setSaID(sharedData.saID).setRaID(raID).setIsBroken(true).build();
 
-        // TODO call rpc
-//        new GaiaMessageProtos.PathStatusReport()
-//        new Worker_to_CTRLMsg()
-
-//        GaiaMessageProtos.PathStatusReport.Builder statusReportBuilder = GaiaMessageProtos.PathStatusReport.newBuilder().set;
+        try {
+            sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         isReconnecting = true;
         total_rate = 0;
-
     }
 
     private void exitReconnectingState() {
-        // TODO call rpc
+        GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
+                .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
+
+        try {
+            sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         isReconnecting = false;
     }
 

@@ -10,7 +10,6 @@ import io.grpc.stub.StreamObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class AgentRPCClient {
@@ -21,7 +20,8 @@ public class AgentRPCClient {
 
     private final MasterServiceGrpc.MasterServiceStub asyncStub;
     private final MasterServiceGrpc.MasterServiceBlockingStub blockingStub;
-    private StreamObserver<GaiaMessageProtos.FlowStatus_ACK> responseObserver;
+    private StreamObserver<GaiaMessageProtos.FlowStatus_ACK> flowStatusAckStreamObserver;
+    private StreamObserver<GaiaMessageProtos.PathStatus_ACK> pathStatusAckStreamObserver;
     // should not create a new stream every time!!!
     StreamObserver<GaiaMessageProtos.FlowStatusReport> clientStreamObserver;
 
@@ -32,7 +32,7 @@ public class AgentRPCClient {
         this.agentSharedData = sharedData;
         logger.info("Agent RPC Client connecting to {}:{}", masterIP, masterPort);
 
-        responseObserver = new StreamObserver<GaiaMessageProtos.FlowStatus_ACK>() {
+        flowStatusAckStreamObserver = new StreamObserver<GaiaMessageProtos.FlowStatus_ACK>() {
 
             @Override
             public void onNext(GaiaMessageProtos.FlowStatus_ACK flowStatus_ack) {
@@ -52,9 +52,29 @@ public class AgentRPCClient {
             }
         };
 
+        pathStatusAckStreamObserver = new StreamObserver<GaiaMessageProtos.PathStatus_ACK>() {
+
+            @Override
+            public void onNext(GaiaMessageProtos.PathStatus_ACK flowStatus_ack) {
+                logger.info("Received pathStatus_ack from server");
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                logger.error("ERROR in agent {} when calling path status update RPC: {}", agentSharedData.saID, t.toString());
+                t.printStackTrace();
+                // TODO retry??
+            }
+
+            @Override
+            public void onCompleted() {
+                logger.info("Received pathStatus_FIN from server");
+            }
+        };
+
     }
 
-    public AgentRPCClient(ManagedChannel channel) {
+    private AgentRPCClient(ManagedChannel channel) {
         this.channel = channel;
         this.asyncStub = MasterServiceGrpc.newStub(channel);
         blockingStub = MasterServiceGrpc.newBlockingStub(channel);
@@ -64,9 +84,9 @@ public class AgentRPCClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public void initStream() {
+    void initStream() {
         logger.warn("(Re)starting the Stream for SA {}", agentSharedData.saID);
-        clientStreamObserver = asyncStub.updateFlowStatus(responseObserver);
+        clientStreamObserver = asyncStub.updateFlowStatus(flowStatusAckStreamObserver);
         isStreamReady = true;
     }
 
@@ -103,8 +123,14 @@ public class AgentRPCClient {
         }
     }
 
+    void asyncSendPathStatus(GaiaMessageProtos.PathStatusReport pathStatusReport){
+        synchronized (asyncStub){
+            asyncStub.updatePathStatus(pathStatusReport, pathStatusAckStreamObserver);
+        }
+    }
+
     // should only be called by the sender thread
-    public void sendFlowStatus(GaiaMessageProtos.FlowStatusReport statusReport) {
+    void sendFlowStatus(GaiaMessageProtos.FlowStatusReport statusReport) {
         if ( !isStreamReady ) {
             initStream();
         }

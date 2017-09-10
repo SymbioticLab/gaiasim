@@ -4,7 +4,6 @@ package gaiasim.gaiamaster;
 
 import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.gaiaprotos.MasterServiceGrpc;
-import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -72,7 +71,7 @@ public class MasterRPCServer {
 //                    int srSize = statusReport.getSerializedSize();
 //                    srMaxSize = srSize > srMaxSize ? srSize : srMaxSize;
 //                    logger.debug("Received Flow Status, size: {} / {}\ncontent: {}" , srSize , srMaxSize , statusReport);
-                    handleStatusReport(statusReport);
+                    handleFlowStatusReport(statusReport);
                 }
 
                 @Override
@@ -91,9 +90,29 @@ public class MasterRPCServer {
 
         }
 
+        @Override
+        public void updatePathStatus(gaiasim.gaiaprotos.GaiaMessageProtos.PathStatusReport request,
+                                     io.grpc.stub.StreamObserver<gaiasim.gaiaprotos.GaiaMessageProtos.PathStatus_ACK> responseObserver) {
+            handlePathUpdate(request);
+
+            responseObserver.onNext(GaiaMessageProtos.PathStatus_ACK.getDefaultInstance());
+            responseObserver.onCompleted();
+        }
+
+    } // End of MasterServiceImpl
+
+    private void handlePathUpdate(GaiaMessageProtos.PathStatusReport request) {
+        // TODO handle path Update
+
+        if (request.getIsBroken()){
+
+        }
+        else {
+
+        }
     }
 
-    public void handleStatusReport(GaiaMessageProtos.FlowStatusReport statusReport){
+    public void handleFlowStatusReport(GaiaMessageProtos.FlowStatusReport statusReport){
 
         for ( GaiaMessageProtos.FlowStatusReport.FlowStatus status : statusReport.getStatusList()) {
             // first get the current flowGroup ID
@@ -121,7 +140,6 @@ public class MasterRPCServer {
         // set the current status
 
         masterSharedData.onFinishFlowGroup(fid, timestamp);
-
 
     }
 

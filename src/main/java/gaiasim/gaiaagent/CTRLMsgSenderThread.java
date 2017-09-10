@@ -17,7 +17,7 @@ public class CTRLMsgSenderThread implements Runnable {
             try {
                 Worker_to_CTRLMsg m = sharedData.worker_to_ctrlMsgQueue.take();
 
-                // TODO process the message
+                // process the message
                 switch (m.type) {
                     case FLOWSTATUS:
                         sendFlowStatus(m);
@@ -39,6 +39,7 @@ public class CTRLMsgSenderThread implements Runnable {
 
     private void sendPathStatus(Worker_to_CTRLMsg m) {
         sharedData.rpcClient.sendPathStatus(m.pathStatusReport);
+//        sharedData.rpcClient.asyncSendPathStatus(m.pathStatusReport);
     }
 
     private void sendFlowStatus(Worker_to_CTRLMsg m) {
