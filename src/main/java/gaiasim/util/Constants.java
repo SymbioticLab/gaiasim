@@ -17,7 +17,7 @@ public class Constants {
     public static final int DEFAULT_MASTER_PORT = 8888;
 
     // Comparison between double
-    public static final double DOUBLE_EPSILON = 0.00001;
+    public static final double DOUBLE_EPSILON = 0.001; // to 1 kb level
     public static final double LINK_AVAILABLE_THR = 0.1;
 
     // Number of milliseconds in a second
