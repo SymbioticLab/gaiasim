@@ -25,7 +25,7 @@ public class ReceivingAgent {
 
         try {
             sd = new ServerSocket(port);
-//            sd.setReceiveBufferSize(64*1024*1024);
+            sd.setReceiveBufferSize(64*1024*1024);
             System.err.println("DEBUG, serversocket buffer: " + sd.getReceiveBufferSize());
 //            sd.setSoTimeout(0);
 
@@ -40,7 +40,7 @@ public class ReceivingAgent {
                 Socket dataSocket = sd.accept();
                 conn_cnt ++;
 //                dataSocket.setSendBufferSize(16*1024*1024);
-//                dataSocket.setReceiveBufferSize(64*1024*1024);
+                dataSocket.setReceiveBufferSize(64*1024*1024);
                 System.err.println("dataSoc buf " + dataSocket.getReceiveBufferSize());
 //                dataSocket.setSoTimeout(0);
 //                dataSocket.setKeepAlive(true);
