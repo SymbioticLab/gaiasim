@@ -1,5 +1,6 @@
 package gaiasim.scheduler;
 
+import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
 import gaiasim.util.Constants;
@@ -43,6 +44,30 @@ public class CoflowScheduler extends Scheduler {
             int dst = Integer.parseInt(e.getNode1().toString());
             linksAtStart[src][dst] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
             linksAtStart[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+        }
+    }
+
+    public void processLinkChange(GaiaMessageProtos.PathStatusReport m) {
+        // TODO
+        int pathID = m.getPathID();
+        String saID = m.getSaID();
+        String raID = m.getRaID();
+        logger.warn("Link Change: {} {} {} isBroken: {}", saID, raID, pathID, m.getIsBroken());
+
+        Pathway p = net_graph_.apap_.get(saID).get(raID).get(pathID);
+
+        assert (p.node_list.size() == 2);
+        int src = Integer.parseInt(saID);
+        int dst = Integer.parseInt(raID);
+
+        if (m.getIsBroken()) {
+
+            linksAtStart[src][dst].goDown();
+
+        } else {
+
+            links_[src][dst].goUp();
+
         }
     }
 

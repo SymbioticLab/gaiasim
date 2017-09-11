@@ -104,12 +104,23 @@ public class MasterRPCServer {
     private void handlePathUpdate(GaiaMessageProtos.PathStatusReport request) {
         // TODO handle path Update
 
-        if (request.getIsBroken()){
-
-        }
-        else {
-
-        }
+        masterSharedData.onLinkChange(request);
+//        if (request.getIsBroken()){
+//            int pathID = request.getPathID();
+//            String saID = request.getSaID();
+//            String raID = request.getRaID();
+//
+////            masterSharedData.onLinkDown(saID, raID, pathID);
+//            masterSharedData.onLinkDown(request);
+//
+//        }
+//        else {
+//            int pathID = request.getPathID();
+//            String saID = request.getSaID();
+//            String raID = request.getRaID();
+//
+////            masterSharedData.onLinkUp(saID, raID, pathID);
+//        }
     }
 
     public void handleFlowStatusReport(GaiaMessageProtos.FlowStatusReport statusReport){

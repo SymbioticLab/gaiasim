@@ -1,5 +1,6 @@
 package gaiasim.gaiamaster;
 
+import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.spark.YARNMessages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +23,7 @@ public class MasterSharedData {
 
     // move this event queue here because the RPC server module need to access it
     protected LinkedBlockingQueue<YARNMessages> yarnEventQueue = new LinkedBlockingQueue<YARNMessages>();
+    LinkedBlockingQueue<GaiaMessageProtos.PathStatusReport> linkStatusQueue = new LinkedBlockingQueue<>();
 
 /*        public AtomicBoolean flag_CF_ADD = new AtomicBoolean(false);
     public AtomicBoolean flag_CF_FIN = new AtomicBoolean(false);
@@ -117,6 +119,22 @@ public class MasterSharedData {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public void onLinkDown(String saID, String raID, int pathID){
+
+    }
+
+    public void onLinkUp(String saID, String raID, int pathID) {
+
+    }
+
+    public void onLinkChange(GaiaMessageProtos.PathStatusReport request) {
+        try {
+            linkStatusQueue.add(request);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -249,6 +249,13 @@ public class Master {
             outcf.put( cfo.getId() , cfo );
         }
 
+        // process Link change
+        GaiaMessageProtos.PathStatusReport m = masterSharedData.linkStatusQueue.poll();
+        while (m != null){
+            scheduler.processLinkChange(m);
+            m = masterSharedData.linkStatusQueue.poll();
+        }
+
 //        printCFList(outcf);
 
         if (masterSharedData.flag_CF_ADD){ // redo sorting, may result in preemption

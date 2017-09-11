@@ -126,6 +126,7 @@ public class WorkerThread implements Runnable{
                 reconnCnt++;
                 if (reconnCnt >= Constants.SOCKET_RETRY_MILLIS / 1000 * Constants.DEFAULT_TOKEN_RATE) {
 
+                    reconnCnt = 0; // reset the counter!
                     boolean reconnected = tryReconnectSocket();
 
                     if (reconnected) {
@@ -248,6 +249,12 @@ public class WorkerThread implements Runnable{
     }
 
     private void enterReconnectingState() {
+
+        isReconnecting = true;
+        total_rate = 0;
+
+        if (!isPathOneHop()) return; // only send when for one hop path
+
         GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
                 .setSaID(sharedData.saID).setRaID(raID).setIsBroken(true).build();
 
@@ -256,12 +263,14 @@ public class WorkerThread implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        isReconnecting = true;
-        total_rate = 0;
     }
 
     private void exitReconnectingState() {
+
+        isReconnecting = false;
+
+        if (!isPathOneHop()) return; // only send when for one hop path
+
         GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
                 .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
 
@@ -270,7 +279,6 @@ public class WorkerThread implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        isReconnecting = false;
     }
 
     private void sendHeartBeat() {
@@ -430,6 +438,15 @@ public class WorkerThread implements Runnable{
                 total_rate = 0.0;
             }
         }
+    }
+
+    // [ONLY with static port #, i.e., ip routing]
+    private boolean isPathOneHop() {
+        return (localPort == 40004 || localPort == 40005 ||
+                localPort == 40102 || localPort == 40105 || localPort == 40113 ||
+                localPort == 40202 || localPort == 40208 || localPort == 40211 || localPort == 40213 ||
+                localPort == 40311 || localPort == 40313 || localPort == 40316 ||
+                localPort == 40414 || localPort == 40421);
     }
 
 //    public synchronized void subscribe(FlowInfo f, double rate, long update_ts) {
