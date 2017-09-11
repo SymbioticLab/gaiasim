@@ -28,8 +28,13 @@ sudo ip link add $host-eth0 type veth peer name vgw
 
 sudo ip link set vgw netns $net_name
 
-sudo ifconfig $host-eth0 10.0.$host_id.$host_id/24
-sudo ip netns exec $net_name ifconfig vgw 10.0.$host_id.254/24
+
+# TODO learn the actual interface name
+sudo ifconfig enp130s0f0 mtu 9000
+sudo ifconfig enp130s0f1 mtu 9000
+
+sudo ifconfig $host-eth0 10.0.$host_id.$host_id/24 mtu 9000
+sudo ip netns exec $net_name ifconfig vgw 10.0.$host_id.254/24 mtu 9000
 
 sudo ip route add 10.0.0.0/16 via 10.0.$host_id.254
 
@@ -50,7 +55,10 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
 
     # move to netns and then reset the IP address
     sudo ip link set $nic_name netns $net_name
-    sudo ip netns exec $net_name ifconfig $nic_name $nic_addr
+    sudo ip netns exec $net_name ifconfig $nic_name $nic_addr mtu 9000
+
+    # jumbo frame mtu 9000 again?
+    sudo ip netns exec $net_name ifconfig $nic_name mtu 9000
 
     # set the table now
     let counter++
@@ -74,7 +82,9 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
     # set the bw / delay for this interface!!!
     sudo ip netns exec $net_name tc qdisc del dev $nic_name
     sudo ip netns exec $net_name tc qdisc add dev $nic_name root handle $counter: htb default 12
-    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 1048Mbit ceil 1248Mbit #burst 1441b cburst 2002b
+
+    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 200Mbit ceil 220Mbit
+#    sudo ip netns exec $net_name tc class add dev $nic_name parent $counter:1 classid $counter:12 htb rate 1048Mbit ceil 1248Mbit #burst 1441b cburst 2002b
 
     case "$link_id" in
         "12") lat='82ms' ;;
