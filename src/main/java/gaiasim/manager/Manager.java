@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.*;
 
+@SuppressWarnings("Duplicates")
+
 public class Manager {
     public NetGraph net_graph_;
 

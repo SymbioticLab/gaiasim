@@ -1,5 +1,6 @@
 package gaiasim;
 
+import gaiasim.JCTCalc.JCTCalc;
 import gaiasim.manager.Manager;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -22,6 +23,8 @@ public class GaiaSim {
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
         options.addOption("onebyone", false, "insert the job one by one");
+        options.addOption("nc", true, "numbers of computers in data center" );
+        options.addOption("csv", true, "input CCT csv file");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -40,17 +43,35 @@ public class GaiaSim {
             System.exit(1);
         }
 
+        if (cmd.hasOption("o")) {
+            args_map.put("outdir", cmd.getOptionValue("o"));
+        } else {
+            args_map.put("outdir", "/tmp");
+        }
+
+        if (cmd.hasOption("nc")){
+            if (cmd.hasOption("csv")){
+
+                System.out.println("Choose JCT caculation mode");
+                // parse the csv file
+
+                JCTCalc jc = new JCTCalc(args_map.get("gml"), args_map.get("trace"), args_map.get("outdir"),
+                        cmd.getOptionValue("csv") ,cmd.getOptionValue("nc"));
+
+                jc.calc();
+
+                System.exit(0);
+
+            }
+        }
+
+        System.out.println("Choose normal simualtion mode");
+
         if (cmd.hasOption("s")) {
             args_map.put("scheduler", cmd.getOptionValue("s"));
         } else {
             System.out.println("ERROR: Must specify a scheduler {baseline, recursive-remain-flow} using the -s flag");
             System.exit(1);
-        }
-
-        if (cmd.hasOption("o")) {
-            args_map.put("outdir", cmd.getOptionValue("o"));
-        } else {
-            args_map.put("outdir", "/tmp");
         }
 
         if (cmd.hasOption("b")) {

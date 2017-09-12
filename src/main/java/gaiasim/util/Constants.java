@@ -32,4 +32,9 @@ public class Constants {
         // Stage, Coflow, and Flow ids begin in the form <job_id>:
         return id.split(":")[0];
     }
+
+    // Constants for the JCT calculation
+    public static final double TASK_SIZE_MB = 256;
+    public static final int CORE_COUNT = 4;
+    public static final int IO_SPEED_MB_S = 50;
 }
