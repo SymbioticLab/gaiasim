@@ -45,6 +45,10 @@ public class BaselineScheduler extends Scheduler {
                 if (f.done_) {
                     continue;
                 }
+
+                if (f.src_loc_.equals(f.dst_loc_)) {
+                    continue; // ignoring co-located
+                }
                 
                 Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
                 f.paths_.clear();
