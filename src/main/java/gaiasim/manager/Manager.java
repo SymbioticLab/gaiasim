@@ -318,15 +318,15 @@ public class Manager {
 
             if (!f.started_sending_) {
 
+                // Only update started_sending_ if we're running baseline
+                f.started_sending_ = is_baseline_;
+
                 if (f.src_loc_.equals(f.dst_loc_)){
                     // finish the flow right away
                     message_queue_.put( new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, f.id_));
                 }
                 else {
                     sa_contacts_.get(f.src_loc_).start_flow(f);
-
-                    // Only update started_sending_ if we're running baseline
-                    f.started_sending_ = is_baseline_;
                 }
             }
         }
@@ -511,7 +511,6 @@ public class Manager {
                     boolean caused_coflow_finish = handle_finished_flow_emu(f, CURRENT_TIME_ + ts);
                     coflow_finished = coflow_finished || caused_coflow_finish;
 */
-
 
                     active_flows_.remove(f.id_);
                     f.done_ = true;
