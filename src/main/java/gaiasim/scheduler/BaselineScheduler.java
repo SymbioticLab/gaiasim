@@ -47,7 +47,13 @@ public class BaselineScheduler extends Scheduler {
                 }
 
                 if (f.src_loc_.equals(f.dst_loc_)) {
-                    continue; // ignoring co-located
+                    // "schedule" co-located flows without actual paths
+                    if (f.start_timestamp_ == -1) {
+                        f.start_timestamp_ = timestamp;
+                    }
+
+                    flows_.put(f.id_, f);
+                    continue;
                 }
                 
                 Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
