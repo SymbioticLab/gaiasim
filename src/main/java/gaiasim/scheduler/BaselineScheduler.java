@@ -73,9 +73,15 @@ public class BaselineScheduler extends Scheduler {
                 flows_.put(f.id_, f);
             }
         }
-        
+
+        // fair sharing between the flows.
         for (String k : flows_.keySet()) {
             Flow f = flows_.get(k);
+
+            if (f.src_loc_.equals(f.dst_loc_)) {
+                System.out.println("Flow " + f.id_ + "is co-located, not setting rate");
+                continue;
+            }
 
             double min_bw = Double.MAX_VALUE;
 
