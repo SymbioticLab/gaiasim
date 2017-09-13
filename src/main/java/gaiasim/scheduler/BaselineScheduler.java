@@ -20,6 +20,10 @@ public class BaselineScheduler extends Scheduler {
     }
     
     public void finish_flow(Flow f) {
+        if (f.src_loc_.equals(f.dst_loc_)){
+            return;
+        }
+
         ArrayList<String> nodes = f.paths_.get(0).node_list_;
         for (int i = 0; i < nodes.size()- 1; i++) {
             int src = Integer.parseInt(nodes.get(i));
