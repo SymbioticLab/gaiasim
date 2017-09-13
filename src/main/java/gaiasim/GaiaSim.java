@@ -2,6 +2,8 @@ package gaiasim;
 
 import gaiasim.JCTCalc.JCTCalc;
 import gaiasim.manager.Manager;
+import gaiasim.scheduler.PoorManScheduler;
+import gaiasim.util.Constants;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -22,6 +24,7 @@ public class GaiaSim {
         options.addOption("o", true, "path to directory to save output files");
         options.addOption("b", true, "scaling factor for bandwidth");
         options.addOption("w", true, "scaling factor for workload");
+        options.addOption("k", true, "number of paths limited");
         options.addOption("onebyone", false, "insert the job one by one");
         options.addOption("nc", true, "numbers of computers in data center" );
         options.addOption("csv", true, "input CCT csv file");
@@ -84,6 +87,15 @@ public class GaiaSim {
             args_map.put("workload_factor", cmd.getOptionValue("w"));
         } else {
             args_map.put("workload_factor", "1.0");
+        }
+
+        // Option k only valid for GAIA
+        if (cmd.hasOption("k")) {
+            PoorManScheduler.MAX_PARALLEL_PATHWAYS = Integer.parseInt(cmd.getOptionValue("k"));
+            System.out.println("Path number limited to " + PoorManScheduler.MAX_PARALLEL_PATHWAYS );
+        } else {
+            PoorManScheduler.MAX_PARALLEL_PATHWAYS = Constants.DEFAULT_MAX_PARALLEL_PATHWAYS;
+            System.out.println("Using default path number limit: " + Constants.DEFAULT_MAX_PARALLEL_PATHWAYS);
         }
 
         boolean isOneByOne = cmd.hasOption("onebyone");

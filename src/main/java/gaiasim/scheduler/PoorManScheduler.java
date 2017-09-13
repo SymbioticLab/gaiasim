@@ -16,7 +16,7 @@ public class PoorManScheduler extends Scheduler {
     // Starvation-freedom
     private static final double ALPHA = 0.99;
     // Path restrictions
-    private static final int MAX_PARALLEL_PATHWAYS = 15;
+    public static int MAX_PARALLEL_PATHWAYS = 15;
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).

@@ -26,6 +26,8 @@ public class Constants {
     public static final double FLOW_RATE_THR = 0.1;
     public static HashMap<String, String> node_id_to_trace_id;
 
+    public static final int DEFAULT_MAX_PARALLEL_PATHWAYS = 15;
+
     // Return the id of the job owning the Stage, Coflow, or Flow
     // identified by id.
     public static String get_job_id(String id) {
@@ -35,6 +37,6 @@ public class Constants {
 
     // Constants for the JCT calculation
     public static final double TASK_SIZE_MB = 256;
-    public static final int CORE_COUNT = 4;
-    public static final int IO_SPEED_MB_S = 50;
+    public static final int CORE_COUNT = 8;
+    public static final int IO_SPEED_MB_S = 100;
 }
