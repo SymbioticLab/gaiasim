@@ -241,7 +241,8 @@ public class Manager {
                         add_next_flows_for_job_emu(j, System.currentTimeMillis());
                     }
                     else {
-                        reschedule();
+//                        reschedule();
+                        System.err.println("GAIA not supported");
                     }
                 }
                 else if (m.type_ == ScheduleMessage.Type.FLOW_COMPLETION) {
@@ -266,7 +267,8 @@ public class Manager {
                             }
                         }
                         else {
-                            reschedule();
+//                            reschedule();
+                            System.err.println("GAIA not supported");
                         }
                     }
                 }
@@ -297,6 +299,7 @@ public class Manager {
         ArrayList<Coflow> coflows = j.get_running_coflows();
         HashMap<String, Coflow> coflow_map = new HashMap<String, Coflow>();
         for (Coflow c : coflows) {
+
             if (c.done()) {
                 c.start_timestamp_ = current_time;
                 handle_finished_coflow(c, current_time);
@@ -314,16 +317,23 @@ public class Manager {
             Flow f = scheduled_flows.get(flow_id);
 
             if (!f.started_sending_) {
-                sa_contacts_.get(f.src_loc_).start_flow(f);
 
-                // Only update started_sending_ if we're running baseline
-                f.started_sending_ = is_baseline_;
+                if (f.src_loc_.equals(f.dst_loc_)){
+                    // finish the flow right away
+                    message_queue_.put( new ScheduleMessage(ScheduleMessage.Type.FLOW_COMPLETION, f.id_));
+                }
+                else {
+                    sa_contacts_.get(f.src_loc_).start_flow(f);
+
+                    // Only update started_sending_ if we're running baseline
+                    f.started_sending_ = is_baseline_;
+                }
             }
         }
 
     }
 
-    // Used by coflow scheduler to preempt running flows and reschedule
+/*    // Used by coflow scheduler to preempt running flows and reschedule
     // running flows.
     public void reschedule() throws Exception {
         System.out.println("Manager: entered reschedule()");
@@ -393,7 +403,7 @@ public class Manager {
             }
         }
 
-    }
+    }*/
 
     public void simulate() throws Exception {
         int num_dispatched_jobs = 0;
