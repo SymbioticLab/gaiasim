@@ -45,7 +45,7 @@ public class Constants {
     public static final int BUFFER_SIZE = 64 * 1024 * 1024;
 
     public static final int DEFAULT_TOKEN_RATE = 40;
-    public static final long EXPERIMENT_INTERVAL = 5000; // 5s between experiments, to re-use the hot connection
+    public static final long EXPERIMENT_INTERVAL = 60000; // 60s between experiments
     public static final long SOCKET_RETRY_MILLIS = 5000;
     public static final long HEARTBEAT_INTERVAL_MILLIS = 2000; // 2s heartbeat
 
