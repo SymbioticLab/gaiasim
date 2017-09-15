@@ -14,7 +14,7 @@ public class LoadBalanceOptimizer {
     static NetGraph netGraph;
     private static ArrayList<Integer> flow_int_id_list;
 
-    public static MaxFlowOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
+    public static LoadBalanceOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         netGraph = net_graph;
         long lastTime = System.currentTimeMillis();
         String path_root = "/tmp";
@@ -93,15 +93,15 @@ public class LoadBalanceOptimizer {
 
         // Solve the LP
         String out_file_name = path_root + "/" + coflow.id_ + ".out";
-//        MaxFlowOutput mf_out = solveLP_Old(mod_file_name, dat_file_name, out_file_name);
-        MaxFlowOutput mf_out = solveLP_New(mod_file_name, dat_file_name, out_file_name);
+//      LoadBalanceOutput mf_out = solveLP_Old(mod_file_name, dat_file_name, out_file_name);
+        LoadBalanceOutput mf_out = solveLP_New(mod_file_name, dat_file_name, out_file_name);
 
         long curTime = System.currentTimeMillis();
         System.out.println("Calling LP (including File I/O) cost (ms) : " + (curTime - lastTime));
         return mf_out;
     }
 
-    private static MaxFlowOutput solveLP_Old(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
+    private static LoadBalanceOutput solveLP_Old(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
 
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
 
@@ -114,7 +114,7 @@ public class LoadBalanceOptimizer {
         }
 
         // Read the output
-        MaxFlowOutput mf_out = new MaxFlowOutput();
+        LoadBalanceOutput mf_out = new LoadBalanceOutput();
         boolean missing_pieces = false;
         FileReader fr = new FileReader(out_file_name);
         BufferedReader br = new BufferedReader(fr);
@@ -180,7 +180,7 @@ public class LoadBalanceOptimizer {
     }
 
 
-    private static MaxFlowOutput solveLP_New(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
+    private static LoadBalanceOutput solveLP_New(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -w " + out_file_name;
 
         long startTime = System.currentTimeMillis();
@@ -198,13 +198,13 @@ public class LoadBalanceOptimizer {
         System.out.println("LP time: " + startTime);
 
         // Read the output
-        MaxFlowOutput mf_out = parsePlainTextOutput(out_file_name);
+        LoadBalanceOutput mf_out = parsePlainTextOutput(out_file_name);
 
         return mf_out;
     }
 
-    private static MaxFlowOutput parsePlainTextOutput(String out_file_name) throws IOException {
-        MaxFlowOutput mf_out = new MaxFlowOutput();
+    private static LoadBalanceOutput parsePlainTextOutput(String out_file_name) throws IOException {
+        LoadBalanceOutput mf_out = new LoadBalanceOutput();
         FileReader fr = new FileReader(out_file_name);
         BufferedReader br = new BufferedReader(fr);
         String line;
@@ -285,7 +285,7 @@ public class LoadBalanceOptimizer {
         return mf_out;
     }
 
-    public static class MaxFlowOutput {
+    public static class LoadBalanceOutput {
         public double max_util = 0.0;
         public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_
                 = new HashMap<>();

@@ -39,7 +39,7 @@ public class MultiPathScheduler extends PoorManScheduler {
         }
 
         // Find paths for each flow
-        LoadBalanceOptimizer.MaxFlowOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        LoadBalanceOptimizer.LoadBalanceOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         for (Flow f : combined_coflow.flows_.values()) {
             ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
