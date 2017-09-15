@@ -18,7 +18,7 @@ public class LoadBalanceOptimizer {
         netGraph = net_graph;
         long lastTime = System.currentTimeMillis();
         String path_root = "/tmp";
-        String mod_file_name = path_root + "/MaxFlow.mod";
+        String mod_file_name = path_root + "/LoadBalance.mod";
         StringBuilder dat_string = new StringBuilder();
         dat_string.append("data;\n\n");
 
