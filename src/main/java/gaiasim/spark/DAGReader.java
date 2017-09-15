@@ -46,6 +46,8 @@ public class DAGReader {
         BufferedReader br = new BufferedReader(fr);
 
         String line;
+        int flowIDCounter = 0; // make flow_int_ID unique in all jobs
+
         while ((line = br.readLine()) != null) { // for each job
 
             // Ignore comments
@@ -102,7 +104,7 @@ public class DAGReader {
             ArrayListMultimap<String, Flow> tmpCoflowList = ArrayListMultimap.create();
 
             ArrayList<Flow> tmpFlowList = new ArrayList<>();
-            int flowIDCounter = 0;
+
 
             // Map coflow and Determine coflow dependencies
             line = br.readLine();
