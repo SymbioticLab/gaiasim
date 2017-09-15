@@ -104,7 +104,7 @@ public class MMCFOptimizer {
         MMCFOutput mmcf_out = solveLP_New(mod_file_name, dat_file_name, out_file_name);
 
         long curTime = System.currentTimeMillis();
-        System.out.println("Calling LP (including File I/O) cost (ms) : " + (curTime - lastTime));
+//        System.out.println("Calling LP (including File I/O) cost (ms) : " + (curTime - lastTime));
         return mmcf_out;
     }
 
