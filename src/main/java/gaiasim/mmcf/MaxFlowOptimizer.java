@@ -30,10 +30,10 @@ public class MaxFlowOptimizer {
 
         flow_int_id_list = new ArrayList<>();
         HashMap<Integer, String> flow_int_id_to_id = new HashMap<>();
-        System.out.println("Coflow " + coflow.id_ + " has flows: ");
+//        System.out.println("Coflow " + coflow.id_ + " has flows: ");
         for (String k : coflow.flows_.keySet()) {
-            Flow f = coflow.flows_.get(k);
-            System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_);
+//            Flow f = coflow.flows_.get(k);
+//            System.out.println("  " + k + ": " + f.src_loc_ + "-" + f.dst_loc_);
             int int_id = coflow.flows_.get(k).int_id_;
             flow_int_id_list.add(int_id);
             flow_int_id_to_id.put(int_id, k);

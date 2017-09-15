@@ -252,11 +252,11 @@ public class PoorManScheduler extends Scheduler {
                 }
             }
 
-            System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
+/*            System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
             System.out.println("  has pathways: ");
             for (Pathway p : f.paths_) {
                 System.out.println("    " + p.toString());
-            }
+            }*/
 
             if (f.start_timestamp_ == -1) {
                 System.out.println("Setting start_timestamp to " + timestamp);
@@ -408,6 +408,8 @@ public class PoorManScheduler extends Scheduler {
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                 long timestamp) throws Exception {
+
+        long scheduleStartTime = System.currentTimeMillis();
         flows_.clear();
         reset_links();
         ArrayList<Coflow> cct_list = sort_coflows(coflows);
@@ -526,10 +528,18 @@ public class PoorManScheduler extends Scheduler {
             }
         }
 
+        long LPTime = System.currentTimeMillis() - scheduleStartTime;
+
         // Schedule any available flows
         if (!unscheduled_coflows.isEmpty() && !no_bw_remains) { // FIXME: the condition here
             schedule_extra_flows_multipath(unscheduled_coflows, timestamp); // changed to multipath
         }
+
+        long timeAtLast = System.currentTimeMillis() - scheduleStartTime;
+
+        System.out.println("schedule_flows() took: " + timeAtLast + " ms");
+        System.out.println("extra_flows() took: " + (timeAtLast - LPTime));
+
         return flows_;
     }
 
