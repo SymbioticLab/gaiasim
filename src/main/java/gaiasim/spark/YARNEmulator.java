@@ -332,9 +332,9 @@ public class YARNEmulator implements Runnable {
 
     // take in record in long, convert into double and write to CSV
     private void appendCSV(CSVPrinter csvPrinter, String id, long startTimeStamp, long endTimeStamp, long delta_Millis){
-        double startTime = (double) (startTimeStamp - YARNStartTime) / 1000;
-        double endTime = (double) (endTimeStamp - YARNStartTime) / 1000;
-        double deltaTime = (double) delta_Millis / 1000;
+        double startTime = (double) (startTimeStamp ) / Constants.MILLI_IN_SECOND_D;
+        double endTime = (double) (endTimeStamp ) / Constants.MILLI_IN_SECOND_D;
+        double deltaTime = (double) delta_Millis / Constants.MILLI_IN_SECOND_D;
         Object [] record = {id,startTime,endTime,deltaTime};
         try {
             csvPrinter.printRecord(record);
