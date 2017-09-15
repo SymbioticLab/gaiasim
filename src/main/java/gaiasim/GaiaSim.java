@@ -118,6 +118,8 @@ public class GaiaSim {
             p.waitFor();
             p = Runtime.getRuntime().exec("cp models/LoadBalance.mod /tmp/LoadBalance.mod");
             p.waitFor();
+            p = Runtime.getRuntime().exec("cp models/MaxFlow.mod /tmp/MaxFlow.mod");
+            p.waitFor();
 
             Manager m = new Manager(args_map.get("gml"), args_map.get("trace"),
                     args_map.get("scheduler"), args_map.get("outdir"),
