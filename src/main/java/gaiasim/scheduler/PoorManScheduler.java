@@ -1,7 +1,7 @@
 package gaiasim.scheduler;
 
 import gaiasim.mmcf.MMCFOptimizer;
-import gaiasim.mmcf.MaxFlowOptimizer;
+import gaiasim.mmcf.LoadBalanceOptimizer;
 import gaiasim.network.*;
 import gaiasim.util.Constants;
 
@@ -218,7 +218,7 @@ public class PoorManScheduler extends Scheduler {
         }
 
         // Find paths for each flow
-        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        LoadBalanceOptimizer.MaxFlowOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         int[][] subscriber_counts = new int[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
 
@@ -321,7 +321,7 @@ public class PoorManScheduler extends Scheduler {
         }
 
         // Find paths for each flow
-        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        LoadBalanceOptimizer.MaxFlowOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         int[][] subscriber_counts = new int[net_graph_.nodes_.size() + 1][net_graph_.nodes_.size() + 1];
 

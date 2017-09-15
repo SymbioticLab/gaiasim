@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @SuppressWarnings("Duplicates")
-public class MaxFlowOptimizer {
+public class LoadBalanceOptimizer {
 
     static NetGraph netGraph;
     private static ArrayList<Integer> flow_int_id_list;
