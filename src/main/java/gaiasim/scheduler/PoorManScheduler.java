@@ -301,8 +301,8 @@ public class PoorManScheduler extends Scheduler {
 
     }
 
-    // multipath version of schedule_extra_flows()
-    private void schedule_extra_flows_multipath(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
+    // balance version of schedule_extra_flows()
+    private void schedule_extra_flows_balance(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
         // Collapse all coflows to one
         Coflow combined_coflow = new Coflow("COMBINED", null);
         combined_coflow.volume_ = 0.0;
@@ -640,8 +640,8 @@ public class PoorManScheduler extends Scheduler {
 
         // Schedule any available flows
         if (!unscheduled_coflows.isEmpty() && !no_bw_remains) { // FIXME: the condition here
-//            schedule_extra_flows_multipath(unscheduled_coflows, timestamp);
-            schedule_extra_flows_maxflow(unscheduled_coflows, timestamp); // changed to MaxFlow
+            schedule_extra_flows_balance(unscheduled_coflows, timestamp);
+//            schedule_extra_flows_maxflow(unscheduled_coflows, timestamp); // changed to MaxFlow
         }
 
         long timeAtLast = System.currentTimeMillis() - scheduleStartTime;
