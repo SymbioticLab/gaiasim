@@ -254,6 +254,9 @@ public class Master {
         while (m != null){
             scheduler.processLinkChange(m);
             m = masterSharedData.linkStatusQueue.poll();
+
+            // TODO need to trigger reschedule here
+            masterSharedData.flag_CF_ADD = true;
         }
 
 //        printCFList(outcf);

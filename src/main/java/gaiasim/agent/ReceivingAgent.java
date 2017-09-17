@@ -1,13 +1,21 @@
 package gaiasim.agent;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Executors;
 
 import gaiasim.agent.Receiver;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import org.jboss.netty.bootstrap.ServerBootstrap;
+import org.jboss.netty.channel.ChannelPipeline;
+import org.jboss.netty.channel.ChannelPipelineFactory;
+import org.jboss.netty.channel.Channels;
+import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
 public class ReceivingAgent {
 
@@ -15,7 +23,7 @@ public class ReceivingAgent {
 
     public static void main(String[] args) {
         int port = 33330;
-        ServerSocket sd;
+//        ServerSocket sd;
 
         int conn_cnt = 0;
 
@@ -24,7 +32,30 @@ public class ReceivingAgent {
             logger.info("Running with 1 argument, set port to {}" , port);
         }
 
-        try {
+        // start the discard server
+        // Configure the server.
+        ServerBootstrap bootstrap = new ServerBootstrap(
+                new NioServerSocketChannelFactory(
+                        Executors.newCachedThreadPool(),
+                        Executors.newCachedThreadPool()));
+
+        // Set up the pipeline factory.
+        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
+            public ChannelPipeline getPipeline() throws Exception {
+                return Channels.pipeline(new DiscardServerHandler());
+            }
+        });
+        bootstrap.setOption("child.tcpNoDelay", true);
+        bootstrap.setOption("child.keepAlive", true);
+
+        // TODO buffer size
+/*        bootstrap.setOption("child.sendBufferSize", 1048576);
+        bootstrap.setOption("child.receiveBufferSize", 1048576);*/
+
+        // Bind and start to accept incoming connections.
+        bootstrap.bind(new InetSocketAddress(port));
+
+        /*try {
             sd = new ServerSocket(port);
             sd.setReceiveBufferSize(64*1024*1024);
             System.err.println("DEBUG, serversocket buffer: " + sd.getReceiveBufferSize());
@@ -53,6 +84,6 @@ public class ReceivingAgent {
         catch (java.io.IOException e) {
             e.printStackTrace();
 //            System.exit(1);
-        }
+        }*/
     }
 }
