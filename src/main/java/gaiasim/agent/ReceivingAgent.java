@@ -52,8 +52,8 @@ public class ReceivingAgent {
         bootstrap.setOption("child.keepAlive", true);
 
         // TODO buffer size
-/*        bootstrap.setOption("child.sendBufferSize", 1048576);
-        bootstrap.setOption("child.receiveBufferSize", 1048576);*/
+//        bootstrap.setOption("child.sendBufferSize", 1048576);
+//        bootstrap.setOption("child.receiveBufferSize", 64*1024*1024);
 
         // Bind and start to accept incoming connections.
         bootstrap.bind(new InetSocketAddress(port));

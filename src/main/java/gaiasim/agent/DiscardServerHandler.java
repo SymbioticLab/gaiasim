@@ -65,7 +65,7 @@ public class DiscardServerHandler extends SimpleChannelUpstreamHandler {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) {
         // Close the connection when an exception is raised.
-        logger.warn("Unexpected exception from downstream.",e.getCause());
+        logger.warn("Unexpected exception from downstream.\n{}",e.getCause());
         e.getChannel().close();
     }
 

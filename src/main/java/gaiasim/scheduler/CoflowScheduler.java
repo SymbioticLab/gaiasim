@@ -63,11 +63,14 @@ public class CoflowScheduler extends Scheduler {
         if (m.getIsBroken()) {
 
             linksAtStart[src][dst].goDown();
+            links_[src][dst].goDown();
+            logger.info("Making Link {} {} go down", src, dst);
 
         } else {
 
             links_[src][dst].goUp();
-
+            links_[src][dst].goUp();
+            logger.info("Making Link {} {} go up", src, dst);
         }
     }
 
