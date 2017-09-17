@@ -6,7 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
 
-import gaiasim.agent.Receiver;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,16 +21,20 @@ public class ReceivingAgent {
     private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
-        int port = 33330;
-//        ServerSocket sd;
 
-        int conn_cnt = 0;
+        int port = 33330;
 
         if(args.length == 1){
             port = Integer.parseInt(args[0]);
             logger.info("Running with 1 argument, set port to {}" , port);
         }
 
+        startNormalServer(port);
+//        startNettyServer(port);
+
+    }
+
+    private static void startNettyServer(int port) {
         // start the discard server
         // Configure the server.
         ServerBootstrap bootstrap = new ServerBootstrap(
@@ -54,8 +57,14 @@ public class ReceivingAgent {
 
         // Bind and start to accept incoming connections.
         bootstrap.bind(new InetSocketAddress(port));
+    }
 
-        /*try {
+    private static void startNormalServer(int port) {
+
+        ServerSocket sd;
+        int conn_cnt = 0;
+
+        try {
             sd = new ServerSocket(port);
             sd.setReceiveBufferSize(64*1024*1024);
             System.err.println("DEBUG, serversocket buffer: " + sd.getReceiveBufferSize());
@@ -84,6 +93,6 @@ public class ReceivingAgent {
         catch (java.io.IOException e) {
             e.printStackTrace();
 //            System.exit(1);
-        }*/
+        }
     }
 }
