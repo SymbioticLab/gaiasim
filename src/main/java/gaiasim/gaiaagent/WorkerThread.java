@@ -309,7 +309,7 @@ public class WorkerThread implements Runnable{
 
                 // sleep for some time
                 try {
-                    logger.info("Retry-connection in {} seconds", Constants.SOCKET_RETRY_MILLIS/1000);
+                    logger.error("Retry-connection in {} seconds", Constants.SOCKET_RETRY_MILLIS/1000);
                     Thread.sleep(Constants.SOCKET_RETRY_MILLIS);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();

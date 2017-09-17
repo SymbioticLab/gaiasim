@@ -23,7 +23,7 @@ public class Receiver implements Runnable {
             try {
                 num_recv = in_.read(buffer);
                 if (num_recv < 0) {
-                    logger.error("SocketInputStream.read() returns {}" , num_recv);
+                    logger.info("SocketInputStream.read() returns {}" , num_recv);
                     break;
                 }
             }
