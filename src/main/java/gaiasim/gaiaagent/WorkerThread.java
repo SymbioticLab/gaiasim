@@ -254,10 +254,21 @@ public class WorkerThread implements Runnable{
         isReconnecting = true;
         total_rate = 0;
 
+        logger.error("Closing socket to ra {}", raID);
+
+        try {
+            bos.close();
+            dataSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         if (!isPathOneHop()) return; // only send when for one hop path
 
         GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
                 .setSaID(sharedData.saID).setRaID(raID).setIsBroken(true).build();
+
+        logger.error("Sending LinkReport {}", report );
 
         try {
             sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
@@ -274,6 +285,8 @@ public class WorkerThread implements Runnable{
 
         GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
                 .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
+
+        logger.error("Sending LinkReport {}", report );
 
         try {
             sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
