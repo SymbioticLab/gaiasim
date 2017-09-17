@@ -170,7 +170,10 @@ public class WorkerThread implements Runnable{
 
         try {
             dataSocket = new Socket(raIP, raPort, null, localPort);
+            dataSocket.setKeepAlive(true);
 //            dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
+            logger.info("Worker {} connected to {} : {} from port {}, keepAlive: {}", connID, raIP, raPort, localPort, dataSocket.getKeepAlive());
+
         } catch (IOException e) {
             logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
             e.printStackTrace();
@@ -178,7 +181,6 @@ public class WorkerThread implements Runnable{
             return false;
         }
 
-        logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
 
         try {
             bos = new BufferedOutputStream(dataSocket.getOutputStream() , Constants.BUFFER_SIZE );
@@ -316,6 +318,9 @@ public class WorkerThread implements Runnable{
             try {
                 dataSocket = new Socket(raIP, raPort, null, localPort);
 //                dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
+                dataSocket.setKeepAlive(true);
+
+                logger.info("Worker {} connected to {} : {} from port {}, keepAlive {}", connID, raIP, raPort, localPort, dataSocket.getKeepAlive());
             } catch (IOException e) {
                 logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
                 e.printStackTrace();
@@ -330,7 +335,7 @@ public class WorkerThread implements Runnable{
 
                 continue;
             }
-            logger.info("Worker {} connected to {} : {} from port {}", connID, raIP, raPort, localPort);
+
             isConnected = true;
         }
 

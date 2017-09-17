@@ -126,6 +126,11 @@ sudo sysctl net.ipv4.tcp_fin_timeout=10
 sudo sysctl net.ipv4.tcp_tw_recycle=1
 sudo sysctl net.ipv4.tcp_tw_reuse=1
 
+# use 1min keep alive timer
+sudo sysctl net.ipv4.tcp_keepalive_time=60
+sudo sysctl net.ipv4.tcp_keepalive_intvl=10
+sudo sysctl net.ipv4.tcp_keepalive_probes=6
+
 echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 
 echo "done"
