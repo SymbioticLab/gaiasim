@@ -248,7 +248,7 @@ public class CoflowScheduler extends Scheduler {
         return remaining_bw;
     }
 
-    public void schedule_extra_flows(ArrayList<Coflow_Old> unscheduled_coflows, long timestamp) {
+    /*public void schedule_extra_flows(ArrayList<Coflow_Old> unscheduled_coflows, long timestamp) {
         ArrayList<FlowGroup_Old> unscheduled_flowGroups = new ArrayList<FlowGroup_Old>();
         for (Coflow_Old c : unscheduled_coflows) {
             for (String k : c.flows.keySet()) {
@@ -294,11 +294,11 @@ public class CoflowScheduler extends Scheduler {
                 f.paths.clear();
                 f.paths.add(p);
 
-/*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
+*//*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway path : f.paths) {
                     System.out.println("    " + path.toString());
-                }*/
+                }*//*
 
                 if (f.getStart_timestamp() == -1) {
                     f.setStart_timestamp(timestamp);
@@ -306,7 +306,7 @@ public class CoflowScheduler extends Scheduler {
                 flows_.put(f.getId(), f);
             }
         }
-    }
+    }*/
 
     public HashMap<String, FlowGroup_Old> schedule_flows(HashMap<String, Coflow_Old> coflows,
                                                          long timestamp) throws Exception {
@@ -489,11 +489,11 @@ public class CoflowScheduler extends Scheduler {
                     }
                 }
 
-                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
+/*                System.out.println("Adding flow " + f.getId() + " remaining = " + f.remaining_volume());
                 System.out.println("  has pathways: ");
                 for (Pathway p : f.paths) {
                     System.out.println("    " + p.toString());
-                }
+                }*/
 
                 if (f.getStart_timestamp() == -1) {
                     f.setStart_timestamp(timestamp);
