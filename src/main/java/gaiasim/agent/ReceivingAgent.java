@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import gaiasim.agent.Receiver;
+import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,6 +39,7 @@ public class ReceivingAgent {
 
             while (true) {
                 Socket dataSocket = sd.accept();
+                dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
                 conn_cnt ++;
 //                dataSocket.setSendBufferSize(16*1024*1024);
                 dataSocket.setReceiveBufferSize(64*1024*1024);
