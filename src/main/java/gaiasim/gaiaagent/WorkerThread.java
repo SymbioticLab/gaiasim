@@ -170,7 +170,7 @@ public class WorkerThread implements Runnable{
 
         try {
             dataSocket = new Socket(raIP, raPort, null, localPort);
-            dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
+//            dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
         } catch (IOException e) {
             logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
             e.printStackTrace();
@@ -315,7 +315,7 @@ public class WorkerThread implements Runnable{
         while ( !isConnected ) {
             try {
                 dataSocket = new Socket(raIP, raPort, null, localPort);
-                dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
+//                dataSocket.setSoTimeout(Constants.DEFAULT_SOCKET_TIMEOUT);
             } catch (IOException e) {
                 logger.error("Error while connecting to {} {} from port {}", raIP, raPort, localPort);
                 e.printStackTrace();
