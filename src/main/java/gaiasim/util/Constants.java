@@ -38,5 +38,5 @@ public class Constants {
     // Constants for the JCT calculation
     public static final double TASK_SIZE_MB = 256;
     public static final int CORE_COUNT = 8;
-    public static final int IO_SPEED_MB_S = 100;
+    public static final int IO_SPEED_MB_S = 50;
 }
