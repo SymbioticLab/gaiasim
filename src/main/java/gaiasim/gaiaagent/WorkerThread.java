@@ -289,16 +289,20 @@ public class WorkerThread implements Runnable{
         logger.error("Current active connection {} / {}", currentConn, sharedData.MAX_ACTIVE_CONNECTION);
 
         if (!isPathOneHop()) {
-            sharedData.activeConnections.notify();
+            synchronized (sharedData.activeConnections) {
+                sharedData.activeConnections.notify();
+            }
             return; // only send when for one hop path
         }
 
         while (currentConn != sharedData.MAX_ACTIVE_CONNECTION){
             logger.error("One-hop worker waiting for others {}", currentConn);
-            try {
-                sharedData.activeConnections.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            synchronized (sharedData.activeConnections) {
+                try {
+                    sharedData.activeConnections.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             currentConn = sharedData.activeConnections.incrementAndGet();
