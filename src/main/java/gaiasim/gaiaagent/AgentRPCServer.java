@@ -215,6 +215,8 @@ public class AgentRPCServer {
             // block until all workers are done with reconnection
             if (sharedData.cnt_StartedConnections == null){
                 sharedData.cnt_StartedConnections = new CountDownLatch(replyCnt);
+                sharedData.MAX_ACTIVE_CONNECTION = replyCnt;
+                logger.info("MAX_ACTIVE_CONNECTION set to {}", replyCnt);
             }
             else {
                 logger.error("CountDownLatch already initialized!");

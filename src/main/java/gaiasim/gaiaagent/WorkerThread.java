@@ -256,6 +256,8 @@ public class WorkerThread implements Runnable{
         isReconnecting = true;
         total_rate = 0;
 
+        sharedData.activeConnections.decrementAndGet();
+
         logger.error("Closing socket to ra {}", raID);
 
         try {
@@ -283,17 +285,22 @@ public class WorkerThread implements Runnable{
 
         isReconnecting = false;
 
-        if (!isPathOneHop()) return; // only send when for one hop path
+//        if (!isPathOneHop()) return; // only send when for one hop path
+        int currentConn = sharedData.activeConnections.incrementAndGet();
 
-        GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
-                .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
+        logger.error("Current active connection {} / {}", currentConn, sharedData.MAX_ACTIVE_CONNECTION);
+        if ( currentConn == sharedData.MAX_ACTIVE_CONNECTION) {
 
-        logger.error("Sending LinkReport {}", report );
+            GaiaMessageProtos.PathStatusReport report = GaiaMessageProtos.PathStatusReport.newBuilder().setPathID(pathID)
+                    .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
 
-        try {
-            sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Sending LinkReport {}", report);
+
+            try {
+                sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -347,6 +354,7 @@ public class WorkerThread implements Runnable{
         }
 
         sharedData.cnt_StartedConnections.countDown();
+        sharedData.activeConnections.incrementAndGet();
 
     }
 

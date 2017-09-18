@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("Duplicates")
 
@@ -25,6 +26,7 @@ public class AgentSharedData {
 
     final String saID;
     final String saName; // the name of Data Center in the trace file.
+    public volatile int MAX_ACTIVE_CONNECTION;
 
     enum SAState {
         IDLE, CONNECTING, READY
@@ -37,6 +39,7 @@ public class AgentSharedData {
     AtomicBoolean isSendingHeartBeat = new AtomicBoolean(false);
 
     CountDownLatch cnt_StartedConnections = null;
+    AtomicInteger activeConnections = new AtomicInteger(0);
 
     LinkedBlockingQueue<GaiaMessageProtos.FlowUpdate> fumQueue = new LinkedBlockingQueue<>();
 

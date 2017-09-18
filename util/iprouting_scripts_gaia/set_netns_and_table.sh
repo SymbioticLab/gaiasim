@@ -128,8 +128,13 @@ sudo sysctl net.ipv4.tcp_tw_reuse=1
 
 # use 1min keep alive timer
 sudo sysctl net.ipv4.tcp_keepalive_time=60
-sudo sysctl net.ipv4.tcp_keepalive_intvl=10
-sudo sysctl net.ipv4.tcp_keepalive_probes=6
+sudo sysctl net.ipv4.tcp_keepalive_intvl=5
+sudo sysctl net.ipv4.tcp_keepalive_probes=3
+
+sudo sysctl net.ipv4.tcp_retries2=3
+#sudo sysctl net.ipv4.netfilter.ip_conntrack_tcp_timeout_established
+
+# TODO retires2
 
 echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 
