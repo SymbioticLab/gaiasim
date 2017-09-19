@@ -33,6 +33,7 @@ public class CoflowScheduler extends Scheduler {
     protected Comparator<CoflowSchedulerEntry> smallCCTFirst = Comparator.comparingDouble(o -> o.cct);
 
     protected List<CoflowSchedulerEntry> cfList = new LinkedList<>();
+    List<CoflowSchedulerEntry> nonDDLCFList = new LinkedList<>();
 
     // Create a priority queue to sort the CFs according to completion time.
 //    protected Queue<CoflowSchedulerEntry> cfQueue = new PriorityQueue<>(smallCCTFirst);
@@ -454,7 +455,7 @@ public class CoflowScheduler extends Scheduler {
 
         reset_links();
 
-        List<CoflowSchedulerEntry> nonDDLCFList = new ArrayList<>();
+        nonDDLCFList.clear();
 
         // TODO check if admitted CF can meet ddl?
         // Part 0: first deal with CFs with deadline
@@ -462,10 +463,16 @@ public class CoflowScheduler extends Scheduler {
 
             Coflow_Old c = e.cf;
 
+            // Skip DDL CFs!!
+            if (c.ddl_Millis == -1){
+                nonDDLCFList.add(e);
+                continue;
+            }
+
             // first fast check, we need to check every CF, even if we only have small BW left.
             if ( !fastCheckCF(e) ){
                 unscheduled_coflows.add(c);
-                logger.error("Admitted DDLCF failed fastCheck!");
+                logger.error("Admitted DDLCF {} failed fastCheck!", c.getId());
                 continue;
             }
 
@@ -487,7 +494,7 @@ public class CoflowScheduler extends Scheduler {
             // check if successfully scheduled
             if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
                 unscheduled_coflows.add(c);
-                logger.error("Admitted DDLCF has cct {}", mmcf_out.completion_time_);
+                logger.error("Admitted DDLCF {} has cct {}", c.getId() , mmcf_out.completion_time_);
                 continue;
             }
 
