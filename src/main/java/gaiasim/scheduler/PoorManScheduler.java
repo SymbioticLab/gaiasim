@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class PoorManScheduler extends Scheduler {
     // Starvation-freedom
-    private static final double ALPHA = 0.99;
+    private static final double ALPHA = 0.90;
     // Path restrictions
     public static int MAX_PARALLEL_PATHWAYS = 15;
     // Persistent map used ot hold temporary data. We simply clear it
