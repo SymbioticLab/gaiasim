@@ -522,8 +522,114 @@ public class PoorManScheduler extends Scheduler {
         reset_links();
         ArrayList<Coflow> cct_list = sort_coflows(coflows);
         ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
+        ArrayList<Coflow> non_ddl_cct_list = new ArrayList<>();
         boolean no_bw_remains = false;
-        for (Coflow c : cct_list) {
+
+        // first round only for deadline CFs
+        for (Coflow cf : cct_list){
+
+            if (cf.ddl_Millis == -1){
+                non_ddl_cct_list.add(cf);
+                continue;
+            }
+
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, ALPHA);
+            long deltaTime = timestamp - cf.start_timestamp_;
+            if (mmcf_out.completion_time_ == -1.0 || mmcf_out.completion_time_ * 1000 > cf.ddl_Millis - deltaTime) {
+                System.out.println("INFO: unschedule cf " + cf.id_ + " because cct " + mmcf_out.completion_time_);
+//                unscheduled_coflows.add(cf);
+                // TODO: do nothing?  What if this coflow has already been started?
+                cf.dropped = true;
+                droppedCnt += 1;
+                continue;
+            }
+
+            // check this coflow to see if fully scheduled
+            boolean all_flows_scheduled = true;
+            for (String k : cf.flows_.keySet()) {
+                Flow f = cf.flows_.get(k);
+
+                if (f.done_){
+                    if (f.remaining_volume() !=0 ){
+                        System.err.println("FATAL: remaining vol != 0");
+                    }
+                    continue; // ignoring this flow, continue to check other flows of this coflow
+                }
+
+                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+
+                // first phase: check if link exists
+                if (link_vals == null || link_vals.size() == 0){
+                    System.out.println("WARNING: no link is assigned by LP for flow " + f.id_);
+                    all_flows_scheduled = false;
+                    break; // break here, give up this coflow (clean up later)
+                }
+
+                // try to make paths
+                make_paths(f, link_vals);
+
+                // check if we can actually make paths
+                if (f.paths_.size() == 0) {
+                    System.out.println("WARNING: no paths is created in make_path() for flow " + f.id_);
+                    // make paths failed for this flow, we move the owning coflow into unscheduled later
+                    all_flows_scheduled = false;
+                    break; // break here, give up this coflow (clean up later)
+                }
+
+
+            }
+
+            if (!all_flows_scheduled) {
+                unscheduled_coflows.add(cf);
+                System.err.println("INFO: ddl CF not fully scheduled");
+
+                // clean up this coflow
+                for (String k : cf.flows_.keySet()) {
+                    Flow f = cf.flows_.get(k);
+                    f.paths_.clear(); // clean the paths of this flow.
+                }
+                System.exit(1);
+                continue;
+            }
+
+            // this coflow is fully scheduled, we subscribe the flows to the link.
+            // This portion is similar to CoFlow::make() in Sim
+            for (String k : cf.flows_.keySet()) {
+                Flow f = cf.flows_.get(k);
+                if (f.done_) {
+                    continue;
+                }
+
+                // Subscribe the flow's paths to the links it uses
+                for (Pathway p : f.paths_) {
+                    // Scale down allocations by ALPHA to leave space for starvation freedom
+//                    p.bandwidth_ = p.bandwidth_ * ALPHA; // scale down in MMCF, not here
+
+                    for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list_.get(i));
+                        int dst = Integer.parseInt(p.node_list_.get(i + 1));
+                        links_[src][dst].subscribers_.add(p);
+                    }
+                }
+
+                System.out.println("Adding flow " + f.id_ + " remaining = " + f.remaining_volume());
+                System.out.println("  has pathways: ");
+                for (Pathway p : f.paths_) {
+                    System.out.println("    " + p.toString());
+                }
+
+                if (f.start_timestamp_ == -1) {
+                    System.out.println("Setting start_timestamp to " + timestamp);
+                    f.start_timestamp_ = timestamp;
+                }
+
+                flows_.put(f.id_, f);
+            }
+
+        }
+
+        // second round
+        for (Coflow c : non_ddl_cct_list) {
             if (no_bw_remains || remaining_bw() <= 0) {
                 unscheduled_coflows.add(c);
                 no_bw_remains = true;
@@ -618,7 +724,7 @@ public class PoorManScheduler extends Scheduler {
 
                 flows_.put(f.id_, f);
             }
-        }// for all Coflows: the first round of scheduling
+        }// for only non-ddl Coflows: the first round of scheduling
 
         // check if we have the headroom
         for (int i = 0; i < net_graph_.nodes_.size() + 1; i++) {

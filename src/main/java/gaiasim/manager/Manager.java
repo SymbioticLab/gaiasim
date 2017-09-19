@@ -42,6 +42,8 @@ public class Manager {
     boolean coflow_finished = false;    // Whether a coflow finished
     boolean isOneByOne;
 
+    public int droppedCnt = 0;
+
     public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
                    double bw_factor, double workload_factor, boolean is_one_by_one) throws java.io.IOException {
@@ -92,6 +94,12 @@ public class Manager {
 
         // After completing a coflow, an owning job may have been completed
         Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
+
+        // An owning job may also been aborted upon this coflow finish
+        if (owning_job == null){
+            return;
+        }
+
         owning_job.finish_coflow(c.id_);
 
         if (owning_job.done()) {
@@ -191,6 +199,23 @@ public class Manager {
                     ready_jobs.add(j);
 
                 } // dispatch jobs loop
+            }
+
+            for (Map.Entry<String, Coflow> cfe : active_coflows_.entrySet()){
+                Coflow cf = cfe.getValue();
+                if (cf.dropped){
+                    cf.done_ = true;
+
+                    scheduler_.remove_coflow(cf);
+
+                    Job owning_job = active_jobs_.get(Constants.get_job_id(cf.id_));
+
+                    // also drop owning_job
+                    if (owning_job != null){
+                        active_jobs_.remove(Constants.get_job_id(cf.id_));
+                    }
+
+                }
             }
 
             // essentially YARN logic: (i) insert job (ii) handle CF_FIN
@@ -342,6 +367,7 @@ public class Manager {
             }
         } // while stuff to do
 
+        System.out.println("Total dropped: " + scheduler_.droppedCnt);
         System.out.println("Simulation DONE");
 
         // Save output statistics

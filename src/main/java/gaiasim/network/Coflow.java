@@ -15,6 +15,8 @@ public class Coflow {
     public long end_timestamp_ = -1;
     public boolean done_ = false;
 
+    public boolean dropped = false;
+
     // The location of coflow-initiating tasks. For example, these would be
     // the locations of map tasks in a map-reduce shuffle.
     public String[] task_locs_;
