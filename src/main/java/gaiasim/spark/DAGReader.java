@@ -192,7 +192,8 @@ public class DAGReader implements Runnable{
                 String dst_stage = splits[1];
 
                 if (splits.length == 4 ){
-                    int ddl_Millis = Integer.parseInt(splits[3]);
+                    double ddl = Double.parseDouble(splits[3]);
+                    int ddl_Millis = (int) ( ddl * 1000  );
                     tmpDDLMap.put (dag_id + ":" + dst_stage , ddl_Millis);
                     // Add DDL at the shuffle level
 

@@ -60,7 +60,7 @@ public class CoflowScheduler extends Scheduler {
     }
 
     public void processLinkChange(GaiaMessageProtos.PathStatusReport m) {
-        
+
         int pathID = m.getPathID();
         String saID = m.getSaID();
         String raID = m.getRaID();
