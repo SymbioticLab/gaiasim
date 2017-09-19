@@ -126,14 +126,14 @@ public class CoflowScheduler extends Scheduler {
 
         Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(cf);
 
-        // then check the ddl against the current link status
+        // then check the ddl against the current "DDL ONLY" link status
         MMCFOptimizer.MMCFOutput mmcf_out = null; // This is the recursive part.
         try {
-            mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, links_);
+            mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, linksWithDDLCF);
 
             // we only check the ddl Once!
             if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000 <= cf.ddl_Millis){
-                logger.info("Admitting coflow {}", cf.getId());
+                logger.info("Admitting Coflow {}", cf.getId());
 
                 // TODO verify the admission logic
 
@@ -327,66 +327,6 @@ public class CoflowScheduler extends Scheduler {
         return remaining_bw;
     }
 
-    /*public void schedule_extra_flows(ArrayList<Coflow_Old> unscheduled_coflows, long timestamp) {
-        ArrayList<FlowGroup_Old> unscheduled_flowGroups = new ArrayList<FlowGroup_Old>();
-        for (Coflow_Old c : unscheduled_coflows) {
-            for (String k : c.flows.keySet()) {
-                FlowGroup_Old f = c.flows.get(k);
-                if (f.remaining_volume() > 0) {
-                    unscheduled_flowGroups.add(c.flows.get(k));
-                }
-            }
-        }
-        Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup_Old>() {
-            public int compare(FlowGroup_Old o1, FlowGroup_Old o2) {
-                if (o1.getVolume() == o2.getVolume()) return 0;
-                return o1.getVolume() < o2.getVolume() ? -1 : 1;
-            }
-        });
-
-        for (FlowGroup_Old f : unscheduled_flowGroups) {
-            int src = Integer.parseInt(f.getSrc_loc());
-            int dst = Integer.parseInt(f.getDst_loc());
-            Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
-
-            double min_bw = Double.MAX_VALUE;
-            SubscribedLink[] path_links = new SubscribedLink[p.node_list.size() - 1];
-            for (int i = 0; i < p.node_list.size() - 1; i++) {
-                int lsrc = Integer.parseInt(p.node_list.get(i));
-                int ldst = Integer.parseInt(p.node_list.get(i+1));
-                SubscribedLink l = links_[lsrc][ldst];
-
-                double bw = l.remaining_bw();
-                path_links[i] = l;
-                if (bw < min_bw) {
-                    min_bw = bw;
-                }
-            }
-
-            if (min_bw > 0) {
-//                p.bandwidth = min_bw;
-                p.setBandwidth( min_bw);
-
-                for (SubscribedLink l : path_links) {
-                    l.subscribers_.add(p);
-                }
-                f.paths.clear();
-                f.paths.add(p);
-
-*//*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
-                System.out.println("  has pathways: ");
-                for (Pathway path : f.paths) {
-                    System.out.println("    " + path.toString());
-                }*//*
-
-                if (f.getStart_timestamp() == -1) {
-                    f.setStart_timestamp(timestamp);
-                }
-                flows_.put(f.getId(), f);
-            }
-        }
-    }*/
-
     public HashMap<String, FlowGroup_Old> schedule_flows(HashMap<String, Coflow_Old> coflows,
                                                          long timestamp) throws Exception {
         flows_.clear();
@@ -512,12 +452,11 @@ public class CoflowScheduler extends Scheduler {
         List<FlowGroup_Old> scheduledFGs = new LinkedList<>();
         ArrayList<Coflow_Old> unscheduled_coflows = new ArrayList<Coflow_Old>();
 
-
         reset_links();
 
         List<CoflowSchedulerEntry> nonDDLCFList = new ArrayList<>();
 
-        // TODO check if admitted CF can meet ddl? 
+        // TODO check if admitted CF can meet ddl?
         // Part 0: first deal with CFs with deadline
         for ( CoflowSchedulerEntry e : cfList){
 
@@ -525,8 +464,8 @@ public class CoflowScheduler extends Scheduler {
 
             // first fast check, we need to check every CF, even if we only have small BW left.
             if ( !fastCheckCF(e) ){
-//                unscheduled_coflows.add(c);
-                logger.error("DDLCF failed fastCheck!");
+                unscheduled_coflows.add(c);
+                logger.error("Admitted DDLCF failed fastCheck!");
                 continue;
             }
 
@@ -547,8 +486,8 @@ public class CoflowScheduler extends Scheduler {
 
             // check if successfully scheduled
             if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
-//                unscheduled_coflows.add(c);
-                logger.error("DDLCF has cct {}", mmcf_out.completion_time_);
+                unscheduled_coflows.add(c);
+                logger.error("Admitted DDLCF has cct {}", mmcf_out.completion_time_);
                 continue;
             }
 
@@ -847,4 +786,64 @@ public class CoflowScheduler extends Scheduler {
             }
         }
     }
+
+    /*public void schedule_extra_flows(ArrayList<Coflow_Old> unscheduled_coflows, long timestamp) {
+        ArrayList<FlowGroup_Old> unscheduled_flowGroups = new ArrayList<FlowGroup_Old>();
+        for (Coflow_Old c : unscheduled_coflows) {
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (f.remaining_volume() > 0) {
+                    unscheduled_flowGroups.add(c.flows.get(k));
+                }
+            }
+        }
+        Collections.sort(unscheduled_flowGroups, new Comparator<FlowGroup_Old>() {
+            public int compare(FlowGroup_Old o1, FlowGroup_Old o2) {
+                if (o1.getVolume() == o2.getVolume()) return 0;
+                return o1.getVolume() < o2.getVolume() ? -1 : 1;
+            }
+        });
+
+        for (FlowGroup_Old f : unscheduled_flowGroups) {
+            int src = Integer.parseInt(f.getSrc_loc());
+            int dst = Integer.parseInt(f.getDst_loc());
+            Pathway p = new Pathway(net_graph_.apsp_[src][dst]);
+
+            double min_bw = Double.MAX_VALUE;
+            SubscribedLink[] path_links = new SubscribedLink[p.node_list.size() - 1];
+            for (int i = 0; i < p.node_list.size() - 1; i++) {
+                int lsrc = Integer.parseInt(p.node_list.get(i));
+                int ldst = Integer.parseInt(p.node_list.get(i+1));
+                SubscribedLink l = links_[lsrc][ldst];
+
+                double bw = l.remaining_bw();
+                path_links[i] = l;
+                if (bw < min_bw) {
+                    min_bw = bw;
+                }
+            }
+
+            if (min_bw > 0) {
+//                p.bandwidth = min_bw;
+                p.setBandwidth( min_bw);
+
+                for (SubscribedLink l : path_links) {
+                    l.subscribers_.add(p);
+                }
+                f.paths.clear();
+                f.paths.add(p);
+
+*//*                System.out.println("Adding separate flow " + f.getId() + " remaining = " + f.remaining_volume());
+                System.out.println("  has pathways: ");
+                for (Pathway path : f.paths) {
+                    System.out.println("    " + path.toString());
+                }*//*
+
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
+                }
+                flows_.put(f.getId(), f);
+            }
+        }
+    }*/
 }
