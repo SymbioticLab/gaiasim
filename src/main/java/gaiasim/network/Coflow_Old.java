@@ -8,6 +8,8 @@ import java.util.HashMap;
 // We use the destination stage as an anchor(key) for this coflow.
 public class Coflow_Old {
 
+    public int ddl_Millis = -1;
+
     public String getId() { return id; }
 
     public String id;

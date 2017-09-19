@@ -9,11 +9,12 @@ public class YARNMessages {
         DAG_ARRIVAL,
         END_OF_INCOMING_JOBS,
         COFLOW_FIN,
+        COFLOW_DROP
     }
     private Type type;
 
-    // coflow ID for COFLOW_FIN
-    public String FIN_coflow_ID;
+    // coflow ID for COFLOW_FIN and COFLOW_DROP
+    public String coflow_ID;
 
     // DAG for DAG_ARRIVAL
     public DAG arrivedDAG;
@@ -30,7 +31,12 @@ public class YARNMessages {
 
     public YARNMessages(String FIN_coflow_ID){
         this.type = Type.COFLOW_FIN;
-        this.FIN_coflow_ID = FIN_coflow_ID;
+        this.coflow_ID = FIN_coflow_ID;
+    }
+
+    public YARNMessages(String DROP_coflow_ID, Type t){
+        this.type = t;
+        this.coflow_ID = DROP_coflow_ID;
     }
 
     public Type getType() { return type; }

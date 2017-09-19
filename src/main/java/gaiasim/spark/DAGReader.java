@@ -179,6 +179,7 @@ public class DAGReader implements Runnable{
             // when finished reading this job, we can recover all Coflow information from it.
             // maps Coflow_id to FlowGroups.
             ArrayListMultimap<String , FlowGroup> tmpCoflowList = ArrayListMultimap.create();
+            HashMap<String, Integer> tmpDDLMap = new HashMap<>();
 
             // Map coflow and Determine coflow dependencies
             line = br.readLine();
@@ -189,6 +190,13 @@ public class DAGReader implements Runnable{
                 splits = line.split(" ");
                 String src_stage = splits[0];
                 String dst_stage = splits[1];
+
+                if (splits.length == 4 ){
+                    int ddl_Millis = Integer.parseInt(splits[3]);
+                    tmpDDLMap.put (dag_id + ":" + dst_stage , ddl_Millis);
+                    // Add DDL at the shuffle level
+
+                }
 
                 // Direct read Double data
                 double data_size = Double.parseDouble(splits[2]) * GaiaSim.SCALE_FACTOR * GaiaSim.MASTER_SCALE_FACTOR; // Added scale factor here!
@@ -227,7 +235,8 @@ public class DAGReader implements Runnable{
 
             } // end of current DAG
             // flush the Coflows from the buffer to dag, then update the root, and then add to dagList
-            dag.addCoflows(tmpCoflowList);
+            dag.addCoflows(tmpCoflowList , tmpDDLMap);
+
             dag.updateRoot();
             dagList.add(dag);
 

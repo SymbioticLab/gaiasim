@@ -27,6 +27,8 @@ public class Coflow {
 
     private long endTime = -1;
 
+    public int ddl_Millis = -1;
+
     public Coflow(String id, HashMap<String , FlowGroup> flowGroups) {
         this.id = id;
         this.flowGroups = flowGroups;
@@ -38,6 +40,7 @@ public class Coflow {
     public HashMap<String , FlowGroup>  getFlowGroups() { return flowGroups; }
 
     public FlowGroup getFlowGroup(String fgid) { return flowGroups.get(fgid); }
+
     // TODO verify the two converters
     // converter between Old Coflow and new coflow, for use by Scheduler.
     // scheduler takes in ID, flowgroups (with IntID, srcLoc, dstLoc, volume remain.)
@@ -58,6 +61,8 @@ public class Coflow {
         }
 
         ret.flows = flows;
+
+        ret.ddl_Millis = cf.ddl_Millis;
 
         return ret;
     }

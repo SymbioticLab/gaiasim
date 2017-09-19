@@ -119,7 +119,7 @@ public class YARNEmulator implements Runnable {
 
                     case COFLOW_FIN:
                         // check and insert the child Coflows
-                        onCoflowFIN(m.FIN_coflow_ID, System.currentTimeMillis());
+                        onCoflowFIN(m.coflow_ID, System.currentTimeMillis());
 
                         break;
 
@@ -131,6 +131,11 @@ public class YARNEmulator implements Runnable {
 
                     case END_OF_INCOMING_JOBS:
                         noIncomingJobs = true;
+
+                        break;
+
+                    case COFLOW_DROP:
+                        onCoflowDrop(m.coflow_ID);
 
                         break;
 
@@ -230,6 +235,39 @@ public class YARNEmulator implements Runnable {
         }
         else {
             System.err.println("YARN: Received FIN for Coflow that is not in DAG Pool.");
+        }
+    }
+
+    private void onCoflowDrop(String coflow_id) {
+        logger.info("Received CF_DROP for {}, dropping the whole job", coflow_id);
+        String [] split = coflow_id.split(":"); // DAG_ID = split[0]
+        if (dagPool.containsKey(split[0])) {
+            DAG dag = dagPool.get(split[0]);
+            // set the CF completion time for this CF, and log the timestamp.
+            if (dag.coflowList.containsKey(coflow_id)) {
+//                Coflow cf = dag.coflowList.get(coflow_id);
+
+            } else {
+                System.err.println("Received DROP for Coflow that is not in the owning DAG.");
+            }
+
+            onDAGDrop(dag);
+        }
+        else {
+            System.err.println("YARN: Received FIN for Coflow that is not in DAG Pool.");
+        }
+    }
+
+    private void onDAGDrop(DAG dag) {
+        logger.info("DROPPING DAG {}", dag.getId());
+        // remove from pool
+        dagPool.remove(dag.getId());
+
+        // judge if all jobs finished
+        if(noIncomingJobs && dagPool.isEmpty()){
+            emulationFIN = true;
+            logger.info("YARN: All jobs done.");
+//            System.exit(0);
         }
     }
 

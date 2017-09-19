@@ -1,5 +1,6 @@
 package gaiasim.scheduler;
 
+import gaiasim.gaiamaster.Coflow;
 import gaiasim.gaiaprotos.GaiaMessageProtos;
 import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
@@ -19,6 +20,8 @@ public class CoflowScheduler extends Scheduler {
     private static final Logger logger = LogManager.getLogger();
     private final SubscribedLink[][] linksAtStart;
 
+    private SubscribedLink[][] linksWithDDLCF;
+
     // Persistent map used ot hold temporary data. We simply clear it
     // when we need it to hld new data rather than creating another
     // new map object (avoid GC).
@@ -37,7 +40,7 @@ public class CoflowScheduler extends Scheduler {
     public CoflowScheduler(NetGraph net_graph) {
         super(net_graph);
 
-        // TODO init links to empty
+        // init empty links
         linksAtStart = new SubscribedLink[net_graph_.nodes_.size()][net_graph_.nodes_.size()];
         for (Edge e : net_graph_.graph_.getEachEdge()) {
             int src = Integer.parseInt(e.getNode0().toString());
@@ -45,10 +48,19 @@ public class CoflowScheduler extends Scheduler {
             linksAtStart[src][dst] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
             linksAtStart[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
         }
+
+        //  init links for with only deadline CF
+        linksWithDDLCF = new SubscribedLink[net_graph_.nodes_.size()][net_graph_.nodes_.size()];
+        for (Edge e : net_graph_.graph_.getEachEdge()) {
+            int src = Integer.parseInt(e.getNode0().toString());
+            int dst = Integer.parseInt(e.getNode1().toString());
+            linksWithDDLCF[src][dst] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+            linksWithDDLCF[dst][src] = new SubscribedLink(Double.parseDouble(e.getAttribute("bandwidth").toString()));
+        }
     }
 
     public void processLinkChange(GaiaMessageProtos.PathStatusReport m) {
-        // TODO
+        
         int pathID = m.getPathID();
         String saID = m.getSaID();
         String raID = m.getRaID();
@@ -64,30 +76,90 @@ public class CoflowScheduler extends Scheduler {
 
             linksAtStart[src][dst].goDown();
             links_[src][dst].goDown();
+            linksWithDDLCF[src][dst].goDown();
             logger.info("Making Link {} {} go down", src, dst);
 
         } else {
 
             links_[src][dst].goUp();
             links_[src][dst].goUp();
+            linksWithDDLCF[src][dst].goUp();
             logger.info("Making Link {} {} go up", src, dst);
         }
     }
 
+
+
     public class CoflowSchedulerEntry {
         Double cct;
         Coflow_Old cf;
-        MMCFOptimizer.MMCFOutput firstLPOutput;
+        MMCFOptimizer.MMCFOutput lastLPOutput;
+
+        public void setLastLPOutput(MMCFOptimizer.MMCFOutput lastLPOutput) {
+            this.lastLPOutput = lastLPOutput;
+        }
 
         public CoflowSchedulerEntry(Coflow_Old cf, MMCFOptimizer.MMCFOutput mmcfOutput) {
             this.cf = cf;
-            this.firstLPOutput = mmcfOutput;
+            this.lastLPOutput = mmcfOutput;
             this.cct = mmcfOutput.completion_time_;
         }
 
-        public void updateCCT(double newCCT) {cct = newCCT;}
     }
 
+    public boolean checkDDL(Coflow cf) {
+
+        if (cf.ddl_Millis < 0){
+            return true;
+        }
+
+        reset_linksWithDDLCF();
+
+        for (CoflowSchedulerEntry cfe : cfList) {
+            if (cfe.cf.ddl_Millis > 0) { // it has deadline
+
+                for (Map.Entry<String, FlowGroup_Old> fe : cfe.cf.flows.entrySet()) {
+                    subscribeFlowToLinkWithDDFCF(fe.getValue());
+                }
+            }
+        }
+
+        Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(cf);
+
+        // then check the ddl against the current link status
+        MMCFOptimizer.MMCFOutput mmcf_out = null; // This is the recursive part.
+        try {
+            mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, links_);
+
+            if (mmcf_out.completion_time_ * 1000 <= cf.ddl_Millis){
+                logger.info("Admitting coflow {}", cf.getId());
+
+                // TODO verify the admission logic
+
+                boolean all_flows_scheduled = true;
+                for (String k : cfo.flows.keySet()) {
+                    FlowGroup_Old f = cfo.flows.get(k);
+                    if (!f.isDone()) {
+                        if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
+                            all_flows_scheduled = false;
+                        }
+                    }
+                }
+
+                if ( !all_flows_scheduled) {
+                    logger.error("Admitted a wrong coflow {}", cf.getId());
+                }
+
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+            return false;
+        }
 
     public void finish_flow(FlowGroup_Old f) {
         for (Pathway p : f.paths) {
@@ -470,6 +542,11 @@ public class CoflowScheduler extends Scheduler {
                 continue;
             }
 
+            // Added update LPOutput part
+            e.setLastLPOutput(mmcf_out);
+
+            // TODO add another level of deadline check
+
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows.keySet()) {
                 FlowGroup_Old f = c.flows.get(k);
@@ -505,6 +582,7 @@ public class CoflowScheduler extends Scheduler {
 //                flows_.put(f.getId(), f);
                 scheduledFGs.add(f);
             }
+
         }
 
         // TODO verify the remain-flows part
@@ -673,5 +751,26 @@ public class CoflowScheduler extends Scheduler {
 
         logger.info(str);
 
+    }
+
+    void reset_linksWithDDLCF() {
+        for (int i = 0; i < net_graph_.nodes_.size(); i++) {
+            for (int j = 0; j < net_graph_.nodes_.size(); j++) {
+                if (linksWithDDLCF[i][j] != null) {
+                    linksWithDDLCF[i][j].subscribers_.clear();
+                }
+            }
+        }
+    }
+
+    void subscribeFlowToLinkWithDDFCF(FlowGroup_Old f){
+        // Subscribe the flow's paths to the links it uses
+        for (Pathway p : f.paths) {
+            for (int i = 0; i < p.node_list.size() - 1; i++) {
+                int src = Integer.parseInt(p.node_list.get(i));
+                int dst = Integer.parseInt(p.node_list.get(i+1));
+                linksWithDDLCF[src][dst].subscribers_.add(p);
+            }
+        }
     }
 }

@@ -116,7 +116,7 @@ public class DAG {
 
 
     // construct a list of coflow from the Multimap
-    public void addCoflows(ArrayListMultimap<String, FlowGroup> tmpCoflowList) {
+    public void addCoflows(ArrayListMultimap<String, FlowGroup> tmpCoflowList, HashMap<String, Integer> tmpDDLMap) {
         for (String coflowID : tmpCoflowList.keySet()){
 //            List<FlowGroup> lfg = tmpCoflowList.get(coflowID);
 //            ArrayList<FlowGroup> al = new ArrayList<>(tmpCoflowList.get(coflowID));
@@ -126,6 +126,11 @@ public class DAG {
                 hfg.put(fg.getId() , fg);
             }
             Coflow cf = new Coflow( coflowID , hfg);
+
+            if (tmpDDLMap.containsKey(coflowID)) {
+                cf.ddl_Millis = tmpDDLMap.get(coflowID);
+            }
+
             coflowList.put( coflowID , cf);
         }
     }

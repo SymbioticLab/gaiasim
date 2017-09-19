@@ -10,6 +10,7 @@ import gaiasim.network.NetGraph;
 import gaiasim.network.Pathway;
 import gaiasim.scheduler.CoflowScheduler;
 import gaiasim.spark.YARNEmulator;
+import gaiasim.spark.YARNMessages;
 import gaiasim.util.Configuration;
 import gaiasim.util.Constants;
 import org.apache.logging.log4j.LogManager;
@@ -62,8 +63,17 @@ public class Master {
                     String cfID = cf.getId();
                     System.out.println("Master: Received Coflow from YARN with ID = " + cfID);
 
-                    masterSharedData.addCoflow(cfID , cf);
-                    masterSharedData.flag_CF_ADD = true;
+                    // first check the deadline then decide whether to add
+                    if ( scheduler.checkDDL(cf) ) {
+
+                        masterSharedData.addCoflow(cfID, cf);
+                        masterSharedData.flag_CF_ADD = true;
+                    }
+                    else {
+                        logger.info("Coflow {} can't meet deadline, aborting", cfID);
+
+                        masterSharedData.yarnEventQueue.put(new YARNMessages(cfID, YARNMessages.Type.COFLOW_DROP));
+                    }
 
                     // TODO: track flowgroup starttime.
 
