@@ -131,7 +131,8 @@ public class CoflowScheduler extends Scheduler {
         try {
             mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, links_);
 
-            if (mmcf_out.completion_time_ * 1000 <= cf.ddl_Millis){
+            // we only check the ddl Once!
+            if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000 <= cf.ddl_Millis){
                 logger.info("Admitting coflow {}", cf.getId());
 
                 // TODO verify the admission logic
@@ -151,6 +152,9 @@ public class CoflowScheduler extends Scheduler {
                 }
 
                 return true;
+            }
+            else {
+                logger.info("Coflow {} has deadline {} and CCT {}", cf.getId(), cf.ddl_Millis, mmcf_out.completion_time_);
             }
 
         } catch (Exception e) {
@@ -508,10 +512,82 @@ public class CoflowScheduler extends Scheduler {
         List<FlowGroup_Old> scheduledFGs = new LinkedList<>();
         ArrayList<Coflow_Old> unscheduled_coflows = new ArrayList<Coflow_Old>();
 
+
         reset_links();
 
-        // Part 1: recursively schedule CFs in the priority queue
+        List<CoflowSchedulerEntry> nonDDLCFList = new ArrayList<>();
+
+        // TODO check if admitted CF can meet ddl? 
+        // Part 0: first deal with CFs with deadline
         for ( CoflowSchedulerEntry e : cfList){
+
+            Coflow_Old c = e.cf;
+
+            // first fast check, we need to check every CF, even if we only have small BW left.
+            if ( !fastCheckCF(e) ){
+//                unscheduled_coflows.add(c);
+                logger.error("DDLCF failed fastCheck!");
+                continue;
+            }
+
+            // schedule this CF
+            logger.info("CoflowScheduler: Coflow {} expected to complete in {} seconds" , c.getId() , e.cct);
+
+            MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(c, net_graph_, links_); // This is the recursive part.
+
+            boolean all_flows_scheduled = true;
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (!f.isDone()) {
+                    if (mmcf_out.flow_link_bw_map_.get(f.getInt_id()) == null) {
+                        all_flows_scheduled = false;
+                    }
+                }
+            }
+
+            // check if successfully scheduled
+            if (mmcf_out.completion_time_ == -1.0 || !all_flows_scheduled) {
+//                unscheduled_coflows.add(c);
+                logger.error("DDLCF has cct {}", mmcf_out.completion_time_);
+                continue;
+            }
+
+            // Added update LPOutput part
+            e.setLastLPOutput(mmcf_out);
+
+            // This portion is similar to CoFlow::make() in Sim
+            for (String k : c.flows.keySet()) {
+                FlowGroup_Old f = c.flows.get(k);
+                if (f.isDone()) {
+                    continue;
+                }
+
+                ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.getInt_id());
+                assert(link_vals != null);
+
+                // This portion is similar to FlowGroup::make() in Sim
+                make_paths(f, link_vals);
+
+                // Subscribe the flow's paths to the links it uses
+                for (Pathway p : f.paths) {
+                    for (int i = 0; i < p.node_list.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list.get(i));
+                        int dst = Integer.parseInt(p.node_list.get(i+1));
+                        links_[src][dst].subscribers_.add(p);
+                    }
+                }
+
+                if (f.getStart_timestamp() == -1) {
+                    f.setStart_timestamp(timestamp);
+                }
+
+                scheduledFGs.add(f);
+            }
+
+        }
+
+        // Part 1: recursively schedule CFs in the priority queue
+        for ( CoflowSchedulerEntry e : nonDDLCFList){
 
             Coflow_Old c = e.cf;
 
@@ -544,8 +620,6 @@ public class CoflowScheduler extends Scheduler {
 
             // Added update LPOutput part
             e.setLastLPOutput(mmcf_out);
-
-            // TODO add another level of deadline check
 
             // This portion is similar to CoFlow::make() in Sim
             for (String k : c.flows.keySet()) {
