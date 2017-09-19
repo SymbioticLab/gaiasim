@@ -12,6 +12,7 @@ public abstract class Scheduler {
     public NetGraph net_graph_;
 
     public int droppedCnt = 0;
+    public int missDDLCNT = 0;
 
     // All possible links in our graph
     public SubscribedLink[][] links_;

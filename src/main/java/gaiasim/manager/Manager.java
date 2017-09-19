@@ -367,7 +367,7 @@ public class Manager {
             }
         } // while stuff to do
 
-        System.out.println("Total dropped: " + scheduler_.droppedCnt);
+        System.out.println("Total dropped: " + scheduler_.droppedCnt + " . missed after admission (contains duplicate): " + scheduler_.missDDLCNT);
         System.out.println("Simulation DONE");
 
         // Save output statistics

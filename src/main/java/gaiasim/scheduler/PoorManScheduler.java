@@ -535,13 +535,17 @@ public class PoorManScheduler extends Scheduler {
 
             MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, ALPHA);
             long deltaTime = timestamp - cf.start_timestamp_;
-            if (mmcf_out.completion_time_ == -1.0 || mmcf_out.completion_time_ * 1000 > cf.ddl_Millis - deltaTime) {
+            if (mmcf_out.completion_time_ == -1.0 || mmcf_out.completion_time_ * 1000 > cf.ddl_Millis) {
                 System.out.println("INFO: unschedule cf " + cf.id_ + " because cct " + mmcf_out.completion_time_);
 //                unscheduled_coflows.add(cf);
                 // TODO: do nothing?  What if this coflow has already been started?
                 cf.dropped = true;
                 droppedCnt += 1;
                 continue;
+            }
+
+            if (mmcf_out.completion_time_ * 1000 > cf.ddl_Millis - deltaTime){
+                missDDLCNT += 1;
             }
 
             // check this coflow to see if fully scheduled
