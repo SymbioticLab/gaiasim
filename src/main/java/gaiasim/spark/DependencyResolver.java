@@ -48,7 +48,7 @@ public class DependencyResolver {
 
     // construct a list of coflow from the Multimap
     // This is where the Coflow objects are initiated.
-    public void addCoflows(ArrayListMultimap<String, Flow> tmpCoflowList) {
+    public void addCoflows(ArrayListMultimap<String, Flow> tmpCoflowList, HashMap<String, Integer> tmpDDLMap) {
         for (String coflowID : tmpCoflowList.keySet()) {
 
             Coflow cf = new Coflow(coflowID, null); // task_locs not used in the future
@@ -58,6 +58,10 @@ public class DependencyResolver {
                 f.owning_coflow_ = cf;
                 cf.flows_.put(f.id_, f);
                 cf.volume_ += f.volume_;
+            }
+
+            if (tmpDDLMap.containsKey(coflowID)) {
+                cf.ddl_Millis = tmpDDLMap.get(coflowID);
             }
 
             coflowList.put(coflowID, cf);

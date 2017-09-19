@@ -640,8 +640,8 @@ public class PoorManScheduler extends Scheduler {
 
         // Schedule any available flows
         if (!unscheduled_coflows.isEmpty() && !no_bw_remains) { // FIXME: the condition here
-            schedule_extra_flows_balance(unscheduled_coflows, timestamp);
-//            schedule_extra_flows_maxflow(unscheduled_coflows, timestamp); // changed to MaxFlow
+//            schedule_extra_flows_balance(unscheduled_coflows, timestamp);
+            schedule_extra_flows_maxflow(unscheduled_coflows, timestamp); // changed to MaxFlow
         }
 
         long timeAtLast = System.currentTimeMillis() - scheduleStartTime;
