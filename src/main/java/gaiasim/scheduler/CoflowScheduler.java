@@ -127,6 +127,7 @@ public class CoflowScheduler extends Scheduler {
 
         Coflow_Old cfo = Coflow.toCoflow_Old_with_Trimming(cf);
 
+        logger.info("Received DDL Coflow {}", cf.getId());
         // then check the ddl against the current "DDL ONLY" link status
         MMCFOptimizer.MMCFOutput mmcf_out = null; // This is the recursive part.
         try {
