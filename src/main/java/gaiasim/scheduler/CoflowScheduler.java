@@ -133,8 +133,8 @@ public class CoflowScheduler extends Scheduler {
             mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, linksWithDDLCF);
 
             // we only check the ddl Once!
-            if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000 <= cf.ddl_Millis){
-                logger.info("Admitting Coflow {}", cf.getId());
+            if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000 * 2 <= cf.ddl_Millis){
+                logger.info("Admitting DDL Coflow {}", cf.getId());
 
                 // TODO verify the admission logic
 
@@ -149,13 +149,14 @@ public class CoflowScheduler extends Scheduler {
                 }
 
                 if ( !all_flows_scheduled) {
-                    logger.error("Admitted a wrong coflow {}", cf.getId());
+                    logger.error("Admitted a wrong DDL coflow {}", cf.getId());
                 }
 
                 return true;
             }
             else {
-                logger.info("Coflow {} has deadline {} and CCT {}", cf.getId(), cf.ddl_Millis, mmcf_out.completion_time_);
+                logger.info("DDL Coflow {} rejected: deadline {} and CCT {}", cf.getId(), cf.ddl_Millis, mmcf_out.completion_time_);
+                logger.error("DDL Coflow {} rejected: deadline {} and CCT {}", cf.getId(), cf.ddl_Millis, mmcf_out.completion_time_);
             }
 
         } catch (Exception e) {
