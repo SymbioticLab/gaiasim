@@ -134,7 +134,7 @@ public class CoflowScheduler extends Scheduler {
             mmcf_out = MMCFOptimizer.glpk_optimize(cfo, net_graph_, linksWithDDLCF);
 
             // we only check the ddl Once!
-            if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000 * 2 <= cf.ddl_Millis){
+            if (mmcf_out.completion_time_ > 0 && mmcf_out.completion_time_ * 1000  <= cf.ddl_Millis){
                 logger.info("Admitting DDL Coflow {}", cf.getId());
 
                 // TODO verify the admission logic
