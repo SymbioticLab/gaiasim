@@ -35,4 +35,16 @@ public class Pathway {
         str.append("] " + bandwidth_);
         return str.toString();
     }
+
+    public boolean containsLink(int linkSrc, int linkDst) {
+        for (int i = 0; i < node_list_.size() - 1; i++) {
+            if (node_list_.get(i).equals(String.valueOf(linkSrc)) &&
+                    node_list_.get(i + 1).equals(String.valueOf(linkDst))){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
 }

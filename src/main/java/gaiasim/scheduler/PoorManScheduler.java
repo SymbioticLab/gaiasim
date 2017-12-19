@@ -37,7 +37,7 @@ public class PoorManScheduler extends Scheduler {
         }
     }
 
-    private ArrayList<Pathway> restrict_paths(ArrayList<Pathway> paths) {
+    private static ArrayList<Pathway> restrict_paths(ArrayList<Pathway> paths) {
         if (paths.size() <= MAX_PARALLEL_PATHWAYS)
             return paths;
 
@@ -50,7 +50,7 @@ public class PoorManScheduler extends Scheduler {
         return new ArrayList<>(paths.subList(0, MAX_PARALLEL_PATHWAYS));
     }
 
-    public void make_paths(Flow f, ArrayList<Link> link_vals) {
+    public static void make_paths(Flow f, ArrayList<Link> link_vals) {
         // This portion is similar to Flow::find_pathway_with_link_allocation in Sim
         ArrayList<Pathway> potential_paths = new ArrayList<Pathway>();
         ArrayList<Pathway> completed_paths = new ArrayList<Pathway>();

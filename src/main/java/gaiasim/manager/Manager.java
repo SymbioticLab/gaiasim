@@ -65,6 +65,8 @@ public class Manager {
             scheduler_ = new SwanScheduler(net_graph_);
         } else if (scheduler_type.equals("dark")) {
             scheduler_ = new DarkScheduler(net_graph_);
+        } else if (scheduler_type.equals("rapier")) {
+            scheduler_ = new RapierScheduler(net_graph_);
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
@@ -262,6 +264,8 @@ public class Manager {
 
                             // if the CF is not fully trimmed, insert it. If fully trimmed, no output for it.
                             if (!trimCoflow(c, CURRENT_TIME_)) {
+                                // This is where the coflow starts waiting for finish
+                                c.submitted_timestamp = CURRENT_TIME_;
                                 active_coflows_.put(c.id_, c);
                                 scheduler_.add_coflow(c);
                             } else {
