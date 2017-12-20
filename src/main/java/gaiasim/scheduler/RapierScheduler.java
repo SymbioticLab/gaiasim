@@ -56,7 +56,6 @@ public class RapierScheduler extends BaselineScheduler {
                     System.out.println("CF " + cf.id_ + " waited too long");
                     cf_ToSchedule = cf;
                     T_Min = T_C;
-
                     break;
                 }
 
@@ -74,7 +73,6 @@ public class RapierScheduler extends BaselineScheduler {
             cf_to_remove.clear();
 
             if (cf_ToSchedule == null) {
-//                System.err.println("Can't find flow to schedule");
                 break;
             }
 
@@ -95,36 +93,10 @@ public class RapierScheduler extends BaselineScheduler {
                 }
 
                 if (f.start_timestamp_ == -1) {
-//                        System.out.println("Setting start_timestamp to " + timestamp);
                     f.start_timestamp_ = timestamp;
                 }
                 flows_.put(f.id_, f);
             }
-
-
-/*            for ( Pair<Coflow, Double> pair : scheduled_cf_list){
-                Coflow cf = pair.getKey();
-
-                for ( Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
-                    Flow f = fe.getValue();
-
-                    for (Pathway p : f.paths_) {
-                        for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                            int src = Integer.parseInt(p.node_list_.get(i));
-                            int dst = Integer.parseInt(p.node_list_.get(i + 1));
-                            links_[src][dst].subscribers_.add(p);
-                        }
-                    }
-
-                    if (f.start_timestamp_ == -1) {
-//                        System.out.println("Setting start_timestamp to " + timestamp);
-                        f.start_timestamp_ = timestamp;
-                    }
-
-                    flows_.put(f.id_, f);
-                }
-            }*/
-
 
         }
 
@@ -144,16 +116,12 @@ public class RapierScheduler extends BaselineScheduler {
     private double minCCT(Coflow cf, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
 
         // First select a path for each flow (select the max B/W)
-        // In the paper, this is done by a for loop for all the flows.
-
-        // Simpler way for paths selection
         MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, 1);
         if (mmcf_out.completion_time_ == -1.0) {
             return -1;
         }
 
         // check this coflow to see if fully scheduled
-//        boolean all_flows_scheduled = true;
         for (String k : cf.flows_.keySet()) {
             Flow f = cf.flows_.get(k);
 
@@ -169,9 +137,6 @@ public class RapierScheduler extends BaselineScheduler {
             // first phase: check if link exists
             if (link_vals == null || link_vals.size() == 0) {
                 return -1;
-/*                System.out.println("WARNING: no link is assigned by LP for flow " + f.id_);
-                all_flows_scheduled = false;
-                break; // break here, give up this coflow (clean up later)*/
             }
 
             // try to make paths
@@ -179,23 +144,18 @@ public class RapierScheduler extends BaselineScheduler {
 
             // check if we can actually make paths
             if (f.paths_.size() == 0) {
-/*                System.out.println("WARNING: no paths is created in make_path() for flow " + f.id_);
-                // make paths failed for this flow, we move the owning coflow into unscheduled later
-                all_flows_scheduled = false;*/
                 return -1;
-//                break; // break here, give up this coflow (clean up later)
+
             }
         }
 
         // If we reach here, all flows must be scheduled, choose the max BW path for each flow
-
         for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
             Flow f = fe.getValue();
             // select the path with the max B/W
             Pathway maxPath = selectMaxBWPath(f);
 
             if (maxPath == null) {
-//                System.exit(-1);
                 return -1;
             }
 
@@ -203,27 +163,6 @@ public class RapierScheduler extends BaselineScheduler {
             f.paths_.add(maxPath);
 
         }
-
-
-        // Another way for paths selection
-/*
-        for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
-            Flow f = fe.getValue();
-
-            // select the path with the max B/W
-            Pathway maxPath = selectMaxBWPath(f, net_graph_, links_);
-
-            if (maxPath == null) {
-//                System.exit(-1);
-                return -1;
-            }
-
-            f.paths_.clear();
-            f.paths_.add(maxPath);
-
-        }
-*/
-
 
         // After setting the path for each flow, we don't actually need to run LP to find the minCCT
         // for each link we try to cap the A
@@ -265,7 +204,6 @@ public class RapierScheduler extends BaselineScheduler {
         }
 
         // Update the path B/W after calculated A
-
         for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
             Flow f = fe.getValue();
 
@@ -290,89 +228,12 @@ public class RapierScheduler extends BaselineScheduler {
         return maxPath;
     }
 
-/*
-    private Pathway selectMaxBWPath(Flow flow, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
-
-        // DFS search
-
-        // try use MaxFlowOptimizer instead
-
-        Coflow tmpCF = new Coflow("SINGLE", null);
-
-        tmpCF.volume_ = 0.0;
-
-        tmpCF.volume_ += flow.volume_;
-        tmpCF.flows_.put(flow.id_, flow);
-
-        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(tmpCF, net_graph_, links_);
-//        LoadBalanceOptimizer.LoadBalanceOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
-
-
-        for (Flow f : tmpCF.flows_.values()) {
-
-            f.paths_.clear(); // first clear the paths.
-
-            ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
-
-            if (link_vals != null) {
-                PoorManScheduler.make_paths(f, link_vals);
-            } else {
-                return null;
-//                System.err.println("link_val == null");
-            }
-
-            if (f.paths_.size() == 0) {
-                return null;
-//                System.err.println("ERROR! No Path found");
-            }
-
-            // find the paths with most B/W
-            double maxBW = 0;
-            Pathway maxP = null;
-            for (Pathway p : f.paths_) {
-                if (maxBW < p.bandwidth_) {
-                    maxBW = p.bandwidth_;
-                    maxP = p;
-                }
-            }
-            return maxP;
-        }
-
-        System.err.println("No paths for flow " + flow.id_);
-        return null;
-
-    }*/
-
     private void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         // first sort the Coflows according to the MinCCT
         // But they should all have minCCT == -1, so no need to sort!
-/*        LinkedList<Coflow> CF_N1 = new LinkedList<>();
-        LinkedList<Coflow> CF_N2 = new LinkedList<>();
-        LinkedList<Coflow> CF_POSITIVE = new LinkedList<>();
-        for (Coflow cf : unscheduled_coflows) {
-            if (cf.minCCT == -1) {
-                CF_N1.add(cf);
-            } else if (cf.minCCT == -2) {
-                CF_N2.add(cf);
-            } else if (cf.minCCT > 0) {
-                CF_POSITIVE.add(cf);
-            } else {
-                System.err.println("FATAL");
-            }
-        }
-
-        // sort from large to small
-        Collections.sort(CF_POSITIVE, (o1, o2) -> {
-            if (o1.minCCT < o2.minCCT) {
-                return 1;
-            } else if (o1.minCCT > o2.minCCT) {
-                return -1;
-            } else return 0;
-        });*/
         for (Coflow cf : unscheduled_coflows) {
             assignBWforCF(cf, timestamp);
         }
-
     }
 
     private void assignBWforCF(Coflow cf, long timestamp) {
@@ -462,47 +323,6 @@ public class RapierScheduler extends BaselineScheduler {
 
     }
 
-   /* private void schedule_extra_flow_varys(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
-
-        // Below is the code from Gaia
-        for (Coflow c : unscheduled_coflows) {
-            for (String k_ : c.flows_.keySet()) {
-                Flow f = c.flows_.get(k_);
-                if (f.done_) {
-                    continue;
-                }
-
-                Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
-                f.paths_.clear();
-                f.paths_.add(p);
-
-                boolean no_overlap = true;
-                for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                    int src = Integer.parseInt(p.node_list_.get(i));
-                    int dst = Integer.parseInt(p.node_list_.get(i + 1));
-                    if (!links_[src][dst].subscribers_.isEmpty()) {
-                        no_overlap = false;
-                        break;
-                    }
-                }
-
-                if (no_overlap) {
-                    for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                        int src = Integer.parseInt(p.node_list_.get(i));
-                        int dst = Integer.parseInt(p.node_list_.get(i + 1));
-                        links_[src][dst].subscribers_.addAll(f.paths_);
-                    }
-
-                    if (f.start_timestamp_ == -1) {
-                        f.start_timestamp_ = timestamp;
-                    }
-
-                    flows_.put(f.id_, f);
-                }
-            }
-        }
-    }*/
-
     private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows) throws Exception {
 
         ArrayList<Coflow> cf_list = new ArrayList<>(coflows.values());
@@ -510,21 +330,5 @@ public class RapierScheduler extends BaselineScheduler {
         Collections.sort(cf_list, Comparator.comparingLong(o -> o.submitted_timestamp));
 
         return cf_list;
-    }
-
-    private boolean checkCF_FIN(Coflow c) {
-
-        boolean isFIN = true;
-
-        for (String k_ : c.flows_.keySet()) {
-            Flow f = c.flows_.get(k_);
-            if (f.done_) {
-                continue;
-            } else {
-                isFIN = false;
-            }
-        }
-
-        return isFIN;
     }
 }
