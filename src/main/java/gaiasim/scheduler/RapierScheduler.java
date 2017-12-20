@@ -2,16 +2,15 @@ package gaiasim.scheduler;
 
 // The scheduler for RAPIER
 
-import gaiasim.mmcf.MaxFlowOptimizer;
+import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
-import javafx.util.Pair;
 
 
 import java.util.*;
 
 public class RapierScheduler extends BaselineScheduler {
 
-    double waitingThreshold_ms = 1000000; // default 1000s
+    double waitingThreshold_ms = 100000; // default 100s
 
     public RapierScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -132,7 +131,7 @@ public class RapierScheduler extends BaselineScheduler {
 
         // Schedule any available flows one-by-one
         if (!unscheduled_coflows.isEmpty()) {
-            distribute_remaining_BW(unscheduled_coflows, timestamp);
+            schedule_extra_flow_varys(unscheduled_coflows, timestamp);
         }
 
         // Now calculate rates
@@ -147,6 +146,67 @@ public class RapierScheduler extends BaselineScheduler {
         // First select a path for each flow (select the max B/W)
         // In the paper, this is done by a for loop for all the flows.
 
+        // Simpler way for paths selection
+        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, 1);
+        if (mmcf_out.completion_time_ == -1.0) {
+            return -1;
+        }
+
+        // check this coflow to see if fully scheduled
+//        boolean all_flows_scheduled = true;
+        for (String k : cf.flows_.keySet()) {
+            Flow f = cf.flows_.get(k);
+
+            if (f.done_) {
+                if (f.remaining_volume() != 0) {
+                    System.err.println("FATAL: remaining vol != 0");
+                }
+                continue; // ignoring this flow, continue to check other flows of this coflow
+            }
+
+            ArrayList<Link> link_vals = mmcf_out.flow_link_bw_map_.get(f.int_id_);
+
+            // first phase: check if link exists
+            if (link_vals == null || link_vals.size() == 0) {
+                return -1;
+/*                System.out.println("WARNING: no link is assigned by LP for flow " + f.id_);
+                all_flows_scheduled = false;
+                break; // break here, give up this coflow (clean up later)*/
+            }
+
+            // try to make paths
+            PoorManScheduler.make_paths(f, link_vals);
+
+            // check if we can actually make paths
+            if (f.paths_.size() == 0) {
+/*                System.out.println("WARNING: no paths is created in make_path() for flow " + f.id_);
+                // make paths failed for this flow, we move the owning coflow into unscheduled later
+                all_flows_scheduled = false;*/
+                return -1;
+//                break; // break here, give up this coflow (clean up later)
+            }
+        }
+
+        // If we reach here, all flows must be scheduled, choose the max BW path for each flow
+
+        for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
+            Flow f = fe.getValue();
+            // select the path with the max B/W
+            Pathway maxPath = findMaxBWPath(f);
+
+            if (maxPath == null) {
+//                System.exit(-1);
+                return -1;
+            }
+
+            f.paths_.clear();
+            f.paths_.add(maxPath);
+
+        }
+
+
+        // Another way for paths selection
+/*
         for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
             Flow f = fe.getValue();
 
@@ -161,10 +221,8 @@ public class RapierScheduler extends BaselineScheduler {
             f.paths_.clear();
             f.paths_.add(maxPath);
 
-
-            // FIXME: Do we need to update the remaining B/W after this selection, how?
-
         }
+*/
 
 
         // After setting the path for each flow, we don't actually need to run LP to find the minCCT
@@ -220,11 +278,22 @@ public class RapierScheduler extends BaselineScheduler {
 
     }
 
+    private Pathway findMaxBWPath(Flow f) {
+        Pathway maxPath = null;
+        double maxBW = 0;
+        for (Pathway p : f.paths_){
+            if (p.bandwidth_ > maxBW){
+                maxBW = p.bandwidth_;
+                maxPath = p;
+            }
+        }
+            return maxPath;
+    }
 
+/*
     private Pathway findMaxBWPath(Flow flow, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
 
         // DFS search
-
 
         // try use MaxFlowOptimizer instead
 
@@ -272,9 +341,11 @@ public class RapierScheduler extends BaselineScheduler {
         System.err.println("No paths for flow " + flow.id_);
         return null;
 
-    }
+    }*/
 
-    private void distribute_remaining_BW(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+    private void schedule_extra_flow_varys(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+
+
         // Below is the code from Gaia
         for (Coflow c : unscheduled_coflows) {
             for (String k_ : c.flows_.keySet()) {
