@@ -74,7 +74,7 @@ public class RapierScheduler extends BaselineScheduler {
             cf_to_remove.clear();
 
             if (cf_ToSchedule == null) {
-                System.err.println("Can't find flow to schedule");
+//                System.err.println("Can't find flow to schedule");
                 break;
             }
 
@@ -317,8 +317,8 @@ public class RapierScheduler extends BaselineScheduler {
     private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows) throws Exception {
 
         ArrayList<Coflow> cct_list = new ArrayList<>(coflows.values());
-        // sort from large to small
-        Collections.sort(cct_list, (o2, o1) -> (int) (o1.submitted_timestamp - o2.submitted_timestamp));
+        // sort from small to large, so the waitTime long from short
+        Collections.sort(cct_list, (o1, o2) -> (int) (o1.submitted_timestamp - o2.submitted_timestamp));
 
         return cct_list;
     }
