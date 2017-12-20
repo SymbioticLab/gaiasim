@@ -5,8 +5,9 @@ package gaiasim.scheduler;
 import gaiasim.mmcf.MMCFOptimizer;
 import gaiasim.network.*;
 
-
 import java.util.*;
+
+import static java.lang.Math.min;
 
 public class RapierScheduler extends BaselineScheduler {
 
@@ -42,6 +43,7 @@ public class RapierScheduler extends BaselineScheduler {
 
                 // get minCCT
                 double T_C = minCCT(cf, net_graph_, links_);
+                cf.minCCT = T_C;
 
                 if (T_C == -1) {
                     unscheduled_coflows.add(cf);
@@ -49,8 +51,7 @@ public class RapierScheduler extends BaselineScheduler {
                     continue;
                 }
 
-                // condition 1\
-
+                // condition 1
                 if (timestamp - cf.submitted_timestamp > waitingThreshold_ms) {
                     System.out.println("CF " + cf.id_ + " waited too long");
                     cf_ToSchedule = cf;
@@ -77,7 +78,6 @@ public class RapierScheduler extends BaselineScheduler {
                 break;
             }
 
-
             // Assign the rates
             for (Map.Entry<String, Flow> fe : cf_ToSchedule.flows_.entrySet()) {
                 Flow f = fe.getValue();
@@ -98,7 +98,6 @@ public class RapierScheduler extends BaselineScheduler {
 //                        System.out.println("Setting start_timestamp to " + timestamp);
                     f.start_timestamp_ = timestamp;
                 }
-
                 flows_.put(f.id_, f);
             }
 
@@ -131,7 +130,8 @@ public class RapierScheduler extends BaselineScheduler {
 
         // Schedule any available flows one-by-one
         if (!unscheduled_coflows.isEmpty()) {
-            schedule_extra_flow_varys(unscheduled_coflows, timestamp);
+//            schedule_extra_flow_varys(unscheduled_coflows, timestamp);
+            distributeBandwidth(unscheduled_coflows, timestamp);
         }
 
         // Now calculate rates
@@ -192,7 +192,7 @@ public class RapierScheduler extends BaselineScheduler {
         for (Map.Entry<String, Flow> fe : cf.flows_.entrySet()) {
             Flow f = fe.getValue();
             // select the path with the max B/W
-            Pathway maxPath = findMaxBWPath(f);
+            Pathway maxPath = selectMaxBWPath(f);
 
             if (maxPath == null) {
 //                System.exit(-1);
@@ -211,7 +211,7 @@ public class RapierScheduler extends BaselineScheduler {
             Flow f = fe.getValue();
 
             // select the path with the max B/W
-            Pathway maxPath = findMaxBWPath(f, net_graph_, links_);
+            Pathway maxPath = selectMaxBWPath(f, net_graph_, links_);
 
             if (maxPath == null) {
 //                System.exit(-1);
@@ -278,20 +278,20 @@ public class RapierScheduler extends BaselineScheduler {
 
     }
 
-    private Pathway findMaxBWPath(Flow f) {
+    private Pathway selectMaxBWPath(Flow f) {
         Pathway maxPath = null;
         double maxBW = 0;
-        for (Pathway p : f.paths_){
-            if (p.bandwidth_ > maxBW){
+        for (Pathway p : f.paths_) {
+            if (p.bandwidth_ > maxBW) {
                 maxBW = p.bandwidth_;
                 maxPath = p;
             }
         }
-            return maxPath;
+        return maxPath;
     }
 
 /*
-    private Pathway findMaxBWPath(Flow flow, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
+    private Pathway selectMaxBWPath(Flow flow, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
 
         // DFS search
 
@@ -343,8 +343,126 @@ public class RapierScheduler extends BaselineScheduler {
 
     }*/
 
-    private void schedule_extra_flow_varys(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+    private void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+        // first sort the Coflows according to the MinCCT
+        // But they should all have minCCT == -1, so no need to sort!
+/*        LinkedList<Coflow> CF_N1 = new LinkedList<>();
+        LinkedList<Coflow> CF_N2 = new LinkedList<>();
+        LinkedList<Coflow> CF_POSITIVE = new LinkedList<>();
+        for (Coflow cf : unscheduled_coflows) {
+            if (cf.minCCT == -1) {
+                CF_N1.add(cf);
+            } else if (cf.minCCT == -2) {
+                CF_N2.add(cf);
+            } else if (cf.minCCT > 0) {
+                CF_POSITIVE.add(cf);
+            } else {
+                System.err.println("FATAL");
+            }
+        }
 
+        // sort from large to small
+        Collections.sort(CF_POSITIVE, (o1, o2) -> {
+            if (o1.minCCT < o2.minCCT) {
+                return 1;
+            } else if (o1.minCCT > o2.minCCT) {
+                return -1;
+            } else return 0;
+        });*/
+        for (Coflow cf : unscheduled_coflows) {
+            assignBWforCF(cf, timestamp);
+        }
+
+    }
+
+    private void assignBWforCF(Coflow cf, long timestamp) {
+        ArrayList<Flow> flows = new ArrayList<Flow>(cf.flows_.values());
+
+        Collections.sort(flows, Comparator.comparingDouble(o -> o.remaining_volume()));
+        // then from large flow to small flow
+        for (int i = flows.size() - 1; i >= 0; i--) {
+            assignBWforFlow(flows.get(i), timestamp);
+        }
+    }
+
+    private void assignBWforFlow(Flow flow, long timestamp) {
+
+        // use Dijkstra's algorithm to find the Max Bottleneck Path
+        int num_nodes = net_graph_.nodes_.size();
+        int src = Integer.parseInt(flow.src_loc_);
+        int dst = Integer.parseInt(flow.dst_loc_);
+
+        int cur_node = src;
+        Set<Integer> visited_nodes = new HashSet<>();
+        Set<Integer> unvisited_nodes = new HashSet<>();
+        double BW[] = new double[num_nodes + 1];
+        int prev[] = new int[num_nodes + 1];
+
+        for (int i = 1; i <= num_nodes; i++) {
+            BW[i] = 0; // TODO
+            prev[i] = -1;
+            unvisited_nodes.add(i);
+        }
+
+        BW[src] = Double.MAX_VALUE;
+
+        while (!unvisited_nodes.isEmpty()) {
+            // first find the node to evaluate
+            double max_cur_BW = -100;
+            for (int node : unvisited_nodes) {
+                if (BW[node] > max_cur_BW) {
+                    max_cur_BW = BW[node];
+                    cur_node = node;
+                }
+            }
+
+            unvisited_nodes.remove(cur_node);
+            visited_nodes.add(cur_node);
+
+            // for each neighbour from cur_node
+            for (int j = 1; j <= num_nodes; j++) {
+                if (links_[cur_node][j] != null) {
+                    double alt = min(links_[cur_node][j].remaining_bw(), BW[cur_node]);
+                    if (alt > BW[j]) {
+                        BW[j] = alt;
+                        prev[j] = cur_node;
+                    }
+                }
+            }
+        }
+
+        // parse and assign the flow
+        if (prev[dst] != -1) {
+            Pathway p = new Pathway();
+            int node = dst;
+            while (node != src) {
+                p.node_list_.add(String.valueOf(node));
+                node = prev[node];
+                assert (node > 0);
+            }
+            p.node_list_.add(String.valueOf(src));
+
+            Collections.reverse(p.node_list_);
+            p.bandwidth_ = BW[dst];
+
+            flow.paths_.clear();
+            flow.paths_.add(p);
+
+            for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                int cur_src = Integer.parseInt(p.node_list_.get(i));
+                int cur_dst = Integer.parseInt(p.node_list_.get(i + 1));
+                links_[cur_src][cur_dst].subscribers_.add(p);
+            }
+
+            flows_.put(flow.id_, flow);
+            if (flow.start_timestamp_ == -1) {
+                flow.start_timestamp_ = timestamp;
+            }
+        }
+
+    }
+
+   /* private void schedule_extra_flow_varys(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
 
         // Below is the code from Gaia
         for (Coflow c : unscheduled_coflows) {
@@ -383,15 +501,15 @@ public class RapierScheduler extends BaselineScheduler {
                 }
             }
         }
-    }
+    }*/
 
     private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows) throws Exception {
 
-        ArrayList<Coflow> cct_list = new ArrayList<>(coflows.values());
+        ArrayList<Coflow> cf_list = new ArrayList<>(coflows.values());
         // sort from small to large, so the waitTime long from short
-        Collections.sort(cct_list, (o1, o2) -> (int) (o1.submitted_timestamp - o2.submitted_timestamp));
+        Collections.sort(cf_list, Comparator.comparingLong(o -> o.submitted_timestamp));
 
-        return cct_list;
+        return cf_list;
     }
 
     private boolean checkCF_FIN(Coflow c) {

@@ -34,6 +34,7 @@ public class Coflow {
     public int current_queue_ = 0;
     public double transmitted_ = 0.0;
     public Integer ddl_Millis = -1;
+    public double minCCT = -2;
 
     public Coflow(String id, String[] task_locs) {
         id_ = id;
