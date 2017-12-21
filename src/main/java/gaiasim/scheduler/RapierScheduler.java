@@ -11,7 +11,7 @@ import static java.lang.Math.min;
 
 public class RapierScheduler extends BaselineScheduler {
 
-    double waitingThreshold_ms = 100000; // default 100s
+    double waitingThreshold_ms =5000; // default 5s
 
     public RapierScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -28,7 +28,7 @@ public class RapierScheduler extends BaselineScheduler {
         reset_links();
 
         // Order coflows based on CCT estimation
-        ArrayList<Coflow> cf_list = sort_coflows_by_waitTime(coflows);
+        ArrayList<Coflow> cf_list = sort_coflows_by_waitTime(coflows, timestamp);
 
         ArrayList<Coflow> cf_to_remove = new ArrayList<>();
         ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
@@ -52,7 +52,7 @@ public class RapierScheduler extends BaselineScheduler {
                 }
 
                 // condition 1
-                if (timestamp - cf.submitted_timestamp > waitingThreshold_ms) {
+                if (timestamp - cf.last_scheduled_timestamp > waitingThreshold_ms) {
                     System.out.println("CF " + cf.id_ + " waited too long");
                     cf_ToSchedule = cf;
                     T_Min = T_C;
@@ -78,6 +78,9 @@ public class RapierScheduler extends BaselineScheduler {
 
             // Assign the rates
             for (Map.Entry<String, Flow> fe : cf_ToSchedule.flows_.entrySet()) {
+                // set last_scheduled_timestamp
+                cf_ToSchedule.last_scheduled_timestamp = timestamp;
+
                 Flow f = fe.getValue();
 
                 if (f.paths_.size() == 0) {
@@ -231,6 +234,7 @@ public class RapierScheduler extends BaselineScheduler {
     private void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         // first sort the Coflows according to the MinCCT
         // But they should all have minCCT == -1, so no need to sort!
+        // TODO may change here
         for (Coflow cf : unscheduled_coflows) {
             assignBWforCF(cf, timestamp);
         }
@@ -238,15 +242,20 @@ public class RapierScheduler extends BaselineScheduler {
 
     private void assignBWforCF(Coflow cf, long timestamp) {
         ArrayList<Flow> flows = new ArrayList<Flow>(cf.flows_.values());
+        boolean isScheduled = false;
 
         Collections.sort(flows, Comparator.comparingDouble(o -> o.remaining_volume()));
         // then from large flow to small flow
         for (int i = flows.size() - 1; i >= 0; i--) {
-            assignBWforFlow(flows.get(i), timestamp);
+            isScheduled |= assignBWforFlow(flows.get(i), timestamp);
+        }
+
+        if (isScheduled) {
+            cf.last_scheduled_timestamp = timestamp;
         }
     }
 
-    private void assignBWforFlow(Flow flow, long timestamp) {
+    private boolean assignBWforFlow(Flow flow, long timestamp) {
 
         // use Dijkstra's algorithm to find the Max Bottleneck Path
         int num_nodes = net_graph_.nodes_.size();
@@ -319,15 +328,18 @@ public class RapierScheduler extends BaselineScheduler {
             if (flow.start_timestamp_ == -1) {
                 flow.start_timestamp_ = timestamp;
             }
-        }
 
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows) throws Exception {
+    private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows, long timestamp) throws Exception {
 
         ArrayList<Coflow> cf_list = new ArrayList<>(coflows.values());
-        // sort from small to large, so the waitTime long from short
-        Collections.sort(cf_list, Comparator.comparingLong(o -> o.submitted_timestamp));
+        // sort last_scheduled_time from small to large, so the waitTime long from short
+        Collections.sort(cf_list, Comparator.comparingLong(o -> ( o.last_scheduled_timestamp)));
 
         return cf_list;
     }

@@ -11,7 +11,7 @@ public class Coflow {
     public String id_;
     public HashMap<String, Flow> flows_ = new HashMap<>();
     public double volume_ = 0.0;
-    public long submitted_timestamp = -1;
+    public long last_scheduled_timestamp = -1;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
     public boolean done_ = false;

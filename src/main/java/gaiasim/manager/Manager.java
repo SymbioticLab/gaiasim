@@ -264,10 +264,6 @@ public class Manager {
 
                             // if the CF is not fully trimmed, insert it. If fully trimmed, no output for it.
                             if (!trimCoflow(c, CURRENT_TIME_)) {
-                                // This is where the coflow starts waiting for finish
-                                if (c.submitted_timestamp == -1){ // if has not been submitted
-                                    c.submitted_timestamp = CURRENT_TIME_;
-                                }
                                 active_coflows_.put(c.id_, c);
                                 scheduler_.add_coflow(c);
                             } else {
