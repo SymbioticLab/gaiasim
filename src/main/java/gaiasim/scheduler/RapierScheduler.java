@@ -83,6 +83,11 @@ public class RapierScheduler extends BaselineScheduler {
 
                 Flow f = fe.getValue();
 
+                // skip finished flows
+                if (f.done_){
+                    continue;
+                }
+
                 if (f.paths_.size() == 0) {
                     System.exit(-1);
                 }
@@ -256,6 +261,10 @@ public class RapierScheduler extends BaselineScheduler {
     }
 
     private boolean assignBWforFlow(Flow flow, long timestamp) {
+
+        if (flow.done_){
+            return false;
+        }
 
         // use Dijkstra's algorithm to find the Max Bottleneck Path
         int num_nodes = net_graph_.nodes_.size();
