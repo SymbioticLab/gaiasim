@@ -104,6 +104,7 @@ public class RapierScheduler extends BaselineScheduler {
                     f.start_timestamp_ = timestamp;
                 }
                 flows_.put(f.id_, f);
+                f.scheduled_alone = false;
             }
 
         }
@@ -337,6 +338,8 @@ public class RapierScheduler extends BaselineScheduler {
             if (flow.start_timestamp_ == -1) {
                 flow.start_timestamp_ = timestamp;
             }
+
+            flow.scheduled_alone = true;
 
             return true;
         } else {

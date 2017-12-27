@@ -98,7 +98,7 @@ public class Manager {
         Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
 
         // An owning job may also been aborted upon this coflow finish
-        if (owning_job == null){
+        if (owning_job == null) {
             return;
         }
 
@@ -177,14 +177,13 @@ public class Manager {
              (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
              CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
-            if (isOneByOne){
-                if(active_jobs_.isEmpty()){
+            if (isOneByOne) {
+                if (active_jobs_.isEmpty()) {
                     Job j = jobs_by_time_.get(num_dispatched_jobs);
                     ready_jobs.add(j);
                     num_dispatched_jobs++;
                 }
-            }
-            else {
+            } else {
                 // Add any jobs which should be added during this epoch
                 for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
                     Job j = jobs_by_time_.get(num_dispatched_jobs);
@@ -203,9 +202,9 @@ public class Manager {
                 } // dispatch jobs loop
             }
 
-            for (Map.Entry<String, Coflow> cfe : active_coflows_.entrySet()){
+            for (Map.Entry<String, Coflow> cfe : active_coflows_.entrySet()) {
                 Coflow cf = cfe.getValue();
-                if (cf.dropped){
+                if (cf.dropped) {
                     cf.done_ = true;
 
                     scheduler_.remove_coflow(cf);
@@ -213,7 +212,7 @@ public class Manager {
                     Job owning_job = active_jobs_.get(Constants.get_job_id(cf.id_));
 
                     // also drop owning_job
-                    if (owning_job != null){
+                    if (owning_job != null) {
                         active_jobs_.remove(Constants.get_job_id(cf.id_));
                     }
 
@@ -340,6 +339,10 @@ public class Manager {
                         coflow_finished = true;
                         scheduler_.remove_coflow(owning_coflow);
                     } // if coflow.done
+
+                    if (f.scheduled_alone) {
+                        coflow_finished = true;
+                    }
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated
@@ -378,6 +381,13 @@ public class Manager {
 
     public boolean trimCoflow(Coflow cf, long curTime) {
         boolean cfFinished = true; // init a flag
+
+        // don't check twice
+        if(cf.isTrimmed) {
+            return false;
+        } else {
+            cf.isTrimmed = true;
+        }
 
         // need iterator because we need to remove while iterating
         Iterator<Map.Entry<String, Flow>> iter = cf.flows_.entrySet().iterator();

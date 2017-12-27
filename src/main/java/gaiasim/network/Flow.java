@@ -20,6 +20,7 @@ public class Flow {
     // Reference to owning coflow used in the DarkScheduler
     // Populated in DependencyResolver.addCoflows()
     public Coflow owning_coflow_;
+    public boolean scheduled_alone = false;
 
     public Flow(String id, int int_id, String coflow_id, String src_loc, String dst_loc, double volume) {
         id_ = id;

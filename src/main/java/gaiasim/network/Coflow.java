@@ -15,7 +15,7 @@ public class Coflow {
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
     public boolean done_ = false;
-
+    public boolean isTrimmed = false;
     public boolean dropped = false;
 
     // The location of coflow-initiating tasks. For example, these would be
