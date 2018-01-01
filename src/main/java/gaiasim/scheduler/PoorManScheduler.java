@@ -196,6 +196,32 @@ public class PoorManScheduler extends Scheduler {
         return remaining_bw;
     }
 
+    public void assignBWforCF(Coflow cf, long timestamp) {
+        ArrayList<Flow> flows = new ArrayList<Flow>(cf.flows_.values());
+        boolean isScheduled = false;
+
+        Collections.sort(flows, Comparator.comparingDouble(o -> o.remaining_volume()));
+        // then from large flow to small flow
+        for (int i = flows.size() - 1; i >= 0; i--) {
+            Flow flow = flows.get(i);
+            boolean thisFLowScheduled = assignBWforFlow_MaxSinglePath(flow, timestamp);
+            if (thisFLowScheduled) {
+                isScheduled = true;
+                flows_.put(flow.id_, flow);
+            }
+        }
+
+        if (isScheduled) {
+            cf.last_scheduled_timestamp = timestamp;
+        }
+    }
+
+    void schedule_extra_flows_maxBW(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
+        for (Coflow cf : unscheduled_coflows) {
+            assignBWforCF(cf, timestamp);
+        }
+    }
+
     // MaxFlow version of schedule_extra_flows()
     private void schedule_extra_flows_maxflow(ArrayList<Coflow> unscheduled_coflows, long timestamp) throws Exception {
         // Collapse all coflows to one
@@ -752,6 +778,8 @@ public class PoorManScheduler extends Scheduler {
         if (!unscheduled_coflows.isEmpty() && !no_bw_remains) { // FIXME: the condition here
 //            schedule_extra_flows_balance(unscheduled_coflows, timestamp);
             schedule_extra_flows_maxflow(unscheduled_coflows, timestamp); // changed to MaxFlow
+//            schedule_extra_flows_maxBW(unscheduled_coflows, timestamp);
+
         }
 
         long timeAtLast = System.currentTimeMillis() - scheduleStartTime;

@@ -36,4 +36,18 @@ public class Flow {
     public double remaining_volume() {
         return volume_ - transmitted_;
     }
+
+    public String paths_toString() {
+        if (paths_.size() == 0) {
+            return "NULL";
+        }
+
+        StringBuilder ret = new StringBuilder("Paths: ");
+
+        for (Pathway p : paths_){
+            ret.append(p).append("; ");
+        }
+
+        return ret.toString();
+    }
 }

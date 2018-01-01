@@ -109,7 +109,7 @@ public class MultiPathScheduler extends PoorManScheduler {
                 p.bandwidth_ = min_bw;
                 f.rate_ += min_bw;
             }
-            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_toString());
         }
     }
 }

@@ -11,7 +11,7 @@ import static java.lang.Math.min;
 
 public class RapierScheduler extends BaselineScheduler {
 
-    double waitingThreshold_ms =5000; // default 5s
+    double waitingThreshold_ms = 5000; // default 5s
 
     public RapierScheduler(NetGraph net_graph) {
         super(net_graph);
@@ -237,7 +237,7 @@ public class RapierScheduler extends BaselineScheduler {
         return maxPath;
     }
 
-    private void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+    public void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
         // first sort the Coflows according to the MinCCT
         // But they should all have minCCT == -1, so no need to sort!
         // TODO may change here
@@ -246,14 +246,19 @@ public class RapierScheduler extends BaselineScheduler {
         }
     }
 
-    private void assignBWforCF(Coflow cf, long timestamp) {
+    public void assignBWforCF(Coflow cf, long timestamp) {
         ArrayList<Flow> flows = new ArrayList<Flow>(cf.flows_.values());
         boolean isScheduled = false;
 
         Collections.sort(flows, Comparator.comparingDouble(o -> o.remaining_volume()));
         // then from large flow to small flow
         for (int i = flows.size() - 1; i >= 0; i--) {
-            isScheduled |= assignBWforFlow(flows.get(i), timestamp);
+            Flow flow = flows.get(i);
+            boolean thisFLowScheduled = assignBWforFlow_MaxSinglePath(flow, timestamp);
+            if (thisFLowScheduled) {
+                isScheduled = true;
+                flows_.put(flow.id_, flow);
+            }
         }
 
         if (isScheduled) {
@@ -261,91 +266,6 @@ public class RapierScheduler extends BaselineScheduler {
         }
     }
 
-    private boolean assignBWforFlow(Flow flow, long timestamp) {
-
-        if (flow.done_){
-            return false;
-        }
-
-        // use Dijkstra's algorithm to find the Max Bottleneck Path
-        int num_nodes = net_graph_.nodes_.size();
-        int src = Integer.parseInt(flow.src_loc_);
-        int dst = Integer.parseInt(flow.dst_loc_);
-
-        int cur_node = src;
-        Set<Integer> visited_nodes = new HashSet<>();
-        Set<Integer> unvisited_nodes = new HashSet<>();
-        double BW[] = new double[num_nodes + 1];
-        int prev[] = new int[num_nodes + 1];
-
-        for (int i = 1; i <= num_nodes; i++) {
-            BW[i] = 0; // TODO
-            prev[i] = -1;
-            unvisited_nodes.add(i);
-        }
-
-        BW[src] = Double.MAX_VALUE;
-
-        while (!unvisited_nodes.isEmpty()) {
-            // first find the node to evaluate
-            double max_cur_BW = -100;
-            for (int node : unvisited_nodes) {
-                if (BW[node] > max_cur_BW) {
-                    max_cur_BW = BW[node];
-                    cur_node = node;
-                }
-            }
-
-            unvisited_nodes.remove(cur_node);
-            visited_nodes.add(cur_node);
-
-            // for each neighbour from cur_node
-            for (int j = 1; j <= num_nodes; j++) {
-                if (links_[cur_node][j] != null) {
-                    double alt = min(links_[cur_node][j].remaining_bw(), BW[cur_node]);
-                    if (alt > BW[j]) {
-                        BW[j] = alt;
-                        prev[j] = cur_node;
-                    }
-                }
-            }
-        }
-
-        // parse and assign the flow
-        if (prev[dst] != -1) {
-            Pathway p = new Pathway();
-            int node = dst;
-            while (node != src) {
-                p.node_list_.add(String.valueOf(node));
-                node = prev[node];
-                assert (node > 0);
-            }
-            p.node_list_.add(String.valueOf(src));
-
-            Collections.reverse(p.node_list_);
-            p.bandwidth_ = BW[dst];
-
-            flow.paths_.clear();
-            flow.paths_.add(p);
-
-            for (int i = 0; i < p.node_list_.size() - 1; i++) {
-                int cur_src = Integer.parseInt(p.node_list_.get(i));
-                int cur_dst = Integer.parseInt(p.node_list_.get(i + 1));
-                links_[cur_src][cur_dst].subscribers_.add(p);
-            }
-
-            flows_.put(flow.id_, flow);
-            if (flow.start_timestamp_ == -1) {
-                flow.start_timestamp_ = timestamp;
-            }
-
-            flow.scheduled_alone = true;
-
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     private ArrayList<Coflow> sort_coflows_by_waitTime(HashMap<String, Coflow> coflows, long timestamp) throws Exception {
 
