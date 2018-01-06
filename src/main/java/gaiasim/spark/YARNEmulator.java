@@ -52,11 +52,13 @@ public class YARNEmulator implements Runnable {
         public String traceFile;
         public double workload = 1;
         public String outputDir;
+        public double arrival_rate = 1;
 
-        public TraceEntity(String traceFile, double workload, String outputDir) {
+        public TraceEntity(String traceFile, double workload, String outputDir, double arrival_rate) {
             this.traceFile = traceFile;
             this.workload = workload;
             this.outputDir = outputDir;
+            this.arrival_rate = arrival_rate;
         }
 
     }
@@ -70,7 +72,7 @@ public class YARNEmulator implements Runnable {
 
                 int cnt = 0;
                 for ( TraceEntity te : jobList){
-                    runTraceTillFinish(te.traceFile, te.workload, te.outputDir);
+                    runTraceTillFinish(te.traceFile, te.workload, te.outputDir, te.arrival_rate);
                     logger.info("Experiment {} finished, sleeping {} ms", cnt++, Constants.EXPERIMENT_INTERVAL);
                     Thread.sleep(Constants.EXPERIMENT_INTERVAL); // sleep
                 }
@@ -84,7 +86,7 @@ public class YARNEmulator implements Runnable {
 
         }
         else {
-            runTraceTillFinish(tracefile, GaiaSim.MASTER_SCALE_FACTOR, outputDir);
+            runTraceTillFinish(tracefile, GaiaSim.MASTER_SCALE_FACTOR, outputDir, 1); // when not on list default arrival rate to 1
         }
 
         logger.info("All experiments finished, exiting");
@@ -93,13 +95,13 @@ public class YARNEmulator implements Runnable {
     }
 
     // called in both list mode and normal mode
-    public void runTraceTillFinish(String tracefile, double workload_factor, String outDir){
+    public void runTraceTillFinish(String tracefile, double workload_factor, String outDir, double arrival_rate){
 
         // 1. set the workload factor, for list mode
         GaiaSim.SCALE_FACTOR = workload_factor;
 
         // 2. read the trace and prepare a list of DAGs.
-        dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue));
+        dagThread = new Thread(new DAGReader(tracefile , netGraph , yarnEventQueue, arrival_rate));
 
         initCSVFiles("/jct_emu.csv" , "/cct_emu.csv", outDir);
 
@@ -169,11 +171,11 @@ public class YARNEmulator implements Runnable {
     }
 
     private List<TraceEntity> readJobList(String jobListFile) throws IOException {
-        logger.info("Reading job list from {}" , tracefile);
+        logger.info("Reading job list from {}" , jobListFile);
 
         List<TraceEntity> ret = new ArrayList<>();
 
-        FileReader fr = new FileReader(tracefile);
+        FileReader fr = new FileReader(jobListFile);
         BufferedReader br = new BufferedReader(fr);
 
         String line;
@@ -185,13 +187,13 @@ public class YARNEmulator implements Runnable {
 
             String [] split = line.split(" ");
 
-            if (split.length != 3){
+            if (split.length != 4){ // add arrival_rate_factor at the end
                 logger.error("Corrupted job list file!");
                 System.exit(1);
             }
 
-            logger.info("New job trace listed {} : {}", split[0], split[1] );
-            ret.add( new TraceEntity(split[0], Double.parseDouble(split[1]), split[2]) );
+            logger.info("New job trace listed {} : {}", split[0], split[1], split[3]);
+            ret.add( new TraceEntity(split[0], Double.parseDouble(split[1]), split[2], Double.parseDouble(split[3])) );
         }
 
         br.close();

@@ -40,23 +40,25 @@ import java.util.concurrent.LinkedBlockingQueue;
 //        }
 // }
 
-public class DAGReader implements Runnable{
+public class DAGReader implements Runnable {
     private static final Logger logger = LogManager.getLogger();
 
     String tracefile;
     NetGraph netGraph;
     LinkedBlockingQueue<YARNMessages> yarnEventQueue;
     ArrayList<DAG> dagList;
+    double arrival_rate = 1;
 
-    public DAGReader(String tracefile, NetGraph netGraph, LinkedBlockingQueue<YARNMessages> yarnEventQueue) {
+    public DAGReader(String tracefile, NetGraph netGraph, LinkedBlockingQueue<YARNMessages> yarnEventQueue, double arrival_rate) {
         this.tracefile = tracefile;
         this.netGraph = netGraph;
         this.yarnEventQueue = yarnEventQueue;
+        this.arrival_rate = arrival_rate;
 
         System.out.println("YARN: Initing DAGReader.");
 
         try {
-            this.dagList = getListofDAGs(tracefile , netGraph);
+            this.dagList = getListofDAGs(tracefile, netGraph, arrival_rate);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,8 +81,7 @@ public class DAGReader implements Runnable{
                 try {
                     Thread.sleep(time_sleep);
                     break;
-                }
-                catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     end = System.currentTimeMillis();
                     time_sleep -= (end - start);
                 }
@@ -91,8 +92,7 @@ public class DAGReader implements Runnable{
             try {
                 yarnEventQueue.put(new YARNMessages(dag));
                 System.out.println("JobInserter: Inserted job " + dag.getId());
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 // We shouldn't ever get this
                 e.printStackTrace();
                 System.exit(1);
@@ -110,7 +110,7 @@ public class DAGReader implements Runnable{
         logger.info("Finished inserting all DAGs for {}", tracefile);
     }
 
-    public static ArrayList<DAG> getListofDAGs( String tracefile, NetGraph net_graph ) throws IOException {
+    public static ArrayList<DAG> getListofDAGs(String tracefile, NetGraph net_graph, double arrival_rate) throws IOException {
         ArrayList<DAG> dagList = new ArrayList<DAG>();
 
         // For now, use the same seed between runs.
@@ -135,9 +135,9 @@ public class DAGReader implements Runnable{
             String[] splits = line.split(" ");
             int num_stages = Integer.parseInt(splits[0]);
             String dag_id = splits[1];
-            long arrival_time = Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND;
+            long arrival_time = (long) (Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND / arrival_rate);
 
-            DAG dag = new DAG(dag_id , arrival_time);
+            DAG dag = new DAG(dag_id, arrival_time);
 
             // store location of stages in this job.
             HashMap<String, String[]> locationMap = new HashMap<String, String[]>();
@@ -160,8 +160,7 @@ public class DAGReader implements Runnable{
                     for (int j = 0; j < num_tasks; j++) {
                         task_locs[j] = net_graph.trace_id_to_node_id_.get(splits[2 + j]);
                     }
-                }
-                else { // randomize task location assignment (not really needed)
+                } else { // randomize task location assignment (not really needed)
                     ArrayList<String> tmp_nodes = net_graph.nodes_;
                     Collections.shuffle(tmp_nodes, rnd);
                     for (int j = 0; j < num_tasks; j++) {
@@ -178,7 +177,7 @@ public class DAGReader implements Runnable{
             // create a buffer for constructing Coflows.
             // when finished reading this job, we can recover all Coflow information from it.
             // maps Coflow_id to FlowGroups.
-            ArrayListMultimap<String , FlowGroup> tmpCoflowList = ArrayListMultimap.create();
+            ArrayListMultimap<String, FlowGroup> tmpCoflowList = ArrayListMultimap.create();
             HashMap<String, Integer> tmpDDLMap = new HashMap<>();
 
             // Map coflow and Determine coflow dependencies
@@ -191,10 +190,10 @@ public class DAGReader implements Runnable{
                 String src_stage = splits[0];
                 String dst_stage = splits[1];
 
-                if (splits.length == 4 ){
+                if (splits.length == 4) {
                     double ddl = Double.parseDouble(splits[3]);
-                    int ddl_Millis = (int) ( ddl * 1000  );
-                    tmpDDLMap.put (dag_id + ":" + dst_stage , ddl_Millis);
+                    int ddl_Millis = (int) (ddl * 1000);
+                    tmpDDLMap.put(dag_id + ":" + dst_stage, ddl_Millis);
                     // Add DDL at the shuffle level
 
                 }
@@ -204,27 +203,26 @@ public class DAGReader implements Runnable{
                 // Convert to megabits, then divide by FlowGroups
                 int numberOfFlowGroups = locationMap.get(src_stage).length * locationMap.get(dst_stage).length;
 //                double divided_data_size = Math.max(1, data_size) * 8 / numberOfFlowGroups;
-                double divided_data_size = Math.max(8 , data_size * 8 / numberOfFlowGroups);
+                double divided_data_size = Math.max(8, data_size * 8 / numberOfFlowGroups);
 
                 // create FlowGroups and add to buffer.
-                for( String srcLoc : locationMap.get(src_stage)){
-                    for (String dstLoc : locationMap.get(dst_stage)){
+                for (String srcLoc : locationMap.get(src_stage)) {
+                    for (String dstLoc : locationMap.get(dst_stage)) {
                         // id - job_id:srcStage:dstStage:srcLoc-dstLoc // encoding task location info.
                         // src - srcLoc
                         // dst - dstLoc
                         // owningCoflowID - dstStage
                         // Volume - divided_data_size
                         FlowGroup fg = new FlowGroup(dag_id + ':' + src_stage + ':' + dst_stage + ':' + srcLoc + '-' + dstLoc,
-                            srcLoc, dstLoc , dag_id + ':' + dst_stage , divided_data_size);
+                                srcLoc, dstLoc, dag_id + ':' + dst_stage, divided_data_size);
 
-                        tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
+                        tmpCoflowList.put(dag_id + ":" + dst_stage, fg); // We define that CoflowID = DAG:dst_stage
 
                         // FIXME: it is not as easy to fix as I thought
                         // To deal with co-located flowGroups and Jobs, we don't add them. So the co-located jobs will be empty jobs.
-                        if ( !srcLoc.equals(dstLoc)){
+                        if (!srcLoc.equals(dstLoc)) {
 //                            tmpCoflowList.put( dag_id + ":" + dst_stage , fg); // We define that CoflowID = DAG:dst_stage
-                        }
-                        else {
+                        } else {
                             System.out.println("DAGReader: skipped flowgroup " + fg.getId() + " because co-located");
                         }
                     }
@@ -232,11 +230,11 @@ public class DAGReader implements Runnable{
 
                 // Then update dependencies and the "root"
                 // Note that after this operation "root" is not Coflow_root, we need to trim() the DAG.
-                dag.updateDependency( src_stage , dst_stage);
+                dag.updateDependency(src_stage, dst_stage);
 
             } // end of current DAG
             // flush the Coflows from the buffer to dag, then update the root, and then add to dagList
-            dag.addCoflows(tmpCoflowList , tmpDDLMap);
+            dag.addCoflows(tmpCoflowList, tmpDDLMap);
 
             dag.updateRoot();
             dagList.add(dag);
@@ -246,7 +244,7 @@ public class DAGReader implements Runnable{
 
         // sort the dagList according to arrivalTime
 //        Collections.sort(dagList, (o1, o2) -> (int)(o1.getArrivalTime() - o2.getArrivalTime()));
-        Collections.sort(dagList,  Comparator.comparingLong(o -> o.getArrivalTime()));
+        Collections.sort(dagList, Comparator.comparingLong(o -> o.getArrivalTime()));
 
         return dagList;
     }
