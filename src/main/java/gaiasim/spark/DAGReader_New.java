@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class DAGReader_New {
-    public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph, double workload_factor) throws IOException {
+    public static HashMap<String, Job> read_trace_new(String tracefile, NetGraph net_graph, double workload_factor, double arrival_rate_factor) throws IOException {
         HashMap<String, Job> jobs = new HashMap<String, Job>();
 
         // For now, use the same seed between runs.
@@ -58,7 +58,7 @@ public class DAGReader_New {
             String[] splits = line.split(" ");
             int num_stages = Integer.parseInt(splits[0]);
             String dag_id = splits[1];
-            long arrival_time = Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND;
+            long arrival_time = (long) (Integer.parseInt(splits[2]) * Constants.MILLI_IN_SECOND / arrival_rate_factor);
 
             DependencyResolver dr = new DependencyResolver(dag_id);
 

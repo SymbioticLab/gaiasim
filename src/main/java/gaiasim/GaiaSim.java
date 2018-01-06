@@ -15,10 +15,11 @@ import org.apache.logging.log4j.Logger;
 
 public class GaiaSim {
     public static boolean is_emulation_ = false;
+    public static double arrival_rate_factor = 1;
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static HashMap<String, String> parse_cli(String[] args) 
+    public static HashMap<String, String> parse_cli(String[] args)
                                                     throws org.apache.commons.cli.ParseException {
 
         HashMap<String, String> args_map = new HashMap<String, String>();
@@ -32,10 +33,11 @@ public class GaiaSim {
         options.addOption("w", true, "scaling factor for workload");
         options.addOption("c", true, "configuration file for the IP addresses of SAs on the control plane");
         options.addOption("p", false, "only set up the flow rules");
+        options.addOption("a", true, "arrival rate factor");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
-        
+
         if (cmd.hasOption("g")) {
             args_map.put("gml", cmd.getOptionValue("g"));
         }
@@ -87,6 +89,10 @@ public class GaiaSim {
             is_emulation_ = true;
         }
 
+        if (cmd.hasOption("a")) {
+            arrival_rate_factor = Double.parseDouble(cmd.getOptionValue("a"));
+        }
+
         if (cmd.hasOption("b")) {
             args_map.put("bw_factor", cmd.getOptionValue("b"));
             System.out.println("Given bw_factor: " + Double.parseDouble(args_map.get("bw_factor")) + " but ignored in baseline emulation");
@@ -126,11 +132,12 @@ public class GaiaSim {
 
             logger.info("GAIA: finished copying the model..");
 
-            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"), 
+            Manager m = new Manager(args_map.get("gml"), args_map.get("trace"),
                                     args_map.get("scheduler"), args_map.get("outdir"),
                     Double.parseDouble(args_map.get("bw_factor")),
                     Double.parseDouble(args_map.get("workload_factor")),
-                    args_map.get("conf"));
+                    args_map.get("conf"),
+                    arrival_rate_factor);
 
             if (is_emulation_) {
                 m.emulate();
@@ -142,7 +149,7 @@ public class GaiaSim {
         catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return;
     }
 }

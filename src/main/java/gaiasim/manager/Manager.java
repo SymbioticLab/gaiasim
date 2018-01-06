@@ -66,11 +66,11 @@ public class Manager {
     public DistConfiguration dconf;
 
     public Manager(String gml_file, String trace_file,
-                   String scheduler_type, String outdir, double bw_factor, double workload_factor, String conf) throws java.io.IOException {
+                   String scheduler_type, String outdir, double bw_factor, double workload_factor, String conf, double arrival_rate_factor) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file);
 //        jobs_ = DAGReader.read_trace(trace_file, net_graph_);
-        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_ , workload_factor);
+        jobs_ = DAGReader_New.read_trace_new(trace_file, net_graph_ , workload_factor, arrival_rate_factor);
 
         dconf = new DistConfiguration( net_graph_.nodes_.size() , conf);
 
