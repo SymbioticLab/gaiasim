@@ -24,6 +24,8 @@ public class RapierScheduler extends BaselineScheduler {
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                 long timestamp) throws Exception {
+
+        long scheduleStartTime = System.currentTimeMillis();
         flows_.clear();
         reset_links();
 
@@ -117,6 +119,10 @@ public class RapierScheduler extends BaselineScheduler {
 
         // Now calculate rates
         update_flows(flows_);
+
+        // Add this for overhead statistics
+        long timeAtLast = System.currentTimeMillis() - scheduleStartTime;
+        System.out.println("schedule_flows() took: " + timeAtLast + " ms");
 
         return flows_;
 
