@@ -37,6 +37,8 @@ public class Receiver implements Runnable {
         logger.info("Closing socket from {}" , sd_.getRemoteSocketAddress());
         
         try {
+            in_.close();
+            sd_.shutdownInput();
             sd_.close();
         }
         catch (java.io.IOException e) {
