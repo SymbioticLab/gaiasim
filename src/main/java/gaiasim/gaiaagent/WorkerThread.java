@@ -315,6 +315,7 @@ public class WorkerThread implements Runnable{
                     .setSaID(sharedData.saID).setRaID(raID).setIsBroken(false).build();
 
             logger.error("Sending LinkReport {}", report);
+            logger.info("Sending LinkReport {}", report);
 
             try {
                 sharedData.worker_to_ctrlMsgQueue.put(new Worker_to_CTRLMsg(report));
