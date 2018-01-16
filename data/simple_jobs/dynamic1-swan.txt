@@ -9,4 +9,4 @@ Map1 Reducer1 12800
 Map2 1 LA
 Reducer2 1 NY
 1
-Map1 Reducer1 38400
+Map2 Reducer2 38400
