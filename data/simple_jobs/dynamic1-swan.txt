@@ -1,0 +1,12 @@
+# Small Coflow 50s * 2Gbps
+2 0 0
+Map1 1 LA
+Reducer1 1 BA
+1
+Map1 Reducer1 12800
+# Big Coflow
+2 1 0
+Map2 1 LA
+Reducer2 1 NY
+1
+Map1 Reducer1 38400
