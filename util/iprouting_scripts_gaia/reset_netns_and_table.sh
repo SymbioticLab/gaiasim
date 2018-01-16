@@ -1,4 +1,5 @@
 #!/bin/bash
+# This version is used after rebooting the computers, commented out the /etc related changes
 
 # first detect the hostname
 host=$(hostname -s)
@@ -38,7 +39,7 @@ sudo ip netns exec $net_name ifconfig vgw 10.0.$host_id.254/24 #mtu 9000
 
 sudo ip route add 10.0.0.0/16 via 10.0.$host_id.254
 
-sudo bash -c "echo '1   T1' >> /etc/iproute2/rt_tables"
+#sudo bash -c "echo '1   T1' >> /etc/iproute2/rt_tables"
 sudo ip netns exec $net_name ip route add default via 10.0.$host_id.254 dev vgw table T1
 # T1 table only need this default rule
 
@@ -62,7 +63,7 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
 
     # set the table now
     let counter++
-    sudo bash -c "echo '$counter   T$counter' >> /etc/iproute2/rt_tables"
+    #sudo bash -c "echo '$counter   T$counter' >> /etc/iproute2/rt_tables"
 
 #     calculate the IP addr across this link, and then set as the default gateway!
     link_id=$(echo $nic_addr | gawk -F . '{print $3}')
