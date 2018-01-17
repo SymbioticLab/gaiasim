@@ -1,0 +1,14 @@
+# dynamic test trace for swan - job 1 FL-NY
+2 0 0
+Map1 1 FL
+Reducer1 1 NY
+1
+Map1 Reducer1 900000
+# dynamic test trace for swan - job 2 HK-NY + FL-NY
+3 1 0
+Map2 1 HK
+Map3 1 FL
+Reducer2 1 NY
+2
+Map2 Reducer2 400000
+Map3 Reducer2 400000
