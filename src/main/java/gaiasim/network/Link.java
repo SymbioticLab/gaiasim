@@ -47,6 +47,7 @@ public class Link {
     }
 
     // Changed this, a little hack here
+    //FIXME in the future should prevent a link go down twice without going up
     public void goUp() {
         max_bw_ = original_bw_;
         cur_bw_ = original_bw_;

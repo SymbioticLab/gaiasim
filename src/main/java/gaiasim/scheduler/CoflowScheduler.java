@@ -82,7 +82,7 @@ public class CoflowScheduler extends Scheduler {
 
         } else {
 
-            links_[src][dst].goUp();
+            linksAtStart[src][dst].goUp();
             links_[src][dst].goUp();
             linksWithDDLCF[src][dst].goUp();
             logger.info("Making Link {} {} go up", src, dst);
