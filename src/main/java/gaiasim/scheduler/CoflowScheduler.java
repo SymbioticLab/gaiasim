@@ -747,10 +747,11 @@ public class CoflowScheduler extends Scheduler {
         for (Map.Entry<String, Coflow_Old> entry : CFs.entrySet()){
             coflowInit(entry.getValue()); // FIXME: sometimes at some point GAIA tries to init a finished CF...
             // fixed by checking in coflowInit()
+            logger.info("INIT CF: {}",entry.getValue().id);
         }
 
         sortCFList();
-
+        printCFList();
     }
 
     // print the CFList that is going into the scheduler
