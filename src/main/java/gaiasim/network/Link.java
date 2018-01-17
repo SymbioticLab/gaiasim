@@ -10,12 +10,14 @@ public class Link {
     public double cur_bw_;
     public String src_loc_;
     public String dst_loc_;
+    public double original_bw_;
 
     private double previous_bw;
 
     public Link(double max_bw) {
         max_bw_ = max_bw;
         cur_bw_ = max_bw;
+        original_bw_ = max_bw_;
     }
 
     public Link(String src_loc, String dst_loc, double max_bw) {
@@ -23,6 +25,7 @@ public class Link {
         dst_loc_ = dst_loc;
         max_bw_ = max_bw;
         cur_bw_ = max_bw;
+        original_bw_ = max_bw_;
     }
 
     public String toString() {
@@ -43,8 +46,9 @@ public class Link {
         cur_bw_ = 0;
     }
 
+    // Changed this, a little hack here
     public void goUp() {
-        max_bw_ = previous_bw;
-        cur_bw_ = previous_bw;
+        max_bw_ = original_bw_;
+        cur_bw_ = original_bw_;
     }
 }
