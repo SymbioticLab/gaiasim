@@ -308,7 +308,7 @@ public class WorkerThread implements Runnable{
                 }
             }
 
-            currentConn = sharedData.activeConnections.incrementAndGet();
+            currentConn = sharedData.activeConnections.get();
             logger.error("Current active connection {} / {}", currentConn, sharedData.MAX_ACTIVE_CONNECTION);
         }
 
