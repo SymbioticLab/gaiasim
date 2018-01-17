@@ -246,6 +246,9 @@ public class WorkerThread implements Runnable{
         catch (IOException e) {
             logger.error("worker {} flush took {} ms", connID, (System.currentTimeMillis() - tmp_timestamp));
             logger.error("Fail to write to bos. ra {} , thread {}", raID, connID);
+            logger.error("Something is wrong");
+
+            enterReconnectingState();
 
             e.printStackTrace();
         }
@@ -256,9 +259,9 @@ public class WorkerThread implements Runnable{
         isReconnecting = true;
         total_rate = 0;
 
-        sharedData.activeConnections.decrementAndGet();
+        int tmpConn = sharedData.activeConnections.decrementAndGet();
 
-        logger.error("Closing socket to ra {}", raID);
+        logger.error("Closing socket to ra {}, remaining active Conn {}", raID, tmpConn);
 
         try {
             bos.close();
@@ -375,7 +378,8 @@ public class WorkerThread implements Runnable{
         }
 
         sharedData.cnt_StartedConnections.countDown();
-        sharedData.activeConnections.incrementAndGet();
+        int tmpConn = sharedData.activeConnections.incrementAndGet();
+        logger.info("Current conn: {}", tmpConn);
 
     }
 
