@@ -304,6 +304,8 @@ public class Manager {
 
             // Keep track of total allocated bandwidth across ALL flows
             double totalBW = 0.0;
+            double dataRate = 0.0;
+
 
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI;
@@ -318,6 +320,9 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     totalBW += scheduler_.progress_flow(f);
+                    // change to dataRate here
+                    dataRate += f.rate_;
+
                     if (f.transmitted_ + Constants.EPSILON >= f.volume_) { // ignoring the remaining 0.01MBit
                         finished.add(f);
                         f.transmitted_ = f.volume_; // so that the remain_volume = 0
@@ -354,8 +359,8 @@ public class Manager {
 
             // Not printing Timestamp every time. every 1s or every change happens.
             if (num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || (CURRENT_TIME_ - last_time >= 1000)) {
-                System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f\n",
-                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW);
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f DataRate: %10.0f\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW, dataRate);
 
                 // Adds stalling detector
                 if (num_dispatched_jobs >= jobs_.size() && active_flows_.isEmpty() && !active_jobs_.isEmpty()) {
