@@ -1,6 +1,7 @@
 package gaiasim;
 
 import gaiasim.JCTCalc.JCTCalc;
+import gaiasim.JCTCalc.UtilCalc;
 import gaiasim.manager.Manager;
 import gaiasim.scheduler.PoorManScheduler;
 import gaiasim.util.Constants;
@@ -26,8 +27,11 @@ public class GaiaSim {
         options.addOption("w", true, "scaling factor for workload");
         options.addOption("k", true, "number of paths limited");
         options.addOption("onebyone", false, "insert the job one by one");
-        options.addOption("nc", true, "numbers of computers in data center" );
+        options.addOption("nc", true, "numbers of computers in data center");
         options.addOption("csv", true, "input CCT csv file");
+        options.addOption("util", false, "utilization calculation mode");
+        options.addOption("ws", true, "window_start (for util)");
+        options.addOption("we", true, "window_end (for util)");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -52,16 +56,41 @@ public class GaiaSim {
             args_map.put("outdir", "/tmp");
         }
 
-        if (cmd.hasOption("nc")){
-            if (cmd.hasOption("csv")){
+        // for util calculation
+        double ws = 500;
+        double we = 2000;
+
+        if (cmd.hasOption("ws")) {
+            ws = Double.parseDouble(cmd.getOptionValue("ws"));
+        }
+
+        if (cmd.hasOption("we")) {
+            we = Double.parseDouble(cmd.getOptionValue("we"));
+        }
+
+        if (cmd.hasOption("nc")) {
+            if (cmd.hasOption("csv")) {
 
                 System.out.println("Choose JCT caculation mode");
                 // parse the csv file
 
                 JCTCalc jc = new JCTCalc(args_map.get("gml"), args_map.get("trace"), args_map.get("outdir"),
-                        cmd.getOptionValue("csv") ,cmd.getOptionValue("nc"));
+                        cmd.getOptionValue("csv"), cmd.getOptionValue("nc"));
 
                 jc.calc();
+
+                System.exit(0);
+
+            }
+        } else if (cmd.hasOption("util")) {
+            if (cmd.hasOption("csv")) {
+
+                System.out.println("Choose Utilization caculation mode");
+                // parse the csv file
+
+                UtilCalc uc = new UtilCalc(args_map.get("gml"), args_map.get("trace"), ws, we, cmd.getOptionValue("csv"));
+
+                uc.calc();
 
                 System.exit(0);
 
@@ -92,7 +121,7 @@ public class GaiaSim {
         // Option k only valid for GAIA
         if (cmd.hasOption("k")) {
             PoorManScheduler.MAX_PARALLEL_PATHWAYS = Integer.parseInt(cmd.getOptionValue("k"));
-            System.out.println("Path number limited to " + PoorManScheduler.MAX_PARALLEL_PATHWAYS );
+            System.out.println("Path number limited to " + PoorManScheduler.MAX_PARALLEL_PATHWAYS);
         } else {
             PoorManScheduler.MAX_PARALLEL_PATHWAYS = Constants.DEFAULT_MAX_PARALLEL_PATHWAYS;
             System.out.println("Using default path number limit: " + Constants.DEFAULT_MAX_PARALLEL_PATHWAYS);
