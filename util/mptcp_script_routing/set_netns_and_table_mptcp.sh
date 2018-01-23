@@ -43,8 +43,7 @@ sudo ip netns exec $net_name ifconfig vgw0 10.0.$host_id.254/24
 sudo ip netns exec $net_name ifconfig vgw1 10.1.$host_id.254/24
 sudo ip netns exec $net_name ifconfig vgw2 10.2.$host_id.254/24
 
-# Change to this
-sudo ip route add 10.0.0.0/8 via 10.0.$host_id.254
+
 
 # This creates 3 different routing tables, that we use based on the source-address.
 sudo ip rule add from 10.0.$host_id.$host_id table 1
@@ -64,6 +63,8 @@ sudo ip route add default via 10.1.$host_id.254 dev $host-eth1 table 2
 sudo ip route add 10.2.0.0/24 dev $host-eth2 table 3
 sudo ip route add default via 10.2.$host_id.254 dev $host-eth2 table 3
 
+# Change to this
+sudo ip route add 10.0.0.0/8 via 10.0.$host_id.254
 
 # inside the netns still use the same kind of routing, just change the iptables rules
 # So T1 T2 T3 etc. marks the output port.
