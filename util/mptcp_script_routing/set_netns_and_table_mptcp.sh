@@ -52,13 +52,14 @@ sudo ip rule add from 10.1.$host_id.$host_id table 2
 sudo ip rule add from 10.2.$host_id.$host_id table 3
 
 # Configure the two different routing tables
-sudo ip route add 10.0.$host_id.0/24 dev $host-eth0 scope link table 1
+sudo ip route add 10.0.0.0/16 dev $host-eth0 scope link table 1
 sudo ip route add default via 10.0.$host_id.254 dev $host-eth0 table 1
 
-sudo ip route add 10.1.$host_id.0/24 dev $host-eth1 scope link table 2
+sudo ip route add 10.1.0.0/16 dev $host-eth1 scope link table 2
 sudo ip route add default via 10.1.$host_id.254 dev $host-eth1 table 2
 
-sudo ip route add 10.2.$host_id.0/24 dev $host-eth2 scope link table 3
+#TODO change to .0.0
+sudo ip route add 10.2.0.0/16 dev $host-eth2 scope link table 3
 sudo ip route add default via 10.2.$host_id.254 dev $host-eth2 table 3
 
 
