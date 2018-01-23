@@ -1,7 +1,8 @@
 #!/bin/bash
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # first setup the ns
-$SCRIPTDIR/set_netns_and_table_baseline.sh
+$SCRIPTDIR/set_netns_and_table_mptcp.sh
+
 # detect the hostname and set the rules
 host=$(hostname -s)
 
