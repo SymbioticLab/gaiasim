@@ -66,7 +66,10 @@ public class Manager {
         } else if (scheduler_type.equals("dark")) {
             scheduler_ = new DarkScheduler(net_graph_);
         } else if (scheduler_type.equals("rapier")) {
-            scheduler_ = new RapierScheduler(net_graph_);
+            scheduler_ = new RapierScheduler(net_graph_, false);
+        } else if (scheduler_type.equals("rapier-nofg")) {
+            // Rapier without FlowGroup
+            scheduler_ = new RapierScheduler(net_graph_, true);
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");

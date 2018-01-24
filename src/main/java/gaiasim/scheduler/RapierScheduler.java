@@ -12,9 +12,11 @@ import static java.lang.Math.min;
 public class RapierScheduler extends BaselineScheduler {
 
     double waitingThreshold_ms = 5000; // default 5s
+    private boolean isNoFlowGroup;
 
-    public RapierScheduler(NetGraph net_graph) {
+    public RapierScheduler(NetGraph net_graph, boolean disableFG) {
         super(net_graph);
+        this.isNoFlowGroup = disableFG;
     }
 
     public RapierScheduler(NetGraph net_graph, double waitingThreshold_ms) {
@@ -86,7 +88,7 @@ public class RapierScheduler extends BaselineScheduler {
                 Flow f = fe.getValue();
 
                 // skip finished flows
-                if (f.done_){
+                if (f.done_) {
                     continue;
                 }
 
@@ -129,6 +131,10 @@ public class RapierScheduler extends BaselineScheduler {
     }
 
     private double minCCT(Coflow cf, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
+
+        if (isNoFlowGroup) {
+            splitFlowGroup(cf);
+        }
 
         // First select a path for each flow (select the max B/W)
         MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, 1);
@@ -180,6 +186,7 @@ public class RapierScheduler extends BaselineScheduler {
         }
 
         // After setting the path for each flow, we don't actually need to run LP to find the minCCT
+        // TODO we may still need to calculate the LP time here
         // for each link we try to cap the A
 
         double A = Double.MAX_VALUE;
@@ -231,6 +238,38 @@ public class RapierScheduler extends BaselineScheduler {
 
     }
 
+    private void splitFlowGroup(Coflow cf) throws Exception {
+        // split the flows for this coflow to make the LP bigger
+
+        System.out.println("BEGIN True LP");
+        long delta = System.currentTimeMillis();
+
+        Coflow splitCF = new Coflow("TRUECF", null);
+        int combined_flow_int_id = 0;
+
+        for (Flow f : cf.flows_.values()) {
+            int nMap = (int) Math.ceil(f.volume_ / 256.00);
+            int nReduce = (int) Math.ceil(f.volume_ / 256.00 / 8);
+
+            int total = nMap * nReduce;
+            
+
+            for (int i = 0; i < total; i++) {
+
+                String fid = f.id_ + i;
+                Flow tmpf = new Flow(fid, combined_flow_int_id++, "TRUECF", f.src_loc_, f.dst_loc_, f.volume_ / total);
+                splitCF.flows_.put(fid, tmpf);
+
+            }
+        }
+
+        MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(splitCF, net_graph_, links_, 1);
+
+        delta = System.currentTimeMillis() - delta;
+
+        System.out.println("END True LP take: "+ delta);
+    }
+
     private Pathway selectMaxBWPath(Flow f) {
         Pathway maxPath = null;
         double maxBW = 0;
@@ -277,7 +316,7 @@ public class RapierScheduler extends BaselineScheduler {
 
         ArrayList<Coflow> cf_list = new ArrayList<>(coflows.values());
         // sort last_scheduled_time from small to large, so the waitTime long from short
-        Collections.sort(cf_list, Comparator.comparingLong(o -> ( o.last_scheduled_timestamp)));
+        Collections.sort(cf_list, Comparator.comparingLong(o -> (o.last_scheduled_timestamp)));
 
         return cf_list;
     }
