@@ -123,7 +123,7 @@ public class BaselineSendingAgent {
                 }
                 catch (java.io.IOException e) {
                     e.printStackTrace();
-                    logger.error(" {} Exception while connecting, retry" , threadName);
+                    logger.error(" {} Exception while connecting {}, retry" , threadName, ra_ip_);
                     continue;
 //                    System.exit(1);
                 }
