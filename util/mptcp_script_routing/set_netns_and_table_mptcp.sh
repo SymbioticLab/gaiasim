@@ -149,4 +149,7 @@ sudo sysctl net.core.netdev_max_backlog=2048;
 
 echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 
+# disable MPTCP on eno1
+sudo iptables -A INPUT -p tcp -i eno1 --dport 33330 -j DROP
+
 echo "done"

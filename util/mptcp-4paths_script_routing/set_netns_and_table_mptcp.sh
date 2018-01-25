@@ -151,5 +151,7 @@ echo 1 | sudo tee  /proc/sys/net/ipv4/route/flush
 # Moved to the end
 sudo ip route add 10.0.0.0/8 via 10.0.$host_id.254
 
+# disable MPTCP on eno1
+sudo iptables -A INPUT -p tcp -i eno1 --dport 33330 -j DROP
 
 echo "done"
