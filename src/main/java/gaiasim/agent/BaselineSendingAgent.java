@@ -91,18 +91,19 @@ public class BaselineSendingAgent {
 
         public void run() {
 
-            logger.info("Start sending on {}" , flow_.id_);
+            logger.info("Start sending on {} transmitted {}" , flow_.id_, flow_.transmitted_);
             while (flow_.transmitted_ < flow_.volume_) {
 
                 if (bos != null) {
                     try {
                         bos.close();
+                        logger.error("Closing BOS");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
 
-                if ( sd_ != null && !sd_.isClosed() ){
+                if ( sd_ != null  ){ // && !sd_.isClosed()
                     logger.error("Close previous socket to reinitialize new socket.");
                     try {
                         sd_.close();
@@ -137,7 +138,7 @@ public class BaselineSendingAgent {
 //                    System.out.println("BaselineSA: Flushed Writing 1MB @ " + System.currentTimeMillis());
                     } catch (java.io.IOException e) {
                         e.printStackTrace();
-                        logger.error(" {} Exception while sending, reconnect" , threadName);
+                        logger.error(" {} Exception while sending to {}, reconnect" , threadName, ra_ip_);
                         break;
                     }
 
