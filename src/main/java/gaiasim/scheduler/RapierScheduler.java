@@ -132,12 +132,15 @@ public class RapierScheduler extends BaselineScheduler {
 
     private double minCCT(Coflow cf, NetGraph net_graph_, SubscribedLink[][] links_) throws Exception {
 
-        if (isNoFlowGroup) {
-            splitFlowGroup(cf);
-        }
 
         // First select a path for each flow (select the max B/W)
         MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(cf, net_graph_, links_, 1);
+
+        // Get true time after original LP
+        if (isNoFlowGroup) {
+            timeSplitFlowGroup(cf);
+        }
+
         if (mmcf_out.completion_time_ == -1.0) {
             return -1;
         }
@@ -238,10 +241,9 @@ public class RapierScheduler extends BaselineScheduler {
 
     }
 
-    private void splitFlowGroup(Coflow cf) throws Exception {
+    private void timeSplitFlowGroup(Coflow cf) throws Exception {
         // split the flows for this coflow to make the LP bigger
 
-        System.out.println("BEGIN True LP");
         long delta = System.currentTimeMillis();
 
         Coflow splitCF = new Coflow("TRUECF", null);
@@ -270,6 +272,7 @@ public class RapierScheduler extends BaselineScheduler {
             }
         }
 
+        System.out.println("BEGIN True LP: " + combined_flow_int_id);
         MMCFOptimizer.MMCFOutput mmcf_out = MMCFOptimizer.glpk_optimize(splitCF, net_graph_, links_, 1);
 
         delta = System.currentTimeMillis() - delta;
