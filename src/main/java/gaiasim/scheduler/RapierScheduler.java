@@ -251,8 +251,15 @@ public class RapierScheduler extends BaselineScheduler {
             int nMap = (int) Math.ceil(f.volume_ / 256.00);
             int nReduce = (int) Math.ceil(f.volume_ / 256.00 / 8);
 
+            if (nMap > 10) {
+                nMap = 10;
+            }
+
+            if (nReduce > 10) {
+                nReduce = 10;
+            }
+
             int total = nMap * nReduce;
-            
 
             for (int i = 0; i < total; i++) {
 
@@ -267,7 +274,7 @@ public class RapierScheduler extends BaselineScheduler {
 
         delta = System.currentTimeMillis() - delta;
 
-        System.out.println("END True LP take: "+ delta);
+        System.out.println("END True LP take: " + delta);
     }
 
     private Pathway selectMaxBWPath(Flow f) {
