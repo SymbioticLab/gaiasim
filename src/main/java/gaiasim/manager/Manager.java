@@ -4,6 +4,7 @@ import com.opencsv.CSVWriter;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
+import gaiasim.network.Pathway;
 import gaiasim.scheduler.*;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
@@ -324,7 +325,9 @@ public class Manager {
 
                     totalBW += scheduler_.progress_flow(f);
                     // change to dataRate here
-                    dataRate += f.rate_;
+                    for (Pathway p : f.paths_){
+                        dataRate += p.bandwidth_;
+                    }
 
                     if (f.transmitted_ + Constants.EPSILON >= f.volume_) { // ignoring the remaining 0.01MBit
                         finished.add(f);
