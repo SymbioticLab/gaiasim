@@ -9,6 +9,10 @@ To run from the command line, run:
 ```
 java -cp target/gaiasim-*-SNAPSHOT-jar-with-dependencies.jar gaiasim.GaiaSim -g <path_to_gml_file> -j <path_to_trace_file> -s <scheduler_type> -o <output_directory> -b <bandwidth_scaling> -w <workload_scaling>
 ```
+For example:
+```
+java -cp target/gaiasim-*-SNAPSHOT-jar-with-dependencies.jar gaiasim.GaiaSim -g data/gml/swan.gml -j data/combined_traces_fb/BigBench-swan.txt -s recursive-remain-flow -o /tmp -b 1 -w 1
+```
 
 Command line arguments are as follows:
 ```
