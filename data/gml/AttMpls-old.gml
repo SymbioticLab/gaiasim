@@ -1,5 +1,5 @@
 graph [
-DateObtained "16/11/10"
+  DateObtained "16/11/10"
   GeoLocation "USA"
   GeoExtent "Country"
   Network "ATT North America"
@@ -255,281 +255,281 @@ DateObtained "16/11/10"
   edge [
     source 25
     target 1
-    bandwidth 100000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 25
     target 2
-    bandwidth 40000
+    LinkLabel "Completed"
   ]
   edge [
     source 25
     target 6
-    bandwidth 100000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 25
     target 7
-    bandwidth 100000
+    LinkLabel "Completed"
   ]
   edge [
     source 1
     target 6
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 2
     target 3
-    bandwidth 40000
+    LinkLabel "Completed"
   ]
   edge [
     source 2
     target 6
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 2
     target 9
-    bandwidth 40000
+    LinkLabel "Completed"
   ]
   edge [
     source 2
     target 15
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 2
     target 16
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 2
     target 17
-    bandwidth 1000
+    LinkLabel "Completed"
   ]
   edge [
     source 2
     target 20
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 2
     target 21
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 3
     target 8
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 3
     target 9
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 3
     target 6
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 4
     target 5
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 4
     target 7
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 5
     target 7
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 5
     target 8
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 5
     target 9
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 5
     target 13
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 5
     target 14
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 6
     target 7
-    bandwidth 100000
+    LinkLabel "Completed"
   ]
   edge [
     source 8
     target 9
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 8
     target 13
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 9
     target 13
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 9
     target 16
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 9
     target 22
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 10
     target 11
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 10
     target 13
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 10
     target 14
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 11
     target 12
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 11
     target 13
-    bandwidth 100000
+    LinkLabel "Completed"
   ]
   edge [
     source 11
     target 14
-    bandwidth 1000
+    LinkLabel "Completed"
   ]
   edge [
     source 12
     target 24
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 12
     target 13
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 13
     target 15
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 13
     target 16
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 13
     target 17
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 13
     target 22
-    bandwidth 10000
+    LinkLabel "Completed"
   ]
   edge [
     source 15
     target 16
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 15
     target 17
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 15
     target 21
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 16
     target 17
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 17
     target 18
-    bandwidth 100000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 17
     target 19
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 17
     target 20
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 17
     target 21
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 17
     target 22
-    bandwidth 40000
+    LinkLabel "Completed"
   ]
   edge [
     source 18
     target 21
-    bandwidth 1000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 19
     target 20
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 21
     target 22
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 22
     target 23
-    bandwidth 100000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 22
     target 24
-    bandwidth 40000
+    LinkLabel "Completion 2007-2008"
   ]
   edge [
     source 23
     target 24
-    bandwidth 10000
+    LinkLabel "Completion 2007-2008"
   ]
 ]

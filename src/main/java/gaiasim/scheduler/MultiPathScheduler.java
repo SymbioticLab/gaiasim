@@ -1,6 +1,6 @@
 package gaiasim.scheduler;
 
-import gaiasim.mmcf.MaxFlowOptimizer;
+import gaiasim.mmcf.LoadBalanceOptimizer;
 import gaiasim.network.*;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class MultiPathScheduler extends PoorManScheduler {
         }
 
         // Find paths for each flow
-        MaxFlowOptimizer.MaxFlowOutput mf_out = MaxFlowOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
+        LoadBalanceOptimizer.LoadBalanceOutput mf_out = LoadBalanceOptimizer.glpk_optimize(combined_coflow, net_graph_, links_);
 
         for (Flow f : combined_coflow.flows_.values()) {
             ArrayList<Link> link_vals = mf_out.flow_link_bw_map_.get(f.int_id_);
@@ -100,10 +100,16 @@ public class MultiPathScheduler extends PoorManScheduler {
                         min_bw = link_bw;
                     }
                 }
+
+                if (min_bw < 0) {
+                    min_bw = 0;
+                    System.err.println("WARNING: min_bw < 0.");
+                }
+
                 p.bandwidth_ = min_bw;
                 f.rate_ += min_bw;
             }
-            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
+            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_toString());
         }
     }
 }

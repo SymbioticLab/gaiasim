@@ -30,7 +30,7 @@ public class BaselineScheduler extends Scheduler {
 
     public double progress_flow(Flow f) {
         f.transmitted_ += f.rate_ * Constants.SIMULATION_TIMESTEP_SEC;
-        return f.rate_;
+        return f.rate_ * ( f.paths_.get(0).node_list_.size() - 1 ); // actual BW usage = pathBW * hops
     }
 
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,

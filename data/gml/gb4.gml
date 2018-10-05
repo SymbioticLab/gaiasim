@@ -116,7 +116,7 @@ graph [
   edge [
     source 8
     target 10
-    bandwidth 500
+    bandwidth 1000
   ]
   edge [
     source 9

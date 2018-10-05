@@ -4,6 +4,7 @@ import com.opencsv.CSVWriter;
 import gaiasim.network.Coflow;
 import gaiasim.network.Flow;
 import gaiasim.network.NetGraph;
+import gaiasim.network.Pathway;
 import gaiasim.scheduler.*;
 import gaiasim.spark.DAGReader;
 import gaiasim.spark.Job;
@@ -12,6 +13,8 @@ import gaiasim.util.Constants;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.*;
+
+@SuppressWarnings("Duplicates")
 
 public class Manager {
     public NetGraph net_graph_;
@@ -38,13 +41,18 @@ public class Manager {
 
     // Some state variables moved out of simulate():
     boolean coflow_finished = false;    // Whether a coflow finished
+    boolean isOneByOne;
+
+    public int droppedCnt = 0;
 
     public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
-                   double bw_factor, double workload_factor) throws java.io.IOException {
+                   double bw_factor, double workload_factor, boolean is_one_by_one) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file, bw_factor);
         jobs_ = DAGReader.read_trace_new(trace_file, net_graph_, workload_factor);
+
+        this.isOneByOne = is_one_by_one;
 
         if (scheduler_type.equals("baseline")) {
             scheduler_ = new BaselineScheduler(net_graph_);
@@ -58,6 +66,11 @@ public class Manager {
             scheduler_ = new SwanScheduler(net_graph_);
         } else if (scheduler_type.equals("dark")) {
             scheduler_ = new DarkScheduler(net_graph_);
+        } else if (scheduler_type.equals("rapier")) {
+            scheduler_ = new RapierScheduler(net_graph_, false);
+        } else if (scheduler_type.equals("rapier-nofg")) {
+            // Rapier without FlowGroup
+            scheduler_ = new RapierScheduler(net_graph_, true);
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");
@@ -87,6 +100,12 @@ public class Manager {
 
         // After completing a coflow, an owning job may have been completed
         Job owning_job = active_jobs_.get(Constants.get_job_id(c.id_));
+
+        // An owning job may also been aborted upon this coflow finish
+        if (owning_job == null) {
+            return;
+        }
+
         owning_job.finish_coflow(c.id_);
 
         if (owning_job.done()) {
@@ -162,22 +181,47 @@ public class Manager {
              (num_dispatched_jobs < total_num_jobs) || !active_jobs_.isEmpty();
              CURRENT_TIME_ += Constants.EPOCH_MILLI) {
 
-            // Add any jobs which should be added during this epoch
-            for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
-                Job j = jobs_by_time_.get(num_dispatched_jobs);
-
-                // If the next job to start won't start during this epoch, no
-                // further jobs should be considered.
-                if (j.start_time_ >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
-
-                    // TODO(jack): Add method which may be called here.
-                    // Perhaps we want the emulator to simply sleep while waiting.
-                    break;
+            if (isOneByOne) {
+                if (active_jobs_.isEmpty()) {
+                    Job j = jobs_by_time_.get(num_dispatched_jobs);
+                    ready_jobs.add(j);
+                    num_dispatched_jobs++;
                 }
+            } else {
+                // Add any jobs which should be added during this epoch
+                for (; num_dispatched_jobs < total_num_jobs; num_dispatched_jobs++) {
+                    Job j = jobs_by_time_.get(num_dispatched_jobs);
 
-                ready_jobs.add(j);
+                    // If the next job to start won't start during this epoch, no
+                    // further jobs should be considered.
+                    if (j.start_time_ >= (CURRENT_TIME_ + Constants.EPOCH_MILLI)) {
 
-            } // dispatch jobs loop
+                        // TODO(jack): Add method which may be called here.
+                        // Perhaps we want the emulator to simply sleep while waiting.
+                        break;
+                    }
+
+                    ready_jobs.add(j);
+
+                } // dispatch jobs loop
+            }
+
+            for (Map.Entry<String, Coflow> cfe : active_coflows_.entrySet()) {
+                Coflow cf = cfe.getValue();
+                if (cf.dropped) {
+                    cf.done_ = true;
+
+                    scheduler_.remove_coflow(cf);
+
+                    Job owning_job = active_jobs_.get(Constants.get_job_id(cf.id_));
+
+                    // also drop owning_job
+                    if (owning_job != null) {
+                        active_jobs_.remove(Constants.get_job_id(cf.id_));
+                    }
+
+                }
+            }
 
             // essentially YARN logic: (i) insert job (ii) handle CF_FIN
             if (coflow_finished || !ready_jobs.isEmpty()) {
@@ -264,6 +308,8 @@ public class Manager {
 
             // Keep track of total allocated bandwidth across ALL flows
             double totalBW = 0.0;
+            double dataRate = 0.0;
+
 
             // Make progress on all running flows
             for (long ts = Constants.SIMULATION_TIMESTEP_MILLI;
@@ -278,8 +324,14 @@ public class Manager {
                     Flow f = active_flows_.get(k);
 
                     totalBW += scheduler_.progress_flow(f);
+                    // change to dataRate here
+                    for (Pathway p : f.paths_){
+                        dataRate += p.bandwidth_;
+                    }
+
                     if (f.transmitted_ + Constants.EPSILON >= f.volume_) { // ignoring the remaining 0.01MBit
                         finished.add(f);
+                        f.transmitted_ = f.volume_; // so that the remain_volume = 0
                     }
                 }
 
@@ -298,6 +350,10 @@ public class Manager {
                         coflow_finished = true;
                         scheduler_.remove_coflow(owning_coflow);
                     } // if coflow.done
+
+                    if (f.scheduled_alone) {
+                        coflow_finished = true;
+                    }
                 } // for finished
 
                 // If any flows finished during this round, update the bandwidth allocated
@@ -309,8 +365,8 @@ public class Manager {
 
             // Not printing Timestamp every time. every 1s or every change happens.
             if (num_dispatched_jobs != last_num_jobs || active_jobs_.size() != last_job_size || (CURRENT_TIME_ - last_time >= 1000)) {
-                System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f\n",
-                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW);
+                System.out.printf("Timestep: %6d Running: %3d Started: %5d BW: %10.0f DataRate: %10.0f\n",
+                        CURRENT_TIME_ + Constants.EPOCH_MILLI, active_jobs_.size(), num_dispatched_jobs, totalBW, dataRate);
 
                 // Adds stalling detector
                 if (num_dispatched_jobs >= jobs_.size() && active_flows_.isEmpty() && !active_jobs_.isEmpty()) {
@@ -327,6 +383,7 @@ public class Manager {
             }
         } // while stuff to do
 
+        System.out.println("Total dropped: " + scheduler_.droppedCnt + " . missed after admission (contains duplicate): " + scheduler_.missDDLCNT);
         System.out.println("Simulation DONE");
 
         // Save output statistics
@@ -335,6 +392,13 @@ public class Manager {
 
     public boolean trimCoflow(Coflow cf, long curTime) {
         boolean cfFinished = true; // init a flag
+
+        // don't check twice
+        if(cf.isTrimmed) {
+            return false;
+        } else {
+            cf.isTrimmed = true;
+        }
 
         // need iterator because we need to remove while iterating
         Iterator<Map.Entry<String, Flow>> iter = cf.flows_.entrySet().iterator();

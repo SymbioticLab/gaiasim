@@ -16,19 +16,20 @@ param fe{i in F};
 var f{i in F, u in N, v in N} >= 0;
 /* flow variable */
 
+var UM;
+/* maximum utilization */
 
-var FR{i in F};
-/*FlowRate variable */
+minimize A: UM;
+/* minimize the maximum utilization */
 
-
-maximize A: sum{i in F} FR[i];
-/* Max the Flow */
+s.t. optcon{u in N, v in N}: sum{i in F} f[i,u,v] <= UM;
+/* optimization constraint */
 
 s.t. capcon{u in N, v in N}: sum{i in F} f[i,u,v] <= b[u,v];
 /* capacity constraint */
 
-s.t. demsat1{i in F}: sum{w in N} f[i, fs[i], w] - sum{w in N} f[i, w, fs[i]] = FR[i];
-s.t. demsat2{i in F}: sum{w in N} f[i, fe[i], w] - sum{w in N} f[i, w, fe[i]] = -FR[i];
+s.t. demsat1{i in F}: sum{w in N} f[i, fs[i], w] - sum{w in N} f[i, w, fs[i]] = 1;
+s.t. demsat2{i in F}: sum{w in N} f[i, fe[i], w] - sum{w in N} f[i, w, fe[i]] = -1;
 /* demand satisfaction */
 
 s.t. flocon{i in F, u in N diff {fs[i], fe[i]}}: sum{w in N} f[i, u, w] - sum{w in N} f[i, w, u] = 0;

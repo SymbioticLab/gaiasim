@@ -9,16 +9,16 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @SuppressWarnings("Duplicates")
-public class MMCFOptimizer {
+public class LoadBalanceOptimizer {
 
     static NetGraph netGraph;
     private static ArrayList<Integer> flow_int_id_list;
 
-    public static MMCFOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links, double scale_down_factor) throws Exception {
-        long lastTime = System.currentTimeMillis();
+    public static LoadBalanceOutput glpk_optimize(Coflow coflow, NetGraph net_graph, SubscribedLink[][] links) throws Exception {
         netGraph = net_graph;
+        long lastTime = System.currentTimeMillis();
         String path_root = "/tmp";
-        String mod_file_name = path_root + "/MinCCT.mod";
+        String mod_file_name = path_root + "/LoadBalance.mod";
         StringBuilder dat_string = new StringBuilder();
         dat_string.append("data;\n\n");
 
@@ -42,7 +42,7 @@ public class MMCFOptimizer {
 
         dat_string.append("set F:=");
         for (int fid : flow_int_id_list) {
-            dat_string.append(" f" + fid); // NOTE: Original mmcf did fid-1
+            dat_string.append(" f" + fid);
         }
         dat_string.append(";\n\n");
 
@@ -57,7 +57,7 @@ public class MMCFOptimizer {
                 if (i == j || links[i][j] == null) {
                     dat_string.append(" 0.000");
                 } else {
-                    dat_string.append(String.format(" %.3f", links[i][j].remaining_bw(scale_down_factor)));
+                    dat_string.append(String.format(" %.3f", links[i][j].remaining_bw()));
                 }
             }
             dat_string.append("\n");
@@ -78,13 +78,6 @@ public class MMCFOptimizer {
         }
         dat_string.append(";\n\n");
 
-        dat_string.append("param fv:=\n");
-        for (int fid : flow_int_id_list) {
-            String flow_id = flow_int_id_to_id.get(fid);
-            dat_string.append(String.format(" f%d %.3f\n", fid, coflow.flows_.get(flow_id).remaining_volume()));
-        }
-        dat_string.append(";\n\n");
-
         dat_string.append("end;\n");
 
         String dat_file_name = path_root + "/" + coflow.id_ + ".dat";
@@ -100,15 +93,94 @@ public class MMCFOptimizer {
 
         // Solve the LP
         String out_file_name = path_root + "/" + coflow.id_ + ".out";
-//        MMCFOutput mmcf_out = solveLP_Old(mod_file_name, dat_file_name, out_file_name);
-        MMCFOutput mmcf_out = solveLP_New(mod_file_name, dat_file_name, out_file_name);
+//      LoadBalanceOutput mf_out = solveLP_Old(mod_file_name, dat_file_name, out_file_name);
+        LoadBalanceOutput mf_out = solveLP_New(mod_file_name, dat_file_name, out_file_name);
 
         long curTime = System.currentTimeMillis();
 //        System.out.println("Calling LP (including File I/O) cost (ms) : " + (curTime - lastTime));
-        return mmcf_out;
+        return mf_out;
     }
 
-    private static MMCFOutput solveLP_New(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
+    private static LoadBalanceOutput solveLP_Old(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
+
+        String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
+
+        try {
+            Process p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        // Read the output
+        LoadBalanceOutput mf_out = new LoadBalanceOutput();
+        boolean missing_pieces = false;
+        FileReader fr = new FileReader(out_file_name);
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        String fs = "";
+        String fe = "";
+        int fi_int = -1;
+        while ((line = br.readLine()) != null) {
+            line = line.trim();
+
+            // concatenate the lines if the first line has "[", and ends with "]"
+            if (line.contains("[") && (line.substring(line.length() - 1).equals("]"))) {
+                line = line + br.readLine();
+            }
+
+            if (line.contains("Objective")) {
+                double mu = Double.parseDouble(line.split("\\s+")[3]);
+                if (mu < 0.00001) {
+                    System.out.println("Given flows cannot be allocated on current network");
+                    mf_out.max_util = -1.0;
+                    return mf_out;
+                } else {
+                    mf_out.max_util = mu;
+                }
+            } else if (line.contains("f[f") && !line.contains("NL")) {
+                String[] splits = line.split("\\s+");
+                String fsplits[] = splits[1].substring(3).split(",");
+                fi_int = Integer.parseInt(fsplits[0]);
+                fs = fsplits[1];
+                fe = fsplits[2].split("]")[0];
+                try {
+                    // Quick hack to round to nearest 2 decimal places
+                    double bw = Math.round(Double.parseDouble(splits[3]) * 100.0) / 100.0;
+                    if (bw >= 0.01 && !fs.equals(fe)) {
+                        if (mf_out.flow_link_bw_map_.get(fi_int) == null) {
+                            mf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
+                        }
+                        mf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
+                    }
+                    missing_pieces = false;
+                } catch (Exception e) {
+                    missing_pieces = true;
+                }
+            } else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
+                String[] splits = line.split("\\s+");
+                try {
+                    double bw = Math.round(Math.abs(Double.parseDouble(splits[1]) * 100.0) / 100.0);
+                    if (bw >= 0.01 && !fs.equals(fe)) {
+                        // At this point the flow id should be registered in the map
+                        mf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
+                    }
+                    missing_pieces = false;
+                } catch (Exception e) {
+                    missing_pieces = true;
+                }
+            } else if (line.contains("alpha")) {
+                missing_pieces = false;
+            }
+        }
+        br.close();
+
+        return mf_out;
+    }
+
+
+    private static LoadBalanceOutput solveLP_New(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
         String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -w " + out_file_name;
 
         long startTime = System.currentTimeMillis();
@@ -126,13 +198,13 @@ public class MMCFOptimizer {
         System.out.println("LP time: " + startTime);
 
         // Read the output
-        MMCFOutput mmcf_out = parsePlainTextOutput(out_file_name);
+        LoadBalanceOutput mf_out = parsePlainTextOutput(out_file_name);
 
-        return mmcf_out;
+        return mf_out;
     }
 
-    private static MMCFOutput parsePlainTextOutput(String out_file_name) throws IOException {
-        MMCFOutput mmcf_out = new MMCFOutput();
+    private static LoadBalanceOutput parsePlainTextOutput(String out_file_name) throws IOException {
+        LoadBalanceOutput mf_out = new LoadBalanceOutput();
         FileReader fr = new FileReader(out_file_name);
         BufferedReader br = new BufferedReader(fr);
         String line;
@@ -157,13 +229,13 @@ public class MMCFOptimizer {
             String[] splits = line.split(" ");
             int prim_stat = Integer.parseInt(splits[0]);
             int dual_stat = Integer.parseInt(splits[1]);
-            double alpha = Double.parseDouble(splits[2]);
-            if (alpha < Constants.VALID_CCT_THR || prim_stat != 2 || dual_stat !=2 ){
+            double mu = Double.parseDouble(splits[2]);
+            if (mu < Constants.VALID_CCT_THR || prim_stat != 2 || dual_stat !=2 ){
                 System.out.println("Given coflow cannot be allocated on current network");
-                mmcf_out.completion_time_ = -1.0;
-                return mmcf_out;
+                mf_out.max_util = -1.0;
+                return mf_out;
             } else {
-                mmcf_out.completion_time_ = 1.0 / alpha;
+                mf_out.max_util = mu;
             }
         }
         else {
@@ -199,10 +271,10 @@ public class MMCFOptimizer {
 //                        rate = 0;
 //                    }
 
-                    if (mmcf_out.flow_link_bw_map_.get(fi_int) == null) {
-                        mmcf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
+                    if (mf_out.flow_link_bw_map_.get(fi_int) == null) {
+                        mf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
                     }
-                    mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(String.valueOf(fs), String.valueOf(fe), rate));
+                    mf_out.flow_link_bw_map_.get(fi_int).add(new Link(String.valueOf(fs), String.valueOf(fe), rate));
 
                 }
             }
@@ -210,94 +282,11 @@ public class MMCFOptimizer {
 
         br.close();
 
-        return mmcf_out;
+        return mf_out;
     }
 
-    // the old method, invokes glpk -o
-    private static MMCFOutput solveLP_Old(String mod_file_name, String dat_file_name, String out_file_name) throws IOException {
-
-        String command = "glpsol -m " + mod_file_name + " -d " + dat_file_name + " -o " + out_file_name;
-
-        long startTime = System.currentTimeMillis();
-        try {
-            Process p = Runtime.getRuntime().exec(command);
-            p.waitFor();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        startTime = System.currentTimeMillis() - startTime;
-        System.out.println("LP time: " + startTime);
-
-        // Read the output
-        MMCFOutput mmcf_out = new MMCFOutput();
-        boolean missing_pieces = false;
-        FileReader fr = new FileReader(out_file_name);
-        BufferedReader br = new BufferedReader(fr);
-        String line;
-        String fs = "";
-        String fe = "";
-        int fi_int = -1;
-        while ((line = br.readLine()) != null) {
-            line = line.trim();
-
-            // concatenate the lines if the first line has "[", and ends with "]"
-            if (line.contains("[") && (line.substring(line.length() - 1).equals("]"))) {
-                line = line + br.readLine();
-            }
-
-            if (line.contains("Objective")) {
-                double alpha = Double.parseDouble(line.split("\\s+")[3]);
-                if (alpha < 0.00001) {
-                    System.out.println("Given coflow cannot be allocated on current network");
-                    mmcf_out.completion_time_ = -1.0;
-                    return mmcf_out;
-                } else {
-                    mmcf_out.completion_time_ = 1.0 / alpha;
-                }
-            } else if (line.contains("f[f") && !line.contains("NL")) {
-                String[] splits = line.split("\\s+");
-                String fsplits[] = splits[1].substring(3).split(",");
-                fi_int = Integer.parseInt(fsplits[0]);
-                fs = fsplits[1];
-                fe = fsplits[2].split("]")[0];
-                try {
-                    // Quick hack to round to nearest 2 decimal places
-                    double bw = Math.round(Double.parseDouble(splits[3]) * 100.0) / 100.0;
-                    if (bw >= 0.01 && !fs.equals(fe)) {
-                        if (mmcf_out.flow_link_bw_map_.get(fi_int) == null) {
-                            mmcf_out.flow_link_bw_map_.put(fi_int, new ArrayList<>());
-                        }
-                        mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
-                    }
-                    missing_pieces = false;
-                } catch (Exception e) {
-                    missing_pieces = true;
-                }
-            } else if (!line.contains("f[f") && !line.contains("NL") && missing_pieces) {
-                String[] splits = line.split("\\s+");
-                try {
-                    double bw = Math.round(Math.abs(Double.parseDouble(splits[1]) * 100.0) / 100.0);
-                    if (bw >= 0.01 && !fs.equals(fe)) {
-                        // At this point the flow id should be registered in the map
-                        mmcf_out.flow_link_bw_map_.get(fi_int).add(new Link(fs, fe, bw));
-                    }
-                    missing_pieces = false;
-                } catch (Exception e) {
-                    missing_pieces = true;
-                }
-            } else if (line.contains("alpha")) {
-                missing_pieces = false;
-            }
-        }
-        br.close();
-
-        return mmcf_out;
-    }
-
-    public static class MMCFOutput {
-        public double completion_time_ = 0.0;
+    public static class LoadBalanceOutput {
+        public double max_util = 0.0;
         public HashMap<Integer, ArrayList<Link>> flow_link_bw_map_
                 = new HashMap<>();
     }

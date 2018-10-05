@@ -46,6 +46,8 @@ public class DAGReader {
         BufferedReader br = new BufferedReader(fr);
 
         String line;
+        int flowIDCounter = 0; // make flow_int_ID unique in all jobs
+
         while ((line = br.readLine()) != null) { // for each job
 
             // Ignore comments
@@ -102,7 +104,7 @@ public class DAGReader {
             ArrayListMultimap<String, Flow> tmpCoflowList = ArrayListMultimap.create();
 
             ArrayList<Flow> tmpFlowList = new ArrayList<>();
-            int flowIDCounter = 0;
+            HashMap<String, Integer> tmpDDLMap = new HashMap<>();
 
             // Map coflow and Determine coflow dependencies
             line = br.readLine();
@@ -113,6 +115,14 @@ public class DAGReader {
                 splits = line.split(" ");
                 String src_stage = splits[0];
                 String dst_stage = splits[1];
+
+                if (splits.length == 4 ){
+                    double ddl = Double.parseDouble(splits[3]);
+                    int ddl_Millis = (int) ( ddl * 1000  );
+                    tmpDDLMap.put (dag_id + ":" + dst_stage , ddl_Millis);
+                    // Add DDL at the shuffle level
+
+                }
 
                 // Direct read Double data
                 double data_size = Double.parseDouble(splits[2]) * workload_factor;
@@ -153,7 +163,7 @@ public class DAGReader {
 
             } // end of current DAG
             // flush the Coflows from the buffer to dag, this also creates the coflow instances.
-            dr.addCoflows(tmpCoflowList);
+            dr.addCoflows(tmpCoflowList, tmpDDLMap);
             dr.updateRoot();
 
             // create the actual job using the dependency information from dr

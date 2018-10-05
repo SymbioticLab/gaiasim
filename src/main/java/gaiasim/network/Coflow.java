@@ -11,9 +11,12 @@ public class Coflow {
     public String id_;
     public HashMap<String, Flow> flows_ = new HashMap<>();
     public double volume_ = 0.0;
+    public long last_scheduled_timestamp = -1;
     public long start_timestamp_ = -1;
     public long end_timestamp_ = -1;
     public boolean done_ = false;
+    public boolean isTrimmed = false;
+    public boolean dropped = false;
 
     // The location of coflow-initiating tasks. For example, these would be
     // the locations of map tasks in a map-reduce shuffle.
@@ -30,6 +33,8 @@ public class Coflow {
     // DarkScheduler-specific variables
     public int current_queue_ = 0;
     public double transmitted_ = 0.0;
+    public Integer ddl_Millis = -1;
+    public double minCCT = -2;
 
     public Coflow(String id, String[] task_locs) {
         id_ = id;
