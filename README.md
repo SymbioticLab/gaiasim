@@ -1,3 +1,5 @@
+*IMPORTANT*: you must have glpk v4.57 installed and `glpsol` must be in your `$PATH` before running.
+
 For a clean build from the command line, run:
 ```
 mvn clean package
