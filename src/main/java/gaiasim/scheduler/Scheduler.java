@@ -48,6 +48,7 @@ public abstract class Scheduler {
     public abstract HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows,
                                                          long timestamp) throws Exception;
 
+    // TODO need doc on this method.
     public abstract void update_flows(HashMap<String, Flow> flows);
 
     // Called when a new coflow is added; only used by the DarkScheduler for now.

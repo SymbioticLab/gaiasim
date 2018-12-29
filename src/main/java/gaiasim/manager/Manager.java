@@ -74,7 +74,7 @@ public class Manager {
         } else if (scheduler_type.equals("siphon")) {
             // Rapier without FlowGroup
             // FIXME hardcode here
-            scheduler_ = new SiphonScheduler(net_graph_, "/tmp/cct.csv");
+            scheduler_ = new SiphonScheduler(net_graph_, "/tmp/inputcct.csv");
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");

@@ -19,6 +19,8 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("Duplicates")
+
 public class SiphonScheduler extends BaselineScheduler {
 
     int monteCarloDepth = 10; // default depth = 10
@@ -58,10 +60,12 @@ public class SiphonScheduler extends BaselineScheduler {
     @Override
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, long timestamp) throws Exception {
         flows_.clear();
+        reset_links();
 
         // Hashmap or list?
 //        HashMap<String, Coflow> coflows_to_schedule = (HashMap<String, Coflow>) coflows.clone();
-        Collection<Coflow> coflows_to_schedule = coflows.values();
+        Collection<Coflow> coflows_to_schedule = new LinkedList<>();
+        coflows_to_schedule.addAll(coflows.values());
 
         while (!coflows_to_schedule.isEmpty()) {
 
@@ -69,9 +73,15 @@ public class SiphonScheduler extends BaselineScheduler {
             Coflow cf_to_schedule = findNextCoflow_fromCCT(coflows_to_schedule);
 
             // We consider one coflow at a time
-            coflows_to_schedule.clear();
+//            coflows_to_schedule.clear();
+            // remove the scheduled coflow from the collection and repeat the scheduling process
+            coflows_to_schedule.remove(cf_to_schedule);
 
-            // TODO verify that this coflow is fully schedulable?
+            // verify that this coflow is fully schedulable
+            if (!fully_schedulable(cf_to_schedule)) {
+                System.out.println("Coflow " + cf_to_schedule.id_ + " is not fully schedulable.");
+                continue;
+            }
 
             // TODO LFGF to schedule flows of a Coflow
             // 1. group flows by their reduce task (dst loc), and find the ones with the biggest size
@@ -81,9 +91,8 @@ public class SiphonScheduler extends BaselineScheduler {
 
             LinkedList<Map.Entry<String, Double>> FG_Size_list = new LinkedList<>(FG_Size_Map.entrySet());
             FG_Size_list.sort(Map.Entry.comparingByValue());
-            // TODO break point here and verify the order
 
-            // 2. TODO find the shortest path for each flow and allocate BW
+            // 2. find the shortest path for each flow and allocate BW
 // Ignore coflow that cannot be scheduled in its entirety
 
             for (Map.Entry<String, Double> fge : FG_Size_list) {
@@ -94,37 +103,57 @@ public class SiphonScheduler extends BaselineScheduler {
                 for (Map.Entry<String, Flow> flowEntry : cf_to_schedule.flows_.entrySet()) {
                     Flow f = flowEntry.getValue();
                     // Ensure this flow is not done and also is within the prioritized group
-                    if (f.done_ || f.dst_loc_.equals(dst_loc)) {
+                    if (f.done_ || !f.dst_loc_.equals(dst_loc)) {
                         continue;
                     }
 
+                    System.out.println("Scheduling Flow " + f.id_);
+
+                    // This is the shortest path
                     Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
                     f.paths_.clear();
                     f.paths_.add(p);
 
+                    // Subscribe all links on this path
                     for (int i = 0; i < p.node_list_.size() - 1; i++) {
                         int src = Integer.parseInt(p.node_list_.get(i));
                         int dst = Integer.parseInt(p.node_list_.get(i + 1));
                         links_[src][dst].subscribers_.addAll(f.paths_);
                     }
 
+                    // Init the start time stamp
                     if (f.start_timestamp_ == -1) {
                         f.start_timestamp_ = timestamp;
                     }
 
                     flows_.put(f.id_, f);
+
+                    // Reserve full BW for this flow, because it is scheduled earlier than other flows
+                    double min_bw = Double.MAX_VALUE;
+
+                    ArrayList<String> nodes = f.paths_.get(0).node_list_;
+                    for (int i = 0; i < nodes.size() - 1; i++) {
+                        int src = Integer.parseInt(nodes.get(i));
+                        int dst = Integer.parseInt(nodes.get(i + 1));
+                        double link_bw = links_[src][dst].bw_per_flow();
+
+                        if (link_bw < min_bw) {
+                            min_bw = link_bw;
+                        }
+                    }
+
+                    f.rate_ = min_bw;
+                    f.paths_.get(0).bandwidth_ = min_bw;
+                    System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
                 }
-
             }
-
-
-            // TODO After scheduling, run the bottleneck shifting algorithm for multipath
-
-            // TODO remove the schedule coflow from the collection and run again
 
         }
 
-        update_flows(flows_);       // FIXME: verify
+        // TODO: verify this
+        update_flows(flows_);
+
+        // TODO After scheduling, run the bottleneck shifting algorithm for multipath
 
         return flows_;
     }
@@ -152,27 +181,55 @@ public class SiphonScheduler extends BaselineScheduler {
         return ret;
     }
 
-    // Updates the rates of flows
-    public void update_flows(HashMap<String, Flow> flows) {
-        for (String k : flows.keySet()) {
-            Flow f = flows.get(k);
+    // Do not override here.
+//    // Updates the rates of flows
+//    public void update_flows(HashMap<String, Flow> flows) {
+//        // For each flow find bottleneck link and get its BW. (Do we need to fair share here)
+//        for (Map.Entry<String, Flow> flowEntry : flows.entrySet()) {
+//            Flow f = flowEntry.getValue();
+//
+//            double min_bw = Double.MAX_VALUE;
+//
+//            ArrayList<String> nodes = f.paths_.get(0).node_list_;
+//            for (int i = 0; i < nodes.size() - 1; i++) {
+//                int src = Integer.parseInt(nodes.get(i));
+//                int dst = Integer.parseInt(nodes.get(i + 1));
+//                double link_bw = links_[src][dst].bw_per_flow();
+//
+//                if (link_bw < min_bw) {
+//                    min_bw = link_bw;
+//                }
+//            }
+//
+//            f.rate_ = min_bw;
+//            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
+//        }
+//    }
 
-            double min_bw = Double.MAX_VALUE;
+    // Check if a coflow is fully scheduleable, borrowed from Varys.
+    private boolean fully_schedulable(Coflow c) {
+        boolean no_overlap = true;
 
-            ArrayList<String> nodes = f.paths_.get(0).node_list_;
-            for (int i = 0; i < nodes.size() - 1; i++) {
-                int src = Integer.parseInt(nodes.get(i));
-                int dst = Integer.parseInt(nodes.get(i + 1));
-                double link_bw = links_[src][dst].bw_per_flow();
-
-                if (link_bw < min_bw) {
-                    min_bw = link_bw;
-                }
+        for (String k_ : c.flows_.keySet()) {
+            Flow f = c.flows_.get(k_);
+            if (f.done_) {
+                continue;
             }
 
-            f.rate_ = min_bw;
-            System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
+            Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
+            f.paths_.clear();
+
+            for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                int src = Integer.parseInt(p.node_list_.get(i));
+                int dst = Integer.parseInt(p.node_list_.get(i + 1));
+                if (!links_[src][dst].subscribers_.isEmpty()) {
+                    no_overlap = false;
+                    break;
+                }
+            }
         }
+
+        return no_overlap;
     }
 
    /* private Coflow findNextCoflow_fromFCT(Collection<Coflow> coflows_to_schedule) {
