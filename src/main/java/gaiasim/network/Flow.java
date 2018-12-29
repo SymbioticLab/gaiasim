@@ -10,6 +10,11 @@ public class Flow {
     public String dst_loc_;
     public double volume_;
     public double transmitted_;
+
+    public String getDst_loc_() {
+        return dst_loc_;
+    }
+
     public double rate_; // in Mbps
     public ArrayList<Pathway> paths_ = new ArrayList<>();
     public Pathway max_bw_path = null;
