@@ -130,6 +130,12 @@ public class GaiaSim {
         boolean isOneByOne = cmd.hasOption("onebyone");
         args_map.put("is_one_by_one", String.valueOf(isOneByOne));
 
+        if (cmd.hasOption("csv")){
+            args_map.put("csv", cmd.getOptionValue("csv"));
+        } else {
+            args_map.put("csv", null);
+        }
+
         return args_map;
     }
 
@@ -154,7 +160,8 @@ public class GaiaSim {
                     args_map.get("scheduler"), args_map.get("outdir"),
                     Double.parseDouble(args_map.get("bw_factor")),
                     Double.parseDouble(args_map.get("workload_factor")),
-                    Boolean.parseBoolean(args_map.get("is_one_by_one")));
+                    Boolean.parseBoolean(args_map.get("is_one_by_one")),
+                    args_map.get("csv"));
             m.simulate();
         } catch (Exception e) {
             e.printStackTrace();

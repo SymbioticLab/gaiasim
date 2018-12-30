@@ -47,7 +47,7 @@ public class Manager {
 
     public Manager(String gml_file, String trace_file,
                    String scheduler_type, String outdir,
-                   double bw_factor, double workload_factor, boolean is_one_by_one) throws java.io.IOException {
+                   double bw_factor, double workload_factor, boolean is_one_by_one, String csv) throws java.io.IOException {
         outdir_ = outdir;
         net_graph_ = new NetGraph(gml_file, bw_factor);
         jobs_ = DAGReader.read_trace_new(trace_file, net_graph_, workload_factor);
@@ -74,7 +74,7 @@ public class Manager {
         } else if (scheduler_type.equals("siphon")) {
             // Rapier without FlowGroup
             // FIXME hardcode here
-            scheduler_ = new SiphonScheduler(net_graph_, "/tmp/inputcct.csv");
+            scheduler_ = new SiphonScheduler(net_graph_, csv);
         } else {
             System.out.println("Unrecognized scheduler type: " + scheduler_type);
             System.out.println("Scheduler must be one of { baseline, recursive-remain-flow }");

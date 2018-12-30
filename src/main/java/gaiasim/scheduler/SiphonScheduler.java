@@ -148,14 +148,67 @@ public class SiphonScheduler extends BaselineScheduler {
                 }
             }
 
+            // This coflow finished scheduling.
+            // TODO After scheduling, run the bottleneck shifting algorithm for multipath
+            shiftTraffic(cf_to_schedule, flows_);
+
         }
 
-        // TODO: verify this
-        update_flows(flows_);
-
-        // TODO After scheduling, run the bottleneck shifting algorithm for multipath
+        // Performance gets slightly better if not enabling this. about 10%
+//        update_flows(flows_);
 
         return flows_;
+    }
+
+    private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_) {
+        // TODO verify here
+        for (int iter = 0; iter < multipathIterations; iter++) {
+            // Each iteration we find one bottleneck link, and shift its traffic
+            // Bottleneck link: the link that has the highest utilization
+
+            // Search for highest utilization link
+            Map<SubscribedLink, Double> linkUtilMap = new HashMap<>();
+            int maxLinkSrc = -1;
+            int maxLinkDst = -1;
+            double maxLinkUtil = 0;
+
+            // iterate through scheduled flows, and add up the link utilization
+            for (Map.Entry<String, Flow> flowEntry : flows_.entrySet()) {
+                Flow flow = flowEntry.getValue();
+
+                for (Pathway pathway : flow.paths_) {
+                    for (int i = 0; i < pathway.node_list_.size() - 1; i++) {
+                        int src = Integer.parseInt(pathway.node_list_.get(i));
+                        int dst = Integer.parseInt(pathway.node_list_.get(i + 1));
+
+                        SubscribedLink link = links_[src][dst];
+                        if (linkUtilMap.containsKey(link)) {
+                            double sumUtil = linkUtilMap.get(link) + flow.remaining_volume() / link.max_bw_;
+                            linkUtilMap.put(link, sumUtil);
+                            if (sumUtil > maxLinkUtil) {
+                                maxLinkUtil = sumUtil;
+                                maxLinkSrc = src;
+                                maxLinkDst = dst;
+                            }
+                        } else {
+                            double sumUtil = flow.remaining_volume() / link.max_bw_;
+                            linkUtilMap.put(link, sumUtil);
+                            if (sumUtil > maxLinkUtil) {
+                                maxLinkUtil = sumUtil;
+                                maxLinkSrc = src;
+                                maxLinkDst = dst;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Now we have found the maxUtil Link, see if we can divert any traffic
+            // Do an exhaustive search of all possible path between these two nodes,
+            // along all paths that have any remaining BW.
+
+
+        }
     }
 
     // Find the next coflow to schedule (the one with min CCT)
