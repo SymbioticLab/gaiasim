@@ -150,17 +150,17 @@ public class SiphonScheduler extends BaselineScheduler {
 
             // This coflow finished scheduling.
             // TODO After scheduling, run the bottleneck shifting algorithm for multipath
-            shiftTraffic(cf_to_schedule, flows_);
+            shiftTraffic(cf_to_schedule, flows_, timestamp);
 
         }
 
-        // Performance gets slightly better if not enabling this. about 10%
-//        update_flows(flows_);
+        // Performance gets slightly better if not enabling this. about 10%. But we should enable this
+        update_flows(flows_);
 
         return flows_;
     }
 
-    private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_) {
+    private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_, long timestamp) {
         // TODO verify here
         for (int iter = 0; iter < multipathIterations; iter++) {
             // Each iteration we find one bottleneck link, and shift its traffic
@@ -207,7 +207,116 @@ public class SiphonScheduler extends BaselineScheduler {
             // Do an exhaustive search of all possible path between these two nodes,
             // along all paths that have any remaining BW.
 
+            // A BFS search for path
+            boolean found_a_path = false;
+            int s = maxLinkSrc;
+            int d = maxLinkDst;
+            LinkedList<Integer> temp;
 
+            int V = net_graph_.nodes_.size() + 1;
+            // Mark all the vertices as not visited(By default set as false)
+            boolean visited[] = new boolean[V];
+
+            // Create a queue for BFS
+            LinkedList<LinkedList<Integer>> queue = new LinkedList<>();
+
+            // Mark the current node as visited and enqueue it
+            visited[s] = true;
+            LinkedList<Integer> list_s = new LinkedList<Integer>();
+            list_s.add(s);
+            queue.add(list_s);
+
+            // 'i' will be used to get all adjacent vertices of a vertex
+//            Iterator<Integer> i;
+            while (queue.size() != 0) {
+                // Dequeue a vertex from queue and print it
+                list_s = queue.poll();
+                s = list_s.getLast();
+
+                // Iterate through unvisited neighbors
+                for (int i = 0; i < V; i++) {
+                    if (i == s || links_[s][i] == null) {
+                        continue;
+                    }
+
+                    if (links_[s][i].max_bw_ <= links_[s][i].subscribers_.stream().mapToDouble(Pathway::getBandwidth_).sum()) {
+                        continue;
+                    }
+
+                    if (i == d) {
+                        // we found a path
+                        list_s.add(d);
+                        found_a_path = true;
+                        break;
+                    }
+
+                    if (!visited[i]) {
+                        visited[i] = true;
+
+                        // Create new LinkedList representing the path
+                        LinkedList<Integer> list_i = new LinkedList<Integer>();
+                        list_i.addAll(list_s);
+                        list_i.add(i);
+
+                        queue.add(list_i);
+                    }
+                }
+            }
+
+            if (found_a_path) {
+                // Now list_s is the path, now we need to assign a flow to this path
+
+                LinkedList<Flow> flows_to_share_path = new LinkedList<>();
+
+                for (Map.Entry<String, Flow> flowEntry : cf_to_schedule.flows_.entrySet()) {
+                    Flow f = flowEntry.getValue();
+                    if (Integer.parseInt(f.src_loc_) == maxLinkSrc && Integer.parseInt(f.dst_loc_) == maxLinkDst) {
+                        flows_to_share_path.add(f);
+                    }
+                }
+
+                double min_bw = Double.MAX_VALUE;
+                for (int i = 0; i < list_s.size() - 1; i++) {
+                    int src = list_s.get(i);
+                    int dst = list_s.get(i + 1);
+                    double link_bw = links_[src][dst].remaining_bw();
+
+                    if (link_bw < min_bw) {
+                        min_bw = link_bw;
+                    }
+                }
+
+                for (Flow flow : flows_to_share_path) {
+                    // TODO check this
+
+                    // Construct the path for each flow and add to it.
+                    Pathway p = new Pathway();
+                    p.bandwidth_ = min_bw / flows_to_share_path.size();
+                    p.node_list_.add(String.valueOf(list_s.getFirst()));
+
+                    for (int i = 0; i < list_s.size() - 1; i++) {
+                        int src = list_s.get(i);
+                        int dst = list_s.get(i + 1);
+
+                        // Construct path
+                        p.node_list_.add(String.valueOf(dst));
+
+                        // Also add subscription
+//                        if (links_[src][dst].subscribers_.isEmpty())
+                        links_[src][dst].subscribers_.add(p);
+                    }
+
+                    flow.paths_.add(p);
+                    flow.rate_ += p.bandwidth_;
+
+                    // If this flow is first time scheduled
+                    // Init the start time stamp
+                    if (flow.start_timestamp_ == -1) {
+                        flow.start_timestamp_ = timestamp;
+                        flows_.put(flow.id_, flow);
+                    }
+                }
+            }
         }
     }
 
