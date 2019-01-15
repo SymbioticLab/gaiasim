@@ -10,7 +10,6 @@ package gaiasim.scheduler;
 
 
 import com.opencsv.CSVReader;
-import com.sun.org.apache.xpath.internal.operations.Mult;
 import gaiasim.network.*;
 
 import java.io.IOException;
@@ -163,7 +162,7 @@ public class SiphonScheduler extends MultiPathScheduler {
 
     private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_, long timestamp) {
 
-        if (flows_.isEmpty()){
+        if (flows_.isEmpty()) {
             return;
         }
 
