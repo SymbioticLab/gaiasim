@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class SiphonScheduler extends MultiPathScheduler {
 
     int monteCarloDepth = 10; // default depth = 10
-    int multipathIterations = 1; // default, iterate the process of shifting traffic 1 times
+    int multipathIterations = 5; // default, iterate the process of shifting traffic 1 times
     Map<String, Double> oracleCCT = new HashMap<>();
 
     public SiphonScheduler(NetGraph net_graph, String oracleCCT_filename) {
@@ -84,7 +84,7 @@ public class SiphonScheduler extends MultiPathScheduler {
                 continue;
             }
 
-            // TODO LFGF to schedule flows of a Coflow
+            // LFGF to schedule flows of a Coflow
             // 1. group flows by their reduce task (dst loc), and find the ones with the biggest size
 
             Map<String, Double> FG_Size_Map = cf_to_schedule.flows_.values().stream().collect(Collectors.groupingBy(
@@ -143,16 +143,17 @@ public class SiphonScheduler extends MultiPathScheduler {
                     }
 
                     f.rate_ = min_bw;
-                    f.paths_.get(0).bandwidth_ = min_bw; // TODO until now there is only one path
+                    f.paths_.get(0).bandwidth_ = min_bw; // until now there is only one path
                     System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
                 }
             }
 
             // This coflow finished scheduling.
-            // TODO After scheduling, run the bottleneck shifting algorithm for multipath
-            shiftTraffic(cf_to_schedule, flows_, timestamp); // FIXME: maybe move this out of the loop?
 
         }
+
+        // After scheduling, run the bottleneck shifting algorithm for multipath
+        shiftTraffic(null, flows_, timestamp);
 
         // Performance gets slightly better if not enabling this. about 10%. But we should enable this
         update_flows(flows_);
@@ -161,7 +162,6 @@ public class SiphonScheduler extends MultiPathScheduler {
     }
 
     private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_, long timestamp) {
-        // TODO verify here
 
         if (flows_.isEmpty()){
             return;
@@ -272,7 +272,8 @@ public class SiphonScheduler extends MultiPathScheduler {
 
                 LinkedList<Flow> flows_to_share_path = new LinkedList<>();
 
-                for (Map.Entry<String, Flow> flowEntry : cf_to_schedule.flows_.entrySet()) {
+                // flow_ is worse than coflow set when in the loop
+                for (Map.Entry<String, Flow> flowEntry : flows_.entrySet()) {
                     Flow f = flowEntry.getValue();
                     if (Integer.parseInt(f.src_loc_) == maxLinkSrc && Integer.parseInt(f.dst_loc_) == maxLinkDst) {
                         flows_to_share_path.add(f);
@@ -291,7 +292,6 @@ public class SiphonScheduler extends MultiPathScheduler {
                 }
 
                 for (Flow flow : flows_to_share_path) {
-                    // TODO check this FIXME: why does multipath not help here
 
                     // Construct the path for each flow and add to it.
                     Pathway p = new Pathway();
@@ -307,7 +307,6 @@ public class SiphonScheduler extends MultiPathScheduler {
 
                         // Also add subscription
 //                        if (links_[src][dst].subscribers_.isEmpty())
-                        // FIXME: why does multipath not help here
                         links_[src][dst].subscribers_.add(p);
                     }
 
