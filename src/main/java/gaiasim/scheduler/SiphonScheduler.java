@@ -10,6 +10,7 @@ package gaiasim.scheduler;
 
 
 import com.opencsv.CSVReader;
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import gaiasim.network.*;
 
 import java.io.IOException;
@@ -21,10 +22,10 @@ import java.util.stream.Collectors;
 
 @SuppressWarnings("Duplicates")
 
-public class SiphonScheduler extends BaselineScheduler {
+public class SiphonScheduler extends MultiPathScheduler {
 
     int monteCarloDepth = 10; // default depth = 10
-    int multipathIterations = 10; // default, iterate the process of shifting traffic 10 times
+    int multipathIterations = 1; // default, iterate the process of shifting traffic 1 times
     Map<String, Double> oracleCCT = new HashMap<>();
 
     public SiphonScheduler(NetGraph net_graph, String oracleCCT_filename) {
@@ -100,8 +101,7 @@ public class SiphonScheduler extends BaselineScheduler {
 
                 // Find all flows that have this dst_loc, and schedule them
 
-                for (Map.Entry<String, Flow> flowEntry : cf_to_schedule.flows_.entrySet()) {
-                    Flow f = flowEntry.getValue();
+                for (Flow f : cf_to_schedule.flows_.values()) {
                     // Ensure this flow is not done and also is within the prioritized group
                     if (f.done_ || !f.dst_loc_.equals(dst_loc)) {
                         continue;
@@ -143,14 +143,14 @@ public class SiphonScheduler extends BaselineScheduler {
                     }
 
                     f.rate_ = min_bw;
-                    f.paths_.get(0).bandwidth_ = min_bw;
+                    f.paths_.get(0).bandwidth_ = min_bw; // TODO until now there is only one path
                     System.out.println("Flow " + f.id_ + " has rate " + f.rate_ + " and remaining volume " + (f.volume_ - f.transmitted_) + " on path " + f.paths_.get(0));
                 }
             }
 
             // This coflow finished scheduling.
             // TODO After scheduling, run the bottleneck shifting algorithm for multipath
-            shiftTraffic(cf_to_schedule, flows_, timestamp);
+            shiftTraffic(cf_to_schedule, flows_, timestamp); // FIXME: maybe move this out of the loop?
 
         }
 
@@ -162,6 +162,11 @@ public class SiphonScheduler extends BaselineScheduler {
 
     private void shiftTraffic(Coflow cf_to_schedule, HashMap<String, Flow> flows_, long timestamp) {
         // TODO verify here
+
+        if (flows_.isEmpty()){
+            return;
+        }
+
         for (int iter = 0; iter < multipathIterations; iter++) {
             // Each iteration we find one bottleneck link, and shift its traffic
             // Bottleneck link: the link that has the highest utilization
@@ -211,7 +216,6 @@ public class SiphonScheduler extends BaselineScheduler {
             boolean found_a_path = false;
             int s = maxLinkSrc;
             int d = maxLinkDst;
-            LinkedList<Integer> temp;
 
             int V = net_graph_.nodes_.size() + 1;
             // Mark all the vertices as not visited(By default set as false)
@@ -287,7 +291,7 @@ public class SiphonScheduler extends BaselineScheduler {
                 }
 
                 for (Flow flow : flows_to_share_path) {
-                    // TODO check this
+                    // TODO check this FIXME: why does multipath not help here
 
                     // Construct the path for each flow and add to it.
                     Pathway p = new Pathway();
@@ -303,6 +307,7 @@ public class SiphonScheduler extends BaselineScheduler {
 
                         // Also add subscription
 //                        if (links_[src][dst].subscribers_.isEmpty())
+                        // FIXME: why does multipath not help here
                         links_[src][dst].subscribers_.add(p);
                     }
 
