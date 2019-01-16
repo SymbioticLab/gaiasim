@@ -23,7 +23,8 @@ import java.util.stream.Collectors;
 
 public class SiphonScheduler extends MultiPathScheduler {
 
-    int monteCarloDepth = 10; // default depth = 10
+    int monteCarloN = 100;
+    int monteCarloDepth = 3; // default depth = 5
     int multipathIterations = 5; // default, iterate the process of shifting traffic 1 times
     Map<String, Double> oracleCCT = new HashMap<>();
 
@@ -59,6 +60,8 @@ public class SiphonScheduler extends MultiPathScheduler {
 
     @Override
     public HashMap<String, Flow> schedule_flows(HashMap<String, Coflow> coflows, long timestamp) throws Exception {
+
+        long schedStart = System.nanoTime();
         flows_.clear();
         reset_links();
 
@@ -156,6 +159,11 @@ public class SiphonScheduler extends MultiPathScheduler {
 
         // Performance gets slightly better if not enabling this. about 10%. But we should enable this
         update_flows(flows_);
+
+        long schedEnd = System.nanoTime();
+        int currentD = Math.min(coflows.size(), monteCarloDepth);
+        double scaledScheduleTime = (double) (schedEnd - schedStart) / 1000 / 1000 * Math.pow(monteCarloN, currentD);
+        System.out.println("schedule took " + scaledScheduleTime + " ms. " + currentD);
 
         return flows_;
     }
