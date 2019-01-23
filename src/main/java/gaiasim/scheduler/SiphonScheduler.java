@@ -69,6 +69,7 @@ public class SiphonScheduler extends MultiPathScheduler {
 //        HashMap<String, Coflow> coflows_to_schedule = (HashMap<String, Coflow>) coflows.clone();
         Collection<Coflow> coflows_to_schedule = new LinkedList<>();
         coflows_to_schedule.addAll(coflows.values());
+        ArrayList<Coflow> unscheduled_coflows = new ArrayList<>();
 
         while (!coflows_to_schedule.isEmpty()) {
 
@@ -83,6 +84,7 @@ public class SiphonScheduler extends MultiPathScheduler {
             // verify that this coflow is fully schedulable
             if (!fully_schedulable(cf_to_schedule)) {
                 System.out.println("Coflow " + cf_to_schedule.id_ + " is not fully schedulable.");
+                unscheduled_coflows.add(cf_to_schedule);
                 continue;
             }
 
@@ -164,6 +166,11 @@ public class SiphonScheduler extends MultiPathScheduler {
         int currentD = Math.min(coflows.size(), monteCarloDepth);
         double scaledScheduleTime = (double) (schedEnd - schedStart) / 1000 / 1000 * Math.pow(monteCarloN, currentD);
         System.out.println("schedule took " + scaledScheduleTime + " ms. " + currentD);
+
+        if (!unscheduled_coflows.isEmpty()) {
+            schedule_extra_flows(unscheduled_coflows, timestamp); // This is the optimization from Varys
+//            distributeBandwidth(unscheduled_coflows, timestamp); // This is the optimization from Rapier
+        }
 
         return flows_;
     }
@@ -432,4 +439,72 @@ public class SiphonScheduler extends MultiPathScheduler {
 
         return ret;
     }*/
+
+    public void distributeBandwidth(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+        // first sort the Coflows according to the MinCCT
+        // But they should all have minCCT == -1, so no need to sort!
+        // TODO may change here
+        for (Coflow cf : unscheduled_coflows) {
+            assignBWforCF(cf, timestamp);
+        }
+    }
+
+    public void assignBWforCF(Coflow cf, long timestamp) {
+        ArrayList<Flow> flows = new ArrayList<Flow>(cf.flows_.values());
+        boolean isScheduled = false;
+
+        Collections.sort(flows, Comparator.comparingDouble(o -> o.remaining_volume()));
+        // then from large flow to small flow
+        for (int i = flows.size() - 1; i >= 0; i--) {
+            Flow flow = flows.get(i);
+            boolean thisFLowScheduled = assignBWforFlow_MaxSinglePath(flow, timestamp);
+            if (thisFLowScheduled) {
+                isScheduled = true;
+                flows_.put(flow.id_, flow);
+            }
+        }
+
+        if (isScheduled) {
+            cf.last_scheduled_timestamp = timestamp;
+        }
+    }
+
+    private void schedule_extra_flows(ArrayList<Coflow> unscheduled_coflows, long timestamp) {
+        for (Coflow c : unscheduled_coflows) {
+            for (String k_ : c.flows_.keySet()) {
+                Flow f = c.flows_.get(k_);
+                if (f.done_) {
+                    continue;
+                }
+
+                Pathway p = new Pathway(net_graph_.apsp_[Integer.parseInt(f.src_loc_)][Integer.parseInt(f.dst_loc_)]);
+                f.paths_.clear();
+                f.paths_.add(p);
+
+                boolean no_overlap = true;
+                for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                    int src = Integer.parseInt(p.node_list_.get(i));
+                    int dst = Integer.parseInt(p.node_list_.get(i + 1));
+                    if (!links_[src][dst].subscribers_.isEmpty()) {
+                        no_overlap = false;
+                        break;
+                    }
+                }
+
+                if (no_overlap) {
+                    for (int i = 0; i < p.node_list_.size() - 1; i++) {
+                        int src = Integer.parseInt(p.node_list_.get(i));
+                        int dst = Integer.parseInt(p.node_list_.get(i + 1));
+                        links_[src][dst].subscribers_.addAll(f.paths_);
+                    }
+
+                    if (f.start_timestamp_ == -1) {
+                        f.start_timestamp_ = timestamp;
+                    }
+
+                    flows_.put(f.id_, f);
+                }
+            }
+        }
+    }
 }
