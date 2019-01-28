@@ -122,7 +122,7 @@ ip addr | grep -F '10.10' | sort -n | while read line ; do
         exit;;
     esac
 
-#    sudo ip netns exec $net_name tc qdisc add dev $nic_name parent $counter:12 netem delay $lat
+    sudo ip netns exec $net_name tc qdisc add dev $nic_name parent $counter:12 netem delay $lat
 
 
 done
