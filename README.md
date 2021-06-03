@@ -1,5 +1,5 @@
 ## GAIA Simulator
-*IMPORTANT*: you must have glpk v4.57 installed and `glpsol` must be in your `$PATH` before running.
+*IMPORTANT*: you must have glpk v4.57 installed and `glpsol` must be in your `$PATH` before running. This simulator can be built under Ubuntu 16.04 with Java version 8.
 
 For a clean build from the command line, run:
 ```
